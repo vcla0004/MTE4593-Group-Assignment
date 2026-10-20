@@ -221,7 +221,7 @@ parameters:
     unit: years
     source: calculated
     status: calculated
-    note: "dnnp_ltc_decision - dnnp_ea_start (about 18 years). Not all of it was active review: the site licence sat unused between 2012 and the BWRX-300 choice [TODO: find the primary source for when and why the project was paused]."
+    note: "dnnp_ltc_decision - dnnp_ea_start (about 18 years). This is elapsed time, not active review time [TODO: find a primary source on any period when the project was paused]."
   units2to4_approval_year:
     value: 2028
     unit: year

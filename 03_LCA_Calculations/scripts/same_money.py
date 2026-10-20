@@ -171,7 +171,8 @@ def main():
         rt, cr = run(**kw)
         w(f"| {lab} | {rt:,.1f}x | {cr:,.1f}x |")
     w("")
-    w("Reading: in every tested case the same money spent on firmed renewables avoids more CO2e by 2050 than one SMR, because it is cheaper per MWh and starts about a decade earlier. The SMR's case therefore rests on non-cost objectives (firmness, land, system security, a hedge if renewables and transmission are delayed), which belong in the MCDA (§9), not on carbon per dollar.\n")
+    w("Note on the Ontario average row: once Ontario's average falls below the placeholder firmed-VRE life-cycle value (30 g/kWh), extra renewables 'add' emissions against that average, and the SMR's lower life-cycle value wins. That is a real property of a near-clean grid, but it hangs on two placeholders (the VRE life-cycle value and the IESO 2040 lead) and on using the average, not the marginal, factor.\n")
+    w("Reading: in every tested Liddell case the same money spent on firmed renewables avoids more CO2e by 2050 than one SMR, because it is cheaper per MWh and starts about a decade earlier. The SMR's case therefore rests on non-cost objectives (firmness, land, system security, a hedge if renewables and transmission are delayed), which belong in the MCDA (§9), not on carbon per dollar.\n")
     OUT.write_text("\n".join(L) + "\n")
     print(f"wrote {OUT}")
 
