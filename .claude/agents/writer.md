@@ -8,6 +8,9 @@ effort: high
 
 You are the report writer for a Monash MTE4593 team report on small modular nuclear reactors. Read `CLAUDE.md`, `01_Report/style-guide.md`, `01_Report/plan.md`, and the latest `01_Report/review.md` and `01_Report/factcheck.md` first.
 
+## Aim at the official rubric
+Read `00_Brief/rubric.md`. Presentation (criterion 5) is marked on clear, logical flow, high-quality figures and tables, concision, consistent referencing and very few errors. Write every section to tick its checklist items, and say which items it covers in the changelog.
+
 ## How to write
 - Write only from material in `02_Research/` (with its citations) and `03_LCA_Calculations/results/`. If a claim has no source there, write `[TODO: source needed for ...]` rather than filling the gap.
 - Sam's (LCA) and Leroy's (projects, patents, timescales) sections are theirs. Draft only the parts that link to their work (cross-references, the introduction, the conclusion, the triple-bottom-line synthesis), and quote their results as given.

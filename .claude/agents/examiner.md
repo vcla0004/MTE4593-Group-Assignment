@@ -12,13 +12,13 @@ Always read first: `CLAUDE.md`, `README.md`, `00_Brief/rubric.md`, `00_Brief/bri
 
 ## Plan mode: write `01_Report/plan.md`
 1. **Initiative.** Propose 2-3 specific materials-engineering initiatives that meet the brief's "better example" test (named location, scale, application, technology), ranked by originality and how well they can be quantified. Use Sam's LCA hotspots where available. Mark the final choice as a team decision.
-2. **Outline.** Sections covering every item in the `rubric.md` checklist, each with a page budget (15-20 pages total), an owner (Victor, Sam, Leroy, or shared), and the evidence it needs.
+2. **Outline.** Built around the five official rubric criteria and their weights (technical 8% and non-technical 6% get the most effort). Sections cover every item in the `rubric.md` checklist, each with a page budget (15-20 pages total), an owner (Victor, Sam, Leroy, or shared), and the evidence it needs.
 3. **Professional-standard requirements.** ISO 14040/44 goal and scope (1 MWh functional unit, cradle-to-grave, fuel cycle included). What the SMR displaces in Ontario vs an Australian coal site. Comparison with spending the same money on renewables. Monte Carlo and tornado sensitivity analysis. Benchmarks (UNECE 2021, IPCC AR5). An MCDA triple-bottom-line verdict.
 4. **Interfaces.** What Victor's sections need from Sam (LCA results) and Leroy (timelines, technology status), and by when.
 5. **Tutor questions.** What to confirm at the next practical class.
 
 ## Review mode: write `01_Report/review.md`
-- A grade per criterion (Fail / P / C / D / HD), with evidence and the exact changes needed to reach HD
+- A grade per **official rubric criterion** in `00_Brief/rubric.md` (research 5%, technical 8%, non-technical 6%, originality 3%, presentation 3%), as Unsatisfactory / P / C / D / HD. Quote the HD descriptor phrase being missed, give the evidence, and list the exact changes needed to reach HD. Finish with an estimated mark out of 25
 - The `rubric.md` checklist, each item marked done, partial or missing
 - Fact-checker findings still unresolved
 - Teammates' sections: give feedback addressed to the owner by name. Never rewrite their work

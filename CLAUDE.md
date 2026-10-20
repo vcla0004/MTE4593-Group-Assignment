@@ -2,6 +2,7 @@
 
 Monash MTE4593 Materials and Sustainability, S2 2026, Assignment 2 (team, 30%).
 Report is worth 25% (15-20 pages of text; figures, graphs and appendices not counted). Presentation is worth 5%.
+**Slide deck due Thursday 22 October 2026** (postponed; the presentation is in the week 11 workshop). **Report due Friday 23 October 2026.** The official marking rubric is `00_Brief/rubric.md`; follow it exactly. Prioritise what the rubric rewards most, within the time left.
 Read `README.md` for current status and `00_Brief/rubric.md` before doing any work.
 
 ## Team and task split
@@ -14,7 +15,7 @@ Split taken from the "Potential tasks" section of `02_Research/SMR Research Note
 | Green | Leroy | Planned projects and timelines, Google Patents review of US SMR designs, timescales to maturity and rollout |
 | Yellow (added) | Victor | Herfindahl-Hirschman index for uranium and enrichment supply (unassigned in the notes; fits with the supply-chain work) |
 
-Aaron appears on the slide title but not in the task list or report authors. Confirm his role.
+Aaron left the unit and is no longer in the group. Remove his name from the presentation title slide.
 
 ## Agent workflow
 Sam (LCA) and Leroy (projects, patents, timescales) do their own work. The agents support Victor's sections, the shared sections, and quality control for the whole report.
@@ -49,7 +50,7 @@ Scope work to the person asking. When Victor asks, prioritise the yellow section
 - Follow Monash's AI-use rules for this unit; the team decides how AI use is declared.
 
 ## Folders
-- `00_Brief/`: brief PDF, text copy, rubric breakdown
+- `00_Brief/`: brief PDF, text copy, **official report rubric** (PDF, text, and the HD checklist in `rubric.md`)
 - `01_Report/`: report draft (.docx), plan, reviews, style guide, section drafts in `sections/`
 - `02_Research/`: notes, `sources.md` (annotated bibliography), research briefs per topic
 - `03_LCA_Calculations/`: team spreadsheet and assumptions, `parameters.yaml` (every number, with its source key), `scripts/` (Python, reproducible), `results/`

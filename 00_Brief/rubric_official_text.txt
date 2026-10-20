@@ -1,0 +1,79 @@
+                                                      Assignment 2 Report Marking Rubric 2026 (25%)
+
+       Criteria          High Distinction (80–100%)                Distinction                         Credit                            Pass                    Unsatisfactory (<50%)
+                                                                    (70-79%)                         (60-69%)                          (50-59%)
+
+Significant, relevant   Comprehensive coverage of all      Thorough coverage of most       Good coverage of the main         Limited but sufficient           Insufficient coverage of the
+research coverage       significant and relevant aspects   significant and relevant        relevant aspects of the topic,    coverage of relevant aspects     topic, with few relevant
+(5%)                    of the topic. The key problems     aspects of the topic. Key       although some important           of the topics, with many         aspects addressed and
+                        and challenges are clearly         problems and challenges         aspects may be missing or         important aspects missing or     important topics largely absent
+                        defined and discussed.             are clearly defined and         lack depth. Key problems are      lacking depth. Some less         or replaced by irrelevant
+                        Demonstrates extensive             discussed. Demonstrates         identified and discussed,         relevant material may be         material. Problems are poorly
+                        research and synthesis of a        strong research using a         although their definition or      included. Problems are only      defined or not identified. Little
+                        wide range of highly relevant      good range of relevant          significance could be clearer.    vaguely defined or discussed.    relevant research is evident.
+                        sources.                           sources.                        Uses an adequate range of         Uses a limited range of
+                                                                                           relevant sources.                 references.
+
+
+Quality of technical    High-quality technical analysis,   Detailed and well-developed     Good technical analysis with      Basic technical analysis, with   Inadequate technical analysis,
+analysis (8%)           including strong quantitative      technical analysis, including   some quantitative analysis        some quantitative analysis       with quantitative analysis and
+                        analysis and, where feasible, an   appropriate quantitative        and/or analysis of impacts.       and calculations undertaken.     calculations largely absent or
+                        eco-audit or equivalent analysis   analysis. Where feasible,       Includes relevant calculations,   Analysis is generally generic    incomplete. Methods and
+                        of impacts. Calculations of        includes an eco-audit or        although these may be limited     or superficial, with limited     assumptions are unclear or
+                        efficiencies, resource usage and   equivalent analysis of          in scope or depth. Methods        depth or consideration of the    missing. Important aspects of
+                        potential environmental or         impacts and relevant            are generally understandable,     implications of the results.     the analysis are not
+                        economic benefits are              calculations of efficiencies,   although some assumptions,        Methods and assumptions          considered. Arguments are
+                        appropriate to the scale of the    resource usage or potential     scope or other aspects may        may be unclear in places, and    poorly developed or
+                        proposal. Methods are clearly      benefits. Methods are           be unclear. Arguments are         some relevant aspects may        unsupported. Little or no
+                        explained and easy to follow.      clearly explained, with         generally logical and justified   be missing. Arguments are        consideration of uncertainty in
+                        Assumptions, scope and             assumptions and scope           but may overlook some             largely descriptive and only     results or conclusions.
+                        functional unit are clearly        generally well defined.         relevant aspects. Some            partly justified. Limited
+                        defined, where relevant.           Arguments are logical and       consideration of uncertainty      consideration of uncertainty.
+                        Arguments are logical, well        justified, with consideration   and limitations.
+                        justified and consider all         of the main relevant
+                        important aspects. Uncertainties   aspects. Uncertainties and
+                        in results and conclusions are     limitations are appropriately
+                        realistically estimated and        considered.
+                        discussed.
+Quality discussion of   Comprehensive and detailed              Strong discussion of most          Good discussion of several       Basic discussion of some          Inadequate discussion of
+Non-Technical           discussion of the major                 major economic, political,         relevant economic, political,    relevant non-technical            economic, political, social or
+Aspects (6%)            economic, political, social and         social and other                   social and other non-technical   factors, with much of the         other non-technical factors.
+                        other non-technical factors             non-technical factors              factors, although some           discussion descriptive.           Important factors are missing
+                        affecting translation to practice.      affecting translation to           important factors may be         Limited evidence of               or poorly understood. Little
+                        Provides strong evaluation and          practice. Provides good            missing or underdeveloped.       evaluation, comparison or         meaningful evaluation,
+                        comparison of solutions based           evaluation and comparison          Includes some evaluation and     quantification. Non-technical     comparison or consideration of
+                        on relevant non-technical               of solutions and considers         comparison of solutions and      solutions or implementation       implementation issues.
+                        objectives. Considers                   relevant implementation            consideration of                 issues are addressed only to
+                        implementation issues and               issues and non-technical           implementation issues.           a limited extent.
+                        non-technical solutions where           solutions.
+                        relevant, supported by evidence
+                        and quantitative/qualitative
+                        analysis where appropriate.
+
+Originality &           Demonstrates a high level of            Demonstrates a strong level        Demonstrates some                Demonstrates limited              Demonstrates little originality
+creativity of the       originality and creativity in           of originality and creativity in   originality and creativity in    originality and creativity.       or creativity. Proposed
+proposed solutions      identifying and developing              identifying and developing         identifying and developing       Proposed solutions are            solutions are generic, obvious
+(3)                     solutions that could support the        solutions that could support       solutions that could support     mostly obvious to the chosen      or largely restate existing
+                        chosen technology. Goes                 the chosen technology.             the chosen technology.           technology, with limited          approaches, with little
+                        beyond obvious applications of          Goes beyond obvious                Consider alternatives beyond     consideration of alternative or   evidence of considering
+                        materials engineering and               solutions and identifies           the most obvious solutions,      less intuitive ways materials     alternative ways materials
+                        identifies less intuitive or indirect   some less intuitive or             although the proposed ideas      engineering could contribute.     engineering could contribute.
+                        opportunities. Provides new             indirect ways materials            may not always be feasible.
+                        feasible ideas or connections           engineering could
+                        that are not immediately                contribute. Develops ideas
+                        apparent from the chosen                or connections that are not
+                        technology.                             immediately obvious.
+
+Presentation (3%)       Professional level presentation.        Very good presentation.            Good presentation. Writing is    Adequate presentation. An         Poor presentation. Poor
+                        Writing is clear, well organised        Writing is clear, well             generally clear and logically    attempt at logical structure is   organisation and structure
+                        and easy to follow, with a logical      organised and easy to              organised, although some         evident, but the report may be    make the report difficult to
+                        flow of discussion. Good use of         follow, with a logical             aspects may be unclear or        difficult to follow in places.    follow. Irrelevant figures and
+                        high-quality figures/tables where       structure. Figures/tables are      lack flow. Figures/tables are    Figures/tables are basic or       tables. Writing lacks clarity
+                        appropriate. Report is                  generally high quality and         generally appropriate and        limited, with several missed      and/or conciseness.
+                        appropriately structured and            used effectively. Report is        relevant, although there may     opportunities. Writing may        Significant issues with
+                        concise. Consistent referencing.        well structured and                be some missed opportunities     lack conciseness or contain       referencing, spelling, grammar
+                        Very few errors in spelling,            generally concise.                 or inconsistencies. Some         unnecessary detail. Some          or formatting affect readability.
+                        grammar or formatting.                  Referencing is consistent.         unnecessary detail or            issues with referencing,
+                                                                Only minor presentation            repetition may be present.       spelling, grammar or
+                                                                issues.                                                             formatting.
+

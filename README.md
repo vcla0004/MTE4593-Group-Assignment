@@ -1,6 +1,6 @@
 # MTE4593 Group Assignment: Small Modular Nuclear Reactors
 
-Team: Victor, Sam, Leroy (Aaron listed on slides, role to confirm). Drawdown solution: *Deploy Small Modular Nuclear Reactors*. Case study so far: the Darlington New Nuclear Project (GE Vernova Hitachi BWRX-300, Ontario Power Generation).
+Team: Victor, Sam, Leroy (Aaron left the unit). Drawdown solution: *Deploy Small Modular Nuclear Reactors*. Case study so far: the Darlington New Nuclear Project (GE Vernova Hitachi BWRX-300, Ontario Power Generation).
 
 ## Status as of 20 October 2026
 | Part | State |
@@ -9,14 +9,14 @@ Team: Victor, Sam, Leroy (Aaron listed on slides, role to confirm). Drawdown sol
 | Report (`01_Report/MTE4593 Report.docx`) | Outline only. Headings exist, no body text. Figure and references are scandium leftovers from another project |
 | Research (`02_Research/`) | Notes and source links, roughly 15 links, mostly not yet summarised |
 | LCA (`03_LCA_Calculations/`) | Assumptions started; spreadsheet has 2 rows (concrete, steel) with no emission factors |
-| Presentation (`04_Presentation/`) | 5 slides, mostly copied from the brief. Slides and references were due 12 October; check they were submitted |
+| Presentation (`04_Presentation/`) | 5 slides, mostly copied from the brief. Slides now due Thursday 22 October (postponed) |
 | Meetings (`05_Meetings/`) | 2 sets of minutes (13 Aug, 3 Sep). "Copy of Meeting Template" renamed to "Meeting 2 03_09_26" |
 
 ## Biggest gaps against the brief
 1. **No specific materials-engineering initiative yet.** The brief requires location, scale, application and technology, and the marking rewards originality. "Analyse an SMR" alone won't satisfy it. Decide this first.
 2. No sensitivity analysis, literature comparison, triple-bottom-line evaluation or appendix.
 3. No Granta EduPack results yet.
-4. The report due date isn't recorded anywhere. Meeting 1 says week 10 or 11.
+4. **The report is due Friday 23 October 2026**, three days from 20 October.
 
 ## Fact checks on existing work
 - **Darlington is in Clarington, Ontario** (east of Toronto), not Ottawa (`Assumptions.docx`, "Site Choice").

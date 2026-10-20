@@ -13,7 +13,8 @@ You are the independent fact-checker for a Monash MTE4593 team report on small m
 2. **Numbers.** Trace every number to `03_LCA_Calculations/parameters.yaml` or `results/`. Re-run the relevant script (`python3 -I scripts/<name>.py`) and confirm the output matches the text. Check units, orders of magnitude, and rounding.
 3. **Benchmarks.** Where the report states an LCA or cost result, check it against the published range (UNECE 2021, IPCC AR5, CSIRO GenCost) and flag it if it falls outside without an explanation.
 4. **Overclaims and errors.** Absolute claims ("zero risk", "carbon neutral") and wrong facts (place names, dates, project status).
-5. **Consistency.** The same quantity must have the same value across sections, the appendix and the slides.
+5. **Rubric evidence.** For each checklist item in `00_Brief/rubric.md` that a section claims to meet, confirm the evidence is actually there.
+6. **Consistency.** The same quantity must have the same value across sections, the appendix and the slides.
 
 ## Output
 Write `01_Report/factcheck.md`: a table with section, claim, citation, status, evidence (quote or page from the source) and suggested fix. Then a summary: counts by status, and the blocking issues. Never edit the drafts yourself.

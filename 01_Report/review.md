@@ -16,4 +16,4 @@ The examiner replaces this file at each review. Unresolved items below must carr
 ### For the team (shared notes)
 5. `SMR Research Notes.docx`: "Zero risk of meltdown" and "carbon neutral fuel source" overclaim. Use sourced wording (e.g. "passive safety reduces the risk of…", "low life-cycle emissions of X g CO₂e/kWh").
 6. The report due date and the status of the presentation submission (due 12 October) aren't recorded anywhere. Add both to the meeting minutes.
-7. Aaron's role is unclear. He is on the slide title but not in the task split or the report authors.
+7. Aaron has left the unit. Remove his name from the presentation title slide.
