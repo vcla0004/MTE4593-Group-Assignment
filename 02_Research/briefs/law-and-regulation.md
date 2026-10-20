@@ -46,7 +46,7 @@ What legal and political barriers stop an SMR being built at an Australian coal 
 | Layer | Instrument | Operative effect (as extracted, TO VERIFY) | Who can change it | Current position (Oct 2026) |
 |---|---|---|---|---|
 | Federal environment | EPBC Act 1999 s 140A (also ss 37J, 146M) | "The Minister must not approve an action consisting of or involving the construction or operation of" a fuel fabrication plant, **a nuclear power plant**, an enrichment plant or a reprocessing facility. Naval propulsion plants excepted | Commonwealth Parliament (both Houses) | In force. The EPBC reform package (assented 1 December 2025) renamed "nuclear action" as "radiological exposure action". Whether s 140A changed: **unknown, check** |
-| Federal radiation safety | ARPANS Act 1998 s 10 | s 10(1): nothing in the Act "is to be taken to authorise the construction or operation" of those four facilities. s 10(2): "the CEO must not issue a licence under section 32" for them | Commonwealth Parliament | In force. Repeal bills in 2017 and 2022 failed; the 2022 bill was recommended against by a Senate committee on 11 August 2023 |
+| Federal radiation safety | ARPANS Act 1998 s 10 | s 10(1): nothing in the Act "is to be taken to authorise the construction or operation" of those four facilities. s 10(2): "the CEO must not issue a licence under section 32" for them | Commonwealth Parliament | In force. A 2017 bill proposed repealing s 10 (outcome not confirmed). A Senate committee recommended against the 2022 repeal bill on 11 August 2023, and it is believed to have lapsed in 2025 [TO VERIFY] |
 | Federal regulator's reach | ARPANS Act "controlled person" (s 13) | ARPANSA licenses only Commonwealth entities and Commonwealth-controlled companies | Commonwealth Parliament | A private SMR operator is outside ARPANSA's reach |
 | NSW | *Uranium Mining and Nuclear Facilities (Prohibitions) Act 1986* ss 8–9 | s 8(2): offence to construct or operate a "nuclear facility", which includes "a nuclear reactor, whether or not designed for the purpose of generating electricity" (max. 1,000 penalty units). s 9: no state authority may build or approve a power reactor | NSW Parliament, or a valid inconsistent Commonwealth law (Constitution s 109) | Repeal Bill 2025 passed the LC on 6 May 2026; stalled in the LA; lapses 28 November 2026 |
 | Victoria | *Nuclear Activities (Prohibitions) Act 1983* s 8 | Prohibits constructing or operating nuclear reactors, including power reactors, and other fuel-cycle facilities | Victorian Parliament | In force. One Nation promises repeal at the November 2026 state election; no Victorian Liberal position found |
@@ -58,7 +58,7 @@ What legal and political barriers stop an SMR being built at an Australian coal 
 
 | Step | Decision-maker | Evidence for time needed | Veto points |
 |---|---|---|---|
-| 1. Federal Parliament amends EPBC ss 37J, 140A and 146M (Clayton Utz also lists s 305(2)(d)) and repeals ARPANS s 10 | House and Senate | Past attempts in 2017 and 2022 failed. Under 2026 numbers the repeal bloc is 32 against 39 needed | Senate (Labor 30 + Greens 10 = 40 opposed) |
+| 1. Federal Parliament amends EPBC ss 37J, 140A and 146M (Clayton Utz also lists s 305(2)(d)) and repeals ARPANS s 10 | House and Senate | Neither the 2017 nor the 2022 bill became law. Under 2026 numbers the repeal bloc is 32 against 39 needed | Senate (Labor 30 + Greens 10 = 40 opposed) |
 | 2. Choose who regulates a power reactor: (a) Commonwealth ownership under ARPANSA; (b) a new federal regulator with power over private operators; (c) a NSW regulator | Commonwealth (a, b); NSW (c) | ANNPSR took about two years from Act to operation for a narrower scope. IAEA guidance makes the legal framework and an independent regulator two of 19 infrastructure issues across three phases, with durations that depend on "commitment and resources" (IAEA_Milestones) | (b) faces a possible High Court challenge (Twomey) |
 | 3. Remove the NSW ban (repeal), or override it under s 109 | NSW Parliament, or the Commonwealth | NSW repeal bill: LC passed after about 5.5 months (19 Nov 2025 to 6 May 2026); LA stalled | NSW Labor Assembly majority; Premier's stated position |
 | 4. Secure the site | AGL, or Commonwealth acquisition | — | AGL refuses (secondary) |
@@ -74,14 +74,16 @@ What legal and political barriers stop an SMR being built at an Australian coal 
 
 Qualitative, for §8.1 and as an input to the MCDA. Scores: 1 = poor, 3 = good. Analyst's judgement from the evidence above; for discussion, not a sourced score.
 
-| Objective | A. Commonwealth-owned plant under ARPANSA (2024 Coalition model) | B. Federal licensing law for private operators, overriding states | C. Cooperative: state repeal plus a state or joint regulator |
+| Objective (score 1–3) | A. Commonwealth-owned plant under ARPANSA (2024 Coalition model) | B. Federal licensing law for private operators, overriding states | C. Cooperative: state repeal plus a state or joint regulator |
 |---|---|---|---|
-| Legal changes needed | EPBC and ARPANS repeal, plus s 109 override of NSW (or NSW repeal) | EPBC and ARPANS repeal plus a new federal Act; s 109 override | EPBC and ARPANS repeal plus NSW repeal and a NSW regulator Act |
-| Veto points | Senate; site owner | Senate; High Court; site owner | Senate; NSW Parliament; site owner |
-| Regulator readiness | Best: builds on ARPANSA, which already licenses ANSTO | Medium: new body, as with ANNPSR | Worst: NSW has no nuclear regulator |
-| Exposure to political reversal | High: a future government could sell or cancel | High | Lower once both levels agree |
-| Social licence | Low: the states rejected it in 2024 | Lowest: overrides states | Highest, if it happens |
-| Score (sum of 4 rows from "Veto points", higher is better) | 2+3+1+1 = 7 | 1+2+1+1 = 5 | 2+1+2+3 = 8 |
+| Legal changes needed (not scored; describes the route) | EPBC and ARPANS repeal, plus s 109 override of NSW (or NSW repeal) | EPBC and ARPANS repeal plus a new federal Act; s 109 override | EPBC and ARPANS repeal plus NSW repeal and a NSW regulator Act |
+| Fewest veto points | **2**: Senate; site owner | **1**: Senate; High Court; site owner | **1**: Senate; NSW Parliament; site owner |
+| Regulator readiness | **3**: builds on ARPANSA, which already regulates Commonwealth entities such as ANSTO | **2**: new body, as with ANNPSR | **1**: NSW has no nuclear regulator |
+| Durability (low exposure to political reversal) | **1**: one government's decision; the next can sell or cancel | **1**: same, plus litigation | **3**: both levels of government committed |
+| Social licence | **1**: states rejected it in 2024 | **1**: overrides states | **3**: states consent, if they do |
+| **Total (of 12)** | **7** | **5** | **8** |
+
+Sensitivity: weighting regulator readiness double gives A 10, B 7, C 9, so A ranks first. Weighting durability double gives A 8, B 6, C 11. The ranking depends on whether speed or durability is valued more. That is a political choice, which is the point for §8.1.
 
 Reading: route C is the most durable but needs the most political change. Route A is the quickest legally but the most exposed. Under the 2026 Senate, none is open. **This is a sensitivity point for the MCDA's "feasibility" criterion: whichever route is assumed, Australia scores lowest on time-to-first-power.**
 
@@ -105,7 +107,7 @@ Reading: route C is the most durable but needs the most political change. Route 
 |---|---|---|
 | "EPBC Act s140A: The Environment Minister must not approve a nuclear power plant" | Accurate paraphrase. The words are "must not approve an action consisting of or involving the construction or operation of… a nuclear power plant". Sections 37J and 146M are parallel bars. Post-December 2025 status still to check | Keep. Add "(and ss 37J, 146M)" in the report; check the current compilation |
 | "ARPANS Act s10: The national radiation regulator must not licence one" | Accurate for s 10(2), but incomplete. ARPANSA licenses only Commonwealth entities, so a private plant would never reach it anyway; the state bans are the binding constraint for private operators | Add in the speaker notes: "and NSW's own 1986 Act bans any reactor at Liddell". Spelling: Australian English uses "license" for the verb, so the line should read "must not license one" (style guide, R5.5) |
-| "Parliament repeals both bans, then builds a licensing regime from scratch" | Incomplete: NSW repeal (or a federal override) and the site owner are also needed. "From scratch" overstates it, because ARPANSA exists and licenses ANSTO, and ANNPSR shows a new regulator can be stood up | "Parliament repeals both federal bans, NSW repeals its own, and a power-reactor regulator is set up" |
+| "Parliament repeals both bans, then builds a licensing regime from scratch" | Incomplete: NSW repeal (or a federal override) and the site owner are also needed. "From scratch" overstates it, because ARPANSA exists and already regulates Commonwealth nuclear entities such as ANSTO, and ANNPSR shows a new regulator can be stood up | "Parliament repeals both federal bans, NSW repeals its own, and a power-reactor regulator is set up" |
 | "Canada's took 2.5 years for one licence" | The construct licence took 29.1 months (2.4 years), October 2022 to 4 April 2025. But that was one step of a path that began with an EA in May 2007 (17.9 years elapsed). The operating licence is still pending (applied March 2026, hearing likely 2027). Source: CNSC, not NucNet | "Canada's construction licence alone took about 2.5 years, on a site first licensed in 2012" |
 | Sources line: "NucNet (2025)" | News source; R1.4 wants primary | Cite CNSC (2025) |
 

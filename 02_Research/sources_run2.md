@@ -332,6 +332,12 @@ Cement Association of Canada, 2025. *A Guideline for Specifying Low Carbon Ready
 - **Reliability:** Industry guidance (Secondary-good).
 - **Supports:** §8.6.
 
+### OPG_2020_ClimatePlan
+Ontario Power Generation, 2020. *Climate Change Plan* [title TO VERIFY]. [pdf] Toronto: OPG. Available at: https://www.opg.com/wp-content/uploads/2020/11/OPG_ClimateChange2020_Final-FINAL-ua.pdf [Accessed 20 October 2026; not opened]. Also: OPG, 2023, *2023 strategic outlook for suppliers*, https://www.opg.com/news/2023-strategic-outlook-for-suppliers/.
+- **Findings (extract):** OPG aims to be a net-zero carbon company by 2040, through reductions and offsets. Its 2023 supplier scorecard covers climate change and asks suppliers for goals and targets to reduce GHG emissions "created by their business and/or supply chain". No embodied-carbon or construction target was found.
+- **Reliability:** Primary, once opened.
+- **Supports:** §8.5, §8.6 (OPG's interest in C1).
+
 ### NortonRose_2025_EPBCReform
 Norton Rose Fulbright, 2025. *Key amendments to the Environment Protection Reform Act 2025 and their implications for the EPBC Act*. [online] Available at: https://www.nortonrosefulbright.com/en-au/knowledge/publications/df336551/key-amendments-to-the-environment-protection-reform-act-2025-and-their-implications-for-the-epbc-act [Accessed 20 October 2026; not opened].
 - **Findings (extract):** Passed the Senate on 27 November 2025 and the House on 28 November 2025, with Royal Assent on 1 December 2025; most changes commence during 2026 and all by 1 December 2026. "Nuclear action" is renamed "radiological exposure action", with new activity thresholds for naturally occurring radioactive material.

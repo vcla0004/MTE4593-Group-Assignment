@@ -1,2 +1,4 @@
 parameters:
-  # name: {value: , unit: , source: <key in 02_Research/sources.md> | assumption, note: }
+  # Single source of truth. Run-specific inputs live in parameters_run1.yaml (displacement, schedule, same-money),
+  # parameters_run2.yaml (law timelines) and parameters_run3.yaml (HHI) until the fact-checker confirms them;
+  # scripts read those files. Sam's LCA values go here.
