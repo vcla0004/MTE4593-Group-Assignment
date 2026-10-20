@@ -1,0 +1,28 @@
+stage,scenario,hhi,n_equivalent,doj_ftc_2023,doj_ftc_2010,note
+Mining (country),2024 base,2341,4.3,highly concentrated,moderately concentrated,
+Mining (country),"2024 base, 'Others' atomistic",2341,4.3,highly concentrated,moderately concentrated,lower bound
+Mining (country),2024 without Russia,2546,3.9,highly concentrated,highly concentrated,
+Mining (country),2024 without Russia and China,2686,3.7,highly concentrated,highly concentrated,
+Mining (country),"2024 without Russia, China and Niger",2778,3.6,highly concentrated,highly concentrated,Niger: exports disrupted since the 2023 coup (Orano/Somair; secondary)
+Mining (country),2022 (residual bounds),2370,4.2,highly concentrated,moderately concentrated,"range 2,368 to 2,372"
+Mining (country),2022 without Russia (residual bounds),2601,3.8,highly concentrated,highly concentrated,"range 2,598 to 2,603"
+Mining (country),2023 (residual bounds),2246,4.5,highly concentrated,moderately concentrated,"range 2,243 to 2,248"
+Mining (country),2023 without Russia (residual bounds),2460,4.1,highly concentrated,moderately concentrated,"range 2,457 to 2,462"
+Mining (company),2024 bounds (top 3 known),1118,8.9,not highly concentrated,unconcentrated,"range 851 to 1,384; STRETCH, partial data"
+Conversion,capacity base,2111,4.7,highly concentrated,moderately concentrated,
+Conversion,capacity without Russia,2674,3.7,highly concentrated,highly concentrated,
+Conversion,capacity without Russia and China,3615,2.8,highly concentrated,highly concentrated,market open to a Western buyer
+Conversion,production base,2109,4.7,highly concentrated,moderately concentrated,
+Conversion,production without Russia,2672,3.7,highly concentrated,highly concentrated,
+Conversion,"capacity, ConverDyn 15,000 tU (alt.)",2015,5.0,highly concentrated,moderately concentrated,secondary source; sensitivity only
+Conversion,"ConverDyn alt., without Russia",2514,4.0,highly concentrated,highly concentrated,
+Conversion,"ConverDyn alt., without Russia and China",3356,3.0,highly concentrated,highly concentrated,
+Enrichment,2022 capacity (year sensitivity),3065,3.3,highly concentrated,highly concentrated,"Other atomistic: 3,065"
+Enrichment,2022 without Russia,3707,2.7,highly concentrated,highly concentrated,"Other atomistic: 3,706"
+Enrichment,2022 without Russia and China,5722,1.7,highly concentrated,highly concentrated,"market open to a Western buyer; Other atomistic: 5,722"
+Enrichment,2025 capacity (base),3009,3.3,highly concentrated,highly concentrated,"Other atomistic: 3,009"
+Enrichment,2025 without Russia,3599,2.8,highly concentrated,highly concentrated,"Other atomistic: 3,598"
+Enrichment,2025 without Russia and China,5621,1.8,highly concentrated,highly concentrated,"market open to a Western buyer; Other atomistic: 5,619"
+Enrichment,2030 capacity (year sensitivity),2724,3.7,highly concentrated,highly concentrated,"Other atomistic: 2,719"
+Enrichment,2030 without Russia,3299,3.0,highly concentrated,highly concentrated,"Other atomistic: 3,286"
+Enrichment,2030 without Russia and China,4827,2.1,highly concentrated,highly concentrated,"market open to a Western buyer; Other atomistic: 4,793"

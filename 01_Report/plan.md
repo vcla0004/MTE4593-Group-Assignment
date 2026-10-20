@@ -274,6 +274,10 @@ Analysts add requests here, addressed by name. Conflicts between numbers also go
 | Sam, Leroy → Victor | MCDA scores for their criteria (environment from Sam; TRL and timing from Leroy) | Thu 09:00 | R3.6, RB.8 |
 | All → Leroy | Final sections into the master document | Thu 18:00 | R5.1–R5.5 |
 | Overlaps | Victor owns costs, grants, jobs and financing (the "Socio-economic" items in `Assumptions.docx` move to him). Sam owns electricity output. Leroy owns dates | — | R2.6, R5.5 |
+| Analyst (run 3) → Leroy | BWRX-300 fuel data with sources: core loading (tU), reload fraction and cycle length, average enrichment (% U-235). Needed to size SWU per year and a strategic fuel reserve in §8.3/§8.6 | Wed 12:00 | R2.3, R3.7 |
+| Analyst (run 3) → Victor / fact-checker | HHI inputs could not be opened from the analyst's session (network block). Open the 7 pages in the checklist at the end of `02_Research/briefs/supply-concentration.md`, set `verified: true` in `parameters_run3.yaml`, and rerun `scripts/hhi.py` before §8.3 or slide 13 use the numbers | Wed 09:00 | R1.4, R3.8 |
+| Analyst (run 3) → run 2 (law) | Confirm from the Acts whether conversion plants are outside EPBC s140A and ARPANS s10 (Parliamentary Library quick guide says the four listed installations are fuel fabrication, power plant, enrichment, reprocessing), and whether NSW law bans conversion | Wed 09:00 | R3.2, R3.7 |
+| Conflict (run 3) → Victor | Australia's resource share: 28% at < USD 130/kgU (Red Book 2024, on slide 13) vs 29% and 27% in two WNA tabulations of Red Book 2026 (now the latest edition). Pick the edition and cost category; the Meeting 2 "30% of reserves" wording is wrong either way | Wed 09:00 | R1.3, R5.4 |
 
 ---
 

@@ -1,0 +1,179 @@
+# Rubric coverage: R3.2, R2.1, R3.8, R3.5, R3.7, R2.7, R1.4, RB.5
+#
+# Analyst run 3 (20/10/2026): Herfindahl-Hirschman index (HHI) inputs for the BWRX-300 fuel supply chain.
+# Read by 03_LCA_Calculations/scripts/hhi.py. To be merged into parameters.yaml by the coordinator.
+# Source keys refer to 02_Research/sources_run3.md.
+#
+# VERIFICATION STATUS (read before using any number):
+#   No primary-source host (world-nuclear.org, oecd-nea.org, iaea.org, justice.gov, ftc.gov, govinfo.gov,
+#   legislation.gov.au) could be opened from the analyst's session: every fetch failed at the network
+#   level. Every value below was taken from search-engine extracts of the named primary page, NOT from
+#   the page itself. Each entry therefore carries `verified: false`. Under CLAUDE.md these values are
+#   NOT citable until Victor or the fact-checker opens the primary page and sets `verified: true`.
+#   Internal consistency checks that passed are noted (e.g. country rows summing exactly to the world total).
+
+meta:
+  run: 3
+  date: 2026-10-20
+  share_unit: percent (HHI = sum of squared percentage shares, range 0 to 10,000)
+
+thresholds:
+  doj_ftc_2023_highly_concentrated:
+    value: 1800
+    rule: "HHI greater than 1,800 = highly concentrated; merger presumption also needs a change in HHI greater than 100"
+    source: USDOJ_FTC_2023
+    verified: false
+  doj_ftc_2010_unconcentrated_below:
+    value: 1500
+    source: USDOJ_FTC_2010
+    verified: false
+  doj_ftc_2010_highly_concentrated:
+    value: 2500
+    rule: "1,500 to 2,500 = moderately concentrated; above 2,500 = highly concentrated (presumption needs a change above 200)"
+    source: USDOJ_FTC_2010
+    verified: false
+
+# ---------------------------------------------------------------------------
+# 1. Uranium mining production by country (tonnes U), WNA table
+#    Check passed: the 2024 rows below sum exactly to WNA's stated world total of 60,213 tU.
+# ---------------------------------------------------------------------------
+mining_by_country:
+  source: WNA_mining
+  verified: false
+  unit: tU
+  world_total: {2022: 49614, 2023: 54433, 2024: 60213}
+  2024:
+    Kazakhstan: 23270
+    Canada: 14309
+    Namibia: 7333
+    Australia: 4598
+    Uzbekistan: 4000      # WNA estimate
+    Russia: 2738
+    China: 1600           # WNA estimate
+    Niger: 962
+    India: 500            # WNA estimate
+    Ukraine: 288          # WNA estimate
+    USA: 260
+    South Africa: 200     # WNA estimate
+    Others: 155
+  # 2022 and 2023: only the eight largest rows were retrieved; the remainder is computed by the script
+  # as a residual (world total minus listed rows) and bounded (one entity vs atomistic).
+  2023:
+    Kazakhstan: 21109
+    Canada: 11001
+    Namibia: 6986
+    Australia: 4693
+    Uzbekistan: 4000
+    Russia: 2710
+    China: 1600
+    Niger: 1130
+  2022:
+    Kazakhstan: 21227
+    Canada: 7351
+    Namibia: 5611
+    Australia: 4553
+    Uzbekistan: 3561
+    Russia: 2508
+    China: 1700
+    Niger: 2020
+
+# STRETCH: mining by company (2024), top three only, as % of world total. WNA's table heading and intro
+# text disagree on the year (2024 vs 2022): verify the year on the page. Bounds computed in the script.
+mining_by_company_2024_pct:
+  source: WNA_mining
+  verified: false
+  Kazatomprom: 21    # cross-check: Kazatomprom IAR 2024 cites UxC "approximately 21%" (KAP_2025)
+  Cameco: 17
+  Orano: 11
+
+# ---------------------------------------------------------------------------
+# 2. Conversion capacity by company (tU as UF6 per year), WNA "Conversion and Deconversion" table
+#    Check passed: capacities sum to the stated total of 62,000; production sums to 56,259.
+# ---------------------------------------------------------------------------
+conversion_by_company:
+  source: WNA_conversion
+  verified: false
+  unit: tU/yr
+  capacity:
+    Cameco: 12500      # Canada, Port Hope (licensed capacity)
+    CNNC: 15000        # China, Lanzhou and Hengyang (estimate)
+    ConverDyn: 7000    # USA, Metropolis (older licensed value; see alternative below)
+    Orano: 15000       # France, Pierrelatte and Malvesi
+    Rosatom: 12500     # Russia, Seversk (estimate)
+  production:
+    Cameco: 11375
+    CNNC: 13489
+    ConverDyn: 6370
+    Orano: 13650
+    Rosatom: 11375
+  country: {Cameco: Canada, CNNC: China, ConverDyn: USA, Orano: France, Rosatom: Russia}
+  converdyn_capacity_alt:
+    value: 15000
+    source: secondary_converdyn   # Wikipedia / Substack via search; low reliability; sensitivity only
+    verified: false
+
+# ---------------------------------------------------------------------------
+# 3. Enrichment capacity by company (thousand SWU per year), WNA "Uranium Enrichment" table,
+#    which cites the WNA Nuclear Fuel Report 2025. CNNC values are WNA estimates assuming China builds
+#    enough capacity for its domestic fleet.
+#    Check passed: rows sum to the stated totals (62,641 / 68,076 / 77,784) within 1 kSWU (rounding).
+# ---------------------------------------------------------------------------
+enrichment_by_company:
+  source: WNA_enrichment
+  verified: false
+  unit: thousand SWU/yr
+  2022: {Rosatom: 27100, Urenco: 17300, CNNC: 10613, Orano: 7500, Other_INB_JNFL: 128}
+  2025: {Rosatom: 29133, Urenco: 17300, CNNC: 13789, Orano: 7500, Other_INB_JNFL: 355}
+  2030: {Rosatom: 29810, Urenco: 18000, CNNC: 18230, Orano: 10000, Other_INB_JNFL: 1744}
+  stated_total: {2022: 62641, 2025: 68076, 2030: 77784}
+  country: {Rosatom: Russia, Urenco: "UK/Germany/Netherlands (plants in UK, DE, NL, USA)", CNNC: China, Orano: France, Other_INB_JNFL: "Brazil, Japan"}
+
+# ---------------------------------------------------------------------------
+# 4. Australia's position
+# ---------------------------------------------------------------------------
+australia:
+  share_identified_recoverable_resources_usd130_rb2024:
+    value: 28
+    unit: "% of world identified recoverable resources (RAR + inferred) at <USD 130/kgU, 1 Jan 2023"
+    source: NEA_IAEA_2025
+    verified: false
+  share_identified_recoverable_resources_usd260_rb2024:
+    value: 24
+    unit: "% at <USD 260/kgU"
+    source: NEA_IAEA_2025
+    verified: false
+  share_identified_recoverable_resources_usd130_rb2026:
+    value: 29
+    tonnes: 1701600
+    unit: "% at <USD 130/kgU, 1 Jan 2025 (Red Book 2026, as tabulated by WNA)"
+    source: NEA_IAEA_2026
+    verified: false
+    note: "A second WNA page gives 2,119,800 tU (27%) for the same edition; the two do not reconcile. TO VERIFY in the Red Book itself."
+  production_2024_tU:
+    value: 4598
+    source: WNA_mining
+    verified: false
+  conversion_capacity_tU: {value: 0, source: WNA_conversion, verified: false, note: "Australia absent from the WNA conversion table"}
+  enrichment_capacity_kSWU: {value: 0, source: WNA_enrichment, verified: false, note: "Australia absent from the WNA enrichment table"}
+
+world_reactor_requirements_2025_tU:
+  value: 64500
+  note: "418 reactors, 378 GWe at 1 Jan 2025 (Red Book 2026 summary)"
+  source: NEA_IAEA_2026
+  verified: false
+
+# ---------------------------------------------------------------------------
+# 5. Sanctions scenario: US Prohibiting Russian Uranium Imports Act (Public Law 118-62)
+# ---------------------------------------------------------------------------
+us_russian_uranium_ban:
+  enacted: 2024-05-13
+  prohibition_starts: "90 days after enactment (2024-08-11)"
+  waivers_end: 2028-01-01
+  ban_sunset: 2040-12-31
+  source: US_PL118_62
+  verified: false
+russia_counter_restriction:
+  date: 2024-11-15
+  note: "Russian Government amendment to Decree No 313 of 9 March 2022 temporarily restricting enriched-uranium exports to the US (news pointer only; primary decree not opened)"
+  source: WNN_2024
+  verified: false
