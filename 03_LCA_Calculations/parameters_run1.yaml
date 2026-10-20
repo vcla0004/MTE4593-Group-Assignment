@@ -1,0 +1,291 @@
+# Rubric coverage: R2.1, R2.3, R2.7, R3.1, R3.6, R4.3, RB.6
+# Analyst run 1 (20/10/2026): displacement, schedule value, same money.
+# Schema as parameters.yaml: name: {value, unit, source: <key in 02_Research/sources_run1.md> | assumption, note}
+# Added fields: low/high (sensitivity range), status.
+#   status = "TO VERIFY"   -> number seen only in a search summary or secondary source. The primary
+#                             could NOT be opened on 20/10 (proxy policy 403 on every primary host:
+#                             csiro.au, ontario.ca, opg.com, unece.org, ipcc.ch, nrel.gov, dcceew.gov.au,
+#                             aemo.com.au, ieso.ca, cer-rec.gc.ca, rba.gov.au, taf.ca,
+#                             cleanenergyregulator.gov.au). NOT citable until a human opens the primary.
+#   status = "assumption"  -> analyst's stated assumption, used only as a placeholder or sensitivity bound.
+#   status = "placeholder" -> stands in for a teammate's number (Sam or Leroy); swap in when delivered.
+# Every script reads only this file. Change a value here, re-run the scripts, and results/ update.
+
+parameters:
+
+  # ---------------- Plant (Leroy / Sam own these; placeholders until delivered) ----------------
+  net_mwe:
+    value: 300
+    low: 290
+    high: 300
+    unit: MWe (net, per BWRX-300 unit)
+    source: assumption
+    status: placeholder
+    note: "Deck value. Leroy to supply sourced net output (plan §5). Low 290 is a sensitivity bound only, not a sourced figure."
+  capacity_factor:
+    value: 0.90
+    low: 0.80
+    high: 0.95
+    unit: fraction
+    source: assumption
+    status: placeholder
+    note: "Deck assumption. Sam/Leroy to source (plan §2.5 item 3). Range is a sensitivity bracket."
+  design_life_yr:
+    value: 60
+    low: 40
+    high: 80
+    unit: years
+    source: assumption
+    status: placeholder
+    note: "Plan §2.3 planning arithmetic uses 60. Leroy to source from GEH/OPG documents."
+  units_darlington:
+    value: 4
+    unit: units
+    source: ontario2025_fid
+    status: TO VERIFY
+    note: "Four BWRX-300 units, about 1,200 MW total (secondary: World Nuclear News, BLG, Globe and Mail)."
+
+  # ---------------- SMR life-cycle intensity (Sam's number replaces the central value) ----------------
+  smr_lca_g_per_kwh:
+    value: 5.75
+    low: 5.1
+    high: 6.4
+    unit: g CO2e/kWh (life cycle)
+    source: unece2021
+    status: placeholder
+    note: "Midpoint of UNECE (2021) nuclear range 5.1–6.4 as reported by secondary sources [TO VERIFY in UNECE PDF]. Replace value/low/high with Sam's Granta+literature result on Wed 21/10 12:00."
+  smr_lca_stress_g_per_kwh:
+    value: 12
+    low: 12
+    high: 110
+    unit: g CO2e/kWh
+    source: ipcc2014_annex3
+    status: TO VERIFY
+    note: "Stress test only. 12 = IPCC AR5 Annex III / NREL harmonised nuclear median, 110 = AR5 max, as commonly quoted; NOT confirmed even in a search result on 20/10. Do not cite until Annex III Table A.III.2 is opened."
+
+  # ---------------- Ontario grid ----------------
+  ont_avg_2022_cer:
+    value: 35
+    unit: g CO2e/kWh generated
+    source: cer_ontario_profile
+    status: TO VERIFY
+    note: "CER Provincial and Territorial Energy Profiles: Ontario (search summary)."
+  ont_avg_2023_snapshot:
+    value: 53
+    unit: g CO2e/kWh
+    source: ontario_energy_snapshot
+    status: TO VERIFY
+    note: "Ontario energy snapshot (ontario.ca); value used in the deck. Basis (generation vs consumption) unknown."
+  ont_avg_2024_taf:
+    value: 73.8
+    low: 73
+    high: 73.8
+    unit: g CO2e/kWh
+    source: taf2025
+    status: TO VERIFY
+    note: "TAF carbon page gives 73.8 for 2024; TAF 2025 webinar slide gives 73. Central for Ontario average (latest year)."
+  ont_marginal_taf:
+    value: 343
+    low: 343
+    high: 472
+    unit: g CO2e/kWh
+    source: taf2025
+    status: TO VERIFY
+    note: "343 = a 2024 annual figure on a TAF 2025 webinar slide headed 'Historical Annual MEF' (slide wording ambiguous: may be an average of hourly marginal factors). High 472 = TAF (2021) gas-fired generation factor (gas sets the margin in most Ontario hours). Both TO VERIFY in the TAF PDFs."
+  ont_future_2040:
+    value: 15
+    low: 15
+    high: 73.8
+    unit: g CO2e/kWh
+    source: ieso2024_energy_future
+    status: TO VERIFY
+    note: "IESO 'Ontario's Energy Future' Spring 2024 reportedly projects about 15 g/kWh by 2040 (search summary). High = 2024 level held flat (no decarbonisation) as a sensitivity."
+  ont_marginal_converge_year:
+    value: 2050
+    low: 2040
+    high: 2060
+    unit: year
+    source: assumption
+    status: assumption
+    note: "Case ON-marginal-declining: marginal factor falls linearly from ont_marginal_taf (2024) to ont_future_2040 by this year, i.e. gas leaves the margin. Analyst assumption, not an IESO forecast."
+  ont_traj_start_year:
+    value: 2024
+    unit: year
+    source: taf2025
+    status: TO VERIFY
+    note: "Ontario trajectory anchored at the 2024 average, linear to ont_future_2040 in 2040, flat after. Analyst construction, not an IESO series."
+
+  # ---------------- NSW / NEM grid ----------------
+  nsw_scope2_2025:
+    value: 640
+    unit: g CO2e/kWh (NGA Factors 2025, NSW and ACT, scope 2, location-based)
+    source: dcceew2025_ngaf
+    status: TO VERIFY
+    note: "0.64 kg/kWh, seen in an ASIC education module citing NGA Factors 2025; official DCCEEW workbook not opened. Scope 2 = direct combustion emissions per kWh consumed; excludes upstream fuel and T&D losses (scope 3)."
+  bayswater_ei:
+    value: 990
+    unit: g CO2e/kWh sent out (combustion + fugitive)
+    source: aemo_cdeii
+    status: TO VERIFY
+    note: "0.99 t/MWh for Bayswater from AEMO Available Generators File as quoted in an older Synergy submission (derived from 0.0989 t/GJ at 35.9% HHV sent-out efficiency). Liddell closed April 2023, so Bayswater (same Hunter site cluster) is the upper-bound coal unit. Current CDEII file not opened."
+  coal_lca_unece:
+    value: 1000
+    low: 751
+    high: 1095
+    unit: g CO2e/kWh (life cycle)
+    source: unece2021
+    status: TO VERIFY
+    note: "UNECE coal range 751 (IGCC) or 753 to 1095 reported by secondary sources (they disagree on the low end). Central 1000 is an analyst choice for subcritical black coal; used only for the boundary-consistent (life cycle vs life cycle) upper bound."
+  gas_cc_lca_unece:
+    value: 458
+    low: 403
+    high: 513
+    unit: g CO2e/kWh (life cycle)
+    source: unece2021
+    status: TO VERIFY
+    note: "UNECE gas combined cycle 403–513 (secondary). Central = midpoint."
+  nem_traj_start_year:
+    value: 2025
+    unit: year
+    source: dcceew2025_ngaf
+    status: TO VERIFY
+    note: "NEM/NSW trajectories start at nsw_scope2_2025 in 2025."
+  nem_coal_exit_year_stepchange:
+    value: 2038
+    unit: year
+    source: aemo2024_isp
+    status: TO VERIFY
+    note: "2024 ISP Step Change reportedly has all NEM coal gone by 2038 (secondary: Ark Energy briefing). Trajectory T1 declines linearly to the floor by this year. Replace T1 with the 2026 ISP (final, June 2026) Step Change emissions / generation series when opened."
+  nem_slow_exit_year:
+    value: 2050
+    unit: year
+    source: assumption
+    status: assumption
+    note: "Trajectory T2 (slow transition): linear decline to floor by 2050. Sensitivity, not an AEMO scenario."
+  nem_floor_g_per_kwh:
+    value: 30
+    low: 0
+    high: 80
+    unit: g CO2e/kWh
+    source: assumption
+    status: assumption
+    note: "Residual grid intensity after coal exit (gas firming). Placeholder; replace with ISP value. NOT insignificant: under T1 the SMR runs its whole life on this floor, so it dominates the Liddell lifetime result (see displacement.md section 5)."
+
+  # ---------------- Start dates (Leroy owns; placeholders) ----------------
+  ont_unit1_start:
+    value: 2030
+    low: 2030
+    high: 2031
+    unit: year (first full year of operation)
+    source: ontario2025_fid
+    status: placeholder
+    note: "OPG: grid connection by end 2030 / commercial operation end 2029 (secondary sources disagree). Leroy to confirm."
+  ont_units2to4_start:
+    value: 2035
+    low: 2034
+    high: 2036
+    unit: year
+    source: opg_dnnp
+    status: placeholder
+    note: "Mid-2030s, 2034–2036 (secondary: Power Engineering). Leroy to confirm."
+  aus_start_coalition:
+    value: 2035
+    unit: year
+    source: assumption
+    status: placeholder
+    note: "Coalition 2024 plan's earliest claim (plan §5: 2035/2037, secondary, TO VERIFY). Leroy owns."
+  aus_start_csiro:
+    value: 2040
+    unit: year
+    source: csiro2024_gencost2324
+    status: TO VERIFY
+    note: "GenCost 2023-24: development time at least 15 years, deployment from 2040 at the earliest (said of large-scale nuclear; whether it applies to SMRs is TO VERIFY). Central Australian start year."
+  aus_start_late:
+    value: 2045
+    unit: year
+    source: assumption
+    status: assumption
+    note: "Late case: five years' slip on the CSIRO earliest date. Sensitivity only."
+
+  # ---------------- Money ----------------
+  dnnp_budget_cad:
+    value: 20.9e9
+    unit: CAD (nominal, 4 units incl. site prep, engineering, common infrastructure)
+    source: ontario2025_fid
+    status: TO VERIFY
+    note: "Ontario approval 8 May 2025 (secondary: WNN, NS Energy, BLG)."
+  dnnp_unit1_cad:
+    value: 6.1e9
+    unit: CAD
+    source: ontario2025_fid
+    status: TO VERIFY
+    note: "First unit (secondary: MobileSyrup citing Ontario)."
+  dnnp_common_cad:
+    value: 1.6e9
+    unit: CAD
+    source: ontario2025_fid
+    status: TO VERIFY
+    note: "Shared infrastructure (secondary: Globe and Mail). Unit 1 + common = 7.7 bn."
+  fx_aud_per_cad:
+    value: 1.119
+    low: 1.10
+    high: 1.13
+    unit: AUD per CAD
+    source: rba_f11
+    status: TO VERIFY
+    note: "1/0.8938 (AUD->CAD mid-market 12 May 2025, Wise; 0.882–0.901 through May 2025). Replace with RBA F11 rate for 8 May 2025. Range covers May 2025."
+  smr_lcoe_aud:
+    value: 514
+    low: 387
+    high: 641
+    unit: AUD/MWh (2030 build, real)
+    source: csiro2024_gencost2324
+    status: TO VERIFY
+    note: "GenCost 2030 SMR LCOE range $387–641/MWh, average $514 (secondary; edition 2023-24 final vs 2024-25 draft unclear). GenCost 2025-26 final (15 July 2026) is the current edition: replace when opened."
+  smr_lcoe_low_alt_aud:
+    value: 198
+    high: 349
+    unit: AUD/MWh
+    source: kim_macfarlane2026
+    status: TO VERIFY
+    note: "AU$198–349/MWh attributed to CSIRO in a 2026 NIRS-hosted paper (edition unknown; possibly a 2050 or earlier-edition value). Low-cost sensitivity only."
+  vre_firmed_lcoe_aud:
+    value: 102
+    low: 91
+    high: 153
+    unit: AUD/MWh (variable renewables incl. integration costs, 2030)
+    source: csiro2025_gencost2425
+    status: TO VERIFY
+    note: "102 = 2030 firmed wind+solar estimate reported for GenCost 2024-25 (secondary trade press). Low 91 = GenCost 2025-26 draft average NEM cost at 82% renewables incl. transmission (secondary; a system-average metric, not an LCOE). High 153 = central +50%: ANALYST ASSUMPTION covering integration-cost uncertainty until the GenCost range is opened."
+  vre_firmed_lca_g_per_kwh:
+    value: 30
+    low: 8
+    high: 83
+    unit: g CO2e/kWh (life cycle, incl. storage)
+    source: unece2021
+    status: assumption
+    note: "Low/high = UNECE PV range 8–83 (secondary, TO VERIFY); central 30 is an analyst assumption allowing for storage. UNECE wind range not found. Results insensitive."
+  discount_rate:
+    value: 0.07
+    low: 0.03
+    high: 0.10
+    unit: real, pre-tax
+    source: assumption
+    status: assumption
+    note: "Used only to annualise the Darlington capital budget. 7% central, 3% (public/concessional finance) and 10% (merchant FOAK risk). GenCost's own WACC TO VERIFY."
+  annuity_years:
+    value: 30
+    low: 30
+    high: 60
+    unit: years
+    source: assumption
+    status: assumption
+    note: "Capital recovery period. 60 = full design life."
+  vre_first_year:
+    value: 2028
+    low: 2027
+    high: 2030
+    unit: year
+    source: assumption
+    status: assumption
+    note: "First full year of output for firmed renewables bought with the same money. TODO: replace with GenCost/AEMO lead times (search not yet done)."

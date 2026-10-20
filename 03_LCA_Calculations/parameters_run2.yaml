@@ -1,0 +1,335 @@
+# Rubric coverage: R3.2, R3.4, R3.5, R3.7, R3.8, R1.4, RB.5
+# Analyst run 2 (20/10/2026): law, regulation, licensing, party positions, route to practice for C1.
+# Schema as parameters.yaml: name: {value, unit, source: <key in 02_Research/sources_run2.md> | assumption | calculated, note}
+# Added field: status.
+#   status = "TO VERIFY"  -> seen only in a search-engine extract of the named page. On 20/10 no host could
+#                            be opened from this session (proxy 403 / DNS failure for legislation.gov.au,
+#                            austlii.edu.au, aph.gov.au, cnsc-ccsn.gc.ca, canada.ca, opg.com and others).
+#                            NOT citable until Victor or the fact-checker opens the primary and changes the
+#                            status to "verified DD/MM".
+#   status = "calculated" -> derived in scripts/law_timelines.py from other entries here.
+# Read by 03_LCA_Calculations/scripts/law_timelines.py. To be merged into parameters.yaml by the coordinator.
+
+parameters:
+
+  # ---------------- Australia: federal Parliament arithmetic ----------------
+  senate_total_seats:
+    value: 76
+    unit: seats
+    source: APH_SenateComposition_2026
+    status: TO VERIFY
+    note: "As at 14/05/2026. Check the page for changes after that date."
+  senate_alp:
+    value: 30
+    unit: seats
+    source: APH_SenateComposition_2026
+    status: TO VERIFY
+  senate_coalition:
+    value: 27
+    unit: seats
+    source: APH_SenateComposition_2026
+    status: TO VERIFY
+  senate_greens:
+    value: 10
+    unit: seats
+    source: APH_SenateComposition_2026
+    status: TO VERIFY
+  senate_one_nation:
+    value: 4
+    unit: seats
+    source: APH_SenateComposition_2026
+    status: TO VERIFY
+  senate_other_crossbench:
+    value: 5
+    unit: seats
+    source: APH_SenateComposition_2026
+    status: TO VERIFY
+    note: "Babet, Lambie, Payman, Pocock, Thorpe (one each)."
+  senate_pro_repeal_max:
+    value: 32
+    unit: seats
+    source: calculated
+    status: calculated
+    note: "Upper bound: Coalition 27 + One Nation 4 + Babet 1, ASSUMING all three vote for repeal. One Nation's and Babet's voting intent is an assumption, not sourced."
+  house_alp:
+    value: 94
+    unit: seats of 150
+    source: AEC_2025_Report
+    status: TO VERIFY
+  house_coalition:
+    value: 43
+    unit: seats of 150
+    source: AEC_2025_Report
+    status: TO VERIFY
+
+  # ---------------- Australia: Coalition plan (June 2024) ----------------
+  coalition_2024_sites:
+    value: 7
+    unit: sites
+    source: ABC_2024_SevenSites
+    status: TO VERIFY
+    note: "Liddell and Mount Piper (NSW), Loy Yang (Vic), Tarong and Callide (Qld), Northern (SA, SMR only), Muja (WA, SMR only). News source; replace with the Coalition's own June 2024 release if it can be found."
+  coalition_2024_first_power_smr_year:
+    value: 2035
+    unit: year
+    source: ABC_2024_SevenSites
+    status: TO VERIFY
+  coalition_2024_first_power_large_year:
+    value: 2037
+    unit: year
+    source: ABC_2024_SevenSites
+    status: TO VERIFY
+
+  # ---------------- Australia: NSW repeal bill ----------------
+  nsw_repeal_bill_introduced:
+    value: 2025-11-19
+    unit: date
+    source: NSWParl_RepealBill2025
+    status: TO VERIFY
+  nsw_repeal_bill_lc_passed:
+    value: 2026-05-06
+    unit: date
+    source: NSWParl_RepealBill2025
+    status: TO VERIFY
+    note: "MCA statement dated 07/05/2026; NSW Parliament bill page gives 06/05/2026. Use the Parliament date."
+  nsw_repeal_bill_lapse_date:
+    value: 2026-11-28
+    unit: date
+    source: NSWParl_LANoticePaper_2026
+    status: TO VERIFY
+    note: "Assembly notice paper: awaiting second reading speech, reported 27/05/2026 (Mr Roy Butler); lapses 28/11/2026."
+  nsw_s8_max_penalty:
+    value: 1000
+    unit: penalty units
+    source: NSW_UMNFP_Act_1986
+    status: TO VERIFY
+  qld_max_penalty:
+    value: 1665
+    unit: penalty units
+    source: QLD_NFP_Act_2007
+    status: TO VERIFY
+
+  # ---------------- Australia: regulator build time comparator ----------------
+  annpsr_start_date:
+    value: 2025-11-01
+    unit: date
+    source: DefenceMin_2025_ANNPSR
+    status: TO VERIFY
+    note: "Australian Naval Nuclear Power Safety Regulator began operating; ARPANSA's HMAS Stirling licences transferred."
+  annpsr_bill_digest_year:
+    value: "2023-24"
+    unit: financial year
+    source: APH_BillsDigest32_2023_24
+    status: TO VERIFY
+    note: "Bills Digest No. 32, 2023-24. Introduction date of the bill [TODO: open the digest]."
+
+  # ---------------- Canada: CNSC licensing of the Darlington New Nuclear Project ----------------
+  dnnp_ea_start:
+    value: 2007-05
+    unit: year-month
+    source: CNSC_DNNP_Page
+    status: TO VERIFY
+    note: "CNSC timeline: CNSC began the environmental assessment in May 2007 (joint review panel EA + site licence)."
+  dnnp_lpts_issued:
+    value: 2012-08-17
+    unit: date
+    source: CNSC_DNNP_Page
+    status: TO VERIFY
+    note: "10-year licence to prepare site."
+  dnnp_lpts_renewed:
+    value: 2021-10-12
+    unit: date
+    source: CNSC_2021_LPTSRenewal
+    status: TO VERIFY
+    note: "Renewed licence valid to 2031-10-11."
+  dnnp_lpts_expiry:
+    value: 2031-10-11
+    unit: date
+    source: CNSC_2021_LPTSRenewal
+    status: TO VERIFY
+  dnnp_ltc_application:
+    value: 2022-10-31
+    unit: date
+    source: CNSC_DNNP_Page
+    status: TO VERIFY
+    note: "CNSC says 'October 2022', submitted in packages over several months. Day 31 is the commonly reported date; if only the month can be confirmed, the duration below is +/- 1 month."
+  dnnp_ltc_hearing_part1:
+    value: 2024-10-02
+    unit: date
+    source: CNSC_2025_LTCDecision
+    status: TO VERIFY
+  dnnp_ltc_hearing_part2_start:
+    value: 2025-01-08
+    unit: date
+    source: CNSC_2025_LTCDecision
+    status: TO VERIFY
+    note: "In person, Ajax, 8-10, 13 and 14 January 2025."
+  dnnp_ltc_decision:
+    value: 2025-04-04
+    unit: date
+    source: CNSC_2025_LTCDecision
+    status: TO VERIFY
+    note: "Licence PRCL 32.00/2035, one BWRX-300; does not authorise operation."
+  dnnp_ltc_expiry:
+    value: 2035-03-31
+    unit: date
+    source: CNSC_2025_LTCDecision
+    status: TO VERIFY
+  dnnp_ltc_units:
+    value: 1
+    unit: reactors
+    source: CNSC_DNNP_Page
+    status: TO VERIFY
+    note: "CNSC: 'possibility of a future application for up to 3 additional units of construction'."
+  dnnp_ltc_hold_points:
+    value: 3
+    unit: regulatory hold points
+    source: CNSC_RHP_Page
+    status: TO VERIFY
+    note: "RHP-1 reactor building foundation; RHP-2 reactor pressure vessel; RHP-3 fuel-out commissioning. Removal delegated to CNSC EVP and CRO."
+  dnnp_ltc_site_conditions:
+    value: 4
+    unit: facility-specific licence conditions
+    source: CNSC_2025_LTCDecision
+    status: TO VERIFY
+  dnnp_rhp1_lifted:
+    value: 2026-03-30
+    unit: date
+    source: CNSC_RHP_Page
+    status: TO VERIFY
+    note: "OPG's project page also lists a May 2025 entry for RHP-1; CNSC date preferred."
+  dnnp_lto_application:
+    value: 2026-03
+    unit: year-month
+    source: CNSC_DNNP_Page
+    status: TO VERIFY
+    note: "20-year licence to operate one BWRX-300 plus an L&ILW storage structure. OPG says the hearing is likely in 2027."
+  cnsc_expected_ltc_months:
+    value: 32
+    unit: months
+    source: CNSC_REGDOC_3_5_1
+    status: TO VERIFY
+    note: "Expected review time for a Class IA licence to construct per REGDOC-3.5.1 v2.1 table. The search extract was ambiguous (another row reads 24 months). Must be checked in the document."
+  dnnp_ltc_months:
+    value: null
+    unit: months
+    source: calculated
+    status: calculated
+    note: "dnnp_ltc_decision - dnnp_ltc_application; see results/law_timelines.csv (about 29 months)."
+  dnnp_regulatory_path_years:
+    value: null
+    unit: years
+    source: calculated
+    status: calculated
+    note: "dnnp_ltc_decision - dnnp_ea_start (about 18 years). Not all of it was active review: the site licence sat unused between 2012 and the BWRX-300 choice [TODO: find the primary source for when and why the project was paused]."
+  units2to4_approval_year:
+    value: 2028
+    unit: year
+    source: ANS_2026_Darlington
+    status: TO VERIFY
+    note: "ANS Nuclear Newswire (June 2026): 'approval milestone' to progress Units 2-4 expected in 2028. Secondary; find the OPG/Ontario primary. Whether this is a provincial approval, a CNSC licence amendment, or both is not stated."
+
+  # ---------------- Canada: Darlington finance ----------------
+  dnnp_cost_4units_cad_bn:
+    value: 20.9
+    unit: CAD billion (incl. interest, escalation, contingency)
+    source: OPG_2025_Q1
+    status: TO VERIFY
+  dnnp_cost_unit1_cad_bn:
+    value: 6.1
+    unit: CAD billion
+    source: OPG_2025_Q1
+    status: TO VERIFY
+  dnnp_cost_shared_cad_bn:
+    value: 1.6
+    unit: CAD billion (common facilities)
+    source: OPG_2025_Q1
+    status: TO VERIFY
+  cib_loan_cad_m:
+    value: 970
+    unit: CAD million
+    source: CIB_2022_Loan
+    status: TO VERIFY
+    note: "Phase 1: design, site preparation, long-lead equipment, utility connections."
+  cgf_equity_cad_bn:
+    value: 2.0
+    unit: CAD billion (up to)
+    source: CGF_BOF_2025
+    status: TO VERIFY
+  cgf_stake_pct:
+    value: 15
+    unit: percent (up to)
+    source: CGF_BOF_2025
+    status: TO VERIFY
+  bof_equity_cad_bn:
+    value: 1.0
+    unit: CAD billion (up to)
+    source: CGF_BOF_2025
+    status: TO VERIFY
+  bof_stake_pct:
+    value: 7.5
+    unit: percent
+    source: CGF_BOF_2025
+    status: TO VERIFY
+  cgf_bof_tranche1_cad_m:
+    value: 585
+    unit: CAD million (approx.)
+    source: OPG_2026_Q1
+    status: TO VERIFY
+    note: "Received April 2026. Tranche 2 (for SMRs 2-4) is released only when project milestones are met: the financing lever for C1."
+
+  # ---------------- Canada: federal embodied-carbon rules ----------------
+  secc_concrete_reduction_pct:
+    value: 10
+    unit: percent below regional industry-average EPD baseline (project total, ready-mixed concrete)
+    source: TBS_SECC
+    status: TO VERIFY
+  secc_special_mix_benchmark_pct:
+    value: 130
+    unit: percent of baseline GWP allowed for high-early-strength, high-performance or cold-weather mixes
+    source: TBS_SECC
+    status: TO VERIFY
+  secc_threshold_value_cad_m:
+    value: 5
+    unit: CAD million project value
+    source: TBS_GreeningProgress
+    status: TO VERIFY
+    note: "Contracting Policy Notice 2022-3 gave CAD 10 m; newer pages give CAD 5 m. Check the standard's appendix."
+  secc_threshold_concrete_m3:
+    value: 100
+    unit: m3 ready-mixed concrete
+    source: TBS_GreeningProgress
+    status: TO VERIFY
+  secc_steel_threshold_t:
+    value: 200
+    unit: t structural/reinforcing steel (disclosure and lowest-emission option), from 2025-09-01
+    source: TBS_GreeningProgress
+    status: TO VERIFY
+  secc_wblca_reduction_pct:
+    value: 30
+    unit: percent reduction (or largest reduction within a 2% construction-cost premium), buildings over 2,000 m2, from 2025-09-01
+    source: TBS_GreeningProgress
+    status: TO VERIFY
+  secc_effective_date:
+    value: 2022-12-31
+    unit: date
+    source: TBS_SECC
+    status: TO VERIFY
+  secc_first_project_reduction_pct:
+    value: 21
+    unit: percent (one qualifying project, 2024-25, ready-mix concrete vs its baseline)
+    source: TBS_GreeningProgress
+    status: TO VERIFY
+
+  # ---------------- Cement standards ----------------
+  csa_a3001_max_limestone_pct:
+    value: 15
+    unit: percent limestone in portland-limestone (GUL) and Type IT cements
+    source: Hooton_2023_ACI
+    status: TO VERIFY
+    note: "Limestone above 15% (as in some LC3 recipes) would need a standards change; LC3 with <=15% limestone plus calcined clay fits the ternary blended route. Check CSA A3001:23 itself."
+  cement_roadmap_scm_replacement_pct:
+    value: 30
+    unit: percent of cement replaced by SCMs on average (achievable, per roadmap)
+    source: ISED_2022_ConcreteRoadmap
+    status: TO VERIFY
