@@ -1,0 +1,149 @@
+Notes
+
+Sources
+
+Classification and country investment
+
+https://drawdown.org/explorer/deploy-small-modular-nuclear-reactors
+
+-   SMR benefits
+
+    -   Carbon neutral fuel source
+
+    -   Energy sovereignty
+
+    -   Zero risk of meltdown
+
+-   SMR challenges
+
+    -   Research and materials engineering bottleneck
+
+https://www.atse.org.au/media/yxpma4xl/atse-small-modular-reactors-240722.pdf
+
+https://www.iaea.org/newscenter/news/what-are-small-modular-reactors-smrs
+
+Other Purposes of SMRS
+
+https://itif.org/publications/2025/04/14/small-modular-reactors-a-realist-approach-to-the-future-of-nuclear-power/
+
+Projects
+
+https://australian.museum/aap/all-energy-costs-rise-but-small-nuclear-most-reactive-1/
+
+https://www.cnsc-ccsn.gc.ca/eng/reactors/new-reactor-power-plant-projects/new-reactor-power-plant-facilities/darlington-new-nuclear-project/
+
+https://www.gevernova.com/nuclear/carbon-free-power/bwrx-300-small-modular-reactor
+
+https://oe.t2com.army.mil/product/china-develops-worlds-first-small-modular-reactor/
+
+Technical
+
+https://www.mitsui.com/mgssi/en/report/detail/__icsFiles/afieldfile/2025/03/27/2501btf_asada_matsuura_e.pdf
+
+-   Analyse:
+
+    -   
+
+Reprocessing
+
+https://www.sciencedirect.com/science/article/pii/S1738573325005686
+
+-   Life cycle analysis of fuel
+
+    -   Thorium is an unused byproduct of conventional reactors that SMRs could address
+
+        -   Nuclear waste as a social argument against reactors (How much crossover is there between unsafe waste processing, SMR safety, Conventional reactor safety, geopolitical concerns of nuclear enrichment, and
+
+        -   Regulatory frameworks for waste management
+
+    -   Also consider materials innovation and lifecycle of SMR construction
+
+Potential tasks
+
+Potential tasks brainstorm
+
+-   Herfindahl-Hirschmann index calculation [10 minutes]
+
+    -   Indication of geopolitical/supply chain risk of critical minerals/nuclear fuel
+
+-   Granta edupack LCA —----------------------------------- most important
+
+1.  Excel list of materials and weights in an SMR [30 minutes]
+
+    a.  Choose one SMR design e.g. from a startup [5 minutes]
+
+    b.  Do the list [25 minutes]
+
+    c.  Include columns for estimated costs/eCO2 for each transport, extraction, end of-life, et cetera [45 minutes]
+
+2.  Transfer into Granta Edupack [10 minutes]
+
+    a.  Because excel is collaborative, whereas other team members probablya won’t be able to access the Granta edupack
+
+    -   Nuclear fuel [3 hours]
+
+        -   Comparison to normal nuclear plants
+
+        -   extraction, processing, transport, use, end-of-life
+
+        -   Potential alternative fuels and their shortcomings
+
+    -   Fossil fuel e.g. coal [3 hours]
+
+        -   LCA comparison to add depth to our analysis
+
+        -   Potentially collaborate with other teams ?
+
+-   Stakeholder analysis
+
+    -   Map money flows
+
+-   Market analysis
+
+    -   Barriers to entry
+
+    -   Market cap of startups in US
+
+    -   China top-down funding?
+
+    -   Discuss potential government programs that could be introduced to support SMR
+
+    -   Current state of industry/technology
+
+-   Government regulations review [1 hour]
+
+    -   Safety regulations
+
+        -   Insight into perceived vs. actual safety of conventional nuclear vs. SMRs
+
+-   Research into future planned projects and their timelines
+
+-   Google patents review of US startups’ SMR designs and technology
+
+-   Timescales analysis
+
+    -   We need an alternative to fossil fuels as quickly as possible
+
+    -   Timescale to technological maturation
+
+        -   How fast do we estimate this technology can be proven, scaled, and rolled out?
+
+    -   Each SMR’s pipeline from construction to commercial production
+
+1/09 thoughts
+
+Thoughts
+
+SMRs are the subject of research and implementation in technologically innovative countries like China, the US. Geopolitically, there is perhaps an element of ‘arms race’ to this, though this might just be because of reminiscence. Does the sovereign nature of scientific research overcome this (opensource, atomic spies)? In China it’s likely politically driven (a la huge infrastructure projects like belt and road, but also precise sectioning of cities specialised for certain manufacturing, and also sustainability focus), whereas in the US it’s probably government contracts to corporations (does the huge oil industry, and petrodollars underpinning their economy discourage alternate energy innovation?).
+
+Australia specific.
+
+Australia suffers from a soft resources trap (if DRC has a hard resources trap), where natural gas is sold off to Japan et cetera cheaply (US influence?)iron ore is merely extracted and shipped off to China, not even being reduced or manufactured. Talks of course of green steel, hydrogen exportation even.
+
+Hmm, the notion that ‘energy can’t be transported like materials can’ is true for some, false for others. Oil, gas et cetera can be shipped. Electricity from solar panels suffers from battery problems (though China solved this with swappable batteries for electric cars -> seems very modular/right to repair informed design thinking). SMRs seem innately local. Australia has a lot of Uranium deposits. Will larger structures preserve local, microgridesque SMRs, or stack them together like RAM at a datacentre? For me, social sustainability underpins environmental sustainability, so an open-sourced SMR seems more likely to deliver on that.
+
+I was considering voting for Peter Dutton last election because a significant part of his campaign was SMRs. Albanese won but he invested in the AUKUS submarine development for the US (they use nuclear engines, aka much of the same technology as SMRs). I don’t think it’s a coincidence, I think this is orchestrated, whether by the US for colony militarisation, or Australia to gain geopolitical leverage through energy sovereignty. Anyway, this opens a wider conversation about war, and how much of innovation stems from it.
+
+Australia has a nuclear fear problem from propaganda around the 70s, Fukushima, et cetera. How accurately can an average consumer predict the safety and sustainability of SMRs and coal, vs. the actual values?
+
+Important to note that SMRs currently differ from conventional energy sources in that while they are small and theoretically producible by university-scale research organisations, the technology itself (not the fuel source) is the uncertain/scarce point, and thus the most valuable. The more interesting conversation is perhaps not the extraction (uranium follows similar colonial/military stories of lithium, oil, et cetera), but the intellectual property. Will we be paying an IP tax every kW we consume? If we’re using US vs. Chinese technology.
