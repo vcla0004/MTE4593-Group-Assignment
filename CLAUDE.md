@@ -3,7 +3,15 @@
 Monash MTE4593 Materials and Sustainability, S2 2026, Assignment 2 (team, 30%).
 Report is worth 25% (15-20 pages of text; figures, graphs and appendices not counted). Presentation is worth 5%.
 **Slide deck due Thursday 22 October 2026** (postponed; the presentation is in the week 11 workshop). **Report due Friday 23 October 2026.** The official marking rubric is `00_Brief/rubric.md`; follow it exactly. Prioritise what the rubric rewards most, within the time left.
-Read `README.md` for current status and `00_Brief/rubric.md` before doing any work.
+Read `README.md` for current status.
+
+## The rubric is the contract (read before anything else)
+`00_Brief/rubric.md` (the official Assignment 2 Report Marking Rubric 2026) is the single standard for all work. Nothing else (style preferences, agent judgement, "good practice") can override it.
+1. **Start from the rubric.** Before any task, read `00_Brief/rubric.md` and `01_Report/rubric-tracker.md`, and name the rubric IDs (R1.1 … R5.5, RB.1 … RB.8) the task serves. If a task serves no rubric ID, don't do it.
+2. **Tag every output.** Every plan item, research brief, result file and section draft starts with a `Rubric coverage:` line listing the IDs it serves.
+3. **Done means HD with evidence.** A section is done only when the examiner has marked every ID it serves as HD in `rubric-tracker.md`, citing section and page, and the fact-checker has confirmed that evidence.
+4. **Weight effort by marks.** Technical (R2, 8%) and non-technical (R3, 6%) come first, then research coverage (R1, 5%), originality (R4, 3%) and presentation (R5, 3%).
+5. **Use the rubric's words.** Reviews quote the HD descriptor phrase being missed, not a general opinion.
 
 ## Team and task split
 Split taken from the "Potential tasks" section of `02_Research/SMR Research Notes.docx`, by highlight colour.
@@ -24,7 +32,7 @@ Agents can't call each other. The main Claude session is the coordinator: it cal
 
 | Agent | Reads | Writes |
 |---|---|---|
-| `examiner` | Brief, rubric, everything in the report | `01_Report/plan.md`, `01_Report/review.md` |
+| `examiner` | Brief, rubric, everything in the report | `01_Report/plan.md`, `01_Report/review.md`, `01_Report/rubric-tracker.md` (sole owner) |
 | `policy-economics-analyst` | `plan.md`, Sam's results | `02_Research/sources.md`, `02_Research/briefs/`, `03_LCA_Calculations/` (parameters, scripts, results) |
 | `writer` | `plan.md`, briefs, results, `review.md`, `factcheck.md` | `01_Report/sections/` |
 | `fact-checker` | Sections, sources, scripts | `01_Report/factcheck.md` |
