@@ -361,7 +361,7 @@ The coordinator runs these in order. Each output starts with its `Rubric coverag
 
 ## 8. Slide deck (due Thu 22 Oct; presented in the week 11 workshop) [PRES]
 
-> **Update, 20/10 evening (main session):** a 15-slide draft deck now exists. Its link, speaker split and gaps are in `04_Presentation/README.md`, so the "effectively empty" note below is out of date. That draft proposes Liddell ash concrete, not C1. Reconcile it with this outline once the team decides D1.
+> **Update, 20/10 evening (main session):** a 15-slide draft deck now exists. Its link, speaker split and gaps are in `04_Presentation/README.md`, so the "effectively empty" note below is out of date. **D1 decided by Victor: C1 (LC3 for Darlington Units 2–4), with Liddell as the Australian comparison site.** The deck has been updated to match.
 
 The deck is effectively empty: a title slide that still lists Aaron (remove him, per CLAUDE.md), three slides copied from the brief, and a blank references slide. The talk is 15 minutes plus 3–5 minutes of questions, and attendance is compulsory (brief).
 
