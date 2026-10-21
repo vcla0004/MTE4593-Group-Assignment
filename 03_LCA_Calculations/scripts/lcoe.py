@@ -26,6 +26,21 @@ P = yaml.safe_load((ROOT / "parameters_run5.yaml").read_text())["parameters"]
 OUT = ROOT / "results" / "lcoe.md"
 
 
+def num(x):
+    """PyYAML reads '20.9e9' as a string; coerce numeric strings (and lists of them) to float."""
+    if isinstance(x, list):
+        return [num(i) for i in x]
+    if isinstance(x, str):
+        try:
+            return float(x)
+        except ValueError:
+            return x
+    return x
+
+
+P = {k: {f: num(val) for f, val in d.items()} for k, d in P.items()}
+
+
 def v(name, key="value"):
     return P[name][key]
 

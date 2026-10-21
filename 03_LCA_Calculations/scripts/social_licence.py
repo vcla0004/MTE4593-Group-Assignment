@@ -92,13 +92,13 @@ add("safety", "annual output per unit (central)", round(e_twh(cf_c), 4), "TWh")
 
 # ---------------------------------------------------------------- 3. consent
 kb = P["kimba_ballot_2019"]
-k_pct = 100 * kb["yes"] / (kb["yes"] + kb["no"])
+k_pct = 100 * kb["yes_votes"] / (kb["yes_votes"] + kb["no_votes"])
 assert abs(k_pct - kb["reported_yes_pct"]) < 0.01, k_pct
 add("consent", "Kimba 2019 yes share (recomputed)", round(k_pct, 2), "%")
 add("consent", "Kimba shortfall vs 65% benchmark", round(kb["minister_benchmark_pct"] - k_pct, 2), "pct points")
-add("consent", "Kimba ballot turnout (votes cast)", kb["yes"] + kb["no"], "votes")
+add("consent", "Kimba ballot turnout (votes cast)", kb["yes_votes"] + kb["no_votes"], "votes")
 ig = P["ignace_willingness_vote_2024"]
-ig_pct = 100 * ig["yes"] / ig["participants"]
+ig_pct = 100 * ig["yes_votes"] / ig["participants"]
 assert abs(ig_pct - ig["reported_pct"]) < 0.5, ig_pct
 add("consent", "Ignace 2024 yes share (recomputed)", round(ig_pct, 1), "%")
 ha = P["ignace_hosting_agreement"]
@@ -237,10 +237,10 @@ md.append(f"\nThe unit's own output carries {nuc_own:.3f} statistical deaths a y
 md.append("**Reading.** The health benefit depends on what the SMR displaces, exactly as the carbon benefit does (§7). It is large only against coal. Ontario has no coal, so Darlington's benefit is against gas, about a ninth of the coal case per unit. By the 2040 start at Liddell (Leroy/run 1), the NEM's coal is largely retired under the ISP, so the coal row is an upper bound. Against wind or solar the difference is within the uncertainty of the rates (negative for solar). The fossil rates are for European plants with pollution controls, so OWID calls them conservative.\n")
 
 md.append("## 3. Consent processes\n")
-md.append(f"- Kimba 2019: {kb['yes']} yes / {kb['yes']+kb['no']} votes = **{k_pct:.2f}%**, {kb['minister_benchmark_pct']-k_pct:.2f} points below the reported 65% benchmark. Barngarla native title holders were outside the electorate; their own poll returned 100% no.")
+md.append(f"- Kimba 2019: {kb["yes_votes"]} yes / {kb["yes_votes"]+kb['no_votes']} votes = **{k_pct:.2f}%**, {kb['minister_benchmark_pct']-k_pct:.2f} points below the reported 65% benchmark. Barngarla native title holders were outside the electorate; their own poll returned 100% no.")
 md.append(f"- Napandee declaration set aside 18 July 2023 (apprehended bias); site abandoned 10 August 2023. Muckaty: nominated {mk['nominated']}, withdrawn {mk['withdrawn']} ({mk['withdrawn']-mk['nominated']} years).")
 md.append(f"- NWMO: process from {ns['process_start']} to selection on {ns['selected']} = **{int(str(ns['selected'])[:4])-ns['process_start']} years**; funnel {ns['communities_expressed_interest']} → {ns['communities_phase2']} → {ns['shortlist_by_2019']} → 1.")
-md.append(f"- Ignace 2024: {ig['yes']}/{ig['participants']} = **{ig_pct:.1f}%** yes. Hosting agreement C${ha['total_cad_m']} m over {ha['years']} years = C${ha['total_cad_m']/ha['years']:.2f} m/yr (nominal, undiscounted) = {100*ha['total_cad_m']/1000/nc['lifecycle_cost_cad_bn_2020']:.2f}% of the C${nc['lifecycle_cost_cad_bn_2020']} bn lifecycle cost.")
+md.append(f"- Ignace 2024: {ig['yes_votes']}/{ig['participants']} = **{ig_pct:.1f}%** yes. Hosting agreement C${ha['total_cad_m']} m over {ha['years']} years = C${ha['total_cad_m']/ha['years']:.2f} m/yr (nominal, undiscounted) = {100*ha['total_cad_m']/1000/nc['lifecycle_cost_cad_bn_2020']:.2f}% of the C${nc['lifecycle_cost_cad_bn_2020']} bn lifecycle cost.")
 md.append(f"- NWMO lifecycle cost C${nc['lifecycle_cost_cad_bn_2020']} bn (2020$) over {nc['lifecycle_years']} years = C${nc['lifecycle_cost_cad_bn_2020']/nc['lifecycle_years']:.3f} bn/yr on average; NFWA trust funds C${nc['nfwa_trust_funds_cad_bn_dec2023']} bn (Dec 2023) ≈ {100*nc['nfwa_trust_funds_cad_bn_dec2023']/nc['lifecycle_cost_cad_bn_2020']:.0f}% (different dollar bases).\n")
 
 md.append("## 4. Money flows: who finances the C$20.9 bn Darlington New Nuclear Project\n")

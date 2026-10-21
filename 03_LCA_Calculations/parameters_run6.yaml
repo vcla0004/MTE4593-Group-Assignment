@@ -89,8 +89,8 @@ polls:
 kimba_ballot_2019:
   source: Kimba_Ballot_2019
   verified: false
-  yes: 452
-  no: 282
+  yes_votes: 452
+  no_votes: 282
   reported_yes_pct: 61.58
   minister_benchmark_pct: 65         # Canavan's benchmark, per Friends of the Earth SA as reported
   barngarla_poll_no_pct: 100         # Barngarla's own poll of native title holders; vote count not found
@@ -118,7 +118,7 @@ nwmo_siting:
 ignace_willingness_vote_2024:
   source: NWMO_Ignace_2024
   verified: false
-  yes: 495
+  yes_votes: 495
   participants: 640
   reported_pct: 77
 ignace_hosting_agreement:

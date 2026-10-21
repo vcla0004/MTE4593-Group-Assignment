@@ -1,0 +1,53 @@
+block,item,value,unit
+polls,Lowy 2024 support,61,%
+polls,Lowy 2024 oppose,37,%
+polls,Lowy 2024 net support,24,pct points
+polls,Griffith-Monash 2024 keep-ban margin,29,pct points
+polls,Griffith-Monash keep-ban change 2023-24,8,pct points
+polls,Newspoll 2007 national minus local support,20,pct points
+polls,Essential 2019 support minus comfortable living close,16,pct points
+safety,ratio brown_coal/nuclear,1091,x
+safety,ratio coal/nuclear,821,x
+safety,ratio gas/nuclear,94,x
+safety,deaths avoided/yr: Liddell: displaces black coal (upper bound),58.16,statistical deaths per year
+safety,deaths avoided/yr: Liddell: displaces brown coal (Loy Yang stretch case),77.32,statistical deaths per year
+safety,"deaths avoided/yr: Darlington: displaces gas (Ontario has no coal), per unit",6.6,statistical deaths per year
+safety,"deaths avoided/yr: Darlington: displaces gas, four units",26.4,statistical deaths per year
+safety,deaths avoided/yr: Either site: displaces wind,0.02,statistical deaths per year
+safety,deaths avoided/yr: Either site: displaces solar,-0.02,statistical deaths per year
+safety,statistical deaths/yr attributed to one unit's own output,0.071,deaths per year
+safety,"years per statistical death, one unit",14.1,years
+safety,annual output per unit (central),2.3652,TWh
+consent,Kimba 2019 yes share (recomputed),61.58,%
+consent,Kimba shortfall vs 65% benchmark,3.42,pct points
+consent,Kimba ballot turnout (votes cast),734,votes
+consent,Ignace 2024 yes share (recomputed),77.3,%
+consent,"Ignace hosting payment, average per year",2.1,"C$ m/yr (nominal, undiscounted)"
+consent,NWMO siting duration (start to selection),14,years
+consent,NWMO funnel 22 -> 11 -> 2 -> 1,22->11->2->1,communities
+consent,Muckaty nomination to withdrawal,7,years
+waste,"NWMO lifecycle cost, average per year",0.149,C$ bn/yr (2020$)
+waste,NFWA trust funds as share of lifecycle cost,20.4,% (mixed dollar bases; indicative)
+waste,Hosting payment as share of NWMO lifecycle cost,0.65,% (indicative)
+money,share of C$20.9 bn: CGF equity (federal Crown),9.6,%
+money,share of C$20.9 bn: BOF equity (Ontario),4.8,%
+money,"share of C$20.9 bn: CIB loan, Phase 1 (federal Crown)",4.6,%
+money,share of C$20.9 bn: WTFN loan-to-equity (guaranteed by CILGC + Ontario),3.3,%
+money,remainder (OPG / ratepayers),16.23,C$ bn
+money,remainder share,77.7,%
+money,"budget per MW (four units, ~1,200 MW)",17.4,C$ m/MW (at 300 MWe per unit)
+workforce,"four-trade shortfall sum, 2030-31",76950,workers
+workforce,CBoC construction jobs per MW,5.33,jobs/MW/yr
+workforce,CBoC operations jobs per MW,0.67,jobs/MW/yr
+workforce,Liddell workers redeployed to Bayswater,117,workers (approx.)
+stakeholders,darlington: high-power actors,7,count
+stakeholders,darlington: high-power actors opposed (stance<0),0,count
+stakeholders,darlington: power-weighted stance,1.07,-2 to +2
+stakeholders,liddell: high-power actors,4,count
+stakeholders,liddell: high-power actors opposed (stance<0),3,count
+stakeholders,liddell: power-weighted stance,-1.03,-2 to +2
+routes,best SMR route under equal,R2_volunteer/R3_equity,route
+routes,best SMR route under legitimacy_x2,R2_volunteer/R3_equity,route
+routes,best SMR route under speed_x2,R2_volunteer/R3_equity,route
+routes,best SMR route under fairness_x2,R3_equity,route
+routes,best SMR route under cost_x2,R2_volunteer,route
