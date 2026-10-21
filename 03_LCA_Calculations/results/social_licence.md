@@ -28,7 +28,7 @@ One BWRX-300: E = 300 MWe × 8,760 h × CF / 10⁶ = 2.365 TWh/yr at CF 0.9 (2.1
 | Either site: displaces solar | solar | 1 | -0.02 | **-0.02** | -0.02 |
 
 The unit's own output carries 0.071 statistical deaths a year at the OWID nuclear rate (one per 14 years), a rate that includes Chernobyl and Fukushima.
-**Reading.** The health benefit depends on what the SMR displaces, exactly as the carbon benefit does (§7). It is large only against coal. Ontario has no coal, so Darlington's benefit is against gas, about a ninth of the coal case per unit. By the 2040 start at Liddell (Leroy/run 1), the NEM's coal is largely retired under the ISP, so the coal row is an upper bound. Against wind or solar the difference is within the uncertainty of the rates (negative for solar). The fossil rates are for European plants with pollution controls, so OWID calls them conservative.
+**Reading.** The health benefit depends on what the SMR displaces, exactly as the carbon benefit does (§7). It is large only against coal. Ontario has no coal, so Darlington's benefit is at most the gas case (if the SMR displaces gas rather than imports, hydro spill or curtailment), about a ninth of the coal case per unit. In the 2024 ISP Step Change, coal leaves the NEM by 2038 (aemo2024_isp, secondary), before the 2040 earliest start used in run 1, so the coal row is an upper bound for Liddell. Against wind or solar the difference is within the uncertainty of the rates (negative for solar). The fossil rates are for European plants with pollution controls, so OWID calls them conservative.
 
 ## 3. Consent processes
 
@@ -48,7 +48,7 @@ The unit's own output carries 0.071 statistical deaths a year at the OWID nuclea
 | WTFN loan-to-equity (guaranteed by CILGC + Ontario) | 0.70 | 3.3% |
 | Remainder: OPG balance sheet, recovered from Ontario ratepayers via OEB | 16.23 | 77.7% |
 
-Budget per MW: C$17.4 m/MW at 4 × 300 MWe. Debt (CIB, WTFN) and equity (CGF, BOF) are added only to show scale; the remainder is what OPG funds and recovers through OEB-approved payment amounts. CGF/BOF hold 15% and 7.5% of DNNP LP: a larger share of the equity than their 14.4% share of the budget, because the budget is not all equity.
+Budget per MW: C$17.4 m/MW at 4 × 300 MWe. Debt (CIB, WTFN) and equity (CGF, BOF) are added only to show scale; the remainder is what OPG funds and recovers through OEB-approved payment amounts. The CGF and BOF stakes (15% and 7.5%) are shares of DNNP LP equity, not of the budget.
 
 ## 5. Workforce
 
@@ -67,7 +67,7 @@ Budget per MW: C$17.4 m/MW at 4 × 300 MWe. Debt (CIB, WTFN) and equity (CGF, BO
 | CNSC (safety regulator) | 5 | 3 | +0 | Keep satisfied | CNSC_2025_LTC |
 | Williams Treaties First Nations | 4 | 5 | +1 | Manage closely | WTFN_DNNP_2026 |
 | Govt of Canada (CIB, CGF, CILGC) | 4 | 4 | +2 | Manage closely | CGF_BOF_2025 |
-| GE Vernova Hitachi (design authority) | 4 | 4 | +1 | Manage closely | GEH_NEDO33926 |
+| GE Vernova Hitachi (vendor) | 4 | 4 | +1 | Manage closely | GEH_NEDO33926 |
 | OEB (rate regulator) | 4 | 3 | +0 | Keep satisfied | OPG_OEB_EB-2025-0297_D2-4-1 |
 | Clarington / Durham (host) | 3 | 5 | +2 | Keep informed | Clarington_CNSC |
 | Unions (PWU, Society, trades) | 3 | 4 | +2 | Keep informed | PWU_CMD21H438 |
@@ -112,5 +112,5 @@ Criteria scored 1–3 (3 = best): legitimacy, legal, speed, public_cost, fairnes
 - fairness_x2: best SMR route = R3_equity (14); R4 (no SMR) = 16.
 - cost_x2: best SMR route = R2_volunteer (13); R4 (no SMR) = 17.
 
-**Reading.** Among SMR routes, the consent-based routes (R2, R3) beat top-down siting (R1) under every weight set except speed-doubled, where R1 ties. Equity (R3) wins only when fairness is weighted up and loses when public cost is. R4 (no SMR at Liddell) scores highest throughout because it needs no change in law or consent. This is a social-licence comparison only; it feeds the §9 MCDA, which weighs carbon and cost.
+**Reading.** Among SMR routes, the consent-based routes (R2, R3) beat top-down siting (R1) under all 5 weight sets, by 3–6 points; even doubling speed, R1's only advantage, does not close the gap. R3 (equity) wins outright only when fairness is doubled and drops behind R2 when public cost is doubled. R4 (no SMR at Liddell) scores highest under every set because it needs no change in law or consent. This compares social-licence routes only; carbon and cost are weighed in the §9 MCDA.
 

@@ -207,7 +207,7 @@ stakeholders:
     - {name: "CNSC (safety regulator)", power: 5, interest: 3, stance: 0, evidence: CNSC_2025_LTC}
     - {name: "Govt of Canada (CIB, CGF, CILGC)", power: 4, interest: 4, stance: 2, evidence: CGF_BOF_2025}
     - {name: "OEB (rate regulator)", power: 4, interest: 3, stance: 0, evidence: OPG_OEB_EB-2025-0297_D2-4-1}
-    - {name: "GE Vernova Hitachi (design authority)", power: 4, interest: 4, stance: 1, evidence: GEH_NEDO33926}
+    - {name: "GE Vernova Hitachi (vendor)", power: 4, interest: 4, stance: 1, evidence: GEH_NEDO33926}
     - {name: "Williams Treaties First Nations", power: 4, interest: 5, stance: 1, evidence: WTFN_DNNP_2026}
     - {name: "Clarington / Durham (host)", power: 3, interest: 5, stance: 2, evidence: Clarington_CNSC}
     - {name: "Unions (PWU, Society, trades)", power: 3, interest: 4, stance: 2, evidence: PWU_CMD21H438}

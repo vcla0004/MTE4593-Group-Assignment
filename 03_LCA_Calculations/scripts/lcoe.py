@@ -130,7 +130,9 @@ def main():
         b30 = lcoe(dict(b, r=r, case="B", n=30))[0]
         w(f"| {r:.0%} | {fmt(a60)} ({fmt(a60*aud)}) | **{fmt(b60)}** ({fmt(b60*aud)}) | {fmt(b30)} ({fmt(b30*aud)}) | {c60/b60:.0%} |")
     w("")
-    w("Reading: the discount rate is the single largest lever. Moving from a concessional 3% to a merchant 10% roughly **doubles to triples** the LCOE, because about 70-85% of it is capital. This is why the financing structure (section 8.2: CIB loan, CGF/BOF equity, ratepayer-backed Crown utility) matters as much as the engineering cost.")
+    l3, l10 = lcoe(dict(b, r=0.03))[0], lcoe(dict(b, r=0.10))[0]
+    s3, s10 = lcoe(dict(b, r=0.03))[1] / l3, lcoe(dict(b, r=0.10))[1] / l10
+    w(f"Reading: after capital cost itself, the discount rate is the largest lever. Moving from a concessional 3% to a merchant 10% multiplies the LCOE by **{l10/l3:.1f}x** (C${l3:.0f} to C${l10:.0f}), because {s3:.0%}-{s10:.0%} of it is capital. This is why the financing structure (CIB loan, CGF/BOF equity, a ratepayer-backed Crown utility) matters as much as the engineering cost.")
     w("")
     # ---------------- 3. Opex range
     w("## 3. Opex sensitivity at 7%, 60 yr, case B (C$/MWh)")
@@ -196,7 +198,9 @@ def main():
     w(f"| 2025-26 draft (CEC release) | Large-scale nuclear | TO VERIFY | {g('gencost2526d_large_nuclear_2030_aud','low')}-{g('gencost2526d_large_nuclear_2030_aud','high')} | - |")
     w("| 2025-26 final (15 July 2026) | SMR | 2030, 2050 | **GAP**: 'highest cost'; Darlington-based capex revised down for IDC | - |")
     w("")
-    w(f"Reading: our Darlington-based A${ours7:.0f}/MWh at 7% sits inside GenCost 2023-24's 2030 SMR range (A$230-382) and below the 2024-25 upper value (A$487). Two reasons it should sit low: (1) Darlington is a four-unit fleet with shared infrastructure, while GenCost prices a generic Australian SMR with an Australian construction premium; (2) GenCost's 2025-26 note that it 'revised downwards' Darlington's capital for IDC matches our case B. At 10% our value (A${lcoe(dict(b, r=0.10))[0]*aud:.0f}) reaches the top of the 2023-24 range.")
+    lo30 = g('gencost2324_smr_2030_aud', 'low')
+    pos = "just below" if ours7 < lo30 else "inside"
+    w(f"Reading: our Darlington-based A${ours7:.0f}/MWh at 7% sits {pos} GenCost 2023-24's 2030 SMR range (A${lo30}-{g('gencost2324_smr_2030_aud','high')}) and well below the 2024-25 upper value (A$487). Two reasons it should sit low: (1) Darlington is a four-unit fleet with shared infrastructure, while GenCost prices a generic single Australian SMR [its scale and Australian cost adjustments TO VERIFY]; (2) GenCost's 2025-26 note that it 'revised downwards' Darlington's capital for IDC matches our case B. At 10% our value (A${lcoe(dict(b, r=0.10))[0]*aud:.0f}) is in the upper half of that range.")
     w("")
     vre_lo, vre_hi = g("gencost2324_vre_2030_aud", "low"), g("gencost2324_vre_2030_aud", "high")
     smr_mid, vre_mid = g("gencost2324_smr_2030_aud"), g("gencost2324_vre_2030_aud")
@@ -226,11 +230,11 @@ def main():
     nf, nr, nl, nc = v("nuscale_float_usd"), v("nuscale_revenue_2025_usd"), v("nuscale_oploss_2025_usd"), v("nuscale_cash_2025_usd")
     w("| Company | Non-affiliate market value (date) | FY2025 revenue | Ratio | Note |")
     w("|---|---|---|---|---|")
-    w(f"| NuScale (NYSE: SMR) | US${nf/1e9:.1f} bn (30 Jun 2025) | US${nr/1e6:.1f} m | **{nf/nr:,.0f}x revenue** | Operating loss US${nl/1e6:.0f} m; cash and investments US${nc/1e9:.1f} bn; NRC design approval of the 77 MWe module; no plant under construction |")
-    w(f"| Oklo (NYSE: OKLO) | about US${v('oklo_float_usd')/1e9:.0f} bn (30 Jun 2025; from a mirror) | none reported (Q3 2025: zero) | n/a (pre-revenue) | No NRC licence for a power plant |")
-    w(f"| NANO Nuclear (NASDAQ: NNE) | US${v('nano_float_usd')/1e6:.1f} m (31 Mar 2025, US$26.46/share) | none found | n/a (pre-revenue) | Microreactor developer |")
+    w(f"| NuScale (NYSE: SMR) | US${nf/1e9:.1f} bn (30 Jun 2025) | US${nr/1e6:.1f} m | **{nf/nr:,.0f}x revenue** | Operating loss US${nl/1e6:.0f} m; cash and investments US${nc/1e9:.1f} bn; NRC design approval of the 77 MWe module (earnings release, lead) |")
+    w(f"| Oklo (NYSE: OKLO) | about US${v('oklo_float_usd')/1e9:.0f} bn (30 Jun 2025; from a mirror) | none found (Q3 2025: zero, news lead) | n/a (pre-revenue) | Full-year revenue TO VERIFY in the 10-K |")
+    w(f"| NANO Nuclear (NASDAQ: NNE) | US${v('nano_float_usd')/1e6:.1f} m (31 Mar 2025, US$26.46/share) | none found | n/a (pre-revenue) | Microreactor developer (news lead) |")
     w("")
-    w(f"Reading: the combined float of the two larger developers (about US${(nf+v('oklo_float_usd'))/1e9:.0f} bn) is of the same order as Darlington's whole C$20.9 bn (about US${b['budget']/b['fx']/1e9:.0f} bn) budget, yet neither has a reactor under construction. Equity markets price option value on future orders; they do not finance first plants. First plants are being financed by governments and regulated utilities (DOE awards US$800 m to TVA and Holtec, Dec 2025; CIB/CGF/BOF at Darlington). That is the barrier to entry: capital at risk before any revenue, concentrated on one or two designs per country.")
+    w(f"Reading: the combined float of the two larger developers (about US${(nf+v('oklo_float_usd'))/1e9:.0f} bn) is of the same order as Darlington's whole C$20.9 bn (about US${b['budget']/b['fx']/1e9:.0f} bn) budget, yet NuScale's 2025 revenue was US${nr/1e6:.1f} m and Oklo reported none in Q3 2025 (lead). Equity markets price option value on future orders; they are not what finances first plants. First plants are being financed by governments and regulated utilities: DOE's US$800 m (Dec 2025) went to two designs (TVA's BWRX-300 at Clinch River, Holtec's SMR-300 at Palisades), and Canada's first build is OPG's BWRX-300 with CIB debt and CGF/BOF equity. Against roughly 70 active designs in the IAEA's 2024 catalogue (lead), funded construction is concentrated on very few vendors. That is the barrier to entry: about C$17,000/kW at risk for years before any revenue, which only a balance sheet backed by a state or a rate base can carry.")
     w("")
     w("## 8. Limitations")
     w("- Budget basis conflict (nominal with escalation vs 2024$) is unresolved; treating it as real 2024 C$ biases the LCOE **high** if escalation is included.")

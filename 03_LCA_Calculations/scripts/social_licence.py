@@ -157,38 +157,46 @@ for site, lst in P["stakeholders"].items():
     add("stakeholders", f"{site}: high-power actors opposed (stance<0)", sum(1 for s in hp if s["stance"] < 0), "count")
     add("stakeholders", f"{site}: power-weighted stance", round(sum(s["power"] * s["stance"] for s in lst) / sum(s["power"] for s in lst), 2), "-2 to +2")
 
-# Figure F8
+# Figure F8 (numbered markers; key under each panel so labels never overlap)
 import matplotlib.pyplot as plt  # noqa: E402
+from matplotlib.lines import Line2D  # noqa: E402
 lca_plot.style()
-fig, axes = plt.subplots(1, 2, figsize=(11, 5.2), sharey=True)
+fig, axes = plt.subplots(1, 2, figsize=(11, 7.4), sharey=True)
 col = {2: lca_plot.GREEN, 1: lca_plot.AQUA, 0: lca_plot.MUTED, -1: lca_plot.ORANGE, -2: lca_plot.RED}
-for ax, (site, title) in zip(axes, [("darlington", "Darlington, Ontario (C1 and Units 2-4)"), ("liddell", "Liddell, NSW (hypothetical BWRX-300)")]):
-    pts = P["stakeholders"][site]
+for ax, (site, title, pre) in zip(axes, [("darlington", "Darlington, Ontario (C1 and Units 2-4)", "D"),
+                                         ("liddell", "Liddell, NSW (hypothetical BWRX-300)", "L")]):
+    pts = sorted(P["stakeholders"][site], key=lambda s: (-s["power"], -s["interest"]))
     seen: dict[tuple[int, int], int] = {}
-    for s in pts:
-        key = (s["interest"], s["power"])
-        k = seen.get(key, 0)
-        seen[key] = k + 1
-        y = s["power"] - 0.28 * k
-        ax.scatter(s["interest"], y, s=70, color=col[s["stance"]], edgecolor="white", zorder=3)
-        ax.annotate(s["name"], (s["interest"], y), xytext=(6, -3), textcoords="offset points", fontsize=7.2, color=lca_plot.INK)
+    key_lines = []
+    for n, s in enumerate(pts, 1):
+        cell = (s["interest"], s["power"])
+        k = seen.get(cell, 0)
+        seen[cell] = k + 1
+        x = s["interest"] + 0.22 * k
+        ax.scatter(x, s["power"], s=260, color=col[s["stance"]], edgecolor="white", zorder=3)
+        ax.text(x, s["power"], str(n), ha="center", va="center", fontsize=7.5, color="white", weight="bold", zorder=4)
+        key_lines.append(f"{n}  {s['name']}")
     ax.axhline(3.5, color=lca_plot.GRID, lw=1.2, zorder=1)
     ax.axvline(3.5, color=lca_plot.GRID, lw=1.2, zorder=1)
-    for (x, y, t) in [(1.1, 5.55, "Keep satisfied"), (3.6, 5.55, "Manage closely"), (1.1, 0.75, "Monitor"), (3.6, 0.75, "Keep informed")]:
+    for (x, y, t) in [(1.1, 5.5, "Keep satisfied"), (3.6, 5.5, "Manage closely"), (1.1, 0.75, "Monitor"), (3.6, 0.75, "Keep informed")]:
         ax.text(x, y, t, fontsize=7.5, color=lca_plot.MUTED, style="italic")
-    ax.set_xlim(1, 6.9)
+    ax.set_xlim(1, 5.8)
     ax.set_ylim(0.6, 5.8)
     ax.set_xticks([1, 2, 3, 4, 5])
     ax.set_yticks([1, 2, 3, 4, 5])
     ax.set_xlabel("Interest in the outcome (1 low - 5 high)")
     ax.text(0.0, 1.02, title, transform=ax.transAxes, fontsize=9.5, color=lca_plot.INK, weight="bold")
+    half = (len(key_lines) + 1) // 2
+    for c, chunk in enumerate((key_lines[:half], key_lines[half:])):
+        ax.text(0.0 + 0.5 * c, -0.16, "\n".join(chunk), transform=ax.transAxes, fontsize=7.6,
+                color=lca_plot.INK, va="top", ha="left", linespacing=1.45)
 axes[0].set_ylabel("Power to stop or enable (1 low - 5 high)")
-from matplotlib.lines import Line2D  # noqa: E402
-handles = [Line2D([0], [0], marker="o", ls="", color=col[k], label=l) for k, l in [(2, "Strongly for"), (1, "Leaning for"), (0, "Neutral / unknown"), (-1, "Leaning against"), (-2, "Strongly against")]]
-fig.legend(handles=handles, loc="lower center", ncol=5, bbox_to_anchor=(0.5, -0.06))
-fig.tight_layout()
+handles = [Line2D([0], [0], marker="o", ls="", ms=8, color=col[k], label=l) for k, l in
+           [(2, "Strongly for"), (1, "Leaning for"), (0, "Neutral / unknown"), (-1, "Leaning against"), (-2, "Strongly against")]]
+fig.subplots_adjust(bottom=0.33, wspace=0.08)
+fig.legend(handles=handles, loc="lower center", ncol=5, bbox_to_anchor=(0.5, 0.07))
 lca_plot.save(fig, RES / "F8_stakeholder_map.png",
-              "Scores are the analyst's judgement from the evidence keys in parameters_run6.yaml (unverified sources).")
+              "Scores are the analyst's judgement from the evidence keys in parameters_run6.yaml (sources not yet verified).")
 
 # ---------------------------------------------------------------- 7. consent routes
 cr = P["consent_routes"]
@@ -234,10 +242,10 @@ md.append("|---|---|---|---|---|---|")
 for label, src, n, lo, c, hi in safety_tbl:
     md.append(f"| {label} | {src} | {n} | {lo:.2f} | **{c:.2f}** | {hi:.2f} |")
 md.append(f"\nThe unit's own output carries {nuc_own:.3f} statistical deaths a year at the OWID nuclear rate (one per {1/nuc_own:.0f} years), a rate that includes Chernobyl and Fukushima.")
-md.append("**Reading.** The health benefit depends on what the SMR displaces, exactly as the carbon benefit does (§7). It is large only against coal. Ontario has no coal, so Darlington's benefit is against gas, about a ninth of the coal case per unit. By the 2040 start at Liddell (Leroy/run 1), the NEM's coal is largely retired under the ISP, so the coal row is an upper bound. Against wind or solar the difference is within the uncertainty of the rates (negative for solar). The fossil rates are for European plants with pollution controls, so OWID calls them conservative.\n")
+md.append("**Reading.** The health benefit depends on what the SMR displaces, exactly as the carbon benefit does (§7). It is large only against coal. Ontario has no coal, so Darlington's benefit is at most the gas case (if the SMR displaces gas rather than imports, hydro spill or curtailment), about a ninth of the coal case per unit. In the 2024 ISP Step Change, coal leaves the NEM by 2038 (aemo2024_isp, secondary), before the 2040 earliest start used in run 1, so the coal row is an upper bound for Liddell. Against wind or solar the difference is within the uncertainty of the rates (negative for solar). The fossil rates are for European plants with pollution controls, so OWID calls them conservative.\n")
 
 md.append("## 3. Consent processes\n")
-md.append(f"- Kimba 2019: {kb["yes_votes"]} yes / {kb["yes_votes"]+kb['no_votes']} votes = **{k_pct:.2f}%**, {kb['minister_benchmark_pct']-k_pct:.2f} points below the reported 65% benchmark. Barngarla native title holders were outside the electorate; their own poll returned 100% no.")
+md.append(f"- Kimba 2019: {kb['yes_votes']} yes / {kb['yes_votes']+kb['no_votes']} votes = **{k_pct:.2f}%**, {kb['minister_benchmark_pct']-k_pct:.2f} points below the reported 65% benchmark. Barngarla native title holders were outside the electorate; their own poll returned 100% no.")
 md.append(f"- Napandee declaration set aside 18 July 2023 (apprehended bias); site abandoned 10 August 2023. Muckaty: nominated {mk['nominated']}, withdrawn {mk['withdrawn']} ({mk['withdrawn']-mk['nominated']} years).")
 md.append(f"- NWMO: process from {ns['process_start']} to selection on {ns['selected']} = **{int(str(ns['selected'])[:4])-ns['process_start']} years**; funnel {ns['communities_expressed_interest']} → {ns['communities_phase2']} → {ns['shortlist_by_2019']} → 1.")
 md.append(f"- Ignace 2024: {ig['yes_votes']}/{ig['participants']} = **{ig_pct:.1f}%** yes. Hosting agreement C${ha['total_cad_m']} m over {ha['years']} years = C${ha['total_cad_m']/ha['years']:.2f} m/yr (nominal, undiscounted) = {100*ha['total_cad_m']/1000/nc['lifecycle_cost_cad_bn_2020']:.2f}% of the C${nc['lifecycle_cost_cad_bn_2020']} bn lifecycle cost.")
@@ -248,7 +256,7 @@ md.append("| Financier | C$ bn | Share of budget |")
 md.append("|---|---|---|")
 for k, v, s in money_tbl:
     md.append(f"| {k} | {v:.2f} | {s:.1f}% |")
-md.append(f"\nBudget per MW: C${budget*1000/(pl['net_mwe']['value']*4):.1f} m/MW at 4 × 300 MWe. Debt (CIB, WTFN) and equity (CGF, BOF) are added only to show scale; the remainder is what OPG funds and recovers through OEB-approved payment amounts. CGF/BOF hold 15% and 7.5% of DNNP LP: a larger share of the equity than their 14.4% share of the budget, because the budget is not all equity.\n")
+md.append(f"\nBudget per MW: C${budget*1000/(pl['net_mwe']['value']*4):.1f} m/MW at 4 × 300 MWe. Debt (CIB, WTFN) and equity (CGF, BOF) are added only to show scale; the remainder is what OPG funds and recovers through OEB-approved payment amounts. The CGF and BOF stakes (15% and 7.5%) are shares of DNNP LP equity, not of the budget.\n")
 
 md.append("## 5. Workforce\n")
 md.append(f"- Four-trade shortfall by 2030–31 (Defence FOI document, as reported): {ts['electricians']:,} + {ts['construction_managers']:,} + {ts['metal_machinists']:,} + {ts['welders']:,} = **{ts_sum:,}** (reported as \"more than 75,000\": consistent).")
@@ -278,7 +286,10 @@ for wi, wn in enumerate(wnames):
     smr_only = [(rk, row[1 + wi]) for rk, row in route_tbl if rk != "R4_no_nuclear"]
     b = max(v for _, v in smr_only)
     md.append(f"- {wn}: best SMR route = {', '.join(rk for rk, v in smr_only if v == b)} ({b}); R4 (no SMR) = {[row for rk, row in route_tbl if rk == 'R4_no_nuclear'][0][1+wi]}.")
-md.append("\n**Reading.** Among SMR routes, the consent-based routes (R2, R3) beat top-down siting (R1) under every weight set except speed-doubled, where R1 ties. Equity (R3) wins only when fairness is weighted up and loses when public cost is. R4 (no SMR at Liddell) scores highest throughout because it needs no change in law or consent. This is a social-licence comparison only; it feeds the §9 MCDA, which weighs carbon and cost.\n")
+r1 = [row for rk, row in route_tbl if rk == "R1_topdown"][0][1:]
+r2 = [row for rk, row in route_tbl if rk == "R2_volunteer"][0][1:]
+gaps = [b - a for a, b in zip(r1, r2)]
+md.append(f"\n**Reading.** Among SMR routes, the consent-based routes (R2, R3) beat top-down siting (R1) under all {len(wnames)} weight sets, by {min(gaps)}–{max(gaps)} points; even doubling speed, R1's only advantage, does not close the gap. R3 (equity) wins outright only when fairness is doubled and drops behind R2 when public cost is doubled. R4 (no SMR at Liddell) scores highest under every set because it needs no change in law or consent. This compares social-licence routes only; carbon and cost are weighed in the §9 MCDA.\n")
 
 (RES / "social_licence.md").write_text("\n".join(md) + "\n")
 print(f"wrote {RES/'social_licence.md'}, {RES/'social_licence.csv'}, {RES/'F8_stakeholder_map.png'}")
