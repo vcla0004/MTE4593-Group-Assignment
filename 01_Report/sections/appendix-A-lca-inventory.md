@@ -2,6 +2,7 @@ Rubric coverage: RB.5, R2.2, R2.4 (also supports R2.1, R2.3, R2.5, R2.7, R5.2)
 
 <!--
 CHANGELOG
+- v2, 21/10/2026 (writer, for Victor). Revised against factcheck.md §H: L9 (A3 says the 37 m / 35 m geometry and the 953 t module rest on a news report; [TO VERIFY] kept); L67 (A3 labels 10,350–41,400 m³ as input bounds and gives the Monte Carlo 90% interval, 15,050–36,521 m³); L65 (A3 states the rebar cap); L60 (Table A6 caption: Unit 1 forebay partly placed); L62 (A5 and table titles: construction-material factors are EN 15804 modules A1–A3; other factors are not module-based; transport is EN 15804 module A4, not Appendix A4); L5 (cement range is a regional spread); L22 (CRSI 2017 superseded); L23 (AISC is a Buy Clean California limit); L25 (US grid CO₂ only); L26 (gas heat is combustion CO₂ only); L4 (EDF shares secondary, back end by difference); L10 (arXiv source is an unrefereed preprint); L20 (Scrivener figure to confirm); L55 (A6 note: shares all mode case; the MC median applies to LC3 only); L1/L52 (screening LCA wording; no Granta run). All [TO VERIFY] markers kept.
 - v1, 21/10/2026 (writer, for Victor, who took over Sam's red sections on 21/10; CLAUDE.md). First draft from `03_LCA_Calculations/results/lca.md` §2, §3 and §12, `lca_baseline.md`, `lca_scenarios.md`, `lca_inventory.csv`, `Accounting_corrected.csv`, `parameters_lca.yaml`, `granta_inputs.md` and `02_Research/sources_lca.md`. Cited from §6 as Appendices A3, A5, A6 and A9.
   - review.md "For Sam" items 1–4: the corrections the lca-analyst made in `Accounting_corrected.csv` are listed in A4. Sam's `Assumptions.docx` and `Accounting.xlsx` are untouched.
   - factcheck.md S17: A3 states that plant quantities are scaled from per-MWe intensities, with the forebay and basemat as the only measured structures.
@@ -13,7 +14,7 @@ CHANGELOG
 
 ## Appendix A. LCA inventory and calculations
 
-This appendix gives the full working behind §6. The analysis is an **equivalent analysis built from published factors**: a Python model multiplies quantities by emission factors. It is not a Granta EduPack run; the Granta cross-check is set up in A9 [TODO: results pending]. **No input has yet been checked against its primary source** (`status: TO VERIFY`, `assumption` or `placeholder` in `parameters_lca.yaml`), so every number here is provisional.
+This appendix gives the full working behind §6. The analysis is an **equivalent analysis built from published factors**: a screening LCA following ISO 14040/44 principles, not critically reviewed, in which a Python model multiplies quantities by emission factors. **No Granta EduPack run has been done**; the cross-check is only set up (A9) [TODO: results pending]. **No input has yet been checked against its primary source** (`status: TO VERIFY`, `assumption` or `placeholder` in `parameters_lca.yaml`), so every number here is provisional.
 
 ### A1. Reproducing the results
 
@@ -36,7 +37,7 @@ All three scripts read only `03_LCA_Calculations/parameters_lca.yaml` (59 parame
 
 - Annual output = P_net × 8,760 h × CF = 300 MWe × 8,760 × 0.90 = 2,365,200 MWh/yr.
 - Lifetime output E = annual output × L = 2,365,200 × 60 = **1.419 × 10⁸ MWh**.
-- Net efficiency η = P_net / P_th = 300 / 870 = **0.345** (870 MWt: [TODO: authors], 2025) [TO VERIFY].
+- Net efficiency η = P_net / P_th = 300 / 870 = **0.345** (870 MWt: [TODO: authors], 2025, an unrefereed preprint) [TO VERIFY].
 - Conversion to the functional unit: 1 t CO₂e spread over E is 7.05 × 10⁻⁶ kg CO₂e/MWh (= g/kWh).
 
 Inputs: P_net 300 MWe (GE Vernova Hitachi Nuclear Energy, n.d.) [placeholder; 315 MW net in an OPG filing, TO VERIFY]; CF 0.90 [placeholder, assumption shared with §7]; L 60 years (Canadian Nuclear Safety Commission, 2024) [TO VERIFY; 65 years reported elsewhere].
@@ -50,13 +51,14 @@ Inputs: P_net 300 MWe (GE Vernova Hitachi Nuclear Energy, n.d.) [placeholder; 31
 - Low: GE Vernova's claim of about 50% less concrete (and, in one release, steel) per MW than the ESBWR, giving 34.5 m³/MWe and 16.5 t/MWe (GE Vernova, n.d.) [TO VERIFY; manufacturer projection].
 - High: ABWR, 138 m³/MWe and 46 t/MWe (Peterson, Zhao and Petroski, 2005) [TO VERIFY], standing in for small-plant scale penalties.
 - **Assumption:** in the central case the claimed halving is offset by SMR diseconomies of scale.
+- **Input bounds, not a result range:** 34.5 × 300 = 10,350 m³ and 138 × 300 = 41,400 m³. The Monte Carlo 90% interval for whole-plant concrete is about **15,050–36,521 m³** (median 24,066 m³; Table C2). Quote the interval, not the bounds, as the concrete range.
 
-**C1 target structures (geometry).** With D = 37 m (module diameter) and h = 35 m (shaft depth) (Ontario Power Generation, 2026) [TO VERIFY]:
+**C1 target structures (geometry).** With D = 37 m (module diameter) and h = 35 m (shaft depth) (Ontario Power Generation, 2026) [TO VERIFY]. **Both dimensions, and the 953 t module mass below, come from a news report of the Unit 1 basemat-module lift (a lead recorded in `sources_lca.md`, which also misdescribes the module as a "reactor"); the OPG story it cites has not been found** [TODO: OPG URL or NEDO-33926 dimensions]. They set 69% of the C1 target concrete.
 - V_basemat = π/4 × D² × t_b = 0.7854 × 37² × 3.0 = **3,226 m³** (t_b = 3.0 m, assumption, range 2–4 m).
 - V_wall = π × (D − t_w) × t_w × h = π × 35.5 × 1.5 × 35 = **5,855 m³** (t_w = 1.5 m, assumption, range 1–2 m).
 - Forebay shaft = **4,000 m³** placed to date (Ontario Power Generation, 2025) [TO VERIFY]; a floor, with 6,000 m³ as the high value. Whether the forebay serves one unit or all four is [TODO: Leroy/OPG].
 
-**Rebar.** Rebar = ρ × plant concrete = 0.15 t/m³ × 20,700 = 3,105 t (assumption; the forebay's observed 1,000 t / 4,000 m³ = 0.25 t/m³ is the high value, and DPSC modules use steel faceplates instead of most rebar). Plate, structural and equipment steel = 9,900 − 3,105 = 6,795 t, which includes the 953 t Unit 1 DPSC basemat module (Ontario Power Generation, 2026) [TO VERIFY]. The rebar ratio only splits total steel between two factors.
+**Rebar.** Rebar = ρ × plant concrete = 0.15 t/m³ × 20,700 = 3,105 t (assumption; the forebay's observed 1,000 t / 4,000 m³ = 0.25 t/m³ is the high value, and DPSC modules use steel faceplates instead of most rebar). Plate, structural and equipment steel = 9,900 − 3,105 = 6,795 t, which includes the 953 t Unit 1 DPSC basemat module (Ontario Power Generation, 2026) [TO VERIFY]. The rebar ratio only splits total steel between two factors, and **rebar is capped at total steel** (rebar = min(ρ × plant concrete, total steel)), so plate steel never goes negative.
 
 *Table A2. Concrete volume per unit.*
 *Source: `results/lca_baseline.md`.*
@@ -76,7 +78,7 @@ In 3.5% of Monte Carlo draws (706 of 20,000) the scaled plant fell below the tar
 
 **Result.** The spreadsheet's forebay rows describe one milestone of one Unit 1 structure. They are kept, labelled PARTIAL, and whole-unit rows are added.
 
-*Table A3. Corrected construction inventory (A1–A3, central case).*
+*Table A3. Corrected construction inventory (cradle to gate, EN 15804 modules A1–A3; central case).*
 *Source: `03_LCA_Calculations/Accounting_corrected.csv`; quantities as in A3; factors as in A5. All [TO VERIFY].*
 
 | Row | Structure and material | Quantity | Scope | Factor | t CO₂e |
@@ -101,33 +103,33 @@ Also corrected: the "[From X patent]" header is replaced by a source column; reb
 
 ### A5. Emission factors
 
-**Result.** Every factor is a published North American or Canadian value where one was found, and an assumption otherwise. All are cradle-to-gate (A1–A3) GWP100.
+**Result.** Every factor is a published North American or Canadian value where one was found, and an assumption otherwise. Construction-material factors are cradle-to-gate (EN 15804 modules A1–A3) [TODO: source needed: EN 15804 entry in sources.md]. The grid, natural-gas, mining and EDF factors are not module-based. The impact category is climate change, characterised as GWP100 (IPCC AR5 where stated); the US grid factors are CO₂ only.
 
 *Table A4. Emission and energy factors used.*
 *Source: `parameters_lca.yaml`; references as listed. All [TO VERIFY] unless marked as an assumption.*
 
 | Factor | Central | Range | Unit | Reference |
 |---|---|---|---|---|
-| General-use (GU) cement | 854 | 796–898 | kg CO₂e/t | Cement Association of Canada (2022), Central region (which region covers Ontario is [TO VERIFY]); to be replaced by the St Marys Bowmanville EPD (NRMCA, 2021) |
+| General-use (GU) cement | 854 | 796–898 (regional spread, West–East, not an uncertainty range) | kg CO₂e/t | Cement Association of Canada (2022), Central region (which region covers Ontario is [TO VERIFY]); to be replaced by the St Marys Bowmanville EPD (NRMCA, 2021) |
 | Slag cement | 146.6 | 93.4–146.6 | kg CO₂e/t | Slag Cement Association (n.d.); low = Lafarge NewCem plant EPD |
 | LC3 binder cut vs GU | 37% | 30–43% | — | Median of five estimates (below) |
 | Non-binder share of concrete (aggregates, water, admixtures, batching) | 30 | 15–60 | kg CO₂e/m³ | Assumption |
 | Binder content: DPSC self-consolidating infill | 450 | 400–550 | kg/m³ | EFNARC (2005) gives 360–500 kg/m³ powder for SCC [TO VERIFY]; 450 and 550 are assumptions for a cement-rich nuclear mix |
 | Binder content: other structural concrete | 350 | 300–420 | kg/m³ | Assumption |
 | Clinker factor: GU; LC3 | 0.92; 0.50 | 0.90–0.95; 0.50–0.55 | t/t binder | Assumption; Scrivener et al. (2018) |
-| Rebar (electric-arc furnace, fabricated) | 0.97 | 0.89–1.99 | t CO₂e/t | Concrete Reinforcing Steel Institute (2017); low = American Institute of Steel Construction (2022) limit; high = world average (Circular Ecology, 2019) |
-| Plate, structural and equipment steel | 1.73 | 1.22–2.50 | t CO₂e/t | American Institute of Steel Construction (2022) fabricated-plate limit as a proxy; high is an assumption for forged and machined equipment |
+| Rebar (electric-arc furnace, fabricated) | 0.97 | 0.89–1.99 | t CO₂e/t | Concrete Reinforcing Steel Institute (2017) [superseded by the CRSI 2022 EPD; replace the value, TO VERIFY]; low = American Institute of Steel Construction (2022) limit; high = world average (Circular Ecology, 2019, read via a secondary) |
+| Plate, structural and equipment steel | 1.73 | 1.22–2.50 | t CO₂e/t | American Institute of Steel Construction (2022): a Buy Clean California fabricated-plate GWP limit (a policy ceiling, not an industry average), used as a proxy; high is an assumption for forged and machined equipment |
 | Heavy truck | 0.10 | 0.06–0.15 | kg CO₂e/t-km | Assumption |
 | Mining and milling | 42 | 24–81 | kg CO₂e/kg U₃O₈ | Parker, McNaughton and Sparrow (2016), Saskatchewan, production-weighted |
 | Conversion: electricity; heat | 11.8; 26 | 10.3–16.9; 26–665 | kWh/kg U | Gibon and Hahn Menacho (2023) |
 | Centrifuge enrichment | 50 | 40–100 | kWh/SWU | Gibon and Hahn Menacho (2023) |
 | Fuel fabrication | 36 | 36–50 | kWh/kg U | Gibon and Hahn Menacho (2023) |
 | Grid: conversion (Ontario) | 0.0738 | 0.035–0.343 | kg CO₂e/kWh | The Atmospheric Fund (2025); low = Canada Energy Regulator (n.d.) |
-| Grid: enrichment and fabrication (USA) | 0.373 | 0.05–0.637 (enrichment); 0.20–0.637 (fabrication) | kg CO₂e/kWh | US EPA (2024); lows are assumptions |
-| Natural-gas heat | 0.202 | — | kg CO₂/kWh | IPCC (2006) |
-| O&M; decommissioning; back end | 0.33; 0.11; 0.56 | 0.17–0.67; 0.06–0.33; 0.28–1.11 | g CO₂e/kWh | EDF R&D (2024): 9%, 3% and 15% of 3.7 g/kWh; ranges are assumptions for transfer to one BWRX-300 |
+| Grid: enrichment and fabrication (USA) | 0.373 | 0.05–0.637 (enrichment); 0.20–0.637 (fabrication) | kg CO₂/kWh (CO₂ only, used as CO₂e) | US EPA (2024); lows are assumptions [TODO: eGRID CO₂e values] |
+| Natural-gas heat | 0.202 | — | kg CO₂/kWh | IPCC (2006): 56,100 kg/TJ × 3.6 × 10⁻⁶ TJ/kWh; combustion only, upstream gas supply cut off (§6.1) |
+| O&M; decommissioning; back end | 0.33; 0.11; 0.56 | 0.17–0.67; 0.06–0.33; 0.28–1.11 | g CO₂e/kWh | EDF R&D (2024): 9%, 3% and 15% of 3.7 g/kWh, shares as reported by secondary sources and the back end by difference [TO VERIFY in the paper]; ranges are assumptions for transfer to one BWRX-300 |
 
-**The LC3 cut (37%)** is the median of five published estimates of LC3's binder emissions against Portland cement: 30% (ENR, 2018); 34%, 700 → 465 kg CO₂/t (Development Alternatives, n.d.); 37%, 856 → 543 kg CO₂/t (LC3 Project, 2015); about 40% (Scrivener et al., 2018, as summarised in the EPFL abstract); 43%, 903.5 → 513.5 kg CO₂e/t (LACCEI, 2026) [TODO: authors]. All five are [TO VERIFY]; ENR is trade press and should be replaced if a primary is found (R1.4). The estimates come from Indian, Cuban and Latin American settings; an Ontario LC3 calcined with natural gas is untested.
+**The LC3 cut (37%)** is the median of five published estimates of LC3's binder emissions against Portland cement: 30% (ENR, 2018); 34%, 700 → 465 kg CO₂/t (Development Alternatives, n.d.); 37%, 856 → 543 kg CO₂/t (LC3 Project, 2015); about 40% (Scrivener et al., 2018, as summarised in the EPFL abstract; to confirm in the paper text); 43%, 903.5 → 513.5 kg CO₂e/t (LACCEI, 2026) [TODO: authors]. All five are [TO VERIFY]; ENR is trade press and should be replaced if a primary is found (R1.4). The estimates come from Indian, Cuban and Latin American settings; an Ontario LC3 calcined with natural gas is untested.
 
 **Check on the per-m³ model.** At 350 kg/m³ the model gives 328.9 kg CO₂e/m³ for S0 concrete, close to the Ontario industry baseline of 334 kg CO₂e/m³ for 35 MPa concrete and below the 417 kg CO₂e/m³ industry benchmark mix (Canadian Ready-Mixed Concrete Association, 2022) [TO VERIFY].
 
@@ -157,7 +159,7 @@ Worked example (DPSC infill, 9,081 m³ at 450 kg/m³):
 | Forebay shaft | S2 LC3 | 4,000 | 350 | 1,316 | 873 | 442 (110.6) | 588 |
 
 *Table A6. Scenario totals (central case).*
-*Source: `results/lca_scenarios.md`. Units 2–4 = 3 × per unit (Unit 1's basemat and forebay are already placed).*
+*Source: `results/lca_scenarios.md`. Units 2–4 = 3 × per unit (Unit 1's basemat is placed and its forebay partly placed; whether Unit 1's shaft-wall infill could still use LC3 is [TO VERIFY]). Every column is on the mode-case basis.*
 
 | Scenario | Saving t CO₂e/unit | Units 2–4 t CO₂e | Clinker avoided t/unit (Units 2–4) | % of target concrete | % of unit life cycle (mode case) | g/kWh saved |
 |---|---:|---:|---:|---:|---:|---:|
@@ -167,7 +169,7 @@ Worked example (DPSC infill, 9,081 m³ at 450 kg/m³):
 | S3 low: all steel at EAF / high-recycled-content factors | 3,714 | 11,142 | 0 | — | 0.969 | 0.0262 |
 | S3 high: all steel at world-average factors | −8,399 | −25,198 | 0 | — | −2.192 | −0.0592 |
 
-S3 rows are a sensitivity on the baseline steel, not part of C1 (positive = lower than S0). The life-cycle share uses the mode-case total (383,243 t per unit); at the Monte Carlo median the LC3 share is 0.29% (Appendix C4). Savings exclude the construction uplift (A7).
+S3 rows are a sensitivity on the baseline steel, not part of C1 (positive = lower than S0). Every life-cycle share uses the mode-case total (383,243 t per unit), so the rows are comparable. On the Monte Carlo basis the LC3 share has a median of 0.29% (0.18–0.46%; Appendix C4); Monte Carlo shares for the other scenarios are not in the model outputs [TODO: lca-analyst]. Savings exclude the construction uplift (A7).
 
 **Resource use per unit of output.** Clinker avoided by LC3 = 2,304 t / 1.419 × 10⁸ MWh = 0.016 kg/MWh (7.7 t/MWe). Concrete: 20,700 m³ × 2.4 t/m³ / 1.419 × 10⁸ MWh = 0.35 kg/MWh. Steel: 9,900 t / 1.419 × 10⁸ MWh = 0.070 kg/MWh.
 
@@ -176,7 +178,7 @@ S3 rows are a sensitivity on the baseline steel, not part of C1 (positive = lowe
 **Result.** Construction emits 34,381 t CO₂e per unit (0.24 g/kWh, mode case); steel emits about twice what concrete does.
 
 - Steel: kg CO₂e = rebar × EF_rebar + other × EF_other = 3,105 × 0.97 + 6,795 × 1.73 = 3,012 + 11,755 = **14,767 t**.
-- Transport to site (A4): concrete 20,700 m³ × 2.4 t/m³ × 15 km × 0.10 kg/t-km = 74.5 t; steel 9,900 t × 500 km × 0.10 kg/t-km = 495 t; total **570 t** (distances are assumptions; the cement plant is also in Clarington [TO VERIFY]).
+- Transport to site (EN 15804 module A4): concrete 20,700 m³ × 2.4 t/m³ × 15 km × 0.10 kg/t-km = 74.5 t; steel 9,900 t × 500 km × 0.10 kg/t-km = 495 t; total **570 t** (distances are assumptions; the cement plant is also in Clarington [TO VERIFY]).
 - Other materials and site energy (copper, cabling, insulation, site diesel, Ontario-grid electricity, processing of equipment beyond steel production, tunnel boring): uplift of 50% (assumption, range 25–150%) on concrete + steel + transport: 0.5 × (7,584 + 14,767 + 570) = **11,460 t**.
 - **Construction total** = 7,584 + 14,767 + 570 + 11,460 = **34,381 t**, or 34,381 / 1.419 × 10⁸ MWh = **0.242 g/kWh**.
 
@@ -253,7 +255,7 @@ Grouped (mode case): fuel front end 1.458 g/kWh (54.0%); back end and decommissi
 - Scenarios, if custom materials are allowed: scale the concrete record's CO₂ footprint by 0.693 (S1) and 0.657 (S2) for the infill, and 0.699 (S1) and 0.664 (S2) for the forebay.
 - Record: EduPack version, database, date and operator [TODO].
 
-*Table A10. Granta Eco Audit against the model (A1–A3 materials, central case).*
+*Table A10. Granta Eco Audit against the model (EN 15804 A1–A3 materials, central case). No Granta values exist yet.*
 *Source: model values from `results/granta_inputs.md` §7; Granta values [TODO: results pending].*
 
 | Row | Model t CO₂e | Model kg CO₂e/kg | Granta t CO₂e | Difference |
@@ -282,4 +284,6 @@ How the comparison will be read: within about ±30% per row, Granta confirms the
 2. **[TODO: results pending]** Run Granta (A9) and fill Table A10; add the screenshot.
 3. **[TODO: Leroy]** Sourced whole-plant concrete and steel quantities, DPSC thicknesses, forebay per unit or shared, net MWe, CF, design life, burnup, enrichment.
 4. **[TODO]** Tunnel length and bored cross-section (row 4 of Table A3); recycled content from the CRSI 2022 EPD; what preprint 202505.1533 is.
-5. **[TODO: references]** Authors for the arXiv overview (2025) and LACCEI (2026); replace ENR (2018) with a primary; add NRMCA (2021) and Canada Energy Regulator (n.d.) forms consistently with `sources.md`.
+5. **[TODO: references]** Authors for the arXiv overview (2025) and LACCEI (2026); replace ENR (2018) with a peer-reviewed LCA; add NRMCA (2021), Canada Energy Regulator (n.d.) and EN 15804 forms consistently with `sources.md`; cite the CRSI 2022 EPD instead of 2017.
+6. **[TO VERIFY, P1]** The OPG basemat story (or NEDO-33926) for D = 37 m, h = 35 m and the 953 t module; until then A3's geometry rests on a news report.
+7. **[TODO: lca-analyst]** US grid factors as CO₂e (eGRID) rather than CO₂ only; Monte Carlo life-cycle shares for S1, S2b and S3.

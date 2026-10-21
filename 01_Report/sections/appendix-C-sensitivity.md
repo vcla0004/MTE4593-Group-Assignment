@@ -2,6 +2,7 @@ Rubric coverage: R2.7, RB.5 (also supports R2.4, R2.1, RB.6, R5.2)
 
 <!--
 CHANGELOG
+- v2, 21/10/2026 (writer, for Victor). Revised against factcheck.md §H: L63 (C3: basemat thickness is geometry, not mix design); L65 (C4: why expected plate steel is below its mode value); L57 (construction 7.5% on the expected basis, C4 and C6); L61 (C6: "hybrid boundary" replaced); L67 (C4: the Monte Carlo 90% interval, 15,050–36,521 m³, is the concrete range to quote; Table C1 rows are input bounds); L5, L22, L25 (Table C1 source notes: cement regional spread; CRSI 2017 superseded; US grid CO₂ only); L55 (C4 note that the share row is LC3 only). Values unchanged; all [TO VERIFY] markers kept.
 - v1, 21/10/2026 (writer, for Victor, who took over Sam's red sections on 21/10; CLAUDE.md). First draft from `03_LCA_Calculations/results/lca_uncertainty.md`, `lca_tornado.csv`, `lca_montecarlo_summary.csv`, `lca_stages_expected.csv`, `lca.md` §7–§8 and `parameters_lca.yaml`. Cited from §6.4 as Appendices C1, C2 and C4.
   - plan §4.1 acceptance tests: tornado with at least six sourced or justified ranges (40 here, each with its source and status); Monte Carlo with at least 10,000 draws (20,000), stated distributions, fixed seed, median and 5th–95th percentiles, reproducible from `scripts/`.
   - Correction to `lca.md` §7 carried here too: steel intensity moves the life-cycle total by 0.17 g/kWh, so "every construction-quantity input moves it by under 0.07" holds for concrete inputs only.
@@ -28,7 +29,7 @@ This appendix shows how uncertain the §6 results are and which inputs drive the
 **Result.** Five fuel-cycle inputs each move the life-cycle total by more than 0.6 g/kWh. No concrete input moves it by more than 0.07 g/kWh; steel intensity moves it by 0.17.
 
 *Table C1. The 40 ranged inputs, their sources, and the tornado results (ranked by swing in life-cycle intensity).*
-*Source: `parameters_lca.yaml`; `results/lca_uncertainty.md`. Status: V = TO VERIFY (search lead), A = assumption, P = placeholder for Leroy's plant data. Distribution triangular unless stated. "—" = no effect on the LC3 saving (1,734 t).*
+*Source: `parameters_lca.yaml`; `results/lca_uncertainty.md`. Status: V = TO VERIFY (search lead), A = assumption, P = placeholder for Leroy's plant data. Distribution triangular unless stated. "—" = no effect on the LC3 saving (1,734 t). Low / central / high are model input bounds, not result intervals (results are in Table C2).*
 
 | # | Input (unit) | Low / central / high | Source | Status | Life-cycle g/kWh at low → high (swing) | LC3 saving t at low → high |
 |---:|---|---|---|---|---|---|
@@ -38,7 +39,7 @@ This appendix shows how uncertain the §6 results are and which inputs drive the
 | 4 | Burnup (GWd/t) | 35 / 45 / 55 | Assumption | P | 3.117 → 2.435 (0.682) | — |
 | 5 | Enrichment (% U-235) | 3.4 / 3.8 / 4.95 | [TODO: authors] (2025); low assumed | P | 2.530 → 3.193 (0.663) | — |
 | 6 | O&M (g/kWh) | 0.17 / 0.33 / 0.67 | EDF R&D (2024); range assumed | V | 2.541 → 3.041 (0.500) | — |
-| 7 | Enrichment-plant grid (kg CO₂e/kWh) | 0.05 / 0.373 / 0.637 | US EPA (2024); low assumed | V | 2.466 → 2.893 (0.427) | — |
+| 7 | Enrichment-plant grid (kg CO₂e/kWh) | 0.05 / 0.373 / 0.637 | US EPA (2024), CO₂ only; low assumed | V | 2.466 → 2.893 (0.427) | — |
 | 8 | Centrifuge energy (kWh/SWU) | 40 / 50 / 100 | Gibon and Hahn Menacho (2023) | V | 2.646 → 2.972 (0.326) | — |
 | 9 | Decommissioning (g/kWh) | 0.06 / 0.11 / 0.33 | EDF R&D (2024); range assumed | V | 2.651 → 2.921 (0.270) | — |
 | 10 | Other construction uplift (fraction) | 0.25 / 0.5 / 1.5 | Assumption | A | 2.660 → 2.862 (0.202) | — |
@@ -50,8 +51,8 @@ This appendix shows how uncertain the §6 results are and which inputs drive the
 | 16 | Net output (MWe), uniform | 300 / 300 / 315 | GE Vernova Hitachi Nuclear Energy (n.d.); OPG filing | P | 2.701 → 2.631 (0.070) | — |
 | 17 | Concrete intensity (m³/MWe) | 34.5 / 69 / 138 | Peterson, Zhao and Petroski (2005); GE Vernova (n.d.) | V | 2.683 → 2.748 (0.065) | — |
 | 18 | Capacity factor | 0.80 / 0.90 / 0.95 | Assumption | P | 2.731 → 2.688 (0.043) | — |
-| 19 | Fabrication grid (kg CO₂e/kWh) | 0.20 / 0.373 / 0.637 | US EPA (2024); low assumed | V | 2.684 → 2.726 (0.042) | — |
-| 20 | Rebar (t CO₂e/t) | 0.89 / 0.97 / 1.99 | Concrete Reinforcing Steel Institute (2017); American Institute of Steel Construction (2022); Circular Ecology (2019) | V | 2.698 → 2.734 (0.036) | — |
+| 19 | Fabrication grid (kg CO₂e/kWh) | 0.20 / 0.373 / 0.637 | US EPA (2024), CO₂ only; low assumed | V | 2.684 → 2.726 (0.042) | — |
+| 20 | Rebar (t CO₂e/t) | 0.89 / 0.97 / 1.99 | Concrete Reinforcing Steel Institute (2017, superseded by 2022 EPD); American Institute of Steel Construction (2022); Circular Ecology (2019) | V | 2.698 → 2.734 (0.036) | — |
 | 21 | Rebar ratio (t/m³) | 0.10 / 0.15 / 0.25 | Assumption (high = forebay) | A | 2.709 → 2.684 (0.025) | — |
 | 22 | Steel transport (km) | 100 / 500 / 1,500 | Assumption | A | 2.696 → 2.711 (0.015) | — |
 | 23 | Fabrication energy (kWh/kg U) | 36 / 36 / 50 | Gibon and Hahn Menacho (2023) | V | 2.701 → 2.715 (0.014) | — |
@@ -59,7 +60,7 @@ This appendix shows how uncertain the §6 results are and which inputs drive the
 | 25 | Binder, DPSC infill (kg/m³) | 400 / 450 / 550 | EFNARC (2005); central and high assumed | V | 2.697 → 2.709 (0.012) | 1,590 → 2,021 |
 | 26 | Conversion electricity (kWh/kg U) | 10.3 / 11.8 / 16.9 | Gibon and Hahn Menacho (2023) | V | 2.698 → 2.708 (0.010) | — |
 | 27 | Non-binder concrete share (kg CO₂e/m³) | 15 / 30 / 60 | Assumption | A | 2.697 → 2.707 (0.010) | — |
-| 28 | GU cement (kg CO₂e/t) | 796 / 854 / 898 | Cement Association of Canada (2022) | V | 2.696 → 2.704 (0.009) | 1,616 → 1,823 |
+| 28 | GU cement (kg CO₂e/t) | 796 / 854 / 898 | Cement Association of Canada (2022); range is the West–East regional spread | V | 2.696 → 2.704 (0.009) | 1,616 → 1,823 |
 | 29 | Truck factor (kg CO₂e/t-km) | 0.06 / 0.10 / 0.15 | Assumption | A | 2.698 → 2.704 (0.005) | — |
 | 30 | DPSC wall thickness (m) | 1.0 / 1.5 / 2.0 | Assumption | A | 2.699 → 2.702 (0.003) | 1,464 → 1,995 |
 | 31 | Concrete transport (km) | 5 / 15 / 50 | Assumption | A | 2.700 → 2.702 (0.002) | — |
@@ -77,7 +78,7 @@ This appendix shows how uncertain the §6 results are and which inputs drive the
 
 **Life-cycle intensity (Figure F3, left).** The ranking is dominated by the fuel chain. Conversion heat alone could double the result, because the published heat demand spans a factor of 25 (26–665 kWh/kg U). The mining factor ranks second because ore grade varies widely between Saskatchewan mines. Higher burnup *lowers* the result (less uranium per MWh), and higher enrichment raises it (more separative work). Of the construction inputs, only the uplift (0.20) and steel intensity (0.17) exceed 0.1 g/kWh.
 
-**LC3 saving (Figure F3, right).** The saving depends on the LC3 emission cut (swing 609 t), DPSC wall thickness (532 t), infill binder content (430 t), basemat thickness (306 t), extra binder for flow (295 t), forebay volume (221 t) and the cement factor (207 t). The first two are the LC3 literature and OPG's drawings; the next three are mix design. Even at the lowest single-input value (1,406 t), LC3 saves more than the largest geometric swing, so the saving is robust in sign but uncertain by about ±20–25%.
+**LC3 saving (Figure F3, right).** The saving depends on the LC3 emission cut (swing 609 t), DPSC wall thickness (532 t), infill binder content (430 t), basemat thickness (306 t), extra binder for flow (295 t), forebay volume (221 t) and the cement factor (207 t). The first two are the LC3 literature and OPG's drawings. Of the next three, binder content and extra binder are mix design and basemat thickness is geometry. Even at the lowest single-input value (1,406 t), LC3 saves more than the largest geometric swing, so the saving is robust in sign but uncertain by about ±20–25%.
 
 ### C4. Monte Carlo results
 
@@ -100,7 +101,7 @@ This appendix shows how uncertain the §6 results are and which inputs drive the
 | Slag (S1) saving (t CO₂e per unit) | 1,552 | 1,649 | 1,205 | 1,642 | 2,113 |
 | LC3 minus slag (t CO₂e per unit) | 181 | 103 | −343 | 97 | 574 |
 
-The whole-plant concrete median (24,066 m³) sits above the central value (20,700 m³) because its range is right-skewed (34.5–69–138 m³/MWe). The LC3-minus-slag interval spans zero: the two options cannot be separated on carbon with present data.
+The whole-plant concrete median (24,066 m³) sits above the central value (20,700 m³) because its input range is right-skewed (34.5–69–138 m³/MWe). **The 90% interval, about 15,050–36,521 m³, is the concrete range to quote**; the input bounds (10,350–41,400 m³) are not results, and the clip rule (C1) also lifts the low tail. The LC3-minus-slag interval spans zero: the two options cannot be separated on carbon with present data. The share row is for LC3 only; Monte Carlo shares for the other scenarios are not in the outputs [TODO: lca-analyst].
 
 *Table C3. Expected life-cycle emissions by stage (Monte Carlo mean) against the mode case.*
 *Source: `results/lca_uncertainty.md`; last column is our subtraction (mean − mode).*
@@ -121,7 +122,9 @@ The whole-plant concrete median (24,066 m³) sits above the central value (20,70
 | Construction: transport to site | 0.004 | 0.006 | 0.002 | 0.012 | 0.1% | +0.002 |
 | **Total** | **2.701** | **4.279** | | | **100%** | **+1.578** |
 
-Grouped (expected basis): fuel front end 64%, back end and decommissioning 19%, O&M 9%, construction 7%.
+Grouped (expected basis): fuel front end 64.2%, back end and decommissioning 19.2%, O&M 9.1%, construction 7.5% (0.321 / 4.279).
+
+**Why plate steel falls (−0.010).** Plate steel is total steel minus rebar, and rebar scales with plant concrete (capped at total steel; Appendix A3). Concrete intensity is right-skewed (34.5–69–138 m³/MWe), so expected rebar rises above its mode value, while steel intensity is slightly left-skewed (16.5–33–46 t/MWe). Expected plate steel is therefore below its mode value, even though expected total steel emissions (rebar plus plate) rise.
 
 ### C5. Why the median (4.2) sits above the mode case (2.7)
 
@@ -134,11 +137,11 @@ Grouped (expected basis): fuel front end 64%, back end and decommissioning 19%, 
 
 ### C6. Limitations of the uncertainty analysis
 
-1. **Independence.** Inputs are drawn independently. Concrete and steel intensities are probably positively correlated (bigger plants need more of both), which would widen the construction tail slightly; enrichment and burnup are also linked in practice. The effect on the total is small because construction is 7%.
+1. **Independence.** Inputs are drawn independently. Concrete and steel intensities are probably positively correlated (bigger plants need more of both), which would widen the construction tail slightly; enrichment and burnup are also linked in practice. The effect on the total is small because construction is about 7.5%.
 2. **Ranges partly judgement.** Ranges marked A or P in Table C1 are our assumptions; ×0.5 to ×2 transfer ranges on the EDF stages are not data.
 3. **Triangular shape.** A convention, not a fitted distribution.
 4. **Unverified inputs.** Every V in Table C1 is a search lead. The intervals will move when the primaries are opened.
-5. **Model structure not varied.** The hybrid boundary and the cut-offs (§6.1) are not sampled; they bias the result low (§6.5, Table T9).
+5. **Model structure not varied.** The boundary (process-based stages plus three stages transferred as per-kWh values) and the cut-offs (§6.1) are not sampled; they bias the result low (§6.5, Table T9).
 
 ---
 
