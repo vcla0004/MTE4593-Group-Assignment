@@ -1,0 +1,8 @@
+item,material,quantity,unit,mass_t,binder_kg_per_m3,ef,ef_unit,t_co2e,basis
+DPSC reactor-building infill (basemat + shaft walls),"Concrete (GU binder, S0)",9081,m3,21794,450.0,414.3,kg CO2e/m3,3762,geometric estimate: basemat pi/4 D^2 t_b + wall pi (D - t_w) t_w h
+Forebay shaft (condenser cooling water),"Concrete (GU binder, S0)",4000,m3,9600,350.0,328.9,kg CO2e/m3,1316,OPG construction update (floor)
+Other plant concrete,"Concrete (GU binder, S0)",7619,m3,18286,350.0,328.9,kg CO2e/m3,2506,"whole-plant intensity x net MWe, minus the two above"
+Reinforcing steel (whole plant),"Rebar, EAF North American",3105,t,3105,,0.97,t CO2e/t,3012,rebar_ratio x total concrete volume
+"Plate, structural and equipment steel (incl. DPSC faceplates)",Steel plate / sections / equipment,6795,t,6795,,1.73,t CO2e/t,11755,"steel intensity x net MWe, minus rebar"
+Transport to site (A4),Truck,,,,,0.1,kg CO2e/t-km,570,"concrete 15 km, steel 500 km"
+Other construction (uplift),"Other materials, site energy, equipment processing",,,,,0.5,x bulk,11460,assumption (construction_other_uplift)

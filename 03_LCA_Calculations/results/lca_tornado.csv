@@ -1,0 +1,41 @@
+parameter,low,central,high,unit,status,g_at_low,g_at_high,g_swing,saving_at_low,saving_at_high,saving_swing
+conversion_heat_kwh_per_kgU,26,26,665,kWh heat per kg U,TO VERIFY,2.7006,5.3696,2.669,1734,1734,0
+ef_mining_milling_kg_per_kgU3O8,24,42,81,kg CO2e per kg U3O8,TO VERIFY,2.2617,3.6515,1.3899,1734,1734,0
+backend_g_per_kwh,0.28,0.56,1.11,"g CO2e per kWh (spent fuel storage, conditioning, disposal)",TO VERIFY,2.4206,3.2506,0.83,1734,1734,0
+burnup_gwd_per_t,35,45,55,GWd per tU (discharge average),placeholder,3.1172,2.4354,0.6818,1734,1734,0
+enrichment_pct,3.4,3.8,4.95,wt% U-235 (reload average),placeholder,2.5302,3.1933,0.6631,1734,1734,0
+om_g_per_kwh,0.17,0.33,0.67,"g CO2e per kWh (operation and maintenance, incl. replacement parts)",TO VERIFY,2.5406,3.0406,0.5,1734,1734,0
+enrich_grid_kg_per_kwh,0.05,0.373,0.637,kg CO2e per kWh (enrichment-plant grid),TO VERIFY,2.4655,2.8927,0.4273,1734,1734,0
+enrich_kwh_per_swu,40,50,100,kWh per SWU (gas centrifuge),TO VERIFY,2.6463,2.9721,0.3258,1734,1734,0
+decom_g_per_kwh,0.06,0.11,0.33,g CO2e per kWh (decommissioning),TO VERIFY,2.6506,2.9206,0.27,1734,1734,0
+construction_other_uplift,0.25,0.5,1.5,"fraction added to bulk concrete+steel+transport (other materials, site energy, equipment manufacture beyond steel mass)",assumption,2.6602,2.8621,0.2019,1734,1734,0
+design_life_yr,40,60,80,years of operation,TO VERIFY,2.8217,2.64,0.1817,1734,1734,0
+steel_intensity_t_per_mwe,16.5,33,46,"t steel per MWe (all steel: rebar, plate, structural, equipment)",TO VERIFY,2.6074,2.7739,0.1665,1734,1734,0
+tails_assay_pct,0.2,0.25,0.3,wt% U-235,assumption,2.636,2.7962,0.1602,1734,1734,0
+ef_plate_other,1.22,1.73,2.5,"t CO2e per t (DPSC plate, structural steel, piping, equipment)",TO VERIFY,2.6639,2.7559,0.0919,1734,1734,0
+conversion_grid_kg_per_kwh,0.035,0.0738,0.343,kg CO2e per kWh (Ontario grid; Cameco Port Hope conversion),TO VERIFY,2.6911,2.7662,0.0752,1734,1734,0
+net_mwe,300,300,315,MWe net per BWRX-300,placeholder,2.7006,2.6307,0.0698,1734,1734,0
+concrete_intensity_m3_per_mwe,34.5,69,138,m3 concrete per MWe (whole plant),TO VERIFY,2.683,2.7484,0.0654,1734,1734,0
+capacity_factor,0.8,0.9,0.95,fraction (lifetime average),placeholder,2.7308,2.6878,0.043,1734,1734,0
+fab_grid_kg_per_kwh,0.2,0.373,0.637,kg CO2e per kWh,TO VERIFY,2.6838,2.7261,0.0422,1734,1734,0
+ef_rebar,0.89,0.97,1.99,t CO2e per t fabricated rebar (A1-A3),TO VERIFY,2.6979,2.734,0.0361,1734,1734,0
+rebar_ratio_t_per_m3,0.1,0.15,0.25,t rebar per m3 concrete (whole-plant average),assumption,2.7089,2.6839,0.0249,1734,1734,0
+transport_steel_km,100,500,1500,km,assumption,2.6964,2.711,0.0146,1734,1734,0
+fab_kwh_per_kgU,36,36,50,kWh electricity per kg fuel,TO VERIFY,2.7006,2.7146,0.014,1734,1734,0
+binder_conv_kg_per_m3,300,350,420,kg cementitious per m3 (conventional structural/mass concrete),assumption,2.6953,2.7079,0.0126,1670,1822,152
+binder_scc_kg_per_m3,400,450,550,kg cementitious per m3 (DPSC self-consolidating infill),TO VERIFY,2.6965,2.7088,0.0123,1590,2021,430
+conversion_elec_kwh_per_kgU,10.3,11.8,16.9,kWh electricity per kg U as UF6,TO VERIFY,2.6983,2.7083,0.0101,1734,1734,0
+ef_concrete_other_kg_per_m3,15,30,60,"kg CO2e per m3 (aggregates, water, admixtures, batching, plant transport)",assumption,2.6973,2.7071,0.0098,1734,1734,0
+ef_gu_cement,796,854,898,"kg CO2e per t cement (GU, cradle to gate A1-A3)",TO VERIFY,2.6956,2.7044,0.0088,1616,1823,207
+ef_truck_kg_per_tkm,0.06,0.1,0.15,kg CO2e per t-km (heavy truck),assumption,2.6982,2.7036,0.0054,1734,1734,0
+rb_wall_thickness_m,1.0,1.5,2.0,m,assumption,2.6989,2.7022,0.0034,1464,1995,532
+transport_concrete_km,5,15,50,km (ready-mix and cement to site),assumption,2.7,2.7024,0.0024,1734,1734,0
+rb_basemat_thickness_m,2.0,3.0,4.0,m,assumption,2.6996,2.7015,0.0019,1581,1886,306
+rb_shaft_depth_m,35,35,38,m,TO VERIFY,2.7006,2.701,0.0005,1734,1805,71
+forebay_concrete_m3,4000,4000,6000,m3 per unit,TO VERIFY,2.7006,2.7006,0.0,1734,1955,221
+ef_slag,93.4,146.6,146.6,kg CO2e per t slag cement (A1-A3),TO VERIFY,2.7006,2.7006,0.0,1734,1734,0
+clinker_factor_gu,0.9,0.92,0.95,t clinker per t GU cement,assumption,2.7006,2.7006,0.0,1734,1734,0
+slag_replacement_s1,0.25,0.4,0.5,mass fraction of binder,assumption,2.7006,2.7006,0.0,1734,1734,0
+lc3_clinker_factor,0.5,0.5,0.55,t clinker per t LC3 binder,TO VERIFY,2.7006,2.7006,0.0,1734,1734,0
+lc3_gwp_reduction,0.3,0.37,0.43,fractional cut in binder GWP vs GU/OPC,TO VERIFY,2.7006,2.7006,0.0,1406,2015,609
+lc3_binder_uplift,0.0,0.0,0.1,fractional increase in binder content needed for LC3 SCC flow,assumption,2.7006,2.7006,0.0,1734,1438,295

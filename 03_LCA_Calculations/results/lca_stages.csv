@@ -1,0 +1,14 @@
+stage,g_per_kwh,t_per_unit_life,share_pct
+Construction: concrete,0.0534,7584,2.0
+Construction: rebar,0.0212,3012,0.8
+"Construction: plate, structural and equipment steel",0.0828,11755,3.1
+Construction: transport to site,0.004,570,0.1
+Construction: other materials and site energy,0.0808,11460,3.0
+Fuel: mining and milling,1.0241,145336,37.9
+Fuel: conversion,0.1266,17967,4.7
+Fuel: enrichment,0.2715,38530,10.1
+Fuel: fabrication,0.0361,5117,1.3
+Operation and maintenance,0.33,46831,12.2
+Decommissioning,0.11,15610,4.1
+Back end: spent fuel and disposal,0.56,79471,20.7
+TOTAL,2.701,383243,100.0

@@ -1,0 +1,6 @@
+scenario,description,saving_t_per_unit,saving_t_units_2_4,clinker_avoided_t_per_unit,clinker_avoided_t_units_2_4,pct_of_target_concrete,pct_of_unit_life_cycle,g_per_kwh_saved,life_cycle_g_per_kwh_after
+S1,S1 slag blend in C1 target structures,1552,4657,2019,6057,30.6,0.405,0.0109,2.6897
+S2,S2 LC3 in C1 target structures (the initiative),1734,5201,2304,6913,34.1,0.452,0.0122,2.6884
+S2b,S2b LC3 in targets + slag blend in all other concrete,2488,7464,3286,9857,49.0,0.649,0.0175,2.6831
+S3lo,S3 low: all steel at EAF / high-recycled-content factors,3714,11142,0,0,,0.969,0.0262,2.6744
+S3hi,S3 high: all steel at world-average (BOF-heavy) factors,-8399,-25198,0,0,,-2.192,-0.0592,2.7598

@@ -1,0 +1,214 @@
+# Rubric coverage: R2.1, R2.2, R2.3, R2.4, R2.5, R2.6, R2.7, RB.5
+"""Shared life-cycle model for one BWRX-300 at Darlington (section 6, Appendices A, C, D).
+
+Imported by lca_baseline.py, lca_scenarios.py and lca_uncertainty.py. Reads parameters_lca.yaml only.
+Functional unit: 1 MWh net electricity delivered at the plant's grid connection.
+Reference flow: one BWRX-300 unit over its design life.
+
+All emissions are kg CO2e unless noted; g CO2e/kWh == kg CO2e/MWh.
+
+Stages
+  construction  = (concrete + steel + transport) x (1 + construction_other_uplift)
+  fuel front end = mining & milling + conversion + enrichment + fabrication   (bottom-up per kg U)
+  O&M, decommissioning, back end = literature g/kWh (EDF 2024 shares, transferred)
+
+Scenarios (concrete of the C1 target structures only: DPSC reactor-building infill + forebay shaft)
+  S0  baseline, GU (Portland) cement binder
+  S1  slag blend, slag_replacement_s1 of binder
+  S2  LC3 (LC3-50) binder: GWP cut lc3_gwp_reduction, binder content x (1 + lc3_binder_uplift)
+  S2b S2 in the target structures + S1 slag blend in all other plant concrete (upper bound, lever L1)
+  S3lo / S3hi  baseline concrete with all steel at the low (EAF, high recycled content) / high
+               (world-average, BOF-heavy) factors: the steel recycled-content sensitivity
+"""
+from math import pi, log
+from pathlib import Path
+import yaml
+
+ROOT = Path(__file__).resolve().parents[1]
+RESULTS = ROOT / "results"
+PARAMS_FILE = ROOT / "parameters_lca.yaml"
+CONCRETE_DENSITY_T_PER_M3 = 2.4   # same density Sam used (9.6 million kg / 4,000 m3); README confirms the arithmetic
+HOURS_PER_YEAR = 8760
+
+
+def load_raw():
+    return yaml.safe_load(PARAMS_FILE.read_text())["parameters"]
+
+
+def central(raw=None):
+    raw = raw or load_raw()
+    return {k: float(v["value"]) for k, v in raw.items()}
+
+
+def varied_names(raw=None):
+    """Parameters that carry a range (used by the tornado and the Monte Carlo)."""
+    raw = raw or load_raw()
+    out = []
+    for k, v in raw.items():
+        if k.startswith(("bm_", "mc_", "units_")):
+            continue
+        if v.get("dist", "tri") == "fixed":
+            continue
+        if float(v["low"]) == float(v["high"]):
+            continue
+        out.append(k)
+    return out
+
+
+def value_fn(x):
+    """Separative potential V(x) = (2x - 1) ln(x / (1 - x))."""
+    return (2 * x - 1) * log(x / (1 - x))
+
+
+def enrichment_balance(xp_pct, xf_pct, xt_pct):
+    xp, xf, xt = xp_pct / 100, xf_pct / 100, xt_pct / 100
+    feed = (xp - xt) / (xf - xt)              # kg natural U per kg enriched U
+    tails = feed - 1
+    swu = value_fn(xp) + tails * value_fn(xt) - feed * value_fn(xf)   # kg-SWU per kg enriched U
+    return feed, swu
+
+
+def volumes(p):
+    d, tb, tw, h = p["rb_shaft_diameter_m"], p["rb_basemat_thickness_m"], p["rb_wall_thickness_m"], p["rb_shaft_depth_m"]
+    v_basemat = pi / 4 * d ** 2 * tb
+    v_wall = pi * (d - tw) * tw * h           # annulus of mean diameter (d - tw)
+    v_dpsc = v_basemat + v_wall
+    v_forebay = p["forebay_concrete_m3"]
+    v_scaled = p["concrete_intensity_m3_per_mwe"] * p["net_mwe"]
+    v_total = max(v_scaled, v_dpsc + v_forebay)
+    return {
+        "basemat": v_basemat, "wall": v_wall, "dpsc": v_dpsc, "forebay": v_forebay,
+        "target": v_dpsc + v_forebay, "scaled": v_scaled, "total": v_total,
+        "other": v_total - v_dpsc - v_forebay, "clipped": v_scaled < v_dpsc + v_forebay,
+    }
+
+
+def binder_gwp_and_clinker(p, mix):
+    """kg CO2e per t binder, t clinker per t binder, binder-content multiplier."""
+    gu = p["ef_gu_cement"]
+    if mix == "GU":
+        return gu, p["clinker_factor_gu"], 1.0
+    if mix == "SLAG":
+        s = p["slag_replacement_s1"]
+        return (1 - s) * gu + s * p["ef_slag"], (1 - s) * p["clinker_factor_gu"], 1.0
+    if mix == "LC3":
+        return gu * (1 - p["lc3_gwp_reduction"]), p["lc3_clinker_factor"], 1 + p["lc3_binder_uplift"]
+    raise ValueError(mix)
+
+
+def concrete_block(p, vol_m3, binder_kg_m3, mix):
+    ef_b, cf, mult = binder_gwp_and_clinker(p, mix)
+    binder_t = vol_m3 * binder_kg_m3 * mult / 1000
+    gwp = binder_t * ef_b + vol_m3 * p["ef_concrete_other_kg_per_m3"]
+    return {"vol": vol_m3, "binder_t": binder_t, "clinker_t": binder_t * cf, "kg": gwp}
+
+
+SCENARIO_MIX = {          # (target-structure mix, other-concrete mix, steel case)
+    "S0": ("GU", "GU", "central"),
+    "S1": ("SLAG", "GU", "central"),
+    "S2": ("LC3", "GU", "central"),
+    "S2b": ("LC3", "SLAG", "central"),
+    "S3lo": ("GU", "GU", "low"),
+    "S3hi": ("GU", "GU", "high"),
+}
+
+
+def model(p, scenario="S0", raw=None):
+    tgt_mix, oth_mix, steel_case = SCENARIO_MIX[scenario]
+    # ---- lifetime output ----
+    mwh_yr = p["net_mwe"] * HOURS_PER_YEAR * p["capacity_factor"]
+    mwh_life = mwh_yr * p["design_life_yr"]
+    eta = p["net_mwe"] / p["thermal_mwt"]
+
+    # ---- concrete ----
+    v = volumes(p)
+    c_dpsc = concrete_block(p, v["dpsc"], p["binder_scc_kg_per_m3"], tgt_mix)
+    c_fore = concrete_block(p, v["forebay"], p["binder_conv_kg_per_m3"], tgt_mix)
+    c_oth = concrete_block(p, v["other"], p["binder_conv_kg_per_m3"], oth_mix)
+    concrete_kg = c_dpsc["kg"] + c_fore["kg"] + c_oth["kg"]
+
+    # ---- steel ----
+    if steel_case == "central":
+        ef_r, ef_o = p["ef_rebar"], p["ef_plate_other"]
+    else:
+        raw = raw or load_raw()
+        ef_r, ef_o = float(raw["ef_rebar"][steel_case]), float(raw["ef_plate_other"][steel_case])
+    steel_t = p["steel_intensity_t_per_mwe"] * p["net_mwe"]
+    rebar_t = min(p["rebar_ratio_t_per_m3"] * v["total"], steel_t)
+    other_steel_t = steel_t - rebar_t
+    rebar_kg = rebar_t * ef_r * 1000
+    plate_kg = other_steel_t * ef_o * 1000
+
+    # ---- transport (A4) ----
+    conc_t = v["total"] * CONCRETE_DENSITY_T_PER_M3
+    transport_kg = (conc_t * p["transport_concrete_km"] + steel_t * p["transport_steel_km"]) * p["ef_truck_kg_per_tkm"]
+
+    bulk_kg = concrete_kg + rebar_kg + plate_kg + transport_kg
+    other_constr_kg = bulk_kg * p["construction_other_uplift"]
+    construction_kg = bulk_kg + other_constr_kg
+
+    # ---- fuel front end (per MWh) ----
+    kwh_e_per_kgU = p["burnup_gwd_per_t"] * 24000 * eta          # 1 GWd/tU = 24,000 kWh_th per kg U
+    encU_kg_per_mwh = 1000 / kwh_e_per_kgU
+    feed, swu = enrichment_balance(p["enrichment_pct"], p["feed_assay_pct"], p["tails_assay_pct"])
+    natU_kg_per_mwh = encU_kg_per_mwh * feed
+    swu_per_mwh = encU_kg_per_mwh * swu
+    mining = natU_kg_per_mwh * p["ef_mining_milling_kg_per_kgU3O8"] / p["u3o8_u_mass_fraction"]
+    conversion = natU_kg_per_mwh * (p["conversion_elec_kwh_per_kgU"] * p["conversion_grid_kg_per_kwh"]
+                                    + p["conversion_heat_kwh_per_kgU"] * p["ef_natgas_heat_kg_per_kwh"])
+    enrichment = swu_per_mwh * p["enrich_kwh_per_swu"] * p["enrich_grid_kg_per_kwh"]
+    fabrication = encU_kg_per_mwh * p["fab_kwh_per_kgU"] * p["fab_grid_kg_per_kwh"]
+
+    g = {   # g CO2e per kWh by stage
+        "Construction: concrete": concrete_kg / mwh_life,
+        "Construction: rebar": rebar_kg / mwh_life,
+        "Construction: plate, structural and equipment steel": plate_kg / mwh_life,
+        "Construction: transport to site": transport_kg / mwh_life,
+        "Construction: other materials and site energy": other_constr_kg / mwh_life,
+        "Fuel: mining and milling": mining,
+        "Fuel: conversion": conversion,
+        "Fuel: enrichment": enrichment,
+        "Fuel: fabrication": fabrication,
+        "Operation and maintenance": p["om_g_per_kwh"],
+        "Decommissioning": p["decom_g_per_kwh"],
+        "Back end: spent fuel and disposal": p["backend_g_per_kwh"],
+    }
+    total_g = sum(g.values())
+    return {
+        "scenario": scenario, "mwh_yr": mwh_yr, "mwh_life": mwh_life, "eta": eta,
+        "vol": v, "c_dpsc": c_dpsc, "c_fore": c_fore, "c_oth": c_oth, "concrete_kg": concrete_kg,
+        "steel_t": steel_t, "rebar_t": rebar_t, "other_steel_t": other_steel_t,
+        "rebar_kg": rebar_kg, "plate_kg": plate_kg, "transport_kg": transport_kg,
+        "bulk_kg": bulk_kg, "other_constr_kg": other_constr_kg, "construction_kg": construction_kg,
+        "target_concrete_kg": c_dpsc["kg"] + c_fore["kg"],
+        "target_clinker_t": c_dpsc["clinker_t"] + c_fore["clinker_t"],
+        "all_clinker_t": c_dpsc["clinker_t"] + c_fore["clinker_t"] + c_oth["clinker_t"],
+        "feed": feed, "swu_per_kg": swu, "encU_kg_per_mwh": encU_kg_per_mwh,
+        "natU_kg_per_mwh": natU_kg_per_mwh, "swu_per_mwh": swu_per_mwh,
+        "g": g, "total_g": total_g, "total_t_life": total_g * mwh_life / 1000,
+        "construction_g": construction_kg / mwh_life,
+        "fuel_g": mining + conversion + enrichment + fabrication,
+    }
+
+
+def lc3_saving(p, raw=None, scenario="S2"):
+    """Saving vs S0 for one unit: t CO2e (concrete A1-A3 only), clinker avoided t, % of the S0 life cycle.
+
+    The construction uplift scales bulk materials for unmodelled items; it is NOT applied to the saving, because
+    changing the binder does not change copper, cabling or site energy. The saving is therefore the change in
+    concrete A1-A3 only (transport is unchanged by binder choice).
+    """
+    b, s = model(p, "S0", raw), model(p, scenario, raw)
+    t = (b["concrete_kg"] - s["concrete_kg"]) / 1000
+    clinker = b["all_clinker_t"] - s["all_clinker_t"]
+    return {"t_per_unit": t, "clinker_t_per_unit": clinker,
+            "pct_life_cycle": 100 * t / b["total_t_life"],
+            "pct_target_concrete": 100 * t / (b["target_concrete_kg"] / 1000),
+            "g_per_kwh": t * 1000 / b["mwh_life"],
+            "base": b, "scen": s}
+
+
+def fmt(x, nd=0):
+    if abs(x) >= 1000 and nd == 0:
+        return f"{x:,.0f}"
+    return f"{x:,.{nd}f}"

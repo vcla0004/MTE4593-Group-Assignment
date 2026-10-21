@@ -1,0 +1,5 @@
+structure,scenario,volume_m3,binder_kg_per_m3,s0_t_co2e,scenario_t_co2e,saving_t_co2e,saving_kg_per_m3,clinker_avoided_t
+DPSC reactor-building infill,S1,9081,450.0,3762,2606,1156,127.3,1504
+DPSC reactor-building infill,S2,9081,450.0,3762,2471,1291,142.2,1716
+Forebay shaft,S1,4000,350.0,1316,919,396,99.0,515
+Forebay shaft,S2,4000,350.0,1316,873,442,110.6,588

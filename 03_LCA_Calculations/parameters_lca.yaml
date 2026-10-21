@@ -1,0 +1,472 @@
+# Rubric coverage: R2.1, R2.2, R2.3, R2.4, R2.5, R2.6, R2.7, RB.5, RB.6
+# LCA parameters for section 6 and Appendices A, C, D (lca-analyst, 21/10/2026).
+# Owner: Victor (took over Sam's red sections; CLAUDE.md). Scripts in scripts/lca_*.py read ONLY this file.
+#
+# Schema: name: {value, low, high, dist, unit, source, status, note}
+#   value  = central value used in the baseline.
+#   low/high = range for the tornado (one-at-a-time) and the Monte Carlo bounds.
+#   dist   = Monte Carlo distribution: tri (triangular low/value/high), uniform (low/high), fixed (no draw).
+#   source = key in 02_Research/sources_lca.md (or sources.md), "assumption", or "calculated".
+#   status:
+#     "TO VERIFY"   number seen only in a web-search summary or secondary source on 21/10/2026. The proxy
+#                   blocked every primary host from this session (unece.org, ipcc.ch, nrel.gov, circularecology.com,
+#                   nrmca.org, opg.com, nrc.gov, pubs.acs.org, sciencedirect.com, environdec.com, wikipedia.org ...;
+#                   both WebFetch and curl). NOT citable until a human opens the primary and sets status: verified.
+#     "assumption"  analyst's stated assumption (reason in note). Must be labelled as an assumption in the report.
+#     "placeholder" stands in for a teammate's number (Leroy: plant and fuel data, plan.md section 5).
+# GWP basis: GWP100. The CAC cement EPD uses IPCC 2013 (AR5) per the search lead; other factors' GWP sets are
+# TO VERIFY. For construction materials and electricity (mostly fossil CO2) the AR4/AR5/AR6 choice changes results by
+# well under the ranges below.
+
+parameters:
+
+  # ===================== A. Plant and lifetime output (functional unit denominator) =====================
+  net_mwe:
+    value: 300
+    low: 300
+    high: 315
+    dist: uniform
+    unit: MWe net per BWRX-300
+    source: gevernova_bwrx300_gd
+    status: placeholder
+    note: "300 MWe = GE Vernova general description and CNSC overview (search leads). 315 MW net = OPG OEB filing EB-2025-0297 D2-4-1 as extracted in sources.md [TO VERIFY] (factcheck.md S3). Both values carried; uniform between them in the Monte Carlo. Leroy to confirm (plan.md section 5)."
+  thermal_mwt:
+    value: 870
+    low: 870
+    high: 870
+    dist: fixed
+    unit: MWt
+    source: arxiv2025_smr_overview
+    status: TO VERIFY
+    note: "870 MWt (arXiv 2504.02599 overview; Federal Register CRN-1 notice gives 870 MWth). Used only for net efficiency and fuel demand."
+  capacity_factor:
+    value: 0.90
+    low: 0.80
+    high: 0.95
+    dist: tri
+    unit: fraction (lifetime average)
+    source: assumption
+    status: placeholder
+    note: "Same placeholder as parameters_run1.yaml so section 6 and section 7 share one denominator. Leroy to source (GEH availability claim; OPG planning value)."
+  design_life_yr:
+    value: 60
+    low: 40
+    high: 80
+    dist: tri
+    unit: years of operation
+    source: cnsc_cmd24_h3_1b
+    status: TO VERIFY
+    note: "60 years 'designed for a 60-year operational life' (CNSC presentation CMD 24-H3-1B, search lead). Ontario reportedly says 65 years (NucNet 2025, lead). 40 = licensing-period low bound, 80 = life-extension high bound (assumptions)."
+
+  # ===================== B. Construction quantities (inventory) =====================
+  concrete_intensity_m3_per_mwe:
+    value: 69
+    low: 34.5
+    high: 138
+    dist: tri
+    unit: m3 concrete per MWe (whole plant)
+    source: peterson2005
+    status: TO VERIFY
+    note: "Central 69 = ESBWR (Peterson, Zhao and Petroski 2005, as tabulated by WNA; the BWRX-300 is derived from the ESBWR). Low 34.5 = GEH's claim of 50% less concrete per MW than the ESBWR (manufacturer projection, gevernova_bwrx300_claims). High 138 = ABWR (Peterson 2005), standing in for small-plant scale penalties. Central assumes the claimed halving is offset by SMR diseconomies of scale (assumption). Replace with OPG EIS review report NK054-REP-07730-00055-R001 or TVA ER ML25118A209 quantities when opened."
+  steel_intensity_t_per_mwe:
+    value: 33
+    low: 16.5
+    high: 46
+    dist: tri
+    unit: "t steel per MWe (all steel: rebar, plate, structural, equipment)"
+    source: peterson2005
+    status: TO VERIFY
+    note: "Central 33 = ESBWR, high 46 = ABWR (Peterson 2005 via WNA). Low 16.5 = GEH 'more than 50% less concrete and steel per MW than ESBWR' (DOE-funding announcement, lead)."
+  rebar_ratio_t_per_m3:
+    value: 0.15
+    low: 0.10
+    high: 0.25
+    dist: tri
+    unit: t rebar per m3 concrete (whole-plant average)
+    source: assumption
+    status: assumption
+    note: "High 0.25 = observed forebay ratio (1,000 t / 4,000 m3, OPG construction update). Central and low are assumptions: DPSC modules use steel faceplates instead of most rebar, so the plant average sits below the forebay. Only splits total steel between the rebar and plate factors; total steel is fixed by steel_intensity."
+  forebay_concrete_m3:
+    value: 4000
+    low: 4000
+    high: 6000
+    dist: tri
+    unit: m3 per unit
+    source: opg_forebay_update
+    status: TO VERIFY
+    note: "'Close to 4,000 m3 of concrete and nearly 1,000 t of reinforcing steel placed in the forebay shaft' (OPG construction update quoted in Assumptions.docx). A progress milestone, so 4,000 is a floor; high 6,000 is an assumption for completion. Whether the forebay/CCW system is per unit or shared by four units is TODO (Leroy/OPG)."
+  forebay_rebar_t:
+    value: 1000
+    low: 1000
+    high: 1000
+    dist: fixed
+    unit: t
+    source: opg_forebay_update
+    status: TO VERIFY
+    note: "Used only in the corrected inventory sheet and Granta inputs (partial structure)."
+  dpsc_basemat_steel_t:
+    value: 953
+    low: 953
+    high: 953
+    dist: fixed
+    unit: t (Unit 1 DPSC basemat module, steel)
+    source: opg_basemat_story
+    status: TO VERIFY
+    note: "About 953 t (2.1 million lb), 37 m across, lowered 35 m into the reactor-building shaft (OPG story, via plan.md; news lead). Part of total steel, not added to it."
+  rb_shaft_diameter_m:
+    value: 37
+    low: 37
+    high: 37
+    dist: fixed
+    unit: m
+    source: opg_basemat_story
+    status: TO VERIFY
+    note: "Basemat module diameter, used as the reactor-building shaft outer diameter for the geometric estimate of DPSC infill volume."
+  rb_shaft_depth_m:
+    value: 35
+    low: 35
+    high: 38
+    dist: tri
+    unit: m
+    source: opg_basemat_story
+    status: TO VERIFY
+    note: "Module lowered about 35 m. High 38 m = containment height (GEH general description, 38 m) as an upper bound on below-grade wall height (assumption)."
+  rb_basemat_thickness_m:
+    value: 3.0
+    low: 2.0
+    high: 4.0
+    dist: tri
+    unit: m
+    source: assumption
+    status: assumption
+    note: "No source found. Geometric assumption for the DPSC basemat infill depth. Replace with NEDO-33926 / OPG drawing data."
+  rb_wall_thickness_m:
+    value: 1.5
+    low: 1.0
+    high: 2.0
+    dist: tri
+    unit: m
+    source: assumption
+    status: assumption
+    note: "No source found. Geometric assumption for the DPSC shaft-wall infill thickness."
+
+  # ===================== C. Concrete mixes =====================
+  binder_scc_kg_per_m3:
+    value: 450
+    low: 400
+    high: 550
+    dist: tri
+    unit: kg cementitious per m3 (DPSC self-consolidating infill)
+    source: efnarc2005
+    status: TO VERIFY
+    note: "GEH NEDO-33926 specifies self-consolidating concrete for the DP-SC infill (route-to-practice brief). EFNARC typical SCC powder content 360-500 kg/m3 (secondary lead). Central 450 and high 550 are assumptions for a cement-rich nuclear SCC (part of the powder may be filler)."
+  binder_conv_kg_per_m3:
+    value: 350
+    low: 300
+    high: 420
+    dist: tri
+    unit: kg cementitious per m3 (conventional structural/mass concrete)
+    source: assumption
+    status: assumption
+    note: "Assumption for 35-45 MPa structural concrete. Check: S0 at 350 kg/m3 gives about 330 kg CO2e/m3, close to the CRMCA Ontario 35 MPa baseline (334 kg/m3, lead) and below the Ontario benchmark (417 kg/m3)."
+  ef_gu_cement:
+    value: 854
+    low: 796
+    high: 898
+    dist: tri
+    unit: kg CO2e per t cement (GU, cradle to gate A1-A3)
+    source: cac2020_epd
+    status: TO VERIFY
+    note: "CAC regionalised industry-average EPD (2020 data): GU 796 / 854 / 898 for West / Central / East (search lead; IPCC 2013 GWP100). Central = Central region (Ontario assignment TO VERIFY). Replace with St Marys Bowmanville EPD (NRMCA EPD 20046, 2021) when opened."
+  ef_slag:
+    value: 146.6
+    low: 93.4
+    high: 146.6
+    dist: tri
+    unit: kg CO2e per t slag cement (A1-A3)
+    source: sca_epd
+    status: TO VERIFY
+    note: "Slag Cement Association industry-average EPD (USA and Canada) 146.6 (lead). Low 93.4 = Lafarge NewCem plant EPD (lead)."
+  ef_concrete_other_kg_per_m3:
+    value: 30
+    low: 15
+    high: 60
+    dist: tri
+    unit: kg CO2e per m3 (aggregates, water, admixtures, batching, plant transport)
+    source: assumption
+    status: assumption
+    note: "Non-binder share of ready-mix A1-A3. Assumption; validated only through the CRMCA Ontario per-m3 check above."
+  clinker_factor_gu:
+    value: 0.92
+    low: 0.90
+    high: 0.95
+    dist: tri
+    unit: t clinker per t GU cement
+    source: assumption
+    status: assumption
+    note: "GU permits a few percent limestone and minor constituents (CSA A3001). Used only for tonnes of clinker avoided. TO VERIFY in the CAC EPD."
+  slag_replacement_s1:
+    value: 0.40
+    low: 0.25
+    high: 0.50
+    dist: tri
+    unit: mass fraction of binder
+    source: assumption
+    status: assumption
+    note: "S1 slag blend. Blended binders are 'widely adopted in NPP concrete mixes', including high replacement (IJCSM 2026, route brief lead); Canadian roadmap says SCMs can replace '30% or more'. Level is an assumption."
+  lc3_clinker_factor:
+    value: 0.50
+    low: 0.50
+    high: 0.55
+    dist: tri
+    unit: t clinker per t LC3 binder
+    source: scrivener2018
+    status: TO VERIFY
+    note: "LC3-50: about 50% clinker, 30% calcined clay, 15% limestone, 5% gypsum (Scrivener et al. 2018; LC3 project material, leads). 15% limestone sits at the CSA A3001 Type IT cap (route brief, TO VERIFY). High 0.55 allows a richer mix for SCC flow."
+  lc3_gwp_reduction:
+    value: 0.37
+    low: 0.30
+    high: 0.43
+    dist: tri
+    unit: fractional cut in binder GWP vs GU/OPC
+    source: lc3_reduction_leads
+    status: TO VERIFY
+    note: "Five leads: 30% (ENR 2018), 34% (700 to 465 kg/t, LC3 sustainability report), 37% (856 to 543 kg/t, LC3 India 2015 deck), 40% (EPFL abstract of Scrivener et al.), 43% (903.5 to 513.5 kg/t, LACCEI 2026). Central = median. None opened."
+  lc3_binder_uplift:
+    value: 0.0
+    low: 0.0
+    high: 0.10
+    dist: tri
+    unit: fractional increase in binder content needed for LC3 SCC flow
+    source: assumption
+    status: assumption
+    note: "Calcined clay raises water and admixture demand (plan section 2.1, TO VERIFY). 0-10% extra binder is an assumption; tests on mock-ups would set it."
+
+  # ===================== D. Steel factors =====================
+  ef_rebar:
+    value: 0.97
+    low: 0.89
+    high: 1.99
+    dist: tri
+    unit: t CO2e per t fabricated rebar (A1-A3)
+    source: crsi2017_epd
+    status: TO VERIFY
+    note: "Central 0.97 = CRSI 2017 industry EPD (North American, EAF scrap-based; lead from CRSI slides; the 2022 EPD value not seen). Low 0.89 = Buy Clean California mill-gate limit (a ceiling, used as a best-EAF proxy). High 1.99 = ICE v3 world-average rebar (IStructE guide lead; BOF-heavy). Avoids the 'virgin rebar' trap in plan section 2.1."
+  ef_plate_other:
+    value: 1.73
+    low: 1.22
+    high: 2.50
+    dist: tri
+    unit: t CO2e per t (DPSC plate, structural steel, piping, equipment)
+    source: bcca2022_limits
+    status: TO VERIFY
+    note: "Central 1.73 = Buy Clean California limit for fabricated plate (incl. US average fabrication), used as a North American fabricated-plate proxy. Low 1.22 = BCCA limit for fabricated hot-rolled sections (EAF). High 2.50 = assumption for alloy, forged and machined equipment (RPV, turbine). ICE v3 sections 1.55 (lead) sits inside the range."
+  transport_concrete_km:
+    value: 15
+    low: 5
+    high: 50
+    dist: tri
+    unit: km (ready-mix and cement to site)
+    source: assumption
+    status: assumption
+    note: "St Marys Cement Bowmanville is also in Clarington (plan section 2.1; distance TO VERIFY)."
+  transport_steel_km:
+    value: 500
+    low: 100
+    high: 1500
+    dist: tri
+    unit: km
+    source: assumption
+    status: assumption
+    note: "Ontario/US mills and fabricators to Darlington (assumption)."
+  ef_truck_kg_per_tkm:
+    value: 0.10
+    low: 0.06
+    high: 0.15
+    dist: tri
+    unit: kg CO2e per t-km (heavy truck)
+    source: assumption
+    status: assumption
+    note: "Order of magnitude from DESNZ 2024 HGV factors (0.77-0.91 kg CO2e/vehicle-km, Climatiq mirror, lead) at a 6-15 t average payload (assumption). Transport is under 2% of construction, so a rough factor is adequate."
+  construction_other_uplift:
+    value: 0.5
+    low: 0.25
+    high: 1.5
+    dist: tri
+    unit: fraction added to bulk concrete+steel+transport (other materials, site energy, equipment manufacture beyond steel mass)
+    source: assumption
+    status: assumption
+    note: "No BWRX-300 breakdown found. Covers copper, cabling, insulation, site diesel and Ontario-grid electricity during construction, and the processing of equipment beyond steel production. Check: central construction total is compared with EDF (2024) construction 16% of 3.7 g/kWh in lca.md section 9."
+
+  # ===================== E. Fuel cycle (front end, bottom-up per kg U) =====================
+  enrichment_pct:
+    value: 3.8
+    low: 3.4
+    high: 4.95
+    dist: tri
+    unit: wt% U-235 (reload average)
+    source: arxiv2025_smr_overview
+    status: placeholder
+    note: "Average 3.8%, maximum 4.95% for BWRX-300 GNF2 fuel (arXiv 2504.02599, lead). Low 3.4 is an assumption. Leroy to confirm from NEDO-33977 (CNSC docket)."
+  feed_assay_pct:
+    value: 0.711
+    low: 0.711
+    high: 0.711
+    dist: fixed
+    unit: wt% U-235
+    source: calculated
+    status: fixed
+    note: "Natural uranium assay (physical constant)."
+  tails_assay_pct:
+    value: 0.25
+    low: 0.20
+    high: 0.30
+    dist: tri
+    unit: wt% U-235
+    source: assumption
+    status: assumption
+    note: "Typical commercial tails range (assumption). Lower tails = more SWU, less natural uranium."
+  burnup_gwd_per_t:
+    value: 45
+    low: 35
+    high: 55
+    dist: tri
+    unit: GWd per tU (discharge average)
+    source: assumption
+    status: placeholder
+    note: "No BWRX-300 value found (searched NEDO-33977, GEH). 40-50 is typical for BWRs (general knowledge, unverified). Leroy to supply."
+  ef_mining_milling_kg_per_kgU3O8:
+    value: 42
+    low: 24
+    high: 81
+    dist: tri
+    unit: kg CO2e per kg U3O8
+    source: parker2016
+    status: TO VERIFY
+    note: "Saskatchewan mine-mills, production-weighted 42 at 3.81% U3O8; 24 with hydro electricity; 81 at the lowest-grade site (0.74%) (Parker et al. 2016, ES&T, lead). Canadian supply assumed for Darlington (OPG/Cameco, TO VERIFY). Honeymoon ISL (Australia) 38 is inside the range. Converted to per kg U by u3o8_u_mass_fraction."
+  u3o8_u_mass_fraction:
+    value: 0.848
+    low: 0.848
+    high: 0.848
+    dist: fixed
+    unit: kg U per kg U3O8
+    source: calculated
+    status: fixed
+    note: "3 x 238.03 / (3 x 238.03 + 8 x 16.00) = 0.848 (stoichiometry)."
+  conversion_elec_kwh_per_kgU:
+    value: 11.8
+    low: 10.3
+    high: 16.9
+    dist: tri
+    unit: kWh electricity per kg U as UF6
+    source: gibon2023
+    status: TO VERIFY
+    note: "Gibon and Hahn Menacho (2023) inventory (lead)."
+  conversion_heat_kwh_per_kgU:
+    value: 26
+    low: 26
+    high: 665
+    dist: tri
+    unit: kWh heat per kg U
+    source: gibon2023
+    status: TO VERIFY
+    note: "Gibon (2023): 26 (range 26-665) (lead). Very wide; the tornado shows it."
+  ef_natgas_heat_kg_per_kwh:
+    value: 0.202
+    low: 0.202
+    high: 0.202
+    dist: fixed
+    unit: kg CO2 per kWh heat (natural gas)
+    source: ipcc2006_gl
+    status: TO VERIFY
+    note: "56,100 kg CO2/TJ (IPCC 2006 Guidelines, Vol 2 default, lead) = 0.202 kg/kWh. Boiler losses ignored."
+  conversion_grid_kg_per_kwh:
+    value: 0.0738
+    low: 0.035
+    high: 0.343
+    dist: tri
+    unit: kg CO2e per kWh (Ontario grid; Cameco Port Hope conversion)
+    source: taf2025
+    status: TO VERIFY
+    note: "Ontario 2024 average 73.8 g/kWh (TAF, lead; benchmark brief section 3). Low 35 = CER 2022; high 343 = TAF marginal."
+  enrich_kwh_per_swu:
+    value: 50
+    low: 40
+    high: 100
+    dist: tri
+    unit: kWh per SWU (gas centrifuge)
+    source: gibon2023
+    status: TO VERIFY
+    note: "Gibon (2023) triangular 50 (40-100); ANL 2023 and DOE cost basis also 50 (leads). Diffusion (2,500) excluded: no diffusion plant operates."
+  enrich_grid_kg_per_kwh:
+    value: 0.373
+    low: 0.05
+    high: 0.637
+    dist: tri
+    unit: kg CO2e per kWh (enrichment-plant grid)
+    source: epa_power_profiler
+    status: TO VERIFY
+    note: "Central = US average 823.1 lb CO2/MWh (EPA Power Profiler, eGRID vintage unclear, CO2 only, lead) for Urenco USA (New Mexico). Low 0.05 = very low-carbon grid (France/Orano), assumption. High = EPA national marginal 1,405.3 lb/MWh (EPA GHG equivalencies, lead). Supplier mix for Darlington TODO (Leroy)."
+  fab_kwh_per_kgU:
+    value: 36
+    low: 36
+    high: 50
+    dist: tri
+    unit: kWh electricity per kg fuel
+    source: gibon2023
+    status: TO VERIFY
+    note: "Gibon (2023) 36 (36-50) (lead). Cladding and hardware manufacture are cut off (stated in lca.md)."
+  fab_grid_kg_per_kwh:
+    value: 0.373
+    low: 0.20
+    high: 0.637
+    dist: tri
+    unit: kg CO2e per kWh
+    source: epa_power_profiler
+    status: TO VERIFY
+    note: "GNF fabrication assumed in Wilmington, North Carolina (TO VERIFY, Leroy); US average as central; low 0.20 is an assumption."
+
+  # ===================== F. Other life-cycle stages (top-down from literature) =====================
+  om_g_per_kwh:
+    value: 0.33
+    low: 0.17
+    high: 0.67
+    dist: tri
+    unit: g CO2e per kWh (operation and maintenance, incl. replacement parts)
+    source: edf2024_lca
+    status: TO VERIFY
+    note: "EDF (2024) French fleet: operation 9% of 3.7 g/kWh = 0.33 (WNN/Euronuclear report of the study, lead). Range x0.5-x2 (assumption) for transfer to one BWRX-300."
+  decom_g_per_kwh:
+    value: 0.11
+    low: 0.06
+    high: 0.33
+    dist: tri
+    unit: g CO2e per kWh (decommissioning)
+    source: edf2024_lca
+    status: TO VERIFY
+    note: "EDF (2024): decommissioning 3% of 3.7 = 0.11 (lead). High x3 (assumption): an SMR has more structure per MWh than a large PWR."
+  backend_g_per_kwh:
+    value: 0.56
+    low: 0.28
+    high: 1.11
+    dist: tri
+    unit: g CO2e per kWh (spent fuel storage, conditioning, disposal)
+    source: edf2024_lca
+    status: TO VERIFY
+    note: "EDF (2024): downstream/back end 15% of 3.7 = 0.56 (lead; derived as 100 - 57 - 28). France reprocesses; Canada plans direct disposal in NWMO's deep geological repository, so the transfer is uncertain: range x0.5-x2 (assumption)."
+
+  # ===================== G. Benchmarks (comparison only, not inputs) =====================
+  bm_unece2021_low:   {value: 5.1, unit: g/kWh, source: unece2021, status: TO VERIFY, dist: fixed, low: 5.1, high: 5.1, note: "UNECE 2021 nuclear range low."}
+  bm_unece2021_high:  {value: 6.4, unit: g/kWh, source: unece2021, status: TO VERIFY, dist: fixed, low: 6.4, high: 6.4, note: "UNECE 2021 nuclear range high."}
+  bm_gibon2023:       {value: 6.1, unit: g/kWh, source: gibon2023, status: TO VERIFY, dist: fixed, low: 5.4, high: 122, note: "Global 2020 average; scenario range 5.4-122."}
+  bm_edf2024:         {value: 3.7, unit: g/kWh, source: edf2024_lca, status: TO VERIFY, dist: fixed, low: 2.9, high: 4.6, note: "French fleet 2019 data; sensitivity 2.9-4.6."}
+  bm_carless2016_wsmr: {value: 9.1, unit: g/kWh, source: carless2016, status: TO VERIFY, dist: fixed, low: 5.9, high: 13.2, note: "Westinghouse SMR mean, 90% CI 5.9-13.2 (AP1000 8.4)."}
+  bm_warner2012:      {value: 12, unit: g/kWh, source: warner_heath2012, status: TO VERIFY, dist: fixed, low: 3.7, high: 110, note: "Harmonised LWR median 12; low 3.7 as commonly quoted for AR5 (TO VERIFY); max 110."}
+  bm_ng2025_fuel:     {value: 3.0, unit: g/kWh (fuel cycle only), source: ng2025_jie, status: TO VERIFY, dist: fixed, low: 3.0, high: 3.0, note: "US LWR fuel cycle (GREET)."}
+  bm_coal_unece:      {value: 1000, unit: g/kWh, source: unece2021, status: TO VERIFY, dist: fixed, low: 751, high: 1095, note: "Coal comparator as in the deck."}
+  bm_gas_unece:       {value: 458, unit: g/kWh, source: unece2021, status: TO VERIFY, dist: fixed, low: 403, high: 513, note: "Gas CC comparator as in the deck."}
+
+  # ===================== H. Monte Carlo control =====================
+  mc_draws:   {value: 20000, low: 20000, high: 20000, dist: fixed, unit: draws, source: calculated, status: fixed, note: "At least 10,000 required (plan section 4.1)."}
+  mc_seed:    {value: 20261021, low: 20261021, high: 20261021, dist: fixed, unit: seed, source: calculated, status: fixed, note: "Fixed seed (date) for reproducibility."}
+  units_initiative: {value: 3, low: 3, high: 3, dist: fixed, unit: units (Darlington Units 2-4), source: ontario2025_fid, status: TO VERIFY, note: "Unit 1 basemat and forebay already placed, so C1 applies to Units 2-4 only."}
