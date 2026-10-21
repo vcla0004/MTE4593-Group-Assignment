@@ -2,6 +2,7 @@ Rubric coverage: RB.5, R2.4, R3.8, R2.1, R2.3, R2.7, R4.3, R3.1, R3.6, RB.6 (als
 
 <!--
 CHANGELOG
+- v3, 21/10/2026 (writer, Q14). Appended B7 (MCDA working), Tables B29–B34, from `results/mcda.md` and `mcda_scores.csv`; B7.5 gives both C1 cases (1,734 t, 2,200 t) with the placeholders marked [C1 saving: per final §6]. Serves R3.6, RB.8, R2.4, R2.6. B3's route A rescoring (fact-check M2) is carried into B7.1. R5.2 captions above tables; R5.5 Australian English.
 - Fact-check I-pass3-batch1a, 21/10/2026 (writer): M1 (Senate counts hedged, 39/37 or 40/36 [TO VERIFY at aph.gov.au]); M2 (route A veto points rescored 2 to 1: totals 6/5/8, A ties C when regulator readiness is doubled; Tables B13 and B14, B3 Result and Reading); M3 (B6 range now 4.9–26.0×); S4, S11, S13, S14 done. S10 and S12 left open. §7 lines 72 and 82 still quote the old "5.7× worst case" wording (not edited: not in scope).
 - v2.1, 21/10/2026 (writer, Q8). B6 re-based on `same_money.md` after the GenCost 2030 re-run (SMR A$306, 230–382; renewables A$107, 89–125): text, Table B24 and Tables B25–B28 replaced, alternative reading (A$514 / A$102) kept as sensitivity rows; B5.4 "45×" replaced by the scripted 44× (44–223×). TODOs 11 and 12 closed (the GenCost table and carbon price remain [TO VERIFY]). Rubric items: R2.3, R3.1, RB.5, RB.6.
 - v2, 21/10/2026 (writer, Q4). Appended B4 (displacement), B5 (schedule value, including C1's break-even and the 30–223× derivation) and B6 (same money), Tables B15–B28, from Q2's re-based `results/` files; working for §7 and §6.3 finding 5 (factcheck L47; review audit §2, R2 and R4 rows). The rest of v1 is unchanged.
@@ -19,7 +20,7 @@ CHANGELOG
 
 ## Appendix B. Working for the policy and supply-chain analysis
 
-This appendix gives the full working behind §8.1 (law and licensing), §8.3 (fuel-supply concentration) and §7 (displacement, the value of schedule and the same money). Every number is produced by a script in `03_LCA_Calculations/scripts/` from a parameter file, so it can be re-run. **No input has yet been checked against its primary source** (`status: TO VERIFY` in `parameters_run1.yaml`, `parameters_run2.yaml` and `parameters_run5.yaml`; `verified: false` in `parameters_run3.yaml`).
+This appendix gives the full working behind §8.1 (law and licensing), §8.3 (fuel-supply concentration), §7 (displacement, the value of schedule and the same money) and §9 (the multi-criteria analysis). Every number is produced by a script in `03_LCA_Calculations/scripts/` from a parameter file, so it can be re-run. **No input has yet been checked against its primary source** (`status: TO VERIFY` in `parameters_run1.yaml`, `parameters_run2.yaml` and `parameters_run5.yaml`; `verified: false` in `parameters_run3.yaml`).
 
 | Subsection | Script (run from the repository root) | Inputs | Output |
 |---|---|---|---|
@@ -29,6 +30,7 @@ This appendix gives the full working behind §8.1 (law and licensing), §8.3 (fu
 | B4 Displacement | `python3 -I 03_LCA_Calculations/scripts/displacement.py` | `03_LCA_Calculations/parameters_run1.yaml` | `03_LCA_Calculations/results/displacement.md` |
 | B5 Value of schedule | `python3 -I 03_LCA_Calculations/scripts/schedule_value.py` | `parameters_run1.yaml` (cost inputs read from `parameters_run5.yaml`) | `results/schedule_value.md` |
 | B6 Same money | `python3 -I 03_LCA_Calculations/scripts/same_money.py` | `parameters_run1.yaml` | `results/same_money.md` (cross-check: `results/lcoe.md`) |
+| B7 Multi-criteria analysis | `python3 -I 03_LCA_Calculations/scripts/mcda.py --c1-case new_2200` | `parameters_run9.yaml` (with run 6 consent routes) | `results/mcda.md`, `results/mcda_scores.csv` |
 
 ---
 
@@ -683,6 +685,130 @@ Our Darlington LCOE (`results/lcoe.md`; case B, 60 years, vendor operating costs
 
 ---
 
+### B7. Multi-criteria analysis (MCDA): status quo, SMR, SMR + C1 and firmed renewables
+
+**Result.** Firmed renewables for the same money score highest under all four weight sets (80.1, 85.9, 63.7 and 89.3 of 100). The status quo is second, and SMR and SMR + C1 tie for third (29.7, 24.0, 43.6 and 20.4). C1 moves the SMR's score by under 0.005 point. **The ranking is a structured comparison, not a measurement:** the social, legal and renewables-supply scores and the weights are our judgement, and most inputs are [TO VERIFY]. The main-text summary is §9 (Tables T4 and T5). Source: `scripts/mcda.py` (analyst run 9, C1 case `new_2200`), `results/mcda.md` and `results/mcda_scores.csv`, which holds every raw score, normalised score, weight set and perturbation (593 rows).
+
+#### B7.1 Options, criteria and inputs
+
+The four options are the status quo (Liddell closed, NSW grid unchanged), one BWRX-300 at Liddell, the same plant with C1, and the same annual spend on firmed renewables. Lower is better for life-cycle CO₂e, cost, first-power year and HHI; higher is better for CO₂e avoided per dollar, social licence and legal feasibility.
+
+*Table B29. Performance matrix (raw values) and the source of each score.*
+*Source: `results/mcda.md` §2. SMR + C1 shown for the 2,200 t case.*
+
+| Criterion | Status quo | SMR | SMR + C1 | Firmed renewables | Source (status) |
+|---|---:|---:|---:|---:|---|
+| Life-cycle CO₂e (g/kWh) | 640 | 4.2 | 4.1845 | 30 | SMR: team LCA median (§6; earlier 20,700 m³ model, re-base pending). Renewables: 30 g/kWh assumption inside UNECE's PV range of 8–83 [TO VERIFY]. Status quo: NSW grid factor 2025 (NGA Factors) [TO VERIFY] |
+| CO₂e avoided to 2050 (Mt per A$1 bn/yr) | 0 | 5.31 | 5.31 | 57.69 | B6 frame (`same_money.py`); GenCost 2030 LCOEs [TO VERIFY]; NEM trajectory T2, slow (assumption) |
+| Cost, LCOE (A$/MWh) | 0 | 306.00 | 306.04 | 107 | GenCost 2023-24, 2030 midpoints: SMR 230–382, firmed renewables 89–125 [TO VERIFY]. C1 adds A$0.038/MWh (assumptions) |
+| First full year of new supply | 2050 | 2040 | 2040 | 2028 | SMR: CSIRO "2040 at the earliest" [TO VERIFY: Leroy §4.1]. Renewables: 2028 (assumption). Status quo: no new supply by 2050 (convention) |
+| Supply concentration (HHI) | 0 | 3,009 | 3,009 | 6,400 | SMR: enrichment, B2 [TO VERIFY]. Renewables: lower bound from China's share, above 80% of every PV stage (International Energy Agency, 2022) [TO VERIFY]. Status quo: convention |
+| Social licence (Table T13 total, 5–15) | 13 | 11 | 11 | 14 | §8.4, Table T13 (our judgement) |
+| Legal feasibility (Table B13 total, 4–12) | 12 | 8 | 8 | 12 | B3, best SMR route under equal weights (route C, 8); route A rescored to 6 after fact-check M2, which leaves this input unchanged (our judgement) |
+
+**Conventions for the status quo (a do-nothing reference).** It takes the NSW grid factor as its "life cycle" (a boundary mismatch: scope 2 only, but it is last on this criterion whatever the boundary), avoids nothing, adds no cost or supply chain, has first supply in 2050, and scores 13 on social licence (nothing to consent to, but no benefit reaches the Upper Hunter) and 12 on legal feasibility. B7.4 tests the cost, supply and social conventions.
+
+**Not scored.** Technology readiness level (TRL): no TRL figure exists yet in the sections or briefs [TODO: Leroy §4.1]. Schedule risk enters through the first-power year (tested at 2035 and 2045) and the C1 delay case.
+
+#### B7.2 Method
+
+1. **Model.** Linear additive (weighted-sum) MCDA, the standard compensatory model in the UK government manual (Dodgson et al., 2009) [TO VERIFY: gov.uk blocked 21/10].
+2. **Normalisation.** Each criterion is min–max normalised across the four options: s = (x − worst) / (best − worst), so the best option scores 1 and the worst 0.
+3. **Total.** T = 100 × Σ w_c s_c, with weights renormalised to sum to 1.
+4. **CO₂e avoided per dollar.** The same annual spend buys 2,365,200 MWh/yr × A$306/MWh = A$0.724 bn/yr of SMR output, or A$0.724 bn / A$107 = 6.76 TWh/yr of firmed renewables from 2028. Avoided CO₂e to 2050 = Σ over years of MWh × (grid factor − option's life-cycle factor), with the grid falling linearly from 640 g/kWh in 2025 to 30 in 2050 (B6 frame). The SMR avoids 3.85 Mt and renewables 41.76 Mt, divided by A$0.724 bn/yr.
+5. **C1 in the model.** Life-cycle reduction = saving / lifetime output. For 2,200 t: 2,200 × 10⁶ g / (2,365,200 MWh × 1,000 × 60 years = 1.419 × 10¹¹ kWh) = **0.0155 g/kWh** (0.37% of 4.2). For 1,734 t it is 0.0122 g/kWh (0.29%). C1's cost is a premium (base 0%) × C$229/m³ × 20,000 m³ plus qualification (base C$1.0 m), × 1.119 AUD/CAD, annualised at a capital recovery factor of 0.0806 (7%, 30 years) over 2,365,200 MWh: **+A$0.038/MWh**. The base case is schedule-neutral (the §8.6 condition).
+
+**Worked example (equal weights, SMR).** Life cycle: (640 − 4.2) / (640 − 4.1845) = 0.99998. Avoided per dollar: 5.31 / 57.69 = 0.0921. Cost: (306.04 − 306.00) / 306.04 = 0.0001. Time: (2050 − 2040) / (2050 − 2028) = 0.4545. Supply: (6,400 − 3,009) / 6,400 = 0.5298. Social: (11 − 11) / (14 − 11) = 0. Legal: (8 − 8) / (12 − 8) = 0. The sum is 2.0766, and T = 100 × 2.0766 / 7 = **29.7**.
+
+*Table B30. Normalised scores (1 = best of the four options).*
+*Source: `results/mcda.md` §3.*
+
+| Criterion | Status quo | SMR | SMR + C1 | Firmed renewables |
+|---|---:|---:|---:|---:|
+| Life cycle | 0.0000 | 1.0000 | 1.0000 | 0.9594 |
+| Avoided per dollar | 0.0000 | 0.0921 | 0.0921 | 1.0000 |
+| Cost | 1.0000 | 0.0001 | 0.0000 | 0.6504 |
+| Time | 0.0000 | 0.4545 | 0.4545 | 1.0000 |
+| Supply | 1.0000 | 0.5298 | 0.5298 | 0.0000 |
+| Social licence | 0.6667 | 0.0000 | 0.0000 | 1.0000 |
+| Legal feasibility | 1.0000 | 0.0000 | 0.0000 | 1.0000 |
+
+#### B7.3 Weights and results
+
+The weights are our reading of each group's stated priorities (`parameters_run9.yaml`), not elicited from them.
+
+*Table B31. Weight sets and total scores (0–100).*
+*Source: `results/mcda.md` §4. Rationale sources (Bowen's statements; the Liberal Party 2026 energy plan; §8.4) [TO VERIFY].*
+
+| Weight set | Life cycle | Avoided per $ | Cost | Time | Supply | Social | Legal | Rationale |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| W0 equal | 0.143 | 0.143 | 0.143 | 0.143 | 0.143 | 0.143 | 0.143 | No view privileged |
+| W1 climate and cost | 0.10 | 0.25 | 0.25 | 0.20 | 0.05 | 0.10 | 0.05 | Federal Government and AEMO lens: cost and speed of decarbonisation |
+| W2 firm and sovereign | 0.25 | 0.05 | 0.15 | 0.05 | 0.30 | 0.15 | 0.05 | Coalition and advocate lens: zero-emission firm supply and security. The most SMR-favourable set we could justify, as a stress test |
+| W3 host community | 0.10 | 0.10 | 0.15 | 0.15 | 0.05 | 0.30 | 0.15 | Upper Hunter community, Traditional Owners and unions: consent, legal certainty, early jobs |
+
+| Weight set | Status quo | SMR | SMR + C1 | Firmed renewables | Ranking |
+|---|---:|---:|---:|---:|---|
+| W0 equal | 52.4 | 29.7 | 29.7 | 80.1 | Renewables > status quo > SMR ≈ SMR + C1 |
+| W1 climate and cost | 41.7 | 24.0 | 24.0 | 85.9 | Same |
+| W2 firm and sovereign | 60.0 | 43.6 | 43.6 | 63.7 | Same |
+| W3 host community | 55.0 | 20.4 | 20.4 | 89.3 | Same |
+
+#### B7.4 Rank reversal and input sensitivity
+
+*Table B32. Each weight varied by ±50% (then renormalised): 14 tests per weight set.*
+*Source: `results/mcda.md` §5.*
+
+| Weight set | Tests | First place changes | Cases that change the order |
+|---|---:|---:|---|
+| W0 equal | 14 | 0 | None |
+| W1 climate and cost | 14 | 0 | None |
+| W2 firm and sovereign | 14 | 2 | Life cycle × 0.5 and supply × 1.5: both give status quo > renewables > SMR |
+| W3 host community | 14 | 0 | None |
+
+- **Random weights.** In 20,000 Dirichlet(1,…,1) draws (seed 20261021), first place goes to renewables in 85.4%, the status quo in 14.5%, SMR + C1 in 0.1% and SMR in 0.0%. An SMR option is above renewables in 1.1% of draws.
+- **Threshold.** Putting one criterion's weight at w and sharing the rest equally, an SMR option first ranks first only when life cycle carries at least 0.936. For the other six criteria it never does.
+- **SMR versus SMR + C1.** They never swap places in any of the 56 tests.
+
+*Table B33. Input changes that alter first place or the order (base weights). All other changes leave "renewables > status quo > SMR" in all four sets.*
+*Source: `results/mcda.md` §6 (17 input cases × 4 weight sets = 68 tests).*
+
+| Change | Result |
+|---|---|
+| Worst case for renewables (SMR A$198, renewables A$153) | W2: status quo first; others unchanged |
+| Status quo social licence at 14 (instead of 13) | W2: status quo first; others unchanged |
+| Status quo supply = renewables' HHI (6,400) | W2: renewables > SMR > status quo; others unchanged |
+| Fixed global scales (best and worst fixed in advance) | All four sets: renewables > SMR > status quo |
+
+The unchanged cases include the alternative GenCost reading (SMR A$514, renewables A$102), first power in 2035 and 2045, renewables from 2030, grid paths NEM-T1 and T0 (frozen at 640 g/kWh), renewables at 83 g/kWh, enrichment HHI of 5,621, PV China share of 95% (HHI 9,025), status quo cost equal to renewables' LCOE, status quo social licence of 11, a C1 delay of 14.6 days, and a C1 premium of 20% with C$3 m qualification. Reading: renewables first is robust to every input tested. **The status quo above the SMR is not:** it comes from the four-option scale, where doing nothing scores full marks on cost, supply and legal feasibility.
+
+#### B7.5 SMR versus SMR + C1 under each C1 case
+
+*Table B34. Effect of C1 on the SMR's life cycle and score, by C1 case.*
+*Source: `results/mcda.md` §7. The 1,100, 2,200 and 3,300 t cases (eligibility of 20/40/60%) are placeholders until the final §6 [C1 saving: per final §6]. The 1,734 t case is the result in §6.3 as it stands.*
+
+| C1 case | Saving (t/unit) | Life cycle, SMR → SMR + C1 (g/kWh) | Change | Score gap, equal weights (points) | Score gap if qualification is free |
+|---|---:|---|---|---:|---:|
+| 1,734 t | 1,734 | 4.200 → 4.1878 | 0.0122 g/kWh (0.29%) | −0.0016 | +0.00038 |
+| 1,100 t | 1,100 | 4.200 → 4.1922 | 0.0078 g/kWh (0.18%) | −0.0017 | +0.00024 |
+| 2,200 t | 2,200 | 4.200 → 4.1845 | 0.0155 g/kWh (0.37%) | −0.0015 | +0.00049 |
+| 3,300 t | 3,300 | 4.200 → 4.1767 | 0.0233 g/kWh (0.55%) | −0.0012 | +0.00073 |
+
+In every case the CO₂e avoided to 2050 rises only from 3.845 to 3.846 Mt, and the extra cost is A$0.038/MWh. The gap is slightly negative in the base case because the assumed C$1 m qualification cost outweighs a 0.016 g/kWh gain on a criterion whose range is 636 g/kWh; with free qualification it turns positive but stays below 0.001 point. **Delay case.** If C1 slips the unit by 14.6 days (the old-case whole-life break-even of B5.3, used as an illustration), the CO₂e not avoided at Liddell during the delay is 25.5 kt, which is 12 times the 2,200 t saving (15 times the 1,734 t saving). SMR + C1 then avoids less than the plain SMR, so the schedule-neutral condition decides the sign. The denominator caveat applies: the 4.2 g/kWh base comes from the earlier 20,700 m³ model, and the percentages must be re-read from the final §6.
+
+#### B7.6 Limitations
+
+1. Social licence, legal feasibility and the renewables supply score are our scored judgement (Table T13; Table B13; B7.1). The weights are our reading, not elicited. A stakeholder survey would replace them.
+2. Local min–max scaling makes each score depend on which options are compared. The status quo's second place changes on fixed global scales (B7.4).
+3. Renewables' supply HHI uses solar PV only; batteries, wind turbines and transmission are not assessed, and the IEA (2022) report was not opened.
+4. TRL is not scored, and first-power years depend on CSIRO's "2040 at the earliest" and the Coalition's 2035 [TO VERIFY: Leroy §4.1].
+5. Renewables' 30 g/kWh and 2028 start are assumptions. GenCost's table and year are unconfirmed (TODO 11). Adding several TWh of renewables would itself change the grid trajectory (B6.4).
+6. The DCLG manual was not opened (gov.uk blocked).
+
+**Reproduce.** From the repository root: `python3 -I 03_LCA_Calculations/scripts/mcda.py --c1-case new_2200` (cases: `old_1734`, `new_1100`, `new_2200`, `new_3300`). Inputs are in `03_LCA_Calculations/parameters_run9.yaml`; outputs are `results/mcda.md` and `results/mcda_scores.csv`.
+
+---
+
 ### IDs covered (towards the HD descriptor) and what is still missing
 
 - **RB.5 (full calculations in an appendix, results summarised in the main text).**
@@ -702,7 +828,7 @@ Our Darlington LCOE (`results/lcoe.md`; case B, 60 years, vendor operating costs
   - Produced: quantitative tables for the political and supply arguments, the qualitative route scoring clearly labelled as judgement, and every unverified input marked.
   - Missing: no primary source opened; One Nation, Babet and the 2024 state rejection still lack sources.
 - **R2.7 and R1.3 (supporting).** Produced: all sensitivity rows, both threshold classes, the company-versus-country contrast, and the limitations. Missing: the CRAI range for Rosatom; the Red Book edition decision.
-- **R3.6 (supporting).** Produced: the scored route comparison with a weight test, ready for §9. Missing: the §9 MCDA itself.
+- **R3.6, RB.8, R2.4, R2.6 (v3, B7, supporting §9).** Produced: the full MCDA working (criteria and sources, normalisation formula and worked example, four weight sets, ±50% and random-weight rank-reversal tests, input sensitivities, both C1 cases, limitations, reproduce command). Missing: TRL as a criterion; the final C1 saving [C1 saving: per final §6]; verified inputs.
 
 ### Remaining TODOs
 
@@ -715,9 +841,9 @@ Our Darlington LCOE (`results/lcoe.md`; case B, 60 years, vendor operating costs
 7. **[TODO: team decision]** Red Book edition for Australia's resource share (B2.3).
 8. **[TODO: Leroy, references]** Disambiguate CNSC 2026a (project page) and 2026b (hold-point page); fix "Parliament of New South Wales, 2025–26" to a single year with a suffix; confirm the WNA page years; give REGDOC-3.5.1 its year.
 9. **[TODO: bill date]** ANNPSR bill introduction date (Bills Digest No. 32, 2023–24), to give the "Act to operating regulator" interval exactly.
-10. **[TODO: coordinator]** Displacement, schedule value and same money are now B4–B6 (v2). Still to write: the LCOE subsection (with §8.2) and B7 MCDA (Q14).
-11. **[TO VERIFY: GenCost table/year, Victor]** Confirm that A$230–382 is GenCost 2023-24's 2030 SMR value and A$89–125 the 2030 firmed-renewables value. B6 is already on that reading; if the table differs, edit `parameters_run1.yaml` and re-run `same_money.py`.
+10. **[TODO: coordinator]** Displacement, schedule value and same money are now B4–B6 (v2) and the MCDA is B7 (v3). Still to write: the LCOE subsection (with §8.2).11. **[TO VERIFY: GenCost table/year, Victor]** Confirm that A$230–382 is GenCost 2023-24's 2030 SMR value and A$89–125 the 2030 firmed-renewables value. B6 is already on that reading; if the table differs, edit `parameters_run1.yaml` and re-run `same_money.py`.
 12. **[TO VERIFY, Victor]** The federal carbon price path (C$95 in 2026, C$115 in 2030) on canada.ca. `initiative_cost.py` and `schedule_value.py` already use it (the 44–223× is scripted).
 13. **[TO VERIFY]** The B4–B6 inputs in Table B15 and Table B24 (TAF 2025 average and marginal definition; NGA 2025; CER; IESO 2040; AEMO coal exit; AER/AGL Liddell closure; RBA rate; OPG C$149/MWh, whose `opg_oeb_lcoe_lead` entry must be merged from `sources_run5.md` into sources.md; the Bayswater closure date).
 14. **[TODO: Leroy]** Net MWe (300 vs 315: add 315 to the B4 sensitivity), capacity factor, design life and start years.
 15. **[Before submission]** Strip the [TO VERIFY]/[TODO] markers and the changelog comment; set the final table numbers.
+16. **[C1 saving: per final §6]** Re-run `mcda.py` and update B7.1, B7.5 and Table B34 when the team's re-based C1 saving and life-cycle total land. **[TODO: Leroy §4.1]** add TRL if available. **[TODO: sources.md]** merge `Dodgson_2009_MCA` and `iea2022_pv_supply` from `sources_run9.md`.
