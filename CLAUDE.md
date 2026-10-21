@@ -3,7 +3,7 @@
 Monash MTE4593 Materials and Sustainability, S2 2026, Assignment 2 (team, 30%).
 Report is worth 25% (15-20 pages of text; figures, graphs and appendices not counted). Presentation is worth 5%.
 **Slide deck due Thursday 22 October 2026** (postponed; the presentation is in the week 11 workshop). **Report due Friday 23 October 2026.** The official marking rubric is `00_Brief/rubric.md`; follow it exactly. Prioritise what the rubric rewards most, within the time left.
-Read `README.md` for current status.
+**Read `01_Report/context-card.md` first**: decisions, key numbers, file map, blocked hosts. Don't read `plan.md`, `review.md`, `factcheck.md` or `sources.md` whole. The logs are split into `01_Report/review/` and `01_Report/factcheck/`; use Grep for bibliography entries.
 
 ## The rubric is the contract (read before anything else)
 `00_Brief/rubric.md` (the official Assignment 2 Report Marking Rubric 2026) is the single standard for all work. Nothing else (style preferences, agent judgement, "good practice") can override it.
@@ -32,10 +32,10 @@ Agents can't call each other. The main Claude session is the coordinator: it cal
 
 | Agent | Reads | Writes |
 |---|---|---|
-| `examiner` | Brief, rubric, everything in the report | `01_Report/plan.md`, `01_Report/review.md`, `01_Report/rubric-tracker.md` (sole owner) |
+| `examiner` | Context card, rubric, the sections under review | `01_Report/plan.md`, `01_Report/review/`, `01_Report/rubric-tracker.md` (sole owner) |
 | `policy-economics-analyst` | `plan.md`, Sam's results | `02_Research/sources.md`, `02_Research/briefs/`, `03_LCA_Calculations/` (parameters, scripts, results) |
 | `writer` | `plan.md`, briefs, results, `review.md`, `factcheck.md` | `01_Report/sections/` |
-| `fact-checker` | Sections, sources, scripts | `01_Report/factcheck.md` |
+| `fact-checker` | Changed sections, sources, scripts | `01_Report/factcheck/` |
 | `lca-analyst` | Plan, Sam's partial data, sources | `parameters_lca.yaml`, LCA scripts and results, `sources_lca.md`, `granta_inputs.md` |
 
 Standard loop (say "run the loop on section X"):
@@ -45,7 +45,7 @@ Standard loop (say "run the loop on section X"):
 4. `fact-checker` verifies it.
 5. `examiner` marks it. If it isn't at HD on every criterion, go back to step 2 or 3 with the review.
 
-All agents run on Opus at high effort (set in each agent file). Run the examiner at **max** effort for the first plan and the final pre-submission review.
+Models (21/10, to save usage): **examiner, lca-analyst and policy-economics-analyst on Opus; writer and fact-checker on Sonnet**, all at high effort. Run the examiner at **max** effort for the final pre-submission review. Coordinator: keep `context-card.md` current after each job.
 
 Teammates' sections in `01_Report/sections/` are fact-checked and reviewed too, but feedback goes to the owner in `review.md` and the agents never rewrite their work.
 Scope work to the person asking. When Victor asks, prioritise the yellow sections, but flag anything that blocks the whole report.

@@ -1,8 +1,8 @@
-Rubric coverage: R1.4, R5.4 (single bibliography)
+Rubric coverage: R1.4, R1.3, R5.4, R3.2, R3.3, R4.3, R2.3 (single bibliography)
 
 # Sources
 
-Merged from analyst runs 1–3 (20/10/2026). Entries marked TO VERIFY were seen only in search extracts: the environment network blocked the primary sites. Confirm before citing.
+Merged from analyst runs 1–4 (20/10/2026); run 7b (21/10/2026, plan job Q3) added the block at the end and merged the two Parliamentary Library entries into APH_2024. Entries marked TO VERIFY were seen only in search extracts: the environment network blocked the primary sites. Confirm before citing.
 
 
 ---
@@ -137,8 +137,9 @@ Status tags: **[TO VERIFY]** = lead only. **[URL TODO]** = the primary's exact U
 
 ### ipcc2014_annex3
 **Reference (TO VERIFY authors):** Schlömer, S. et al., 2014. Annex III: Technology-specific cost and performance parameters. In: *Climate Change 2014: Mitigation of Climate Change. Contribution of Working Group III to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change*. Cambridge: Cambridge University Press. [URL TODO, ipcc.ch].
-- **Findings:** **None confirmed.** The values commonly quoted for nuclear (min 3.7, median 12, max 110 g CO₂e/kWh) did not appear even in a search result on 20/10. A 2026 arXiv preprint (not peer-reviewed; https://arxiv.org/pdf/2608.29717) says it checked coal at 820 and gas at 490 against the IPCC PDF.
-- **Use:** stress test only until Table A.III.2 is opened.
+- **Findings:** **None confirmed in the primary.** Run 7b (21/10) search leads, both secondary (Wikipedia's table citing IPCC 2014; LowCarbonPower blog reproducing the IPCC table): nuclear **min 3.7, median 12, max 110** g CO₂eq/kWh; coal (pulverised) **740 / 820 / 910**. The same blog shows a second coal set (670/760/870) under another heading, so the table must be opened to confirm which is Annex III. A 2026 arXiv preprint (not peer-reviewed; https://arxiv.org/pdf/2608.29717) says it checked coal at 820 and gas at 490 against the IPCC PDF.
+- **Reference to complete:** the full author list and page range of Annex III from the chapter title page (only "Schlömer, S. et al." is confirmed). Table A.III.2 is the life-cycle table to cite.
+- **Use:** benchmark (min/median/max) once Table A.III.2 is opened; until then stress test only, with [TO VERIFY].
 
 ### nrel2021_lca
 **Reference:** National Renewable Energy Laboratory, 2021. *Life Cycle Greenhouse Gas Emissions from Electricity Generation: Update*. [pdf] Golden, CO: NREL. NREL/FS-6A50-80580 [TO VERIFY report number]. Available at: https://www.nrel.gov/docs/fy21osti/80580.pdf.
@@ -222,9 +223,9 @@ Queensland Government, 2007 (as amended). *Nuclear Facilities Prohibition Act 20
 - **Supports:** §8.1 (state veto points; Tarong and Callide).
 
 ### StateBans_Summary
-Holding Redlich, n.d. *Nuclear law: Could Australia go nuclear?* [online] Available at: https://www.holdingredlich.com/nuclear-law-could-australia-go-nuclear [Accessed 20 October 2026; not opened]. Also: Parliamentary Library, 2024. *Current prohibitions on nuclear activities in Australia: a quick guide*, 30 May. [online] Available at: https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Parliamentary_Library/Research/Quick_Guides/2023-24/NuclearActivitiesProhibitions.
+Holding Redlich, n.d. *Nuclear law: Could Australia go nuclear?* [online] Available at: https://www.holdingredlich.com/nuclear-law-could-australia-go-nuclear [Accessed 20 October 2026; not opened]. The Parliamentary Library quick guide that this entry used to list is now a single entry, **APH_2024** (run 7b merge; factcheck B11).
 - **Findings (extract):** South Australia has no ban on nuclear power plants, but its *Nuclear Waste Storage Facility (Prohibition) Act 2000* bans waste storage facilities and public funding for them. WA's *Nuclear Waste Storage and Transportation (Prohibition) Act 1999* bans storing and transporting certain nuclear waste; a 2007 WA bill to ban power plants did not pass. Tasmania and the ACT have no state-level power or waste bans.
-- **Reliability:** The Parliamentary Library guide is Primary-adjacent (parliamentary research) and should be the one cited; the law firm is Secondary-good.
+- **Reliability:** The Parliamentary Library guide (APH_2024) is Primary-adjacent (parliamentary research) and should be the one cited for the state table; the law firm is Secondary-good.
 - **Supports:** §8.1 (table of jurisdictions).
 
 ---
@@ -410,6 +411,7 @@ CSA Group, 2023. *CSA A3000:23, Cementitious materials compendium* (includes CSA
 [Authors TO VERIFY], 2026. 'Systematic evaluation of concrete placement reliability in heavily reinforced nuclear structures'. *International Journal of Concrete Structures and Materials* [journal TO VERIFY from DOI prefix s40069]. Available at: https://link.springer.com/article/10.1186/s40069-026-00964-8 [Accessed 20 October 2026; not opened].
 - **Findings (extract):** Fly ash and ground granulated blast-furnace slag "are widely adopted in NPP concrete mixes" to cut heat of hydration and improve durability. "High replacement levels" are common in massive NPP concrete, which complicates control of the fresh concrete.
 - **Reliability:** Secondary-good (peer-reviewed), once opened.
+- **Authors (factcheck L17, A14):** still not found. Run 7b searched the DOI suffix and the title (21/10): no hit. The DOI should be 10.1186/s40069-026-00964-8; open the Springer page for the author list. If it cannot be completed by Q19, cut the citation or replace it with a peer-reviewed slag-in-nuclear-concrete source.
 - **Supports:** §5, §8.6 (precedent: blended binders are normal in nuclear concrete; calcined clay is not yet).
 
 ### CIB_2022_Loan
@@ -592,8 +594,9 @@ Kazatomprom, 2025. *Integrated Annual Report 2024*. [pdf] Astana: NAC Kazatompro
 - **Reliability:** High for the company's own output; the 21% share is UxC's. It cross-checks WNA's 21%.
 - **Supports:** Appendix B, company-level bound.
 
-### APH_2024
-Parliamentary Library, 2024. *Nuclear activities prohibitions: a quick guide*. [online] Canberra: Parliament of Australia, 30 May 2024. Available at: https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Parliamentary_Library/Research/Quick_Guides/2023-24/NuclearActivitiesProhibitions [Accessed 20 October 2026; not opened].
+### APH_2024 (merged entry; replaces the Parliamentary Library half of StateBans_Summary)
+Gibson, E., 2024. *Current prohibitions on nuclear activities in Australia: a quick guide*. Research Paper Series 2023–24, Quick Guide. [online] Canberra: Parliamentary Library, Parliament of Australia, 30 May. Available at: https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Parliamentary_Library/Research/Quick_Guides/2023-24/NuclearActivitiesProhibitions (PDF copy: https://aph.gov.au/About_Parliament/Parliamentary_departments/Parliamentary_Library/pubs/rp/rp2324/Quick_Guides/NuclearActivitiesProhibitions) [Accessed 21 October 2026; not opened]. **[TO VERIFY]** title, author (Dr Emily Gibson) and date are from a search summary (run 7b); the run 3 title "Nuclear activities prohibitions: a quick guide" was the URL slug, not the page title. Check the series line on the title page.
+- **Scope (search summary, run 7b):** maps Commonwealth, state and territory bans on nuclear activities for the domestic nuclear-energy debate; excludes the AUKUS submarine amendments and international safeguards obligations; defines a nuclear activity as any step in the fuel cycle.
 - **Findings (extract):** EPBC Act s140A(1) bars the minister from approving a nuclear fuel fabrication plant, a nuclear power plant, an enrichment plant or a reprocessing facility. ARPANS Act s10 bars the CEO from licensing the same four. **Conversion plants are not on either list.** Some state laws (NSW; a 2007 Queensland bill) do cover conversion.
 - **Reliability:** High (Parliamentary Library), but run 2 owns the law and must confirm the wording in the Acts themselves (Federal Register of Legislation, current compilations).
 - **Supports:** §8.1, §8.3 (domestic conversion is the one front-end step that federal law doesn't prohibit by name; TO VERIFY with run 2).
@@ -912,3 +915,133 @@ Rubric coverage: R2.3, R2.7, R3.1, R4.3, R1.4
 - **Reference:** our own model: lca-analyst (2026) *Life-cycle assessment of one BWRX-300 at Darlington, and the C1 LC3 initiative*. `03_LCA_Calculations/results/lca.md`, `lca_scenarios.csv`, `lca_montecarlo_summary.csv` (21 October 2026). Not an external source: cite as "this study, Appendix A/C".
 - **Numbers used in Q2:** life cycle 4.18 g CO₂e/kWh median (P5–P95 3.05–5.85), C1 saving 1,734 t per unit (1,387–2,153), 5,201 t for Units 2–4 (4,161–6,458).
 - **Reliability:** reproducible calculation; every input still TO VERIFY (lca-analyst).
+
+---
+
+## From analyst run 7b (21/10/2026; plan.md §7 job Q3)
+
+Rubric coverage: R1.4, R1.3, R5.4, R4.3, R3.2, R2.3, R2.5, RB.6
+
+**Access status.** curl through the proxy got `CONNECT tunnel failed, response 403` for every primary host tried (silex.com.au, nrc.gov, urenco.com, asx.com.au, arxiv.org, onlinelibrary.wiley.com, doi.org, crossref, link.springer.com, laccei.org, crsi.org, iso.org, nwmo.ca, legislation.gov.au, austlii, algoma.com, arcelormittal.com, federalregister.gov, gle-us.com). WebFetch failed at DNS for silex.com.au and arxiv.org. **Everything below comes from web-search summaries and is [TO VERIFY]** until a person opens the URL. Nothing here may ship without its marker resolved at Q19.
+
+**Already in this file (no new entry needed; Q3 list item checked):** Krall_2022, Lowy_2024, OWID_deaths, Markandya_Wilkinson_2007, Sovacool_2016, UAMPS_NuScale_2023, NuScale_DCRA_2023, DOE_CFPP_2020, GEH_AI_2021 and GEH_JAIF_2018 (all in the run 4 block above). The factcheck rows that call them "not found" (S5, S22, S34, S36, S37) predate the run 4 merge.
+
+### A. Standards and law
+
+#### ISO_14040_2006
+International Organization for Standardization, 2006. *ISO 14040:2006 Environmental management — Life cycle assessment — Principles and framework* (amended by ISO 14040:2006/Amd 1:2020). Geneva: ISO. [URL TODO: iso.org catalogue page] [Not opened]. **[TO VERIFY]**
+- **Findings (search summary):** principles and framework for LCA; one amendment (Amd 1:2020); the consolidated EN ISO 14040:2006+A1:2020 is listed by the Estonian standards body (EVS, https://www.evs.ee/en/evs-en-iso-14040-2006-a1-2020-consolidated) as valid from 2 November 2020. EVS notes it is not intended for contractual, regulatory or certification use.
+- **Reliability:** the standard itself (paywalled). High for definitions; cite for structure only.
+- **Supports:** §2, §6.1 (factcheck L1, L71: "structured on ISO 14040/44; screening study, not critically reviewed").
+
+#### ISO_14044_2006
+International Organization for Standardization, 2006. *ISO 14044:2006 Environmental management — Life cycle assessment — Requirements and guidelines* (amended by ISO 14044:2006/Amd 1:2017 and Amd 2:2020). Geneva: ISO. Available at: https://www.iso.org/standard/38498.html [Not opened]. **[TO VERIFY]**
+- **Findings (search summary):** two amendments (2017, 2020); ISO's page says the base edition was last reviewed and confirmed in 2022. The EN version is listed as A1:2018 + A2:2020 by one national body, so cite the ISO dates, not the EN ones.
+- **Check:** the critical-review clause for comparative assertions disclosed to the public (needed for the L71 wording).
+- **Supports:** §2, §6.1.
+
+#### EN_15804_2019
+European Committee for Standardization, 2019. *EN 15804:2012+A2:2019 Sustainability of construction works — Environmental product declarations — Core rules for the product category of construction products* (with corrigendum AC:2021). Brussels: CEN. Catalogue: https://iteh.eu/catalog/standards/cen/c98127b4-8dc2-48a4-9338-3e1366b16669/en-15804-2012a2-2019; BSI: https://knowledge.bsigroup.com/products/sustainability-of-construction-works-environmental-product-declarations-core-rules-for-the-product-category-of-construction-products-2 [Not opened]. **[TO VERIFY]**
+- **Findings (search summary):** core product-category rules for Type III declarations of any construction product; A2 approved by CEN on 21 July 2019. Modules A1–A3 = product stage; A4–A5 = construction stage (secondary guides; confirm in the standard).
+- **Supports:** §6.1, Appendix A5 (factcheck L62: "cradle-to-gate (EN 15804 modules A1–A3)").
+
+#### AU_Constitution_s109_s23
+*Commonwealth of Australia Constitution Act 1900* (Imp) [regnal-year citation TO VERIFY on the Federal Register title page], covering clause 9 (the Constitution), ss 23 and 109. [online] Federal Register of Legislation [URL TODO]; AustLII copy of s 109: https://www.austlii.edu.au/au/legis/cth/consol_act/coaca430/s109.html [Not opened]. **[TO VERIFY]**
+- **s 109 (wording in the AustLII extract):** "When a law of a State is inconsistent with a law of the Commonwealth, the latter shall prevail, and the former shall, to the extent of the inconsistency, be invalid."
+- **s 23:** Senate voting. **Its wording did not appear in any extract this session**; open the text before §8.1 or Appendix B1.2 quotes it or relies on how a tied vote is resolved.
+- **Harvard note:** Harvard (style guide) cites the Constitution by name and section, without an author: *Commonwealth of Australia Constitution Act 1900* (Imp) s 109.
+- **Supports:** §8.1 (federal override of NSW s 8; factcheck A9, A26), App B1.2 (Senate arithmetic).
+
+### B. Waste governance (Canada)
+
+#### NWMO_2024_SiteSelection
+Nuclear Waste Management Organization, 2024. *The Nuclear Waste Management Organization selects site for Canada's deep geological repository for used nuclear fuel* [news release], 28 November. Toronto: NWMO. Available at: https://www.nwmo.ca/News/The-Nuclear-Waste-Management-Organization-selects-site-for-Canadas-deep-geological-repository [Not opened]. **[TO VERIFY]**
+- **Findings (search summary; several outlets agree, e.g. Bruce Power's reprint of 28 Nov 2024):** NWMO chose the Wabigoon Lake Ojibway Nation (WLON) and Township of Ignace area, Northwestern Ontario, after a 14-year process that began with 22 interested communities. Ignace residents and WLON members voted in favour. Repository more than 500 m deep; construction could start in the 2030s, with operation about 2040–2045. Still needs CNSC licences and a federal impact assessment. Reported cost about C$26 bn (2020 dollars) over 175 years; C$170 m over 81 years to the Ignace area (secondary).
+- **What it supports:** Canada's plan is direct disposal of used fuel in a deep geological repository under NWMO's Adaptive Phased Management (APM) (factcheck L13). **Check:** the APM name and "used fuel, not reprocessed" wording on nwmo.ca (APM page), or cite NWMO (2005) *Choosing a Way Forward* if it can be opened [URL TODO].
+- **Also useful for R3.3:** a working precedent of host-community and First Nation consent (willingness votes) for a nuclear facility.
+- **Reliability:** primary (the implementing agency), once opened.
+- **Supports:** §6.2 hotspot 3, T9, §8.4 (social licence precedent), §8.6.
+
+### C. Silex / Global Laser Enrichment (factcheck B15, S21, L77; plan B15 go/cut)
+
+#### NRC_GLE_PLEF (update to the run 4 entry above)
+- **New lead (search summary, 21/10):** the NRC page sets the review schedule by Commission Order **CLI-26-3 (4 March 2026)**: EIS by September 2026, safety evaluation report by January 2027, then the mandatory hearing. GLE's CEO said at the World Nuclear Symposium 2026 (September, London) that GLE expects the licence in **early 2027** (reported in trade press; company statement, not the NRC's). No licence has been issued as far as the leads show.
+
+#### Silex_ASX_2025_NRCacceptance
+Silex Systems Limited, 2025. *[Title TO VERIFY: NRC accepts GLE's Paducah licence application for review]*. ASX announcement, 6 August. Sydney: ASX. Available at: https://announcements.asx.com.au/asxpdf/20250806/pdf/06mkwks19y2zck.pdf [Not opened]. **[TO VERIFY]**
+- **Findings (search summary):** the NRC completed its acceptance review of the Paducah Laser Enrichment Facility (PLEF) application in August 2025, so formal review could begin. GLE is 51% Silex, 49% Cameco.
+- **Reliability:** primary (continuous-disclosure filing). High once opened.
+
+#### Silex_ASX_2026_Offtake
+Silex Systems Limited, 2026. *[Title TO VERIFY: Cameco exclusive offtake agreement for the Paducah Laser Enrichment Facility]*. ASX announcement, 16 September. Sydney: ASX. [URL TODO: ASX announcements platform, code SLX]. Pointer: World Nuclear News, *Cameco in offtake agreement for US laser enrichment plant*, https://www.world-nuclear-news.org/articles/cameco-in-offtake-agreement-for-us-laser-enrichment-plant [Not opened]. **[TO VERIFY]**
+- **Findings (search summary):** Cameco will buy **all** future PLEF output under an exclusive offtake: natural-grade UF₆ from re-enriched tails, LEU, LEU+ (5–10% U-235) and HALEU, priced at Cameco's average realised long-term price net of selling costs. Silex calls it a commercial pillar for a future final investment decision (so **no FID yet**).
+- **Why it matters (R4.3):** Cameco is also OPG's uranium and conversion supplier for Darlington Unit 1 (OPG_2023_fuel). That gives a sourced chain: an Australian-invented enrichment technology → licensing in the US → output sold through Darlington's own fuel supplier, while EPBC s 140A and ARPANS s 10 bar an enrichment plant in Australia. **No lead says s 140A caused the offshore location**; do not write "because".
+- **Reliability:** primary once opened; WNN is the pointer only.
+
+#### Silex_ASX_2026_Incentives
+Silex Systems Limited, 2026. *[Title TO VERIFY: Kentucky incentives package for GLE]*. ASX announcement, 27 March. [URL TODO: ASX platform; seen only as a third-party mirror, https://bulletin.webull.com/qbd/announcement/20260327/499501885/84e68402a13428a03783e2065957cc96.pdf, not to be cited]. **[TO VERIFY]**
+- **Findings (search summary):** preliminary approval of a US$98.9 m (about A$144 m) state and county incentives package, conditional on investment and job thresholds.
+- **Use:** optional (one clause in §8.2 on sub-national industrial policy). Low priority.
+
+#### Not found (gap)
+- **PLEF capacity in SWU/yr.** No Paducah-specific figure was found. The 6 million SWU figure belongs to GLE's 2012 NRC licence for the Wilmington plant (not built) and must not be used for Paducah. Tails feed: "over 200,000 t" of DOE tails (GLE, run 4) vs about 300,000 t DUF₆ in another summary; unreconciled.
+
+### D. Ontario steel: blast furnace to EAF (factcheck L18)
+
+#### Algoma_2026_BFclosure
+Algoma Steel Group Inc., 2026. *[Q1 2026 results release / MD&A; title TO VERIFY]*. Sault Ste. Marie: Algoma Steel. [URL TODO: algomasteel.com investor page or SEC/SEDAR+ filing]. Pointer: CTV News Northern Ontario, *Tariffs, transition to electric furnace lead to Algoma Steel's $159M Q1 loss*, https://www.ctvnews.ca/northern-ontario/article/tariffs-transition-to-electric-furnace-lead-to-algoma-steels-159m-q1-loss/ [Not opened]. **[TO VERIFY]**
+- **Findings (search summary):** CEO Rajat Marwah is reported as saying Algoma **permanently closed its blast furnace on 18 January 2026**, ending coal-based steelmaking at Sault Ste. Marie. Algoma had announced on 1 December 2025 that it would close the blast furnace and coke plant and move fully to EAF steelmaking in early 2026, a year early, with about 1,000 layoffs (BNN Bloomberg, 1 Dec 2025, pointer).
+- **Reliability:** news until the company filing is opened.
+
+#### ArcelorMittal_Dofasco_2021
+ArcelorMittal, 2021. *[Title TO VERIFY: ArcelorMittal and Government of Canada announce investment in decarbonisation technologies at ArcelorMittal Dofasco]* [press release], July. [URL TODO: corporate.arcelormittal.com]. Pointers: S&P Global (30 July 2021); Recycling Today; Steel Times International [Not opened]. **[TO VERIFY]**
+- **Findings (search summary, 2021–22 sources):** Hamilton to move from blast furnace/BOF to a 2 Mst/yr DRI plant and a 2.4 Mst/yr EAF shop, targeted for about 2028; about C$1.765–1.8 bn, with C$400 m from the Government of Canada (amounts differ by outlet). **Current status not found.**
+- **What L18 can and cannot say:** the leads support "Ontario's integrated steelmakers are moving from blast furnaces to EAFs (Algoma closed its blast furnace in January 2026; Dofasco plans to)". They do **not** show how much ground granulated blast-furnace slag Ontario concrete draws from these plants, or how much is imported. So §6.3 finding 3 should state the slag-supply point as a **risk**, not as an established shrinkage (the section's own TODO 7 option).
+- **Supports:** §4.3, §6.3 finding 3, §10.
+
+### E. Fuel supply (sizing §8.3; HHI source disagreement)
+
+#### ANS_2026_Urenco
+American Nuclear Society, 2026. 'Urenco to add 2.1 million SWU of enrichment capacity at its New Mexico plant', *Nuclear Newswire*, 2 June. Available at: https://www.ans.org/news/2026-06-02/article-8085/urenco-to-add-21-million-swu-of-enrichment-capacity-at-its-new-mexico-plant/ [Not opened]. **[TO VERIFY]** Primary to find: Urenco's own release of 2 June 2026 (urenco.com).
+- **Numbers (search summary):** existing Urenco USA capacity **4.3 million SWU** (about a third of US demand); a separate **700,000 SWU** project due in **2027**; the new **2.1 million SWU** expansion starts construction in 2029, first cascades 2032, full installation 2036; installed capacity to exceed **7 million SWU** within a decade. Part of a Urenco-wide plan for +4.6 million SWU (US, Netherlands, Germany).
+- **Reliability:** professional-society news reporting a company announcement. Company projections.
+- **Parameters:** `parameters_run3.yaml` → `urenco_usa`.
+
+#### WNU_2025_Platov
+World Nuclear University, 2025. *[Title TO VERIFY: Enrichment]* [presentation slides by Platov, initials TO VERIFY]. WNU Summer Institute, 17 June. Available at: https://world-nuclear-university.org/SummerInsituteFiles/2025-06-17_WNU_Enrichment_Platov_final_62a48c29.pdf [Not opened]. **[TO VERIFY]**
+- **Numbers (search summary):** Russia's four enrichment sites, thousand SWU/yr: 28,600 (2010), 26,600 (2015), 27,700 (2020), **27,100 (2025)**. Over 95% of SWU is produced by four companies.
+- **Use:** second estimate of Rosatom's 2025 capacity in `hhi.py` (Russia 41.0% instead of 42.8%; HHI 2,935 vs 3,009).
+- **Reliability:** training slides from an industry body; medium.
+
+#### CRAI_2025 (source not identified)
+[CRA International, 2025, as recorded in `briefs/supply-concentration.md` by run 3; title, URL and author unknown.]
+- **Numbers (as recorded by run 3, not re-found):** Rosatom 26,200 and CNNC 11,000 thousand SWU/yr for 2025.
+- **Status:** two searches in run 7b found no CRA International document with these figures. **Not citable.** If it is not found and opened by Q19, cut the CRAI row and report the range as WNU–WNA (41.0–42.8%).
+
+### F. Author and reference completions (LCA; entries live in `sources_lca.md`, owned by the lca-analyst)
+
+#### Sun_Kurosaki_2025 (completes `arxiv2025_smr_overview`; factcheck L10)
+Sun, Y. and Kurosaki, K., 2025. *Technical overview of recent developments in small modular reactors in the United States*. arXiv:2504.02599 [physics.soc-ph], submitted 3 April. Available at: https://arxiv.org/abs/2504.02599 [Not opened]. **[TO VERIFY]**
+- **Findings (search summary):** two authors, both Kyoto University; 42 pages, 15 figures; SMRs defined as typically under 300 MWe. **Not peer-reviewed** (preprint), so the 870 MWt and 3.8%/4.95% enrichment values should be replaced by NEDO-33977 or another GEH document where possible.
+
+#### Ng_2025_JIE (completes `ng2025_jie`; factcheck L32)
+Ng, J.H.C., Vyawahare, P., Benavides, P.T., Gan, Y., Sun, P., Boardman, R., Marcinkoski, J. and Elgowainy, A., 2025. Life-cycle greenhouse gas emissions associated with nuclear power generation in the United States. *Journal of Industrial Ecology*, 29(3), pp. 719–732. https://doi.org/10.1111/jiec.70008 [Not opened]. **[TO VERIFY]**
+- **Findings (search summary, RePEc record):** motivated by the IRA hydrogen tax credit (0.45 kg CO₂e/kg H₂ threshold). Projects a 33% (2035) and 46% (2050) fall in the carbon intensity of nuclear electricity relative to the current fuel cycle. The "3.0 g CO₂e/kWh fuel cycle" value and its scope (front end only vs whole fuel cycle) are **still unconfirmed**.
+
+#### LACCEI_2026_2661 (factcheck L20; authors still missing)
+[Authors TO VERIFY], 2026. Comparative life cycle assessment and structural performance analysis of eco-friendly LC3 cement for CO₂ reduction compared to Portland cement. In: *Proceedings of the 24th LACCEI International Multi-Conference for Engineering, Education and Technology*, Santiago, Chile, 15–17 July 2026. Contribution 2661. Available at: https://laccei.org/LACCEI2026-Chile/full-papers/Contribution_2661_final_a.pdf; metadata page https://laccei.org/LACCEI2026-Chile/meta/SP2661.html [Not opened]. **[TO VERIFY]**
+- **Findings (search summary):** compares OPC Type I with ternary LC3 for Latin America (environmental, mechanical, economic); concludes LC3 gives more structural performance per unit of emission. The summary says the authors are Peruvian researchers but gives no names. The **903.5 vs 513.5 kg CO₂e/t** values were not seen. **Open the metadata page for the author list.** Conference paper, not journal; medium reliability.
+
+#### CancioDiaz_2017 (peer-reviewed replacement for ENR 2018 in `lc3_reduction_leads`)
+Cancio Díaz, Y. et al., 2017. Limestone calcined clay cement as a low-carbon solution to meet expanding cement demand in emerging economies. *Development Engineering*, 2, pp. 82–91. https://doi.org/10.1016/j.deveng.2017.06.001 [Not opened]. **[TO VERIFY]** Only the first author was seen in the search summaries; copy the full author list from the article before the reference list is built (Q16).
+- **Findings (search summary):** economic, environmental and social feasibility of five investment options for the Cuban cement industry over 15 years; LC3 cuts production cost by 15–25% against conventional options. **Its CO₂ reduction figure was not seen** (secondary sources give "up to 30%" or "up to 40%").
+- **Recommendation for the lca-analyst:** ENR (trade press) should leave the five-estimate median. Without it the four remaining estimates are 33.6%, 36.6%, about 40% and 43.2%, median **38.3%** (vs 37% now). Cite Cancio Díaz et al. (2017) only for the qualitative feasibility case until its CO₂ number is read. A related peer-reviewed lead: Sánchez Berriel, S. et al., 2016, 'Assessing the environmental and economic potential of Limestone Calcined Clay Cement in Cuba', *Journal of Cleaner Production*, pp. 361–369 [volume TO VERIFY].
+
+#### CRSI_2022_EPD (replaces `crsi2017_epd` 0.97 t CO₂e/t; factcheck L22, L65)
+Concrete Reinforcing Steel Institute, 2022. *Environmental Product Declaration: Fabricated Steel Reinforcement* [industry-wide EPD; title TO VERIFY], issued September 2022, valid to September 2027. Schaumburg, IL: CRSI. Available at: https://www.crsi.org/sustainability/environmental-product-declaration/ (press release: https://www.crsi.org/wp-content/uploads/Press-Release-CRSI-Releases-Updated-EPD.pdf) [Not opened]. **[TO VERIFY]**
+- **Findings (search summary):** cradle to fabricator gate; ISO 14025 and ISO 21930; covers ASTM A615 and A706 bar. **The EPD's own GWP per tonne was not seen.**
+- **Interim lead (secondary, a state procurement document):** Minnesota Department of Administration, 2026, *Buy Clean Buy Fair GWP limits* (15 January 2026), https://mn.gov/admin/assets/2026-MNBuyCleanGWPLimits_2026-01-15_tcm36-721175.pdf, lists rebar at **0.755** (mill gate) and **0.854** (converted for fabricated product; scrap 3.0% A1 multiplier, A2 transport 0.049, A3 fabrication 0.027) in "ton CO₂e/ton steel". Whether this table derives from the CRSI 2022 EPD, and whether the tons are metric, is unconfirmed. These are **procurement limits, not industry averages**. Use only as a sensitivity bound until the EPD is opened.
+
+### G. Red Book edition: proposal for team decision B9
+- **Proposal:** cite **Red Book 2024 (NEA and IAEA, 2025): 28% at < USD 130/kgU**, because only that figure is tied to a named cost category. Add one clause: "the 2026 edition, as tabulated by the World Nuclear Association, gives 27–29% depending on the table (NEA and IAEA, 2026)". Every reading rounds to "about 28%", so the claim ("the largest share of any country") does not depend on the choice.
+- **Switch rule:** if Victor opens *Uranium 2026* and confirms the < USD 130/kgU table, cite 2026 alone (latest edition) and update `parameters_run3.yaml` (`australia.share_identified_recoverable_resources_usd130_rb2026`), slide 13 and §8.3 together.

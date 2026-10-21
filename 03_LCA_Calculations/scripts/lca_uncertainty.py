@@ -262,17 +262,17 @@ for ax, key, ckey, title, unit in [
     ax.axvline(base, color=lp.INK, lw=1)
     ax.set_ylim(-0.7, len(rows) - 0.3 + 0.9)
     ax.text(base, len(rows) - 0.2, f"mode case {base:,.2f}" if key == "g" else f"mode case {base:,.0f}",
-            ha="center", va="bottom", fontsize=8.5, color=lp.INK)
+            ha="center", va="bottom", fontsize=8.5, color=lp.INK, bbox=dict(facecolor="white", edgecolor="none", pad=1.5))
     ax.set_xlim(base - 1.12 * span, base + 1.12 * span)
     ax.set_xlabel(unit)
     ax.grid(axis="y", visible=False)
     ax.set_title(title, fontsize=10)
 from matplotlib.patches import Patch  # noqa: E402
 fig.legend(handles=[Patch(color=lp.BLUE, label="Parameter at its low value"), Patch(color=lp.ORANGE, label="Parameter at its high value")],
-           loc="lower right", ncol=2, bbox_to_anchor=(0.99, -0.06))
+           loc="upper center", ncol=2, bbox_to_anchor=(0.5, 1.06))
 fig.tight_layout()
 lp.save(fig, RESULTS / "F3_tornado.png", "Top 10 inputs per panel, each moved from its low to its high value with all others at their mode (most likely) "
-        "values. Source: this study, scripts/lca_uncertainty.py; ranges in parameters_lca.yaml.")
+        "values.\nSource: this study, scripts/lca_uncertainty.py; ranges in parameters_lca.yaml.")
 
 # ---------------- F4 Monte Carlo ----------------
 fig, axes = lp.plt.subplots(1, 2, figsize=(11.5, 4.2))
@@ -322,13 +322,16 @@ for i, (lab, c, lo, hi, ours) in enumerate(bm[::-1]):
     ax.text(min(hi, XMAX - 0.3) + 0.25, i, txt, va="center", fontsize=8.5, color=lp.INK)
 ax.set_yticks(range(len(bm)))
 ax.set_yticklabels([b[0] for b in bm[::-1]], fontsize=8.6)
-ax.set_xlim(0, XMAX + 3.2)
+ax.set_xlim(0, XMAX + 0.5)
+ax.set_xticks(np.arange(0, XMAX + 0.1, 2.5))
 ax.set_xlabel("Life-cycle g CO₂e per kWh (dot = central, mean or median; line = range or interval)")
 ax.grid(axis="y", visible=False)
 # no embedded title: the Word caption carries "Figure F5" (review.md section 6 point 9)
-lp.save(fig, RESULTS / "F5_benchmarks.png",
-        "Benchmarks are search leads [TO VERIFY]. Off-scale and not drawn: Warner & Heath maximum 110; Gibon scenario range 5.4-122. "
-        "Coal about 750-1,100 and gas CC 403-513 g/kWh (UNECE 2021). " + ("" if ipcc_ok else "IPCC AR5 Annex III added once verified."))
+fig.text(0.01, -0.13,
+        "Benchmarks are search leads [TO VERIFY]. Off-scale and not drawn: Warner & Heath maximum 110; Gibon scenario range 5.4-122.\n"
+        "Coal about 750-1,100 and gas CC 403-513 g/kWh (UNECE 2021). " + ("" if ipcc_ok else "IPCC AR5 Annex III added once verified."),
+         fontsize=7.5, color=lp.MUTED, ha="left", va="bottom")
+lp.save(fig, RESULTS / "F5_benchmarks.png")
 
 g = S["g_per_kwh"]
 s = S["lc3_saving_t_per_unit"]

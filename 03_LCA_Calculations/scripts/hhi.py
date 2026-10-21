@@ -206,7 +206,7 @@ def main() -> None:
 
     # ---------------- Write markdown ----------------
     out += [
-        "Rubric coverage: R3.2, R2.1, R2.4, R2.7, R3.8, R3.5, RB.5",
+        "Rubric coverage: R3.2, R2.1, R2.3, R2.4, R2.7, R1.3, R3.8, R3.5, RB.5",
         "",
         "# HHI for the BWRX-300 fuel supply chain (Appendix B working)",
         "",
@@ -218,7 +218,9 @@ def main() -> None:
         "opened from the analyst's session. Internal checks passed (2024 mining rows sum exactly to the world "
         "total of 60,213 tU; conversion and enrichment rows sum to their stated totals). Victor or the "
         "fact-checker must open each page, confirm the numbers and set `verified: true` before any value goes "
-        "into the report or slides.",
+        "into the report or slides. Run 7b's additions (WNU and CRAI enrichment rows, Urenco USA capacity, section 6 "
+        "sizing) are also search leads; the CRAI document itself has not been identified, and the fuel-cycle inputs "
+        "read from `parameters_lca.yaml` are placeholders.",
         "",
         "## 1. Method",
         "",
@@ -351,6 +353,9 @@ def main() -> None:
         "- **ConverDyn's capacity** (7,000 vs 15,000 tU) is the largest single data uncertainty for conversion; "
         "the higher value lowers the HHI but all conversion cases stay above 1,800.",
         "- **Removing Russia** is the dominant effect at every stage and always increases concentration.",
+        "- **Source of the enrichment capacities** (WNA vs WNU 2025 vs CRAI 2025, run 7b) moves the 2025 HHI from "
+        "3,009 to 2,935–2,991 and Russia's share to 41.0–42.8%: the class is unchanged under both guidelines. The CRAI "
+        "document has not been identified; cut that row at assembly if it is still unsourced.",
         "",
         "## 5. Limitations",
         "",
@@ -453,7 +458,8 @@ def main() -> None:
         f"units, i.e. {pct(swu_lo, uu_now)}–{pct(swu_hi, uu_now)} of Urenco USA today. Natural U across the one-at-a-time "
         f"and envelope cases: {nat_lo:.0f}–{nat_hi:.0f} t U a year.",
         "",
-        "One-at-a-time sensitivity (four units):",
+        "One-at-a-time sensitivity (four units). Net MWe has no effect because thermal power is held at 870 MWt: "
+        "fuel demand scales with heat, and a higher net rating only raises efficiency and output together.",
         "",
         "| Input | End | Value | Natural U (t/yr) | tSWU/yr |",
         "|---|---|---:|---:|---:|",
@@ -488,8 +494,9 @@ def main() -> None:
         f"- Urenco USA's announced additions (+{uu['expansion_2027_kSWU']['value']:,} tSWU by 2027; "
         f"+{uu['expansion_2032_2036_kSWU']['value']:,} tSWU over 2032–2036) are each larger than Darlington's four-unit demand "
         f"by a factor of about {uu['expansion_2027_kSWU']['value'] / four['tSWU']:.0f} and "
-        f"{uu['expansion_2032_2036_kSWU']['value'] / four['tSWU']:.0f}. The binding competition is US utilities replacing "
-        "Russian SWU before the PL 118-62 waivers end on 1 January 2028, not Darlington's own volume.",
+        f"{uu['expansion_2032_2036_kSWU']['value'] / four['tSWU']:.0f}. The binding competition is more likely to be US "
+        "utilities replacing Russian SWU before the PL 118-62 waivers end on 1 January 2028 than Darlington's own "
+        "volume (analyst inference).",
         "- An Australian unit at Liddell would need the same ~34 tSWU and ~49 t U a year per unit, all of it enriched "
         "offshore (sections 2 and 5).",
         "- All inputs are unverified or placeholders. The ratios are robust to them: even the high envelope stays "

@@ -31,8 +31,10 @@ Ontario Power Generation, 2025. *Darlington New Nuclear Project construction upd
 - **Check:** the dated update page; whether the forebay serves one unit or all four. **[TO VERIFY]**
 
 ### opg_basemat_story
-Ontario Power Generation, 2026. Story on the Unit 1 DPSC basemat module lift (plan.md §2.1; news lead: okdiario, July 2026, "Canada just lowered a 953-ton reactor into a 35-meter shaft"). [online] Available at: https://www.opg.com/ [exact URL TODO]
-- **Lead:** about 953 t (2.1 million lb), 37 m across, lowered 35 m into the reactor-building shaft. The news headline misdescribes the module as a "reactor". **[TO VERIFY]**
+Ontario Power Generation, 2026. *Laying the foundation for the G7's first small modular reactor*. [online] 30 April. Available at: https://www.opg.com/news-and-media/story/laying-the-foundation-for-the-g7s-first-small-modular-reactor [Accessed 21 October 2026; identified by web search, **page not opened**: opg.com refused by the proxy (DNS failure via WebFetch, 403 via curl)].
+- **Lead (search-engine summaries of the OPG page, 21/10/2026):** on 22 April 2026 a crawler crane lowered the Unit 1 basemat module into the reactor-building shaft "35 metres below ground"; the module is 37 m in diameter, weighs about 2.1 million lb (= 952.5 t), and is the shared foundation of the reactor building and containment, built from Diaphragm Plate Steel Composite. Consistent secondary reports: World Nuclear News, *Darlington SMR project's foundation module milestone* (about 953 t; https://world-nuclear-news.org/articles/darlington-smr-nuclear-project-foundation-module-milestone, not opened); Vozpópuli (about 1,050 short tons); okdiario (July 2026, the original lead, which misdescribes the module as a "reactor").
+- **Status:** the OPG primary now replaces okdiario as the reference to cite **once a person opens it**. Until then, cite it as read: "(Ontario Power Generation, 2026, as reported by World Nuclear News) [TO VERIFY]", or keep the news-report caveat in §6.2 (factcheck L9). **[TO VERIFY]**
+- **Check:** 37 m diameter; 35 m depth; 2.1 million lb; date. NEDO-33926 Rev. 2 (NRC ML24110A134, not opened) would give the basemat and shaft-wall thicknesses that are still assumptions (`rb_basemat_thickness_m`, `rb_wall_thickness_m`).
 
 ### cnsc_cmd24_h3_1b
 Canadian Nuclear Safety Commission, 2024. *CMD 24-H3-1B* (staff presentation, DNNP). [pdf] Ottawa: CNSC. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD-24-H3-1B.pdf/object
@@ -141,4 +143,4 @@ Ng, et al., 2025. Life-cycle greenhouse gas emissions associated with nuclear po
 - **Lead:** GREET; 3.0 g CO₂e/kWh for the US nuclear fuel cycle; electricity across the fuel chain 53% of it. **Check:** full author list; whether 3.0 includes the plant. **[TO VERIFY]**
 
 ### ipcc2014_annex3, nrel2021_lca
-(In `sources.md`.) Values not confirmed even in a search result; stress tests only.
+(In `sources.md`.) Values not confirmed even in a search result; stress tests only. IPCC AR5 WGIII Annex III Table A.III.2 nuclear min 3.7 / median 12 / max 110 (as commonly quoted) are held as `bm_ipcc2014_*` in `parameters_lca.yaml`; F5 draws them only when set to `verified`. **3.7 is not a Warner and Heath (2012) figure** (factcheck L31). **[TO VERIFY]**
