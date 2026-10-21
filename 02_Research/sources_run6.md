@@ -73,7 +73,7 @@ Canada, 2021. *United Nations Declaration on the Rights of Indigenous Peoples Ac
 - **Supports:** §8.4 (Canada has legislated UNDRIP; Australia has not [TO VERIFY that no Commonwealth equivalent exists]).
 
 ### UNDRIP_2007
-United Nations General Assembly, 2007. *United Nations Declaration on the Rights of Indigenous Peoples*, A/RES/61/295. Available at: https://www.un.org/development/desa/indigenouspeoples/declaration-on-the-rights-of-indigenous-peoples.html [Accessed 21 October 2026; not opened]. **[TO VERIFY]**
+United Nations General Assembly, 2007. *United Nations Declaration on the Rights of Indigenous Peoples* [resolution number and UN URL TODO: not shown in search results; Art. 29(2) text seen in a reproduction, https://nnhrc.navajo-nsn.gov/PressReleases/2012/Apr/040412%20NNHRC%20encourages%20Navajo%20people%20to%20attend%20SB2109%20sessions.pdf]. **[TO VERIFY]**
 - **Findings (search summary):** Article 29(2): States shall take effective measures to ensure that no storage or disposal of hazardous materials takes place in the lands or territories of Indigenous peoples without their free, prior and informed consent. (Paraphrase; quote only from the UN text.)
 - **Reliability:** primary.
 - **Supports:** §8.4 (waste siting), §8.6.
@@ -188,7 +188,7 @@ NWMO, n.d. *Project costs* [online]; NWMO, 2021. *APM 2021 lifecycle cost estima
 - **Supports:** §8.4, §8.5 (the waste producer pays, through a statutory fund), §8.6.
 
 ### NFWA_2002
-Canada, 2002. *Nuclear Fuel Waste Act*, S.C. 2002, c. 23. Available at: https://laws-lois.justice.gc.ca/eng/acts/n-27.7/ [Accessed 21 October 2026; not opened]. **[TO VERIFY]** (the citation is the standard one but was not shown in a search result; check it)
+Canada, 2002. *Nuclear Fuel Waste Act* [chapter number and URL TODO: not shown in any search result; find on laws-lois.justice.gc.ca]. **[TO VERIFY]**
 - **Use:** cite for the trust-fund obligation instead of NWMO's summary.
 
 ---
@@ -338,7 +338,7 @@ Essential Research, 2019. [Essential Report, nuclear power question; date TO VER
 - **All [TO VERIFY]. Reliability:** low; commissioned by interested parties. Report only as a group showing that support fell during the 2025 campaign, never as headline figures.
 
 ### Slovic_1987 (P1)
-Slovic, P., 1987. Perception of risk. *Science*, 236(4799), pp. 280–285. https://doi.org/10.1126/science.3563507 [DOI TO VERIFY] [Accessed 21 October 2026; not opened]. **[TO VERIFY]**
+Slovic, P., 1987. Perception of risk. *Science*, 236(4799), pp. 280–285. [DOI TODO: not seen in search results] Copy seen in search: https://fbaum.unc.edu/teaching/articles/Science-1987-Slovic.pdf [Accessed 21 October 2026; not opened]. **[TO VERIFY]**
 - **Findings (search summary):** lay perceptions of hazards load on two factors: **dread risk** (catastrophic potential, fatal consequences, lack of control, inequitable distribution) and **unknown risk** (new, involuntary, delayed effects, not understood by science or those exposed). Nuclear power scores high on both, at the extreme of the dread factor. Builds on Fischhoff and colleagues (1978) [details TO VERIFY; do not cite until opened].
 - **Check:** the factor-space figure and the exact wording on nuclear power; that the expert vs lay contrast is in this paper.
 - **Reliability:** peer-reviewed, foundational, high.
