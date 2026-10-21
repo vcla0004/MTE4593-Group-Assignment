@@ -23,7 +23,7 @@ Split taken from the "Potential tasks" section of `02_Research/SMR Research Note
 | Green | Leroy | Planned projects and timelines, Google Patents review of US SMR designs, timescales to maturity and rollout |
 | Yellow (added) | Victor | Herfindahl-Hirschman index for uranium and enrichment supply (unassigned in the notes; fits with the supply-chain work) |
 
-Aaron left the unit and is no longer in the group. Remove his name from the presentation title slide.
+**21/10/2026: Sam stopped responding. Victor took over Sam's red sections (§4.3 technical part, §6 LCA, Appendices A and C, F1–F5, T6) using the `lca-analyst` and `writer` agents.** Sam's existing files stay as he left them. Corrected versions are new files, and Sam can review or reclaim the work if he returns. Aaron left the unit and is no longer in the group. Remove his name from the presentation title slide.
 
 ## Agent workflow
 Sam (LCA) and Leroy (projects, patents, timescales) do their own work. The agents support Victor's sections, the shared sections, and quality control for the whole report.
@@ -36,6 +36,7 @@ Agents can't call each other. The main Claude session is the coordinator: it cal
 | `policy-economics-analyst` | `plan.md`, Sam's results | `02_Research/sources.md`, `02_Research/briefs/`, `03_LCA_Calculations/` (parameters, scripts, results) |
 | `writer` | `plan.md`, briefs, results, `review.md`, `factcheck.md` | `01_Report/sections/` |
 | `fact-checker` | Sections, sources, scripts | `01_Report/factcheck.md` |
+| `lca-analyst` | Plan, Sam's partial data, sources | `parameters_lca.yaml`, LCA scripts and results, `sources_lca.md`, `granta_inputs.md` |
 
 Standard loop (say "run the loop on section X"):
 1. `examiner` writes or updates the plan.
