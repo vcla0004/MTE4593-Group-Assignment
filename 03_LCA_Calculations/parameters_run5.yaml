@@ -328,7 +328,7 @@ parameters:
     status: TO VERIFY
   doe_gen3_smr_awards_usd:
     value: 800e6
-    unit: US$ awarded Dec 2025: TVA (BWRX-300, Clinch River) 400 m + Holtec (SMR-300, Palisades) 400 m
+    unit: "US$ awarded Dec 2025 - TVA (BWRX-300, Clinch River) 400 m + Holtec (SMR-300, Palisades) 400 m"
     source: doe2025_gen3smr
     status: TO VERIFY
   cib_loan_cad:
@@ -418,7 +418,7 @@ parameters:
     note: "NO SOURCE FOUND (search 21/10: only the cost of the standard itself, ~C$790). Pure scenario values. Victor/Leroy: ask OPG or a nuclear concrete lab, or keep as an explicit assumption."
   carbon_prices_cad:
     value: [95, 110, 170]
-    unit: C$/t CO2e: federal benchmark 2025, 2026, 2030 (Ontario EPS excess-emissions charge follows it)
+    unit: "C$/t CO2e - federal benchmark 2025, 2026, 2030 (Ontario EPS excess-emissions charge follows it)"
     source: eccc_benchmark; enbridge_eps
     status: TO VERIFY
     note: "ECCC 'Federal carbon pollution pricing benchmark' (canada.ca) and Update 2023-2030: +C$15/yr to C$170 in 2030 (ICAP lead: C$95 in 2025, C$110 for 2026 compliance). Federal consumer fuel charge set to zero from 1 April 2025; industrial benchmark under review (lead). Units 2-4 concrete would be placed about 2029-2033, so C$155-170 is the relevant range if the path holds."
