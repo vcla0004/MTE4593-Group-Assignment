@@ -35,7 +35,8 @@ Updated: 21/10/2026. The coordinator keeps it current. If a number here disagree
 | Social | Lowy 2024: 61% support / 37% oppose; OWID deaths/TWh 0.03 nuclear vs 24.62 coal; Williams Treaties FNs' C$700m loan to equity (23/06/2026) | briefs/social-licence-stakeholders.md |
 
 ## Coordinator handoff (for a fresh session)
-- Done so far: Wave 1 (Q1, Q2, Q3, Q7), runs 5 and 6, §6 v3. Running at handoff time: Q4 (§7 + App B4–B6) and Q6 (§8.2, §8.4, §8.5); check `git log` and `01_Report/sections/`.
+- Done: Wave 1 (Q1, Q2, Q3, Q7), runs 5 and 6, §6 v3, Q4 (§7 + App B4–B6), Q6 (§8.2, §8.4, §8.5; all over budget). Nothing running. Draft preview: `01_Report/draft-preview.docx` (rebuild with pandoc). Victor's speech: `04_Presentation/victor-speech.md`.
+- Known loose ends for Q8: align §6's break-even to 9.2–14.6 days; re-run `same_money.py` on GenCost 2030 (B26–B27 still on A$514); script the 45× hand calculation; draw F6/F7; re-run C$15/m³ in `initiative_cost.py`.
 - Next: G1 (Leroy gate, Victor decides) → Q5/Q9 if triggered; Q8 (after Q1, Q2), Q10; then Wave 3 (Q11–Q21) in `plan.md` §7.
 - Deck: live at https://claude.ai/artifact/58LWT4feZJTcLrq3pi7KQH. Source in `04_Presentation/deck-source/`. Sync any slide edit to both.
 - Commit and push after every job (a stop hook enforces it).

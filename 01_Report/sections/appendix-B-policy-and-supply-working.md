@@ -1,7 +1,10 @@
-Rubric coverage: RB.5, R2.4, R3.8 (also supports R2.1, R2.7, R3.2, R3.4, R3.6, R1.3, R5.2)
+Rubric coverage: RB.5, R2.4, R3.8, R2.1, R2.3, R2.7, R4.3, R3.1, R3.6, RB.6 (also supports R3.2, R3.4, R1.3, R5.2)
 
 <!--
 CHANGELOG
+- v2, 21/10/2026 (writer, Q4). Appended B4 (displacement), B5 (schedule value, including C1's break-even and the 30–223× derivation) and B6 (same money), Tables B15–B28, from Q2's re-based `results/` files; working for §7 and §6.3 finding 5 (factcheck L47; review audit §2, R2 and R4 rows). The rest of v1 is unchanged.
+- B6 states both GenCost readings: §7 uses run 5's 2030 reading (rows in Table B28); Tables B26–B27 are still on run 1's A$514 basis until `same_money.py` is re-run [TO VERIFY: GenCost table/year]. Carbon price: federal path C$95/C$115 [TO VERIFY]; the superseded path is shown for comparison only.
+- One hand calculation (the 45× low end on the current price path, B5.4) is flagged for scripting. Remaining TODO 10 is now partly done (LCOE and MCDA still to come).
 - v1, 20/10/2026 (writer). First draft of Appendix B1–B3, cited from §8.1 and §8.3.
   - review.md A10 and top priority 2; factcheck.md A3, A10 and blocking item 6: the Senate arithmetic, licensing durations, HHI working and route scores now exist in an appendix. The §8.1 and §8.3 pointers are updated to "Appendix B1/B2/B3".
   - factcheck.md A3: the majority of 39 is stated as "all 76 senators voting". review.md §8.1 point 2: the "36 even with every other crossbencher" robustness check is shown (B1.2).
@@ -15,13 +18,16 @@ CHANGELOG
 
 ## Appendix B. Working for the policy and supply-chain analysis
 
-This appendix gives the full working behind §8.1 (law and licensing) and §8.3 (fuel-supply concentration). Every number is produced by a script in `03_LCA_Calculations/scripts/` from a parameter file, so it can be re-run. **No input has yet been checked against its primary source** (`status: TO VERIFY` in `parameters_run2.yaml`; `verified: false` in `parameters_run3.yaml`).
+This appendix gives the full working behind §8.1 (law and licensing), §8.3 (fuel-supply concentration) and §7 (displacement, the value of schedule and the same money). Every number is produced by a script in `03_LCA_Calculations/scripts/` from a parameter file, so it can be re-run. **No input has yet been checked against its primary source** (`status: TO VERIFY` in `parameters_run1.yaml`, `parameters_run2.yaml` and `parameters_run5.yaml`; `verified: false` in `parameters_run3.yaml`).
 
 | Subsection | Script (run from the repository root) | Inputs | Output |
 |---|---|---|---|
 | B1 Legal and political pathway | `python3 -I 03_LCA_Calculations/scripts/law_timelines.py` | `03_LCA_Calculations/parameters_run2.yaml` | `03_LCA_Calculations/results/law_timelines.csv` |
 | B2 Supply concentration (HHI) | `python3 -I 03_LCA_Calculations/scripts/hhi.py` | `03_LCA_Calculations/parameters_run3.yaml` | `03_LCA_Calculations/results/hhi.md`, `hhi_summary.csv` |
 | B3 Routes to a licensable SMR in Australia | none (qualitative scoring) [TODO: move into the MCDA script, analyst run 7] | Law brief §5 | This appendix |
+| B4 Displacement | `python3 -I 03_LCA_Calculations/scripts/displacement.py` | `03_LCA_Calculations/parameters_run1.yaml` | `03_LCA_Calculations/results/displacement.md` |
+| B5 Value of schedule | `python3 -I 03_LCA_Calculations/scripts/schedule_value.py` | `parameters_run1.yaml` (cost inputs read from `parameters_run5.yaml`) | `results/schedule_value.md` |
+| B6 Same money | `python3 -I 03_LCA_Calculations/scripts/same_money.py` | `parameters_run1.yaml` | `results/same_money.md` (cross-check: `results/lcoe.md`) |
 
 ---
 
@@ -314,11 +320,377 @@ Reading: route B ranks last under all three weightings tested. The choice betwee
 
 ---
 
+### B4. Displacement: CO₂e avoided by one BWRX-300, Darlington vs Liddell
+
+**Result.** At static grid factors, one unit avoids 1.50 Mt CO₂e a year on the NSW grid average. That is 9.1× what it avoids on Ontario's 2024 average (0.165 Mt), but only 1.9× its avoidance on Ontario's marginal factor (0.80 Mt). Valued over the years each plant could actually run, the gap mostly closes:
+- Darlington Unit 1 from 2030 avoids **1.01–6.80 Mt to 2050**.
+- Liddell from 2040 avoids **0.67–3.85 Mt to 2050**: less than Darlington on the Step Change proxy, and comparable on the slow transition.
+- Liddell wins clearly only if the NEM stops decarbonising (frozen grid, 16.54 Mt).
+
+The grid trajectory, the start year and the post-coal floor dominate the result. The SMR's own life-cycle value moves it by a few per cent. Script: `python3 -I 03_LCA_Calculations/scripts/displacement.py`, with inputs in `parameters_run1.yaml` and output in `results/displacement.md`.
+
+#### B4.1 Method
+
+1. Annual output of one unit: E = P × 8,760 h × CF = 300 MW × 1,000 kW/MW × 8,760 h × 0.90 = **2,365,200,000 kWh (2.365 TWh) a year**.
+2. CO₂e avoided in year *y*: A(*y*) = E × (EF_grid(*y*) − EF_SMR) / 10⁶ t. EF is in g CO₂e/kWh, and EF_SMR = 4.2 g/kWh (our Monte Carlo median, §6; 90% interval 3.0–5.8).
+3. The cumulative total is the sum of A(*y*) from the first full year of operation to 2035, to 2050 (inclusive), or to the end of a 60-year life.
+4. Each grid trajectory is linear between its anchor points and flat afterwards. These are our constructions, not AEMO or IESO series:
+
+| Case | Path | Role |
+|---|---|---|
+| ON-avg-traj | 73.8 g/kWh (2024) → 15 (2040) | Ontario average |
+| ON-marginal-declining | 343 (2024) → 15 (2050) | Ontario marginal; assumes gas leaves the margin by 2050 |
+| ON-avg-flat, ON-marginal-flat | 2024 values held | Upper bounds |
+| NEM-T1 (Step Change proxy) | 640 (2025) → 30 floor (2038) | Central NEM case |
+| NEM-T2 (slow) | 640 (2025) → 30 (2050) | Slow transition |
+| NEM-T0 (frozen) | 640 held | Upper bound |
+| UB-Bayswater; UB-coal-LCA | 990; 1,000 held | Coal upper bounds |
+
+**Worked example 1 (static, NSW 2025).** 2,365,200,000 × (640 − 4.2) / 10⁶ = **1,503,794 t a year**.
+
+**Worked example 2 (cumulative, Liddell from 2040 on NEM-T1).** The NEM is at its 30 g/kWh floor from 2038, so each year avoids 2,365,200,000 × (30 − 4.2) / 10⁶ = 61,022 t.
+- To 2050 (11 years, 2040–2050): 11 × 61,022 = **671 kt**.
+- Whole life (60 years): 60 × 61,022 = **3.66 Mt**.
+
+*Table B15. Inputs to B4–B6.*
+*Source: `03_LCA_Calculations/parameters_run1.yaml` and the references named; status as in the YAML.*
+
+| Input | Central (range) | Source | Status |
+|---|---|---|---|
+| Net output | 300 MWe (290–300) | Assumption (the deck's value; an OEB filing may give 315) | Placeholder |
+| Capacity factor; design life | 0.90 (0.80–0.95); 60 years (40–80) | Assumption | Placeholder |
+| SMR life cycle | 4.2 g/kWh (3.0–5.8) | This study (§6, Appendix C) | From results; inputs TO VERIFY |
+| Ontario average, 2024 | 73.8 g/kWh (73–73.8) | The Atmospheric Fund (2025) | TO VERIFY |
+| Ontario average, 2022; 2023 | 35; 53 g/kWh | Canada Energy Regulator (n.d.); Government of Ontario (n.d.) | TO VERIFY |
+| Ontario average, 2040 | 15 g/kWh | Independent Electricity System Operator (2024) | TO VERIFY |
+| Ontario marginal, 2024 | 343 g/kWh (343–472) | The Atmospheric Fund (2025); high = gas generation, The Atmospheric Fund (2021) | TO VERIFY (definition ambiguous) |
+| Year gas leaves Ontario's margin | 2050 (2040–2060) | Assumption | Assumption |
+| NSW/ACT grid, 2025 (scope 2) | 640 g/kWh | Department of Climate Change, Energy, the Environment and Water (2025) | TO VERIFY |
+| NEM coal exit (T1); slow exit (T2) | 2038; 2050 | Australian Energy Market Operator (2024); assumption | TO VERIFY (secondary); assumption |
+| NEM floor after coal | 30 g/kWh (0–80) | Assumption | Assumption |
+| Bayswater, sent out | 990 g/kWh | Australian Energy Market Operator (2025) | TO VERIFY (old value) |
+| Coal, life cycle | 1,000 g/kWh (751–1,095) | United Nations Economic Commission for Europe (2021) | TO VERIFY |
+| Start years | Darlington Unit 1 2030; Units 2–4 2035 (2034–2036); Liddell 2035 (Coalition claim), 2040 (CSIRO earliest), 2045 (late case) | Government of Ontario (2025); Ontario Power Generation (2025); ABC News (2024); Graham, Hayward and Foster (2024); assumption | Placeholders (Leroy) |
+
+#### B4.2 Results
+
+*Table B16. Annual CO₂e avoided by one unit at static grid factors.*
+*Source: `results/displacement.md` §2 [inputs TO VERIFY].*
+
+| Displaced electricity | EF (g/kWh) | Avoided (t a year) | Ratio to Ontario average 2024 |
+|---|---:|---:|---:|
+| Ontario average 2022 (CER) | 35 | 72,848 | 0.4× |
+| Ontario average 2023 (energy snapshot; the deck's value) | 53 | 115,422 | 0.7× |
+| Ontario average 2024 (TAF) | 74 | 164,618 | 1.0× |
+| Ontario marginal (TAF 2024) | 343 | 801,330 | 4.9× |
+| Ontario gas-fired generation (TAF 2021) | 472 | 1,106,441 | 6.7× |
+| NSW/NEM average 2025 (NGA Factors, scope 2) | 640 | 1,503,794 | 9.1× |
+| Bayswater coal, sent out | 990 | 2,331,614 | 14.2× |
+| Coal, life cycle (UNECE) | 1,000 | 2,355,266 | 14.3× |
+| Gas combined cycle, life cycle (UNECE) | 458 | 1,073,328 | 6.5× |
+
+*Table B17. Cumulative CO₂e avoided by one unit, by site, start year and grid trajectory (Figure F6 data).*
+*Source: `results/displacement.md` §3 [inputs TO VERIFY].*
+
+| Site | Start | Grid case | Year-1 EF (g/kWh) | To 2035 | To 2050 | Whole life |
+|---|---|---|---:|---:|---:|---:|
+| Darlington Unit 1 | 2030 | ON-avg-traj | 52 | 544 kt | 1.01 Mt | 2.01 Mt |
+| Darlington Unit 1 | 2030 | ON-avg-flat | 74 | 988 kt | 3.46 Mt | 9.88 Mt |
+| Darlington Unit 1 | 2030 | ON-marginal-declining | 267 | 3.29 Mt | 6.80 Mt | 7.80 Mt |
+| Darlington Unit 1 | 2030 | ON-marginal-flat (upper bound) | 343 | 4.81 Mt | 16.83 Mt | 48.08 Mt |
+| Liddell | 2035 | NEM-T0 frozen (upper bound) | 640 | 1.50 Mt | 24.06 Mt | 90.23 Mt |
+| Liddell | 2035 | NEM-T1 Step Change proxy | 171 | 394 kt | 1.64 Mt | 4.33 Mt |
+| Liddell | 2035 | NEM-T2 slow | 396 | 927 kt | 7.90 Mt | 10.59 Mt |
+| Liddell | 2040 | NEM-T0 frozen (upper bound) | 640 | 0 | 16.54 Mt | 90.23 Mt |
+| Liddell | 2040 | NEM-T1 Step Change proxy | 30 | 0 | 671 kt | 3.66 Mt |
+| Liddell | 2040 | NEM-T2 slow | 274 | 0 | 3.85 Mt | 6.84 Mt |
+| Liddell | 2045 | NEM-T0 frozen (upper bound) | 640 | 0 | 9.02 Mt | 90.23 Mt |
+| Liddell | 2045 | NEM-T1 Step Change proxy | 30 | 0 | 366 kt | 3.66 Mt |
+| Liddell | 2045 | NEM-T2 slow | 152 | 0 | 1.23 Mt | 4.53 Mt |
+| Liddell | 2040 | UB-Bayswater flat (upper bound) | 990 | 0 | 25.65 Mt | 139.90 Mt |
+| Liddell | 2040 | UB-coal-LCA flat (upper bound) | 1,000 | 0 | 25.91 Mt | 141.32 Mt |
+
+*Table B18. All four Darlington units (Unit 1 from 2030; Units 2–4 from 2035).*
+*Source: `results/displacement.md` §4 [inputs TO VERIFY].*
+
+| Grid case | To 2035 | To 2050 | Whole life |
+|---|---:|---:|---:|
+| ON-avg-traj | 751 kt | 2.63 Mt | 7.00 Mt |
+| ON-avg-flat | 1.48 Mt | 11.36 Mt | 39.51 Mt |
+| ON-marginal-declining | 4.71 Mt | 18.77 Mt | 23.14 Mt |
+| ON-marginal-flat (upper bound) | 7.21 Mt | 55.29 Mt | 192.32 Mt |
+
+*Table B19. One-at-a-time sensitivity, Liddell central case (start 2040, NEM-T1). Central: 671 kt to 2050; 3.66 Mt over the whole life.*
+*Source: `results/displacement.md` §5 [inputs TO VERIFY].*
+
+| Parameter | Range | To 2050 (low → high input) | Whole life (low → high input) |
+|---|---|---|---|
+| Capacity factor | 0.80–0.95 | 597 → 709 kt | 3.25 → 3.86 Mt |
+| Net output | 290–300 MWe | 649 → 671 kt | 3.54 → 3.66 Mt |
+| SMR life cycle (our 95th → 5th percentile) | 5.8–3.0 g/kWh | 630 → 702 kt | 3.43 → 3.83 Mt |
+| SMR life cycle, UNECE midpoint instead of ours | 5.75 vs 4.2 g/kWh | 631 → 671 kt | 3.44 → 3.66 Mt |
+| SMR life cycle, stress (IPCC lead, unconfirmed) | 110–12 g/kWh | −2.08 Mt → 468 kt | −11.35 → 2.55 Mt |
+| NEM floor after coal exit | 0–80 g/kWh | −109 kt → 1.97 Mt | −596 kt → 10.76 Mt |
+| Coal exit year (T1) | 2035–2045 | 671 kt → 1.75 Mt | 3.66 → 4.74 Mt |
+| Design life | 40–80 years | 671 → 671 kt | 2.44 → 4.88 Mt |
+| Start year | 2035–2045 | 1.64 Mt → 366 kt | 4.33 → 3.66 Mt |
+| Grid trajectory | T1 → T0 (frozen) | 671 kt → 16.54 Mt | 3.66 → 90.23 Mt |
+
+Reading:
+- **Order-of-magnitude drivers.** The grid trajectory, the start year and the post-coal floor each move the result by an order of magnitude. Under T1 the SMR spends its whole life displacing the residual mix, so the floor is in effect the displaced intensity.
+- **Minor drivers.** Capacity factor, net output and our life-cycle interval move it by a few per cent.
+- **When the SMR's own value matters.** Only in the 110 g/kWh stress case, or on a near-zero floor, where the result turns negative.
+
+#### B4.3 Limitations
+1. **Boundary mismatch.** The grid factors (NGA scope 2, TAF, CER) count combustion at the power station only, while the SMR value is life cycle, so displacement is slightly understated. The UNECE coal row gives the boundary-consistent upper bound.
+2. **Average vs marginal.** A new baseload unit displaces what is on the margin when it runs. In Ontario that is mostly gas, so the marginal factor is the better short-run estimate. Over a 60-year life the margin decarbonises, which makes the flat-marginal case an upper bound.
+3. **Counterfactual.** In both grids the real alternative is other new supply, not today's grid forever (B6).
+4. **Liddell closed in April 2023** (Australian Energy Regulator, 2021) [TO VERIFY closure date]. An SMR on the site displaces the NEM mix, so Bayswater is an upper bound only, and Bayswater's own closure date is [TODO: AGL].
+5. **Placeholders.** Net output, capacity factor, design life and start years await Leroy's sourced data. 315 MWe is not yet in the sensitivity [TODO].
+
+---
+
+### B5. Value of schedule: the CO₂e and dollar cost of delay, and C1's break-even
+
+**Result.** On Ontario's average factor, C1's per-unit saving (1,734 t) is cancelled by **9.2–14.6 days** of delay to that unit (gross–net). On the marginal factor it is cancelled by **1.3–1.4 days**. Even all of Units 2–4's saving (5,201 t) is cancelled by 28–44 days (average) or 4.0–4.2 days (marginal) of delay to a single unit. In money, a one-month slip of Units 2–4 costs **30–223 times** C1's carbon value. Script: `python3 -I 03_LCA_Calculations/scripts/schedule_value.py`, with output in `results/schedule_value.md`. The carrying-cost and deferred-output inputs are read from `parameters_run5.yaml`.
+
+#### B5.1 Method
+
+1. Output of one unit: monthly M = E / 12 = 197,100,000 kWh; daily D = E / 365 = 6,480,000 kWh.
+2. **Gross loss** per month of delay = M × (EF_grid(start) − EF_SMR) / 10⁶ t. This is the displacement that does not happen while the plant is late, and it matches carbon budgets to 2035 or 2050.
+3. **Net loss** per month = M × (EF_grid(start) − EF_grid(start + life)) / 10⁶ t. A late plant still runs its full life, so the lost month returns at the end of life, on a cleaner grid. On a flat grid this gives zero by construction, which is an artefact of assuming the grid never changes.
+4. **Break-even delay** for a saving S (t CO₂e) = S / (loss per day), on both bases.
+
+**Worked example (one of Units 2–4, start 2035, ON-avg-traj).**
+1. Grid factor in 2035: EF(2035) = 73.8 − (73.8 − 15) × 11/16 = 33.4 g/kWh.
+2. Gross loss: 6,480,000 × (33.4 − 4.2) / 10⁶ = **189 t a day**, so the break-even is 1,734 / 189 = **9.2 days**.
+3. Net loss: 6,480,000 × (33.4 − 15) / 10⁶ = **119 t a day**, so the break-even is 1,734 / 119 = **14.6 days**.
+
+**Marginal case.** EF(2035) = 343 − (343 − 15) × 11/26 = 204.2 g/kWh. The gross loss is 6,480,000 × 200.0 / 10⁶ = 1,296 t a day, so the break-even is 1,734 / 1,296 = **1.3 days**.
+
+#### B5.2 CO₂e lost per month of delay
+
+*Table B20. CO₂e lost per month of delay, one unit (Figure F6 inset data).*
+*Source: `results/schedule_value.md` §2 [inputs TO VERIFY]. "None" = flat grid, so the month is recovered at the end of life.*
+
+| Site, start year | Grid case | EF at start (g/kWh) | EF at end of life | Gross t/month | Net t/month | Days to cancel 1 kt (gross / net) |
+|---|---|---:|---:|---:|---:|---|
+| Darlington Unit 1, 2030 | ON-avg-traj | 52 | 15 | 9,372 | 7,243 | 3.2 / 4.2 |
+| Darlington Unit 1, 2030 | ON-avg-flat | 74 | 74 | 13,718 | 0 | 2.2 / none |
+| Darlington Unit 1, 2030 | ON-marginal-declining | 267 | 15 | 51,859 | 49,730 | 0.6 / 0.6 |
+| Darlington Unit 1, 2030 | ON-marginal-flat | 343 | 343 | 66,777 | 0 | 0.5 / none |
+| Darlington Units 2–4 (each), 2035 | ON-avg-traj | 33 | 15 | 5,750 | 3,622 | 5.3 / 8.4 |
+| Darlington Units 2–4 (each), 2035 | ON-marginal-declining | 204 | 15 | 39,426 | 37,297 | 0.8 / 0.8 |
+| Darlington Units 2–4 (each), 2035 | ON-marginal-flat | 343 | 343 | 66,777 | 0 | 0.5 / none |
+| Liddell, 2035 | NEM-T0 frozen | 640 | 640 | 125,316 | 0 | 0.2 / none |
+| Liddell, 2035 | NEM-T1 Step Change proxy | 171 | 30 | 32,831 | 27,746 | 0.9 / 1.1 |
+| Liddell, 2035 | NEM-T2 slow | 396 | 30 | 77,224 | 72,139 | 0.4 / 0.4 |
+| Liddell, 2040 | NEM-T0 frozen | 640 | 640 | 125,316 | 0 | 0.2 / none |
+| Liddell, 2040 | NEM-T1 Step Change proxy | 30 | 30 | 5,085 | 0 | 6.0 / none |
+| Liddell, 2040 | NEM-T2 slow | 274 | 30 | 53,178 | 48,092 | 0.6 / 0.6 |
+
+A one-month slip of all three of Units 2–4 loses:
+- 17,251 t gross / 10,865 t net (ON-avg-traj);
+- 118,278 / 111,892 t (ON-marginal-declining);
+- 200,332 / 0 t (ON-marginal-flat).
+
+**Break-even sensitivity** (Units 2–4, ON-marginal-declining; central 1,226 t a day net, 0.8 days per kt):
+- capacity factor 0.80 or 0.95: 0.9 or 0.8 days per kt;
+- marginal factor 472 g/kWh (gas generation): 0.6 days per kt;
+- gas off the margin by 2040: 1.5 days per kt; by 2060: 0.7 days per kt (`results/schedule_value.md` §5).
+
+#### B5.3 Break-even delay for C1
+
+*Table B21. Days of delay that cancel C1's LC3 saving (Units 2–4, start 2035).*
+*Source: `results/schedule_value.md` §6. Saving 1,734 t per unit (90% interval 1,387–2,153) and 5,201 t for Units 2–4 (4,161–6,458), from `lca_scenarios.csv` and `lca_montecarlo_summary.csv` (§6.3). Brackets give the range over the saving's interval only.*
+
+| Grid case (factor type) | Gross t/day per unit | Net t/day per unit | (a) Per unit, gross days | (a) Per unit, net days | (b) Programme saving, one unit late: gross days | (b) Net days |
+|---|---:|---:|---|---|---|---|
+| ON-avg-traj (average, declining to 2040) | 189 | 119 | 9.2 (7.3–11.4) | 14.6 (11.6–18.1) | 27.5 (22.0–34.2) | 43.7 (34.9–54.2) |
+| ON-avg-flat (average, held at 2024) | 451 | 0 | 3.8 (3.1–4.8) | none (flat grid) | 11.5 (9.2–14.3) | none (flat grid) |
+| ON-marginal-declining (gas leaves the margin by 2050) | 1,296 | 1,226 | 1.3 (1.1–1.7) | 1.4 (1.1–1.8) | 4.0 (3.2–5.0) | 4.2 (3.4–5.3) |
+| ON-marginal-flat (held at 2024) | 2,195 | 0 | 0.8 (0.6–1.0) | none (flat grid) | 2.4 (1.9–2.9) | none (flat grid) |
+
+The two cases:
+- **(a)** compares one unit's saving with a delay to that unit. All three units' saving against a three-unit slip gives the same answer, because both scale by 3.
+- **(b)** compares all of Units 2–4's saving with a delay to only one unit, for example when the first LC3 pour holds one unit's critical path.
+#### B5.4 C1's carbon value against one month's delay
+
+*Table B22. C1's carbon value (Units 2–4) against the value of the CO₂e lost in a one-month slip of all three units.*
+*Source: `results/schedule_value.md` §7. Carbon prices: federal headline industrial trajectory (Environment and Climate Change Canada, 2026) [TO VERIFY]; the superseded 2021 path is shown for comparison only.*
+
+| Carbon price (C$/t) | Basis | C1 carbon value, Units 2–4 (C$ m, 90% interval) | CO₂e lost in a one-month slip, average factor (C$ m, gross / net) | Same, marginal factor (C$ m, gross / net) |
+|---:|---|---|---|---|
+| **95** | **2026, current path (used)** | **0.49 (0.40–0.61)** | 1.64 / 1.03 | 11.24 / 10.63 |
+| 110 | 2026, superseded path | 0.57 (0.46–0.71) | 1.90 / 1.20 | 13.01 / 12.31 |
+| **115** | **2030, current path (used)** | **0.60 (0.48–0.74)** | 1.98 / 1.25 | 13.60 / 12.87 |
+| 170 | 2030, superseded path | 0.88 (0.71–1.10) | 2.93 / 1.85 | 20.11 / 19.02 |
+
+Working: carbon value = saving × price. For example, 5,201 t × C$95/t = C$0.49 m, and 5,201 × 115 = C$0.60 m. C1's concrete would be placed in about 2029–2033, so the 2030 price is the relevant one; 2026 is today's price.
+
+**Direct cost of a one-month slip of Units 2–4** (inputs from `parameters_run5.yaml`; all TO VERIFY or assumptions):
+- **Deferred output:** 3 × 300 MW × 8,760 h × 0.90 / 12 = 591,300 MWh × C$149/MWh (OPG's reported LCOE [TO VERIFY]) = **C$88 m**. The output is deferred, not lost, so this is a cash-flow cost to OPG and ratepayers, not a social loss of that size.
+- **Carrying cost:** C$13.2 bn (Units 2–4: C$20.9 bn less C$7.7 bn for Unit 1 and common infrastructure) × r / 12. At r = 3, 5, 7 and 10%, that is **C$33, 55, 77 and 110 m**. It is an upper bound, because it assumes all the capital is already spent.
+
+**How the 30–223× in §7 is derived:**
+- **Low end:** the lowest monthly cost (C$33 m) over the largest carbon value we can construct (C$1.10 m, the 95th-percentile saving at the superseded C$170/t) = 30×.
+- **High end:** the highest cost (C$110 m) over the central value at C$95/t (C$0.49 m) = 223×.
+- **On the current path alone** (largest value C$0.74 m at C$115/t), the low end would be 33 / 0.74 ≈ 45× [hand calculation from script outputs; TODO: add to `schedule_value.py`]. The range quoted in §7 is therefore conservative.
+- **In carbon alone,** the slip loses 10,865–118,278 t against C1's 5,201 t, which is 2.1–22.7 times the saving.
+
+This agrees with `results/initiative_cost.md` §5 (run 5): one day of delay costs C$1.8–2.9 m, against C1's total carbon value of under C$1 m.
+
+#### B5.5 Year-scale delays
+
+*Table B23. CO₂e avoided to 2050 lost per year of delay, one unit.*
+*Source: `results/schedule_value.md` §4 [inputs TO VERIFY].*
+
+| Site | Grid case | Start A | Start B | Avoided to 2050 (A) | Avoided to 2050 (B) | Lost | Lost per year of delay |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Liddell | NEM-T0 frozen | 2035 | 2040 | 24.06 Mt | 16.54 Mt | 7.52 Mt | 1.50 Mt |
+| Liddell | NEM-T1 Step Change proxy | 2035 | 2040 | 1.64 Mt | 0.67 Mt | 0.97 Mt | 0.19 Mt |
+| Liddell | NEM-T2 slow | 2035 | 2040 | 7.90 Mt | 3.85 Mt | 4.06 Mt | 0.81 Mt |
+| Liddell | NEM-T2 slow | 2040 | 2045 | 3.85 Mt | 1.23 Mt | 2.61 Mt | 0.52 Mt |
+| Darlington Unit 1 | ON-avg-traj | 2030 | 2032 | 1.01 Mt | 0.80 Mt | 0.22 Mt | 0.11 Mt |
+| Darlington Unit 1 | ON-marginal-declining | 2030 | 2032 | 6.80 Mt | 5.59 Mt | 1.21 Mt | 0.61 Mt |
+
+#### B5.6 Limitations
+1. Average factors understate what a late baseload unit would have displaced in Ontario, where gas is on the margin.
+2. The net basis assumes the plant's life is fixed in years, not extended.
+3. The carbon value is realised only if someone prices it. Construction-material emissions appear to fall outside Ontario's Emissions Performance Standards (analyst inference, run 5) [TO VERIFY].
+4. The carrying cost is an upper bound for an early slip.
+5. Every input is provisional.
+
+---
+
+### B6. Same money: Darlington's budget spent on firmed renewables
+
+**Result.** On GenCost 2023-24's 2030 costs (run 5's reading), the same annual spend as one SMR unit buys **2.9×** the energy from firmed renewables. For a Liddell SMR from 2040 on the slow trajectory, those renewables avoid **10.9×** more CO₂e to 2050 (5.7× in the worst case tested for renewables). On run 1's reading (A$514/MWh), the ratios are 5.0× and 19.1× (9.3–45.8× across cases). Renewables avoid more CO₂e by 2050 in every Liddell case tested. Script: `python3 -I 03_LCA_Calculations/scripts/same_money.py`, with output in `results/same_money.md`.
+
+**Basis of the tables (conflict, plan §5 Interfaces).** The script still runs on run 1's input of A$514/MWh (387–641) for the SMR, labelled 2030. Run 5 found a news report of GenCost 2023-24 (Graham, Hayward and Foster, 2024, as reported) that gives A$387–641 as its **2023** value and A$230–382 as its **2030** value [TO VERIFY: GenCost table/year; the news pointer is in `sources_run5.md`, not sources.md].
+- **§7 uses run 5's reading.** Its results appear in the script's sensitivity rows (Table B28).
+- **Tables B26 and B27 are on run 1's basis** and show the alternative reading.
+- **When Victor confirms the table**, set `smr_lcoe_aud` to 306 (230–382) and `vre_firmed_lcoe_aud` to 107 (89–125) and re-run, so that every table here is on one basis [TODO].
+
+#### B6.1 Inputs and method
+
+*Table B24. Cost inputs and the two GenCost readings.*
+*Source: `parameters_run1.yaml`; `results/lcoe.md` §5; references as named. All TO VERIFY or assumptions.*
+
+| Input | Script value (run 1) | Run 5 reading (used in §7) | Source |
+|---|---|---|---|
+| SMR LCOE | A$514/MWh (387–641), labelled 2030 | A$230–382 for 2030 (midpoint 306); 387–641 is the 2023 value | Graham, Hayward and Foster (2024), as reported [TO VERIFY: GenCost table/year] |
+| Firmed renewables LCOE | A$102/MWh (91–153; 153 = central +50%, assumption) | Solar and wind with integration costs, A$89–125 for 2030 (midpoint 107) | Graham, Hayward and Foster (2024; 2025) [TO VERIFY] |
+| Low SMR lead (sensitivity) | A$198/MWh (to 349) | — | Kim and Macfarlane (2026) (edition unknown) [TO VERIFY] |
+| Darlington budget | C$20.9 bn for four units; Unit 1 plus common infrastructure C$7.7 bn | — | Government of Ontario (2025) [TO VERIFY] |
+| Exchange rate | 1.119 AUD/CAD (1.10–1.13) | — | Reserve Bank of Australia (2025) [TO VERIFY] |
+| Discount rate; annuity | 7% real (3–10%); 30 years (30–60) | — | Assumption |
+| First year of renewables output | 2028 (2027–2030) | — | Assumption [TODO: GenCost/AEMO lead times] |
+| Renewables life cycle | 30 g/kWh (8–83) | — | Assumption (range: UNECE PV, United Nations Economic Commission for Europe, 2021) |
+
+**Method A: what the Darlington capital would buy.**
+1. Capital recovery factor: CRF(r, n) = r(1 + r)ⁿ / ((1 + r)ⁿ − 1). CRF(7%, 30) = 0.07 × 7.612 / 6.612 = 0.0806.
+2. Annual capital charge = budget (A$) × CRF.
+3. Capital-only LCOE = charge / annual output.
+4. Firmed renewables bought with that charge = charge / renewables LCOE.
+
+Worked example (one unit, simple share):
+1. Budget: C$5.225 bn × 1.119 = A$5.85 bn.
+2. Annual charge: 5.85 bn × 0.0806 = A$471 m a year.
+3. Capital-only LCOE: 471 m / 2,365,200 MWh = **A$199/MWh**.
+4. Renewables bought: 471 m / A$102 = 4.62 TWh, which is **2.0×** the SMR's 2.37 TWh.
+
+The result is a lower bound on the renewables' advantage, because it ignores the SMR's operating and fuel costs.
+
+**Method B: LCOE ratio and CO₂e per dollar.**
+1. Energy ratio = SMR LCOE / renewables LCOE. On run 5's reading: 306 / 107 = **2.9×**.
+2. CO₂e per A$1 m = (10⁶ / LCOE) MWh × (EF_grid − EF_technology) kg/MWh / 1,000. Example (SMR, NSW 640 g/kWh, A$514): 1,945.5 MWh × 635.8 / 1,000 = 1,237 t.
+3. Cumulative comparison: the annual spend = SMR output × SMR LCOE, and the renewables bought with it = spend / renewables LCOE, from 2028. Each technology's avoided CO₂e is summed on the same trajectory (B4.1), net of its own life-cycle intensity (4.2 or 30 g/kWh).
+
+#### B6.2 Results
+
+*Table B25. Method A: what Darlington's capital would buy (7%, 30-year annuity).*
+*Source: `results/same_money.md` §2 [inputs TO VERIFY].*
+
+| Budget case | Annual capital charge (A$ m) | SMR capital-only LCOE (A$/MWh) | SMR output (TWh a year) | Firmed renewables bought (TWh a year) | Renewables / SMR energy |
+|---|---:|---:|---:|---:|---:|
+| Four units, C$20.9 bn | 1,885 | 199 | 9.46 | 18.48 | 2.0× |
+| One unit, simple share | 471 | 199 | 2.37 | 4.62 | 2.0× |
+| Unit 1 plus common infrastructure, C$7.7 bn | 694 | 294 | 2.37 | 6.81 | 2.9× |
+
+Capital-only LCOE for one unit across discount rates (30-year / 60-year annuity): 3%, A$126 / 89; 7%, A$199 / 176; 10%, A$262 / 248 per MWh (`results/same_money.md` §2).
+
+*Table B26. Method B on run 1's basis (A$514 against A$102; the alternative reading): CO₂e avoided per dollar, Liddell/NEM.*
+*Source: `results/same_money.md` §3 [inputs TO VERIFY; basis per B6 note].*
+
+| Displaced grid intensity (g/kWh) | Case | SMR t CO₂e per A$1 m | Renewables t CO₂e per A$1 m | SMR A$/t (gross) | Renewables A$/t (gross) |
+|---:|---|---:|---:|---:|---:|
+| 640 | NSW 2025 average | 1,237 | 5,980 | 808 | 167 |
+| 274 | NEM-T2 in 2040 | 525 | 2,392 | 1,905 | 418 |
+| 80 | Post-coal mix + 50 (illustrative) | 147 | 490 | 6,781 | 2,040 |
+
+*Table B27. Cumulative CO₂e avoided for the same annual spend as one SMR unit, on run 1's basis (A$1.22 bn a year buys 11.9 TWh a year of firmed renewables from 2028).*
+*Source: `results/same_money.md` §4 [inputs TO VERIFY; basis per B6 note].*
+
+| Site | Grid case | SMR start | SMR to 2035 | SMR to 2050 | Renewables to 2035 | Renewables to 2050 | Renewables / SMR to 2050 |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Liddell | NEM-T0 frozen | 2040 | 0 | 16.54 Mt | 58.16 Mt | 167.22 Mt | 10.1× |
+| Liddell | NEM-T1 Step Change proxy | 2040 | 0 | 0.67 Mt | 29.08 Mt | 30.76 Mt | 45.8× |
+| Liddell | NEM-T2 slow | 2040 | 0 | 3.85 Mt | 43.04 Mt | 73.58 Mt | 19.1× |
+| Liddell | NEM-T2 slow | 2035 | 0.93 Mt | 7.90 Mt | 43.04 Mt | 73.58 Mt | 9.3× |
+| Darlington (indicative, Australian costs) | ON-avg-traj | 2030 | 0.54 Mt | 1.01 Mt | 1.55 Mt | −0.70 Mt | −0.7× |
+| Darlington (indicative, Australian costs) | ON-marginal-declining | 2030 | 3.29 Mt | 6.80 Mt | 20.82 Mt | 33.93 Mt | 5.0× |
+
+The negative Ontario-average row arises because, once Ontario's average falls below the renewables' assumed 30 g/kWh life-cycle value, extra renewables add emissions against that average and the SMR's lower life-cycle value wins. This is a real property of a near-clean grid. But it rests on two placeholders (the renewables' life-cycle value and IESO's 2040 figure) and on the average rather than the marginal factor.
+
+*Table B28. Sensitivity of the same-money result (Liddell, NEM-T2 slow, SMR from 2040). Figure F7 data.*
+*Source: `results/same_money.md` §5 [inputs TO VERIFY]. Bold rows are run 5's reading, which §7 uses.*
+
+| Case (SMR / renewables LCOE, A$/MWh) | Energy ratio | Renewables / SMR CO₂e to 2050 |
+|---|---:|---:|
+| **GenCost 2023-24, 2030 midpoints (306 / 107)** | **2.9×** | **10.9×** |
+| **2030 low SMR, high renewables (230 / 153)** | **1.5×** | **5.7×** |
+| Run 1 central, the alternative reading (514 / 102) | 5.0× | 19.1× |
+| SMR LCOE low (387 / 102) | 3.8× | 14.4× |
+| SMR LCOE high (641 / 102) | 6.3× | 23.9× |
+| Low SMR lead (198 / 102) | 1.9× | 7.4× |
+| Renewables LCOE low (514 / 91) | 5.6× | 21.4× |
+| Renewables LCOE high (514 / 153, assumption) | 3.4× | 12.8× |
+| Worst case for renewables tested (198 / 153) | 1.3× | 4.9× |
+| SMR starts 2035 (514 / 102) | 5.0× | 9.3× |
+| Renewables start 2030 (514 / 102) | 5.0× | 15.9× |
+| Renewables life cycle 83 g/kWh (514 / 102) | 5.0× | 15.4× |
+| SMR life cycle 5.8 g/kWh, our 95th percentile (514 / 102) | 5.0× | 19.3× |
+
+#### B6.3 Check against our own LCOE and OPG's figure
+
+Our Darlington LCOE (`results/lcoe.md`; case B, 60 years, vendor operating costs, CF 0.90) is C$112/151/198/280 per MWh at 3/5/7/10% real (A$125/169/221/313).
+- **Against GenCost:** A$221 at 7% sits just below GenCost 2023-24's 2030 SMR range (A$230–382) [TO VERIFY]. Two reasons it should sit low: Darlington is a four-unit site with shared infrastructure, whereas GenCost prices a generic single Australian SMR; and GenCost 2025-26 reports revising Darlington's capital downwards for interest during construction (Graham and Hayward, 2026) [TO VERIFY]. At 10% (A$313) our figure falls in the upper half of GenCost's range.
+- **Against OPG:** OPG's reported four-unit average of C$149/MWh [TO VERIFY] is reproduced at a real discount rate of 4.9%. That rate is consistent with a ratepayer-backed Crown utility, not with merchant finance.
+- **Cost ratio:** on our 7% value against GenCost 2024-25's firmed-renewables lead, the SMR/renewables cost ratio is 221 / 101 = 2.2× (`results/lcoe.md` §5).
+- **Full working:** in `results/lcoe.md` [TODO: an Appendix B subsection for the LCOE with §8.2].
+
+#### B6.4 Limitations
+1. Adding several TWh a year of firmed renewables would itself change the NEM trajectory, so the comparison holds only at the margin of the stated trajectory.
+2. The LCOE of firmed renewables rises with their share, and GenCost's integration costs cover this only up to the shares it models.
+3. Darlington's budget is in nominal Canadian dollars (2025 announcement), while GenCost is in real Australian dollars. Method A is therefore an order-of-magnitude cross-check, not a precise conversion.
+4. Renewable assets last about 25–30 years [TO VERIFY, GenCost]. No replacement falls before 2050, but a whole-life comparison would need one.
+5. The Ontario rows use Australian costs and are indicative only. Ontario-specific costs were a STRETCH item in the plan and were not done.
+
+---
+
 ### IDs covered (towards the HD descriptor) and what is still missing
 
 - **RB.5 (full calculations in an appendix, results summarised in the main text).**
   - Produced: the working behind every number in §8.1 and §8.3 (Senate arithmetic, licensing durations, HHI shares and sensitivity, route scores), each traced to a script output, with the commands to re-run.
-  - Missing: input verification; the other Appendix B calculations in plan §3 (displacement, schedule value, same money, LCOE, MCDA), which have results files but no appendix text yet.
+  - Produced (v2): the working behind §7 (B4–B6): formulas, worked examples, every input with its source and status (Table B15), all result tables, sensitivities and limitations.
+  - Missing: input verification; the LCOE subsection (with §8.2) and the MCDA (B7, Q14); one consistent GenCost basis in B6 after the re-run.
+- **R2.1, R2.3, R2.7, R4.3 (v2, supporting §7).**
+  - Produced: displacement per unit and for four units; C1's break-even days and carbon value against the cost of delay, sized to Units 2–4; average vs marginal factors, seven trajectories, one-at-a-time sensitivities, and the saving's 90% interval carried through.
+  - Missing: AEMO/IESO series in place of the constructed trajectories; 315 MWe in the sensitivity; verified grid factors and carbon price.
+- **R3.1, R3.6, RB.6 (v2, supporting §7, §8.2, §9).**
+  - Produced: same-money Methods A and B, both GenCost readings, and our LCOE checked against GenCost and OPG.
+  - Missing: the GenCost 2023-24 table check and the GenCost 2025-26 values.
 - **R2.4 ("methods are clearly explained and easy to follow").**
   - Produced: stated formulas (months, Senate majority, HHI, N_eq, renormalisation, residual bounds), a worked enrichment example, and the threshold sources with the "scale, not legal test" caveat.
   - Missing: §2 (methods) is not written, so the main text still has no method summary; the B3 weight test is not scripted.
@@ -339,5 +711,9 @@ Reading: route B ranks last under all three weightings tested. The choice betwee
 7. **[TODO: team decision]** Red Book edition for Australia's resource share (B2.3).
 8. **[TODO: Leroy, references]** Disambiguate CNSC 2026a (project page) and 2026b (hold-point page); fix "Parliament of New South Wales, 2025–26" to a single year with a suffix; confirm the WNA page years; give REGDOC-3.5.1 its year.
 9. **[TODO: bill date]** ANNPSR bill introduction date (Bills Digest No. 32, 2023–24), to give the "Act to operating regulator" interval exactly.
-10. **[TODO: coordinator]** Write the remaining Appendix B subsections (displacement, schedule value, same money, LCOE, MCDA) from `results/`, or re-letter them as a separate appendix.
-11. **[Before submission]** Strip the [TO VERIFY]/[TODO] markers and the changelog comment; set the final table numbers.
+10. **[TODO: coordinator]** Displacement, schedule value and same money are now B4–B6 (v2). Still to write: the LCOE subsection (with §8.2) and B7 MCDA (Q14).
+11. **[TO VERIFY: GenCost table/year, Victor]** If A$230–382 is confirmed as GenCost 2023-24's 2030 SMR value, set `smr_lcoe_aud` 306 (230–382) and `vre_firmed_lcoe_aud` 107 (89–125) in `parameters_run1.yaml`, re-run `same_money.py`, and replace Tables B26–B28 so all of B6 is on one basis.
+12. **[TO VERIFY, Victor]** The federal carbon price path (C$95 in 2026, C$115 in 2030) on canada.ca; then have run 5 align `parameters_run5.yaml` and re-run `initiative_cost.py`. Script the 45× current-path figure (B5.4) in `schedule_value.py`.
+13. **[TO VERIFY]** The B4–B6 inputs in Table B15 and Table B24 (TAF 2025 average and marginal definition; NGA 2025; CER; IESO 2040; AEMO coal exit; AER/AGL Liddell closure; RBA rate; OPG C$149/MWh, whose `opg_oeb_lcoe_lead` entry must be merged from `sources_run5.md` into sources.md; the Bayswater closure date).
+14. **[TODO: Leroy]** Net MWe (300 vs 315: add 315 to the B4 sensitivity), capacity factor, design life and start years.
+15. **[Before submission]** Strip the [TO VERIFY]/[TODO] markers and the changelog comment; set the final table numbers.
