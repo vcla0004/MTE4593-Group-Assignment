@@ -10,7 +10,7 @@ Updated: 21/10/2026. The coordinator keeps it current. If a number here disagree
 ## Decisions in force
 - **Initiative (C1):** low-clinker SCC infill for the DPSC modules and forebay shaft of **Darlington Units 2–4**, Clarington, Ontario. LC3 is the target binder, a slag blend the fallback, and it is specified **only if schedule-neutral**. Steel is not part of the initiative.
 - **Australian comparison site:** Liddell, NSW (a closed coal plant).
-- **Team:** Victor; Leroy (status unknown: gate G1 at Wed 18:00 decides the fallback); Sam (absent, so Victor owns Sam's sections from 21/10); Aaron (left the unit).
+- **Team:** Victor; Leroy (**G1 resolved 21/10: Victor says Leroy has sent work, so Q5 and Q9 are skipped**; his files are not in the repo yet: once Victor adds them to `01_Report/sections/` they go to Q11 batch 2 and Q13); Sam (absent, so Victor owns Sam's sections from 21/10); Aaron (left the unit).
 - **Defaults until Victor says otherwise:** Red Book 2024 edition; GenCost reading = 2030 SMR at A$230–382/MWh (same money ≈ 2.9×; the alternative is 5×); carbon price = federal path C$95/t (2026), C$115/t (2030).
 - **Granta EduPack:** not yet run. Never claim results. The method is a "screening LCA following ISO 14040/44 principles (not critically reviewed)".
 
@@ -37,7 +37,8 @@ Updated: 21/10/2026. The coordinator keeps it current. If a number here disagree
 ## Coordinator handoff (for a fresh session)
 - Done: Wave 1 (Q1, Q2, Q3, Q7), runs 5 and 6, §6 v3, Q4 (§7 + App B4–B6), Q6 (§8.2, §8.4, §8.5; all over budget). Nothing running. Draft preview: `01_Report/draft-preview.docx` (rebuild with pandoc). Victor's speech: `04_Presentation/victor-speech.md`.
 - Known loose ends for Q8: align §6's break-even to 9.2–14.6 days; re-run `same_money.py` on GenCost 2030 (B26–B27 still on A$514); script the 45× hand calculation; draw F6/F7; re-run C$15/m³ in `initiative_cost.py`.
-- Next: G1 (Leroy gate, Victor decides) → Q5/Q9 if triggered; Q8 (after Q1, Q2), Q10; then Wave 3 (Q11–Q21) in `plan.md` §7.
+- Running (21/10 evening): Q10 (writer: §3, §4.3, §8.6) ‖ Q8 prep (analyst: same_money GenCost 2030, 45× script, C$15/m³, break-even range).
+- Next: Q8 writer (after Q8 prep); then Wave 3 (Q11–Q21) in `plan.md` §7. G1 done (Leroy delivered; Q5/Q9 skipped).
 - Deck: live at https://claude.ai/artifact/58LWT4feZJTcLrq3pi7KQH. Source in `04_Presentation/deck-source/`. Sync any slide edit to both.
 - Commit and push after every job (a stop hook enforces it).
 
