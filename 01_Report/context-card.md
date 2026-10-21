@@ -43,8 +43,10 @@ Updated: 21/10/2026. The coordinator keeps it current. If a number here disagree
 - Leroy's §4.1/§4.2/§5/§10: unconfirmed; Victor checking. No fallback until he answers.
 - Usage near limit: max 2 agents, short reports. Deck and speech are finished: no deck work.
 - Done: batch 1a fixes (a72d444; B3 route totals now A 6 / B 5 / C 8; App B6 range 4.9–26.0×); **Q12 MCDA** (31c7f3a, `results/mcda.md`): renewables > status quo > SMR ≈ SMR+C1 under all four weight sets (equal 80/52/30/30); 2 of 56 ±50% tests flip first place (to status quo); SMR first only if life cycle ≥94% weight; C1 changes life cycle by 0.29% (1,734 t) or 0.37% (2,200 t), a score gap <0.005; a 14.6-day slip costs 12× the saving.
-- Running: Q13 part 1 (examiner: §3, §8.1, §8.3–8.6, App B) ‖ Q14 (writer: §9 + App B7).
-- Next: Q16 (§2, §1, §11, abstract), then Q17–Q21. §4.3/§6/§7/§8.2 re-base waits on the team member's LCA.
+- Done 22/10 early: Q13 part 1 (`review/Q13-wave2-part1.md`: §3, §8.1, §8.3, §8.4, §8.6, App B at D; §8.5 C; pages ≈18.5 text excl. tables, 25–27 incl.) and its fixes (026b4b5); Q14 §9 + App B7; Q16 §1, §2, §11, abstract; fact-checks 1a, 1b, 3a (all in `factcheck/`), and their fixes. All C1 numbers in Victor's sections read "[C1 saving: per final §6]" with 1,734/2,200 t provisional.
+- Running: writer applying batch 1b (§8.6 duration sum; L1 10% floor vs 29% swap).
+- Blocked on humans: the team member's LCA (§4.3, §6, Apps A/C, §7 break-even, §8.2 value, then C1 markers everywhere); Leroy's §4.1/§4.2/§5/§10 and App E; Victor's hand checks (Senate M1 at aph.gov.au, GenCost, REGDOC); H2 Granta; H6 (do tables count towards the page limit?); Liddell closure source (AGL).
+- Next once unblocked: re-base pass on C1 markers → Q13 part 2 (examiner on §1, §2, §4.3, §6, §7, §8.2, §9, §11) → Q19 assembly → Q20 → Q21 (examiner, max effort).
 - Next: Q8 writer (after Q8 prep); then Wave 3 (Q11–Q21) in `plan.md` §7. G1 done (Leroy delivered; Q5/Q9 skipped).
 - Deck: the **team master .pptx** is the reference. The earlier claude.ai artifact deck and `deck-source/` are **superseded: don't sync to them**. Q15 (deck sync) is now report → deck consistency notes for Victor only.
 - Commit and push after every job (a stop hook enforces it).
