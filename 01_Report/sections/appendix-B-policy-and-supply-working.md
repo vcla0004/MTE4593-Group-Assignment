@@ -2,6 +2,8 @@ Rubric coverage: RB.5, R2.4, R3.8, R2.1, R2.3, R2.7, R4.3, R3.1, R3.6, RB.6 (als
 
 <!--
 CHANGELOG
+- Q13 review applied, 21/10/2026 (writer): B6 overclaim corrected (renewables lead in every Liddell case; the SMR wins on Ontario's average grid, Table B27 row 5; R2.7); new B2.6 (fuel demand, Table B35) and B8 (social and stakeholder working, Tables B36–B40; B7 was already the MCDA); B2 Result leads with the 850–1,400 bounds; stale B2.5 bullet, B4.3 item 5 and the 315 MWe notes deleted; B3 stated as a hand calculation.
+- Still open for Victor: M1 (aph.gov.au, B1 Result, steps 4 and 7, Table B2); S12 (GenCost table); B6.3 LCOE working (with §8.2); the 4.2 g/kWh and 7.5% bases wait on the §6 re-base.
 - v3, 21/10/2026 (writer, Q14). Appended B7 (MCDA working), Tables B29–B34, from `results/mcda.md` and `mcda_scores.csv`; B7.5 gives both C1 cases (1,734 t, 2,200 t) with the placeholders marked [C1 saving: per final §6]. Serves R3.6, RB.8, R2.4, R2.6. B3's route A rescoring (fact-check M2) is carried into B7.1. R5.2 captions above tables; R5.5 Australian English.
 - Fact-check I-pass3-batch1a, 21/10/2026 (writer): M1 (Senate counts hedged, 39/37 or 40/36 [TO VERIFY at aph.gov.au]); M2 (route A veto points rescored 2 to 1: totals 6/5/8, A ties C when regulator readiness is doubled; Tables B13 and B14, B3 Result and Reading); M3 (B6 range now 4.9–26.0×); S4, S11, S13, S14 done. S10 and S12 left open. §7 lines 72 and 82 still quote the old "5.7× worst case" wording (not edited: not in scope).
 - v2.1, 21/10/2026 (writer, Q8). B6 re-based on `same_money.md` after the GenCost 2030 re-run (SMR A$306, 230–382; renewables A$107, 89–125): text, Table B24 and Tables B25–B28 replaced, alternative reading (A$514 / A$102) kept as sensitivity rows; B5.4 "45×" replaced by the scripted 44× (44–223×). TODOs 11 and 12 closed (the GenCost table and carbon price remain [TO VERIFY]). Rubric items: R2.3, R3.1, RB.5, RB.6.
@@ -20,17 +22,18 @@ CHANGELOG
 
 ## Appendix B. Working for the policy and supply-chain analysis
 
-This appendix gives the full working behind §8.1 (law and licensing), §8.3 (fuel-supply concentration), §7 (displacement, the value of schedule and the same money) and §9 (the multi-criteria analysis). Every number is produced by a script in `03_LCA_Calculations/scripts/` from a parameter file, so it can be re-run. **No input has yet been checked against its primary source** (`status: TO VERIFY` in `parameters_run1.yaml`, `parameters_run2.yaml` and `parameters_run5.yaml`; `verified: false` in `parameters_run3.yaml`).
+This appendix gives the full working behind §8.1 (law and licensing), §8.3 (fuel-supply concentration), §8.4–8.5 (social licence and stakeholders, B8), §7 (displacement, the value of schedule and the same money) and §9 (the multi-criteria analysis). Every number is produced by a script in `03_LCA_Calculations/scripts/` from a parameter file, so it can be re-run. **No input has yet been checked against its primary source** (`status: TO VERIFY` in `parameters_run1.yaml`, `parameters_run2.yaml` and `parameters_run5.yaml`; `verified: false` in `parameters_run3.yaml`).
 
 | Subsection | Script (run from the repository root) | Inputs | Output |
 |---|---|---|---|
 | B1 Legal and political pathway | `python3 -I 03_LCA_Calculations/scripts/law_timelines.py` | `03_LCA_Calculations/parameters_run2.yaml` | `03_LCA_Calculations/results/law_timelines.csv` |
 | B2 Supply concentration (HHI) | `python3 -I 03_LCA_Calculations/scripts/hhi.py` | `03_LCA_Calculations/parameters_run3.yaml` | `03_LCA_Calculations/results/hhi.md`, `hhi_summary.csv` |
-| B3 Routes to a licensable SMR in Australia | none (qualitative scoring) [TODO: move into the MCDA script, analyst run 7] | Law brief §5 | This appendix |
+| B3 Routes to a licensable SMR in Australia | none: hand calculation (qualitative scoring; totals checked in fact-check batch 1a) | Law brief §5 | This appendix |
 | B4 Displacement | `python3 -I 03_LCA_Calculations/scripts/displacement.py` | `03_LCA_Calculations/parameters_run1.yaml` | `03_LCA_Calculations/results/displacement.md` |
 | B5 Value of schedule | `python3 -I 03_LCA_Calculations/scripts/schedule_value.py` | `parameters_run1.yaml` (cost inputs read from `parameters_run5.yaml`) | `results/schedule_value.md` |
 | B6 Same money | `python3 -I 03_LCA_Calculations/scripts/same_money.py` | `parameters_run1.yaml` | `results/same_money.md` (cross-check: `results/lcoe.md`) |
 | B7 Multi-criteria analysis | `python3 -I 03_LCA_Calculations/scripts/mcda.py --c1-case new_2200` | `parameters_run9.yaml` (with run 6 consent routes) | `results/mcda.md`, `results/mcda_scores.csv` |
+| B8 Social licence and stakeholder working | `python3 -I 03_LCA_Calculations/scripts/social_licence.py` | `03_LCA_Calculations/parameters_run6.yaml` | `results/social_licence.md`, `F8_stakeholder_map.png` |
 
 ---
 
@@ -133,7 +136,7 @@ Australian comparator: the naval nuclear regulator (ANNPSR) began operating on 1
 
 ### B2. Supply concentration: Herfindahl–Hirschman index (HHI) working
 
-**Result.** On the 2023 US merger guidelines, mining by country (2,341), conversion (2,111) and enrichment (3,009) are all "highly concentrated". On the superseded 2010 guidelines only enrichment is; mining and conversion are "moderately concentrated". Removing Russia raises the HHI at every stage. Removing Russia and China leaves enrichment as a Urenco–Orano duopoly (5,621). The one case below 1,800 is mining by company (1,118), so mining concentration is a country (geopolitical) risk rather than a market-power risk.
+**Result.** On the 2023 US merger guidelines, mining by country (2,341), conversion (2,111) and enrichment (3,009) are all "highly concentrated". On the superseded 2010 guidelines only enrichment is; mining and conversion are "moderately concentrated". Removing Russia raises the HHI at every stage. Removing Russia and China leaves enrichment as a Urenco–Orano duopoly (5,621). The one case below 1,800 is mining by company (about 850–1,400, from the top three firms only; midpoint 1,118), so mining concentration is a country (geopolitical) risk rather than a market-power risk.
 
 #### B2.1 Method
 
@@ -288,13 +291,36 @@ Both bounds are below 1,500, so firms are not concentrated even though countries
 - Company-level enrichment shares hide plant location: Urenco operates in the UK, Germany, the Netherlands and the USA; Orano only in France.
 - Mining by country ignores ownership (for example, Rosatom's Uranium One stakes in Kazakh mines) and the transport routes for Kazakh exports [TO VERIFY]. The company-level bound only partly addresses ownership.
 - Fuel fabrication was not assessed.
-- The HHI is a world-market measure. It is not yet sized to Darlington's own fuel demand [TODO: Leroy/analyst. BWRX-300 core loading, reload fraction, cycle length and enrichment, to give SWU/yr for four units; §8.3 TODO 6].
+- The HHI is a world-market measure. Darlington's own demand is sized against it in B2.6.
+
+#### B2.6 Darlington's fuel demand against supplier capacity
+
+**Result.** Four BWRX-300s need about 196 t of natural uranium and 138 thousand separative work units (tSWU) a year: **3.2% of Urenco USA's current capacity** and 0.56% of the Western (Urenco and Orano) enrichment market. The project is too small to move the HHI. Its exposure is to price and contract terms in a duopoly, not to physical shortage. The inputs are placeholders until Leroy supplies BWRX-300 fuel data.
+
+Working (one unit; `hhi.md` §6):
+1. Net generation: 300 MWe × 8,760 h × 0.9 = 2,365,200 MWh. Thermal power 870 MWt gives efficiency η = 300 / 870 = 0.3448.
+2. Energy per kg of enriched uranium (3.8% U-235, burnup 45 GWd/t) = 45 × 24,000 kWh × η = 372,414 kWh. Enriched uranium needed = 2,365,200,000 kWh / 372,414 = 6.35 t a year.
+3. Natural uranium feed factor 7.701 (tails 0.25%): 6.35 × 7.701 = 48.9 t U. Separative work: 5.422 SWU per kg, so 34.4 tSWU.
+4. Four units: 25.4 t enriched, **195.6 t U** and **137.7 tSWU** a year.
+
+*Table B35. Four-unit demand set against supplier capacity.*
+*Source: `results/hhi.md` §6.2, using World Nuclear Association (2025) capacities [TO VERIFY]; demand inputs are placeholders.*
+
+| Capacity | tSWU a year | Four-unit demand as a share |
+|---|---:|---:|
+| Urenco USA (Eunice), current | 4,300 | **3.20%** |
+| Urenco USA after the 2027 project | 5,000 | 2.75% |
+| Urenco USA after the 2032–2036 expansion | 7,000 | 1.97% |
+| Urenco and Orano together | 24,800 | 0.56% |
+| World enrichment capacity | 68,077 | 0.20% |
+
+Sensitivity: across burnup (35–55 GWd/t), enrichment (3.4–4.95%), tails (0.2–0.3%) and capacity factor (0.80–0.95), demand is 113–199 tSWU for one input varied at a time, and 77–301 tSWU at the envelope (1.79–7.00% of Urenco USA; not a physically consistent fuel design, because burnup and enrichment move together). **Reserve:** two reloads held in stock embody 275–551 tSWU (6–13% of one year of Urenco USA output), depending on a cycle length of 12 to 24 months (assumed). This is a working-capital question (fuel price, not sourced) rather than a supply question.
 
 ---
 
 ### B3. Routes to a licensable SMR in Australia: scored comparison
 
-**Result.** The ranking depends on the weights: route C (cooperative state repeal) ranks first on equal weights and when durability is valued more; route A (Commonwealth-owned plant) ties with C when regulator readiness is valued more. Route A has the same three veto points as B and C once the NSW ban is counted, so all three score 1 on that objective. Under the 2026 Senate (B1.2), none of the three routes is open. **These scores are our own qualitative judgement from the evidence in B1, not sourced scores.** They feed the "feasibility" criterion of the §9 MCDA.
+**Result.** The ranking depends on the weights: route C (cooperative state repeal) ranks first on equal weights and when durability is valued more; route A (Commonwealth-owned plant) ties with C when regulator readiness is valued more. Route A has the same three veto points as B and C once the NSW ban is counted, so all three score 1 on that objective. Under the 2026 Senate (B1.2), none of the three routes is open. **These scores are our own qualitative judgement from the evidence in B1, not sourced scores, and the totals and the weight test (Table B14) are hand calculations.** They feed the "feasibility" criterion of the §9 MCDA.
 
 *Table B13. Three routes scored against four non-technical objectives (1 = poor, 3 = good).*
 *Source: our qualitative judgement (law brief §5), from the evidence cited in the table.*
@@ -449,7 +475,7 @@ Reading:
 2. **Average vs marginal.** A new baseload unit displaces what is on the margin when it runs. In Ontario that is mostly gas, so the marginal factor is the better short-run estimate. Over a 60-year life the margin decarbonises, which makes the flat-marginal case an upper bound.
 3. **Counterfactual.** In both grids the real alternative is other new supply, not today's grid forever (B6).
 4. **Liddell closed in April 2023** (Australian Energy Regulator, 2021) [TO VERIFY closure date]. An SMR on the site displaces the NEM mix, so Bayswater is an upper bound only, and Bayswater's own closure date is [TODO: AGL].
-5. **Placeholders.** Net output, capacity factor, design life and start years await Leroy's sourced data. 315 MWe is not yet in the sensitivity [TODO].
+5. **Placeholders.** Net output, capacity factor, design life and start years await Leroy's sourced data.
 
 ---
 
@@ -568,7 +594,7 @@ This agrees with `results/initiative_cost.md` §5 (run 5): one day of delay cost
 
 ### B6. Same money: Darlington's budget spent on firmed renewables
 
-**Result.** On GenCost 2023-24's 2030 costs, the same annual spend as one SMR unit (A$0.72 bn a year) buys **2.9×** the energy from firmed renewables (6.8 TWh a year against 2.37). For a Liddell SMR from 2040 on the slow trajectory, those renewables avoid **10.9×** more CO₂e to 2050 (5.7× on the GenCost 2030 reading alone, with renewables at A$153). Across all cases tested the ratio is 4.9–26.0× (4.9× is the lowest, with the A$198 SMR lead and A$153 renewables), so renewables avoid more CO₂e by 2050 in every case tested. On the alternative reading (SMR A$514/MWh), the ratios are 5.0× and 19.1× (9.3–45.8× across cases). Script: `python3 -I 03_LCA_Calculations/scripts/same_money.py`, with output in `results/same_money.md`.
+**Result.** On GenCost 2023-24's 2030 costs, the same annual spend as one SMR unit (A$0.72 bn a year) buys **2.9×** the energy from firmed renewables (6.8 TWh a year against 2.37). For a Liddell SMR from 2040 on the slow trajectory, those renewables avoid **10.9×** more CO₂e to 2050 (5.7× on the GenCost 2030 reading alone, with renewables at A$153). Across all Liddell cases tested the ratio is 4.9–26.0× (4.9× is the lowest, with the A$198 SMR lead and A$153 renewables), so renewables avoid more CO₂e by 2050 in every Liddell case tested. **On Ontario's average grid the SMR wins** (−0.4×, Table B27, row 5): once that grid is cleaner than the renewables' assumed 30 g/kWh life-cycle value, extra renewables add emissions against it. On Ontario's marginal grid renewables again lead (2.8×). On the alternative reading (SMR A$514/MWh), the ratios are 5.0× and 19.1× (9.3–45.8× across cases). Script: `python3 -I 03_LCA_Calculations/scripts/same_money.py`, with output in `results/same_money.md`.
 
 **Basis of the tables.** The script now runs on the 2030 reading: SMR A$306/MWh (range 230–382) and firmed renewables A$107/MWh (89–125), from a news report of GenCost 2023-24 (Graham, Hayward and Foster, 2024, as reported) that gives A$387–641 as the SMR's **2023** value and A$230–382 as its **2030** value [TO VERIFY: GenCost table/year; the news pointer is in `sources_run5.md`, not sources.md]. Run 1's A$514 (387–641) / A$102 is kept as the alternative reading, in the sensitivity rows of Table B28 only. If Victor finds the table says otherwise, change `smr_lcoe_aud` and `vre_firmed_lcoe_aud` in `parameters_run1.yaml` and re-run; every table here regenerates.
 
@@ -809,21 +835,124 @@ In every case the CO₂e avoided to 2050 rises only from 3.845 to 3.846 Mt, and 
 
 ---
 
+### B8. Social licence and stakeholder working (for §8.4 and §8.5)
+
+**Result.** Safety data favour nuclear (0.03 deaths per TWh against 24.62 for coal), but the health benefit of one unit is large only against coal (58 deaths avoided a year, an upper bound) and small against gas (6.6). Weighted by power, the average stance is +1.07 at Darlington and −1.03 at Liddell. Consent-based siting routes beat top-down siting by 3–6 points under all five weightings, and not building an SMR at Liddell scores highest. **The stance scores and route scores are our judgement, not measurements;** every input is [TO VERIFY]. Script: `python3 -I 03_LCA_Calculations/scripts/social_licence.py` (`parameters_run6.yaml`; output `results/social_licence.md`).
+
+#### B8.1 Perceived and actual safety, and deaths avoided
+
+1. Death rates per TWh (Ritchie, 2020; Markandya and Wilkinson, 2007) [TO VERIFY on the live chart]: coal 24.62, brown coal 32.72, gas 2.82, wind 0.04, nuclear 0.03, solar 0.02. Coal is 24.62 / 0.03 = about 820 times nuclear (gas about 94 times).
+2. Output of one unit: 300 MWe × 8,760 h × 0.9 = 2.365 TWh a year (2.102–2.497 at capacity factors of 0.80–0.95).
+3. Deaths avoided a year = output × (death rate of the displaced source − nuclear's rate). Example (black coal): 2.365 × (24.62 − 0.03) = **58.2**.
+
+*Table B36. Statistical deaths avoided a year by one unit, by displaced source.*
+*Source: `results/social_licence.md` §2 [inputs TO VERIFY].*
+
+| Displaced source | CF 0.80 | CF 0.90 (central) | CF 0.95 |
+|---|---:|---:|---:|
+| Black coal (Liddell; upper bound, because coal leaves the grid by 2038 in AEMO's central scenario) | 51.7 | **58.2** | 61.4 |
+| Brown coal (stretch case) | 68.7 | 77.3 | 81.6 |
+| Gas (Darlington, per unit; Ontario has no coal) | 5.9 | **6.6** | 7.0 |
+| Gas, four units | 23.5 | 26.4 | 27.9 |
+| Wind | 0.02 | 0.02 | 0.02 |
+| Solar | −0.02 | −0.02 | −0.02 |
+
+The unit's own output carries 0.07 statistical deaths a year at the nuclear rate (one per 14 years), a rate that includes Chernobyl and Fukushima. The fossil rates are for European plants with pollution controls, so they are conservative. Against wind or solar the difference lies within the uncertainty of the rates.
+
+#### B8.2 Stakeholder power, interest and stance (Figure 8)
+
+Each actor is scored for power (1–5), interest (1–5) and stance (−2 strongly against to +2 strongly for) from the evidence in §8.1–8.4 (evidence keys in `parameters_run6.yaml`). "High power" is a score of 4 or more. Quadrant: power ≥ 4 and interest ≥ 4, manage closely; power ≥ 4 only, keep satisfied; interest ≥ 4 only, keep informed; neither, monitor. **Power-weighted stance** = Σ(power × stance) / Σ(power).
+
+*Table B37. Stakeholder scores, Darlington Units 2–4 with C1.*
+*Source: our judgement from §8.1–8.4 evidence; `results/social_licence.md` §6 [TO VERIFY].*
+
+| Stakeholder | Power | Interest | Stance | Quadrant |
+|---|---:|---:|---:|---|
+| Ontario Government (shareholder) | 5 | 5 | +2 | Manage closely |
+| OPG (licensee, owner) | 5 | 5 | +2 | Manage closely |
+| CNSC (safety regulator) | 5 | 3 | 0 | Keep satisfied |
+| Williams Treaties First Nations | 4 | 5 | +1 | Manage closely |
+| Government of Canada (CIB, CGF, CILGC) | 4 | 4 | +2 | Manage closely |
+| GE Vernova Hitachi (vendor) | 4 | 4 | +1 | Manage closely |
+| Ontario Energy Board (rate regulator) | 4 | 3 | 0 | Keep satisfied |
+| Clarington and Durham (host) | 3 | 5 | +2 | Keep informed |
+| Unions | 3 | 4 | +2 | Keep informed |
+| NGOs | 2 | 5 | −2 | Keep informed |
+| Cement suppliers (no source found) | 2 | 3 | +1 | Monitor |
+| Ratepayers | 2 | 3 | 0 | Monitor |
+
+Working: Σ(power × stance) = 10 + 10 + 0 + 4 + 8 + 4 + 0 + 6 + 6 − 4 + 2 + 0 = 46; Σ(power) = 43; 46 / 43 = **+1.07**. Seven actors have high power and none is opposed.
+
+*Table B38. Stakeholder scores, a hypothetical BWRX-300 at Liddell.*
+*Source: as Table B37.*
+
+| Stakeholder | Power | Interest | Stance | Quadrant |
+|---|---:|---:|---:|---|
+| Commonwealth Government (Labor) | 5 | 3 | −2 | Keep satisfied |
+| NSW Government | 5 | 3 | −2 | Keep satisfied |
+| AGL (site owner) | 4 | 4 | −2 | Manage closely |
+| ARPANSA (regulator) | 4 | 2 | 0 | Keep satisfied |
+| NGOs | 3 | 5 | −2 | Keep informed |
+| Wonnarua people (no public position found; scored neutral by default) | 3 | 4 | 0 | Keep informed |
+| Unions (ACTU, ETU) | 3 | 4 | −2 | Keep informed |
+| Investors in NEM renewables | 3 | 3 | −1 | Monitor |
+| Federal Coalition | 2 | 5 | +2 | Keep informed |
+| Upper Hunter community | 2 | 5 | 0 | Keep informed |
+| SMR vendors | 2 | 3 | +1 | Monitor |
+
+Working: Σ(power × stance) = −10 − 10 − 8 + 0 − 6 + 0 − 6 − 3 + 4 + 0 + 2 = −37; Σ(power) = 36; −37 / 36 = **−1.03**. Four actors have high power and three are opposed. Scoring the Wonnarua people at −2 or +2 would move the Liddell result by −0.17 or +0.17 (3 × 2 / 36), which does not change its sign.
+
+#### B8.3 Social-licence routes for an SMR at Liddell (Table T13)
+
+Four routes are scored 1–3 (3 best) on legitimacy (chance of durable consent), legal risk (low risk scores high), speed, public cost (low cost scores high) and fairness. Each weighted column doubles one criterion.
+
+*Table B39. Route scores by criterion and totals.*
+*Source: our judgement (`parameters_run6.yaml`); totals by `social_licence.py`.*
+
+| Route | Legitimacy | Legal | Speed | Public cost | Fairness | Equal | Legitimacy ×2 | Speed ×2 | Fairness ×2 | Public cost ×2 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| R1. Commonwealth-led siting | 1 | 1 | 2 | 2 | 1 | 7 | 8 | 9 | 8 | 9 |
+| R2. Volunteer host plus willingness test (NWMO model) | 3 | 3 | 1 | 2 | 2 | 11 | 14 | 12 | 13 | 13 |
+| R3. R2 plus First Nations equity and loan guarantee | 3 | 3 | 1 | 1 | 3 | 11 | 14 | 12 | 14 | 12 |
+| R4. No SMR: firmed renewables | 3 | 3 | 3 | 3 | 2 | 14 | 17 | 17 | 16 | 17 |
+
+Reading: R1 beats R3 only on speed (2 against 1) and public cost (2 against 1), and R2 only on speed (2 against 1). Even so, R2 and R3 lead R1 by 3 to 6 points under every weighting. R3 wins outright only when fairness is doubled.
+
+#### B8.4 Who finances the Darlington New Nuclear Project (Table T14)
+
+*Table B40. Shares of the C$20.9 bn budget.*
+*Source: `results/social_licence.md` §4, from Government of Ontario (2025), Canada Growth Fund and Building Ontario Fund (2025), Canada Infrastructure Bank (2022), Williams Treaties First Nations et al. (2026) [TO VERIFY].*
+
+| Financier | C$ bn | Share of C$20.9 bn |
+|---|---:|---:|
+| Canada Growth Fund equity (federal) | 2.00 | 9.6% |
+| Building Ontario Fund equity (Ontario) | 1.00 | 4.8% |
+| Canada Infrastructure Bank loan, phase 1 (federal) | 0.97 | 4.6% |
+| Williams Treaties First Nations loan converting to equity | 0.70 | 3.3% |
+| **Remainder: OPG's balance sheet, recovered through Ontario Energy Board rates** | **16.23** | **77.7%** |
+
+The 78% is a subtraction (20.9 − 2.00 − 1.00 − 0.97 − 0.70 = 16.23), not a reported figure. Debt (CIB, WTFN) and equity (CGF, BOF) are added only to show scale; the CGF and BOF stakes of up to 15% and 7.5% are shares of the project partnership's equity, not of the budget. Budget per MW: C$20.9 bn / 1,200 MWe = C$17.4 m.
+
+**Limits.** All scores are judgements from secondary summaries. Local min–max scaling and the MCDA use of these scores are in B7. Job and waste figures in T12 (CBoC, NWMO) are taken from the briefs and are not recomputed here, except the Ignace hosting payment (C$170 m / 81 years = C$2.1 m a year, 0.65% of the C$26 bn lifecycle cost, nominal).
+
+---
+
 ### IDs covered (towards the HD descriptor) and what is still missing
 
 - **RB.5 (full calculations in an appendix, results summarised in the main text).**
   - Produced: the working behind every number in §8.1 and §8.3 (Senate arithmetic, licensing durations, HHI shares and sensitivity, route scores), each traced to a script output, with the commands to re-run.
   - Produced (v2): the working behind §7 (B4–B6): formulas, worked examples, every input with its source and status (Table B15), all result tables, sensitivities and limitations.
-  - Missing: input verification; the LCOE subsection (with §8.2) and the MCDA (B7, Q14). (B6 is now on one GenCost basis, the 2030 reading.)
+  - Produced (Q13): B2.6 (Darlington fuel demand against Urenco USA capacity) and B8 (deaths avoided, stakeholder scoring, route scores, money-flow shares) for §8.3–8.5.
+  - Missing: input verification; the LCOE subsection (with §8.2). (B6 is on one GenCost basis, the 2030 reading.)
 - **R2.1, R2.3, R2.7, R4.3 (v2, supporting §7).**
   - Produced: displacement per unit and for four units; C1's break-even days and carbon value against the cost of delay, sized to Units 2–4; average vs marginal factors, seven trajectories, one-at-a-time sensitivities, and the saving's 90% interval carried through.
-  - Missing: AEMO/IESO series in place of the constructed trajectories; 315 MWe in the sensitivity; verified grid factors and carbon price.
+  - Missing: AEMO/IESO series in place of the constructed trajectories; verified grid factors and carbon price.
 - **R3.1, R3.6, RB.6 (v2, supporting §7, §8.2, §9).**
   - Produced: same-money Methods A and B, both GenCost readings, and our LCOE checked against GenCost and OPG.
   - Missing: the GenCost 2023-24 table check and the GenCost 2025-26 values.
 - **R2.4 ("methods are clearly explained and easy to follow").**
   - Produced: stated formulas (months, Senate majority, HHI, N_eq, renormalisation, residual bounds), a worked enrichment example, and the threshold sources with the "scale, not legal test" caveat.
-  - Missing: §2 (methods) is not written, so the main text still has no method summary; the B3 weight test is not scripted.
+  - Missing: §2 (methods) is not written, so the main text still has no method summary.
 - **R3.8 ("supported by evidence and quantitative/qualitative analysis").**
   - Produced: quantitative tables for the political and supply arguments, the qualitative route scoring clearly labelled as judgement, and every unverified input marked.
   - Missing: no primary source opened; One Nation, Babet and the 2024 state rejection still lack sources.
@@ -836,14 +965,14 @@ In every case the CO₂e avoided to 2050 rises only from 3.845 to 3.846 Mt, and 
 2. **[TODO: source needed]** One Nation's position (ABC, 31 August 2026) into `sources.md`; Babet stays an assumption. The 2022 bill's lapse (ParlInfo). The 2024 state rejection of route A. The Coalition's 19 June 2024 release for route A.
 3. **[TODO: sources.md]** Add the *Commonwealth of Australia Constitution Act* (ss 23 and 109).
 4. **[TODO: analyst]** Add the CRAI (2025) enrichment row to `hhi.py` and `sources.md`; report Russia's share as a range in B2.2.
-5. **[TODO: analyst]** Put the B3 scoring and weight test in a script (with the §9 MCDA, run 7) so it is reproducible.
-6. **[TODO: Leroy/analyst]** BWRX-300 fuel data, to size Darlington's SWU/yr against Urenco USA and Orano capacity (B2.5).
+5. (B3 is stated as a hand calculation; its totals were checked in fact-check batch 1a. Optional: script it with the MCDA.)
+6. **[TODO: Leroy]** BWRX-300 fuel data (burnup, enrichment, cycle length) to replace the placeholders in B2.6.
 7. **[TODO: team decision]** Red Book edition for Australia's resource share (B2.3).
 8. **[TODO: Leroy, references]** Disambiguate CNSC 2026a (project page) and 2026b (hold-point page); fix "Parliament of New South Wales, 2025–26" to a single year with a suffix; confirm the WNA page years; give REGDOC-3.5.1 its year.
 9. **[TODO: bill date]** ANNPSR bill introduction date (Bills Digest No. 32, 2023–24), to give the "Act to operating regulator" interval exactly.
 10. **[TODO: coordinator]** Displacement, schedule value and same money are now B4–B6 (v2) and the MCDA is B7 (v3). Still to write: the LCOE subsection (with §8.2).11. **[TO VERIFY: GenCost table/year, Victor]** Confirm that A$230–382 is GenCost 2023-24's 2030 SMR value and A$89–125 the 2030 firmed-renewables value. B6 is already on that reading; if the table differs, edit `parameters_run1.yaml` and re-run `same_money.py`.
 12. **[TO VERIFY, Victor]** The federal carbon price path (C$95 in 2026, C$115 in 2030) on canada.ca. `initiative_cost.py` and `schedule_value.py` already use it (the 44–223× is scripted).
 13. **[TO VERIFY]** The B4–B6 inputs in Table B15 and Table B24 (TAF 2025 average and marginal definition; NGA 2025; CER; IESO 2040; AEMO coal exit; AER/AGL Liddell closure; RBA rate; OPG C$149/MWh, whose `opg_oeb_lcoe_lead` entry must be merged from `sources_run5.md` into sources.md; the Bayswater closure date).
-14. **[TODO: Leroy]** Net MWe (300 vs 315: add 315 to the B4 sensitivity), capacity factor, design life and start years.
+14. **[TODO: Leroy]** Net MWe (300 vs 315; Table B19 already shows the 315 case), capacity factor, design life and start years.
 15. **[Before submission]** Strip the [TO VERIFY]/[TODO] markers and the changelog comment; set the final table numbers.
 16. **[C1 saving: per final §6]** Re-run `mcda.py` and update B7.1, B7.5 and Table B34 when the team's re-based C1 saving and life-cycle total land. **[TODO: Leroy §4.1]** add TRL if available. **[TODO: sources.md]** merge `Dodgson_2009_MCA` and `iea2022_pv_supply` from `sources_run9.md`.
