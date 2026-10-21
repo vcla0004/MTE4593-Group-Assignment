@@ -37,7 +37,8 @@ Updated: 21/10/2026. The coordinator keeps it current. If a number here disagree
 ## Coordinator handoff (for a fresh session)
 - Done: Wave 1 (Q1, Q2, Q3, Q7), runs 5 and 6, §6 v3, Q4 (§7 + App B4–B6), Q6 (§8.2, §8.4, §8.5; all over budget). Nothing running. Draft preview: `01_Report/draft-preview.docx` (rebuild with pandoc). Victor's speech: `04_Presentation/victor-speech.md`.
 - Known loose ends for Q8: align §6's break-even to 9.2–14.6 days; re-run `same_money.py` on GenCost 2030 (B26–B27 still on A$514); script the 45× hand calculation; draw F6/F7; re-run C$15/m³ in `initiative_cost.py`.
-- Running (21/10 evening): Q10 (writer: §3, §4.3, §8.6) ‖ Q8 prep (analyst: same_money GenCost 2030, 45× script, C$15/m³, break-even range).
+- Done 21/10 evening: Q8 prep (f3d4ab8: same_money on GenCost 2030, 45× → 44× (44–223×), C$15.2/m³ break-even, 9.2–14.6 days); Q10 (§3 with T15, §4.3 with T1, §8.6 with T16–T17; §8.6 ≈0.55 p, over budget: cut T17 first). Q10 open: §8.2 treats the OPG contract clause as fallback, §8.6 uses it first (resolve in Q14); St Marys LC3, Ontario slag, qualification cost and 2028-approval primary unsourced.
+- Running: Q8 writer (§6 v4, Apps A/C, plus number drop-in to §7, App B5/B6, §8.2).
 - Next: Q8 writer (after Q8 prep); then Wave 3 (Q11–Q21) in `plan.md` §7. G1 done (Leroy delivered; Q5/Q9 skipped).
 - Deck: live at https://claude.ai/artifact/58LWT4feZJTcLrq3pi7KQH. Source in `04_Presentation/deck-source/`. Sync any slide edit to both.
 - Commit and push after every job (a stop hook enforces it).
