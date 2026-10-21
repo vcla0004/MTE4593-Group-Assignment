@@ -29,3 +29,4 @@ The drafts were not edited.
 - `01_Report/factcheck/human-checklist.md`: Human checklist (open these yourself; P1 = needed before Thursday's slides or blocking for §8.1/§8.3)
 - `01_Report/factcheck/summary.md`: Rubric IDs: what this check produced and what is still missing
 - `01_Report/factcheck/H-6-lca.md`: H. §6 LCA and Appendices A, C (21/10)
+- `01_Report/factcheck/I-pass3-batch1a.md`: I. Pass 3, batch 1a (21/10): Appendix B (B1–B4, B6), §8.1 v3, §8.3 v3, §8.4, §8.5, §3
