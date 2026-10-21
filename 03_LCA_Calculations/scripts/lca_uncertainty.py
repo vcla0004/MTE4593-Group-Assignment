@@ -207,7 +207,7 @@ L += ["## Tornado (one at a time), ranked by swing in life-cycle g CO2e/kWh\n",
       "| Parameter | Low | Central | High | Status | g/kWh at low | g/kWh at high | Swing | LC3 saving at low (t) | at high (t) | Swing (t) |",
       "|---|---|---|---|---|---|---|---|---|---|---|"]
 for r in trows:
-    L.append(f"| {r['parameter']} | {r['low']} | {r['central']} | {r['high']} | {r['status']} | {r['g_at_low']} | {r['g_at_high']} | "
+    L.append(f"| {r['label']} (`{r['parameter']}`) | {r['low']} | {r['central']} | {r['high']} | {r['status']} | {r['g_at_low']} | {r['g_at_high']} | "
              f"{r['g_swing']} | {fmt(r['saving_at_low'])} | {fmt(r['saving_at_high'])} | {fmt(r['saving_swing'])} |")
 (RESULTS / "lca_uncertainty.md").write_text("\n".join(L) + "\n")
 
@@ -233,7 +233,7 @@ ax.set_yticklabels([r["stage"] for r in items], fontsize=8.6)
 ax.set_xlabel("g CO2e per kWh delivered")
 ax.set_xlim(0, max(max(r["mc_mean_g_per_kwh"], r["mode_case_g_per_kwh"]) for r in items) * 1.3)
 ax.grid(axis="y", visible=False)
-ax.set_title(f"Figure F2. Life-cycle emissions by stage: expected {mean_total:.1f} g CO2e/kWh", fontsize=10.5)
+# no embedded title: the Word caption carries "Figure F2" (review.md section 6 point 9)
 from matplotlib.patches import Patch  # noqa: E402
 from matplotlib.lines import Line2D  # noqa: E402
 ax.legend(handles=[Patch(color=lp.BLUE, label="Fuel front end (bottom-up)"), Patch(color=lp.AQUA, label="Construction (bottom-up)"),
@@ -247,27 +247,32 @@ lp.save(fig, RESULTS / "F2_stage_breakdown.png",
 lp.style()
 fig, axes = lp.plt.subplots(1, 2, figsize=(11.5, 5.4))
 for ax, key, ckey, title, unit in [
-    (axes[0], "g", "g_per_kwh", "Life-cycle intensity", "g CO2e/kWh"),
-    (axes[1], "saving", "lc3_saving_t_per_unit", "LC3 saving per unit", "t CO2e per unit"),
+    (axes[0], "g", "g_per_kwh", "(a) Life-cycle intensity", "g CO₂e per kWh (all other inputs at their mode values)"),
+    (axes[1], "saving", "lc3_saving_t_per_unit", "(b) LC3 saving per unit", "t CO₂e saved per unit"),
 ]:
     rows = [r for r in sorted(trows, key=lambda r: -r[f"{key}_swing"]) if r[f"{key}_swing"] > 0][:10][::-1]
     base = BASE[ckey]
+    span = max(max(abs(r[f"{key}_at_low"] - base), abs(r[f"{key}_at_high"] - base)) for r in rows)
     for i, r in enumerate(rows):
         lo_v, hi_v = r[f"{key}_at_low"], r[f"{key}_at_high"]
         ax.barh(i, lo_v - base, left=base, color=lp.BLUE, height=0.6)
         ax.barh(i, hi_v - base, left=base, color=lp.ORANGE, height=0.6)
     ax.set_yticks(range(len(rows)))
-    ax.set_yticklabels([r["parameter"] for r in rows], fontsize=8.3)
+    ax.set_yticklabels([r["label"] for r in rows], fontsize=8.3)
     ax.axvline(base, color=lp.INK, lw=1)
+    ax.set_ylim(-0.7, len(rows) - 0.3 + 0.9)
+    ax.text(base, len(rows) - 0.2, f"mode case {base:,.2f}" if key == "g" else f"mode case {base:,.0f}",
+            ha="center", va="bottom", fontsize=8.5, color=lp.INK)
+    ax.set_xlim(base - 1.12 * span, base + 1.12 * span)
     ax.set_xlabel(unit)
     ax.grid(axis="y", visible=False)
-    ax.set_title(f"{title} (central {base:,.2f})" if key == "g" else f"{title} (central {base:,.0f})", fontsize=10)
+    ax.set_title(title, fontsize=10)
 from matplotlib.patches import Patch  # noqa: E402
 fig.legend(handles=[Patch(color=lp.BLUE, label="Parameter at its low value"), Patch(color=lp.ORANGE, label="Parameter at its high value")],
            loc="lower right", ncol=2, bbox_to_anchor=(0.99, -0.06))
-fig.suptitle("Figure F3. One-at-a-time sensitivity (top 10 parameters each)", x=0.01, ha="left", fontsize=11, weight="bold")
 fig.tight_layout()
-lp.save(fig, RESULTS / "F3_tornado.png", "Source: this study, scripts/lca_uncertainty.py; ranges in parameters_lca.yaml.")
+lp.save(fig, RESULTS / "F3_tornado.png", "Top 10 inputs per panel, each moved from its low to its high value with all others at their mode (most likely) "
+        "values. Source: this study, scripts/lca_uncertainty.py; ranges in parameters_lca.yaml.")
 
 # ---------------- F4 Monte Carlo ----------------
 fig, axes = lp.plt.subplots(1, 2, figsize=(11.5, 4.2))
@@ -283,32 +288,47 @@ for ax, key, xlabel in [(axes[0], "g_per_kwh", "Life-cycle g CO2e/kWh"),
     ax.grid(axis="x", visible=False)
 axes[0].set_title("Life-cycle intensity (P5, P50, P95 marked)", fontsize=10)
 axes[1].set_title("C1 LC3 saving per unit", fontsize=10)
-fig.suptitle(f"Figure F4. Monte Carlo, {N:,} draws, seed {int(P0['mc_seed'])}", x=0.01, ha="left", fontsize=11, weight="bold")
 fig.tight_layout()
-lp.save(fig, RESULTS / "F4_montecarlo.png", "Source: this study, scripts/lca_uncertainty.py.")
+lp.save(fig, RESULTS / "F4_montecarlo.png", f"Monte Carlo, {N:,} draws, seed {int(P0['mc_seed'])}. Source: this study, scripts/lca_uncertainty.py.")
 
 # ---------------- F5 benchmarks ----------------
-bm = [("This study (BWRX-300, Darlington)", S["g_per_kwh"]["p50"], S["g_per_kwh"]["p5"], S["g_per_kwh"]["p95"], True),
-      ("EDF (2024), French fleet", RAW["bm_edf2024"]["value"], RAW["bm_edf2024"]["low"], RAW["bm_edf2024"]["high"], False),
-      ("UNECE (2021), nuclear range", (RAW["bm_unece2021_low"]["value"] + RAW["bm_unece2021_high"]["value"]) / 2,
-       RAW["bm_unece2021_low"]["value"], RAW["bm_unece2021_high"]["value"], False),
+# Each row: label, point (None = range only), low, high, colour flag. UNECE reports a range, so no point is drawn (factcheck L66).
+# Warner and Heath: median only (the max 110 is off-scale; no minimum is attributed to them, factcheck L31).
+# IPCC AR5 Annex III is drawn only once all three bm_ipcc2014_* entries are verified (review.md section 6 point 8).
+bm = [("This study (BWRX-300, Darlington), median and 90% interval", S["g_per_kwh"]["p50"], S["g_per_kwh"]["p5"], S["g_per_kwh"]["p95"], True),
+      ("EDF (2024), French fleet, central and sensitivity", RAW["bm_edf2024"]["value"], RAW["bm_edf2024"]["low"], RAW["bm_edf2024"]["high"], False),
+      ("UNECE (2021), nuclear range", None, RAW["bm_unece2021_low"]["value"], RAW["bm_unece2021_high"]["value"], False),
       ("Gibon & Hahn Menacho (2023), global 2020", RAW["bm_gibon2023"]["value"], RAW["bm_gibon2023"]["value"], RAW["bm_gibon2023"]["value"], False),
-      ("Carless et al. (2016), Westinghouse SMR", RAW["bm_carless2016_wsmr"]["value"], RAW["bm_carless2016_wsmr"]["low"], RAW["bm_carless2016_wsmr"]["high"], False),
+      ("Carless et al. (2016), Westinghouse SMR, mean and 90% CI", RAW["bm_carless2016_wsmr"]["value"], RAW["bm_carless2016_wsmr"]["low"], RAW["bm_carless2016_wsmr"]["high"], False),
       ("Warner & Heath (2012), harmonised LWR median", RAW["bm_warner2012"]["value"], RAW["bm_warner2012"]["value"], RAW["bm_warner2012"]["value"], False)]
+IPCC_KEYS = ("bm_ipcc2014_min", "bm_ipcc2014_median", "bm_ipcc2014_max")
+ipcc_ok = all(RAW[k]["status"] == "verified" for k in IPCC_KEYS)
+if ipcc_ok:
+    bm.append(("IPCC AR5 WGIII Annex III, nuclear median (min-max)", RAW["bm_ipcc2014_median"]["value"], RAW["bm_ipcc2014_min"]["value"],
+               RAW["bm_ipcc2014_max"]["value"], False))
+XMAX = 17
 fig, ax = lp.plt.subplots(figsize=(8.6, 3.9))
 for i, (lab, c, lo, hi, ours) in enumerate(bm[::-1]):
     col = lp.ORANGE if ours else lp.BLUE
-    ax.plot([lo, hi], [i, i], color=col, lw=2.2, solid_capstyle="round")
-    ax.plot([c], [i], "o", color=col, ms=8, mec="white", mew=1.5)
-    ax.text(hi + 0.25, i, f"{c:.1f}" + (f" ({lo:.1f}-{hi:.1f})" if hi > lo else ""), va="center", fontsize=8.5, color=lp.INK)
+    hi_d = min(hi, XMAX - 0.6)
+    ax.plot([lo, hi_d], [i, i], color=col, lw=2.2, solid_capstyle="round")
+    if hi > XMAX - 0.6:
+        ax.annotate("", xy=(XMAX - 0.3, i), xytext=(hi_d, i), arrowprops=dict(arrowstyle="->", color=col, lw=1.5))
+    if c is not None:
+        ax.plot([c], [i], "o", color=col, ms=8, mec="white", mew=1.5)
+        txt = f"{c:.1f}" + (f" ({lo:.1f}-{hi:.1f})" if hi > lo else "")
+    else:
+        txt = f"{lo:.1f}-{hi:.1f} (range only)"
+    ax.text(min(hi, XMAX - 0.3) + 0.25, i, txt, va="center", fontsize=8.5, color=lp.INK)
 ax.set_yticks(range(len(bm)))
 ax.set_yticklabels([b[0] for b in bm[::-1]], fontsize=8.6)
-ax.set_xlim(0, 17)
-ax.set_xlabel("Life-cycle g CO2e/kWh (point = central or median; line = range or interval)")
+ax.set_xlim(0, XMAX + 3.2)
+ax.set_xlabel("Life-cycle g CO₂e per kWh (dot = central, mean or median; line = range or interval)")
 ax.grid(axis="y", visible=False)
-ax.set_title("Figure F5. Our result against nuclear benchmarks (coal about 750-1,100; gas CC 403-513)", fontsize=10)
+# no embedded title: the Word caption carries "Figure F5" (review.md section 6 point 9)
 lp.save(fig, RESULTS / "F5_benchmarks.png",
-        "Benchmarks are search leads [TO VERIFY]; Warner & Heath range 3.7-110 and Gibon scenario range 5.4-122 are off-scale and not drawn.")
+        "Benchmarks are search leads [TO VERIFY]. Off-scale and not drawn: Warner & Heath maximum 110; Gibon scenario range 5.4-122. "
+        "Coal about 750-1,100 and gas CC 403-513 g/kWh (UNECE 2021). " + ("" if ipcc_ok else "IPCC AR5 Annex III added once verified."))
 
 g = S["g_per_kwh"]
 s = S["lc3_saving_t_per_unit"]

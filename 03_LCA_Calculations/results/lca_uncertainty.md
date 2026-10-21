@@ -12,6 +12,15 @@ Monte Carlo: 20,000 draws, seed 20261021, 40 parameters varied independently (tr
 | lc3_saving_t_per_unit | 1733.5763 | 1752.0553 | 1387.0127 | 1741.5769 | 2152.5718 |
 | lc3_saving_pct | 0.4523 | 0.3042 | 0.1849 | 0.2949 | 0.4552 |
 | slag_saving_t_per_unit | 1552.4171 | 1649.0553 | 1205.2121 | 1642.2089 | 2113.2576 |
+| slag_saving_pct | 0.4051 | 0.2863 | 0.1685 | 0.276 | 0.4414 |
+| s2b_saving_t_per_unit | 2488.154 | 2826.1498 | 1808.7428 | 2746.4729 | 4107.2307 |
+| s2b_saving_pct | 0.6492 | 0.4898 | 0.2626 | 0.4634 | 0.8036 |
+| s3_like_for_like_saving_t_per_unit | 566.03 | 957.9244 | 404.1289 | 940.5861 | 1580.5732 |
+| s3_like_for_like_saving_pct | 0.1477 | 0.1659 | 0.0637 | 0.1559 | 0.3021 |
+| s3_upper_bound_saving_t_per_unit | 3713.85 | 4974.8968 | 1712.5138 | 4730.8185 | 9083.7383 |
+| s3_upper_bound_saving_pct | 0.9691 | 0.8589 | 0.2776 | 0.7866 | 1.6832 |
+| s3_high_saving_t_per_unit | -8399.25 | -6809.8156 | -10805.294 | -6694.6776 | -3178.2686 |
+| s3_high_saving_pct | -2.1916 | -1.182 | -2.1089 | -1.1139 | -0.4917 |
 | concrete_m3_per_unit | 20700.0 | 24808.6081 | 15049.6882 | 24066.3488 | 36521.1991 |
 | target_m3_per_unit | 13080.7736 | 13903.0212 | 12215.9615 | 13894.1403 | 15605.9223 |
 | construction_g | 0.2423 | 0.3212 | 0.1975 | 0.3092 | 0.4844 |
@@ -40,47 +49,72 @@ Monte Carlo: 20,000 draws, seed 20261021, 40 parameters varied independently (tr
 
 Probability that LC3 (S2) saves more than the slag blend (S1): 64%.
 
+## Scenario savings and life-cycle shares on the Monte Carlo basis (one basis for Table T8)
+
+Each draw's saving is divided by the same draw's S0 life-cycle total. S3 rows are steel sensitivities, not part of C1; S3 high is negative (adds emissions).
+
+| Scenario | Saving t/unit P50 (P5-P95) | Share of life cycle % P50 (P5-P95) | Mode-case share % |
+|---|---|---|---|
+| S1 slag blend (C1 fallback) | 1,642 (1,205 to 2,113) | 0.276 (0.169 to 0.441) | 0.405 |
+| S2 LC3 (C1 target binder) | 1,742 (1,387 to 2,153) | 0.295 (0.185 to 0.455) | 0.452 |
+| S2b LC3 + slag elsewhere | 2,746 (1,809 to 4,107) | 0.463 (0.263 to 0.804) | 0.649 |
+| S3 like-for-like (target-structure steel) | 941 (404 to 1,581) | 0.156 (0.064 to 0.302) | 0.148 |
+| S3 upper bound (all steel, EAF sections factors) | 4,731 (1,713 to 9,084) | 0.787 (0.278 to 1.683) | 0.969 |
+| S3 high (world-average steel) | -6,695 (-10,805 to -3,178) | -1.114 (-2.109 to -0.492) | -2.192 |
+
+## Conversion-heat distribution test (Table C2 row; review.md section 6 point 7)
+
+Same 20,000 draws for the other 39 inputs; only the conversion-heat distribution changes.
+
+| Conversion heat | Mean heat kWh/kg U | Life cycle mean g/kWh | P5 | P50 | P95 | LC3 share P50 % (P5-P95) |
+|---|---|---|---|---|---|---|
+| triangular 26 / 26 / 665 (mode = low) | 238.8 | 4.279 | 3.048 | 4.178 | 5.849 | 0.295 (0.185-0.455) |
+| fixed at 26 kWh/kg U (Gibon and Hahn Menacho 2023 central, TO VERIFY) | 26.0 | 3.342 | 2.623 | 3.31 | 4.175 | 0.371 (0.252-0.544) |
+| log-uniform 26-665 kWh/kg U | 197.1 | 4.096 | 2.886 | 3.912 | 5.906 | 0.312 (0.189-0.485) |
+
+Range of medians across the three conversion-heat assumptions: 3.31-4.18 g CO2e/kWh.
+
 ## Tornado (one at a time), ranked by swing in life-cycle g CO2e/kWh
 
 | Parameter | Low | Central | High | Status | g/kWh at low | g/kWh at high | Swing | LC3 saving at low (t) | at high (t) | Swing (t) |
 |---|---|---|---|---|---|---|---|---|---|---|
-| conversion_heat_kwh_per_kgU | 26 | 26 | 665 | TO VERIFY | 2.7006 | 5.3696 | 2.669 | 1,734 | 1,734 | 0 |
-| ef_mining_milling_kg_per_kgU3O8 | 24 | 42 | 81 | TO VERIFY | 2.2617 | 3.6515 | 1.3899 | 1,734 | 1,734 | 0 |
-| backend_g_per_kwh | 0.28 | 0.56 | 1.11 | TO VERIFY | 2.4206 | 3.2506 | 0.83 | 1,734 | 1,734 | 0 |
-| burnup_gwd_per_t | 35 | 45 | 55 | placeholder | 3.1172 | 2.4354 | 0.6818 | 1,734 | 1,734 | 0 |
-| enrichment_pct | 3.4 | 3.8 | 4.95 | placeholder | 2.5302 | 3.1933 | 0.6631 | 1,734 | 1,734 | 0 |
-| om_g_per_kwh | 0.17 | 0.33 | 0.67 | TO VERIFY | 2.5406 | 3.0406 | 0.5 | 1,734 | 1,734 | 0 |
-| enrich_grid_kg_per_kwh | 0.05 | 0.373 | 0.637 | TO VERIFY | 2.4655 | 2.8927 | 0.4273 | 1,734 | 1,734 | 0 |
-| enrich_kwh_per_swu | 40 | 50 | 100 | TO VERIFY | 2.6463 | 2.9721 | 0.3258 | 1,734 | 1,734 | 0 |
-| decom_g_per_kwh | 0.06 | 0.11 | 0.33 | TO VERIFY | 2.6506 | 2.9206 | 0.27 | 1,734 | 1,734 | 0 |
-| construction_other_uplift | 0.25 | 0.5 | 1.5 | assumption | 2.6602 | 2.8621 | 0.2019 | 1,734 | 1,734 | 0 |
-| design_life_yr | 40 | 60 | 80 | TO VERIFY | 2.8217 | 2.64 | 0.1817 | 1,734 | 1,734 | 0 |
-| steel_intensity_t_per_mwe | 16.5 | 33 | 46 | TO VERIFY | 2.6074 | 2.7739 | 0.1665 | 1,734 | 1,734 | 0 |
-| tails_assay_pct | 0.2 | 0.25 | 0.3 | assumption | 2.636 | 2.7962 | 0.1602 | 1,734 | 1,734 | 0 |
-| ef_plate_other | 1.22 | 1.73 | 2.5 | TO VERIFY | 2.6639 | 2.7559 | 0.0919 | 1,734 | 1,734 | 0 |
-| conversion_grid_kg_per_kwh | 0.035 | 0.0738 | 0.343 | TO VERIFY | 2.6911 | 2.7662 | 0.0752 | 1,734 | 1,734 | 0 |
-| net_mwe | 300 | 300 | 315 | placeholder | 2.7006 | 2.6307 | 0.0698 | 1,734 | 1,734 | 0 |
-| concrete_intensity_m3_per_mwe | 34.5 | 69 | 138 | TO VERIFY | 2.683 | 2.7484 | 0.0654 | 1,734 | 1,734 | 0 |
-| capacity_factor | 0.8 | 0.9 | 0.95 | placeholder | 2.7308 | 2.6878 | 0.043 | 1,734 | 1,734 | 0 |
-| fab_grid_kg_per_kwh | 0.2 | 0.373 | 0.637 | TO VERIFY | 2.6838 | 2.7261 | 0.0422 | 1,734 | 1,734 | 0 |
-| ef_rebar | 0.89 | 0.97 | 1.99 | TO VERIFY | 2.6979 | 2.734 | 0.0361 | 1,734 | 1,734 | 0 |
-| rebar_ratio_t_per_m3 | 0.1 | 0.15 | 0.25 | assumption | 2.7089 | 2.6839 | 0.0249 | 1,734 | 1,734 | 0 |
-| transport_steel_km | 100 | 500 | 1500 | assumption | 2.6964 | 2.711 | 0.0146 | 1,734 | 1,734 | 0 |
-| fab_kwh_per_kgU | 36 | 36 | 50 | TO VERIFY | 2.7006 | 2.7146 | 0.014 | 1,734 | 1,734 | 0 |
-| binder_conv_kg_per_m3 | 300 | 350 | 420 | assumption | 2.6953 | 2.7079 | 0.0126 | 1,670 | 1,822 | 152 |
-| binder_scc_kg_per_m3 | 400 | 450 | 550 | TO VERIFY | 2.6965 | 2.7088 | 0.0123 | 1,590 | 2,021 | 430 |
-| conversion_elec_kwh_per_kgU | 10.3 | 11.8 | 16.9 | TO VERIFY | 2.6983 | 2.7083 | 0.0101 | 1,734 | 1,734 | 0 |
-| ef_concrete_other_kg_per_m3 | 15 | 30 | 60 | assumption | 2.6973 | 2.7071 | 0.0098 | 1,734 | 1,734 | 0 |
-| ef_gu_cement | 796 | 854 | 898 | TO VERIFY | 2.6956 | 2.7044 | 0.0088 | 1,616 | 1,823 | 207 |
-| ef_truck_kg_per_tkm | 0.06 | 0.1 | 0.15 | assumption | 2.6982 | 2.7036 | 0.0054 | 1,734 | 1,734 | 0 |
-| rb_wall_thickness_m | 1.0 | 1.5 | 2.0 | assumption | 2.6989 | 2.7022 | 0.0034 | 1,464 | 1,995 | 532 |
-| transport_concrete_km | 5 | 15 | 50 | assumption | 2.7 | 2.7024 | 0.0024 | 1,734 | 1,734 | 0 |
-| rb_basemat_thickness_m | 2.0 | 3.0 | 4.0 | assumption | 2.6996 | 2.7015 | 0.0019 | 1,581 | 1,886 | 306 |
-| rb_shaft_depth_m | 35 | 35 | 38 | TO VERIFY | 2.7006 | 2.701 | 0.0005 | 1,734 | 1,805 | 71 |
-| forebay_concrete_m3 | 4000 | 4000 | 6000 | TO VERIFY | 2.7006 | 2.7006 | 0.0 | 1,734 | 1,955 | 221 |
-| ef_slag | 93.4 | 146.6 | 146.6 | TO VERIFY | 2.7006 | 2.7006 | 0.0 | 1,734 | 1,734 | 0 |
-| clinker_factor_gu | 0.9 | 0.92 | 0.95 | assumption | 2.7006 | 2.7006 | 0.0 | 1,734 | 1,734 | 0 |
-| slag_replacement_s1 | 0.25 | 0.4 | 0.5 | assumption | 2.7006 | 2.7006 | 0.0 | 1,734 | 1,734 | 0 |
-| lc3_clinker_factor | 0.5 | 0.5 | 0.55 | TO VERIFY | 2.7006 | 2.7006 | 0.0 | 1,734 | 1,734 | 0 |
-| lc3_gwp_reduction | 0.3 | 0.37 | 0.43 | TO VERIFY | 2.7006 | 2.7006 | 0.0 | 1,406 | 2,015 | 609 |
-| lc3_binder_uplift | 0.0 | 0.0 | 0.1 | assumption | 2.7006 | 2.7006 | 0.0 | 1,734 | 1,438 | 295 |
+| Conversion heat (kWh/kg U) (`conversion_heat_kwh_per_kgU`) | 26 | 26 | 665 | TO VERIFY | 2.7006 | 5.3696 | 2.669 | 1,734 | 1,734 | 0 |
+| Mining and milling (kg CO₂e/kg U₃O₈) (`ef_mining_milling_kg_per_kgU3O8`) | 24 | 42 | 81 | TO VERIFY | 2.2617 | 3.6515 | 1.3899 | 1,734 | 1,734 | 0 |
+| Back end: spent fuel and disposal (g/kWh) (`backend_g_per_kwh`) | 0.28 | 0.56 | 1.11 | TO VERIFY | 2.4206 | 3.2506 | 0.83 | 1,734 | 1,734 | 0 |
+| Fuel burnup (GWd/t) (`burnup_gwd_per_t`) | 35 | 45 | 55 | placeholder | 3.1172 | 2.4354 | 0.6818 | 1,734 | 1,734 | 0 |
+| Fuel enrichment (% U-235) (`enrichment_pct`) | 3.4 | 3.8 | 4.95 | placeholder | 2.5302 | 3.1933 | 0.6631 | 1,734 | 1,734 | 0 |
+| Operation and maintenance (g/kWh) (`om_g_per_kwh`) | 0.17 | 0.33 | 0.67 | TO VERIFY | 2.5406 | 3.0406 | 0.5 | 1,734 | 1,734 | 0 |
+| Enrichment-plant grid (kg CO₂e/kWh) (`enrich_grid_kg_per_kwh`) | 0.05 | 0.373 | 0.637 | TO VERIFY | 2.4655 | 2.8927 | 0.4273 | 1,734 | 1,734 | 0 |
+| Centrifuge energy (kWh/SWU) (`enrich_kwh_per_swu`) | 40 | 50 | 100 | TO VERIFY | 2.6463 | 2.9721 | 0.3258 | 1,734 | 1,734 | 0 |
+| Decommissioning (g/kWh) (`decom_g_per_kwh`) | 0.06 | 0.11 | 0.33 | TO VERIFY | 2.6506 | 2.9206 | 0.27 | 1,734 | 1,734 | 0 |
+| Other construction materials and site energy (uplift) (`construction_other_uplift`) | 0.25 | 0.5 | 1.5 | assumption | 2.6602 | 2.8621 | 0.2019 | 1,734 | 1,734 | 0 |
+| Design life (years) (`design_life_yr`) | 40 | 60 | 80 | TO VERIFY | 2.8217 | 2.64 | 0.1817 | 1,734 | 1,734 | 0 |
+| Plant steel (t per MWe) (`steel_intensity_t_per_mwe`) | 16.5 | 33 | 46 | TO VERIFY | 2.6074 | 2.7739 | 0.1665 | 1,734 | 1,734 | 0 |
+| Enrichment tails assay (% U-235) (`tails_assay_pct`) | 0.2 | 0.25 | 0.3 | assumption | 2.636 | 2.7962 | 0.1602 | 1,734 | 1,734 | 0 |
+| Plate and equipment steel factor (t CO₂e/t) (`ef_plate_other`) | 1.22 | 1.73 | 2.5 | TO VERIFY | 2.6639 | 2.7559 | 0.0919 | 1,734 | 1,734 | 0 |
+| Conversion-plant grid (kg CO₂e/kWh) (`conversion_grid_kg_per_kwh`) | 0.035 | 0.0738 | 0.343 | TO VERIFY | 2.6911 | 2.7662 | 0.0752 | 1,734 | 1,734 | 0 |
+| Net output (MWe) (`net_mwe`) | 300 | 300 | 315 | placeholder | 2.7006 | 2.6307 | 0.0698 | 1,734 | 1,734 | 0 |
+| Plant concrete (m³ per MWe) (`concrete_intensity_m3_per_mwe`) | 34.5 | 69 | 138 | TO VERIFY | 2.683 | 2.7484 | 0.0654 | 1,734 | 1,734 | 0 |
+| Capacity factor (`capacity_factor`) | 0.8 | 0.9 | 0.95 | placeholder | 2.7308 | 2.6878 | 0.043 | 1,734 | 1,734 | 0 |
+| Fabrication-plant grid (kg CO₂e/kWh) (`fab_grid_kg_per_kwh`) | 0.2 | 0.373 | 0.637 | TO VERIFY | 2.6838 | 2.7261 | 0.0422 | 1,734 | 1,734 | 0 |
+| Rebar factor (t CO₂e/t) (`ef_rebar`) | 0.89 | 0.97 | 1.99 | TO VERIFY | 2.6979 | 2.734 | 0.0361 | 1,734 | 1,734 | 0 |
+| Rebar ratio (t per m³ concrete) (`rebar_ratio_t_per_m3`) | 0.1 | 0.15 | 0.25 | assumption | 2.7089 | 2.6839 | 0.0249 | 1,734 | 1,734 | 0 |
+| Steel haul distance (km) (`transport_steel_km`) | 100 | 500 | 1500 | assumption | 2.6964 | 2.711 | 0.0146 | 1,734 | 1,734 | 0 |
+| Fabrication energy (kWh/kg U) (`fab_kwh_per_kgU`) | 36 | 36 | 50 | TO VERIFY | 2.7006 | 2.7146 | 0.014 | 1,734 | 1,734 | 0 |
+| Structural concrete binder content (kg/m³) (`binder_conv_kg_per_m3`) | 300 | 350 | 420 | assumption | 2.6953 | 2.7079 | 0.0126 | 1,670 | 1,822 | 152 |
+| Infill (SCC) binder content (kg/m³) (`binder_scc_kg_per_m3`) | 400 | 450 | 550 | TO VERIFY | 2.6965 | 2.7088 | 0.0123 | 1,590 | 2,021 | 430 |
+| Conversion electricity (kWh/kg U) (`conversion_elec_kwh_per_kgU`) | 10.3 | 11.8 | 16.9 | TO VERIFY | 2.6983 | 2.7083 | 0.0101 | 1,734 | 1,734 | 0 |
+| Aggregates, water, batching (kg CO₂e/m³) (`ef_concrete_other_kg_per_m3`) | 15 | 30 | 60 | assumption | 2.6973 | 2.7071 | 0.0098 | 1,734 | 1,734 | 0 |
+| GU cement factor (kg CO₂e/t) (`ef_gu_cement`) | 796 | 854 | 898 | TO VERIFY | 2.6956 | 2.7044 | 0.0088 | 1,616 | 1,823 | 207 |
+| Truck factor (kg CO₂e per t-km) (`ef_truck_kg_per_tkm`) | 0.06 | 0.1 | 0.15 | assumption | 2.6982 | 2.7036 | 0.0054 | 1,734 | 1,734 | 0 |
+| DPSC shaft-wall infill thickness (m) (`rb_wall_thickness_m`) | 1.0 | 1.5 | 2.0 | assumption | 2.6989 | 2.7022 | 0.0034 | 1,464 | 1,995 | 532 |
+| Concrete haul distance (km) (`transport_concrete_km`) | 5 | 15 | 50 | assumption | 2.7 | 2.7024 | 0.0024 | 1,734 | 1,734 | 0 |
+| DPSC basemat infill thickness (m) (`rb_basemat_thickness_m`) | 2.0 | 3.0 | 4.0 | assumption | 2.6996 | 2.7015 | 0.0019 | 1,581 | 1,886 | 306 |
+| Reactor-building shaft depth (m) (`rb_shaft_depth_m`) | 35 | 35 | 38 | TO VERIFY | 2.7006 | 2.701 | 0.0005 | 1,734 | 1,805 | 71 |
+| Forebay shaft concrete (m³) (`forebay_concrete_m3`) | 4000 | 4000 | 6000 | TO VERIFY | 2.7006 | 2.7006 | 0.0 | 1,734 | 1,955 | 221 |
+| Slag cement factor (kg CO₂e/t) (`ef_slag`) | 93.4 | 146.6 | 146.6 | TO VERIFY | 2.7006 | 2.7006 | 0.0 | 1,734 | 1,734 | 0 |
+| Clinker in GU cement (t/t) (`clinker_factor_gu`) | 0.9 | 0.92 | 0.95 | assumption | 2.7006 | 2.7006 | 0.0 | 1,734 | 1,734 | 0 |
+| Slag share of binder (S1) (`slag_replacement_s1`) | 0.25 | 0.4 | 0.5 | assumption | 2.7006 | 2.7006 | 0.0 | 1,734 | 1,734 | 0 |
+| Clinker in LC3 (t/t) (`lc3_clinker_factor`) | 0.5 | 0.5 | 0.55 | TO VERIFY | 2.7006 | 2.7006 | 0.0 | 1,734 | 1,734 | 0 |
+| LC3 cut in binder emissions (`lc3_gwp_reduction`) | 0.3 | 0.37 | 0.43 | TO VERIFY | 2.7006 | 2.7006 | 0.0 | 1,406 | 2,015 | 609 |
+| Extra binder LC3 needs to flow (`lc3_binder_uplift`) | 0.0 | 0.0 | 0.1 | assumption | 2.7006 | 2.7006 | 0.0 | 1,734 | 1,438 | 295 |

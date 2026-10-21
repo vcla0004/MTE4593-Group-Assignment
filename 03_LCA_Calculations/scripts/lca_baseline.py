@@ -234,7 +234,7 @@ arrow(74, 30, 74, 19)
 ax.text(2.5, 2.2, "Blue: bottom-up per kg U (this study). Green: bottom-up materials (this study). Purple: literature per kWh (EDF 2024 shares).\n"
         "Cut off: grid transmission beyond the plant, cladding and fuel hardware manufacture, conversion chemicals, fuel-plant capital goods, recycling credits.",
         fontsize=7.6, color=lp.INK2)
-ax.set_title("Figure F1. LCA system boundary for one BWRX-300 at Darlington", loc="left")
+# no embedded title: the Word caption carries "Figure F1" (review.md section 6 point 9)
 lp.save(fig, RESULTS / "F1_system_boundary.png")
 
 print(f"Baseline S0: {tot:.3f} g CO2e/kWh; {R['total_t_life']:,.0f} t CO2e per unit-life; concrete {v['total']:,.0f} m3/unit "

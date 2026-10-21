@@ -1,0 +1,4 @@
+conversion_heat_case,distribution,conv_heat_mean_kwh_per_kgU,g_mean,g_p5,g_p50,g_p95,lc3_share_pct_p50,lc3_share_pct_p5,lc3_share_pct_p95
+triangular (baseline),triangular 26 / 26 / 665 (mode = low),238.8,4.279,3.048,4.178,5.849,0.295,0.185,0.455
+held at central,"fixed at 26 kWh/kg U (Gibon and Hahn Menacho 2023 central, TO VERIFY)",26.0,3.342,2.623,3.31,4.175,0.371,0.252,0.544
+log-uniform,log-uniform 26-665 kWh/kg U,197.1,4.096,2.886,3.912,5.906,0.312,0.189,0.485
