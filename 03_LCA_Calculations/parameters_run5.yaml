@@ -1,0 +1,430 @@
+# Rubric coverage: R3.1, R2.3, R2.7, RB.6, R3.6, R3.7, RB.5
+# Analyst run 5 (21/10/2026): economics and finance for section 7 and section 8.2.
+# Schema as parameters_run1.yaml: name: {value, low, high, unit, source: <key in 02_Research/sources_run5.md
+#   or another sources_*.md>, status, note}.
+#   status = "TO VERIFY"   -> seen only in a web-search summary or secondary source. Primary NOT opened:
+#                             on 21/10 the proxy refused (403 / DNS fail) csiro.au, sec.gov, canada.ca,
+#                             cib-bic.ca, opg.com, lc3.ch, arxiv.org, osti.gov, ncbi.nlm.nih.gov, and
+#                             every mirror tried. NOT citable until a person opens the primary.
+#   status = "assumption"  -> analyst's stated assumption (placeholder or sensitivity bound only).
+#   status = "placeholder" -> stands in for a teammate's number (Sam/lca-analyst, Leroy).
+#   status = "from results" -> taken as given from another results file in this repo.
+# Read by scripts/lcoe.py and scripts/initiative_cost.py only.
+
+parameters:
+
+  # ================= Darlington capital (Ontario / OPG) =================
+  dnnp_budget_cad:
+    value: 20.9e9
+    unit: CAD, four BWRX-300 units, "including interest, escalation and contingency"
+    source: OPG_2025_Q1
+    status: TO VERIFY
+    note: "Same figure as parameters_run1.yaml. OPG Q1 2025 release (sources.md) says it includes interest, escalation and contingency; the Globe and Mail / World Nuclear Report leads describe it as '2024 dollars'. The two descriptions conflict (nominal with escalation vs constant 2024$). lcoe.py treats it as real 2024 C$ and flags the bias (section 4 of lcoe.md)."
+  dnnp_unit1_plus_common_cad:
+    value: 7.7e9
+    unit: CAD (Unit 1 C$6.1 bn + shared infrastructure C$1.6 bn)
+    source: OPG_2025_Q1
+    status: TO VERIFY
+    note: "WNN 'How is CAD20.9 billion cost calculated?' (pointer) says the C$6.1 bn excludes the C$1.6 bn."
+  units:
+    value: 4
+    unit: units
+    source: OPG_2025_Q1
+    status: TO VERIFY
+  net_mwe:
+    value: 300
+    low: 300
+    high: 315
+    unit: MWe net per unit
+    source: OPG_OEB_EB-2025-0297_D2-4-1
+    status: placeholder
+    note: "300 = deck and parameters_run1.yaml; 315 = OEB exhibit lead (sources.md). Leroy owns."
+  capacity_factor:
+    value: 0.90
+    low: 0.80
+    high: 0.95
+    unit: fraction
+    source: assumption
+    status: placeholder
+    note: "Same as parameters_run1.yaml. GenCost uses a range from 10% below the 10-year average to the 10-year maximum (GenCost FAQ, lead); range here is a sensitivity bracket."
+  econ_life_yr:
+    value: 60
+    low: 30
+    high: 60
+    unit: years
+    source: assumption
+    status: placeholder
+    note: "60 = design life placeholder (parameters_run1.yaml). 30 = a financing/regulatory-asset horizon, the GenCost-style shorter economic life case [GenCost's own economic life for nuclear TO VERIFY]."
+  idc_share_of_budget:
+    value: 0.15
+    low: 0.0
+    high: 0.25
+    unit: fraction of the C$20.9 bn that is interest during construction
+    source: assumption
+    status: assumption
+    note: "No split of interest/escalation/contingency was found (WNN pointer says none was published). GenCost 2025-26 final says its Australian interpretation of Darlington capital was 'revised downwards' to remove IDC (CSIRO news, lead), with no number seen. 0.15 is an analyst assumption; 0 = treat the whole budget as overnight (double-counts IDC, conservative-high)."
+  build_years:
+    value: 5
+    low: 4
+    high: 7
+    unit: years, uniform spend
+    source: assumption
+    status: assumption
+    note: "Unit 1: construction licence April 2025 (CNSC_2025_LTC) to in-service October 2030 (OEB lead) is about 5.5 years; Units 2-4 overlap. Used only to re-add IDC at each test discount rate."
+  capex_low_factor:
+    value: 0.85
+    unit: multiplier on budget
+    source: assumption
+    status: assumption
+    note: "Downside: learning on Units 2-4 beats the estimate by 15%. Analyst assumption. The OPG/Sollid lead says per-unit overnight cost falls from about EUR 10,700/kW (Unit 1) to EUR 6,900/kW (Unit 4), which is already inside the C$20.9 bn."
+  capex_high_factor:
+    value: 1.75
+    unit: multiplier on budget
+    source: nuscale_class3_2023
+    status: TO VERIFY
+    note: "Upside: the NuScale/UAMPS CFPP estimate rose US$5.3 bn -> US$9.24 bn (x1.74) between estimate classes (sources_run4.md NuScale_DCRA_2023). Units 2-4 are still Class 4 estimates (OPG/Sollid lead), so a CFPP-sized overrun is the precedent used, not a forecast."
+
+  # ================= Operating and fuel costs (US$/MWh unless stated) =================
+  fom_vendor_usd_mwh:
+    value: 16.00
+    unit: US$/MWh fixed O&M (BWRX-300, manufacturer-advertised)
+    source: rao2026_smr_opex
+    status: TO VERIFY
+    note: "Rao, Kaffine and Hodge (arXiv 2609.08929, 2026) appendix table, taken from Steigerwald et al. (2023) dataset; vendor figure, converted to $/MWh by the authors. Dollar year TO VERIFY."
+  vom_usd_mwh:
+    value: 3.55
+    unit: US$/MWh variable O&M
+    source: rao2026_smr_opex
+    status: TO VERIFY
+    note: "Lazard 2024 assumption applied to SMRs in Rao et al. (2026)."
+  fuel_vendor_usd_mwh:
+    value: 8.44
+    unit: US$/MWh fuel (BWRX-300)
+    source: rao2026_smr_opex
+    status: TO VERIFY
+    note: "Rao et al. (2026) appendix; Argonne fuel-cost calculator basis per the search summary."
+  opex_fleet_usd_mwh:
+    value: 24.70
+    unit: US$/MWh (operating 19.38 + fuel 5.32), US fleet average 2023, 2023 US$
+    source: nei2025_costs_context
+    status: TO VERIFY
+    note: "NEI 'Nuclear Costs in Context' (Feb 2025, 2023 data, from EUCG): total generating cost 31.76 = fuel 5.32 + capital 7.06 + operating 19.38. Capital (ongoing capex) excluded here because it is not O&M. Large multi-unit fleet: a LOW bound for a small new site."
+  opex_single_unit_usd_mwh:
+    value: 38.40
+    unit: US$/MWh total generating cost, single-unit US sites (2019 data)
+    source: nei2020_costs_context
+    status: TO VERIFY
+    note: "Older NEI edition (2019 data): multi-unit 28.38 vs single-unit 38.40. Used as the HIGH opex+fuel bound (small sites lose economies of scale). Dated; includes ongoing capital."
+  fom_stress_usd_per_mw_yr:
+    value: 632998
+    unit: US$/MW-yr fixed O&M (highest SMR concept in Rao et al. 2026 table)
+    source: rao2026_smr_opex
+    status: TO VERIFY
+    note: "Stress test only: the top of the 21,900-632,998 $/MW-yr range across SMR concepts in Rao et al. (IAEA ARIS / EIA basis). Not a BWRX-300 figure."
+  fx_cad_per_usd:
+    value: 1.38
+    low: 1.35
+    high: 1.44
+    unit: CAD per USD
+    source: assumption
+    status: assumption
+    note: "Placeholder for the Bank of Canada annual average (2023-2025). NOT from a source opened this session; replace with the Bank of Canada rate for the opex dollar year. Results are insensitive (opex is about 20-25% of LCOE)."
+  fx_aud_per_cad:
+    value: 1.119
+    low: 1.10
+    high: 1.13
+    unit: AUD per CAD
+    source: rba_f11
+    status: TO VERIFY
+    note: "Same as parameters_run1.yaml (May 2025 lead)."
+  discount_rates:
+    value: [0.03, 0.05, 0.07, 0.10]
+    unit: real, pre-tax WACC
+    source: assumption
+    status: assumption
+    note: "3% = public/concessional (CIB-type loan); 5% = regulated Crown utility; 7% = run-1 central (GenCost-like WACC, TO VERIFY GenCost's own); 10% = merchant FOAK risk."
+
+  # ================= Benchmarks (RB.6) =================
+  opg_dnnp_lcoe_cad:
+    value: 149
+    unit: C$/MWh (2024 dollars), average over the four units
+    source: opg_oeb_lcoe_lead
+    status: TO VERIFY
+    note: "OPG answer to the OEB (EB-2025-0297), reported by J.C. Sollid (LinkedIn) and Gramwzielone; Consumers Council letter of 27 Feb 2026 asked for it to be put on the public record. OPG's WACC and life behind it are unknown."
+  gencost2324_smr_2030_aud:
+    value: 306
+    low: 230
+    high: 382
+    unit: A$/MWh, SMR LCOE, 2030 (GenCost 2023-24 final, May 2024)
+    source: csiro2024_gencost2324
+    status: TO VERIFY
+    note: "NucNet 23 May 2024 and Yahoo 'One Big Chart' (leads): 230-382 in 2030. 306 = midpoint (search summary also says 'averaging $306'). CONFLICT: parameters_run1.yaml smr_lcoe_aud 514 (387-641) is labelled '2030 build' but NucNet gives 387-641 as the **2023** SMR value of the same edition. See Interfaces."
+  gencost2324_smr_2023_aud:
+    value: 514
+    low: 387
+    high: 641
+    unit: A$/MWh, SMR LCOE, 2023 (GenCost 2023-24 final)
+    source: csiro2024_gencost2324
+    status: TO VERIFY
+    note: "NucNet lead: '2023 ... $387/MWh-641/MWh'."
+  gencost2324_large_nuclear_2030_aud:
+    value: 187
+    low: 141
+    high: 233
+    unit: A$/MWh, large-scale nuclear LCOE, 2030 (GenCost 2023-24 final)
+    source: csiro2024_gencost2324
+    status: TO VERIFY
+    note: "NucNet lead; 2023 value 155-252. GenCost says no nuclear could run in Australia by 2030, so 2030 values are notional."
+  gencost2324_vre_2030_aud:
+    value: 107
+    low: 89
+    high: 125
+    unit: A$/MWh, solar and wind with integration costs, 2030 (GenCost 2023-24 final)
+    source: csiro2024_gencost2324
+    status: TO VERIFY
+    note: "NucNet lead 89-125; Capital Brief lead 82-120; Yahoo lead 73-128. Leads disagree (share of VRE, edition)."
+  gencost2425_smr_2030_high_aud:
+    value: 487
+    unit: A$/MWh, upper SMR LCOE in 2030, excluding a possible 100% FOAK premium
+    source: dcceew_bowen_release_gencost2425
+    status: TO VERIFY
+    note: "Bowen/Husic joint media release 'Experts agree: Nuclear only getting more expensive...' (minister.dcceew.gov.au, lead; date and edition TO VERIFY, probably GenCost 2024-25 final, 29 July 2025). Ministerial release: political source, use only to locate CSIRO's table."
+  gencost2425_vre_2030_aud:
+    low: 80
+    high: 122
+    value: 101
+    unit: A$/MWh firmed renewables at 80% VRE, 2030
+    source: dcceew_bowen_release_gencost2425
+    status: TO VERIFY
+    note: "Same release; midpoint 101 is arithmetic. Run 1 used 102 (ecogeneration lead) - consistent."
+  gencost2425_large_nuclear_2040_aud:
+    low: 145
+    high: 238
+    value: 192
+    unit: A$/MWh, large-scale nuclear from 2040
+    source: dcceew_bowen_release_gencost2425
+    status: TO VERIFY
+  gencost2526d_large_nuclear_2030_aud:
+    low: 200
+    high: 328
+    value: 264
+    unit: A$/MWh, large-scale nuclear indicative levelised generation cost (GenCost 2025-26 consultation draft)
+    source: cec2025_gencost2526_draft
+    status: TO VERIFY
+    note: "Clean Energy Council release (Dec 2025) quoting the draft. Industry advocate; year (2030 vs 2025) TO VERIFY in the draft PDF."
+  gencost2526_smr_2030_aud:
+    value: null
+    unit: A$/MWh
+    source: csiro2026_gencost2526
+    status: GAP
+    note: "NOT FOUND in any search. GenCost 2025-26 final (15 July 2026) says SMRs are 'the highest cost', capital still based on Darlington, Australian interpretation 'revised downwards' for interest during construction (CSIRO news, lead). Victor to read Table/Figure in section 5 of the final report."
+  gencost_2050_values:
+    value: null
+    unit: A$/MWh
+    source: csiro2026_gencost2526
+    status: GAP
+    note: "No 2050 LCOE for SMR, large nuclear or firmed VRE was found for any edition. Victor to read from the final report's LCOE appendix."
+
+  # ================= NuScale / UAMPS CFPP (cost-risk case) =================
+  cfpp_price_2020_usd:
+    value: 58
+    unit: US$/MWh target price, 2020 dollars
+    source: NuScale_DCRA_2023
+    status: TO VERIFY
+    note: "sources_run4.md. E&E News gives 55 (factcheck)."
+  cfpp_price_2022_usd:
+    value: 89
+    unit: US$/MWh target price, 1 July 2022 dollars, AFTER IRA credits and DOE cost share
+    source: NuScale_DCRA_2023
+    status: TO VERIFY
+  cfpp_ira_usd_mwh:
+    value: 30
+    unit: US$/MWh of IRA credits already netted out of the 89
+    source: ieefa2023_nuscale
+    status: TO VERIFY
+    note: "IEEFA (advocacy analysis, medium) via sources_run4.md: 'about $30/MWh'."
+  cpi_2020_to_jul2022:
+    value: 1.14
+    low: 1.12
+    high: 1.16
+    unit: US CPI ratio, 2020 average to July 2022
+    source: assumption
+    status: assumption
+    note: "Placeholder for BLS CPI-U; NOT from a source opened this session. Replace with BLS series CUUR0000SA0 (annual 2020 vs July 2022)."
+  cfpp_cost_old_usd:
+    value: 5.3e9
+    unit: US$ total project cost, earlier estimate
+    source: NuScale_DCRA_2023
+    status: TO VERIFY
+  cfpp_cost_new_usd:
+    value: 9.24e9
+    unit: US$ total project cost, NuScale/Fluor Class 3 (2023)
+    source: NuScale_DCRA_2023
+    status: TO VERIFY
+  cfpp_mwe:
+    value: 462
+    unit: MWe (6 x 77)
+    source: UAMPS_NuScale_2023
+    status: TO VERIFY
+  cfpp_doe_award_usd:
+    value: 1.355e9
+    unit: US$ DOE cost-share award over 10 years
+    source: DOE_CFPP_2020
+    status: TO VERIFY
+  cfpp_doe_obligated_usd:
+    value: 232.8e6
+    unit: US$ obligated by DOE at termination
+    source: DOE_CFPP_2020
+    status: TO VERIFY
+    note: "E&E News quoting DOE (sources_run4.md); reported net DOE exposure after asset transfer about US$50 m."
+
+  # ================= Market: US SMR developers (10-K cover pages) =================
+  nuscale_float_usd:
+    value: 5.3e9
+    unit: US$ aggregate market value held by non-affiliates, 30 June 2025
+    source: nuscale_10k_2025
+    status: TO VERIFY
+    note: "Search summary of the FY2025 10-K (sec.gov/Archives/edgar/data/1822966/000182296626000018/smr-20251231.htm). 'Roughly $5.3 billion' - exact figure TO VERIFY on the cover page."
+  nuscale_revenue_2025_usd:
+    value: 31.5e6
+    unit: US$ revenue FY2025
+    source: nuscale_10k_2025
+    status: TO VERIFY
+  nuscale_oploss_2025_usd:
+    value: 689.6e6
+    unit: US$ loss from operations FY2025
+    source: nuscale_10k_2025
+    status: TO VERIFY
+    note: "G&A US$609.8 m drove most of the rise (search summary). Reuters-sourced net loss lead: US$355.8 m (attributable figure may differ); check which line."
+  nuscale_cash_2025_usd:
+    value: 1.3e9
+    unit: US$ cash and investments, 31 Dec 2025
+    source: nuscale_10k_2025
+    status: TO VERIFY
+  oklo_float_usd:
+    value: 7.0e9
+    unit: US$ aggregate market value held by non-affiliates, 30 June 2025
+    source: oklo_10k_2025
+    status: TO VERIFY
+    note: "From a mirror (boardroomalpha.com) of the FY2025 10-K; sec.gov cover page not seen. 'About $7 billion'."
+  oklo_revenue_2025_usd:
+    value: 0
+    unit: US$ revenue
+    source: oklo_10q_q3_2025
+    status: TO VERIFY
+    note: "Zero revenue in Q3 2025 (search summary of a news report); full-year FY2025 revenue TO VERIFY in the 10-K."
+  nano_float_usd:
+    value: 703834174
+    unit: US$ aggregate market value held by non-affiliates, 31 March 2025 (closing price US$26.46)
+    source: nano_10k_fy2025
+    status: TO VERIFY
+    note: "Search summary quoting the FY2025 (year to 30 Sep 2025) 10-K cover page exactly."
+
+  # ================= Government programmes =================
+  doe_gen3_smr_solicitation_usd:
+    value: 900e6
+    unit: US$ DOE Gen III+ SMR solicitation (March 2025)
+    source: doe2025_gen3smr
+    status: TO VERIFY
+  doe_gen3_smr_awards_usd:
+    value: 800e6
+    unit: US$ awarded Dec 2025: TVA (BWRX-300, Clinch River) 400 m + Holtec (SMR-300, Palisades) 400 m
+    source: doe2025_gen3smr
+    status: TO VERIFY
+  cib_loan_cad:
+    value: 970e6
+    unit: CAD, CIB loan (Oct 2022) for Phase 1 pre-construction
+    source: CIB_2022_Loan
+    status: TO VERIFY
+  cgf_equity_cad:
+    value: 2.0e9
+    unit: CAD, up to; up to 15% of DNNP LP
+    source: CGF_BOF_2025
+    status: TO VERIFY
+  bof_equity_cad:
+    value: 1.0e9
+    unit: CAD; 7.5% of DNNP LP
+    source: CGF_BOF_2025
+    status: TO VERIFY
+  cgf_bof_first_draw_cad:
+    value: 585e6
+    unit: CAD received April 2026 (first portion)
+    source: OPG_2026_Q1
+    status: TO VERIFY
+  ce_itc_rate:
+    value: 0.15
+    unit: fraction of eligible capital, Clean Electricity ITC (nuclear incl. SMRs; available to Crown corporations)
+    source: finance_canada_ceitc
+    status: TO VERIFY
+    note: "15% rate is from the search query framing, NOT confirmed by the result (which confirmed eligibility of SMRs and Crown corporations, from 2023 budget-era law firm summaries). Do not use in the report until Finance Canada is opened. Not used in calculations."
+
+  # ================= Initiative C1 (LC3 in Units 2-4 target structures) =================
+  c1_volume_m3_per_unit:
+    value: 13081
+    low: 12200
+    high: 15600
+    unit: m3 of target concrete per unit (DPSC infill + forebay shaft)
+    source: lca_results_2110
+    status: from results
+    note: "03_LCA_Calculations/results/lca.md section 0 and 2.1 (lca-analyst, 21/10). Geometric estimate with assumed thicknesses."
+  c1_saving_t_per_unit:
+    value: 1730
+    low: 1390
+    high: 2150
+    unit: t CO2e saved per unit (S2 LC3 vs S0 GU, concrete A1-A3)
+    source: lca_results_2110
+    status: from results
+    note: "lca.md section 0 (Monte Carlo P5-P95)."
+  c1_units:
+    value: 3
+    unit: units (Units 2-4; Unit 1 structures already placed)
+    source: lca_results_2110
+    status: from results
+  concrete_price_cad_m3:
+    value: 229
+    low: 167
+    high: 290
+    unit: C$/m3, 32 MPa ready-mix, delivered, before HST
+    source: niagara2025_tender
+    status: TO VERIFY
+    note: "City of Niagara Falls ready-mix tender bid summaries (2025-26 rounds): about 167-290 (search summary; columns misaligned in extraction). Central = midpoint. Municipal commodity mix: nuclear-grade SCC will cost more, which scales a %-premium up in dollars."
+  lc3_cost_cut_production:
+    value: 0.25
+    low: 0.15
+    high: 0.25
+    unit: fraction lower production cost of LC3 cement vs OPC (upper claim)
+    source: lc3_2019_financial
+    status: TO VERIFY
+    note: "LC3 project 'Financial attractiveness of LC3' (2019): 'up to 25% lower'; Cuban LC3 study lead: 15-25%. Promoter claims for plants with local clay; NOT Ontario market prices."
+  binder_share_of_concrete_price:
+    value: 0.40
+    low: 0.30
+    high: 0.50
+    unit: fraction of delivered concrete price that is cementitious binder
+    source: assumption
+    status: assumption
+    note: "Analyst assumption, no source found. Only used to turn the LC3 production-cost claim into a per-m3 discount."
+  premium_scenarios_frac:
+    value: [-0.10, 0.0, 0.05, 0.10, 0.20]
+    unit: LC3 concrete price premium as fraction of the GU concrete price
+    source: assumption
+    status: assumption
+    note: "-0.10 = LC3 production-cost discount passed through (0.25 x 0.40); 0 = Clean Energy Canada (2025): low-carbon concrete cutting up to 32% embodied carbon available 'for no price increase' in Canadian case studies (lead); +0.05/+0.10/+0.20 = analyst assumptions for a novel Ontario supply chain (calcined clay not produced at scale locally - TO VERIFY) and small nuclear volumes. No source gives an LC3 price in Ontario."
+  qualification_cost_cad:
+    value: [0, 1.0e6, 3.0e6]
+    unit: C$ one-off nuclear qualification programme for the mix (CSA N287.2 testing, mock-ups)
+    source: assumption
+    status: assumption
+    note: "NO SOURCE FOUND (search 21/10: only the cost of the standard itself, ~C$790). Pure scenario values. Victor/Leroy: ask OPG or a nuclear concrete lab, or keep as an explicit assumption."
+  carbon_prices_cad:
+    value: [95, 110, 170]
+    unit: C$/t CO2e: federal benchmark 2025, 2026, 2030 (Ontario EPS excess-emissions charge follows it)
+    source: eccc_benchmark; enbridge_eps
+    status: TO VERIFY
+    note: "ECCC 'Federal carbon pollution pricing benchmark' (canada.ca) and Update 2023-2030: +C$15/yr to C$170 in 2030 (ICAP lead: C$95 in 2025, C$110 for 2026 compliance). Federal consumer fuel charge set to zero from 1 April 2025; industrial benchmark under review (lead). Units 2-4 concrete would be placed about 2029-2033, so C$155-170 is the relevant range if the path holds."
+  dnnp_u24_capital_cad:
+    value: 13.2e9
+    unit: CAD (C$20.9 bn minus Unit 1 + common C$7.7 bn)
+    source: OPG_2025_Q1
+    status: TO VERIFY
+    note: "Arithmetic from the two budget figures."

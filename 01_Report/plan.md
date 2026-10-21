@@ -294,6 +294,8 @@ Analysts add requests here, addressed by name. Conflicts between numbers also go
 
 ## 6. Day-by-day schedule [all IDs, PRES]
 
+> **Superseded from Wed 21/10 18:00 by §7 (revised 21/10), the work queue.** The Wednesday rows for Sam and Leroy are overdue. Sam's work has passed to Victor (CLAUDE.md, 21/10), and Leroy's is subject to gate G1. The Friday rows still stand.
+
 ### Tuesday 20 October (today)
 
 | By | Who | Task | Serves |
@@ -349,28 +351,100 @@ Analysts add requests here, addressed by name. Conflicts between numbers also go
 
 ---
 
-## 7. Agent loop order (Victor's and the shared sections) [R1.2, R1.4, R2.1, R2.3, R2.4, R2.6, R2.7, R3.1–R3.8, R4.3, R4.4, R5.1, RB.1, RB.6, RB.8]
+## 7 (revised 21/10): work queue to the freeze [all IDs, PRES]
 
-The coordinator runs these in order. Each output starts with its `Rubric coverage:` line (CLAUDE.md). Each section gets one revision cycle; after the freeze, only must-fix items.
+Rubric coverage: all (R1.1–R5.5, RB.1–RB.8); presentation rubric
 
-1. **Analyst run 1 (Tue, now): inputs for displacement, schedule value and the same-money comparison** [R2.1, R2.3, R2.7, R3.1, R3.6, R4.3, RB.6].
-   - First because it carries the most marks, has the longest dependency chain, and the deck needs its headline by Wednesday night.
-   - None of it waits for Sam: build parameterised scripts with a placeholder life-cycle value (the UNECE range), then swap in Sam's number at Wed 12:00.
-   - Inputs: the Darlington budget and financing; Ontario's average and marginal emission factors; the NSW factor and ISP trajectory; Liddell/Bayswater intensity as the upper bound; GenCost capital costs and LCOE; CSIRO's earliest-date statement; the value of reusing the coal site's grid connection (qualitative unless a source gives a number).
-   - Also produces the benchmark brief for Sam.
-2. **Analyst run 2 (Tue): law, regulation, licensing, party positions, and the route to practice for C1** [R3.2, R3.4, R3.5, R3.7, R1.4].
-   - Open the legislation itself: EPBC s140A and ARPANS s10; also the state bans and ARPANSA's role.
-   - Canada: the CNSC licence and hold points, the licensing step for Units 2–4, and CSA N287/N291 qualification.
-   - The federal embodied-carbon standard; the Coalition's 2024 plan and its current position.
-3. **Analyst run 3 (Tue evening): HHI** [R3.2, R2.1, R3.8]. Mining by country (Red Book or World Nuclear Association production data, latest year); enrichment capacity by company (World Nuclear Association); Australia's position; concentration thresholds.
-   → Writer: §8.1 and §8.3 → fact-checker → examiner (Wed 09:00).
-4. **Analyst run 4 (Wed, after Sam's 12:00 ranges): tornado and Monte Carlo script for the LCA** [R2.7]. Offered to Sam; he decides whether to use it and owns the results.
-5. **Analyst run 5 (Wed): economics and finance** [R3.1, R2.3, RB.6]. GenCost LCOE; NuScale/UAMPS; Darlington financing; barriers to entry; the initiative's abatement cost.
-6. **Analyst run 6 (Wed): social licence, stakeholders and money flows, workforce, waste governance** [R3.3, R3.4, R3.5, R3.8].
-   → Writer: §7 (after Sam's numbers), §8.2, §8.4–8.6, then §3 → fact-checker (Wed night, including Sam's and Leroy's drafts) → examiner (Thu 09:00).
-7. **Analyst run 7 (Thu morning): MCDA** [R3.6, RB.8, R2.6, R4.4], using Sam's and Leroy's scores.
-   → Writer: §9, then the shared §2, §1, §11 and abstract [R2.4, R5.1, R1.2, RB.1].
-8. **Thu 21:00:** fact-checker on the whole report and the slides → examiner's final review at max effort → `review.md`, and `rubric-tracker.md` once the coordinator releases it [all IDs]. A section is done only when every ID it serves is marked HD with evidence and the fact-checker has confirmed that evidence (CLAUDE.md). Anything short of that at the freeze gets an exact, cheap fix for Friday or is cut.
+Written by the examiner at the whole-project audit (`review.md`, "Whole-project audit (21/10)"). **It replaces the old §7 loop order and, from Wed 18:00, the Wednesday–Thursday rows of §6.** Runs 1–4 and the writer drafts of §8.1, §8.3, §6 and Appendices A–C are done (see the audit for their status).
+
+**Decisions it assumes.**
+- D1 stays C1. The default framing is "low-clinker SCC infill for the DPSC modules and forebay shafts of Units 2–4: LC3 as the target binder, a slag blend as the fallback, specified only if schedule-neutral". Victor can overrule it.
+- Sam's red sections belong to Victor (CLAUDE.md, 21/10).
+- Leroy's sections fall back to Victor's agents only if gate **G1** (Wed 18:00) triggers and Victor agrees.
+
+**Rules for every job.**
+- Every output starts with its `Rubric coverage:` line.
+- Every number comes from a parameter file or a script.
+- Every unverified claim keeps its [TO VERIFY] marker until assembly (Q19), where it is either verified, hedged or cut. **No marker ships.**
+- Teammates' files are never edited. Fallback drafts are new files labelled "drafted for Leroy; Leroy may reclaim".
+
+**Parallelism.**
+- Jobs marked **‖** can run at the same time as the other ‖ jobs in their wave: they write different files and none needs another's output.
+- "after Qn" means wait for Qn.
+- If only one writer instance can run at a time, run the writer jobs in this order: Q4, Q7, Q6, Q8, Q10, Q9, Q14, Q16.
+
+### Already running (do not re-queue)
+- **R5. Analyst run 5: economics and finance.** GenCost 2025-26 LCOE; NuScale/UAMPS (primary filings); Darlington financing (OPG, CIB, CGF/BOF); barriers to entry; **the initiative's carbon value or abatement cost**. Writes to `02_Research/briefs/` and `03_LCA_Calculations/`. [R3.1, R2.3, RB.6, R3.8]
+- **R6. Analyst run 6: social licence, stakeholders and money flows, workforce, waste governance.** [R3.3, R3.4, R3.5, R3.8, R5.2]
+- **W0. Writer: §6 v3** with the text fixes from `review.md` §6 (points 1–3, 5–6, 8). Any fix that needs a script result stays a TODO for Q8. [R2.3, R2.5, R2.6, R5.1, R5.2]
+
+### Wave 1: start now (Wed afternoon)
+
+| # | Agent | Job | Inputs | Output file(s) | IDs | Due | Parallel |
+|---|---|---|---|---|---|---|---|
+| Q1 | lca-analyst | **LCA script fixes.** (a) A like-for-like S3 row: low-carbon steel in the C1 target structures only; relabel the whole-plant row "upper bound: all steel at best-practice EAF sections factors". (b) Monte Carlo shares for S1, S2b, S3 (E1). (c) A conversion-heat alternative run: held at 26, and log-uniform 26–665, as one row for Table C2. (d) F3: plain labels, a "mode case 2.70" marker, no embedded title. (e) F5: UNECE as a range only, no 3.7 attributed to Warner and Heath (L31, L66). (f) Correct `lca.md` §0, §1, §7, §10, §11 (L64). (g) An S0 counterfactual note: does NEDO-33926 permit SCMs [TO VERIFY]; if so, what S0 becomes | `review.md` §6 points 2, 4, 7, 9; factcheck L31, L64, L66, E1; `parameters_lca.yaml` | `scripts/lca_scenarios.py`, `lca_uncertainty.py`, `lca_plot.py`; `results/lca_scenarios.*`, `lca_montecarlo_summary.csv`, `lca_uncertainty.md`, `F3_tornado.png`, `F5_benchmarks.png`, `lca.md` | R2.6, R2.3, R2.7, R2.5, R5.2, RB.6 | Wed 20:00 | ‖ |
+| Q2 | analyst (run 7a) | **Re-base §7 on our LCA and value C1.** Set `smr_lca_g_per_kwh` to 4.2 (3.0–5.8; source = our model) and re-run `displacement.py`, `schedule_value.py`, `same_money.py`. Add a schedule-value table: break-even days against C1's saving per unit (1.74 kt) and for Units 2–4 (5.2 kt), at average and marginal factors. Add C1's carbon value at a sourced 2026 Canadian carbon price, set against the CO₂e and dollar cost of one month's delay. If run 5 already gives the carbon value, use it | `results/lca.md` §0; `parameters_run1.yaml`; R5 output | `parameters_run1.yaml`; `results/displacement.md`, `schedule_value.md`, `same_money.md` | R2.3, R2.7, R3.1, R4.3 | Wed 21:00 | ‖ |
+| Q3 | analyst (run 7b) | **Close the sourcing gaps that block text.** Add `sources.md` entries for: ISO 14040/44; EN 15804; NWMO APM; Constitution ss 23 and 109; IPCC AR5 WGIII Annex III (min/median/max); Silex/GLE (ASX release, NRC Paducah docket; B15); Ontario blast-furnace-to-EAF conversions (L18); Krall 2022; Lowy; OWID (plus Markandya and Wilkinson); NuScale/UAMPS primary; GEH 2021. Supply authors for L10, L17, LACCEI and Ng. Replace ENR; use the CRSI 2022 EPD; merge the APH duplicates. Add a CRAI row to `hhi.py`. **Size §8.3:** four units' 196 t U and 138 tSWU a year against Urenco USA capacity, plus a two-reload reserve. Propose the Red Book edition (B9) | factcheck A, B, H; `results/lca_baseline.md`; `briefs/supply-concentration.md` | `02_Research/sources.md`; `parameters_run3.yaml`; `scripts/hhi.py`; `results/hhi.md` (new §6, sizing) | R1.4, R1.3, R4.3, R2.3, R5.4 | Wed 23:00 (Silex go/cut: **Thu 12:00**) | ‖ |
+| Q4 | writer | **§7 Carbon avoided: Ontario vs Liddell, the value of schedule, the same money on firmed renewables** (≤ 1.75 pages; F6 and F7 specified from the results files). Plus **Appendix B4 (displacement), B5 (schedule value, including the C1 break-even), B6 (same money)** | `briefs/displacement-and-cost.md`; Q2 outputs; §6 v3; `review.md` audit §2 | `01_Report/sections/7-carbon-avoided.md`; `appendix-B-policy-and-supply-working.md` (append B4–B6) | R2.1, R2.3, R2.6, R2.7, R4.3, R3.1, R3.6, RB.5, RB.6 | Thu 02:00 | after Q2 |
+
+### Gate G1: Leroy, Wed 18:00 (Victor decides)
+- **G1.** If a Leroy file is in `01_Report/sections/` (or has been sent to Victor) by 18:00, skip Q5 and Q9. His drafts go to Q11 (fact-check) and Q13 (review), and he keeps assembly (Q19) if he confirms by Thu 12:00.
+- If nothing has arrived, Victor triggers the fallback and records it in CLAUDE.md and the Meeting 3 minutes, on the same terms as Sam's (21/10).
+- [RB.3, RB.4, RB.7, R1.1, R1.4]
+
+| # | Agent | Job | Inputs | Output file(s) | IDs | Due | Parallel |
+|---|---|---|---|---|---|---|---|
+| Q5 | analyst (run 8, Leroy fallback) | **Technology, projects, timescales, plant and fuel data, materials life cycle, patents.** (a) T2: a projects, timelines and TRL table (Darlington U1–U4, Clinch River, Linglong One, NuScale/UAMPS cancellation), with CNSC hold points and the Australian earliest-date claims (Coalition 2035/2037 vs CSIRO 2040). (b) BWRX-300 data: net MWe (300 vs 315), capacity factor, design life (60 vs 65), burnup, reload enrichment, cycle length, fabrication site, sourced into `parameters_lca.yaml`. Tell the lca-analyst if any value changes (re-run before Thu 12:00). (c) The LC3 and slag life cycle from extraction to end-of-life (for §5 and F9). (d) RB.7 evidence: SCC LC3 qualification data, low-residual EAF plate, laser enrichment, waste forms. (e) **Appendix E**: a Google Patents log (BWRX-300; steel-plate composite / DP-SC modules; LC3 / calcined clay) with strings, dates, hit counts and 5–10 patents kept. If the host is blocked, log the attempt and the gap | plan §3 rows 4.1, 4.2, 5, 10, E; `briefs/route-to-practice-c1.md`; `lca.md` §13 requests | `02_Research/briefs/technology-projects-trl.md`; `briefs/materials-eol-future.md`; `parameters_lca.yaml` (§A, §E); `01_Report/sections/appendix-E-search-log.md` | RB.3, RB.4, RB.7, R1.1, R1.3, R1.4, R2.5, R4.2 | Thu 07:00 | ‖ (with Q4, Wave 2) |
+
+### Wave 2: Wednesday night, as inputs land
+
+| # | Agent | Job | Inputs | Output file(s) | IDs | Due | Parallel |
+|---|---|---|---|---|---|---|---|
+| Q6 | writer | **§8.2 Economics, finance and market barriers** (0.85 p; GenCost comparison for RB.6; NuScale; who finances Darlington; C1's carbon value). Then **§8.4 Social licence** (0.6 p; poll vs deaths per TWh; First Nations and host consent; jobs) and **§8.5 Stakeholders and money flows** (0.35 p; F8 power/interest map specified; who pays and who earns) | R5 and R6 briefs; `same_money.md`; Q2 | `sections/8.2-economics-finance.md`; `8.4-social-licence.md`; `8.5-stakeholders-money.md` | R3.1, R3.3, R3.4, R3.5, R3.8, RB.6, R5.2 | Thu 04:00 | ‖, after R5 and R6 |
+| Q7 | writer | **§8.1 v3 and §8.3 v3**: apply the 20/10 review in full. §8.1: Units 2–4 licensing step; "36 even with every other crossbencher"; Senate date; s 8 consequence for a private plant; REGDOC 32-month benchmark; NEDO-33926 / AISC N690 as the governing infill code; the 18–24-month critical path; Coalition 2035 vs CSIRO 2040; ANNPSR; caption above the table, placeholder line deleted. §8.3: "Each stage's HHI"; the 2023/2010 class column; the "scale, not legal test" clause; the conversion "therefore" fixed; the Kazakh/Rosatom clause; the CRAI range; the Red Book clause; the Silex text with the Cameco/OPG link, or cut; **SWU sizing from Q3**. Delete §8.1's "Note for §9" once Q14 cites App B3 | `review.md` §8.1/§8.3; factcheck A, B; Q3 | `sections/8.1-law-regulation-licensing.md`; `8.3-supply-concentration.md` | R3.2, R3.4, R3.5, R3.7, R2.3, R2.6, R2.7, R1.3, R4.3, R5.2, R5.5 | Thu 06:00 | ‖, after Q3 |
+| Q8 | writer | **§6 v4 and Apps A/C number drop-in.** Like-for-like steel row and the reworded finding 4; MC shares in T8; the conversion-heat alternative sentence (§6.4) and Table C2 row; C1's carbon value in finding 2; the F3 and F5 captions; A3 rebar cap (L65); A5 ENR replaced; A9/A10 Granta results or cut (per H2) | Q1, Q2, W0; H2 result | `sections/6-lca-eco-audit.md`; `appendix-A-lca-inventory.md`; `appendix-C-sensitivity.md` | R2.2, R2.3, R2.6, R2.7, RB.6, R5.2 | Thu 06:00 (Granta rows by Thu 13:00) | ‖, after Q1 and Q2 |
+| Q10 | writer | **§3 Barriers** (1.25 p; one number and one source per barrier: cost and finance, time to deploy, law, fuel-supply concentration, embodied carbon and nuclear qualification, social licence, workforce; each says whether C1 touches it). **§4.3 The initiative** (0.75 p; the D1 default in the brief's "better example" form, with T1: about 13,100 m³ per unit, about 1,740 t per unit, about 5,200 t for Units 2–4, about 6,900 t of clinker, about 0.3%; lead with the DPSC infill problem and the schedule condition; say what C1 does **not** address). **§8.6 Implementation pathway** (0.35 p; the route-to-practice brief §5–6 levers compared in a table; the supply-option table from the supply brief; qualification on Unit 1 mock-ups; federal procurement standard) | all briefs; §6; Q4, Q6, Q7 | `sections/3-barriers.md`; `4.3-initiative.md`; `8.6-implementation.md` | R1.2, RB.2, RB.1, RB.3, R4.1, R4.2, R4.3, R3.5, R3.6, R3.7 | Thu 10:00 (§3 and §4.3 can start now; §8.6 after Q7) | ‖ |
+| Q9 | writer (Leroy fallback) | **§4.1 Technology, projects and patents** (1.25 p; T2), **§4.2 BWRX-300 at Darlington** (0.5 p), **§5 Materials from extraction to end-of-life** (1.5 p; F9 specified; stages matched to §6), **§10 Future material properties and processes** (0.75 p; SCC LC3 infill qualification; low-residual EAF plate as the next lever, with both S3 rows; conversion energy and ore grade; laser re-enrichment if sourced) | Q5; §6; Q1 | `sections/4.1-technology-projects.md`; `4.2-bwrx300-darlington.md`; `5-materials-life-cycle.md`; `10-future-materials.md` | RB.3, RB.4, RB.7, R1.1, R1.3, R4.2, R4.4 | Thu 11:00 | ‖, after Q5 (skip if G1 shows Leroy delivered) |
+
+### Wave 3: Thursday morning
+
+| # | Agent | Job | Inputs | Output file(s) | IDs | Due | Parallel |
+|---|---|---|---|---|---|---|---|
+| Q11 | fact-checker | **Pass 3**, in two batches. Batch 1: Appendix B (never checked), §7, §8.2, §8.4, §8.5, §8.1/§8.3 v3, the §6 v4 and Apps A/C deltas, and the Q2/Q3 results. Batch 2: §3, §4.x, §5, §8.6, §10 and the Q5 briefs | all of Wave 2 | `01_Report/factcheck.md` (new section I) | R1.4, R2.1–R2.7, R3.1–R3.8, RB.5, RB.6 | Batch 1 Thu 09:00; batch 2 Thu 13:00 | ‖ with Q12 |
+| Q12 | analyst (run 9) | **MCDA.** Four alternatives for Australia: status quo, one SMR at Liddell, SMR + C1, the same money on firmed renewables. Criteria: life-cycle CO₂e; CO₂e avoided to 2050 per dollar; cost (LCOE); time to first power and deliverability (including schedule risk); supply security (HHI); social licence; legal feasibility (App B3). Scores traced to §6–§8. Equal weights plus two stakeholder sets, each weight varied ±50%, with a rank-reversal check. Show explicitly that SMR vs SMR + C1 differ by about 0.3% on the environmental criterion. Script the App B3 route scoring as well | §6, §7, §8.x drafts; App B3; `same_money.md`; R5, R6; Q5 (TRL, dates) | `scripts/mcda.py`; `results/mcda.md`, `mcda_scores.csv` | R3.6, RB.8, R2.6, R4.4, R2.4 | Thu 11:00 (start Thu 07:00) | ‖ with Q11 |
+| Q13 | examiner | **Mark Wave 2** (Q4, Q6, Q7, Q8, Q10; Q9 or Leroy's drafts). Update the tracker. Give the cut list for R1.5 and R5.3 if the page count exceeds 20 | Wave 2; Q11 batch 1 | `review.md`; `rubric-tracker.md` | all IDs | Thu 10:30 | — |
+| Q14 | writer | **§9 TBL evaluation and MCDA** (1.25 p; T4 TBL summary; T5 MCDA scores, weights, sensitivity; verdict "adopt C1 only as a schedule-neutral specification qualified on Unit 1 mock-ups; otherwise specify the slag blend"). **Appendix B7** (MCDA working). Then revisions to Victor's sections from Q11/Q13 | Q12; Q11; Q13 | `sections/9-tbl-mcda.md`; `appendix-B-…md` (B7); revised section files | R3.6, RB.8, R2.6, R4.4, RB.5 | Thu 14:00 | ‖ with Q15 |
+| Q15 | coordinator (main session), then fact-checker | **Deck sync.** Every fix in `review.md` audit §4. Slides 7–8 get F2/F3/F5; an image on slide 3 or 4; an HHI bar chart on slide 13; slide 5's title in the D1 default wording; slide 14 = the Q12 MCDA result (or "preliminary" kept on-slide); Q2 changed to AISC N690 / CSA N291; numbers re-based on Q2; slide 15 rebuilt in Harvard from `sources.md`; `04_Presentation/README.md` speaker plan updated (H5). Fact-checker spot-checks slides against the report (30 min) | audit §4; Q1, Q2, Q3, Q12 | `04_Presentation/deck-source/project/slides/*.html`; `04_Presentation/README.md`; `factcheck.md` (deck rows) | PRES, R5.2 | Edits Thu 13:30; check Thu 14:30; **submit Thu 15:00** | ‖ with Q14 |
+| Q16 | writer (+ lca-analyst for Q16a) | **§2 Methods and data** (1.0 p: ISO 14040/44; the model and Granta status; HHI with thresholds and caveat; displacement and GenCost; MCDA; search strings and dates from App E), **§1 Introduction** (0.75), **§11 Conclusions and recommendations** (0.75; the ranked materials levers: schedule, fuel front end, whole-plant steel, concrete; limitations), **abstract** (about 200 words), **one reference list** (merge `sources.md` and `sources_lca.md`; Harvard per the style guide; alphabetical; every in-text citation present, nothing extra). **Q16a (lca-analyst):** generate Appendix D from all parameter files (value, range, source key, verified status) | all sections; Q12; Q5 | `sections/1-introduction.md`, `2-methods.md`, `11-conclusions.md`, `0-abstract.md`, `references.md`; `appendix-D-assumptions.md` (Q16a, Thu 14:00) | R2.4, R2.5, R1.2, R1.4, R4.4, R3.7, R5.1, R5.4, RB.1, RB.5 | Thu 18:00 | ‖ with Q15 |
+| Q17 | fact-checker | Batch 3: §9, §1, §2, §11, the abstract, the reference list, App D; cross-document consistency (report vs slides vs results) | Q14, Q16 | `factcheck.md` | R1.4, R5.4, R2.4, R3.6 | Thu 19:30 | — |
+| Q18 | writer | Must-fix revisions from Q17 only | Q17 | section files | as flagged | Thu 20:30 | — |
+| Q19 | Leroy if confirmed at G1, else coordinator | **Assembly.** pandoc with `MTE4593 Report.docx` as `--reference-doc`. Title page with all three student IDs and Sam's surname; table of contents; one numbering for figures (F1…) and tables (T1…), captions above tables; strip changelogs, "IDs covered" and "Remaining TODOs" blocks; every [TO VERIFY]/[TODO] resolved as verified, hedged or cut (list each cut); text page count 15–20 (cut order in §10); AI-use declaration placeholder (D10) | all section files | `01_Report/MTE4593 Report.docx`; `01_Report/assembly-log.md` (cuts and renumbering) | R5.1–R5.5, R1.5 | **Thu 21:00 FREEZE** | — |
+| Q20 | fact-checker | **Final check:** the whole assembled report, and slide-vs-report consistency | Q19 | `factcheck.md` (final) | all IDs | Fri 01:00 | — |
+| Q21 | examiner (**max effort**) | **Final pre-submission review:** a grade per criterion, a must-fix list per owner (Fri 11:00 deadline), the final tracker | Q19, Q20 | `review.md`; `rubric-tracker.md` | all IDs | Fri 08:00 | — |
+
+Friday: owners make must-fix edits only (by 11:00). Then page count and PDF (12:00–14:00), and **submit by 15:00** (§6, Friday table).
+
+### Human jobs (gate HD; no agent can do them)
+- **H1. Victor: open the P1 primaries, Wed 19:00 to Thu 12:00.** LCA first: Gibon 2023; Parker 2016; EDF 2024; the OPG basemat story or NEDO-33926; the CAC EPD region; UNECE 2021; IPCC AR5. Then: EPBC s 140A; ARPANS s 10 and s 13; the NSW Act ss 8–9; WNA mining, conversion and enrichment; DOJ/FTC 2023; the OEB filing D2-4-1. Set `verified`, re-run the scripts, and tell the fact-checker. [R1.4, R2.1, R2.7, R3.8, RB.6]
+- **H2. Granta Eco Audit cross-check by Thu 12:00** (Victor, Leroy or Sam on any EduPack machine; `granta_inputs.md`, under 1 hour). If it is not done, Q8 cuts A9/A10 and slide 6 drops "pending". [R2.2]
+- **H3. Meeting 3 minutes:** D1 (with the default framing or Victor's overrule), the Sam takeover, G1's outcome and the B9 Red Book edition. [teamwork evidence]
+- **H4. Message Leroy now** with the G1 deadline and the list in `review.md` audit §6.
+- **H5. Speaker plan by Thu 12:00:** who presents slides 1–8 if Sam and/or Leroy are absent. Record it in `04_Presentation/README.md`. [PRES teamwork]
+- **H6. Tutor questions T1/T2:** the deadline time, and what counts towards the page limit. Needed before Q19's page count. [R5.3]
+
+### Page budget still to write (text pages, plan §3)
+- §1 0.75
+- §2 1.0
+- §3 1.25
+- §4.1–4.3 2.5
+- §5 1.5
+- §7 1.75
+- §8.2 0.85, §8.4–8.6 1.3
+- §9 1.25
+- §10 0.75
+- §11 0.75
+
+That is **about 13.65 pages**, against about 4.7 drafted. If time runs out at the Thu 12:00 STRETCH check, cut in this order: §8.5 into a figure only; §4.1 to 1.0 page; §5 to 1.0 page; §2 to 0.75 page. Never cut §7, §9 or §3.
 
 ---
 

@@ -1,0 +1,260 @@
+# Rubric coverage: R3.3, R3.4, R3.5, R3.7, R3.8, R1.4, R5.2, RB.5
+#
+# Analyst run 6 (21/10/2026): social licence, stakeholders, money flows, workforce, waste governance.
+# Read by 03_LCA_Calculations/scripts/social_licence.py. The coordinator merges this into parameters.yaml.
+# Source keys refer to 02_Research/sources_run6.md (new keys) or sources_run4.md / sources.md (existing keys).
+#
+# VERIFICATION STATUS (read before using any number):
+#   No source host could be opened from this session. curl got "CONNECT tunnel failed, response 403"
+#   and WebFetch got ENOTFOUND for every primary and secondary host tried (cnsc-ccsn.gc.ca, nwmo.ca,
+#   opg.com, poll.lowyinstitute.org, ourworldindata.org, industry.gov.au, aph.gov.au,
+#   judgments.fedcourt.gov.au, news.griffith.edu.au and others). Every value below comes from
+#   search-engine summaries, so every entry has `verified: false`. Under CLAUDE.md none of these values
+#   can be cited until Victor or the fact-checker opens the source and sets `verified: true`.
+#   Judgement scores (stakeholder power/interest/stance) are labelled `source: analyst_judgement` and
+#   are NOT sourced numbers. Each one gives the evidence key it rests on.
+
+meta:
+  run: 6
+  date: 2026-10-21
+
+# ---------------------------------------------------------------------------
+# 1. Plant output (re-used from run 1 so the health-risk numbers match §7; Leroy/Sam own these)
+# ---------------------------------------------------------------------------
+plant:
+  net_mwe: {value: 300, low: 290, high: 300, source: parameters_run1.yaml, status: placeholder}
+  capacity_factor: {value: 0.90, low: 0.80, high: 0.95, source: parameters_run1.yaml, status: placeholder}
+  units_darlington: {value: 4, source: ON_2025_FID, verified: false}
+
+# ---------------------------------------------------------------------------
+# 2. Perceived vs actual safety
+# ---------------------------------------------------------------------------
+deaths_per_twh:            # OWID chart; fossil values from Markandya & Wilkinson (2007), European plants
+  source: OWID_deaths
+  verified: false
+  note: "Secondary tables attributed to OWID (run 4). Fossil rates are European plants with pollution controls, so OWID calls them conservative. Nuclear includes Chernobyl and Fukushima."
+  values: {brown_coal: 32.72, coal: 24.62, oil: 18.43, biomass: 4.63, gas: 2.82, hydro: 1.3, wind: 0.04, nuclear: 0.03, solar: 0.02}
+
+polls:
+  lowy_2024:
+    source: Lowy_2024
+    verified: false
+    question: "Australia using nuclear power to generate electricity (alongside other sources)"
+    n: 2028
+    moe_pct: 2.2
+    fieldwork: "4-17 March 2024"
+    strongly_support: 27
+    somewhat_support: 34
+    somewhat_oppose: 20
+    strongly_oppose: 17
+    dont_know: 2
+    newer_electricity_question_found: false   # 2025 and 2026 Lowy polls asked about submarines and weapons only
+  lowy_2011:
+    source: Lowy_2024
+    verified: false
+    support: 35
+    oppose: 62
+    note: "Different wording (building nuclear power plants to cut emissions): not directly comparable."
+  griffith_monash_2024wave:
+    source: GriffithMonash_2025
+    verified: false
+    n_approx: 4000
+    question: "Keep or remove Australia's ban on nuclear energy"
+    keep_ban: {2023: 51, 2024: 59}
+    against_ban: {2023: 34, 2024: 30}
+    benefits_far_outweigh_risks: {2023: 24.5, 2024: 22}
+    risks_far_outweigh_benefits: {2023: 21.9, 2024: 26}
+    keep_ban_women_2024: 66
+    keep_ban_men_2024: 51
+  newspoll_2007_local:
+    source: Newspoll_2007
+    verified: false
+    national_support: 45
+    national_oppose: 40
+    local_plant_support: 25
+    n_approx: 1200
+  essential_2019_local:
+    source: Essential_2019
+    verified: false
+    support_plants: 44
+    comfortable_living_close: 28
+  advocacy_commissioned_2025:   # listed for completeness; NOT for headline use
+    yougov_nuclear_for_australia: {support: 47, source: YouGov_NFA_2025, verified: false, sponsor: "Nuclear for Australia (pro)"}
+    weplanet: {support_feb: 55, support_late_apr: 42, oppose_feb: 34, oppose_late_apr: 44, source: WePlanet_2025, verified: false, sponsor: "WePlanet (pro)", note: "pollster and sample not found"}
+    eightynine_degrees_east_local: {low: 22, high: 32, gladstone: 27, source: Renew_89DE_2025, verified: false, sponsor: "Renew Australia for All (anti)"}
+
+# ---------------------------------------------------------------------------
+# 3. Consent processes (Australia vs Canada)
+# ---------------------------------------------------------------------------
+kimba_ballot_2019:
+  source: Kimba_Ballot_2019
+  verified: false
+  yes: 452
+  no: 282
+  reported_yes_pct: 61.58
+  minister_benchmark_pct: 65         # Canavan's benchmark, per Friends of the Earth SA as reported
+  barngarla_poll_no_pct: 100         # Barngarla's own poll of native title holders; vote count not found
+  note: "Electorate limited to Kimba council voters; Barngarla native title holders were excluded."
+napandee_set_aside:
+  source: Barngarla_2023FCA809
+  verified: false
+  date: 2023-07-18
+  ground: "apprehended bias (Charlesworth J)"
+  government_abandoned_site: 2023-08-10   # also Lyndhurst and Wallerberdina (King_2023_Napandee)
+muckaty:
+  source: Muckaty_2014
+  verified: false
+  nominated: 2007
+  withdrawn: 2014
+nwmo_siting:
+  source: NWMO_SiteProcess
+  verified: false
+  process_start: 2010
+  communities_expressed_interest: 22
+  communities_phase2: 11
+  shortlist_by_2019: 2
+  selected: 2024-11-28
+  selected_site: "Wabigoon Lake Ojibway Nation - Ignace area (Revell site)"
+ignace_willingness_vote_2024:
+  source: NWMO_Ignace_2024
+  verified: false
+  yes: 495
+  participants: 640
+  reported_pct: 77
+ignace_hosting_agreement:
+  source: NWMO_Ignace_2024
+  verified: false
+  total_cad_m: 170
+  years: 81
+  note: "Reported by Energy Intelligence; check the NWMO release for nominal vs real dollars."
+nwmo_cost:
+  source: NWMO_ProjectCosts
+  verified: false
+  lifecycle_cost_cad_bn_2020: 26
+  lifecycle_years: 175
+  fuel_bundles_m: 5.5
+  nfwa_trust_funds_cad_bn_dec2023: 5.3
+  next_cost_update: 2026
+
+# ---------------------------------------------------------------------------
+# 4. Money flows: Darlington New Nuclear Project (C$ bn, nominal; mixes debt and equity, see note)
+# ---------------------------------------------------------------------------
+darlington_money:
+  note: "Budget and finance from existing keys (sources.md). The WTFN amount is new. Debt (CIB, WTFN loan) and equity (CGF, BOF) both finance the project, but ratepayers repay through OEB-approved payment amounts. Shares of the budget are indicative only."
+  budget_four_units: {value: 20.9, source: ON_2025_FID, verified: false}
+  unit1_plus_common: {value: 7.7, source: ON_2025_FID, verified: false}
+  cib_loan_phase1: {value: 0.97, source: CIB_2022_Loan, verified: false}
+  cgf_equity: {value: 2.0, stake_pct: 15, source: CGF_BOF_2025, verified: false}
+  bof_equity: {value: 1.0, stake_pct: 7.5, source: CGF_BOF_2025, verified: false}
+  cgf_bof_received_apr2026: {value: 0.585, source: OPG_2026_Q1, verified: false}
+  wtfn_loan_to_equity: {value: 0.70, source: WTFN_DNNP_2026, verified: false, note: "Loan to DNNP LP for Unit 1; converts to equity when all four units are complete; guaranteed 50/50 by CILGC and Ontario's IOFP; final % stake not disclosed"}
+  federal_clean_electricity_itc_pct: {value: 15, source: MPO_2025_Darlington, verified: false, note: "Refundable credit on eligible low-emitting electricity investment including nuclear (search summary of the Major Projects Office page); whether OPG claims it for DNNP is not confirmed"}
+  claimed_jobs_construction: {value: 18000, source: ON_2025_FID, verified: false}
+  claimed_ontario_spend_share_pct: {value: 80, source: ON_2025_FID, verified: false}
+  claimed_gdp_per_year_cad_m: {value: 500, source: ON_2025_FID, verified: false}
+
+cboc_jobs:
+  single_smr_2021:    # 300 MW, 60-year life, direct + related, annual averages
+    source: CBoC_2021_SMR
+    verified: false
+    development: 700
+    manufacturing_construction: 1600
+    operations: 200
+    decommissioning: 160
+    gdp_ontario_cad_bn: 2.5
+  darlington_four_units_2023:
+    source: CBoC_2023_DNNP
+    verified: false
+    gdp_canada_cad_bn: 15.3
+    gdp_ontario_cad_bn: 13.7
+    jobs_per_year_canada: 2000
+    years: 65
+  opg_claim_first_unit:
+    source: OPG_2023_Jobs
+    verified: false
+    jobs_per_year: 3700
+    construction_jobs: 18000
+    note: "OPG's 3,700 a year conflicts with CBoC's 2,000 a year for four units; scope differs or one is misreported. Do not use both."
+
+# ---------------------------------------------------------------------------
+# 5. Workforce
+# ---------------------------------------------------------------------------
+workforce:
+  pwu_members_darlington_2021: {value: 1900, source: PWU_CMD21H438, verified: false}
+  liddell_workforce_at_closure: {value: 180, source: AGL_Liddell_Workforce, verified: false}
+  liddell_share_moved_to_bayswater_pct: {value: 65, source: AGL_Liddell_Workforce, verified: false}
+  hunter_hub_jobs_hoped: {value: 1000, source: AGL_Liddell_Workforce, verified: false, note: "AGL aspiration, not a commitment"}
+  aukus_jobs_30yr: {value: 20000, source: JSCOT_224_Ch6, verified: false}
+  aukus_peak_industrial_direct: {value: 8500, source: JSCOT_224_Ch6, verified: false, note: "Government release cited in the same search"}
+  trades_shortfall_2030_31:
+    source: Defence_FOI_Workforce
+    verified: false
+    electricians: 33553
+    construction_managers: 19364
+    metal_machinists: 11753
+    welders: 12280
+  ontario_supply_chain_program_cad_m: {value: 1.9, source: OCNI_LMP_2025, verified: false}
+  ontario_buildout_workers_claim: {value: 150000, source: ON_Nuclear_Buildout, verified: false, note: "Provincial claim for the whole nuclear build-out, not DNNP"}
+
+# ---------------------------------------------------------------------------
+# 6. Stakeholder scores (analyst judgement, 1-5 scales; stance -2 to +2). NOT sourced numbers.
+#    power = ability to stop or enable; interest = how much the outcome matters to them.
+# ---------------------------------------------------------------------------
+stakeholders:
+  darlington:
+    - {name: "Ontario Govt (shareholder)", power: 5, interest: 5, stance: 2, evidence: ON_2025_FID}
+    - {name: "OPG (licensee, owner)", power: 5, interest: 5, stance: 2, evidence: OPG_2025_Q1}
+    - {name: "CNSC (safety regulator)", power: 5, interest: 3, stance: 0, evidence: CNSC_2025_LTC}
+    - {name: "Govt of Canada (CIB, CGF, CILGC)", power: 4, interest: 4, stance: 2, evidence: CGF_BOF_2025}
+    - {name: "OEB (rate regulator)", power: 4, interest: 3, stance: 0, evidence: OPG_OEB_EB-2025-0297_D2-4-1}
+    - {name: "GE Vernova Hitachi (design authority)", power: 4, interest: 4, stance: 1, evidence: GEH_NEDO33926}
+    - {name: "Williams Treaties First Nations", power: 4, interest: 5, stance: 1, evidence: WTFN_DNNP_2026}
+    - {name: "Clarington / Durham (host)", power: 3, interest: 5, stance: 2, evidence: Clarington_CNSC}
+    - {name: "Unions (PWU, Society, trades)", power: 3, interest: 4, stance: 2, evidence: PWU_CMD21H438}
+    - {name: "Cement suppliers (e.g. St Marys)", power: 2, interest: 3, stance: 1, evidence: "none found (gap)"}
+    - {name: "NGOs (CELA, DNA, Greenpeace)", power: 2, interest: 5, stance: -2, evidence: CELA_CMD24H384}
+    - {name: "Ratepayers", power: 2, interest: 3, stance: 0, evidence: OPG_OEB_EB-2025-0297_D2-4-1}
+  liddell:
+    - {name: "Commonwealth Govt (Labor)", power: 5, interest: 3, stance: -2, evidence: Bowen_Statements}
+    - {name: "NSW Govt (Minns)", power: 5, interest: 3, stance: -2, evidence: Minns_StateBan}
+    - {name: "AGL (site owner)", power: 4, interest: 4, stance: -2, evidence: AGL_Liddell_NoNuclear}
+    - {name: "ARPANSA (regulator)", power: 4, interest: 2, stance: 0, evidence: ARPANSA_WhoWeRegulate}
+    - {name: "Federal Coalition", power: 2, interest: 5, stance: 2, evidence: Liberal_2026_EnergyPlan}
+    - {name: "Wonnarua people", power: 3, interest: 4, stance: 0, evidence: "AGL_Wonnarua (no position found)"}
+    - {name: "Unions (ACTU, ETU)", power: 3, interest: 4, stance: -2, evidence: ACTU_2024}
+    - {name: "Upper Hunter community", power: 2, interest: 5, stance: 0, evidence: Coalition_Liddell_2024}
+    - {name: "Investors in NEM renewables", power: 3, interest: 3, stance: -1, evidence: Minns_StateBan}
+    - {name: "NGOs (ACF and others)", power: 3, interest: 5, stance: -2, evidence: SBS_Coalition_2024}
+    - {name: "SMR vendors (GEH and others)", power: 2, interest: 3, stance: 1, evidence: "inference"}
+
+# ---------------------------------------------------------------------------
+# 7. Social-licence routes for an SMR at Liddell (analyst judgement, 1-3 per criterion; 3 = best).
+#    Criteria: legitimacy (chance of durable consent), legal (low litigation risk),
+#    speed (time to a siting decision), public_cost (low cost to government), fairness (benefits reach
+#    the host and Traditional Owners). Evidence keys support each score; the scores are NOT sourced numbers.
+# ---------------------------------------------------------------------------
+consent_routes:
+  criteria: [legitimacy, legal, speed, public_cost, fairness]
+  routes:
+    R1_topdown:
+      label: "R1 Commonwealth-led siting (2024 Coalition model; acquisition if needed)"
+      scores: {legitimacy: 1, legal: 1, speed: 2, public_cost: 2, fairness: 1}
+      evidence: [Coalition_Liddell_2024, Barngarla_2023FCA809, Kimba_Ballot_2019, Muckaty_2014]
+    R2_volunteer:
+      label: "R2 Volunteer host + willingness test incl. Traditional Owners + hosting agreement (NWMO model)"
+      scores: {legitimacy: 3, legal: 3, speed: 1, public_cost: 2, fairness: 2}
+      evidence: [NWMO_SiteProcess, NWMO_Ignace_2024, Kebaowek_2025FC319]
+    R3_equity:
+      label: "R3 R2 plus First Nations equity with a government loan guarantee (WTFN/CILGC model)"
+      scores: {legitimacy: 3, legal: 3, speed: 1, public_cost: 1, fairness: 3}
+      evidence: [WTFN_DNNP_2026, CILGP_2025]
+    R4_no_nuclear:
+      label: "R4 No SMR: firmed renewables at Liddell (AGL's Hunter Energy Hub)"
+      scores: {legitimacy: 3, legal: 3, speed: 3, public_cost: 3, fairness: 2}
+      evidence: [AGL_Liddell_NoNuclear, AGL_Liddell_Workforce]
+  weight_sets:
+    equal: {legitimacy: 1, legal: 1, speed: 1, public_cost: 1, fairness: 1}
+    legitimacy_x2: {legitimacy: 2, legal: 1, speed: 1, public_cost: 1, fairness: 1}
+    speed_x2: {legitimacy: 1, legal: 1, speed: 2, public_cost: 1, fairness: 1}
+    fairness_x2: {legitimacy: 1, legal: 1, speed: 1, public_cost: 1, fairness: 2}
+    cost_x2: {legitimacy: 1, legal: 1, speed: 1, public_cost: 2, fairness: 1}
