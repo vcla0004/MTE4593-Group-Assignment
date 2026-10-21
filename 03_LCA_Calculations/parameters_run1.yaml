@@ -1,6 +1,7 @@
 # Rubric coverage: R2.1, R2.3, R2.7, R3.1, R3.6, R4.3, RB.6
 # Analyst run 1 (20/10/2026): displacement, schedule value, same money.
 # Q2 re-base (21/10/2026, analyst run 7a): smr_lca_g_per_kwh set to our LCA (4.2, 3.0-5.8); C1 saving and Canadian carbon price added.
+# Pre-Q8 (21/10/2026): smr_lcoe_aud and vre_firmed_lcoe_aud switched to GenCost 2023-24's 2030 reading (306, 107); old values kept as *_alt_aud keys.
 # Schema as parameters.yaml: name: {value, unit, source: <key in 02_Research/sources_run1.md> | assumption, note}
 # Added fields: low/high (sensitivity range), status.
 #   status = "TO VERIFY"   -> number seen only in a search summary or secondary source. The primary
@@ -281,13 +282,21 @@ parameters:
     status: TO VERIFY
     note: "1/0.8938 (AUD->CAD mid-market 12 May 2025, Wise; 0.882–0.901 through May 2025). Replace with RBA F11 rate for 8 May 2025. Range covers May 2025."
   smr_lcoe_aud:
+    value: 306
+    low: 230
+    high: 382
+    unit: AUD/MWh, SMR LCOE, 2030 (GenCost 2023-24 final, real)
+    source: csiro2024_gencost2324
+    status: TO VERIFY
+    note: "Switched 21/10/2026 (pre-Q8) to the context-card default reading: GenCost 2023-24 final 2030 SMR range 230-382, midpoint 306 (NucNet 23 May 2024 lead; same as parameters_run5.yaml gencost2324_smr_2030_aud). The previous value 514 (387-641) is kept as smr_lcoe_2023_alt_aud (the alternative reading: probably the 2023 value). Primary table not opened (csiro.au blocked)."
+  smr_lcoe_2023_alt_aud:
     value: 514
     low: 387
     high: 641
-    unit: AUD/MWh (2030 build, real)
+    unit: AUD/MWh, SMR LCOE (GenCost 2023-24; labelled 2030 in run 1, 2023 per NucNet lead)
     source: csiro2024_gencost2324
     status: TO VERIFY
-    note: "GenCost 2030 SMR LCOE range $387–641/MWh, average $514 (secondary; edition 2023-24 final vs 2024-25 draft unclear). GenCost 2025-26 final (15 July 2026) is the current edition: replace when opened."
+    note: "Run 1's original central value, now the 'alternative reading' sensitivity only. NucNet lead gives 387-641 as the 2023 SMR value of GenCost 2023-24."
   smr_lcoe_low_alt_aud:
     value: 198
     high: 349
@@ -296,13 +305,26 @@ parameters:
     status: TO VERIFY
     note: "AU$198–349/MWh attributed to CSIRO in a 2026 NIRS-hosted paper (edition unknown; possibly a 2050 or earlier-edition value). Low-cost sensitivity only."
   vre_firmed_lcoe_aud:
+    value: 107
+    low: 89
+    high: 125
+    unit: AUD/MWh (solar and wind incl. integration costs, 2030; GenCost 2023-24 final, real)
+    source: csiro2024_gencost2324
+    status: TO VERIFY
+    note: "Switched 21/10/2026 (pre-Q8) so SMR and renewables come from the same GenCost edition and year: 89-125, midpoint 107 (NucNet lead; same as parameters_run5.yaml gencost2324_vre_2030_aud). Leads disagree (Capital Brief 82-120; Yahoo 73-128). Previous central 102 (91, 153) kept as vre_firmed_lcoe_2425_alt_aud and vre_firmed_lcoe_high_assumption_aud."
+  vre_firmed_lcoe_2425_alt_aud:
     value: 102
     low: 91
-    high: 153
     unit: AUD/MWh (variable renewables incl. integration costs, 2030)
     source: csiro2025_gencost2425
     status: TO VERIFY
-    note: "102 = 2030 firmed wind+solar estimate reported for GenCost 2024-25 (secondary trade press). Low 91 = GenCost 2025-26 draft average NEM cost at 82% renewables incl. transmission (secondary; a system-average metric, not an LCOE). High 153 = central +50%: ANALYST ASSUMPTION covering integration-cost uncertainty until the GenCost range is opened."
+    note: "Run 1's original central: 102 = 2030 firmed wind+solar estimate reported for GenCost 2024-25 (secondary trade press). Low 91 = GenCost 2025-26 draft average NEM cost at 82% renewables incl. transmission (secondary; a system-average metric, not an LCOE). Used with smr_lcoe_2023_alt_aud for the 'alternative reading' row."
+  vre_firmed_lcoe_high_assumption_aud:
+    value: 153
+    unit: AUD/MWh
+    source: assumption
+    status: assumption
+    note: "102 + 50%: ANALYST ASSUMPTION covering integration-cost uncertainty at high renewable shares (run 1). Kept unchanged so the 'worst case for renewables' rows (Figure F7) stay comparable."
   vre_firmed_lca_g_per_kwh:
     value: 30
     low: 8

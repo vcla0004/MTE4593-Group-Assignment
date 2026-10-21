@@ -172,8 +172,8 @@ def main():
     w("")
     ga, na = be_rows["ON-avg-traj"]
     gm, nm = be_rows["ON-marginal-declining"]
-    w(f"Reading: on Ontario's **average** factor, C1's per-unit saving is cancelled by about **{S1/ga:,.0f}–{S1/na:,.0f} days** of delay to that unit (gross–net); "
-      f"on the **marginal** factor (gas on the margin) by about **{S1/gm:,.1f} days**. Even the whole Units 2–4 saving ({S3/1e3:,.1f} kt) is cancelled by "
+    w(f"Reading: on Ontario's **average** factor, C1's per-unit saving is cancelled by **{S1/ga:,.1f}–{S1/na:,.1f} days** (rounded {S1/ga:,.0f}–{S1/na:,.0f}) of delay to that unit (gross–net); "
+      f"on the **marginal** factor (gas on the margin) by about **{S1/gm:,.1f}–{S1/nm:,.1f} days**. Even the whole Units 2–4 saving ({S3/1e3:,.1f} kt) is cancelled by "
       f"{S3/ga:,.0f}–{S3/na:,.0f} days (average) or {S3/gm:,.1f}–{S3/nm:,.1f} days (marginal) of delay to a single unit. "
       "C1 is therefore climate-positive only if it is schedule-neutral (plan §2.4).\n")
 
@@ -214,7 +214,15 @@ def main():
           f"**C${cap*rates[0]/12/1e6:,.0f}–{cap*rates[-1]/12/1e6:,.0f} m** in carrying cost alone, and defers about **C${deferred/1e6:,.0f} m** of output, i.e. "
           f"**{cap*rates[0]/12/1e6/cv_hi:,.0f}–{max(deferred, cap*rates[-1]/12)/1e6/(S3*p26/1e6):,.0f} times** C1's carbon value (lowest monthly cost over the highest value, to highest cost over the central value at C${p26:.0f}). "
           f"Even counted only in carbon, a month's slip loses {month_t['ON-avg-traj'][1]/S3:,.1f}–{month_t['ON-marginal-declining'][0]/S3:,.1f} times C1's saving. "
-          "This agrees with `initiative_cost.md` §5 (run 5), which found one *day* of delay costs C$1–3 m against C1's C$0.9 m.\n")
+          "This agrees with `initiative_cost.md` §5 (run 5), which found one *day* of delay costs C$1.8–2.9 m against C1's whole carbon value of C$0.49–0.60 m on the current path (C$0.88 m on the superseded C$170).\n")
+        # Pre-Q8 (21/10/2026): the current-path-only multiple, previously a hand calculation in Appendix B5.4 ("33 / 0.74 = 45x")
+        cv_hi_cur = S3hi * p30 / 1e6
+        low_cur = cap * rates[0] / 12 / 1e6 / cv_hi_cur
+        high_cur = max(deferred, cap * rates[-1] / 12) / 1e6 / (S3 * p26 / 1e6)
+        w(f"**Current path only** (C${p26:.0f}/t in 2026, C${p30:.0f}/t in 2030; superseded path excluded): the largest carbon value is P95 saving × C${p30:.0f} = "
+          f"{S3hi:,.0f} t × {p30:.0f} = **C${cv_hi_cur:,.3f} m**, so the multiple runs from C${cap*rates[0]/12/1e6:,.1f} m / {cv_hi_cur:,.3f} = **{low_cur:,.1f}×** "
+          f"to C${max(deferred, cap*rates[-1]/12)/1e6:,.1f} m / {S3*p26/1e6:,.3f} = **{high_cur:,.1f}×** (rounded: {low_cur:,.0f}–{high_cur:,.0f}×). "
+          "The 30× low end above uses the superseded C$170/t and is therefore the conservative bound.\n")
     else:
         w("[TODO: parameters_run5.yaml not found; dollar cost of delay not computed.]\n")
     w("Caveats: (1) average factors understate what a late baseload unit's output would have displaced in Ontario, where gas is on the margin; (2) the net figure assumes the plant's life is fixed in years, not extended; "

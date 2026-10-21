@@ -28,11 +28,12 @@ Negative values mean LC3 saves money as well as carbon. The qualification progra
 
 | Carbon price (C$/t) | Basis | Break-even premium (C$/m³) | as % of GU price (C$167 / 229 / 290) | Qualification budget the price covers at 0% premium |
 |---|---|---|---|---|
-| 95 | federal benchmark 2025 | 12.6 | 7.5% / 5.5% / 4.3% | C$0.49 m |
-| 110 | 2026 | 14.5 | 8.7% / 6.4% / 5.0% | C$0.57 m |
-| 170 | 2030 (when Units 2-4 concrete is placed, if the path holds) | 22.5 | 13.5% / 9.8% / 7.8% | C$0.88 m |
+| 95 | **2026, current path (used)** | 12.6 | 7.5% / 5.5% / 4.3% | C$0.49 m |
+| 110 | 2026, superseded 2021 path (comparison) | 14.5 | 8.7% / 6.4% / 5.0% | C$0.57 m |
+| 115 | **2030, current path (used; Units 2-4 concrete placed about 2029-2033)** | 15.2 | 9.1% / 6.6% / 5.2% | C$0.60 m |
+| 170 | 2030, superseded 2021 path (comparison) | 22.5 | 13.5% / 9.8% / 7.8% | C$0.88 m |
 
-Reading: at C$170/t, LC3 concrete is worth up to **C$22/m³** more than GU concrete, about **10%** of the commodity price. If an Ontario LC3 supply costs more than that, or a qualification programme costs more than about C$0.9 m, the initiative costs more per tonne than the carbon price.
+Reading: on the current path, LC3 concrete is worth up to **C$12.6–15.2/m³** more than GU concrete (C$95–115/t), about **5.5%–6.6%** of the central commodity price (4.3%–9.1% across the price range). If an Ontario LC3 supply costs more than that, or a qualification programme costs more than about C$0.49–0.60 m, the initiative costs more per tonne than the carbon price. On the superseded C$170/t the break-even would be C$22.5/m³ (9.8%).
 
 ## 4. Carbon value of the saving, and its size against the project
 
@@ -40,6 +41,7 @@ Reading: at C$170/t, LC3 concrete is worth up to **C$22/m³** more than GU concr
 |---|---|---|---|
 | 95 | 0.49 | 0.40-0.61 | 0.0037% |
 | 110 | 0.57 | 0.46-0.71 | 0.0043% |
+| 115 | 0.60 | 0.48-0.74 | 0.0045% |
 | 170 | 0.88 | 0.71-1.10 | 0.0067% |
 
 - The whole target-concrete package is about C$9.0 m, **0.068%** of the Units 2-4 capital. Even a +20% premium (C$1.8 m) is 0.0136% of it.
@@ -50,8 +52,8 @@ Reading: at C$170/t, LC3 concrete is worth up to **C$22/m³** more than GU concr
 - Deferred output: 3 x 300 MW x 24 h x 0.9 = 19,440 MWh/day x C$149/MWh (OPG LCOE lead) = **C$2.9 m per day** (gross; output is deferred, not lost).
 - Carrying cost upper bound: C$13.2 bn x 4.9% / 365 = **C$1.8 m per day** (4.9% = the real rate that reproduces OPG's C$149/MWh in lcoe.md; assumes all Units 2-4 capital is already spent).
 - Carrying cost upper bound: C$13.2 bn x 7.0% / 365 = **C$2.5 m per day** (7.0% = run-1 central rate; assumes all Units 2-4 capital is already spent).
-- Against: the full carbon value of C1 at C$170 is C$0.88 m; a +10% premium costs C$0.90 m.
-- So **one day of delay costs more than the whole initiative's carbon value, in dollars** (C$1-3 m per day against about C$0.9 m), just as `schedule_value.md` found in tonnes (1-15 days of delay cancels the saving). The schedule-neutral condition is therefore the binding implementation requirement, in money as well as carbon: qualify the mix on mock-ups during Unit 1, before the Units 2-4 decision expected in 2028 (lead).
+- Against: the full carbon value of C1 is C$0.49–0.60 m on the current path (C$95–115/t; C$0.88 m on the superseded C$170); a +10% premium costs C$0.90 m.
+- So **one day of delay costs more than the whole initiative's carbon value, in dollars** (C$1.8-2.9 m per day against at most C$0.60 m), just as `schedule_value.md` found in tonnes (1.3-14.6 days of delay to a unit cancels its saving). The schedule-neutral condition is therefore the binding implementation requirement, in money as well as carbon: qualify the mix on mock-ups during Unit 1, before the Units 2-4 decision expected in 2028 (lead).
 
 ## 6. Monte Carlo (20,000 draws, seed 20261021)
 
@@ -64,13 +66,14 @@ Distributions: S and V triangular (low, central, high); c uniform C$167-290; pre
 | P95 | 765 |
 | P(cost per t < C$95) | 12% |
 | P(cost per t < C$110) | 14% |
+| P(cost per t < C$115) | 14% |
 | P(cost per t < C$170) | 20% |
 | P(cost per t < 0, saves money) | 5% |
 
 ## 7. Comparison for section 9 (same units, C$ or A$ per t CO₂e)
 
 - C1 at 0% premium and C$1 m qualification: **C$193/t**; at +10% and C$1 m: **C$366/t**.
-- An SMR at Liddell, gross cost per tonne: A$810-6,923/t across the grid cases in `same_money.md` section 3 (run 1; that table uses A$514/MWh, which may be the 2023 value, see `lcoe.md` section 5). Firmed renewables: A$167-2,040/t on the same basis.
+- An SMR at Liddell, gross cost per tonne: **A$481-4,037/t** across the three grid cases in `same_money.md` section 3 (GenCost 2023-24 2030 SMR A$306/MWh). Firmed renewables: **A$175-2,140/t** on the same basis (A$107/MWh). Computed here by loading `same_money.py`, so it follows `parameters_run1.yaml`.
 - Not comparable without caution: C1 is a cost per tonne of *embodied* carbon avoided at a plant that is being built anyway. The SMR and renewables figures are gross generation costs per tonne displaced. C1 is a cheap add-on, not an alternative to either.
 
 ## 8. Gaps

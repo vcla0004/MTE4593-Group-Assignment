@@ -417,11 +417,17 @@ parameters:
     status: assumption
     note: "NO SOURCE FOUND (search 21/10: only the cost of the standard itself, ~C$790). Pure scenario values. Victor/Leroy: ask OPG or a nuclear concrete lab, or keep as an explicit assumption."
   carbon_prices_cad:
-    value: [95, 110, 170]
-    unit: "C$/t CO2e - federal benchmark 2025, 2026, 2030 (Ontario EPS excess-emissions charge follows it)"
+    value: [95, 115]
+    unit: "C$/t CO2e - federal headline industrial carbon price, 2026 and 2030 (current path)"
+    source: eccc2026_industrial_trajectory
+    status: TO VERIFY
+    note: "Switched 21/10/2026 (pre-Q8) to the context-card default, matching parameters_run1.yaml carbon_price_2026_cad / carbon_price_2030_cad: new headline industrial trajectory (published 19 May 2026, lead) C$95 in 2026, C$100 in 2027-29, C$115 in 2030. canada.ca blocked, so NOT confirmed. Units 2-4 concrete is placed about 2029-2033, so C$115 is the relevant price."
+  carbon_prices_superseded_cad:
+    value: [110, 170]
+    unit: "C$/t CO2e - superseded 2021 benchmark path, 2026 and 2030 (comparison only)"
     source: eccc_benchmark; enbridge_eps
     status: TO VERIFY
-    note: "ECCC 'Federal carbon pollution pricing benchmark' (canada.ca) and Update 2023-2030: +C$15/yr to C$170 in 2030 (ICAP lead: C$95 in 2025, C$110 for 2026 compliance). Federal consumer fuel charge set to zero from 1 April 2025; industrial benchmark under review (lead). Units 2-4 concrete would be placed about 2029-2033, so C$155-170 is the relevant range if the path holds."
+    note: "Run 5's original path: ECCC 'Federal carbon pollution pricing benchmark' Update 2023-2030, +C$15/yr to C$170 in 2030 (ICAP lead: C$95 in 2025, C$110 for 2026 compliance). Superseded by the 2026 trajectory (lead); kept so the conservative ends of the ranges can be traced."
   dnnp_u24_capital_cad:
     value: 13.2e9
     unit: CAD (C$20.9 bn minus Unit 1 + common C$7.7 bn)

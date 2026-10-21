@@ -24,8 +24,8 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 P = yaml.safe_load((ROOT / "parameters_run1.yaml").read_text())["parameters"]
 OUT = ROOT / "results" / "same_money.md"
-R5_PATH = ROOT / "parameters_run5.yaml"   # analyst run 5, read only (GenCost 2030 SMR lead for a sensitivity row)
-R5 = yaml.safe_load(R5_PATH.read_text())["parameters"] if R5_PATH.exists() else {}
+# Basis (pre-Q8, 21/10/2026): central SMR and renewables LCOE = GenCost 2023-24 final, 2030 (306 / 107, in
+# parameters_run1.yaml). Run 1's original 514 / 102 survive as the 'alternative reading' sensitivity rows.
 
 
 def v(name, key="value"):
@@ -98,7 +98,7 @@ def main():
     w(f"- Budget: C${p['budget']/1e9:.1f} bn for {p['units']} units (C${p['budget']/p['units']/1e9:.3f} bn per unit, simple share); Unit 1 plus common infrastructure C${p['u1']/1e9:.1f} bn.")
     w(f"- Exchange rate {p['fx']} AUD/CAD (May 2025 lead) → A${p['budget']*p['fx']/1e9:.2f} bn for four units; A${p['budget']*p['fx']/p['units']/1e9:.2f} bn per unit share; A${p['u1']*p['fx']/1e9:.2f} bn Unit 1 + common.")
     w(f"- CRF({p['r']:.0%}, {p['n']} yr) = {crf(p['r'], p['n']):.4f}. Annual output per unit {annual_mwh(p):,.0f} MWh.")
-    w(f"- GenCost leads: SMR LCOE A${p['lc_smr']:.0f}/MWh (range {v('smr_lcoe_aud','low'):.0f}–{v('smr_lcoe_aud','high'):.0f}); firmed variable renewables A${p['lc_vre']:.0f}/MWh (range {v('vre_firmed_lcoe_aud','low'):.0f}–{v('vre_firmed_lcoe_aud','high'):.0f}, high end is an assumption).")
+    w(f"- GenCost 2023-24 final, 2030 leads (the context-card default reading): SMR LCOE A${p['lc_smr']:.0f}/MWh (range {v('smr_lcoe_aud','low'):.0f}–{v('smr_lcoe_aud','high'):.0f}); solar and wind with integration costs A${p['lc_vre']:.0f}/MWh (range {v('vre_firmed_lcoe_aud','low'):.0f}–{v('vre_firmed_lcoe_aud','high'):.0f}). Alternative reading (run 1's original inputs, sensitivity only): SMR A${v('smr_lcoe_2023_alt_aud'):.0f} ({v('smr_lcoe_2023_alt_aud','low'):.0f}–{v('smr_lcoe_2023_alt_aud','high'):.0f}), renewables A${v('vre_firmed_lcoe_2425_alt_aud'):.0f}. High renewables case A${v('vre_firmed_lcoe_high_assumption_aud'):.0f} is an analyst assumption.")
     w("- Price-basis caveat: Darlington is a nominal CAD budget (2025 announcement); GenCost is real AUD. Treat method A as an order-of-magnitude cross-check, not a precise conversion.\n")
 
     w("## 2. Method A: what the Darlington capital would buy\n")
@@ -117,7 +117,10 @@ def main():
             q = dict(p, r=r, n=n)
             row.append(method_a(q, p["budget"] / p["units"], 1)[1])
         w(f"| {r:.0%} | A${row[0]:,.0f}/MWh | A${row[1]:,.0f}/MWh |")
-    w(f"\nGenCost SMR LCOE lead: A${v('smr_lcoe_aud','low'):.0f}–{v('smr_lcoe_aud','high'):.0f}/MWh (includes O&M and fuel). Darlington's capital alone at 7% is consistent with the lower half of that range once O&M and fuel are added [cross-check only; O&M and fuel costs not sourced].\n")
+    cap7 = method_a(p, p["budget"] / p["units"], 1)[1]
+    lo_s, hi_s = v('smr_lcoe_aud', 'low'), v('smr_lcoe_aud', 'high')
+    pos = "below" if cap7 < lo_s else ("within" if cap7 <= hi_s else "above")
+    w(f"\nGenCost 2030 SMR LCOE lead: A${lo_s:.0f}–{hi_s:.0f}/MWh (includes O&M and fuel). Darlington's capital alone at 7% (A${cap7:,.0f}/MWh) sits {pos} that range; O&M and fuel come on top, so the full cost would sit higher [cross-check only; O&M and fuel costs not sourced here, see `lcoe.md`].\n")
 
     w("## 3. Method B: LCOE ratio and CO2e avoided per dollar (Liddell / NEM)\n")
     ratio = p["lc_smr"] / p["lc_vre"]
@@ -149,6 +152,18 @@ def main():
         rr = f"{b50/a50:,.1f}x" if a50 > 0 else "SMR ≤ 0"
         w(f"| {site} | {t} | {s} | {a35/1e6:,.2f} Mt | {a50/1e6:,.2f} Mt | {b35/1e6:,.2f} Mt | {b50/1e6:,.2f} Mt | {rr} |")
     w("")
+    # Alternative reading across the same cases (keeps section 7's 'across cases' range traceable)
+    qa = dict(p, lc_smr=v("smr_lcoe_2023_alt_aud"), lc_vre=v("vre_firmed_lcoe_2425_alt_aud"))
+    vre_a = smr_mwh * qa["lc_smr"] / qa["lc_vre"]
+    w(f"Alternative reading across the same cases (SMR A${qa['lc_smr']:.0f} / renewables A${qa['lc_vre']:.0f}: A${smr_mwh*qa['lc_smr']/1e9:.2f} bn/yr buys {vre_a/1e6:,.1f} TWh/yr of firmed renewables from {p['vre_start']}):\n")
+    w("| Site | Grid case | SMR start | VRE to 2050 | VRE / SMR to 2050 |")
+    w("|---|---|---|---|---|")
+    for site, t_, s in [("Liddell", "NEM-T0-frozen", p["smr_start_aus"]), ("Liddell", "NEM-T1-StepChange-proxy", p["smr_start_aus"]),
+                        ("Liddell", "NEM-T2-slow", p["smr_start_aus"]), ("Liddell", "NEM-T2-slow", int(v("aus_start_coalition")))]:
+        a50 = cum(p, T[t_], s, 2050, smr_mwh, p["ef_smr"])
+        b50 = cum(p, T[t_], p["vre_start"], 2050, vre_a, p["ef_vre"])
+        w(f"| {site} | {t_} | {s} | {b50/1e6:,.2f} Mt | {b50/a50:,.1f}x |")
+    w("")
     w("Caveats: (1) adding about {:.0f} TWh/yr of firmed renewables would itself change the NEM trajectory; the comparison is at the margin of the stated trajectory. (2) Firmed-VRE LCOE rises with the renewable share; GenCost's integration costs cover this only up to its modelled shares. (3) Renewable assets last about 25–30 years [TO VERIFY, GenCost], so to 2050 no replacement is needed, but whole-life comparisons would need one. (4) Ontario rows use Australian costs and are indicative only (Ontario-specific costs are STRETCH in the plan).\n".format(vre_mwh / 1e6))
 
     w("## 5. Sensitivity (Liddell, NEM-T2-slow, SMR from {}; VRE/SMR CO2e ratio to 2050)\n".format(p["smr_start_aus"]))
@@ -164,23 +179,37 @@ def main():
         b = cum(q, TT["NEM-T2-slow"], q["vre_start"], 2050, sm * rt, q["ef_vre"])
         return rt, b / a if a > 0 else float("nan")
 
-    for lab, kw in ([("Central", {}), ("SMR LCOE low (387)", {"lc_smr": v("smr_lcoe_aud", "low")}), ("SMR LCOE high (641)", {"lc_smr": v("smr_lcoe_aud", "high")}),
-                    ("SMR LCOE 198 (alt. lead)", {"lc_smr": v("smr_lcoe_low_alt_aud")}),
-                    ("VRE LCOE low (91)", {"lc_vre": v("vre_firmed_lcoe_aud", "low")}), ("VRE LCOE high (153, assumption)", {"lc_vre": v("vre_firmed_lcoe_aud", "high")}),
-                    ("Worst case for VRE (SMR 198, VRE 153)", {"lc_smr": v("smr_lcoe_low_alt_aud"), "lc_vre": v("vre_firmed_lcoe_aud", "high")}),
-                    ("SMR starts 2035", {"smr_start_aus": int(v("aus_start_coalition"))}), ("VRE starts 2030", {"vre_start": int(v("vre_first_year", "high"))}),
-                    ("VRE life-cycle 83 g/kWh", {"ef_vre": v("vre_firmed_lca_g_per_kwh", "high")}),
-                    ("SMR life cycle 5.8 (our P95)", {"ef_smr": v("smr_lca_g_per_kwh", "high")}),
-                    ("SMR life cycle 5.75 (old UNECE placeholder)", {"ef_smr": v("smr_lca_unece_g_per_kwh")})]
-                   + ([(f"SMR {R5['gencost2324_smr_2030_aud']['value']:.0f}, VRE {R5['gencost2324_vre_2030_aud']['value']:.0f} (run 5: GenCost 2023-24 *2030* leads)",
-                        {"lc_smr": float(R5["gencost2324_smr_2030_aud"]["value"]), "lc_vre": float(R5["gencost2324_vre_2030_aud"]["value"])}),
-                       (f"SMR {R5['gencost2324_smr_2030_aud']['low']:.0f} (run 5 2030 low), VRE 153", {"lc_smr": float(R5["gencost2324_smr_2030_aud"]["low"]), "lc_vre": v("vre_firmed_lcoe_aud", "high")})]
-                      if R5.get("gencost2324_smr_2030_aud") else [])):
+    a_smr, a_vre, vhi = v("smr_lcoe_2023_alt_aud"), v("vre_firmed_lcoe_2425_alt_aud"), v("vre_firmed_lcoe_high_assumption_aud")
+    lo_s, hi_s = v("smr_lcoe_aud", "low"), v("smr_lcoe_aud", "high")
+    lo_v, hi_v = v("vre_firmed_lcoe_aud", "low"), v("vre_firmed_lcoe_aud", "high")
+    alt = lambda **kw: dict({"lc_smr": a_smr, "lc_vre": a_vre}, **kw)
+    sens = [
+        (f"Central: GenCost 2023-24 2030 midpoints ({p['lc_smr']:.0f} / {p['lc_vre']:.0f})", {}),
+        (f"SMR LCOE 2030 low ({lo_s:.0f} / {p['lc_vre']:.0f})", {"lc_smr": lo_s}),
+        (f"SMR LCOE 2030 high ({hi_s:.0f} / {p['lc_vre']:.0f})", {"lc_smr": hi_s}),
+        (f"Renewables LCOE 2030 low ({p['lc_smr']:.0f} / {lo_v:.0f})", {"lc_vre": lo_v}),
+        (f"Renewables LCOE 2030 high ({p['lc_smr']:.0f} / {hi_v:.0f})", {"lc_vre": hi_v}),
+        (f"Renewables high, assumption ({p['lc_smr']:.0f} / {vhi:.0f})", {"lc_vre": vhi}),
+        (f"Worst case for renewables on the 2030 reading ({lo_s:.0f} / {vhi:.0f})", {"lc_smr": lo_s, "lc_vre": vhi}),
+        (f"Low SMR lead ({v('smr_lcoe_low_alt_aud'):.0f} / {p['lc_vre']:.0f})", {"lc_smr": v("smr_lcoe_low_alt_aud")}),
+        (f"Lowest SMR lead, worst case tested ({v('smr_lcoe_low_alt_aud'):.0f} / {vhi:.0f})", {"lc_smr": v("smr_lcoe_low_alt_aud"), "lc_vre": vhi}),
+        (f"SMR starts {int(v('aus_start_coalition'))}", {"smr_start_aus": int(v("aus_start_coalition"))}),
+        (f"Renewables start {int(v('vre_first_year', 'high'))}", {"vre_start": int(v("vre_first_year", "high"))}),
+        (f"Renewables life cycle {v('vre_firmed_lca_g_per_kwh', 'high'):.0f} g/kWh", {"ef_vre": v("vre_firmed_lca_g_per_kwh", "high")}),
+        (f"SMR life cycle {v('smr_lca_g_per_kwh', 'high'):.1f} g/kWh (our P95)", {"ef_smr": v("smr_lca_g_per_kwh", "high")}),
+        (f"Alternative reading, run 1 original ({a_smr:.0f} / {a_vre:.0f})", alt()),
+        (f"Alternative reading, SMR low ({v('smr_lcoe_2023_alt_aud', 'low'):.0f} / {a_vre:.0f})", alt(lc_smr=v("smr_lcoe_2023_alt_aud", "low"))),
+        (f"Alternative reading, SMR high ({v('smr_lcoe_2023_alt_aud', 'high'):.0f} / {a_vre:.0f})", alt(lc_smr=v("smr_lcoe_2023_alt_aud", "high"))),
+        (f"Alternative reading, renewables low ({a_smr:.0f} / {v('vre_firmed_lcoe_2425_alt_aud', 'low'):.0f})", alt(lc_vre=v("vre_firmed_lcoe_2425_alt_aud", "low"))),
+        (f"Alternative reading, renewables high assumption ({a_smr:.0f} / {vhi:.0f})", alt(lc_vre=vhi)),
+        (f"Alternative reading, SMR starts {int(v('aus_start_coalition'))}", alt(smr_start_aus=int(v("aus_start_coalition")))),
+    ]
+    for lab, kw in sens:
         rt, cr = run(**kw)
         w(f"| {lab} | {rt:,.1f}x | {cr:,.1f}x |")
     w("")
     w("Note on the Ontario average row: once Ontario's average falls below the placeholder firmed-VRE life-cycle value (30 g/kWh), extra renewables 'add' emissions against that average, and the SMR's lower life-cycle value wins. That is a real property of a near-clean grid, but it hangs on two placeholders (the VRE life-cycle value and the IESO 2040 lead) and on using the average, not the marginal, factor.\n")
-    w("**Open conflict (run 5, `lcoe.md` §5):** A$514 (387–641) may be GenCost 2023-24's *2023* SMR value, not 2030; the 2030 lead is A$230–382. The two run-5 rows above show the effect. Victor to read the GenCost table and set `smr_lcoe_aud` (plan §5 Interfaces); this file then regenerates.\n")
+    w(f"**Basis (pre-Q8, 21/10/2026).** Central inputs are GenCost 2023-24's **2030** values (SMR A${lo_s:.0f}–{hi_s:.0f}, renewables A${lo_v:.0f}–{hi_v:.0f}), the context-card default. Run 1's original A${a_smr:.0f} ({v('smr_lcoe_2023_alt_aud','low'):.0f}–{v('smr_lcoe_2023_alt_aud','high'):.0f}) / A${a_vre:.0f}, probably GenCost's *2023* SMR value, is the 'alternative reading' rows. The GenCost table itself is still [TO VERIFY] (csiro.au blocked).\n")
     w("Reading: in every tested Liddell case the same money spent on firmed renewables avoids more CO2e by 2050 than one SMR, because it is cheaper per MWh and starts about a decade earlier. The SMR's case therefore rests on non-cost objectives (firmness, land, system security, a hedge if renewables and transmission are delayed), which belong in the MCDA (§9), not on carbon per dollar.\n")
     OUT.write_text("\n".join(L) + "\n")
     print(f"wrote {OUT}")

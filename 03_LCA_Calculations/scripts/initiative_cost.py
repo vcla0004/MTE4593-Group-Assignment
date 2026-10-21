@@ -3,8 +3,11 @@
 cost per tonne of CO2e avoided, break-even price premium, carbon value at Canada's carbon price,
 and the comparison with the cost of schedule delay.
 
-Reads 03_LCA_Calculations/parameters_run5.yaml only (the LC3 saving and volumes are copied there from
-results/lca.md, status 'from results'). Writes results/initiative_cost.md.
+Reads 03_LCA_Calculations/parameters_run5.yaml (the LC3 saving and volumes are copied there from
+results/lca.md, status 'from results'). Section 7 also loads scripts/same_money.py (which reads
+parameters_run1.yaml) so the SMR / renewables cost per tonne is never hard-coded. Writes results/initiative_cost.md.
+Carbon prices (pre-Q8, 21/10/2026): current federal path C$95 (2026) / C$115 (2030) are the used values;
+the superseded 2021 path C$110 / C$170 is shown for comparison only.
 Run:  python3 -I 03_LCA_Calculations/scripts/initiative_cost.py
 
 Formulas (per programme of n = 3 units):
@@ -17,6 +20,8 @@ Formulas (per programme of n = 3 units):
   carrying cost of one day of delay (upper bound):        K_U2-4 * r / 365               [C$/day]
 """
 from pathlib import Path
+import importlib.util
+import sys
 import numpy as np
 import yaml
 
@@ -56,7 +61,12 @@ def main():
     c, clo, chi = v("concrete_price_cad_m3"), v("concrete_price_cad_m3", "low"), v("concrete_price_cad_m3", "high")
     pis = v("premium_scenarios_frac")
     Qs = v("qualification_cost_cad")
-    prices = v("carbon_prices_cad")
+    cur = v("carbon_prices_cad")                 # [2026, 2030] current path (used)
+    old = v("carbon_prices_superseded_cad")      # [2026, 2030] superseded path (comparison)
+    prices = sorted(cur + old)
+    p26, p30, p30_old = cur[0], cur[1], old[1]
+    basis = {cur[0]: "**2026, current path (used)**", cur[1]: "**2030, current path (used; Units 2-4 concrete placed about 2029-2033)**",
+             old[0]: "2026, superseded 2021 path (comparison)", old[1]: "2030, superseded 2021 path (comparison)"}
     s = S / V
     L = []
     w = L.append
@@ -92,11 +102,12 @@ def main():
     w("")
     w("| Carbon price (C$/t) | Basis | Break-even premium (C$/m³) | as % of GU price (C$167 / 229 / 290) | Qualification budget the price covers at 0% premium |")
     w("|---|---|---|---|---|")
-    basis = {95: "federal benchmark 2025", 110: "2026", 170: "2030 (when Units 2-4 concrete is placed, if the path holds)"}
     for p in prices:
-        w(f"| {p:.0f} | {basis.get(int(p), '')} | {p*s:.1f} | {p*s/clo:.1%} / {p*s/c:.1%} / {p*s/chi:.1%} | C${p*S*n/1e6:.2f} m |")
+        w(f"| {p:.0f} | {basis[p]} | {p*s:.1f} | {p*s/clo:.1%} / {p*s/c:.1%} / {p*s/chi:.1%} | C${p*S*n/1e6:.2f} m |")
     w("")
-    w(f"Reading: at C$170/t, LC3 concrete is worth up to **C${170*s:.0f}/m³** more than GU concrete, about **{170*s/c:.0%}** of the commodity price. If an Ontario LC3 supply costs more than that, or a qualification programme costs more than about C${170*S*n/1e6:.1f} m, the initiative costs more per tonne than the carbon price.")
+    w(f"Reading: on the current path, LC3 concrete is worth up to **C${p26*s:.1f}–{p30*s:.1f}/m³** more than GU concrete (C${p26:.0f}–{p30:.0f}/t), about **{p26*s/c:.1%}–{p30*s/c:.1%}** of the central commodity price ({p26*s/chi:.1%}–{p30*s/clo:.1%} across the price range). "
+      f"If an Ontario LC3 supply costs more than that, or a qualification programme costs more than about C${p26*S*n/1e6:.2f}–{p30*S*n/1e6:.2f} m, the initiative costs more per tonne than the carbon price. "
+      f"On the superseded C${p30_old:.0f}/t the break-even would be C${p30_old*s:.1f}/m³ ({p30_old*s/c:.1%}).")
     w("")
     # 4. Carbon value and scale
     w("## 4. Carbon value of the saving, and its size against the project")
@@ -119,8 +130,8 @@ def main():
     w(f"- Deferred output: {n} x {mwe:.0f} MW x 24 h x {cf} = {day_mwh:,.0f} MWh/day x C${lc:.0f}/MWh (OPG LCOE lead) = **C${day_mwh*lc/1e6:.1f} m per day** (gross; output is deferred, not lost).")
     for r, lab in ((0.049, "the real rate that reproduces OPG's C$149/MWh in lcoe.md"), (0.07, "run-1 central rate")):
         w(f"- Carrying cost upper bound: C${K24/1e9:.1f} bn x {r:.1%} / 365 = **C${K24*r/365/1e6:.1f} m per day** ({r:.1%} = {lab}; assumes all Units 2-4 capital is already spent).")
-    w(f"- Against: the full carbon value of C1 at C$170 is C${S*n*170/1e6:.2f} m; a +10% premium costs C${0.1*pkg/1e6:.2f} m.")
-    w(f"- So **one day of delay costs more than the whole initiative's carbon value, in dollars** (C$1-3 m per day against about C$0.9 m), just as `schedule_value.md` found in tonnes (1-15 days of delay cancels the saving). The schedule-neutral condition is therefore the binding implementation requirement, in money as well as carbon: qualify the mix on mock-ups during Unit 1, before the Units 2-4 decision expected in 2028 (lead).")
+    w(f"- Against: the full carbon value of C1 is C${S*n*p26/1e6:.2f}–{S*n*p30/1e6:.2f} m on the current path (C${p26:.0f}–{p30:.0f}/t; C${S*n*p30_old/1e6:.2f} m on the superseded C${p30_old:.0f}); a +10% premium costs C${0.1*pkg/1e6:.2f} m.")
+    w(f"- So **one day of delay costs more than the whole initiative's carbon value, in dollars** (C$1.8-2.9 m per day against at most C${S*n*p30/1e6:.2f} m), just as `schedule_value.md` found in tonnes (1.3-14.6 days of delay to a unit cancels its saving). The schedule-neutral condition is therefore the binding implementation requirement, in money as well as carbon: qualify the mix on mock-ups during Unit 1, before the Units 2-4 decision expected in 2028 (lead).")
     w("")
     # 6. Monte Carlo
     rng = np.random.default_rng(SEED)
@@ -147,7 +158,15 @@ def main():
     w("## 7. Comparison for section 9 (same units, C$ or A$ per t CO₂e)")
     w("")
     w(f"- C1 at 0% premium and C$1 m qualification: **C${abate(0, c, V, S, n, 1e6):.0f}/t**; at +10% and C$1 m: **C${abate(0.10, c, V, S, n, 1e6):.0f}/t**.")
-    w("- An SMR at Liddell, gross cost per tonne: A$810-6,923/t across the grid cases in `same_money.md` section 3 (run 1; that table uses A$514/MWh, which may be the 2023 value, see `lcoe.md` section 5). Firmed renewables: A$167-2,040/t on the same basis.")
+    sys.dont_write_bytecode = True
+    spec = importlib.util.spec_from_file_location("same_money", ROOT / "scripts" / "same_money.py")
+    sm = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(sm)
+    bp = sm.base()
+    efs = [bp["nsw"], sm.traj(bp)["NEM-T2-slow"](bp["smr_start_aus"]), bp["floor"] + 50]
+    smr_c = [bp["lc_smr"] / ((e - bp["ef_smr"]) / 1000) for e in efs]
+    vre_c = [bp["lc_vre"] / ((e - bp["ef_vre"]) / 1000) for e in efs]
+    w(f"- An SMR at Liddell, gross cost per tonne: **A${min(smr_c):,.0f}-{max(smr_c):,.0f}/t** across the three grid cases in `same_money.md` section 3 (GenCost 2023-24 2030 SMR A${bp['lc_smr']:.0f}/MWh). Firmed renewables: **A${min(vre_c):,.0f}-{max(vre_c):,.0f}/t** on the same basis (A${bp['lc_vre']:.0f}/MWh). Computed here by loading `same_money.py`, so it follows `parameters_run1.yaml`.")
     w("- Not comparable without caution: C1 is a cost per tonne of *embodied* carbon avoided at a plant that is being built anyway. The SMR and renewables figures are gross generation costs per tonne displaced. C1 is a cheap add-on, not an alternative to either.")
     w("")
     w("## 8. Gaps")

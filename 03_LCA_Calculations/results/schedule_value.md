@@ -76,7 +76,7 @@ C1 saves 1,734 t CO2e per unit (MC P5–P95 1,387–2,153) and 5,201 t for Units
 | ON-marginal-declining (marginal, gas leaves margin by 2050) | 1,296 | 1,226 | 1.3 (1.1–1.7) | 1.4 (1.1–1.8) | 4.0 (3.2–5.0) | 4.2 (3.4–5.3) |
 | ON-marginal-flat (marginal, held at 2024) | 2,195 | 0 | 0.8 (0.6–1.0) | none (flat grid) | 2.4 (1.9–2.9) | none (flat grid) |
 
-Reading: on Ontario's **average** factor, C1's per-unit saving is cancelled by about **9–15 days** of delay to that unit (gross–net); on the **marginal** factor (gas on the margin) by about **1.3 days**. Even the whole Units 2–4 saving (5.2 kt) is cancelled by 28–44 days (average) or 4.0–4.2 days (marginal) of delay to a single unit. C1 is therefore climate-positive only if it is schedule-neutral (plan §2.4).
+Reading: on Ontario's **average** factor, C1's per-unit saving is cancelled by **9.2–14.6 days** (rounded 9–15) of delay to that unit (gross–net); on the **marginal** factor (gas on the margin) by about **1.3–1.4 days**. Even the whole Units 2–4 saving (5.2 kt) is cancelled by 28–44 days (average) or 4.0–4.2 days (marginal) of delay to a single unit. C1 is therefore climate-positive only if it is schedule-neutral (plan §2.4).
 
 ## 7. C1's carbon value against one month's delay to Units 2–4 (C$)
 
@@ -101,7 +101,9 @@ Direct cost of the same one-month slip (inputs from `parameters_run5.yaml`, read
 | Carrying cost, upper bound (all Units 2–4 capital spent), r = 7% | C$13.2 bn × 7% / 12 | 77 |
 | Carrying cost, upper bound (all Units 2–4 capital spent), r = 10% | C$13.2 bn × 10% / 12 | 110 |
 
-Reading: the largest carbon value we can construct for C1 (P95 saving × C$170/t) is **C$1.10 m**. One month's slip of Units 2–4 costs **C$33–110 m** in carrying cost alone, and defers about **C$88 m** of output, i.e. **30–223 times** C1's carbon value (lowest monthly cost over the highest value, to highest cost over the central value at C$95). Even counted only in carbon, a month's slip loses 2.1–22.7 times C1's saving. This agrees with `initiative_cost.md` §5 (run 5), which found one *day* of delay costs C$1–3 m against C1's C$0.9 m.
+Reading: the largest carbon value we can construct for C1 (P95 saving × C$170/t) is **C$1.10 m**. One month's slip of Units 2–4 costs **C$33–110 m** in carrying cost alone, and defers about **C$88 m** of output, i.e. **30–223 times** C1's carbon value (lowest monthly cost over the highest value, to highest cost over the central value at C$95). Even counted only in carbon, a month's slip loses 2.1–22.7 times C1's saving. This agrees with `initiative_cost.md` §5 (run 5), which found one *day* of delay costs C$1.8–2.9 m against C1's whole carbon value of C$0.49–0.60 m on the current path (C$0.88 m on the superseded C$170).
+
+**Current path only** (C$95/t in 2026, C$115/t in 2030; superseded path excluded): the largest carbon value is P95 saving × C$115 = 6,458 t × 115 = **C$0.743 m**, so the multiple runs from C$33.0 m / 0.743 = **44.4×** to C$110.0 m / 0.494 = **222.6×** (rounded: 44–223×). The 30× low end above uses the superseded C$170/t and is therefore the conservative bound.
 
 Caveats: (1) average factors understate what a late baseload unit's output would have displaced in Ontario, where gas is on the margin; (2) the net figure assumes the plant's life is fixed in years, not extended; (3) deferred output is deferred, not lost: its C$ figure is a cash-flow cost to OPG and ratepayers, not a social loss of that size; (4) the carrying-cost row assumes all capital is already spent, so it is an upper bound for an early slip; (5) the carbon value is only realised if someone prices it: construction-material emissions are outside Ontario's EPS (analyst inference in run 5, TO VERIFY); (6) all inputs provisional.
 
