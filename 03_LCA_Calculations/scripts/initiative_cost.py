@@ -109,7 +109,7 @@ def main():
     w("")
     pkg = V * n * c
     w(f"- The whole target-concrete package is about C${pkg/1e6:.1f} m, **{pkg/K24:.3%}** of the Units 2-4 capital. Even a +20% premium (C${0.2*pkg/1e6:.1f} m) is {0.2*pkg/K24:.4%} of it.")
-    w("- So **money is not the barrier** to C1. The barriers are qualification (who pays, and does it fit the schedule) and who captures the carbon value: OPG's construction emissions are not covered by Ontario's EPS (a facility-emissions programme), so no one is paid the C$/t in section 3 unless a funder or the procurement contract prices it. That is the case for a CGF/BOF milestone condition or an embodied-carbon clause in the Units 2-4 contracts (sections 8.6, 9).")
+    w("- So **money is not the barrier** to C1. The barriers are qualification (who pays, and does it fit the schedule) and who captures the carbon value: construction-material emissions appear not to be covered by Ontario's EPS, which prices facility emissions [analyst inference, TO VERIFY], so no one is paid the C$/t in section 3 unless a funder or the procurement contract prices it. That is the case for a CGF/BOF milestone condition or an embodied-carbon clause in the Units 2-4 contracts (sections 8.6, 9).")
     w("")
     # 5. Delay
     mwe, cf, lc = 300.0, 0.90, v("opg_dnnp_lcoe_cad")
@@ -117,8 +117,8 @@ def main():
     w("## 5. Cost of one day of delay to Units 2-4, against the initiative")
     w("")
     w(f"- Deferred output: {n} x {mwe:.0f} MW x 24 h x {cf} = {day_mwh:,.0f} MWh/day x C${lc:.0f}/MWh (OPG LCOE lead) = **C${day_mwh*lc/1e6:.1f} m per day** (gross; output is deferred, not lost).")
-    for r in (0.049, 0.07):
-        w(f"- Carrying cost upper bound: C${K24/1e9:.1f} bn x {r:.1%} / 365 = **C${K24*r/365/1e6:.1f} m per day** (assumes all Units 2-4 capital is spent; {r:.1%} = rate that reproduces OPG's C$149, and 7%).")
+    for r, lab in ((0.049, "the real rate that reproduces OPG's C$149/MWh in lcoe.md"), (0.07, "run-1 central rate")):
+        w(f"- Carrying cost upper bound: C${K24/1e9:.1f} bn x {r:.1%} / 365 = **C${K24*r/365/1e6:.1f} m per day** ({r:.1%} = {lab}; assumes all Units 2-4 capital is already spent).")
     w(f"- Against: the full carbon value of C1 at C$170 is C${S*n*170/1e6:.2f} m; a +10% premium costs C${0.1*pkg/1e6:.2f} m.")
     w(f"- So **one day of delay costs more than the whole initiative's carbon value, in dollars** (C$1-3 m per day against about C$0.9 m), just as `schedule_value.md` found in tonnes (1-15 days of delay cancels the saving). The schedule-neutral condition is therefore the binding implementation requirement, in money as well as carbon: qualify the mix on mock-ups during Unit 1, before the Units 2-4 decision expected in 2028 (lead).")
     w("")

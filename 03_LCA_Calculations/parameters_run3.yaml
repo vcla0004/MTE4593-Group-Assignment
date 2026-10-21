@@ -1,8 +1,11 @@
-# Rubric coverage: R3.2, R2.1, R3.8, R3.5, R3.7, R2.7, R1.4, RB.5
+# Rubric coverage: R3.2, R2.1, R2.3, R3.8, R3.5, R3.7, R2.7, R1.3, R1.4, R4.3, RB.5
 #
 # Analyst run 3 (20/10/2026): Herfindahl-Hirschman index (HHI) inputs for the BWRX-300 fuel supply chain.
 # Read by 03_LCA_Calculations/scripts/hhi.py. To be merged into parameters.yaml by the coordinator.
 # Source keys refer to 02_Research/sources_run3.md.
+# Run 7b (21/10/2026, plan.md section 7 job Q3) added: enrichment_alt_sources (CRAI and WNU rows, R1.3),
+# urenco_usa (capacity), fuel_demand_link and strategic_reserve (sizing section 8.3 to four units, R2.3).
+# Source keys for the new entries are in 02_Research/sources.md ("From analyst run 7b").
 #
 # VERIFICATION STATUS (read before using any number):
 #   No primary-source host (world-nuclear.org, oecd-nea.org, iaea.org, justice.gov, ftc.gov, govinfo.gov,
@@ -177,3 +180,48 @@ russia_counter_restriction:
   note: "Russian Government amendment to Decree No 313 of 9 March 2022 temporarily restricting enriched-uranium exports to the US (news pointer only; primary decree not opened)"
   source: WNN_2024
   verified: false
+
+# ---------------------------------------------------------------------------
+# 6. Alternative enrichment-capacity estimates (run 7b; R1.3 source disagreement)
+#    Each row REPLACES only the named companies in the WNA 2025 row; all other companies stay at WNA values.
+# ---------------------------------------------------------------------------
+enrichment_alt_sources:
+  CRAI_2025:
+    replaces: {Rosatom: 26200, CNNC: 11000}
+    unit: thousand SWU/yr (2025)
+    source: CRAI_2025
+    verified: false
+    note: "Values as recorded in briefs/supply-concentration.md (run 3). The underlying CRA International document could NOT be identified in run 7b (two searches). If it is not found and opened by Q19, cut this row and report WNU_2025 as the low end instead."
+  WNU_2025:
+    replaces: {Rosatom: 27100}
+    unit: thousand SWU/yr (2025)
+    source: WNU_2025_Platov
+    verified: false
+    note: "World Nuclear University Summer Institute slide (June 2025), Russia's four sites, 2025 column, via search summary. Same as WNA's 2022 Rosatom figure."
+
+# ---------------------------------------------------------------------------
+# 7. Urenco USA (Eunice, New Mexico): OPG's named enricher for Darlington Unit 1 (OPG_2023_fuel)
+# ---------------------------------------------------------------------------
+urenco_usa:
+  capacity_current_kSWU: {value: 4300, source: ANS_2026_Urenco, verified: false, note: "'existing capacity 4.3 million SWU', about one-third of US demand (ANS Nuclear Newswire, 2 June 2026, via search)"}
+  expansion_2027_kSWU: {value: 700, source: ANS_2026_Urenco, verified: false, note: "separate 700,000 SWU project expected complete 2027"}
+  expansion_2032_2036_kSWU: {value: 2100, source: ANS_2026_Urenco, verified: false, note: "announced 2 June 2026; first cascades 2032, full installation 2036"}
+  capacity_after_expansion_kSWU: {value: 7000, source: ANS_2026_Urenco, verified: false, note: "'more than seven million SWU over the next decade' (lower bound)"}
+
+# ---------------------------------------------------------------------------
+# 8. Darlington fuel demand (sizing section 8.3 to the proposal, R2.3)
+#    Read from parameters_lca.yaml (lca-analyst; read-only here) and recomputed in hhi.py with the same
+#    enrichment balance as lca_model.py. The check values are lca_baseline.md's fuel mass balance (S0).
+# ---------------------------------------------------------------------------
+fuel_demand_link:
+  parameters_file: parameters_lca.yaml
+  keys: [net_mwe, capacity_factor, thermal_mwt, burnup_gwd_per_t, enrichment_pct, feed_assay_pct, tails_assay_pct]
+  units_at_darlington: 4
+  check_four_units_natU_t: 195.6     # lca_baseline.md, fuel mass balance, 4 units / yr
+  check_four_units_tSWU: 137.7       # same table (tSWU = thousand SWU)
+  status: placeholder
+  note: "Every input is a placeholder or TO VERIFY in parameters_lca.yaml (burnup and enrichment wait on Leroy's BWRX-300 data, plan.md section 5)."
+
+strategic_reserve:
+  reloads_held: {value: 2, source: assumption, verified: false, note: "plan.md section 7 job Q3 and review.md section 8.3 point 5 ask for a two-reload reserve"}
+  cycle_length_months: {value: 12, low: 12, high: 24, source: assumption, verified: false, note: "No BWRX-300 cycle length found (Leroy request, plan.md section 5). At equilibrium one reload = annual enriched-U demand x cycle length in years, so two reloads = 2 to 4 years of demand."}

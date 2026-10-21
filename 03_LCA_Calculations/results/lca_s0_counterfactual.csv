@@ -1,0 +1,3 @@
+counterfactual_s0,slag_fraction,s0_change_vs_gu_t_per_unit,s0_life_cycle_g_per_kwh,lc3_increment_t_per_unit,lc3_increment_t_units_2_4,lc3_increment_clinker_t_per_unit,lc3_increment_pct_of_life_cycle
+low (slag 25% of binder),0.25,-1442,2.6904,763,2290,1042,0.2
+central (slag 40% of binder),0.4,-2307,2.6843,181,543,285,0.048

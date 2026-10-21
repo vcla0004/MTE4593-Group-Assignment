@@ -3,7 +3,8 @@
 
 Run:  python3 -I 03_LCA_Calculations/scripts/lca_uncertainty.py
 Reads parameters_lca.yaml. Writes:
-  results/lca_tornado.csv, results/lca_montecarlo_summary.csv, results/lca_uncertainty.md
+  results/lca_tornado.csv, results/lca_montecarlo_summary.csv, results/lca_mc_conversion_alt.csv,
+  results/lca_uncertainty.md
   results/lca_stages_expected.csv, results/F2_stage_breakdown.png, F3_tornado.png, F4_montecarlo.png, F5_benchmarks.png
 
 Tornado: each ranged parameter set to its low and then its high value, all others central.
@@ -11,6 +12,10 @@ Monte Carlo: every ranged parameter drawn independently from its stated distribu
 low/value/high; uniform = low/high), fixed seed, N draws from the YAML. Independence is an assumption: in
 reality concrete and steel intensities are positively correlated, which would widen the construction tail
 slightly; the construction share is small, so the headline interval is barely affected.
+Monte Carlo shares are reported for every scenario (S1, S2, S2b, S3 like-for-like, S3 upper bound, S3 high),
+each saving divided by the same draw's S0 life-cycle total, so the T8 shares and the headline share share one basis.
+Conversion-heat test (review.md section 6 point 7): the Monte Carlo is re-run with the SAME draws for every other
+input and conversion heat (a) held at its sourced central value and (b) log-uniform between its low and high.
 """
 import csv
 import sys
@@ -19,7 +24,8 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from lca_model import RESULTS, load_raw, central, varied_names, model, fmt  # noqa: E402
+from lca_model import (RESULTS, load_raw, central, varied_names, model, fmt,  # noqa: E402
+                       steel_target_saving)
 import lca_plot as lp  # noqa: E402
 
 RAW = load_raw()
@@ -34,8 +40,20 @@ def outputs(p):
     s2 = model(p, "S2", RAW)
     sav2 = (b["concrete_kg"] - s2["concrete_kg"]) / 1000
     sav1 = (b["concrete_kg"] - s1["concrete_kg"]) / 1000
-    return {"g_per_kwh": b["total_g"], "lc3_saving_t_per_unit": sav2, "lc3_saving_pct": 100 * sav2 / b["total_t_life"],
-            "slag_saving_t_per_unit": sav1, "concrete_m3_per_unit": b["vol"]["total"], "target_m3_per_unit": b["vol"]["target"],
+    s2b = model(p, "S2b", RAW)
+    sav2b = (b["concrete_kg"] - s2b["concrete_kg"]) / 1000
+    steel_b = b["rebar_kg"] + b["plate_kg"]
+    s3lo = (steel_b - sum(model(p, "S3lo", RAW)[k] for k in ("rebar_kg", "plate_kg"))) / 1000
+    s3hi = (steel_b - sum(model(p, "S3hi", RAW)[k] for k in ("rebar_kg", "plate_kg"))) / 1000
+    s3lfl = steel_target_saving(p, RAW)["t_per_unit"]
+    life = b["total_t_life"]
+    return {"g_per_kwh": b["total_g"], "lc3_saving_t_per_unit": sav2, "lc3_saving_pct": 100 * sav2 / life,
+            "slag_saving_t_per_unit": sav1, "slag_saving_pct": 100 * sav1 / life,
+            "s2b_saving_t_per_unit": sav2b, "s2b_saving_pct": 100 * sav2b / life,
+            "s3_like_for_like_saving_t_per_unit": s3lfl, "s3_like_for_like_saving_pct": 100 * s3lfl / life,
+            "s3_upper_bound_saving_t_per_unit": s3lo, "s3_upper_bound_saving_pct": 100 * s3lo / life,
+            "s3_high_saving_t_per_unit": s3hi, "s3_high_saving_pct": 100 * s3hi / life,
+            "concrete_m3_per_unit": b["vol"]["total"], "target_m3_per_unit": b["vol"]["target"],
             "clipped": b["vol"]["clipped"], "construction_g": b["construction_g"], "fuel_g": b["fuel_g"],
             "mining_g": b["g"]["Fuel: mining and milling"],
             **{"stage::" + k: g for k, g in b["g"].items()}}
@@ -54,7 +72,8 @@ for k in NAMES:
                   "g_at_low": round(o_lo["g_per_kwh"], 4), "g_at_high": round(o_hi["g_per_kwh"], 4),
                   "g_swing": round(abs(o_hi["g_per_kwh"] - o_lo["g_per_kwh"]), 4),
                   "saving_at_low": round(o_lo["lc3_saving_t_per_unit"]), "saving_at_high": round(o_hi["lc3_saving_t_per_unit"]),
-                  "saving_swing": round(abs(o_hi["lc3_saving_t_per_unit"] - o_lo["lc3_saving_t_per_unit"]))})
+                  "saving_swing": round(abs(o_hi["lc3_saving_t_per_unit"] - o_lo["lc3_saving_t_per_unit"])),
+                  "label": lp.label(k)})
 trows.sort(key=lambda r: -r["g_swing"])
 with open(RESULTS / "lca_tornado.csv", "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(trows[0].keys()))
@@ -101,6 +120,41 @@ with open(RESULTS / "lca_montecarlo_summary.csv", "w", newline="") as f:
     w.writerows(srows)
 S = {r["output"]: r for r in srows}
 
+# ---------------- conversion-heat distribution test (same draws for every other input) ----------------
+CH = "conversion_heat_kwh_per_kgU"
+ch_lo, ch_c, ch_hi = float(RAW[CH]["low"]), float(RAW[CH]["value"]), float(RAW[CH]["high"])
+rng_alt = np.random.default_rng(int(P0["mc_seed"]) + 1)      # separate stream: other inputs' draws are unchanged
+ALT_CASES = [
+    ("triangular (baseline)", f"triangular {ch_lo:g} / {ch_c:g} / {ch_hi:g} (mode = low)", draws[CH]),
+    ("held at central", f"fixed at {ch_c:g} kWh/kg U (Gibon and Hahn Menacho 2023 central, TO VERIFY)", np.full(N, ch_c)),
+    ("log-uniform", f"log-uniform {ch_lo:g}-{ch_hi:g} kWh/kg U", np.exp(rng_alt.uniform(np.log(ch_lo), np.log(ch_hi), N))),
+]
+arows = []
+for case, desc, ch_draws in ALT_CASES:
+    if case.startswith("triangular"):
+        g_arr, pct_arr = res["g_per_kwh"], res["lc3_saving_pct"]
+    else:
+        g_arr, pct_arr = np.empty(N), np.empty(N)
+        for i in range(N):
+            p = dict(P0)
+            for k in NAMES:
+                p[k] = float(draws[k][i])
+            p[CH] = float(ch_draws[i])
+            b = model(p, "S0", RAW)
+            s2 = model(p, "S2", RAW)
+            g_arr[i] = b["total_g"]
+            pct_arr[i] = 100 * (b["concrete_kg"] - s2["concrete_kg"]) / 1000 / b["total_t_life"]
+    q = np.percentile(g_arr, [5, 50, 95])
+    qp = np.percentile(pct_arr, [5, 50, 95])
+    arows.append({"conversion_heat_case": case, "distribution": desc, "conv_heat_mean_kwh_per_kgU": round(float(np.mean(ch_draws)), 1),
+                  "g_mean": round(float(g_arr.mean()), 3), "g_p5": round(float(q[0]), 3), "g_p50": round(float(q[1]), 3),
+                  "g_p95": round(float(q[2]), 3), "lc3_share_pct_p50": round(float(qp[1]), 3),
+                  "lc3_share_pct_p5": round(float(qp[0]), 3), "lc3_share_pct_p95": round(float(qp[2]), 3)})
+with open(RESULTS / "lca_mc_conversion_alt.csv", "w", newline="") as f:
+    w = csv.DictWriter(f, fieldnames=list(arows[0].keys()))
+    w.writeheader()
+    w.writerows(arows)
+
 # ---------------- expected-value stage breakdown (means are additive) ----------------
 stage_keys = [k for k in res if k.startswith("stage::")]
 mean_total = float(res["g_per_kwh"].mean())
@@ -131,6 +185,24 @@ for r in st_rows:
     L.append(f"| {r['stage']} | {r['mode_case_g_per_kwh']} | {r['mc_mean_g_per_kwh']} | {r['mc_p5']} | {r['mc_p95']} | {r['share_of_mc_mean_pct']}% |")
 L.append(f"| **Total** | {BASE['g_per_kwh']:.3f} | {mean_total:.3f} | | | 100% |")
 L.append(f"\nProbability that LC3 (S2) saves more than the slag blend (S1): {100 * p_lc3_beats_slag:.0f}%.\n")
+L += ["## Scenario savings and life-cycle shares on the Monte Carlo basis (one basis for Table T8)\n",
+      "Each draw's saving is divided by the same draw's S0 life-cycle total. S3 rows are steel sensitivities, not part of C1; "
+      "S3 high is negative (adds emissions).\n",
+      "| Scenario | Saving t/unit P50 (P5-P95) | Share of life cycle % P50 (P5-P95) | Mode-case share % |", "|---|---|---|---|"]
+for lab, key in [("S1 slag blend (C1 fallback)", "slag"), ("S2 LC3 (C1 target binder)", "lc3"), ("S2b LC3 + slag elsewhere", "s2b"),
+                 ("S3 like-for-like (target-structure steel)", "s3_like_for_like"), ("S3 upper bound (all steel, EAF sections factors)", "s3_upper_bound"),
+                 ("S3 high (world-average steel)", "s3_high")]:
+    t, pc = S[f"{key}_saving_t_per_unit"], S[f"{key}_saving_pct"]
+    L.append(f"| {lab} | {t['p50']:,.0f} ({t['p5']:,.0f} to {t['p95']:,.0f}) | {pc['p50']:.3f} ({pc['p5']:.3f} to {pc['p95']:.3f}) | {pc['central_case']:.3f} |")
+L += ["\n## Conversion-heat distribution test (Table C2 row; review.md section 6 point 7)\n",
+      f"Same {N:,} draws for the other {len(NAMES) - 1} inputs; only the conversion-heat distribution changes.\n",
+      "| Conversion heat | Mean heat kWh/kg U | Life cycle mean g/kWh | P5 | P50 | P95 | LC3 share P50 % (P5-P95) |",
+      "|---|---|---|---|---|---|---|"]
+for r in arows:
+    L.append(f"| {r['distribution']} | {r['conv_heat_mean_kwh_per_kgU']} | {r['g_mean']} | {r['g_p5']} | {r['g_p50']} | {r['g_p95']} | "
+             f"{r['lc3_share_pct_p50']} ({r['lc3_share_pct_p5']}-{r['lc3_share_pct_p95']}) |")
+_med = [r["g_p50"] for r in arows]
+L.append(f"\nRange of medians across the three conversion-heat assumptions: {min(_med):.2f}-{max(_med):.2f} g CO2e/kWh.\n")
 L += ["## Tornado (one at a time), ranked by swing in life-cycle g CO2e/kWh\n",
       "| Parameter | Low | Central | High | Status | g/kWh at low | g/kWh at high | Swing | LC3 saving at low (t) | at high (t) | Swing (t) |",
       "|---|---|---|---|---|---|---|---|---|---|---|"]

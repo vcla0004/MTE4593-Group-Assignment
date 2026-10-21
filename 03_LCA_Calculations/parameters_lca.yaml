@@ -103,7 +103,7 @@ parameters:
     unit: t
     source: opg_forebay_update
     status: TO VERIFY
-    note: "Used only in the corrected inventory sheet and Granta inputs (partial structure)."
+    note: "Used in the corrected inventory sheet, the Granta inputs (partial structure) and the like-for-like S3 row (target-structure rebar)."
   dpsc_basemat_steel_t:
     value: 953
     low: 953
@@ -112,7 +112,7 @@ parameters:
     unit: t (Unit 1 DPSC basemat module, steel)
     source: opg_basemat_story
     status: TO VERIFY
-    note: "About 953 t (2.1 million lb), 37 m across, lowered 35 m into the reactor-building shaft (OPG story, via plan.md; news lead). Part of total steel, not added to it."
+    note: "About 953 t (2.1 million lb = 952.5 t), 37 m in diameter, lowered into the reactor-building shaft 35 m below ground on 22 April 2026 (OPG story of 30 April 2026, 'Laying the foundation for the G7's first small modular reactor', URL identified 21/10 by web search; page not opened, opg.com blocked; figures seen in search summaries and in WNN/okdiario reports). Part of total steel, not added to it. Also the target-structure plate steel in the like-for-like S3 row."
   rb_shaft_diameter_m:
     value: 37
     low: 37
@@ -461,7 +461,10 @@ parameters:
   bm_gibon2023:       {value: 6.1, unit: g/kWh, source: gibon2023, status: TO VERIFY, dist: fixed, low: 5.4, high: 122, note: "Global 2020 average; scenario range 5.4-122."}
   bm_edf2024:         {value: 3.7, unit: g/kWh, source: edf2024_lca, status: TO VERIFY, dist: fixed, low: 2.9, high: 4.6, note: "French fleet 2019 data; sensitivity 2.9-4.6."}
   bm_carless2016_wsmr: {value: 9.1, unit: g/kWh, source: carless2016, status: TO VERIFY, dist: fixed, low: 5.9, high: 13.2, note: "Westinghouse SMR mean, 90% CI 5.9-13.2 (AP1000 8.4)."}
-  bm_warner2012:      {value: 12, unit: g/kWh, source: warner_heath2012, status: TO VERIFY, dist: fixed, low: 3.7, high: 110, note: "Harmonised LWR median 12; low 3.7 as commonly quoted for AR5 (TO VERIFY); max 110."}
+  bm_warner2012:      {value: 12, unit: g/kWh, source: warner_heath2012, status: TO VERIFY, dist: fixed, low: 12, high: 110, note: "Harmonised LWR median 12; max 110 (lead). The lead gives no minimum, so low = median here; 3.7 is NOT attributed to Warner and Heath (factcheck L31). See bm_ipcc2014_*."}
+  bm_ipcc2014_min:    {value: 3.7, unit: g/kWh, source: ipcc2014_annex3, status: TO VERIFY, dist: fixed, low: 3.7, high: 3.7, note: "IPCC AR5 WGIII Annex III Table A.III.2 nuclear minimum as commonly quoted; not confirmed even in a search result (factcheck L31, L35). lca_uncertainty.py plots the IPCC row in F5 only when all three bm_ipcc2014_* entries have status verified."}
+  bm_ipcc2014_median: {value: 12, unit: g/kWh, source: ipcc2014_annex3, status: TO VERIFY, dist: fixed, low: 12, high: 12, note: "IPCC AR5 Annex III nuclear median as commonly quoted (TO VERIFY)."}
+  bm_ipcc2014_max:    {value: 110, unit: g/kWh, source: ipcc2014_annex3, status: TO VERIFY, dist: fixed, low: 110, high: 110, note: "IPCC AR5 Annex III nuclear maximum as commonly quoted (TO VERIFY)."}
   bm_ng2025_fuel:     {value: 3.0, unit: g/kWh (fuel cycle only), source: ng2025_jie, status: TO VERIFY, dist: fixed, low: 3.0, high: 3.0, note: "US LWR fuel cycle (GREET)."}
   bm_coal_unece:      {value: 1000, unit: g/kWh, source: unece2021, status: TO VERIFY, dist: fixed, low: 751, high: 1095, note: "Coal comparator as in the deck."}
   bm_gas_unece:       {value: 458, unit: g/kWh, source: unece2021, status: TO VERIFY, dist: fixed, low: 403, high: 513, note: "Gas CC comparator as in the deck."}
@@ -469,4 +472,4 @@ parameters:
   # ===================== H. Monte Carlo control =====================
   mc_draws:   {value: 20000, low: 20000, high: 20000, dist: fixed, unit: draws, source: calculated, status: fixed, note: "At least 10,000 required (plan section 4.1)."}
   mc_seed:    {value: 20261021, low: 20261021, high: 20261021, dist: fixed, unit: seed, source: calculated, status: fixed, note: "Fixed seed (date) for reproducibility."}
-  units_initiative: {value: 3, low: 3, high: 3, dist: fixed, unit: units (Darlington Units 2-4), source: ontario2025_fid, status: TO VERIFY, note: "Unit 1 basemat and forebay already placed, so C1 applies to Units 2-4 only."}
+  units_initiative: {value: 3, low: 3, high: 3, dist: fixed, unit: units (Darlington Units 2-4), source: ontario2025_fid, status: TO VERIFY, note: "Unit 1's basemat is placed and its forebay well advanced, so C1 is counted for Units 2-4 only. Whether Unit 1's shaft-wall infill could still use LC3 is TO VERIFY (factcheck L60)."}

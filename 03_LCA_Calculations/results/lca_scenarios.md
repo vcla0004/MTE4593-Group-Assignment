@@ -11,10 +11,13 @@ Baseline S0: 2.701 g CO2e/kWh; 383,243 t CO2e per unit over 60 years; C1 target 
 | S1 slag blend in C1 target structures | 1,552 | 4,657 | 2,019 | 6,057 | 30.6 | 0.405 | 0.0109 |
 | S2 LC3 in C1 target structures (the initiative) | 1,734 | 5,201 | 2,304 | 6,913 | 34.1 | 0.452 | 0.0122 |
 | S2b LC3 in targets + slag blend in all other concrete | 2,488 | 7,464 | 3,286 | 9,857 | 49.0 | 0.649 | 0.0175 |
-| S3 low: all steel at EAF / high-recycled-content factors | 3,714 | 11,142 | 0 | 0 |  | 0.969 | 0.0262 |
+| S3 like-for-like: low-end steel factors on the C1 target-structure steel only (1,953 t: DPSC basemat module plate + forebay rebar) | 566 | 1,698 | 0 | 0 |  | 0.148 | 0.004 |
+| S3 upper bound: all steel at best-practice EAF sections factors | 3,714 | 11,142 | 0 | 0 |  | 0.969 | 0.0262 |
 | S3 high: all steel at world-average (BOF-heavy) factors | -8,399 | -25,198 | 0 | 0 |  | -2.192 | -0.0592 |
 
 S3 rows: positive = lower than the S0 steel factors; negative = higher. They are a sensitivity on the baseline, not part of C1.
+- **S3 like-for-like** (same structures as C1): 953 t DPSC basemat plate x (1.73 - 1.22) + 1,000 t forebay rebar x (0.97 - 0.89) = 486 + 80 = **566 t per unit**, against LC3's 1,734 t. Within the structures C1 targets, LC3 is the larger lever (about 3.1x). The DPSC shaft-wall plate is not known and is excluded, so this is a floor for the target-structure steel [TODO: NEDO-33926 / OPG plate tonnage].
+- **S3 upper bound**: all 9,900 t of plant steel, including forgings and nuclear-grade plate, moved to the best-practice EAF *sections* factor (1.22 t/t, BCCA hot-rolled sections limit) and the low rebar factor. Not shown to be feasible for forgings or nuclear plate.
 
 ## Per structure (one unit)
 
@@ -31,4 +34,15 @@ S3 rows: positive = lower than the S0 steel factors; negative = higher. They are
 - S1 slag 40%: (1 - s) x 854 + s x 146.6 = 571 kg/t; clinker 0.552 t/t.
 - S2 LC3: 854 x (1 - 0.37) = 538 kg/t; clinker 0.50 t/t; binder content x (1 + 0.00).
 - Concrete per m3 = binder (kg/m3) x factor / 1000 + 30 kg/m3 (aggregates, water, admixtures, batching).
-- Saving per structure = volume x (S0 per m3 - scenario per m3). Units 2-4 = 3 x per unit (Unit 1's basemat and forebay are already placed).
+- Saving per structure = volume x (S0 per m3 - scenario per m3). Units 2-4 = 3 x per unit (Unit 1's basemat is placed and its forebay well advanced).
+
+## S0 counterfactual: if OPG's baseline already contains slag
+
+Whether GEH's NEDO-33926 SCC infill specification or OPG's Darlington mixes already permit or use supplementary cementitious materials (slag, fly ash) has **not** been found [TO VERIFY: NEDO-33926 Rev. 2 (NRC ML24110A134) concrete section; OPG/St Marys mix submittals]. If they do, S0 is a slag blend in all plant concrete (scenario S0slag), S1 becomes business as usual, and C1's increment is LC3 in the targets with slag elsewhere (S2b) against S0slag. Slag fractions are the S1 range (`slag_replacement_s1`, assumption).
+
+| Counterfactual S0 | Slag share | S0 change vs GU t/unit | S0 life cycle g/kWh | LC3 increment t/unit | Units 2-4 t | Clinker t/unit | % of life cycle |
+|---|---|---|---|---|---|---|---|
+| low (slag 25% of binder) | 0.25 | -1,442 | 2.6904 | 763 | 2,290 | 1,042 | 0.2 |
+| central (slag 40% of binder) | 0.40 | -2,307 | 2.6843 | 181 | 543 | 285 | 0.048 |
+
+Reading: on a slag baseline the life cycle barely moves, and C1's carbon increment shrinks from 1,734 t to the LC3-minus-slag difference in the target structures (Monte Carlo interval spans zero: `lca_montecarlo_summary.csv`, row lc3_minus_slag_t_per_unit). The clinker increment stays positive because LC3 carries less clinker per tonne than a 25-40% slag blend.

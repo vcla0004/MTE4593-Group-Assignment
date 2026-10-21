@@ -18,7 +18,13 @@ Scenarios (concrete of the C1 target structures only: DPSC reactor-building infi
   S2  LC3 (LC3-50) binder: GWP cut lc3_gwp_reduction, binder content x (1 + lc3_binder_uplift)
   S2b S2 in the target structures + S1 slag blend in all other plant concrete (upper bound, lever L1)
   S3lo / S3hi  baseline concrete with all steel at the low (EAF, high recycled content) / high
-               (world-average, BOF-heavy) factors: the steel recycled-content sensitivity
+               (world-average, BOF-heavy) factors: the steel recycled-content sensitivity.
+               S3lo is an UPPER BOUND: it puts all plant steel (incl. forgings and nuclear plate) on
+               best-practice EAF sections factors.
+  S3lfl        like-for-like S3 (steel_target_saving): the same low-end factors applied only to the known
+               steel in the C1 target structures (DPSC basemat module plate + forebay rebar)
+  S0slag       counterfactual baseline if OPG's mixes already contain slag: slag blend in ALL concrete.
+               LC3's increment over it = S0slag - S2b (LC3 in targets, slag elsewhere)
 """
 from math import pi, log
 from pathlib import Path
@@ -110,6 +116,7 @@ SCENARIO_MIX = {          # (target-structure mix, other-concrete mix, steel cas
     "S2b": ("LC3", "SLAG", "central"),
     "S3lo": ("GU", "GU", "low"),
     "S3hi": ("GU", "GU", "high"),
+    "S0slag": ("SLAG", "SLAG", "central"),
 }
 
 
@@ -206,6 +213,40 @@ def lc3_saving(p, raw=None, scenario="S2"):
             "pct_target_concrete": 100 * t / (b["target_concrete_kg"] / 1000),
             "g_per_kwh": t * 1000 / b["mwh_life"],
             "base": b, "scen": s}
+
+
+def steel_target_saving(p, raw=None):
+    """Like-for-like S3 (t CO2e per unit): the S3-low steel factors applied only to the known steel in the C1
+    target structures, i.e. the DPSC basemat module (plate factor) and the forebay rebar (rebar factor).
+    The DPSC shaft-wall plate is not known (no source) and is excluded, so this is a floor for the target steel."""
+    raw = raw or load_raw()
+    lo_o, lo_r = float(raw["ef_plate_other"]["low"]), float(raw["ef_rebar"]["low"])
+    plate = p["dpsc_basemat_steel_t"] * (p["ef_plate_other"] - lo_o)
+    rebar = p["forebay_rebar_t"] * (p["ef_rebar"] - lo_r)
+    return {"t_per_unit": plate + rebar, "plate_t": plate, "rebar_t": rebar,
+            "steel_t": p["dpsc_basemat_steel_t"] + p["forebay_rebar_t"]}
+
+
+def steel_whole_saving(p, raw=None, scenario="S3lo"):
+    """Whole-plant S3 (t CO2e per unit) vs the central steel factors; positive = lower emissions."""
+    b, s = model(p, "S0", raw), model(p, scenario, raw)
+    return ((b["rebar_kg"] + b["plate_kg"]) - (s["rebar_kg"] + s["plate_kg"])) / 1000
+
+
+def slag_baseline_counterfactual(p, raw=None, slag_fraction=None):
+    """If S0 already contains slag (all plant concrete at slag_fraction), what LC3 in the targets adds.
+    Returns the counterfactual S0 total and LC3's increment (S0slag vs S2b), per unit."""
+    q = dict(p)
+    if slag_fraction is not None:
+        q["slag_replacement_s1"] = slag_fraction
+    b0 = model(p, "S0", raw)
+    s0 = model(q, "S0slag", raw)
+    s2 = model(q, "S2b", raw)
+    inc = (s0["concrete_kg"] - s2["concrete_kg"]) / 1000
+    return {"slag_fraction": q["slag_replacement_s1"], "s0slag_total_g": b0["total_g"] - (b0["concrete_kg"] - s0["concrete_kg"]) / b0["mwh_life"],
+            "s0slag_vs_gu_t": (b0["concrete_kg"] - s0["concrete_kg"]) / 1000,
+            "lc3_increment_t": inc, "lc3_increment_pct_life": 100 * inc / (b0["total_t_life"] - (b0["concrete_kg"] - s0["concrete_kg"]) / 1000),
+            "lc3_increment_clinker_t": s0["all_clinker_t"] - s2["all_clinker_t"]}
 
 
 def fmt(x, nd=0):

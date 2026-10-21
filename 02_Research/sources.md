@@ -893,3 +893,22 @@ Scrivener, K., Martirena, F., Bishnoi, S. and Maity, S., 2018. Calcined clay lim
 - **R3.4 (regulation):** CNSC licence scope, validity and phase limits. **Missing:** the Record of Decision text.
 - **R4.2:** LC3 citation confirmed bibliographically only. **Missing:** any quantitative LC3 claim from the paper.
 - **R5.4 (Harvard):** full references drafted, with title fixes (WNA, UNECE). **Missing:** DOIs and years marked TO VERIFY.
+
+---
+
+## From analyst run 7a (job Q2, 21/10/2026)
+
+Rubric coverage: R2.3, R2.7, R3.1, R4.3, R1.4
+
+### eccc2026_industrial_trajectory
+- **Reference (Harvard, TO VERIFY):** Environment and Climate Change Canada (2026) *Industrial carbon pricing in Canada*. Ottawa: Government of Canada. Available at: https://www.canada.ca/en/environment-climate-change/services/climate-change/pricing-pollution-how-it-will-work/putting-price-on-carbon-pollution/industry.html (Accessed: 21 October 2026) [NOT OPENED: proxy 403 / DNS failure on www.canada.ca, 21/10].
+- **Pointer only:** International Carbon Action Partnership (2026) *Canada publishes new carbon price trajectory*. Available at: https://icapcarbonaction.com/en/news/canada-publishes-new-carbon-price-trajectory [NOT OPENED: proxy 403]. Carbon Pulse (21 May 2026) 'Canada softens industrial carbon price trajectory, caps benchmark at C$100 through 2029' (news, paywalled; pointer only).
+- **Key findings (from two search summaries, 21/10; not citable until opened):** a new headline price trajectory for all industrial carbon pricing systems, published 19 May 2026 and effective 15 May 2026: C$95/t in 2026, C$100 in 2027–2029, C$115 in 2030, +C$3/yr to C$130 in 2035, then +1.5%/yr to C$140 in 2040. A full updated federal benchmark is to be published later in 2026. It replaces the 2021 path (C$65 in 2023, +C$15/yr to C$170 in 2030). The consumer fuel charge has been zero since 1 April 2025.
+- **Numbers used:** `carbon_price_2026_cad` 95 (high 110 = old path); `carbon_price_2030_cad` 115 (high 170 = old path), in `parameters_run1.yaml`.
+- **Reliability:** if confirmed on canada.ca, primary government source, high. Today it is a search lead only. **Conflict:** run 5 (`parameters_run5.yaml` `carbon_prices_cad` [95, 110, 170], labelled 2025/2026/2030) uses the superseded path; see plan.md §5 Interfaces.
+- **Ontario applicability (gap):** Ontario's Emissions Performance Standards (O. Reg. 241/19) replaced the federal OBPS on 1 January 2022; the 2026 EPS excess-emissions charge was not found. Construction-material emissions are not facility emissions under the EPS (analyst inference, run 5, TO VERIFY), so C1's carbon value is a shadow value unless a funder or contract prices it.
+
+### lca_results_2110
+- **Reference:** our own model: lca-analyst (2026) *Life-cycle assessment of one BWRX-300 at Darlington, and the C1 LC3 initiative*. `03_LCA_Calculations/results/lca.md`, `lca_scenarios.csv`, `lca_montecarlo_summary.csv` (21 October 2026). Not an external source: cite as "this study, Appendix A/C".
+- **Numbers used in Q2:** life cycle 4.18 g CO₂e/kWh median (P5–P95 3.05–5.85), C1 saving 1,734 t per unit (1,387–2,153), 5,201 t for Units 2–4 (4,161–6,458).
+- **Reliability:** reproducible calculation; every input still TO VERIFY (lca-analyst).

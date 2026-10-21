@@ -1,5 +1,6 @@
 # Rubric coverage: R2.1, R2.3, R2.7, R3.1, R3.6, R4.3, RB.6
 # Analyst run 1 (20/10/2026): displacement, schedule value, same money.
+# Q2 re-base (21/10/2026, analyst run 7a): smr_lca_g_per_kwh set to our LCA (4.2, 3.0-5.8); C1 saving and Canadian carbon price added.
 # Schema as parameters.yaml: name: {value, unit, source: <key in 02_Research/sources_run1.md> | assumption, note}
 # Added fields: low/high (sensitivity range), status.
 #   status = "TO VERIFY"   -> number seen only in a search summary or secondary source. The primary
@@ -47,13 +48,58 @@ parameters:
 
   # ---------------- SMR life-cycle intensity (Sam's number replaces the central value) ----------------
   smr_lca_g_per_kwh:
+    value: 4.2
+    low: 3.0
+    high: 5.8
+    unit: g CO2e/kWh (life cycle, one BWRX-300 at Darlington, cradle to grave incl. fuel cycle)
+    source: lca_results_2110
+    status: from results
+    note: "Q2 re-base (21/10): our hybrid LCA, results/lca.md section 0 and lca_montecarlo_summary.csv (median 4.178, P5 3.048, P95 5.849; mean 4.28; mode case 2.70). Its inputs are TO VERIFY (lca-analyst). Replaces the UNECE (2021) midpoint placeholder 5.75 (5.1-6.4), kept as smr_lca_unece_g_per_kwh for comparison."
+  smr_lca_unece_g_per_kwh:
     value: 5.75
     low: 5.1
     high: 6.4
     unit: g CO2e/kWh (life cycle)
     source: unece2021
-    status: placeholder
-    note: "Midpoint of UNECE (2021) nuclear range 5.1–6.4 as reported by secondary sources [TO VERIFY in UNECE PDF]. Replace value/low/high with Sam's Granta+literature result on Wed 21/10 12:00."
+    status: TO VERIFY
+    note: "Former placeholder (midpoint of UNECE 2021 nuclear range as reported by secondary sources). Benchmark only (RB.6); not used in the central case after 21/10."
+
+  # ---------------- Initiative C1 (lca-analyst results, taken as given) ----------------
+  c1_saving_t_per_unit:
+    value: 1734
+    low: 1387
+    high: 2153
+    unit: t CO2e saved per unit (S2 LC3 vs S0 GU in the C1 target structures, concrete A1-A3)
+    source: lca_results_2110
+    status: from results
+    note: "results/lca_scenarios.csv S2 central 1,734 (plan Q2 '1.74 kt'); Monte Carlo P5-P95 1,387-2,153 (lca_montecarlo_summary.csv). Inputs TO VERIFY."
+  c1_saving_t_units_2_4:
+    value: 5201
+    low: 4161
+    high: 6458
+    unit: t CO2e, Units 2-4 (three units)
+    source: lca_results_2110
+    status: from results
+    note: "results/lca_scenarios.csv S2 central 5,201; MC P5-P95 4,161-6,458."
+
+  # ---------------- Carbon price for C1's carbon value (Q2) ----------------
+  carbon_price_2026_cad:
+    value: 95
+    low: 95
+    high: 110
+    unit: C$/t CO2e, Canadian headline industrial carbon price, 2026
+    source: eccc2026_industrial_trajectory
+    status: TO VERIFY
+    note: "Search summaries (21/10) of the canada.ca 'Industrial carbon pricing in Canada' page and ICAP news 'Canada publishes new carbon price trajectory': new headline trajectory published 19 May 2026, effective 15 May 2026: C$95 in 2026, C$100 in 2027-2029, C$115 in 2030, +C$3/yr to C$130 in 2035, +1.5%/yr to C$140 in 2040; full updated benchmark due later in 2026. canada.ca and icapcarbonaction.com refused by the proxy (403), so NOT confirmed. High 110 = the superseded 2021 benchmark path for 2026 (C$65 in 2023 +15/yr to C$170 in 2030), as used by run 5 (parameters_run5.yaml carbon_prices_cad). CONFLICT with run 5 logged in plan.md Interfaces."
+  carbon_price_2030_cad:
+    value: 115
+    low: 115
+    high: 170
+    unit: C$/t CO2e, 2030 (Units 2-4 concrete placement period, about 2029-2033)
+    source: eccc2026_industrial_trajectory
+    status: TO VERIFY
+    note: "New trajectory C$115 (lead, as above); high 170 = superseded 2021 path (run 5's 2030 value)."
+
   smr_lca_stress_g_per_kwh:
     value: 12
     low: 12

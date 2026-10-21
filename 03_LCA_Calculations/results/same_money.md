@@ -36,9 +36,9 @@ Same annual spend buys **5.0x** the MWh as firmed renewables (A$514 / A$102).
 
 | Displaced grid intensity (g/kWh) | Case | SMR t CO2e per A$1 m | Firmed VRE t CO2e per A$1 m | SMR gross A$/t | VRE gross A$/t |
 |---|---|---|---|---|---|
-| 640 | NSW 2025 average (NGA) | 1,234 | 5,980 | 810 | 167 |
-| 274 | NEM-T2 in 2040 | 522 | 2,392 | 1,916 | 418 |
-| 80 | post-coal mix + 50 (illustrative) | 144 | 490 | 6,923 | 2,040 |
+| 640 | NSW 2025 average (NGA) | 1,237 | 5,980 | 808 | 167 |
+| 274 | NEM-T2 in 2040 | 525 | 2,392 | 1,905 | 418 |
+| 80 | post-coal mix + 50 (illustrative) | 147 | 490 | 6,781 | 2,040 |
 
 ## 4. Cumulative CO2e avoided for the same annual spend as one SMR unit
 
@@ -46,12 +46,12 @@ Annual spend = 2,365,200 MWh x A$514 = A$1.22 bn/yr. Firmed VRE bought with it: 
 
 | Site | Grid case | SMR start | SMR to 2035 | SMR to 2050 | VRE (from 2028) to 2035 | VRE to 2050 | VRE / SMR to 2050 |
 |---|---|---|---|---|---|---|---|
-| Liddell | NEM-T0-frozen | 2040 | 0.00 Mt | 16.50 Mt | 58.16 Mt | 167.22 Mt | 10.1x |
-| Liddell | NEM-T1-StepChange-proxy | 2040 | 0.00 Mt | 0.63 Mt | 29.08 Mt | 30.76 Mt | 48.8x |
-| Liddell | NEM-T2-slow | 2040 | 0.00 Mt | 3.81 Mt | 43.04 Mt | 73.58 Mt | 19.3x |
-| Liddell | NEM-T2-slow | 2035 | 0.92 Mt | 7.84 Mt | 43.04 Mt | 73.58 Mt | 9.4x |
-| Darlington (indicative, GenCost costs) | ON-avg-traj | 2030 | 0.52 Mt | 0.94 Mt | 1.55 Mt | -0.70 Mt | -0.7x |
-| Darlington (indicative, GenCost costs) | ON-marginal-declining | 2030 | 3.26 Mt | 6.73 Mt | 20.82 Mt | 33.93 Mt | 5.0x |
+| Liddell | NEM-T0-frozen | 2040 | 0.00 Mt | 16.54 Mt | 58.16 Mt | 167.22 Mt | 10.1x |
+| Liddell | NEM-T1-StepChange-proxy | 2040 | 0.00 Mt | 0.67 Mt | 29.08 Mt | 30.76 Mt | 45.8x |
+| Liddell | NEM-T2-slow | 2040 | 0.00 Mt | 3.85 Mt | 43.04 Mt | 73.58 Mt | 19.1x |
+| Liddell | NEM-T2-slow | 2035 | 0.93 Mt | 7.90 Mt | 43.04 Mt | 73.58 Mt | 9.3x |
+| Darlington (indicative, GenCost costs) | ON-avg-traj | 2030 | 0.54 Mt | 1.01 Mt | 1.55 Mt | -0.70 Mt | -0.7x |
+| Darlington (indicative, GenCost costs) | ON-marginal-declining | 2030 | 3.29 Mt | 6.80 Mt | 20.82 Mt | 33.93 Mt | 5.0x |
 
 Caveats: (1) adding about 12 TWh/yr of firmed renewables would itself change the NEM trajectory; the comparison is at the margin of the stated trajectory. (2) Firmed-VRE LCOE rises with the renewable share; GenCost's integration costs cover this only up to its modelled shares. (3) Renewable assets last about 25–30 years [TO VERIFY, GenCost], so to 2050 no replacement is needed, but whole-life comparisons would need one. (4) Ontario rows use Australian costs and are indicative only (Ontario-specific costs are STRETCH in the plan).
 
@@ -59,18 +59,24 @@ Caveats: (1) adding about 12 TWh/yr of firmed renewables would itself change the
 
 | Change | Energy ratio (B) | VRE / SMR CO2e to 2050 |
 |---|---|---|
-| Central | 5.0x | 19.3x |
-| SMR LCOE low (387) | 3.8x | 14.6x |
-| SMR LCOE high (641) | 6.3x | 24.1x |
+| Central | 5.0x | 19.1x |
+| SMR LCOE low (387) | 3.8x | 14.4x |
+| SMR LCOE high (641) | 6.3x | 23.9x |
 | SMR LCOE 198 (alt. lead) | 1.9x | 7.4x |
-| VRE LCOE low (91) | 5.6x | 21.7x |
-| VRE LCOE high (153, assumption) | 3.4x | 12.9x |
-| Worst case for VRE (SMR 198, VRE 153) | 1.3x | 5.0x |
-| SMR starts 2035 | 5.0x | 9.4x |
-| VRE starts 2030 | 5.0x | 16.1x |
-| VRE life-cycle 83 g/kWh | 5.0x | 15.5x |
+| VRE LCOE low (91) | 5.6x | 21.4x |
+| VRE LCOE high (153, assumption) | 3.4x | 12.8x |
+| Worst case for VRE (SMR 198, VRE 153) | 1.3x | 4.9x |
+| SMR starts 2035 | 5.0x | 9.3x |
+| VRE starts 2030 | 5.0x | 15.9x |
+| VRE life-cycle 83 g/kWh | 5.0x | 15.4x |
+| SMR life cycle 5.8 (our P95) | 5.0x | 19.3x |
+| SMR life cycle 5.75 (old UNECE placeholder) | 5.0x | 19.3x |
+| SMR 306, VRE 107 (run 5: GenCost 2023-24 *2030* leads) | 2.9x | 10.9x |
+| SMR 230 (run 5 2030 low), VRE 153 | 1.5x | 5.7x |
 
 Note on the Ontario average row: once Ontario's average falls below the placeholder firmed-VRE life-cycle value (30 g/kWh), extra renewables 'add' emissions against that average, and the SMR's lower life-cycle value wins. That is a real property of a near-clean grid, but it hangs on two placeholders (the VRE life-cycle value and the IESO 2040 lead) and on using the average, not the marginal, factor.
+
+**Open conflict (run 5, `lcoe.md` §5):** A$514 (387–641) may be GenCost 2023-24's *2023* SMR value, not 2030; the 2030 lead is A$230–382. The two run-5 rows above show the effect. Victor to read the GenCost table and set `smr_lcoe_aud` (plan §5 Interfaces); this file then regenerates.
 
 Reading: in every tested Liddell case the same money spent on firmed renewables avoids more CO2e by 2050 than one SMR, because it is cheaper per MWh and starts about a decade earlier. The SMR's case therefore rests on non-cost objectives (firmness, land, system security, a hedge if renewables and transmission are delayed), which belong in the MCDA (§9), not on carbon per dollar.
 
