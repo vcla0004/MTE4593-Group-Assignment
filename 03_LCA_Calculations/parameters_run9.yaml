@@ -75,22 +75,39 @@ parameters:
     cost_aud_mwh: 0                        # spends nothing new
     first_year: 2050                       # no new supply inside the 2050 horizon
     supply_hhi: 0                          # adds no new supply chain
+    social_t13: 13                         # T13 criteria: legitimacy 3, legal 3, speed 3, public cost 3, fairness 1 (nothing to consent to; no new jobs or benefits reach the Upper Hunter). Judgement; tested at 11 and 14 in mcda.md
+    legal_b3: 12                           # no nuclear prohibition engaged (as for non-nuclear options in App B3)
     note: "Analyst conventions for a do-nothing reference, tested in mcda.md section 6 (SQ supply = VRE's; SQ cost = VRE's LCOE)."
 
   # ---------------- Legal feasibility: Appendix B3, Table B13 (our judgement, 1 = poor, 3 = good) ----------------
   b3_routes:
     objectives: [veto_points, regulator_readiness, durability, social_licence]
     routes:
-      A_commonwealth: {label: "A. Commonwealth-owned plant under ARPANSA", scores: {veto_points: 2, regulator_readiness: 3, durability: 1, social_licence: 1}}
+      A_commonwealth: {label: "A. Commonwealth-owned plant under ARPANSA", scores: {veto_points: 1, regulator_readiness: 3, durability: 1, social_licence: 1}}
       B_federal_private: {label: "B. Federal licensing law for private operators (s 109 override)", scores: {veto_points: 1, regulator_readiness: 2, durability: 1, social_licence: 1}}
       C_cooperative: {label: "C. Cooperative: state repeal plus a state or joint regulator", scores: {veto_points: 1, regulator_readiness: 1, durability: 3, social_licence: 3}}
     weight_sets:
       equal: {veto_points: 1, regulator_readiness: 1, durability: 1, social_licence: 1}
       readiness_x2: {veto_points: 1, regulator_readiness: 2, durability: 1, social_licence: 1}
       durability_x2: {veto_points: 1, regulator_readiness: 1, durability: 2, social_licence: 1}
+    a_veto_points_old: 2   # App B3 v1 value, kept only to show what the correction changes (mcda.md section 8)
     source: appendix_B3_v1
     status: judgement
+    correction: "21/10 run 9: route A veto_points 2 -> 1, per fact-check 01_Report/factcheck/I-pass3-batch1a.md M2 (route A still needs a s 109 override of NSW or NSW repeal, so it faces the Senate, NSW or the High Court, and the site owner, like B and C)."
     note: "Transcribed from 01_Report/sections/appendix-B-policy-and-supply-working.md Table B13 (law brief section 5). Non-nuclear options face no nuclear prohibition (EPBC s 140A and ARPANS s 10 apply to nuclear installations only), so they take the maximum 12."
+
+  # ---------------- MCDA base-case choices (run 9) ----------------
+  mcda_choices:
+    grid_case: NEM-T2-slow          # same_money.md section 5 central; T1 and T0 tested
+    smr_supply_hhi_row: "2025 capacity (base)"     # hhi_summary.csv, Enrichment (the most concentrated fuel stage)
+    smr_supply_hhi_alt_row: "2025 without Russia and China"   # market open to a Western buyer; sensitivity
+    smr_legal_route: best_of_B3_equal               # the SMR takes its best consent route's B3 total
+    smr_social_route: best_of_T13_equal             # R2/R3 (11) from parameters_run6.yaml consent_routes
+    vre_social_route: R4_no_nuclear
+    vre_legal_b3: 12
+    avoided_metric: "Mt CO2e avoided to 2050 per A$1 bn a year of committed spend (same_money.md section 4 frame: equal annual spend, each option from its own first year)"
+    trl: "[TODO: Leroy §4.1] No TRL figure exists in sections or briefs (3-barriers.md TODO 2). Not scored; deliverability enters through first-power year and its 2035/2045 sensitivity."
+    status: judgement
 
   # ---------------- Scales ----------------
   global_scale_bounds:
