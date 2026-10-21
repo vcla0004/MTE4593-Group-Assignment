@@ -8,6 +8,7 @@ Updated: 21/10/2026. The coordinator keeps it current. If a number here disagree
 - Work queue and owners: `01_Report/plan.md` §7 (revised 21/10). Read **only your own Q row** (`grep -n "| Q<n> |" 01_Report/plan.md`).
 
 ## Decisions in force
+- **21/10 (Victor): the report must match the team master deck** `04_Presentation/SMR-Presentation-Group9 (team master).pptx` (+ Leroy's script PDF). New C1 main case: Ostrołęka BWRX-300 PIS 2023 (Table 14, p. 83) **50,000 m³ concrete, 14,000 t steel per unit**; Pillai et al. 2019 M50 **OPC 380 vs LC³ 270 kg CO₂e/m³**; eligibility **20/40/60% → 1,100/2,200/3,300 t/unit (40% central)**. Framing: "pilot LC³ in eligible non-safety works first; steel-composite infill only if qualified"; Units 2–4 need future licensing. The old 20,700 m³ model becomes a cross-check. Qualification codes: CSA N287.2 is for concrete containment; the BWRX-300 uses a steel-plate composite, so name the governing codes correctly (lca-analyst to confirm). Numbers in the table below that depend on C1 are being re-based (`results/lca_rebase_deck.md`).
 - **Initiative (C1):** low-clinker SCC infill for the DPSC modules and forebay shaft of **Darlington Units 2–4**, Clarington, Ontario. LC3 is the target binder, a slag blend the fallback, and it is specified **only if schedule-neutral**. Steel is not part of the initiative.
 - **Australian comparison site:** Liddell, NSW (a closed coal plant).
 - **Team:** Victor; Leroy (**G1 resolved 21/10: Victor says Leroy has sent work, so Q5 and Q9 are skipped**; his files are not in the repo yet: once Victor adds them to `01_Report/sections/` they go to Q11 batch 2 and Q13); Sam (absent, so Victor owns Sam's sections from 21/10); Aaron (left the unit).
@@ -38,9 +39,10 @@ Updated: 21/10/2026. The coordinator keeps it current. If a number here disagree
 - Done: Wave 1 (Q1, Q2, Q3, Q7), runs 5 and 6, §6 v3, Q4 (§7 + App B4–B6), Q6 (§8.2, §8.4, §8.5; all over budget). Nothing running. Draft preview: `01_Report/draft-preview.docx` (rebuild with pandoc). Victor's speech: `04_Presentation/victor-speech.md`.
 - Known loose ends for Q8: align §6's break-even to 9.2–14.6 days; re-run `same_money.py` on GenCost 2030 (B26–B27 still on A$514); script the 45× hand calculation; draw F6/F7; re-run C$15/m³ in `initiative_cost.py`.
 - Done 21/10 evening: Q8 prep (f3d4ab8: same_money on GenCost 2030, 45× → 44× (44–223×), C$15.2/m³ break-even, 9.2–14.6 days); Q10 (§3 with T15, §4.3 with T1, §8.6 with T16–T17; §8.6 ≈0.55 p, over budget: cut T17 first). Q10 open: §8.2 treats the OPG contract clause as fallback, §8.6 uses it first (resolve in Q14); St Marys LC3, Ontario slag, qualification cost and 2028-approval primary unsourced.
-- Running: Q8 writer (§6 v4, Apps A/C, plus number drop-in to §7, App B5/B6, §8.2).
+- Running: Q8 writer (§6 v4, Apps A/C, plus number drop-in to §7, App B5/B6, §8.2; its §6 work is on the old case) ‖ Q12 MCDA ‖ lca-analyst deck re-base.
+- Next: writer re-base pass on §4.3, §6, Apps A/C, §7 break-even (and §8.2 carbon value) from `lca_rebase_deck.md`; MCDA re-run on the new saving; then Q11 batch 1.
 - Next: Q8 writer (after Q8 prep); then Wave 3 (Q11–Q21) in `plan.md` §7. G1 done (Leroy delivered; Q5/Q9 skipped).
-- Deck: live at https://claude.ai/artifact/58LWT4feZJTcLrq3pi7KQH. Source in `04_Presentation/deck-source/`. Sync any slide edit to both.
+- Deck: the **team master .pptx** is the reference. The earlier claude.ai artifact deck and `deck-source/` are **superseded: don't sync to them**. Q15 (deck sync) is now report → deck consistency notes for Victor only.
 - Commit and push after every job (a stop hook enforces it).
 
 ## Where things are
