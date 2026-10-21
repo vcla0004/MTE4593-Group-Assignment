@@ -2,6 +2,7 @@ Rubric coverage: R2.1, R2.3, R2.6, R2.7, R4.3, R3.1, R3.6, RB.5, RB.6 (also supp
 
 <!--
 CHANGELOG
+- v1.1, 21/10/2026 (writer, Q8). Same-money numbers checked against the re-run `same_money.md` (GenCost 2030): "Capital cost alone" 2.0–2.9× at A$102 → 1.9–2.7× at A$107; Liddell 5.7/26.0/10.9/5.3× and Ontario −0.4/2.8× now in App B Table B27. §6 break-even aligned (TODOs 1 and 7 closed). Rubric items: R2.3, R3.1, RB.6.
 - v1, 21/10/2026 (writer, Q4). First draft from Q2's re-based results (displacement, schedule_value, same_money), run 5 (lcoe, initiative_cost), both briefs and §6 v3; working in App B4–B6. Addresses review audit §2 (R2 "economic benefits ... appropriate to the scale of the proposal"; R4 "new feasible ideas or connections") and factcheck L47 (break-even working).
 - Conflicts per plan §5: GenCost = run 5's 2030 reading (A$230–382, 2.9×), 5.0× stated as the alternative [TO VERIFY: GenCost table/year]; carbon price = federal path C$95 (2026) / C$115 (2030) [TO VERIFY]; C$170 used only for the conservative end of 30–223× (explained in B5.3).
 - factcheck S2 (boundary mismatch) stated; deck's "13×" replaced by the timing-aware comparison; S3 (300 vs 315 MWe) and S9 (start year) left as TODOs.
@@ -72,7 +73,7 @@ The carbon value is also only a shadow price. Construction-material emissions ap
 
 **Alternative reading.** We read A$387–641 as GenCost's 2023 value. If it is the 2030 value instead, the ratios are 5.0× and 19.1× (9.3–45.8× across cases). The conclusion holds either way. GenCost 2025-26 still ranks SMRs as the highest-cost option (Graham and Hayward, 2026) [TODO: its SMR and firmed-renewables values].
 
-**Capital cost alone.** Darlington's C$20.9 bn (Ontario Power Generation, 2025) is about A$23.4 bn (Reserve Bank of Australia, 2025) [TO VERIFY]. At 7% over 30 years that capital alone costs A$199/MWh. That is already enough to buy 2.0–2.9× the energy from renewables at about A$102/MWh (Graham, Hayward and Foster, 2025) [TO VERIFY].
+**Capital cost alone.** Darlington's C$20.9 bn (Ontario Power Generation, 2025) is about A$23.4 bn (Reserve Bank of Australia, 2025) [TO VERIFY]. At 7% over 30 years that capital alone costs A$199/MWh. That is already enough to buy 1.9–2.7× the energy from renewables at about A$107/MWh (Graham, Hayward and Foster, 2024) [TO VERIFY].
 
 **Check against our own costing.** Our full Darlington cost of A$221/MWh at 7% real sits just below GenCost's 2030 range, plausibly because four units share infrastructure. It matches OPG's reported C$149/MWh at a 4.9% discount rate (§8.2).
 
@@ -102,10 +103,9 @@ C1 changes neither where an SMR is worth building nor what it displaces, and its
 
 ### Remaining TODOs
 
-1. **[TO VERIFY, P1, Victor]** GenCost 2023-24 final: is A$230–382 the 2030 SMR value and A$387–641 the 2023 value (NucNet lead)? If so, set `smr_lcoe_aud` to 306 (230–382) and `vre_firmed_lcoe_aud` to 107 (89–125) in `parameters_run1.yaml` and re-run `same_money.py`, so that all of B6 is on one basis. Also GenCost 2025-26's SMR and firmed-renewables values.
+1. **[TO VERIFY, P1, Victor]** GenCost 2023-24 final: is A$230–382 the 2030 SMR value and A$387–641 the 2023 value (NucNet lead)? `same_money.py` now runs on A$306 (230–382) and A$107 (89–125), with A$514 / A$102 as the alternative reading; if the table says otherwise, change `parameters_run1.yaml` and re-run. Also GenCost 2025-26's SMR and firmed-renewables values.
 2. **[TO VERIFY, Victor]** The federal industrial carbon price path (C$95 in 2026, C$115 in 2030) on canada.ca; if confirmed, run 5 adopts it and re-runs `initiative_cost.py`.
 3. **[TO VERIFY]** TAF 2025 average (73.8) and marginal (343, and its definition); NGA Factors 2025 NSW (640); CER 35; IESO 15 g/kWh by 2040; AEMO coal exit by 2038; the Liddell closure date; the RBA rate; OPG's C$149/MWh (merge `opg_oeb_lcoe_lead` from sources_run5.md into sources.md); C$20.9 bn; the 2028 Units 2–4 decision.
 4. **[TODO: Leroy]** Net MWe (300 vs 315; add 315 to the displacement sensitivity), capacity factor, the Unit 1 and Units 2–4 start years (the context card has Unit 1 in service October 2030), and whether CSIRO's 2040 covers SMRs.
 5. **[TODO: analyst]** Replace the constructed trajectories with the 2026 ISP Step Change and IESO outlook series; source the post-coal floor and a renewables lead time (2028 is an assumption).
 6. **[TODO: plot]** Draw F6 and F7 from the results files in the deck's chart style, and use the same PNGs on slides 9 and 14.
-7. **[TODO: §6, Q8]** §6's lead and finding 5 say "1.4–15" and "10–15 days"; Q2's re-run gives 9.2–14.6 days (average) and 1.3–1.4 days (marginal). Align §6 with Table T10.

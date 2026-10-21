@@ -2,6 +2,7 @@ Rubric coverage: RB.5, R2.4, R3.8, R2.1, R2.3, R2.7, R4.3, R3.1, R3.6, RB.6 (als
 
 <!--
 CHANGELOG
+- v2.1, 21/10/2026 (writer, Q8). B6 re-based on `same_money.md` after the GenCost 2030 re-run (SMR A$306, 230–382; renewables A$107, 89–125): text, Table B24 and Tables B25–B28 replaced, alternative reading (A$514 / A$102) kept as sensitivity rows; B5.4 "45×" replaced by the scripted 44× (44–223×). TODOs 11 and 12 closed (the GenCost table and carbon price remain [TO VERIFY]). Rubric items: R2.3, R3.1, RB.5, RB.6.
 - v2, 21/10/2026 (writer, Q4). Appended B4 (displacement), B5 (schedule value, including C1's break-even and the 30–223× derivation) and B6 (same money), Tables B15–B28, from Q2's re-based `results/` files; working for §7 and §6.3 finding 5 (factcheck L47; review audit §2, R2 and R4 rows). The rest of v1 is unchanged.
 - B6 states both GenCost readings: §7 uses run 5's 2030 reading (rows in Table B28); Tables B26–B27 are still on run 1's A$514 basis until `same_money.py` is re-run [TO VERIFY: GenCost table/year]. Carbon price: federal path C$95/C$115 [TO VERIFY]; the superseded path is shown for comparison only.
 - One hand calculation (the 45× low end on the current price path, B5.4) is flagged for scripting. Remaining TODO 10 is now partly done (LCOE and MCDA still to come).
@@ -535,7 +536,7 @@ Working: carbon value = saving × price. For example, 5,201 t × C$95/t = C$0.49
 **How the 30–223× in §7 is derived:**
 - **Low end:** the lowest monthly cost (C$33 m) over the largest carbon value we can construct (C$1.10 m, the 95th-percentile saving at the superseded C$170/t) = 30×.
 - **High end:** the highest cost (C$110 m) over the central value at C$95/t (C$0.49 m) = 223×.
-- **On the current path alone** (largest value C$0.74 m at C$115/t), the low end would be 33 / 0.74 ≈ 45× [hand calculation from script outputs; TODO: add to `schedule_value.py`]. The range quoted in §7 is therefore conservative.
+- **On the current path alone** (largest value C$0.743 m: 6,458 t × C$115/t), the low end is C$33.0 m / 0.743 = **44.4×** and the high end C$110.0 m / 0.494 = **222.6×**, i.e. 44–223× (`results/schedule_value.md` §7). The 30× in §7 uses the superseded C$170/t and is therefore the conservative bound.
 - **In carbon alone,** the slip loses 10,865–118,278 t against C1's 5,201 t, which is 2.1–22.7 times the saving.
 
 This agrees with `results/initiative_cost.md` §5 (run 5): one day of delay costs C$1.8–2.9 m, against C1's total carbon value of under C$1 m.
@@ -565,23 +566,20 @@ This agrees with `results/initiative_cost.md` §5 (run 5): one day of delay cost
 
 ### B6. Same money: Darlington's budget spent on firmed renewables
 
-**Result.** On GenCost 2023-24's 2030 costs (run 5's reading), the same annual spend as one SMR unit buys **2.9×** the energy from firmed renewables. For a Liddell SMR from 2040 on the slow trajectory, those renewables avoid **10.9×** more CO₂e to 2050 (5.7× in the worst case tested for renewables). On run 1's reading (A$514/MWh), the ratios are 5.0× and 19.1× (9.3–45.8× across cases). Renewables avoid more CO₂e by 2050 in every Liddell case tested. Script: `python3 -I 03_LCA_Calculations/scripts/same_money.py`, with output in `results/same_money.md`.
+**Result.** On GenCost 2023-24's 2030 costs, the same annual spend as one SMR unit (A$0.72 bn a year) buys **2.9×** the energy from firmed renewables (6.8 TWh a year against 2.37). For a Liddell SMR from 2040 on the slow trajectory, those renewables avoid **10.9×** more CO₂e to 2050 (5.7× in the worst case tested for renewables). Across the Liddell cases the ratio is 5.3–26.0×, so renewables avoid more CO₂e by 2050 in every case tested. On the alternative reading (SMR A$514/MWh), the ratios are 5.0× and 19.1× (9.3–45.8× across cases). Script: `python3 -I 03_LCA_Calculations/scripts/same_money.py`, with output in `results/same_money.md`.
 
-**Basis of the tables (conflict, plan §5 Interfaces).** The script still runs on run 1's input of A$514/MWh (387–641) for the SMR, labelled 2030. Run 5 found a news report of GenCost 2023-24 (Graham, Hayward and Foster, 2024, as reported) that gives A$387–641 as its **2023** value and A$230–382 as its **2030** value [TO VERIFY: GenCost table/year; the news pointer is in `sources_run5.md`, not sources.md].
-- **§7 uses run 5's reading.** Its results appear in the script's sensitivity rows (Table B28).
-- **Tables B26 and B27 are on run 1's basis** and show the alternative reading.
-- **When Victor confirms the table**, set `smr_lcoe_aud` to 306 (230–382) and `vre_firmed_lcoe_aud` to 107 (89–125) and re-run, so that every table here is on one basis [TODO].
+**Basis of the tables.** The script now runs on the 2030 reading: SMR A$306/MWh (range 230–382) and firmed renewables A$107/MWh (89–125), from a news report of GenCost 2023-24 (Graham, Hayward and Foster, 2024, as reported) that gives A$387–641 as the SMR's **2023** value and A$230–382 as its **2030** value [TO VERIFY: GenCost table/year; the news pointer is in `sources_run5.md`, not sources.md]. Run 1's A$514 (387–641) / A$102 is kept as the alternative reading, in the sensitivity rows of Table B28 only. If Victor finds the table says otherwise, change `smr_lcoe_aud` and `vre_firmed_lcoe_aud` in `parameters_run1.yaml` and re-run; every table here regenerates.
 
 #### B6.1 Inputs and method
 
 *Table B24. Cost inputs and the two GenCost readings.*
 *Source: `parameters_run1.yaml`; `results/lcoe.md` §5; references as named. All TO VERIFY or assumptions.*
 
-| Input | Script value (run 1) | Run 5 reading (used in §7) | Source |
+| Input | Central (used in §7) | Alternative reading (sensitivity only) | Source |
 |---|---|---|---|
-| SMR LCOE | A$514/MWh (387–641), labelled 2030 | A$230–382 for 2030 (midpoint 306); 387–641 is the 2023 value | Graham, Hayward and Foster (2024), as reported [TO VERIFY: GenCost table/year] |
-| Firmed renewables LCOE | A$102/MWh (91–153; 153 = central +50%, assumption) | Solar and wind with integration costs, A$89–125 for 2030 (midpoint 107) | Graham, Hayward and Foster (2024; 2025) [TO VERIFY] |
-| Low SMR lead (sensitivity) | A$198/MWh (to 349) | — | Kim and Macfarlane (2026) (edition unknown) [TO VERIFY] |
+| SMR LCOE | A$306/MWh (230–382), 2030 | A$514 (387–641), the 2023 value | Graham, Hayward and Foster (2024), as reported [TO VERIFY: GenCost table/year] |
+| Firmed renewables LCOE | A$107/MWh (89–125), solar and wind with integration costs, 2030; 153 = high case, assumption | A$102 | Graham, Hayward and Foster (2024) [TO VERIFY] |
+| Low SMR lead (sensitivity) | A$198/MWh | — | Kim and Macfarlane (2026) (edition unknown) [TO VERIFY] |
 | Darlington budget | C$20.9 bn for four units; Unit 1 plus common infrastructure C$7.7 bn | — | Government of Ontario (2025) [TO VERIFY] |
 | Exchange rate | 1.119 AUD/CAD (1.10–1.13) | — | Reserve Bank of Australia (2025) [TO VERIFY] |
 | Discount rate; annuity | 7% real (3–10%); 30 years (30–60) | — | Assumption |
@@ -598,13 +596,13 @@ Worked example (one unit, simple share):
 1. Budget: C$5.225 bn × 1.119 = A$5.85 bn.
 2. Annual charge: 5.85 bn × 0.0806 = A$471 m a year.
 3. Capital-only LCOE: 471 m / 2,365,200 MWh = **A$199/MWh**.
-4. Renewables bought: 471 m / A$102 = 4.62 TWh, which is **2.0×** the SMR's 2.37 TWh.
+4. Renewables bought: 471 m / A$107 = 4.40 TWh, which is **1.9×** the SMR's 2.37 TWh.
 
 The result is a lower bound on the renewables' advantage, because it ignores the SMR's operating and fuel costs.
 
 **Method B: LCOE ratio and CO₂e per dollar.**
-1. Energy ratio = SMR LCOE / renewables LCOE. On run 5's reading: 306 / 107 = **2.9×**.
-2. CO₂e per A$1 m = (10⁶ / LCOE) MWh × (EF_grid − EF_technology) kg/MWh / 1,000. Example (SMR, NSW 640 g/kWh, A$514): 1,945.5 MWh × 635.8 / 1,000 = 1,237 t.
+1. Energy ratio = SMR LCOE / renewables LCOE: 306 / 107 = **2.9×**.
+2. CO₂e per A$1 m = (10⁶ / LCOE) MWh × (EF_grid − EF_technology) kg/MWh / 1,000. Example (SMR, NSW 640 g/kWh, A$306): 3,268 MWh × 635.8 / 1,000 = 2,078 t.
 3. Cumulative comparison: the annual spend = SMR output × SMR LCOE, and the renewables bought with it = spend / renewables LCOE, from 2028. Each technology's avoided CO₂e is summed on the same trajectory (B4.1), net of its own life-cycle intensity (4.2 or 30 g/kWh).
 
 #### B6.2 Results
@@ -614,32 +612,32 @@ The result is a lower bound on the renewables' advantage, because it ignores the
 
 | Budget case | Annual capital charge (A$ m) | SMR capital-only LCOE (A$/MWh) | SMR output (TWh a year) | Firmed renewables bought (TWh a year) | Renewables / SMR energy |
 |---|---:|---:|---:|---:|---:|
-| Four units, C$20.9 bn | 1,885 | 199 | 9.46 | 18.48 | 2.0× |
-| One unit, simple share | 471 | 199 | 2.37 | 4.62 | 2.0× |
-| Unit 1 plus common infrastructure, C$7.7 bn | 694 | 294 | 2.37 | 6.81 | 2.9× |
+| Four units, C$20.9 bn | 1,885 | 199 | 9.46 | 17.61 | 1.9× |
+| One unit, simple share | 471 | 199 | 2.37 | 4.40 | 1.9× |
+| Unit 1 plus common infrastructure, C$7.7 bn | 694 | 294 | 2.37 | 6.49 | 2.7× |
 
 Capital-only LCOE for one unit across discount rates (30-year / 60-year annuity): 3%, A$126 / 89; 7%, A$199 / 176; 10%, A$262 / 248 per MWh (`results/same_money.md` §2).
 
-*Table B26. Method B on run 1's basis (A$514 against A$102; the alternative reading): CO₂e avoided per dollar, Liddell/NEM.*
-*Source: `results/same_money.md` §3 [inputs TO VERIFY; basis per B6 note].*
+*Table B26. Method B (SMR A$306, renewables A$107 per MWh): CO₂e avoided per dollar, Liddell/NEM.*
+*Source: `results/same_money.md` §3 [inputs TO VERIFY].*
 
 | Displaced grid intensity (g/kWh) | Case | SMR t CO₂e per A$1 m | Renewables t CO₂e per A$1 m | SMR A$/t (gross) | Renewables A$/t (gross) |
 |---:|---|---:|---:|---:|---:|
-| 640 | NSW 2025 average | 1,237 | 5,980 | 808 | 167 |
-| 274 | NEM-T2 in 2040 | 525 | 2,392 | 1,905 | 418 |
-| 80 | Post-coal mix + 50 (illustrative) | 147 | 490 | 6,781 | 2,040 |
+| 640 | NSW 2025 average | 2,078 | 5,701 | 481 | 175 |
+| 274 | NEM-T2 in 2040 | 882 | 2,280 | 1,134 | 439 |
+| 80 | Post-coal mix + 50 (illustrative) | 248 | 467 | 4,037 | 2,140 |
 
-*Table B27. Cumulative CO₂e avoided for the same annual spend as one SMR unit, on run 1's basis (A$1.22 bn a year buys 11.9 TWh a year of firmed renewables from 2028).*
-*Source: `results/same_money.md` §4 [inputs TO VERIFY; basis per B6 note].*
+*Table B27. Cumulative CO₂e avoided for the same annual spend as one SMR unit (A$0.72 bn a year buys 6.8 TWh a year of firmed renewables from 2028, against the SMR's 2.37 TWh).*
+*Source: `results/same_money.md` §4 [inputs TO VERIFY]. The alternative reading (A$514 / A$102; A$1.22 bn buys 11.9 TWh) gives Liddell ratios of 10.1×, 45.8×, 19.1× and 9.3× for the first four rows (Table B28).*
 
 | Site | Grid case | SMR start | SMR to 2035 | SMR to 2050 | Renewables to 2035 | Renewables to 2050 | Renewables / SMR to 2050 |
 |---|---|---:|---:|---:|---:|---:|---:|
-| Liddell | NEM-T0 frozen | 2040 | 0 | 16.54 Mt | 58.16 Mt | 167.22 Mt | 10.1× |
-| Liddell | NEM-T1 Step Change proxy | 2040 | 0 | 0.67 Mt | 29.08 Mt | 30.76 Mt | 45.8× |
-| Liddell | NEM-T2 slow | 2040 | 0 | 3.85 Mt | 43.04 Mt | 73.58 Mt | 19.1× |
-| Liddell | NEM-T2 slow | 2035 | 0.93 Mt | 7.90 Mt | 43.04 Mt | 73.58 Mt | 9.3× |
-| Darlington (indicative, Australian costs) | ON-avg-traj | 2030 | 0.54 Mt | 1.01 Mt | 1.55 Mt | −0.70 Mt | −0.7× |
-| Darlington (indicative, Australian costs) | ON-marginal-declining | 2030 | 3.29 Mt | 6.80 Mt | 20.82 Mt | 33.93 Mt | 5.0× |
+| Liddell | NEM-T0 frozen | 2040 | 0 | 16.54 Mt | 33.01 Mt | 94.90 Mt | 5.7× |
+| Liddell | NEM-T1 Step Change proxy | 2040 | 0 | 0.67 Mt | 16.50 Mt | 17.46 Mt | 26.0× |
+| Liddell | NEM-T2 slow | 2040 | 0 | 3.85 Mt | 24.43 Mt | 41.76 Mt | 10.9× |
+| Liddell | NEM-T2 slow | 2035 | 0.93 Mt | 7.90 Mt | 24.43 Mt | 41.76 Mt | 5.3× |
+| Darlington (indicative, GenCost costs) | ON-avg-traj | 2030 | 0.54 Mt | 1.01 Mt | 0.88 Mt | −0.39 Mt | −0.4× |
+| Darlington (indicative, GenCost costs) | ON-marginal-declining | 2030 | 3.29 Mt | 6.80 Mt | 11.82 Mt | 19.26 Mt | 2.8× |
 
 The negative Ontario-average row arises because, once Ontario's average falls below the renewables' assumed 30 g/kWh life-cycle value, extra renewables add emissions against that average and the SMR's lower life-cycle value wins. This is a real property of a near-clean grid. But it rests on two placeholders (the renewables' life-cycle value and IESO's 2040 figure) and on the average rather than the marginal factor.
 

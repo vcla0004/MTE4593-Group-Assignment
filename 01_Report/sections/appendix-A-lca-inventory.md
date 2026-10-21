@@ -2,6 +2,7 @@ Rubric coverage: RB.5, R2.2, R2.4 (also supports R2.1, R2.3, R2.5, R2.6, R2.7, R
 
 <!--
 CHANGELOG
+- v4, 21/10/2026 (writer, Q8). A6/Table A6: like-for-like steel row now scripted (566 t; Units 2–4 1,698 t; 0.148%) and Monte Carlo shares added; A7 "examiner estimate" labels removed; A5: effect of dropping ENR from the LC3 median stated (hand arithmetic, not re-run); A9/A10 left as a marked Granta TODO (H2, due Thu 12:00; cut if not run). A3 rebar cap (L65) was already stated in v2. Rubric items: R2.2, R2.3, R2.6, R1.4.
 - v3, 21/10/2026 (writer, for Victor). Revised against review.md "Review of §6 and Appendices A, C (21/10)", Appendix A items and §6 points 2, 4 and 6, with Victor's decision (keep C1 sharpened: LC3 target, slag fallback, schedule-neutral; no steel in the initiative):
   - A3: the 37 m / 35 m geometry and the 953 t module are cited as read (okdiario, 2026), not to OPG (L9, R1.4, R5.4).
   - A5: ENR flagged for replacement or removal with a re-run (L20); no new median computed, because the model has not been re-run.
@@ -21,7 +22,7 @@ CHANGELOG
 
 ## Appendix A. LCA inventory and calculations
 
-This appendix gives the full working behind §6. The analysis is an **equivalent analysis built from published factors**: a screening LCA following ISO 14040/44 principles, not critically reviewed, in which a Python model multiplies quantities by emission factors. **No Granta EduPack run has been done**; the cross-check is only set up (A9) [TODO: results pending]. **No input has yet been checked against its primary source** (`status: TO VERIFY`, `assumption` or `placeholder` in `parameters_lca.yaml`), so every number here is provisional.
+This appendix gives the full working behind §6. The analysis is an **equivalent analysis built from published factors**: a screening LCA following ISO 14040/44 principles, not critically reviewed, in which a Python model multiplies quantities by emission factors. **No Granta EduPack run has been done**; the cross-check is only set up (A9) [TODO: Granta cross-check, H2 due Thu 12:00; cut if not run]. **No input has yet been checked against its primary source** (`status: TO VERIFY`, `assumption` or `placeholder` in `parameters_lca.yaml`), so every number here is provisional.
 
 ### A1. Reproducing the results
 
@@ -136,7 +137,7 @@ Also corrected: the "[From X patent]" header is replaced by a source column; reb
 | Natural-gas heat | 0.202 | — | kg CO₂/kWh | IPCC (2006): 56,100 kg/TJ × 3.6 × 10⁻⁶ TJ/kWh; combustion only, upstream gas supply cut off (§6.1) |
 | O&M; decommissioning; back end | 0.33; 0.11; 0.56 | 0.17–0.67; 0.06–0.33; 0.28–1.11 | g CO₂e/kWh | EDF R&D (2024): 9%, 3% and 15% of 3.7 g/kWh, shares as reported by secondary sources and the back end by difference [TO VERIFY in the paper]; ranges are assumptions for transfer to one BWRX-300 |
 
-**The LC3 cut (37%)** is the median of five published estimates of LC3's binder emissions against Portland cement: 30% (ENR, 2018); 34%, 700 → 465 kg CO₂/t (Development Alternatives, n.d.); 37%, 856 → 543 kg CO₂/t (LC3 Project, 2015); about 40% (Scrivener et al., 2018, as summarised in the EPFL abstract; to confirm in the paper text); 43%, 903.5 → 513.5 kg CO₂e/t (LACCEI, 2026) [TODO: authors]. All five are [TO VERIFY]. ENR is trade press: replace it with a peer-reviewed LCA, or drop it and re-take the median of the other four, then re-run the scripts [TODO: analyst; L20] (R1.4). The estimates come from Indian, Cuban and Latin American settings; an Ontario LC3 calcined with natural gas is untested.
+**The LC3 cut (37%)** is the median of five published estimates of LC3's binder emissions against Portland cement: 30% (ENR, 2018); 34%, 700 → 465 kg CO₂/t (Development Alternatives, n.d.); 37%, 856 → 543 kg CO₂/t (LC3 Project, 2015); about 40% (Scrivener et al., 2018, as summarised in the EPFL abstract; to confirm in the paper text); 43%, 903.5 → 513.5 kg CO₂e/t (LACCEI, 2026) [TODO: authors]. All five are [TO VERIFY]. ENR is trade press, and no peer-reviewed replacement has been found [TODO: source needed: a peer-reviewed LC3 LCA; L20] (R1.4). If it is dropped, the median of the other four (34, 37, 40, 43%) is 38.5%. Because the saving is proportional to the cut, LC3's saving would rise by about 4%, to roughly 1,800 t per unit, well inside the 90% interval (1,387–2,153 t). This is hand arithmetic; the scripts have not been re-run on it. The estimates come from Indian, Cuban and Latin American settings; an Ontario LC3 calcined with natural gas is untested.
 
 **Check on the per-m³ model.** At 350 kg/m³ the model gives 328.9 kg CO₂e/m³ for S0 concrete, close to the Ontario industry baseline of 334 kg CO₂e/m³ for 35 MPa concrete and below the 417 kg CO₂e/m³ industry benchmark mix (Canadian Ready-Mixed Concrete Association, 2022) [TO VERIFY].
 
@@ -168,18 +169,18 @@ Worked example (DPSC infill, 9,081 m³ at 450 kg/m³):
 | Forebay shaft | S2 LC3 (target) | 4,000 | 350 | 1,316 | 873 | 442 (110.6) | 588 |
 
 *Table A6. Scenario totals (central case).*
-*Source: `results/lca_scenarios.md`; the like-for-like steel row is the examiner's estimate (review.md, 21/10; working in A7), not yet scripted. Units 2–4 = 3 × per unit (Unit 1's basemat is placed and its forebay partly placed; whether Unit 1's shaft-wall infill could still use LC3 is [TO VERIFY]). Every column is on the mode-case basis.*
+*Source: `results/lca_scenarios.md` (working for the like-for-like steel row in A7). Units 2–4 = 3 × per unit (Unit 1's basemat is placed and its forebay partly placed; whether Unit 1's shaft-wall infill could still use LC3 is [TO VERIFY]). Every column is on the mode-case basis.*
 
 | Scenario | Saving t CO₂e/unit | Units 2–4 t CO₂e | Clinker avoided t/unit (Units 2–4) | % of target concrete | % of unit life cycle (mode case) | g/kWh saved |
 |---|---:|---:|---:|---:|---:|---:|
 | S1 slag in C1 target structures (C1 fallback) | 1,552 | 4,657 | 2,019 (6,057) | 30.6 | 0.405 | 0.0109 |
 | **S2 LC3 in C1 target structures (C1 target binder)** | **1,734** | **5,201** | **2,304 (6,913)** | **34.1** | **0.452** | **0.0122** |
 | S2b LC3 in targets + slag in all other concrete | 2,488 | 7,464 | 3,286 (9,857) | 49.0 | 0.649 | 0.0175 |
-| S3 like-for-like: low-end steel factors, target-structure steel only | about 566 [examiner estimate, TODO: script] | [TODO: script] | 0 | — | [TODO: script] | [TODO: script] |
+| S3 like-for-like: low-end steel factors, target-structure steel only (1,953 t) | 566 | 1,698 | 0 | — | 0.148 | 0.0040 |
 | S3 upper bound: all plant steel at best-practice EAF sections factors | 3,714 | 11,142 | 0 | — | 0.969 | 0.0262 |
 | S3 sensitivity: all plant steel at world-average factors | −8,399 | −25,198 | 0 | — | −2.192 | −0.0592 |
 
-S3 rows are sensitivities on the baseline steel, not part of C1 (positive = lower than S0); A7 explains why only the like-for-like row compares with S2. Every life-cycle share uses the mode-case total (383,243 t per unit), so the rows are comparable. On the Monte Carlo basis the LC3 share has a median of 0.29% (0.18–0.46%; Appendix C4); Monte Carlo shares for the other scenarios are not in the model outputs [TODO: lca-analyst]. Savings exclude the construction uplift (A7).
+S3 rows are sensitivities on the baseline steel, not part of C1 (positive = lower than S0); A7 explains why only the like-for-like row compares with S2. Every life-cycle share here uses the mode-case total (383,243 t per unit), so the rows are comparable. On the Monte Carlo basis (median, with 5th–95th percentile; Appendix C4, Table C4) the shares are: S1 0.28% (0.17–0.44%); S2 0.29% (0.18–0.46%); S2b 0.46% (0.26–0.80%); S3 like-for-like 0.16% (0.06–0.30%); S3 upper bound 0.79% (0.28–1.68%); S3 world-average −1.11% (−2.11 to −0.49%). Savings exclude the construction uplift (A7).
 
 **Resource use per unit of output.** Clinker avoided by LC3 = 2,304 t / 1.419 × 10⁸ MWh = 0.016 kg/MWh (7.7 t/MWe). Concrete: 20,700 m³ × 2.4 t/m³ / 1.419 × 10⁸ MWh = 0.35 kg/MWh. Steel: 9,900 t / 1.419 × 10⁸ MWh = 0.070 kg/MWh.
 
@@ -193,7 +194,7 @@ S3 rows are sensitivities on the baseline steel, not part of C1 (positive = lowe
 - **Construction total** = 7,584 + 14,767 + 570 + 11,460 = **34,381 t**, or 34,381 / 1.419 × 10⁸ MWh = **0.242 g/kWh**.
 
 **Steel scenarios: like-for-like and whole plant.** S3 is a sensitivity, not part of C1, and only a like-for-like version compares with S2.
-- **Like-for-like (target structures only)** [examiner estimate, TODO: script; lca-analyst to add this row to `lca_scenarios.py`]: the known steel in the C1 target structures at the low-end factors of Table A4 (plate 1.22, the Buy Clean California hot-rolled-sections limit; rebar 0.89, the mill-gate limit): 953 t × (1.73 − 1.22) + 1,000 t × (0.97 − 0.89) = 486 + 80 = **about 566 t per unit**, against 1,734 t for LC3. Shaft-wall module steel is unknown and excluded (as in A9), so this understates the target-structure steel; until it is known, LC3 is the larger lever within the structures C1 targets.
+- **Like-for-like (target structures only)** (`lca_scenarios.py`, S3 like-for-like): the known steel in the C1 target structures at the low-end factors of Table A4 (plate 1.22, the Buy Clean California hot-rolled-sections limit; rebar 0.89, the mill-gate limit): 953 t × (1.73 − 1.22) + 1,000 t × (0.97 − 0.89) = 486 + 80 = **566 t per unit** (Monte Carlo median 941 t, 404–1,581), against 1,734 t (median 1,742 t) for LC3. Shaft-wall module steel is unknown and excluded (as in A9), so this understates the target-structure steel; until it is known, LC3 is the larger lever within the structures C1 targets (about 3.1 times at the mode case, 1.9 at the median).
 - **Whole-plant upper bound** (`lca_scenarios.md`, S3 low): all 9,900 t of plant steel at the same factors saves 3,714 t, about 2.1 × LC3. It is an upper bound because it applies a hot-rolled-sections factor to turbine and reactor-pressure-vessel forgings and nuclear-grade plate, for which that factor is not shown to be feasible (residual-element limits and qualification are not assessed).
 - **World average** (S3 high): −8,399 t, i.e. world-average steel would add emissions.
 
@@ -258,7 +259,7 @@ Stage emissions, kg CO₂e per MWh (= g/kWh), mode case:
 
 Grouped (mode case): fuel front end 1.458 g/kWh (54.0%); back end and decommissioning 0.670 (24.8%); O&M 0.330 (12.2%); construction 0.242 (9.0%).
 
-### A9. Granta EduPack Eco Audit cross-check [TODO: results pending]
+### A9. Granta EduPack Eco Audit cross-check [TODO: Granta cross-check, H2 due Thu 12:00; cut if not run]
 
 **Status.** A Granta EduPack Eco Audit cross-check of the C1 target structures is set up but **has not been run**. Granta runs only on the team's machines; until the export is saved in `03_LCA_Calculations/results/granta/`, no number in the report comes from Granta. Purpose: an independent check of the construction-material factors where C1 acts, and the screenshot for this appendix (R2.2).
 
@@ -270,8 +271,8 @@ Grouped (mode case): fuel front end 1.458 g/kWh (54.0%); back end and decommissi
 - Scenarios, if custom materials are allowed: scale the concrete record's CO₂ footprint by 0.693 (S1) and 0.657 (S2) for the infill, and 0.699 (S1) and 0.664 (S2) for the forebay.
 - Record: EduPack version, database, date and operator [TODO].
 
-*Table A10. Granta Eco Audit against the model (EN 15804 A1–A3 materials, central case, S0 as defined in A6). No Granta values exist yet; the table is ready to fill from the export.*
-*Source: model values from `results/granta_inputs.md` §7; Granta values [TODO: results pending].*
+*Table A10. Granta Eco Audit against the model (EN 15804 A1–A3 materials, central case, S0 as defined in A6). No Granta values exist yet; the table is ready to fill from the export. [TODO: Granta cross-check, H2 due Thu 12:00; cut if not run]*
+*Source: model values from `results/granta_inputs.md` §7; Granta values [TODO: results pending, H2].*
 
 | Row | Model t CO₂e | Model kg CO₂e/kg | Granta t CO₂e | Difference |
 |---|---:|---:|---|---|
@@ -291,19 +292,18 @@ How the comparison will be read: within about ±30% per row, Granta confirms the
 
 - **RB.5 (full calculations in an appendix).** Produced: every formula with a worked example, every input with its source, the corrected inventory, and the reproduce commands. Missing: verified inputs.
 - **R2.4 (methods clear, full working).** Produced: A2–A8 step by step, with the same symbols as the scripts. Missing: nothing structural.
-- **R2.2 (eco-audit or equivalent).** Produced: the equivalent analysis in full, and the Granta set-up and comparison rule; Table A10 ready to fill. Missing: the Granta run itself [TODO: results pending].
-- **R2.5, R2.6 (supporting).** Produced (v3): the S0 counterfactual and its business-as-usual consequence (A6); the like-for-like steel working and the whole-plant upper-bound caveat (A7). Missing: OPG's actual mix; the scripted like-for-like row.
-- **R1.4, R5.4 (supporting).** Produced (v3): the geometry cited as read. Missing: a `sources.md` entry for the news report; ENR replaced.
+- **R2.2 (eco-audit or equivalent).** Produced: the equivalent analysis in full, and the Granta set-up and comparison rule; Table A10 ready to fill. Missing: the Granta run itself [TODO: Granta cross-check, H2 due Thu 12:00; cut if not run].
+- **R2.5, R2.6 (supporting).** Produced: the S0 counterfactual and its business-as-usual consequence (A6); the scripted like-for-like steel row and the whole-plant upper-bound caveat (A6, A7). Missing: OPG's actual mix.
+- **R1.4, R5.4 (supporting).** Produced: the geometry cited as read; the effect of dropping ENR (A5). Missing: a `sources.md` entry for the news report; a peer-reviewed replacement for ENR.
 
 ### Remaining TODOs
 
 1. **[TO VERIFY, blocking]** Every factor in Table A4 and every quantity in A3 (priority order in `02_Research/sources_lca.md`). Re-run the three scripts and re-copy any value that moves.
-2. **[TODO: results pending]** Run Granta (A9) and fill Table A10; add the screenshot.
+2. **[TODO: Granta cross-check, H2 due Thu 12:00; cut if not run]** Run Granta (A9) and fill Table A10; add the screenshot. If not run, cut A9, A10 and every Granta sentence.
 3. **[TODO: Leroy]** Sourced whole-plant concrete and steel quantities, DPSC thicknesses, forebay per unit or shared, net MWe, CF, design life, burnup, enrichment.
 4. **[TODO]** Tunnel length and bored cross-section (row 4 of Table A3); recycled content from the CRSI 2022 EPD; what preprint 202505.1533 is.
-5. **[TODO: references]** Authors for the arXiv overview (2025) and LACCEI (2026); replace ENR (2018) with a peer-reviewed LCA; add NRMCA (2021), Canada Energy Regulator (n.d.) and EN 15804 forms consistently with `sources.md`; cite the CRSI 2022 EPD instead of 2017.
+5. **[TODO: references]** Authors for the arXiv overview (2025) and LACCEI (2026); a peer-reviewed LCA to replace ENR (2018); add NRMCA (2021), Canada Energy Regulator (n.d.) and EN 15804 forms consistently with `sources.md`; cite the CRSI 2022 EPD instead of 2017.
 6. **[TO VERIFY, P1]** The OPG basemat story (or NEDO-33926) for D = 37 m, h = 35 m and the 953 t module; until then A3's geometry rests on a news report.
-7. **[TODO: lca-analyst]** US grid factors as CO₂e (eGRID) rather than CO₂ only; Monte Carlo life-cycle shares for S1, S2b and S3.
-8. **[TODO: script]** Add the like-for-like S3 row (A7) to `lca_scenarios.py` with Units 2–4, share and g/kWh, and replace the examiner's estimate in Table A6 and §6.
-9. **[TO VERIFY]** OPG's actual infill and forebay mix and any cement-type limit in NEDO-33926; if slag is already in the baseline, re-define S0 and re-run (A6).
-10. **[TODO: source needed]** A `sources.md` entry for the okdiario (2026) news report, until the OPG story or NEDO-33926 replaces it.
+7. **[TODO: lca-analyst]** US grid factors as CO₂e (eGRID) rather than CO₂ only.
+8. **[TO VERIFY]** OPG's actual infill and forebay mix and any cement-type limit in NEDO-33926; if slag is already in the baseline, re-define S0 and re-run (A6).
+9. **[TODO: source needed]** A `sources.md` entry for the okdiario (2026) news report, until the OPG story or NEDO-33926 replaces it.
