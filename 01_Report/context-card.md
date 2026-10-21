@@ -42,7 +42,9 @@ Updated: 21/10/2026. The coordinator keeps it current. If a number here disagree
 - Done 21/10 night: Q8 number drop-in (§7, §8.1, §8.2, §4.3, App B); Q11 batch 1a (`factcheck/I-pass3-batch1a.md`: 7 must-fix (App B 3, §8.4 2, §3 2; Senate M1 needs a human check at aph.gov.au), 24 should-fix).
 - Leroy's §4.1/§4.2/§5/§10: unconfirmed; Victor checking. No fallback until he answers.
 - Usage near limit: max 2 agents, short reports. Deck and speech are finished: no deck work.
-- Next: writer fixes from batch 1a ‖ Q12 MCDA (saving parameterised); then Q13 examiner, Q14 §9, Q16, Q17–Q21.
+- Done: batch 1a fixes (a72d444; B3 route totals now A 6 / B 5 / C 8; App B6 range 4.9–26.0×); **Q12 MCDA** (31c7f3a, `results/mcda.md`): renewables > status quo > SMR ≈ SMR+C1 under all four weight sets (equal 80/52/30/30); 2 of 56 ±50% tests flip first place (to status quo); SMR first only if life cycle ≥94% weight; C1 changes life cycle by 0.29% (1,734 t) or 0.37% (2,200 t), a score gap <0.005; a 14.6-day slip costs 12× the saving.
+- Running: Q13 part 1 (examiner: §3, §8.1, §8.3–8.6, App B) ‖ Q14 (writer: §9 + App B7).
+- Next: Q16 (§2, §1, §11, abstract), then Q17–Q21. §4.3/§6/§7/§8.2 re-base waits on the team member's LCA.
 - Next: Q8 writer (after Q8 prep); then Wave 3 (Q11–Q21) in `plan.md` §7. G1 done (Leroy delivered; Q5/Q9 skipped).
 - Deck: the **team master .pptx** is the reference. The earlier claude.ai artifact deck and `deck-source/` are **superseded: don't sync to them**. Q15 (deck sync) is now report → deck consistency notes for Victor only.
 - Commit and push after every job (a stop hook enforces it).
