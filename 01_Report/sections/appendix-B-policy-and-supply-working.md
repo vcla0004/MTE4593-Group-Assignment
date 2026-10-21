@@ -2,6 +2,7 @@ Rubric coverage: RB.5, R2.4, R3.8, R2.1, R2.3, R2.7, R4.3, R3.1, R3.6, RB.6 (als
 
 <!--
 CHANGELOG
+- Fact-check I-pass3-batch1a, 21/10/2026 (writer): M1 (Senate counts hedged, 39/37 or 40/36 [TO VERIFY at aph.gov.au]); M2 (route A veto points rescored 2 to 1: totals 6/5/8, A ties C when regulator readiness is doubled; Tables B13 and B14, B3 Result and Reading); M3 (B6 range now 4.9–26.0×); S4, S11, S13, S14 done. S10 and S12 left open. §7 lines 72 and 82 still quote the old "5.7× worst case" wording (not edited: not in scope).
 - v2.1, 21/10/2026 (writer, Q8). B6 re-based on `same_money.md` after the GenCost 2030 re-run (SMR A$306, 230–382; renewables A$107, 89–125): text, Table B24 and Tables B25–B28 replaced, alternative reading (A$514 / A$102) kept as sensitivity rows; B5.4 "45×" replaced by the scripted 44× (44–223×). TODOs 11 and 12 closed (the GenCost table and carbon price remain [TO VERIFY]). Rubric items: R2.3, R3.1, RB.5, RB.6.
 - v2, 21/10/2026 (writer, Q4). Appended B4 (displacement), B5 (schedule value, including C1's break-even and the 30–223× derivation) and B6 (same money), Tables B15–B28, from Q2's re-based `results/` files; working for §7 and §6.3 finding 5 (factcheck L47; review audit §2, R2 and R4 rows). The rest of v1 is unchanged.
 - (v2) B6 states both GenCost readings [TO VERIFY: GenCost table/year]. Carbon price: federal path C$95/C$115 [TO VERIFY]; the superseded path is shown for comparison only. Remaining TODO 10 is partly done (LCOE and MCDA still to come).
@@ -33,7 +34,7 @@ This appendix gives the full working behind §8.1 (law and licensing), §8.3 (fu
 
 ### B1. Legal and political pathway
 
-**Result.** Three laws bar an SMR at Liddell, and each has a different veto holder. On current party positions, the federal repeal is 7 Senate votes short (3 short even with every other crossbencher), and the NSW repeal bill is stalled. For comparison, Darlington's licence to construct took about 29 months, 17.9 years after its environmental assessment began.
+**Result.** Three laws bar an SMR at Liddell, and each has a different veto holder. On current party positions, the federal repeal is 7 Senate votes short (3 short even with every other crossbencher) [TO VERIFY at aph.gov.au: 39/37 or 40/36; either way it fails], and the NSW repeal bill is stalled. For comparison, Darlington's licence to construct took about 29 months, 17.9 years after its environmental assessment began.
 
 #### B1.1 The three legal barriers and what removes each
 
@@ -71,12 +72,12 @@ Steps (`law_timelines.py`):
 | 1. Majority needed, all 76 voting | ⌊76 / 2⌋ + 1 (a tied vote fails, Constitution s 23 [TO VERIFY wording]) | **39** |
 | 2. Largest pro-repeal bloc (upper bound) | Coalition 27 + One Nation 4 + Babet 1 | **32** |
 | 3. Shortfall | 39 − 32 | **7** |
-| 4. Bloc plus every other crossbencher | 32 + 4 | **36** (still 3 short) |
+| 4. Bloc plus every other crossbencher | 32 + 4 | **36** (still 3 short) [TO VERIFY at aph.gov.au: 39/37 or 40/36; a search lead counts six other crossbenchers, giving 37 and 2 short] |
 | 5. Can repeal pass without Labor or the Greens? | 36 ≥ 39? | **No** |
 | 6. Would the Greens alone be enough (arithmetic only)? | 32 + 10 = 42 ≥ 39? | Yes, but the Greens oppose (policy, not arithmetic) |
-| 7. Opposed bloc | Labor 30 + Greens 10 = 40 ≥ 39 | A blocking majority on its own |
+| 7. Opposed bloc | Labor 30 + Greens 10 = 40 ≥ 39 [TO VERIFY at aph.gov.au: 39/37 or 40/36; a search lead gives 39] | A blocking majority on its own |
 
-Result 4 makes the conclusion independent of the One Nation and Babet assumption. In the House, Labor holds 94 of 150 seats (Australian Electoral Commission, 2025) [TO VERIFY], so a repeal bill would also need the Government's support there.
+Result 4 makes the conclusion independent of the One Nation and Babet assumption (it holds on either count of seats). In the House, Labor holds 94 of 150 seats (Australian Electoral Commission, 2025) [TO VERIFY], so a repeal bill would also need the Government's support there.
 
 #### B1.3 NSW repeal bill status
 
@@ -124,7 +125,7 @@ Method: months = days between two dates ÷ (365.25 / 12); years = months ÷ 12.
 
 The licence covers one unit. Units 2–4 need a further Commission authorisation, with approval to proceed reported as expected in 2028 (American Nuclear Society, 2026) [TO VERIFY; secondary, and the type of approval is not stated]. No source gives the Units 2–4 review time.
 
-Australian comparator: the naval nuclear regulator (ANNPSR) began operating on 1 November 2025 under a 2024 Act (Minister for Defence, 2025) [TO VERIFY], about two years after its Act for a narrower scope [TODO: bill introduction date from Bills Digest No. 32, 2023–24, to give an exact interval].
+Australian comparator: the naval nuclear regulator (ANNPSR) began operating on 1 November 2025 under a 2024 Act (Minister for Defence, 2025) [TO VERIFY], about two years after its bill [TODO: bill introduction date from Bills Digest No. 32, 2023–24, to give an exact interval].
 
 ---
 
@@ -291,7 +292,7 @@ Both bounds are below 1,500, so firms are not concentrated even though countries
 
 ### B3. Routes to a licensable SMR in Australia: scored comparison
 
-**Result.** The ranking depends on the weights: route C (cooperative state repeal) ranks first on equal weights and when durability is valued more; route A (Commonwealth-owned plant) ranks first when regulator readiness is valued more. Under the 2026 Senate (B1.2), none of the three routes is open. **These scores are our own qualitative judgement from the evidence in B1, not sourced scores.** They feed the "feasibility" criterion of the §9 MCDA.
+**Result.** The ranking depends on the weights: route C (cooperative state repeal) ranks first on equal weights and when durability is valued more; route A (Commonwealth-owned plant) ties with C when regulator readiness is valued more. Route A has the same three veto points as B and C once the NSW ban is counted, so all three score 1 on that objective. Under the 2026 Senate (B1.2), none of the three routes is open. **These scores are our own qualitative judgement from the evidence in B1, not sourced scores.** They feed the "feasibility" criterion of the §9 MCDA.
 
 *Table B13. Three routes scored against four non-technical objectives (1 = poor, 3 = good).*
 *Source: our qualitative judgement (law brief §5), from the evidence cited in the table.*
@@ -299,11 +300,11 @@ Both bounds are below 1,500, so firms are not concentrated even though countries
 | Objective | A. Commonwealth-owned plant under ARPANSA (the Coalition's 2024 model) | B. Federal licensing law for private operators, overriding the states | C. Cooperative: state repeal plus a state or joint regulator |
 |---|---|---|---|
 | Legal changes needed (not scored) | EPBC and ARPANS repeal, plus a s 109 override of NSW (or NSW repeal) | EPBC and ARPANS repeal, a new federal Act and a s 109 override | EPBC and ARPANS repeal, NSW repeal and a NSW regulator Act |
-| Fewest veto points | **2**: Senate; site owner | **1**: Senate; High Court; site owner | **1**: Senate; NSW Parliament; site owner |
+| Fewest veto points | **1**: Senate; NSW (or the High Court, if the Commonwealth overrides); site owner. A would score 2 only if s 8(3) exempted a Commonwealth operator [TO VERIFY] | **1**: Senate; High Court; site owner | **1**: Senate; NSW Parliament; site owner |
 | Regulator readiness | **3**: builds on ARPANSA, which already regulates Commonwealth entities such as ANSTO (ARPANSA, n.d.) [TO VERIFY] | **2**: a new body, as with the ANNPSR (Minister for Defence, 2025) [TO VERIFY] | **1**: NSW has no nuclear regulator |
 | Durability (low exposure to political reversal) | **1**: one government's decision; the next can sell or cancel | **1**: as A, plus litigation risk (Canberra Times, 2025) [TO VERIFY] | **3**: both levels of government committed |
 | Social licence | **1**: states rejected it in 2024 [TODO: source needed; Canberra Times (n.d.) on Minns is a secondary lead] | **1**: overrides the states | **3**: the states consent, if they do |
-| **Total (of 12)** | **7** | **5** | **8** |
+| **Total (of 12)** | **6** | **5** | **8** |
 
 Route A's description currently rests on ABC News (2024), a weak secondary source [TODO: replace with the Coalition's 19 June 2024 release, factcheck A8].
 
@@ -312,11 +313,11 @@ Route A's description currently rests on ABC News (2024), a weak secondary sourc
 
 | Weighting | A | B | C | Ranking |
 |---|---:|---:|---:|---|
-| Equal weights (base, of 12) | 7 | 5 | 8 | C, A, B |
-| Regulator readiness × 2 | 7 + 3 = **10** | 5 + 2 = 7 | 8 + 1 = 9 | A, C, B |
-| Durability × 2 | 7 + 1 = 8 | 5 + 1 = 6 | 8 + 3 = **11** | C, A, B |
+| Equal weights (base, of 12) | 6 | 5 | 8 | C, A, B |
+| Regulator readiness × 2 | 6 + 3 = **9** | 5 + 2 = 7 | 8 + 1 = **9** | A and C tie, B |
+| Durability × 2 | 6 + 1 = 7 | 5 + 1 = 6 | 8 + 3 = **11** | C, A, B |
 
-Reading: route B ranks last under all three weightings tested. The choice between A and C is a choice between speed (an existing regulator) and durability (both levels of government committed). That is a political judgement, not a technical one. Whichever route is assumed, an Australian SMR scores lowest on time to first power in the §9 MCDA.
+Reading: route B ranks last under all three weightings tested, and C is never behind A. Valuing regulator readiness more only closes the gap, to a tie with A. The choice between A and C is a choice between speed (an existing regulator) and durability (both levels of government committed). That is a political judgement, not a technical one. Whichever route is assumed, an Australian SMR scores lowest on time to first power in the §9 MCDA.
 
 ---
 
@@ -426,7 +427,7 @@ The grid trajectory, the start year and the post-coal floor dominate the result.
 | Parameter | Range | To 2050 (low → high input) | Whole life (low → high input) |
 |---|---|---|---|
 | Capacity factor | 0.80–0.95 | 597 → 709 kt | 3.25 → 3.86 Mt |
-| Net output | 290–300 MWe | 649 → 671 kt | 3.54 → 3.66 Mt |
+| Net output | 290–300 MWe (315 MWe, if the OEB filing is right, adds about 5%, proportionally) | 649 → 671 kt | 3.54 → 3.66 Mt |
 | SMR life cycle (our 95th → 5th percentile) | 5.8–3.0 g/kWh | 630 → 702 kt | 3.43 → 3.83 Mt |
 | SMR life cycle, UNECE midpoint instead of ours | 5.75 vs 4.2 g/kWh | 631 → 671 kt | 3.44 → 3.66 Mt |
 | SMR life cycle, stress (IPCC lead, unconfirmed) | 110–12 g/kWh | −2.08 Mt → 468 kt | −11.35 → 2.55 Mt |
@@ -565,7 +566,7 @@ This agrees with `results/initiative_cost.md` §5 (run 5): one day of delay cost
 
 ### B6. Same money: Darlington's budget spent on firmed renewables
 
-**Result.** On GenCost 2023-24's 2030 costs, the same annual spend as one SMR unit (A$0.72 bn a year) buys **2.9×** the energy from firmed renewables (6.8 TWh a year against 2.37). For a Liddell SMR from 2040 on the slow trajectory, those renewables avoid **10.9×** more CO₂e to 2050 (5.7× in the worst case tested for renewables). Across the Liddell cases the ratio is 5.3–26.0×, so renewables avoid more CO₂e by 2050 in every case tested. On the alternative reading (SMR A$514/MWh), the ratios are 5.0× and 19.1× (9.3–45.8× across cases). Script: `python3 -I 03_LCA_Calculations/scripts/same_money.py`, with output in `results/same_money.md`.
+**Result.** On GenCost 2023-24's 2030 costs, the same annual spend as one SMR unit (A$0.72 bn a year) buys **2.9×** the energy from firmed renewables (6.8 TWh a year against 2.37). For a Liddell SMR from 2040 on the slow trajectory, those renewables avoid **10.9×** more CO₂e to 2050 (5.7× on the GenCost 2030 reading alone, with renewables at A$153). Across all cases tested the ratio is 4.9–26.0× (4.9× is the lowest, with the A$198 SMR lead and A$153 renewables), so renewables avoid more CO₂e by 2050 in every case tested. On the alternative reading (SMR A$514/MWh), the ratios are 5.0× and 19.1× (9.3–45.8× across cases). Script: `python3 -I 03_LCA_Calculations/scripts/same_money.py`, with output in `results/same_money.md`.
 
 **Basis of the tables.** The script now runs on the 2030 reading: SMR A$306/MWh (range 230–382) and firmed renewables A$107/MWh (89–125), from a news report of GenCost 2023-24 (Graham, Hayward and Foster, 2024, as reported) that gives A$387–641 as the SMR's **2023** value and A$230–382 as its **2030** value [TO VERIFY: GenCost table/year; the news pointer is in `sources_run5.md`, not sources.md]. Run 1's A$514 (387–641) / A$102 is kept as the alternative reading, in the sensitivity rows of Table B28 only. If Victor finds the table says otherwise, change `smr_lcoe_aud` and `vre_firmed_lcoe_aud` in `parameters_run1.yaml` and re-run; every table here regenerates.
 
@@ -580,7 +581,7 @@ This agrees with `results/initiative_cost.md` §5 (run 5): one day of delay cost
 | Firmed renewables LCOE | A$107/MWh (89–125), solar and wind with integration costs, 2030; 153 = high case, assumption | A$102 | Graham, Hayward and Foster (2024) [TO VERIFY] |
 | Low SMR lead (sensitivity) | A$198/MWh | — | Kim and Macfarlane (2026) (edition unknown) [TO VERIFY] |
 | Darlington budget | C$20.9 bn for four units; Unit 1 plus common infrastructure C$7.7 bn | — | Government of Ontario (2025) [TO VERIFY] |
-| Exchange rate | 1.119 AUD/CAD (1.10–1.13) | — | Reserve Bank of Australia (2025) [TO VERIFY] |
+| Exchange rate | A$1.119 per C$1 (1.10–1.13) | — | Reserve Bank of Australia (2025) [TO VERIFY] |
 | Discount rate; annuity | 7% real (3–10%); 30 years (30–60) | — | Assumption |
 | First year of renewables output | 2028 (2027–2030) | — | Assumption [TODO: GenCost/AEMO lead times] |
 | Renewables life cycle | 30 g/kWh (8–83) | — | Assumption (range: UNECE PV, United Nations Economic Commission for Europe, 2021) |
@@ -668,7 +669,7 @@ The negative Ontario-average row arises because, once Ontario's average falls be
 #### B6.3 Check against our own LCOE and OPG's figure
 
 Our Darlington LCOE (`results/lcoe.md`; case B, 60 years, vendor operating costs, CF 0.90) is C$112/151/198/280 per MWh at 3/5/7/10% real (A$125/169/221/313).
-- **Against GenCost:** A$221 at 7% sits just below GenCost 2023-24's 2030 SMR range (A$230–382) [TO VERIFY]. Two reasons it should sit low: Darlington is a four-unit site with shared infrastructure, whereas GenCost prices a generic single Australian SMR; and GenCost 2025-26 reports revising Darlington's capital downwards for interest during construction (Graham and Hayward, 2026) [TO VERIFY]. At 10% (A$313) our figure falls in the upper half of GenCost's range.
+- **Against GenCost:** A$221 at 7% sits just below GenCost 2023-24's 2030 SMR range (A$230–382) [TO VERIFY]. Two reasons it should sit low: Darlington is a four-unit site with shared infrastructure, whereas GenCost prices a generic single Australian SMR; and GenCost 2025-26 reports revising Darlington's capital downwards for interest during construction (Graham and Hayward, 2026) [TO VERIFY]. At 10% (A$313) our figure falls in the upper half of GenCost's range. GenCost 2024-25 gives an SMR value of up to A$487 (`results/lcoe.md` §5), so A$221 is below every GenCost range; the 2025-26 SMR value was not found.
 - **Against OPG:** OPG's reported four-unit average of C$149/MWh [TO VERIFY] is reproduced at a real discount rate of 4.9%. That rate is consistent with a ratepayer-backed Crown utility, not with merchant finance.
 - **Cost ratio:** on our 7% value against GenCost 2024-25's firmed-renewables lead, the SMR/renewables cost ratio is 221 / 101 = 2.2× (`results/lcoe.md` §5).
 - **Full working:** in `results/lcoe.md` [TODO: an Appendix B subsection for the LCOE with §8.2].

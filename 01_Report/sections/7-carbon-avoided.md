@@ -2,6 +2,7 @@ Rubric coverage: R2.1, R2.3, R2.6, R2.7, R4.3, R3.1, R3.6, RB.5, RB.6 (also supp
 
 <!--
 CHANGELOG
+- 21/10 night (coordinator): "Full cost" adds the 4.9× floor (A$198 / A$153), matching App B6 after fact-check M3.
 - v1.1, 21/10/2026 (writer, Q8). Same-money numbers checked against the re-run `same_money.md` (GenCost 2030): "Capital cost alone" 2.0–2.9× at A$102 → 1.9–2.7× at A$107; Liddell 5.7/26.0/10.9/5.3× and Ontario −0.4/2.8× now in App B Table B27. §6 break-even aligned (TODOs 1 and 7 closed). Rubric items: R2.3, R3.1, RB.6.
 - v1, 21/10/2026 (writer, Q4). First draft from Q2's re-based results (displacement, schedule_value, same_money), run 5 (lcoe, initiative_cost), both briefs and §6 v3; working in App B4–B6. Addresses review audit §2 (R2 "economic benefits ... appropriate to the scale of the proposal"; R4 "new feasible ideas or connections") and factcheck L47 (break-even working).
 - Conflicts per plan §5: GenCost = run 5's 2030 reading (A$230–382, 2.9×), 5.0× stated as the alternative [TO VERIFY: GenCost table/year]; carbon price = federal path C$95 (2026) / C$115 (2030) [TO VERIFY]; C$170 used only for the conservative end of 30–223× (explained in B5.3).
@@ -69,7 +70,7 @@ The carbon value is also only a shadow price. Construction-material emissions ap
 
 **At GenCost's 2030 costs, the money for one SMR unit would buy about 2.9 times as much energy from firmed renewables, which would avoid about 11 times more CO₂e to 2050 at Liddell.**
 
-**Full cost.** GenCost 2023-24 gives A$230–382/MWh for an SMR in 2030, against A$89–125 for solar and wind with integration costs (Graham, Hayward and Foster, 2024, as reported) [TO VERIFY: GenCost table/year]. At the midpoints, the same spend buys **2.9×** the energy (Figure F7). Suppose the renewables start in 2028 [assumption] and the SMR in 2040, on the slower trajectory. The renewables then avoid **10.9×** more CO₂e to 2050, and still 5.7× more in the worst case we tested for them (SMR A$230 against renewables A$153 [assumption]).
+**Full cost.** GenCost 2023-24 gives A$230–382/MWh for an SMR in 2030, against A$89–125 for solar and wind with integration costs (Graham, Hayward and Foster, 2024, as reported) [TO VERIFY: GenCost table/year]. At the midpoints, the same spend buys **2.9×** the energy (Figure F7). Suppose the renewables start in 2028 [assumption] and the SMR in 2040, on the slower trajectory. The renewables then avoid **10.9×** more CO₂e to 2050, and still 5.7× more in the worst case we tested for them (SMR A$230 against renewables A$153 [assumption]), or 4.9× if the SMR also costs only A$198 (Table B28).
 
 **Alternative reading.** We read A$387–641 as GenCost's 2023 value. If it is the 2030 value instead, the ratios are 5.0× and 19.1× (9.3–45.8× across cases). The conclusion holds either way. GenCost 2025-26 still ranks SMRs as the highest-cost option (Graham and Hayward, 2026) [TODO: its SMR and firmed-renewables values].
 
