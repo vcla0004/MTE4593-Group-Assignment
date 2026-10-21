@@ -2,6 +2,7 @@ Rubric coverage: R2.7, RB.5 (also supports R2.4, R2.1, RB.6, R5.2)
 
 <!--
 CHANGELOG
+- v3, 21/10/2026 (writer, for Victor). Revised against review.md "Review of §6 and Appendices A, C (21/10)": Appendix C item and §6 point 7 (Table C2 gains a row for the conversion-heat alternative run, with TODO cells, because no script output exists; C5 says what it tests); L9 (Table C1 row 33 cites the shaft depth as read, okdiario 2026, not OPG); C4 notes that the LC3-minus-slag row is also LC3's increment if OPG's baseline already contains slag (§6.1, A6). No values changed; all [TO VERIFY] markers kept.
 - v2, 21/10/2026 (writer, for Victor). Revised against factcheck.md §H: L63 (C3: basemat thickness is geometry, not mix design); L65 (C4: why expected plate steel is below its mode value); L57 (construction 7.5% on the expected basis, C4 and C6); L61 (C6: "hybrid boundary" replaced); L67 (C4: the Monte Carlo 90% interval, 15,050–36,521 m³, is the concrete range to quote; Table C1 rows are input bounds); L5, L22, L25 (Table C1 source notes: cement regional spread; CRSI 2017 superseded; US grid CO₂ only); L55 (C4 note that the share row is LC3 only). Values unchanged; all [TO VERIFY] markers kept.
 - v1, 21/10/2026 (writer, for Victor, who took over Sam's red sections on 21/10; CLAUDE.md). First draft from `03_LCA_Calculations/results/lca_uncertainty.md`, `lca_tornado.csv`, `lca_montecarlo_summary.csv`, `lca_stages_expected.csv`, `lca.md` §7–§8 and `parameters_lca.yaml`. Cited from §6.4 as Appendices C1, C2 and C4.
   - plan §4.1 acceptance tests: tornado with at least six sourced or justified ranges (40 here, each with its source and status); Monte Carlo with at least 10,000 draws (20,000), stated distributions, fixed seed, median and 5th–95th percentiles, reproducible from `scripts/`.
@@ -65,7 +66,7 @@ This appendix shows how uncertain the §6 results are and which inputs drive the
 | 30 | DPSC wall thickness (m) | 1.0 / 1.5 / 2.0 | Assumption | A | 2.699 → 2.702 (0.003) | 1,464 → 1,995 |
 | 31 | Concrete transport (km) | 5 / 15 / 50 | Assumption | A | 2.700 → 2.702 (0.002) | — |
 | 32 | DPSC basemat thickness (m) | 2.0 / 3.0 / 4.0 | Assumption | A | 2.700 → 2.702 (0.002) | 1,581 → 1,886 |
-| 33 | Shaft depth (m) | 35 / 35 / 38 | Ontario Power Generation (2026); high = containment height, GE Vernova Hitachi Nuclear Energy (n.d.) | V | 2.701 → 2.701 (<0.001) | 1,734 → 1,805 |
+| 33 | Shaft depth (m) | 35 / 35 / 38 | okdiario (2026), a news report citing an OPG story not found; high = containment height, GE Vernova Hitachi Nuclear Energy (n.d.) | V | 2.701 → 2.701 (<0.001) | 1,734 → 1,805 |
 | 34 | Forebay concrete (m³) | 4,000 / 4,000 / 6,000 | Ontario Power Generation (2025); high assumed | V | 2.701 → 2.701 (0) | 1,734 → 1,955 |
 | 35 | Slag cement (kg CO₂e/t) | 93.4 / 146.6 / 146.6 | Slag Cement Association (n.d.) | V | no change (S1 only) | — |
 | 36 | GU clinker factor | 0.90 / 0.92 / 0.95 | Assumption | A | no change (clinker tonnage only) | — |
@@ -100,8 +101,10 @@ This appendix shows how uncertain the §6 results are and which inputs drive the
 | LC3 saving as share of the unit's life cycle (%) | 0.452 | 0.304 | 0.185 | 0.295 | 0.455 |
 | Slag (S1) saving (t CO₂e per unit) | 1,552 | 1,649 | 1,205 | 1,642 | 2,113 |
 | LC3 minus slag (t CO₂e per unit) | 181 | 103 | −343 | 97 | 574 |
+| Life-cycle intensity, conversion heat held at a sourced central value (g CO₂e/kWh) | [TODO: script] | [TODO: script] | [TODO: script] | [TODO: script] | [TODO: script] |
+| Life-cycle intensity, conversion heat log-uniform 26–665 (g CO₂e/kWh) | [TODO: script] | [TODO: script] | [TODO: script] | [TODO: script] | [TODO: script] |
 
-The whole-plant concrete median (24,066 m³) sits above the central value (20,700 m³) because its input range is right-skewed (34.5–69–138 m³/MWe). **The 90% interval, about 15,050–36,521 m³, is the concrete range to quote**; the input bounds (10,350–41,400 m³) are not results, and the clip rule (C1) also lifts the low tail. The LC3-minus-slag interval spans zero: the two options cannot be separated on carbon with present data. The share row is for LC3 only; Monte Carlo shares for the other scenarios are not in the outputs [TODO: lca-analyst].
+The whole-plant concrete median (24,066 m³) sits above the central value (20,700 m³) because its input range is right-skewed (34.5–69–138 m³/MWe). **The 90% interval, about 15,050–36,521 m³, is the concrete range to quote**; the input bounds (10,350–41,400 m³) are not results, and the clip rule (C1) also lifts the low tail. The LC3-minus-slag interval spans zero: the two options cannot be separated on carbon with present data. If OPG's baseline mix already contains slag (§6.1, A6), the same row is LC3's increment over business as usual. The last two rows test whether the headline median depends on the triangular shape chosen for conversion heat (C5) [TODO: lca-analyst: add a script flag for both runs and fill the rows]. The share row is for LC3 only; Monte Carlo shares for the other scenarios are not in the outputs [TODO: lca-analyst].
 
 *Table C3. Expected life-cycle emissions by stage (Monte Carlo mean) against the mode case.*
 *Source: `results/lca_uncertainty.md`; last column is our subtraction (mean − mode).*
@@ -134,6 +137,7 @@ Grouped (expected basis): fuel front end 64.2%, back end and decommissioning 19.
 - Conversion therefore contributes +0.97 of the +1.58 g/kWh gap (Table C3). Mining (+0.23), the back end (+0.09), enrichment (+0.08), O&M (+0.06), decommissioning (+0.06) and the construction uplift (+0.06) add most of the rest.
 - The LC3 saving is almost symmetric (mode 1,734 t, median 1,742 t), so its share of the total falls from 0.45% (mode case) to 0.29% (median).
 - We therefore quote the median as the result and the mode case only as "every input at its most likely value". A measured conversion value would collapse most of the gap [TODO: source needed: Cameco Port Hope facility emissions divided by UF₆ output].
+- Because one distribution choice carries most of the gap, Table C2's last two rows re-run the Monte Carlo with conversion heat at a sourced central value and with a log-uniform 26–665 distribution. If the median stays near 4.2 under both, the headline is not an artefact of the triangular shape; if not, §6 should report the range of medians [TODO: script].
 
 ### C6. Limitations of the uncertainty analysis
 
@@ -147,7 +151,7 @@ Grouped (expected basis): fuel front end 64.2%, back end and decommissioning 19.
 
 ### IDs covered (towards the HD descriptor) and what is still missing
 
-- **R2.7 (uncertainty realistically estimated and discussed).** Produced: 40-input tornado with sources and status; 20,000-draw Monte Carlo with percentiles; stage-level skew analysis explaining median vs mode; LC3 vs slag overlap (64%; interval spans zero); stated limitations. Missing: verified ranges; a correlation case (stated as a limitation instead).
+- **R2.7 (uncertainty realistically estimated and discussed).** Produced: 40-input tornado with sources and status; 20,000-draw Monte Carlo with percentiles; stage-level skew analysis explaining median vs mode; LC3 vs slag overlap (64%; interval spans zero); stated limitations. Missing: verified ranges; the conversion-heat distribution test (rows set up in Table C2, v3); a correlation case (stated as a limitation instead).
 - **RB.5 (full calculations in an appendix).** Produced: set-up, every range, every result, reproduce command. Missing: nothing structural.
 
 ### Remaining TODOs
@@ -155,4 +159,6 @@ Grouped (expected basis): fuel front end 64.2%, back end and decommissioning 19.
 1. **[TO VERIFY, blocking]** Open the primaries for every V input in Table C1 (priority: Gibon and Hahn Menacho 2023 for conversion heat; Parker et al. 2016; EDF R&D 2024), then re-run `lca_uncertainty.py` and update Tables C1–C3.
 2. **[TODO: Leroy]** Burnup, enrichment, net MWe, capacity factor and design life (the P rows) with sources.
 3. **[TODO: source needed]** A measured conversion value (Cameco Port Hope facility emissions and UF₆ output).
-4. **[TODO: optional, STRETCH]** A correlated-draw case (concrete with steel intensity; burnup with enrichment) to replace limitation 1.
+4. **[TODO: lca-analyst]** Conversion-heat alternative runs (sourced central value; log-uniform 26–665) for the last two rows of Table C2.
+5. **[TODO: source needed]** A `sources.md` entry for okdiario (2026), until the OPG story or NEDO-33926 replaces it (Table C1 row 33).
+6. **[TODO: optional, STRETCH]** A correlated-draw case (concrete with steel intensity; burnup with enrichment) to replace limitation 1.
