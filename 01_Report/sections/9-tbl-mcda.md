@@ -2,6 +2,7 @@ Rubric coverage: R3.6, RB.8, R2.6, R4.4, R2.4 (also supports R2.7, R3.5, R3.8, R
 
 <!--
 CHANGELOG
+- v2, 21/10/2026 (writer, I pass 3 batch 3a): M1 opening claim limited to predefined sets (random 0.2%, 94% weight stated); M2 random-weight share 0.2% (SMR 0.0%, SMR + C1 0.1%); S8 "declining-grid cases" labels; S10 stale R2.4 note. S7, S11 and the Appendix B7 items not touched.
 - v1, 21/10/2026 (writer, Q14 part 1). First draft of §9 from `results/mcda.md` and `mcda_scores.csv` (analyst run 9, C1 case new_2200) and the numbers already in §6–§8; working in Appendix B7. Addresses the tracker's RB.8 "Missing" and R3.6 "Missing: §9 MCDA".
 - C1 saving is parameterised: both cases (1,734 t, 2,200 t) are given and the figure that would fix a number is marked "[C1 saving: per final §6]" until the LCA re-base lands. T4 and T5 are new IDs; renumber at assembly (Q19).
 - §8.1's "Note for §9" deleted in this pass, because §9 now cites Appendix B3 (legal-feasibility criterion).
@@ -10,7 +11,7 @@ CHANGELOG
 
 ## 9 Triple-bottom-line evaluation and multi-criteria analysis
 
-**Adopt C1 only as a schedule-neutral specification. For Australia, the same money on firmed renewables ranks first, ahead of the status quo and of an SMR at Liddell.** C1 is a real but marginal gain: SMR + C1 and a plain SMR differ by about 0.3–0.4% on life-cycle emissions. No weight set, input change or ±50% weight test we ran puts an SMR first.
+**Adopt C1 only as a schedule-neutral specification. For Australia, the same money on firmed renewables ranks first, ahead of the status quo and of an SMR at Liddell.** C1 is a real but marginal gain: SMR + C1 and a plain SMR differ by about 0.3–0.4% on life-cycle emissions. No predefined weight set, input change or ±50% weight test puts an SMR first. It happens in about 0.2% of random weight draws, and when life-cycle CO₂e carries 94% or more of the weight.
 
 ### 9.1 Triple bottom line
 
@@ -21,7 +22,7 @@ The triple bottom line judges an option on its environmental, economic and socia
 
 | | Darlington, with C1 | Liddell (one unit) | Traced to |
 |---|---|---|---|
-| **Environment** | Plant 4.2 g CO₂e/kWh (90% interval 3.0–5.8). C1 saves 1,734 t (central) to 2,200 t per unit, 0.29–0.37% of a unit's life cycle [C1 saving: per final §6]. Unit 1 avoids 1.0–6.8 Mt CO₂e to 2050 | Same plant intensity. Avoids 0.67–3.9 Mt to 2050 from about 2040. The same money on firmed renewables avoids 10.9× more | §6.3, §7.2–7.3 |
+| **Environment** | Plant 4.2 g CO₂e/kWh (90% interval 3.0–5.8). C1 saves 1,734 t (central) to 2,200 t per unit, 0.29–0.37% of a unit's life cycle [C1 saving: per final §6]. Unit 1 avoids 1.0–6.8 Mt CO₂e to 2050 (declining-grid cases) | Same plant intensity. Avoids 0.67–3.9 Mt to 2050 (declining-grid cases) from about 2040. The same money on firmed renewables avoids 10.9× more | §6.3, §7.2–7.3 |
 | **Economy** | LCOE C$198/MWh at 7% (C$112–280 at 3–10%). C1's carbon value is C$0.49–0.60 m for Units 2–4 at 1,734 t per unit [C1 saving: per final §6], against C$1.8–2.9 m for each day of delay | SMR A$230–382/MWh in 2030 against A$89–125 for firmed renewables (2.9× at midpoints). No private owner could finance a first unit | §7.1, §7.3, §8.2 |
 | **Society** | Power-weighted stance +1.07; no high-power actor opposed. The Williams Treaties First Nations lend C$700 m, converting to equity. C1 adds no new consent issue. Unit 1's fuel chain has no Russian stage | Stance −1.03. 61% support nuclear power, but 59% want the ban kept. No legal route is open (three routes score 5–8 of 12). Enrichment and conversion would be imported | §8.1, §8.3–8.5 |
 | **Net** | Environment positive but marginal; economy small; society neutral. Feasible if schedule-neutral | Not feasible before 2040 on current law, cost and consent | §6–§8 |
@@ -43,7 +44,7 @@ The triple bottom line judges an option on its environmental, economic and socia
 
 **Renewables rank first under every weight set.** The SMR beats them only on life-cycle CO₂e (4.2 against 30 g/kWh) and on supply concentration (enrichment HHI 3,009 against at least 6,400 for solar PV). It loses on CO₂e avoided per dollar (10.9×), cost (2.9×), time (about 12 years later), social licence and legal feasibility.
 
-**Rank reversal.** Of 56 weight changes of ±50%, two change first place. Both are under the firm-and-sovereign weights (life-cycle weight halved; supply weight × 1.5), and both hand first place to the status quo, not to the SMR. An SMR option ranks first only if life-cycle CO₂e carries at least 94% of the weight. In 20,000 random weight sets, renewables rank first in 85.4%, the status quo in 14.5% and an SMR option in 0.1%. Of 68 input tests (GenCost reading, first power in 2035 or 2045, grid path, C1 premium and delay), renewables stay first in 66; the other two go to the status quo.
+**Rank reversal.** Of 56 weight changes of ±50%, two change first place. Both are under the firm-and-sovereign weights (life-cycle weight halved; supply weight × 1.5), and both hand first place to the status quo, not to the SMR. An SMR option ranks first only if life-cycle CO₂e carries at least 94% of the weight. In 20,000 random weight sets, renewables rank first in 85.4%, the status quo in 14.5% and an SMR option in 0.2% (SMR 0.0%, SMR + C1 0.1%). Of 68 input tests (GenCost reading, first power in 2035 or 2045, grid path, C1 premium and delay), renewables stay first in 66; the other two go to the status quo.
 
 **The status quo's second place over the SMR is a scaling artefact.** The status quo scores full marks on cost, supply and legal feasibility because it changes nothing. On fixed global scales instead of the four-option scale, the SMR moves above it under every weight set. Renewables stay first on both scales.
 
@@ -79,7 +80,7 @@ The triple bottom line judges an option on its environmental, economic and socia
   - Missing: the Units 2–4 qualification time, still our planning assumption (§8.6).
 - **R2.4 (methods clear, full working in the appendix).**
   - Produced: a four-sentence method here and formulas, worked examples and every input in B7.
-  - Missing: §2 (methods summary) not yet written.
+  - Missing: final §6 and §7 numbers (§2 now holds the methods summary).
 
 ### Remaining TODOs
 
