@@ -16,3 +16,4 @@ The examiner replaces this file at each review. Unresolved items below must carr
 - `01_Report/review/existing-issues.md`: Issues found in existing work (first logged 20/10/2026; carried over 20/10/2026)
 - `01_Report/review/8.1-8.3.md`: Review of §8.1 and §8.3 (20/10)
 - `01_Report/review/6-lca.md`: Review of §6 and Appendices A, C (21/10)
+- `01_Report/review/Q13-wave2-part1.md`: Q13 part 1, §3, §8.1, §8.3–8.6, App B (B1–B4, B6): grades, must-fixes, page estimate and cut list (21/10)
