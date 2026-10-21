@@ -1,0 +1,129 @@
+# Rubric coverage: R3.6, RB.8, R2.6, R4.4, R2.4, R2.7
+# Analyst run 9 (21/10/2026, plan Q12): MCDA inputs that are not already in parameters_run1/3/5/6.yaml or results/.
+# Schema as parameters_run1.yaml: name: {value, unit, source, status, note}. status as there
+# (TO VERIFY / assumption / placeholder / from results / judgement).
+# Read by scripts/mcda.py only. Every other MCDA input is read from parameters_run1.yaml (LCOE, LCA, grid,
+# start years), parameters_run5.yaml (C1 cost inputs), parameters_run6.yaml (consent-route scores) and
+# results/hhi_summary.csv (enrichment HHI), so a re-run picks up any change there.
+
+parameters:
+
+  # ---------------- Initiative C1: saving cases (the MCDA reads the saving from here) ----------------
+  c1_cases:
+    base: new_2200
+    cases:
+      old_1734:
+        saving_t_per_unit: 1734
+        volume_m3_per_unit: 13081
+        source: lca_results_2110
+        status: from results
+        note: "Old main case: results/lca_scenarios.csv S2 (mode 1,734 t; MC median 1,742, P5-P95 1,387-2,153), 13,081 m3 target structures."
+      new_1100:
+        saving_t_per_unit: 1100
+        volume_m3_per_unit: 20000
+        source: coordinator_rebase_2110
+        status: placeholder
+        note: "Low sensitivity of the re-based case (coordinator message 21/10, Victor's deck): Ostroleka 50,000 m3/unit x 40% eligible x Pillai (380-270) kg/m3. Pending lca-analyst results; swap to the results file when it exists."
+      new_2200:
+        saving_t_per_unit: 2200
+        volume_m3_per_unit: 20000
+        source: coordinator_rebase_2110
+        status: placeholder
+        note: "New main case (coordinator 21/10): 50,000 x 0.40 x 0.110 t/m3 = 2,200 t/unit. Framing: pilot LC3 in eligible non-safety works first. Pending lca-analyst re-run."
+      new_3300:
+        saving_t_per_unit: 3300
+        volume_m3_per_unit: 20000
+        source: coordinator_rebase_2110
+        status: placeholder
+        note: "High sensitivity of the re-based case (coordinator 21/10)."
+  c1_premium_base_frac:
+    value: 0.0
+    low: -0.10
+    high: 0.20
+    unit: LC3 concrete price premium over GU, fraction
+    source: assumption
+    status: assumption
+    note: "Same scenario set as parameters_run5.yaml premium_scenarios_frac (0 = Clean Energy Canada 'no price increase' lead; -10% / +20% bounds)."
+  c1_qualification_base_cad:
+    value: 1.0e6
+    low: 0
+    high: 3.0e6
+    unit: C$ one-off, borne by the single Liddell unit
+    source: assumption
+    status: assumption
+    note: "Middle of parameters_run5.yaml qualification_cost_cad scenarios (no source found)."
+  c1_delay_days_high:
+    value: 14.6
+    unit: days of delay to the unit (sensitivity only)
+    source: schedule_value_2110
+    status: from results
+    note: "results/schedule_value.md section 6: net break-even for the old 1,734 t case on ON-avg-traj. Used only as an illustrative 'C1 not schedule-neutral' delay. Being re-run by the lca-analyst for the 2,200 t case."
+
+  # ---------------- Supply security: renewables chain ----------------
+  pv_china_share_min:
+    value: 0.80
+    high: 0.95
+    unit: fraction, China's share of each solar PV manufacturing stage (polysilicon, ingots, wafers, cells, modules)
+    source: iea2022_pv_supply
+    status: TO VERIFY
+    note: "IEA (2022) Solar PV Global Supply Chains: China's share of all manufacturing stages 'exceeds 80%'; set to rise above 95% for polysilicon and wafers (search summary; iea.org refused by the proxy 21/10). HHI >= share^2 because one supplier alone contributes share^2: lower bound 6,400 (9,025 at 95%). Country-level, like the mining HHI."
+
+  # ---------------- Status-quo conventions (do-nothing reference) ----------------
+  sq_conventions:
+    lifecycle_g_per_kwh: nsw_scope2_2025   # the energy left in place: NSW 2025 grid (scope 2, not life cycle)
+    avoided_t_per_aud_m: 0                 # avoids nothing beyond the trajectory
+    cost_aud_mwh: 0                        # spends nothing new
+    first_year: 2050                       # no new supply inside the 2050 horizon
+    supply_hhi: 0                          # adds no new supply chain
+    note: "Analyst conventions for a do-nothing reference, tested in mcda.md section 6 (SQ supply = VRE's; SQ cost = VRE's LCOE)."
+
+  # ---------------- Legal feasibility: Appendix B3, Table B13 (our judgement, 1 = poor, 3 = good) ----------------
+  b3_routes:
+    objectives: [veto_points, regulator_readiness, durability, social_licence]
+    routes:
+      A_commonwealth: {label: "A. Commonwealth-owned plant under ARPANSA", scores: {veto_points: 2, regulator_readiness: 3, durability: 1, social_licence: 1}}
+      B_federal_private: {label: "B. Federal licensing law for private operators (s 109 override)", scores: {veto_points: 1, regulator_readiness: 2, durability: 1, social_licence: 1}}
+      C_cooperative: {label: "C. Cooperative: state repeal plus a state or joint regulator", scores: {veto_points: 1, regulator_readiness: 1, durability: 3, social_licence: 3}}
+    weight_sets:
+      equal: {veto_points: 1, regulator_readiness: 1, durability: 1, social_licence: 1}
+      readiness_x2: {veto_points: 1, regulator_readiness: 2, durability: 1, social_licence: 1}
+      durability_x2: {veto_points: 1, regulator_readiness: 1, durability: 2, social_licence: 1}
+    source: appendix_B3_v1
+    status: judgement
+    note: "Transcribed from 01_Report/sections/appendix-B-policy-and-supply-working.md Table B13 (law brief section 5). Non-nuclear options face no nuclear prohibition (EPBC s 140A and ARPANS s 10 apply to nuclear installations only), so they take the maximum 12."
+
+  # ---------------- Scales ----------------
+  global_scale_bounds:
+    lifecycle_g_per_kwh: [0, 1000]     # 1,000 = coal life cycle (parameters_run1.yaml coal_lca_unece central)
+    avoided_t_per_aud_m: [0, null]     # null = computed: zero-emission supply at the lowest tested LCOE against the NSW 2025 grid
+    cost_aud_mwh: [0, 641]             # 641 = highest SMR LCOE tested (smr_lcoe_2023_alt_aud high)
+    first_year: [2026, 2050]           # now to the horizon
+    supply_hhi: [0, 10000]             # the HHI's own range
+    social_t13: [5, 15]                # T13 totals: five criteria scored 1-3
+    legal_b3: [4, 12]                  # B3 totals: four objectives scored 1-3
+    note: "Sensitivity only. Base case uses local scales (0 = worst option, 1 = best option on that criterion; DCLG 2009 manual, TO VERIFY)."
+
+  # ---------------- Weight sets (our judgement of each group's stated priorities; not elicited) ----------------
+  criteria: [lifecycle, avoided_per_dollar, cost, time, supply, social, legal]
+  weight_sets:
+    W0_equal:
+      weights: {lifecycle: 1, avoided_per_dollar: 1, cost: 1, time: 1, supply: 1, social: 1, legal: 1}
+      rationale: "No stakeholder view privileged."
+    W1_climate_cost:
+      weights: {lifecycle: 0.10, avoided_per_dollar: 0.25, cost: 0.25, time: 0.20, supply: 0.05, social: 0.10, legal: 0.05}
+      rationale: "Federal Government / AEMO-ISP lens: cost and speed of decarbonisation first. Bowen (Bowen_Statements): nuclear 'more expensive, slower', first power 'well into the 2040s' (secondary extract, TO VERIFY)."
+    W2_firm_sovereign:
+      weights: {lifecycle: 0.25, avoided_per_dollar: 0.05, cost: 0.15, time: 0.05, supply: 0.30, social: 0.15, legal: 0.05}
+      rationale: "Coalition / nuclear-advocate lens: zero-emission firm supply and energy security first; legal change treated as a political choice they would make (Liberal_2026_EnergyPlan: lift the ban, double fuel reserves; TO VERIFY). Deliberately the most SMR-favourable set we could justify: a stress test."
+    W3_host_community:
+      weights: {lifecycle: 0.10, avoided_per_dollar: 0.10, cost: 0.15, time: 0.15, supply: 0.05, social: 0.30, legal: 0.15}
+      rationale: "Upper Hunter community, Wonnarua people and unions: consent, legal certainty and jobs soon (social_licence.md sections 3, 5, 6)."
+  weight_perturbation_frac:
+    value: 0.5
+    unit: each weight x (1 - 0.5) and x (1 + 0.5), then renormalised
+    source: plan_q12
+    status: assumption
+  random_weights:
+    draws: 20000
+    seed: 20261021
+    note: "Weights drawn uniformly on the simplex (Dirichlet(1,...,1))."

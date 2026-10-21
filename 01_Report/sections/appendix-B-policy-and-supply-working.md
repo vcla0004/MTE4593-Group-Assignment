@@ -4,8 +4,7 @@ Rubric coverage: RB.5, R2.4, R3.8, R2.1, R2.3, R2.7, R4.3, R3.1, R3.6, RB.6 (als
 CHANGELOG
 - v2.1, 21/10/2026 (writer, Q8). B6 re-based on `same_money.md` after the GenCost 2030 re-run (SMR A$306, 230–382; renewables A$107, 89–125): text, Table B24 and Tables B25–B28 replaced, alternative reading (A$514 / A$102) kept as sensitivity rows; B5.4 "45×" replaced by the scripted 44× (44–223×). TODOs 11 and 12 closed (the GenCost table and carbon price remain [TO VERIFY]). Rubric items: R2.3, R3.1, RB.5, RB.6.
 - v2, 21/10/2026 (writer, Q4). Appended B4 (displacement), B5 (schedule value, including C1's break-even and the 30–223× derivation) and B6 (same money), Tables B15–B28, from Q2's re-based `results/` files; working for §7 and §6.3 finding 5 (factcheck L47; review audit §2, R2 and R4 rows). The rest of v1 is unchanged.
-- B6 states both GenCost readings: §7 uses run 5's 2030 reading (rows in Table B28); Tables B26–B27 are still on run 1's A$514 basis until `same_money.py` is re-run [TO VERIFY: GenCost table/year]. Carbon price: federal path C$95/C$115 [TO VERIFY]; the superseded path is shown for comparison only.
-- One hand calculation (the 45× low end on the current price path, B5.4) is flagged for scripting. Remaining TODO 10 is now partly done (LCOE and MCDA still to come).
+- (v2) B6 states both GenCost readings [TO VERIFY: GenCost table/year]. Carbon price: federal path C$95/C$115 [TO VERIFY]; the superseded path is shown for comparison only. Remaining TODO 10 is partly done (LCOE and MCDA still to come).
 - v1, 20/10/2026 (writer). First draft of Appendix B1–B3, cited from §8.1 and §8.3.
   - review.md A10 and top priority 2; factcheck.md A3, A10 and blocking item 6: the Senate arithmetic, licensing durations, HHI working and route scores now exist in an appendix. The §8.1 and §8.3 pointers are updated to "Appendix B1/B2/B3".
   - factcheck.md A3: the majority of 39 is stated as "all 76 senators voting". review.md §8.1 point 2: the "36 even with every other crossbencher" robustness check is shown (B1.2).
@@ -628,7 +627,7 @@ Capital-only LCOE for one unit across discount rates (30-year / 60-year annuity)
 | 80 | Post-coal mix + 50 (illustrative) | 248 | 467 | 4,037 | 2,140 |
 
 *Table B27. Cumulative CO₂e avoided for the same annual spend as one SMR unit (A$0.72 bn a year buys 6.8 TWh a year of firmed renewables from 2028, against the SMR's 2.37 TWh).*
-*Source: `results/same_money.md` §4 [inputs TO VERIFY]. The alternative reading (A$514 / A$102; A$1.22 bn buys 11.9 TWh) gives Liddell ratios of 10.1×, 45.8×, 19.1× and 9.3× for the first four rows (Table B28).*
+*Source: `results/same_money.md` §4 [inputs TO VERIFY]. The alternative reading (A$514 / A$102; A$1.22 bn buys 11.9 TWh) gives Liddell ratios of 10.1×, 45.8×, 19.1× and 9.3× for the first four rows (`same_money.md` §4; the NEM-T2 slow rows are in Table B28).*
 
 | Site | Grid case | SMR start | SMR to 2035 | SMR to 2050 | Renewables to 2035 | Renewables to 2050 | Renewables / SMR to 2050 |
 |---|---|---:|---:|---:|---:|---:|---:|
@@ -642,23 +641,29 @@ Capital-only LCOE for one unit across discount rates (30-year / 60-year annuity)
 The negative Ontario-average row arises because, once Ontario's average falls below the renewables' assumed 30 g/kWh life-cycle value, extra renewables add emissions against that average and the SMR's lower life-cycle value wins. This is a real property of a near-clean grid. But it rests on two placeholders (the renewables' life-cycle value and IESO's 2040 figure) and on the average rather than the marginal factor.
 
 *Table B28. Sensitivity of the same-money result (Liddell, NEM-T2 slow, SMR from 2040). Figure F7 data.*
-*Source: `results/same_money.md` §5 [inputs TO VERIFY]. Bold rows are run 5's reading, which §7 uses.*
+*Source: `results/same_money.md` §5 [inputs TO VERIFY]. Bold row is the central case §7 uses; the last six rows are the alternative reading (SMR A$514).*
 
 | Case (SMR / renewables LCOE, A$/MWh) | Energy ratio | Renewables / SMR CO₂e to 2050 |
 |---|---:|---:|
-| **GenCost 2023-24, 2030 midpoints (306 / 107)** | **2.9×** | **10.9×** |
-| **2030 low SMR, high renewables (230 / 153)** | **1.5×** | **5.7×** |
-| Run 1 central, the alternative reading (514 / 102) | 5.0× | 19.1× |
-| SMR LCOE low (387 / 102) | 3.8× | 14.4× |
-| SMR LCOE high (641 / 102) | 6.3× | 23.9× |
-| Low SMR lead (198 / 102) | 1.9× | 7.4× |
-| Renewables LCOE low (514 / 91) | 5.6× | 21.4× |
-| Renewables LCOE high (514 / 153, assumption) | 3.4× | 12.8× |
-| Worst case for renewables tested (198 / 153) | 1.3× | 4.9× |
-| SMR starts 2035 (514 / 102) | 5.0× | 9.3× |
-| Renewables start 2030 (514 / 102) | 5.0× | 15.9× |
-| Renewables life cycle 83 g/kWh (514 / 102) | 5.0× | 15.4× |
-| SMR life cycle 5.8 g/kWh, our 95th percentile (514 / 102) | 5.0× | 19.3× |
+| **Central: GenCost 2023-24, 2030 midpoints (306 / 107)** | **2.9×** | **10.9×** |
+| SMR LCOE 2030 low (230 / 107) | 2.1× | 8.2× |
+| SMR LCOE 2030 high (382 / 107) | 3.6× | 13.6× |
+| Renewables LCOE 2030 low (306 / 89) | 3.4× | 13.1× |
+| Renewables LCOE 2030 high (306 / 125) | 2.4× | 9.3× |
+| Renewables high, assumption (306 / 153) | 2.0× | 7.6× |
+| Worst case for renewables on the 2030 reading (230 / 153) | 1.5× | 5.7× |
+| Low SMR lead (198 / 107) | 1.9× | 7.0× |
+| Lowest SMR lead, worst case tested (198 / 153) | 1.3× | 4.9× |
+| SMR starts 2035 (306 / 107) | 2.9× | 5.3× |
+| Renewables start 2030 (306 / 107) | 2.9× | 9.0× |
+| Renewables life cycle 83 g/kWh (306 / 107) | 2.9× | 8.7× |
+| SMR life cycle 5.8 g/kWh, our 95th percentile (306 / 107) | 2.9× | 11.0× |
+| Alternative reading, central (514 / 102) | 5.0× | 19.1× |
+| Alternative reading, SMR low (387 / 102) | 3.8× | 14.4× |
+| Alternative reading, SMR high (641 / 102) | 6.3× | 23.9× |
+| Alternative reading, renewables low (514 / 91) | 5.6× | 21.4× |
+| Alternative reading, renewables high, assumption (514 / 153) | 3.4× | 12.8× |
+| Alternative reading, SMR starts 2035 | 5.0× | 9.3× |
 
 #### B6.3 Check against our own LCOE and OPG's figure
 
@@ -682,7 +687,7 @@ Our Darlington LCOE (`results/lcoe.md`; case B, 60 years, vendor operating costs
 - **RB.5 (full calculations in an appendix, results summarised in the main text).**
   - Produced: the working behind every number in §8.1 and §8.3 (Senate arithmetic, licensing durations, HHI shares and sensitivity, route scores), each traced to a script output, with the commands to re-run.
   - Produced (v2): the working behind §7 (B4–B6): formulas, worked examples, every input with its source and status (Table B15), all result tables, sensitivities and limitations.
-  - Missing: input verification; the LCOE subsection (with §8.2) and the MCDA (B7, Q14); one consistent GenCost basis in B6 after the re-run.
+  - Missing: input verification; the LCOE subsection (with §8.2) and the MCDA (B7, Q14). (B6 is now on one GenCost basis, the 2030 reading.)
 - **R2.1, R2.3, R2.7, R4.3 (v2, supporting §7).**
   - Produced: displacement per unit and for four units; C1's break-even days and carbon value against the cost of delay, sized to Units 2–4; average vs marginal factors, seven trajectories, one-at-a-time sensitivities, and the saving's 90% interval carried through.
   - Missing: AEMO/IESO series in place of the constructed trajectories; 315 MWe in the sensitivity; verified grid factors and carbon price.
@@ -710,8 +715,8 @@ Our Darlington LCOE (`results/lcoe.md`; case B, 60 years, vendor operating costs
 8. **[TODO: Leroy, references]** Disambiguate CNSC 2026a (project page) and 2026b (hold-point page); fix "Parliament of New South Wales, 2025–26" to a single year with a suffix; confirm the WNA page years; give REGDOC-3.5.1 its year.
 9. **[TODO: bill date]** ANNPSR bill introduction date (Bills Digest No. 32, 2023–24), to give the "Act to operating regulator" interval exactly.
 10. **[TODO: coordinator]** Displacement, schedule value and same money are now B4–B6 (v2). Still to write: the LCOE subsection (with §8.2) and B7 MCDA (Q14).
-11. **[TO VERIFY: GenCost table/year, Victor]** If A$230–382 is confirmed as GenCost 2023-24's 2030 SMR value, set `smr_lcoe_aud` 306 (230–382) and `vre_firmed_lcoe_aud` 107 (89–125) in `parameters_run1.yaml`, re-run `same_money.py`, and replace Tables B26–B28 so all of B6 is on one basis.
-12. **[TO VERIFY, Victor]** The federal carbon price path (C$95 in 2026, C$115 in 2030) on canada.ca; then have run 5 align `parameters_run5.yaml` and re-run `initiative_cost.py`. Script the 45× current-path figure (B5.4) in `schedule_value.py`.
+11. **[TO VERIFY: GenCost table/year, Victor]** Confirm that A$230–382 is GenCost 2023-24's 2030 SMR value and A$89–125 the 2030 firmed-renewables value. B6 is already on that reading; if the table differs, edit `parameters_run1.yaml` and re-run `same_money.py`.
+12. **[TO VERIFY, Victor]** The federal carbon price path (C$95 in 2026, C$115 in 2030) on canada.ca. `initiative_cost.py` and `schedule_value.py` already use it (the 44–223× is scripted).
 13. **[TO VERIFY]** The B4–B6 inputs in Table B15 and Table B24 (TAF 2025 average and marginal definition; NGA 2025; CER; IESO 2040; AEMO coal exit; AER/AGL Liddell closure; RBA rate; OPG C$149/MWh, whose `opg_oeb_lcoe_lead` entry must be merged from `sources_run5.md` into sources.md; the Bayswater closure date).
 14. **[TODO: Leroy]** Net MWe (300 vs 315: add 315 to the B4 sensitivity), capacity factor, design life and start years.
 15. **[Before submission]** Strip the [TO VERIFY]/[TODO] markers and the changelog comment; set the final table numbers.
