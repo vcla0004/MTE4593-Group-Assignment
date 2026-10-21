@@ -2,6 +2,7 @@ Rubric coverage: RB.5, R2.4, R3.8, R2.1, R2.3, R2.7, R4.3, R3.1, R3.6, RB.6 (als
 
 <!--
 CHANGELOG
+- Fact-check I-pass3-batch1b, 21/10/2026 (writer): S9 (new B3.1, Table B14a: T16 scores and weight test); S8 ("on two placeholders" in the B6 Result); S7 (0.65% is of the total C$170 m, nominal vs 2020 dollars, B8.4 Limits). B7 skipped as instructed.
 - Q13 review applied, 21/10/2026 (writer): B6 overclaim corrected (renewables lead in every Liddell case; the SMR wins on Ontario's average grid, Table B27 row 5; R2.7); new B2.6 (fuel demand, Table B35) and B8 (social and stakeholder working, Tables B36–B40; B7 was already the MCDA); B2 Result leads with the 850–1,400 bounds; stale B2.5 bullet, B4.3 item 5 and the 315 MWe notes deleted; B3 stated as a hand calculation.
 - Still open for Victor: M1 (aph.gov.au, B1 Result, steps 4 and 7, Table B2); S12 (GenCost table); B6.3 LCOE working (with §8.2); the 4.2 g/kWh and 7.5% bases wait on the §6 re-base.
 - v3, 21/10/2026 (writer, Q14). Appended B7 (MCDA working), Tables B29–B34, from `results/mcda.md` and `mcda_scores.csv`; B7.5 gives both C1 cases (1,734 t, 2,200 t) with the placeholders marked [C1 saving: per final §6]. Serves R3.6, RB.8, R2.4, R2.6. B3's route A rescoring (fact-check M2) is carried into B7.1. R5.2 captions above tables; R5.5 Australian English.
@@ -347,6 +348,21 @@ Route A's description currently rests on ABC News (2024), a weak secondary sourc
 
 Reading: route B ranks last under all three weightings tested, and C is never behind A. Valuing regulator readiness more only closes the gap, to a tie with A. The choice between A and C is a choice between speed (an existing regulator) and durability (both levels of government committed). That is a political judgement, not a technical one. Whichever route is assumed, an Australian SMR scores lowest on time to first power in the §9 MCDA.
 
+#### B3.1 Implementation levers for C1 (Table T16 in §8.6): scores and weight test
+
+Each lever is scored 1 (poor) to 3 (good) on enforceability, speed and low schedule risk. The scores are our judgement (route brief §5), not sourced; the totals are hand calculations.
+
+*Table B14a. T16 lever scores and weight test.*
+*Source: our judgement and hand calculation (route brief §5).*
+
+| Lever | Enforceability | Speed | Low risk | Equal (of 9) | Enforceability × 2 | Speed × 2 |
+|---|---:|---:|---:|---:|---:|---:|
+| L1. OPG specification | 2 | 3 | 3 | **8** | 2×2 + 3 + 3 = 10 | 2 + 3×2 + 3 = **11** |
+| L2. Equity-tranche milestone | 3 | 2 | 3 | **8** | 3×2 + 2 + 3 = **11** | 3 + 2×2 + 3 = 10 |
+| L3. Ontario shareholder direction | 3 | 2 | 2 | 7 | 3×2 + 2 + 2 = 10 | 3 + 2×2 + 2 = 9 |
+
+Reading: L1 and L2 tie at 8 on equal weights. L2 leads (11) if enforceability counts double and L1 leads (11) if speed does. L3 is never first, so the recommendation (L1 now, L2 at tranche 2) holds under all three weightings.
+
 ---
 
 ### B4. Displacement: CO₂e avoided by one BWRX-300, Darlington vs Liddell
@@ -594,7 +610,7 @@ This agrees with `results/initiative_cost.md` §5 (run 5): one day of delay cost
 
 ### B6. Same money: Darlington's budget spent on firmed renewables
 
-**Result.** On GenCost 2023-24's 2030 costs, the same annual spend as one SMR unit (A$0.72 bn a year) buys **2.9×** the energy from firmed renewables (6.8 TWh a year against 2.37). For a Liddell SMR from 2040 on the slow trajectory, those renewables avoid **10.9×** more CO₂e to 2050 (5.7× on the GenCost 2030 reading alone, with renewables at A$153). Across all Liddell cases tested the ratio is 4.9–26.0× (4.9× is the lowest, with the A$198 SMR lead and A$153 renewables), so renewables avoid more CO₂e by 2050 in every Liddell case tested. **On Ontario's average grid the SMR wins** (−0.4×, Table B27, row 5): once that grid is cleaner than the renewables' assumed 30 g/kWh life-cycle value, extra renewables add emissions against it. On Ontario's marginal grid renewables again lead (2.8×). On the alternative reading (SMR A$514/MWh), the ratios are 5.0× and 19.1× (9.3–45.8× across cases). Script: `python3 -I 03_LCA_Calculations/scripts/same_money.py`, with output in `results/same_money.md`.
+**Result.** On GenCost 2023-24's 2030 costs, the same annual spend as one SMR unit (A$0.72 bn a year) buys **2.9×** the energy from firmed renewables (6.8 TWh a year against 2.37). For a Liddell SMR from 2040 on the slow trajectory, those renewables avoid **10.9×** more CO₂e to 2050 (5.7× on the GenCost 2030 reading alone, with renewables at A$153). Across all Liddell cases tested the ratio is 4.9–26.0× (4.9× is the lowest, with the A$198 SMR lead and A$153 renewables), so renewables avoid more CO₂e by 2050 in every Liddell case tested. **On Ontario's average grid the SMR wins, on two placeholders** (the 30 g/kWh renewables life-cycle value and the IESO 2040 grid; −0.4×, Table B27, row 5): once that grid is cleaner than the renewables' assumed 30 g/kWh life-cycle value, extra renewables add emissions against it. On Ontario's marginal grid renewables again lead (2.8×). On the alternative reading (SMR A$514/MWh), the ratios are 5.0× and 19.1× (9.3–45.8× across cases). Script: `python3 -I 03_LCA_Calculations/scripts/same_money.py`, with output in `results/same_money.md`.
 
 **Basis of the tables.** The script now runs on the 2030 reading: SMR A$306/MWh (range 230–382) and firmed renewables A$107/MWh (89–125), from a news report of GenCost 2023-24 (Graham, Hayward and Foster, 2024, as reported) that gives A$387–641 as the SMR's **2023** value and A$230–382 as its **2030** value [TO VERIFY: GenCost table/year; the news pointer is in `sources_run5.md`, not sources.md]. Run 1's A$514 (387–641) / A$102 is kept as the alternative reading, in the sensitivity rows of Table B28 only. If Victor finds the table says otherwise, change `smr_lcoe_aud` and `vre_firmed_lcoe_aud` in `parameters_run1.yaml` and re-run; every table here regenerates.
 
@@ -933,7 +949,7 @@ Reading: R1 beats R3 only on speed (2 against 1) and public cost (2 against 1), 
 
 The 78% is a subtraction (20.9 − 2.00 − 1.00 − 0.97 − 0.70 = 16.23), not a reported figure. Debt (CIB, WTFN) and equity (CGF, BOF) are added only to show scale; the CGF and BOF stakes of up to 15% and 7.5% are shares of the project partnership's equity, not of the budget. Budget per MW: C$20.9 bn / 1,200 MWe = C$17.4 m.
 
-**Limits.** All scores are judgements from secondary summaries. Local min–max scaling and the MCDA use of these scores are in B7. Job and waste figures in T12 (CBoC, NWMO) are taken from the briefs and are not recomputed here, except the Ignace hosting payment (C$170 m / 81 years = C$2.1 m a year, 0.65% of the C$26 bn lifecycle cost, nominal).
+**Limits.** All scores are judgements from secondary summaries. Local min–max scaling and the MCDA use of these scores are in B7. Job and waste figures in T12 (CBoC, NWMO) are taken from the briefs and are not recomputed here, except the Ignace hosting payment (C$170 m over 81 years, about C$2.1 m a year; the C$170 m in total is 0.65% of the C$26 bn lifecycle cost, nominal against 2020 dollars).
 
 ---
 
