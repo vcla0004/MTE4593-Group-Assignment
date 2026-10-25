@@ -73,6 +73,8 @@ DECLARATION = """## Declaration of generative AI use
 [TODO: team to write the AI-use declaration required by the unit (CLAUDE.md: the team decides how AI use is declared).]
 """
 DROP_HEADINGS = ("IDs covered", "Remaining TODOs")
+PARENT = {"4.1-technology-projects.md": "## 4 The technology and the initiative\n\n",
+          "8.1-law-regulation-licensing.md": "## 8 Non-technical factors affecting translation to practice\n\n"}
 
 
 def clean(text: str) -> str:
@@ -97,8 +99,8 @@ def figure(line: str) -> str:
     n, caption = m.group(1), m.group(2)
     pngs = sorted(FIG_DIR.glob(f"F{n}_*.png"))
     if pngs:
-        return f"![Figure {n}. {caption}]({pngs[0]}){{width=95%}}"
-    return f"**[TODO: Figure {n} image missing]** *Figure {n}. {caption}*"
+        return f"![Figure F{n}. {caption}]({pngs[0]}){{width=95%}}"
+    return f"**[TODO: Figure F{n} image missing]** *Figure F{n}. {caption}*"
 
 
 def words(text: str) -> tuple[int, int]:
@@ -137,7 +139,18 @@ def renumber_tables(bodies: list[str]) -> list[str]:
             new = mapping.get(old, first.get(old))
             return f"T{new}" if new else m.group(0)
         out.append(re.sub(r"\bT(\d+[a-z]?)\b", sub, body))
-    return out
+    return out, first
+
+
+APP_T = re.compile(r"\b(Tables?) T(\d+[a-z]?)(?:( and )T(\d+[a-z]?))?\b")
+
+
+def renum_app(text: str, first: dict) -> str:
+    """In appendices, point "Table(s) T…" at the new body numbers (grid labels T1/T2 untouched)."""
+    def sub(m):
+        out = f"{m.group(1)} T{first.get(m.group(2), m.group(2))}"
+        return out + (f"{m.group(3)}T{first.get(m.group(4), m.group(4))}" if m.group(4) else "")
+    return APP_T.sub(sub, text)
 
 
 def main() -> None:
@@ -150,15 +163,16 @@ def main() -> None:
             body = f"## {placeholder}\n\n**[TODO: section not yet in the repo]**\n"
         else:
             raise SystemExit(f"missing {name}")
+        if name[:2] in ("4.", "8."):
+            body = re.sub(r"^(#{2,5}) ", r"#\1 ", body, flags=re.M)
+        if not body.lstrip().startswith(PARENT.get(name, "##").strip()):
+            body = PARENT.get(name, "") + body
         parts.append(body)
         rows.append((name, *words(body)))
-    cited = Path(__file__).resolve().parent / "references-cited.md"
-    parts = renumber_tables(parts)
+    parts, first = renumber_tables(parts)
     parts[0] = PAGE_BREAK + parts[0]  # abstract starts after the title page and contents
     parts.append(PAGE_BREAK)
-    if FINAL and cited.exists():  # written by check_refs.py from a draft build
-        parts.append(cited.read_text(encoding="utf-8"))
-    elif (SEC / REFS).exists():
+    if (SEC / REFS).exists():  # full list; check_refs.py only reports mismatches
         parts.append(clean((SEC / REFS).read_text(encoding="utf-8")))
     else:
         parts.append("## References\n\n**[TODO: reference list]**\n")
@@ -167,8 +181,8 @@ def main() -> None:
     for name in APPENDICES:
         f = SEC / name
         if f.exists():
-            parts.append(clean(f.read_text(encoding="utf-8")))
-        elif "moved" not in name:
+            parts.append(renum_app(clean(f.read_text(encoding="utf-8")), first))
+        elif "moved" not in name and "appendix-E" not in name:
             parts.append(f"## {name}\n\n**[TODO: not yet in the repo]**\n")
     if FINAL:
         head = TITLE

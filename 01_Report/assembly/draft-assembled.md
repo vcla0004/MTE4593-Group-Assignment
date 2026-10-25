@@ -1,12 +1,8 @@
 ---
-title: "Small modular reactors: where they cut the most carbon, what holds them back, and a low-clinker concrete initiative for Darlington"
-subtitle: "MTE4593 Materials and Sustainability, Assignment 2 (Group 9)"
-author:
-  - "Victor Clarke [TODO: student ID]"
-  - "Leroy Jean [TODO: student ID]"
-  - "Sam [TODO: surname] [TODO: student ID]"
-date: "October 2026"
+title: "Small modular reactors: DRAFT (assembled from sections)"
 ---
+
+**Draft for the team, not the submission.** Every [TO VERIFY] and [TODO] marker is still open. Leroy's sections are placeholders until they are in the repo.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -81,17 +77,19 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 ---
 
 
-## 4.1 Technology, projects and patents (Leroy)
+## 4 The technology and the initiative
+
+### 4.1 Technology, projects and patents (Leroy)
 
 **[TODO: section not yet in the repo]**
 
 
-## 4.2 BWRX-300 at Darlington (Leroy)
+### 4.2 BWRX-300 at Darlington (Leroy)
 
 **[TODO: section not yet in the repo]**
 
 
-## 4.3 The initiative: low-clinker concrete for the Darlington Units 2–4 infill
+### 4.3 The initiative: low-clinker concrete for the Darlington Units 2–4 infill
 
 **C1 targets a materials problem that modular construction creates, and it is worth doing only if it is schedule-neutral.** The BWRX-300's reactor building is made of diaphragm-plate steel-composite (DPSC) modules: steel shells filled on site with concrete. The infill must flow between closely spaced plates, so we assume a self-consolidating mix, which is cement-rich (our inference; GE-Hitachi Nuclear Energy, 2024, describes the DPSC design). A delay of 11.6–18.5 days to one unit on Ontario's average grid, or 1.7–1.8 days on its marginal grid, cancels C1's whole saving (§7.1).
 
@@ -158,7 +156,7 @@ One BWRX-300 at Darlington is estimated to emit **about 4.2 g CO₂e per kWh del
 | Enrichment; burnup | 3.8% U-235 (3.4–4.95); 45 GWd/t (35–55) | [TODO: authors] (2025), unrefereed preprint; assumption (both placeholders) |
 | O&M; decommissioning; back end | 0.33; 0.11; 0.56 g/kWh (×0.5 to ×2; decommissioning ×3) | EDF R&D (2024) stage shares as reported by secondary sources; back end by difference |
 
-![Figure 1. LCA system boundary for one BWRX-300 at Darlington: bottom-up fuel front end and construction materials, literature values for operation, decommissioning and the back end, and the C1 target structures. | Source: this study. | File: 03_LCA_Calculations/results/F1_system_boundary.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F1_system_boundary.png){width=95%}
+![Figure F1. LCA system boundary for one BWRX-300 at Darlington: bottom-up fuel front end and construction materials, literature values for operation, decommissioning and the back end, and the C1 target structures. | Source: this study. | File: 03_LCA_Calculations/results/F1_system_boundary.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F1_system_boundary.png){width=95%}
 
 ### 6.2 Baseline inventory and hotspots
 
@@ -175,7 +173,7 @@ Of this, **13,100 m³ is in the C1 target structures**: the forebay shaft (4,000
 
 The fuel front end is 64% of the total and construction about 7.5%. Within construction, steel emits about twice what concrete does (14,800 vs 7,600 t CO₂e per unit with every input at its most likely value, the "mode case"); Geneski, McKellar and Atkinson (n.d.) [TO VERIFY] also found that steel exceeds concrete. The C1 target concrete is 1.3% of the mode-case total, so **C1 acts on roughly one-hundredth of the footprint**, which caps what any concrete change can achieve.
 
-![Figure 2. Life-cycle emissions of one BWRX-300 by stage: expected 4.3 g CO₂e/kWh (Monte Carlo mean), with the mode case (every input at its most likely value; total 2.7) marked. | Source: this study, scripts/lca_uncertainty.py; inputs in parameters_lca.yaml [TO VERIFY]. | File: 03_LCA_Calculations/results/F2_stage_breakdown.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F2_stage_breakdown.png){width=95%}
+![Figure F2. Life-cycle emissions of one BWRX-300 by stage: expected 4.3 g CO₂e/kWh (Monte Carlo mean), with the mode case (every input at its most likely value; total 2.7) marked. | Source: this study, scripts/lca_uncertainty.py; inputs in parameters_lca.yaml [TO VERIFY]. | File: 03_LCA_Calculations/results/F2_stage_breakdown.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F2_stage_breakdown.png){width=95%}
 
 ### 6.3 The initiative against the baseline
 
@@ -210,11 +208,11 @@ The tornado varies each of 40 inputs alone; the Monte Carlo varies all 40 togeth
 
 **The life-cycle total depends on the fuel inputs, not the concrete (Figure F3).** The largest swings are conversion heat (2.70 → 5.37 g/kWh), the mining factor (2.26 → 3.65) and the back end (2.42 → 3.25), followed by burnup and enrichment level. No concrete input moves the total by more than 0.07 g/kWh; steel intensity moves it by 0.17. **The LC3 saving depends on the geometry and the mix**: the LC3 emission cut (1,406 → 2,015 t), DPSC wall thickness (1,464 → 1,995 t), infill binder content (1,590 → 2,021 t), and any extra binder LC3 needs to flow (10% more cuts the saving to 1,438 t). OPG's drawings and mock-up trials would narrow all four.
 
-![Figure 3. One-at-a-time sensitivity of the life-cycle intensity (left, centred on the mode case, 2.70 g CO₂e/kWh, not the 4.2 median) and of the LC3 saving per unit (right, centred on the mode case, 1,734 t), top ten inputs each. | Source: this study, scripts/lca_uncertainty.py; ranges in parameters_lca.yaml. | File: 03_LCA_Calculations/results/F3_tornado.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F3_tornado.png){width=95%}
+![Figure F3. One-at-a-time sensitivity of the life-cycle intensity (left, centred on the mode case, 2.70 g CO₂e/kWh, not the 4.2 median) and of the LC3 saving per unit (right, centred on the mode case, 1,734 t), top ten inputs each. | Source: this study, scripts/lca_uncertainty.py; ranges in parameters_lca.yaml. | File: 03_LCA_Calculations/results/F3_tornado.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F3_tornado.png){width=95%}
 
 **Monte Carlo (Figure F4): why we report 4.2, not 2.7, and why it is a range of medians.** The mode case (2.7 g/kWh) puts every input at its single most likely value. Several inputs, however, can mostly only rise: conversion heat is most likely 26 kWh/kg U but could be 665, which alone adds about 1.0 g/kWh to the average (Appendix C5). We therefore report the median of all draws (4.2 g/kWh) rather than the mode case; the same skew lowers LC3's share from 0.45% to 0.29%, while the saving itself barely moves. **The headline does depend on how conversion heat is distributed** (Table C2). With it fixed at Gibon and Hahn Menacho's (2023) central 26 kWh/kg U [TO VERIFY] the median is 3.3 g/kWh (90% interval 2.6–4.2); with a log-uniform 26–665 it is 3.9 (2.9–5.9). We therefore quote the **range of medians, 3.3–4.2 g/kWh**, and LC3's share of the life cycle ranges over 0.29–0.37%. Every value stays below UNECE's range. A measured conversion value would settle it [TODO: source needed: Cameco Port Hope]. Other limitations (independent draws, judgement ranges) are in Appendix C6.
 
-![Figure 4. Monte Carlo distributions (20,000 draws, seed 20261021) of the life-cycle intensity (median 4.18, 5th–95th percentile 3.05–5.85 g CO₂e/kWh) and of the LC3 saving per unit (median 1,742, 1,387–2,153 t). | Source: this study, scripts/lca_uncertainty.py. | File: 03_LCA_Calculations/results/F4_montecarlo.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F4_montecarlo.png){width=95%}
+![Figure F4. Monte Carlo distributions (20,000 draws, seed 20261021) of the life-cycle intensity (median 4.18, 5th–95th percentile 3.05–5.85 g CO₂e/kWh) and of the LC3 saving per unit (median 1,742, 1,387–2,153 t). | Source: this study, scripts/lca_uncertainty.py. | File: 03_LCA_Calculations/results/F4_montecarlo.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F4_montecarlo.png){width=95%}
 
 ### 6.5 Comparison with published values
 
@@ -235,7 +233,7 @@ The tornado varies each of 40 inputs alone; the Monte Carlo varies all 40 togeth
 
 The sources disagree mainly about the fuel front end (ore grade, enrichment technology and grid), not about construction, and that is where our result departs from them. The known low bias (cut-offs, possibly construction) would raise the total and make C1's share smaller still, so it does not weaken §6.3. If the Granta cross-check is run, its construction values will be compared here with the model's (Appendix A9) [TODO: Granta cross-check, H2 due Thu 12:00; cut if not run].
 
-![Figure 5. Our BWRX-300 result against published nuclear life-cycle values (point = central or median; line = range or interval); coal about 750–1,100 and gas combined cycle 403–513 g CO₂e/kWh for scale. UNECE reports a range only (5.1–6.4), so it is drawn as a range with no midpoint; Warner and Heath are drawn as a median only (12). | Source: this study; EDF R&D (2024); United Nations Economic Commission for Europe (2021); Gibon and Hahn Menacho (2023); Carless, Griffin and Fischbeck (2016); Warner and Heath (2012). Benchmarks [TO VERIFY]. | File: 03_LCA_Calculations/results/F5_benchmarks.png] [TODO: IPCC AR5 WGIII Annex III row is drawn automatically once its values are set to verified in parameters_lca.yaml](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F5_benchmarks.png){width=95%}
+![Figure F5. Our BWRX-300 result against published nuclear life-cycle values (point = central or median; line = range or interval); coal about 750–1,100 and gas combined cycle 403–513 g CO₂e/kWh for scale. UNECE reports a range only (5.1–6.4), so it is drawn as a range with no midpoint; Warner and Heath are drawn as a median only (12). | Source: this study; EDF R&D (2024); United Nations Economic Commission for Europe (2021); Gibon and Hahn Menacho (2023); Carless, Griffin and Fischbeck (2016); Warner and Heath (2012). Benchmarks [TO VERIFY]. | File: 03_LCA_Calculations/results/F5_benchmarks.png] [TODO: IPCC AR5 WGIII Annex III row is drawn automatically once its values are set to verified in parameters_lca.yaml](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F5_benchmarks.png){width=95%}
 
 ---
 
@@ -270,7 +268,7 @@ The grid trajectory, start year and post-coal floor move these results tenfold; 
 
 **An SMR's climate value depends on when it runs and what it displaces, not on today's coal share.** In Ontario the case rests on displacing marginal gas. At Liddell it rests on the NEM decarbonising slowly.
 
-![Figure 6. CO₂e avoided to 2050 by one BWRX-300: Darlington Unit 1 (from 2030) against Liddell (from 2035 or 2040), by grid case; hatched bars are upper bounds. | Source: this study, Appendix B4 (Table B17)](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F6_displacement.png){width=95%}
+![Figure F6. CO₂e avoided to 2050 by one BWRX-300: Darlington Unit 1 (from 2030) against Liddell (from 2035 or 2040), by grid case; hatched bars are upper bounds. | Source: this study, Appendix B4 (Table B17)](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F6_displacement.png){width=95%}
 
 ### 7.3 The same money on firmed renewables
 
@@ -279,12 +277,14 @@ The grid trajectory, start year and post-coal floor move these results tenfold; 
 GenCost 2023-24 gives A$230–382/MWh for an SMR in 2030, against A$89–125 for solar and wind with integration costs (Graham, Hayward and Foster, 2024, as reported). At the midpoints the same spend buys 2.9× the energy (Figure F7). With renewables from 2028 (assumed) and the SMR from 2040 on the slower trajectory, renewables avoid **10.9×** more CO₂e to 2050. They still avoid 5.7× more in the worst case we tested for them, and 4.9× if the SMR costs only A$198 (Appendix B6, Table B28). If A$387–641 is the 2030 range instead, the ratios become 5.0× and 19.1×.
 Renewables come out ahead because they are cheaper per MWh and start about a decade earlier. Two limits apply: that much new output would itself shift the grid trajectory, and integration costs rise beyond the shares GenCost models. **On carbon per dollar, an SMR at Liddell loses.** Its case rests on firm supply, land use, system security and a hedge against renewables or transmission falling behind, which §9 weighs.
 
-![Figure 7. Same money at Liddell: firmed renewables ÷ one SMR unit, as energy bought and CO₂e avoided to 2050, under four cost cases; the dashed line is parity. | Source: this study, Appendix B6 (Table B28)](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F7_same_money.png){width=95%}
+![Figure F7. Same money at Liddell: firmed renewables ÷ one SMR unit, as energy bought and CO₂e avoided to 2050, under four cost cases; the dashed line is parity. | Source: this study, Appendix B6 (Table B28)](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F7_same_money.png){width=95%}
 
 ---
 
 
-## 8.1 Law, regulation and licensing
+## 8 Non-technical factors affecting translation to practice
+
+### 8.1 Law, regulation and licensing
 
 Law is where Darlington and Liddell differ most. At Darlington, C1 starts with LC³ in non-safety concrete and extends to the steel-composite infill only if qualified before the Units 2–4 go-ahead expected in 2028 (American Nuclear Society, 2026, as reported). At Liddell, three laws and the site owner block an SMR (Table T7).
 
@@ -307,7 +307,7 @@ Law is where Darlington and Liddell differ most. At Darlington, C1 starts with L
 ---
 
 
-## 8.2 Economics, finance and market barriers
+### 8.2 Economics, finance and market barriers
 
 An SMR's cost is mostly capital, so whoever finances it sets its price and decides who can build one. C1 is the opposite: it costs almost nothing, but no one is paid for the carbon it saves.
 
@@ -333,7 +333,7 @@ An SMR's cost is mostly capital, so whoever finances it sets its price and decid
 ---
 
 
-## 8.3 Supply concentration and geopolitics
+### 8.3 Supply concentration and geopolitics
 
 Every front-end fuel stage we measured is concentrated. Each Herfindahl–Hirschman index (HHI; §2) exceeds 1,800, "highly concentrated" on the 2023 US merger guidelines (US Department of Justice and Federal Trade Commission, 2023), though on the 2010 scale only enrichment is (Table T9). For Darlington this is a price risk; for an Australian SMR it is a sovereign risk.
 
@@ -357,7 +357,7 @@ Every front-end fuel stage we measured is concentrated. Each Herfindahl–Hirsch
 ---
 
 
-## 8.4 Social licence
+### 8.4 Social licence
 
 The same reactor has a social licence at Darlington and none at Liddell. Safety data do not explain the difference; consent, benefit and trust do (Table T10).
 
@@ -381,7 +381,7 @@ The same reactor has a social licence at Darlington and none at Liddell. Safety 
 ---
 
 
-## 8.5 Stakeholders and money flows
+### 8.5 Stakeholders and money flows
 
 At Darlington none of the seven high-power actors opposes the project; at Liddell three of the four do (the Commonwealth, NSW and AGL), and the only strong supporter, the federal Coalition, is in opposition. Our power-weighted stance scores (−2 to +2; our judgement, not survey data; Figure F8; Appendix B8.2) are +1.07 and −1.03.
 
@@ -389,7 +389,7 @@ Money follows the same pattern (Table T11). OPG carries about 78% of Darlington 
 
 For C1, the decisive actors are OPG as buyer, GE Vernova Hitachi as owner of the infill specification, and the two equity funds at the Units 2–4 tranche (§8.2). None is opposed, but none yet has a reason to act; the tranche condition supplies one (§8.6).
 
-![Figure 8. Stakeholder power/interest maps for Darlington Units 2–4 with C1 (left) and a hypothetical Liddell BWRX-300 (right). Colour shows stance; positions are our judgement from §8.1–8.4. Source: this study, Appendix B8.2.](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F8_stakeholder_map.png){width=95%}
+![Figure F8. Stakeholder power/interest maps for Darlington Units 2–4 with C1 (left) and a hypothetical Liddell BWRX-300 (right). Colour shows stance; positions are our judgement from §8.1–8.4. Source: this study, Appendix B8.2.](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F8_stakeholder_map.png){width=95%}
 
 *Table T11. Who pays and who earns: the C$20.9 bn Darlington New Nuclear Project.*
 *Source: as cited in each row; shares calculated in Appendix B8.4.*
@@ -404,7 +404,7 @@ For C1, the decisive actors are OPG as buyer, GE Vernova Hitachi as owner of the
 ---
 
 
-## 8.6 Implementation pathway
+### 8.6 Implementation pathway
 
 **C1 can be built with no added delay on the evidence available if OPG applies a carbon specification to eligible non-safety concrete now (the LC³ pilot), qualifies the steel-composite infill on a Unit 1 mock-up, and ties a milestone to the Units 2–4 equity tranche.** The levers in Table T12 are scored on enforceability, speed and low schedule risk (1 to 3 each; our judgement, not sourced scores). L1 and L2 tie at 8. If enforceability counts double, L2 leads with 11; if speed counts double, L1 leads with 11; the recommendation is the same under both. L1 is C1's pilot step, not an add-on: a 10% floor invites LC³, whose full saving is 1,100–3,300 t CO₂e per unit (§4.3; Pillai et al., 2019).
 
@@ -512,11 +512,19 @@ Method in §2; working in Appendix B7; social-licence and legal scores from Appe
 
 ABC News, 2024. Peter Dutton reveals seven sites for proposed nuclear power plants. *ABC News*, 19 June. [online] Available at: https://www.abc.net.au/news/2024-06-19/dutton-reveals-seven-sites-for-proposed-nuclear-power-plants/103995310 [Accessed 20 October 2026].
 
+ABC News, 2026. Coalition vows to "take a chainsaw" to climate laws and offshore wind. *ABC News*, 23 September. [online] Available at: https://www.abc.net.au/news/2026-09-23/coalition-energy-plan-scrap-renewables-climate-laws/107184376 [Accessed 20 October 2026].
+
+American Institute of Steel Construction, 2022. *Buy Clean California quick guide*. [pdf] Available at: https://www.aisc.org/contentassets/937a380ddd404a2da0c48669d438bf3b/quickguide_buycleancali2022.pdf.
+
 American Nuclear Society, 2026. North American construction is back—smaller and faster—at OPG's Darlington. *Nuclear Newswire*, 5 June. [online] Available at: https://www.ans.org/news/2026-06-05/article-8047/north-american-construction-is-back-smaller-and-faster-at-opgs-darlington/ [Accessed 20 October 2026].
 
 ARPANSA, n.d. *Who we regulate*. [online] Australian Radiation Protection and Nuclear Safety Agency. Available at: https://www.arpansa.gov.au/regulation-and-licensing/regulation/about-regulatory-services/who-we-regulate [Accessed 20 October 2026].
 
+The Atmospheric Fund, 2021. *A Clearer View of Ontario's Emissions: Electricity Emissions Factors and Guidelines, 2021 Edition*. [pdf] Toronto: The Atmospheric Fund. Available at: https://taf.ca/custom/uploads/2021/11/20211116_TAF_Emissions-Factors-Guidelines.pdf.
+
 The Atmospheric Fund, 2025. *Ontario Electricity Emissions Factors and Guidelines: 2025 Edition*. [pdf] Toronto: The Atmospheric Fund. Available at: https://taf.ca/custom/uploads/2025/10/2025TAF-EmissionsFactors.pdf.
+
+Australian Electoral Commission, 2019. *District Council of Kimba community ballot on the National Radioactive Waste Management Facility: results*. Canberra: Australian Electoral Commission.
 
 Australian Electoral Commission, 2025. *2025 federal election report*. [pdf] Canberra: Australian Electoral Commission. Available at: https://www.aec.gov.au/Elections/federal_elections/2025/2025-Federal-Election-Report.pdf [Accessed 20 October 2026].
 
@@ -528,19 +536,29 @@ Australian Energy Regulator, 2021. *Decision notice: AGL application, 30 April 2
 
 Australian Greens, 2025. *2035: Powering Past Coal & Gas*. [pdf] Available at: https://cdn.greens.org.au/cdn/ff/fk0q_VgBQA5t00ZlhkPcF6i2IEZByQHBjpMq1g6YdVQ/1744244709/public/2025-04/2035%20Powering%20Past%20Coal%20&%20Gas.pdf [Accessed 20 October 2026].
 
+Bowen, C., 2025. *Joint media release: Experts agree: nuclear only getting more expensive, slower for Australia's energy needs*. [online] Canberra: Minister for Climate Change and Energy. Available at: https://minister.dcceew.gov.au/bowen/media-releases/joint-media-release-experts-agree-nuclear-only-getting-more-expensive-slower-australias-energy-needs [Accessed 20 October 2026].
+
 BWRX-300 Ostrołęka sp. z o.o., 2023. *Small Modular Nuclear Power Plant: Project Information Sheet*. Table 14, p. 83.
 
 Caixin Global, 2026. Beijing clears eight new reactors as China accelerates nuclear buildout. *Caixin Global*, 1 August.
 
+Canada Energy Regulator, n.d. *Provincial and Territorial Energy Profiles – Ontario*. [online] Available at: https://www.cer-rec.gc.ca/en/data-analysis/energy-markets/provincial-territorial-energy-profiles/provincial-territorial-energy-profiles-ontario.html.
+
 Canada Growth Fund and Building Ontario Fund, 2025. *Canada Growth Fund and Building Ontario Fund announce innovative equity investment in world-leading Ontario Power Generation SMR project*. [online] Newswire.ca, 23 October. Available at: https://www.newswire.ca/news-releases/canada-growth-fund-and-building-ontario-fund-announce-innovative-equity-investment-in-world-leading-ontario-power-generation-smr-project-862778443.html [Accessed 20 October 2026].
 
 Canada Infrastructure Bank, 2022. *CIB commits $970 million towards Canada's first Small Modular Reactor (SMR)*. [online] Toronto: Canada Infrastructure Bank. Available at: https://cib-bic.ca/en/medias/articles/cib-commits-970-million-towards-canadas-first-small-modular-reactor/ [Accessed 20 October 2026].
+
+Canadian Nuclear Safety Commission, 2021. *CNSC renews Ontario Power Generation's site preparation licence for its Darlington New Nuclear Project*. [online] News release, 12 October. Available at: https://www.canada.ca/en/nuclear-safety-commission/news/2021/10/cnsc-renews-ontario-power-generations-site-preparation-licence-for-its-darlington-new-nuclear-project.html [Accessed 20 October 2026].
 
 Canadian Nuclear Safety Commission, 2022. *REGDOC-3.5.1, Licensing Process for Class I Nuclear Facilities and Uranium Mines and Mills*, Version 2.1. [online] Available at: https://www.cnsc-ccsn.gc.ca/eng/acts-and-regulations/regulatory-documents/published/html/regdoc3-5-1-v2-1/ [Accessed 20 October 2026].
 
 Canadian Nuclear Safety Commission, 2024. *CMD 24-H3-1B* (staff presentation, Darlington New Nuclear Project). [pdf] Ottawa: Canadian Nuclear Safety Commission. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD-24-H3-1B.pdf/object.
 
 Canadian Nuclear Safety Commission, 2025. *Commission authorizes Ontario Power Generation Inc. to construct 1 BWRX-300 reactor at the Darlington New Nuclear Project site*. [online] News release, 4 April. Ottawa: Canadian Nuclear Safety Commission. Available at: https://www.canada.ca/en/nuclear-safety-commission/news/2025/04/commission-authorizes-ontario-power-generation-inc-to-construct-1-bwrx-300-reactor-at-the-darlington-new-nuclear-project-site.html [Accessed 20 October 2026].
+
+Canadian Nuclear Safety Commission, 2026a. *Darlington New Nuclear Project*. [online] Ottawa: Canadian Nuclear Safety Commission. Available at: https://www.cnsc-ccsn.gc.ca/eng/reactors/new-reactor-power-plant-projects/new-reactor-power-plant-facilities/darlington-new-nuclear-project/ [Accessed 20 October 2026].
+
+Canadian Nuclear Safety Commission, 2026b. *Regulatory hold points for new reactor facilities*. [online] Available at: https://www.cnsc-ccsn.gc.ca/eng/reactors/regulatory-hold-points/new-reactors/ [Accessed 20 October 2026].
 
 Canadian Ready-Mixed Concrete Association, 2022. *Industry-wide EPD for ready-mixed concrete, Ontario* (EPD 351, valid to 27 July 2027). [pdf] Available at: https://www.rmcao.org/wp-content/uploads/2023/04/CRMCA-EPD-Ontario-20220803.pdf.
 
@@ -550,7 +568,11 @@ Canberra Times, n.d. 'Nightmare scenario': states slam Dutton's nuclear plan. *C
 
 Carless, T.S., Griffin, W.M. and Fischbeck, P.S., 2016. The environmental competitiveness of small modular reactors: a life cycle study. *Energy*, 114, pp.84–99. Available at: https://ideas.repec.org/a/eee/energy/v114y2016icp84-99.html.
 
+Cement Association of Canada, 2022. *Environmental Product Declaration: General Use (GU) and Portland-Limestone (GUL) Cements*. [pdf] Available at: https://www.astm.org/v3/assets/blt5eb0a2cb04534832/blt9992df315e96e31c/697b1f51f6a61062618f5048/919.CAC_General_Use_(GU)_and_Portland-Limestone_(GUL)_Cements.pdf.
+
 Circular Ecology, 2019. *Inventory of Carbon and Energy (ICE) database v3.0*. Bath: Circular Ecology.
+
+Concrete Reinforcing Steel Institute, 2017. *Industry-wide EPD for fabricated steel reinforcing bar*. [pdf] Available at: https://www.astm.org/v3/assets/blt5eb0a2cb04534832/blt4900ac0ff22764a2/697b1fc25e3544dd57d83a3d/362.EPD_for_CRSI_EPD_FINAL_2017-08-28.pdf.
 
 Concrete Reinforcing Steel Institute, 2022. *Environmental Product Declaration: Fabricated Steel Reinforcement*. Schaumburg, IL: Concrete Reinforcing Steel Institute. Available at: https://www.crsi.org/sustainability/environmental-product-declaration/.
 
@@ -560,13 +582,19 @@ CSA Group, 2023. *CSA A3000:23, Cementitious materials compendium* (includes CSA
 
 Curve Lake First Nation, 2024. *Written submission, CMD 24-H3.83, DNNP licence to construct*, 11 November. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD24-H3-83.pdf/object [Accessed 21 October 2026].
 
+Defence Connect, n.d. Critical worker shortage menaces nuclear-powered submarine workforce. *Defence Connect*. [online] Available at: https://www.defenceconnect.com.au/industry/13993-critical-worker-shortage-menaces-nuclear-powered-submarine-workforce [Accessed 21 October 2026].
+
 Department of Climate Change, Energy, the Environment and Water, 2025. *Australian National Greenhouse Accounts Factors: 2025*. [pdf/xlsx] Canberra: Department of Climate Change, Energy, the Environment and Water.
+
+Department of Industry, Science, Energy and Resources, 2020. *A new agency to manage radioactive waste*. [online] Available at: https://industry.gov.au/news-media/australian-radioactive-waste-agency-news/a-new-agency-to-manage-radioactive-waste [Accessed 21 October 2026].
 
 Development Alternatives, n.d. *LC3 Sustainability Assessment* (ver 1.14). Available at: https://devalt.org/images/L2_ProjectPdfs/Report%20-%20LC3%20Sustainability%20Assessment_ver1.14.pdf.
 
 Dodgson, J.S., Spackman, M., Pearman, A. and Phillips, L.D., 2009. *Multi-criteria analysis: a manual*. London: Department for Communities and Local Government. Available at: https://www.gov.uk/government/publications/multi-criteria-analysis-manual-for-making-government-policy [Accessed 21 October 2026].
 
 EDF R&D, 2024. Life cycle assessment of nuclear power in France: EDF case study. *EPJ Nuclear Sciences & Technologies*, 10, art. 5. Available at: https://www.epj-n.org/10.1051/epjn/2024005.
+
+EFNARC, 2005. *The European Guidelines for Self-Compacting Concrete: Specification, Production and Use*. Farnham: EFNARC.
 
 ENR, 2018. Clay and limestone cement could cut carbon emissions. *Engineering News-Record*, 7 May. Available at: https://digital.bnpmedia.com/article/Construction+Materials/3078554/494167/article.html.
 
@@ -578,17 +606,27 @@ GE Vernova, n.d. *BWRX-300 Small Modular Reactor*. [online] Available at: https:
 
 GE Vernova Hitachi Nuclear Energy, n.d. *BWRX-300 General Description* (005N9751). [pdf] Wilmington, NC: GE Vernova. Available at: https://www.gevernova.com/content/dam/gevernova-nuclear/global/en_us/documents/carbon-free-power/005N9751-BWRX-300-General-Description.pdf.
 
+Geneski, N., McKellar, J.M. and Atkinson, K.D., n.d. Life cycle environmental impacts of small modular reactors: BWRX-300 Darlington project. *Proceedings of the Canadian Nuclear Society*. Available at: https://proceedings.cns-snc.ca/index.php/pcns/article/view/7692.
+
 Gibon, T. and Hahn Menacho, Á., 2023. Parametric life cycle assessment of nuclear power for simplified models. *Environmental Science & Technology*, 57(38), pp.14194–14205. Available at: https://doi.org/10.1021/acs.est.3c03190.
 
 Government of Ontario, 2025. *Ontario Leads the G7 by Building First Small Modular Reactor*. [news release] 8 May. Toronto: Government of Ontario.
+
+Government of Ontario, n.d. *Ontario energy snapshot*. [online] Available at: https://www.ontario.ca/page/ontario-energy-snapshot.
 
 Graham, P. and Hayward, J., 2026. *GenCost 2025-26: Final report*. [pdf] Australia: CSIRO. Available at: https://www.csiro.au/-/media/Energy/GenCost-2025-26-Final/GenCost_2025-26_Final_Report_20260715.pdf.
 
 Graham, P., Hayward, J. and Foster, J., 2024. *GenCost 2023-24: Final report*. [pdf] Australia: CSIRO. Available at: https://www.csiro.au/-/media/Energy/GenCost/GenCost2023-24Final_20240522.pdf.
 
+Graham, P., Hayward, J. and Foster, J., 2025. *GenCost 2024-25: Final report*. [pdf] Australia: CSIRO. Executive summary available at: https://www.csiro.au/-/media/Energy/GenCost/GenCost2024-25Final_ES.pdf.
+
 Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub, 2025. *What Australians really think of nuclear power*. [news release] 2 May. Available at: https://news.griffith.edu.au/2025/05/02/what-australians-really-think-of-nuclear-power/ [Accessed 21 October 2026].
 
 Hooton, R.D., 2023. *Changes to ASTM cement and concrete standards to…* [title truncated in source entry]. ACI Fall 2023 webinar slides. [pdf] Farmington Hills: American Concrete Institute. Available at: https://www.concrete.org/portals/0/files/pdf/webinars/ws_F23_NEU_DouglasHooton.pdf [Accessed 20 October 2026].
+
+Independent Electricity System Operator, 2024. *Ontario's Energy Future: Spring 2024 Update*. [pdf] Toronto: Independent Electricity System Operator. Available at: https://www.ieso.ca/-/media/Files/IESO/Document-Library/Decarbonization-Hub/IESO-Ontarios-Energy-Future-Spring-2024.pdf.
+
+International Atomic Energy Agency, 2015. *Milestones in the Development of a National Infrastructure for Nuclear Power*. IAEA Nuclear Energy Series No. NG-G-3.1. [pdf] Vienna: International Atomic Energy Agency. Available at: https://www-pub.iaea.org/MTCD/Publications/PDF/Pub1704_web.pdf [Accessed 20 October 2026].
 
 International Atomic Energy Agency, 2024. *Small Modular Reactors: Advances in SMR Developments 2024*. Vienna: International Atomic Energy Agency.
 
@@ -598,7 +636,13 @@ International Organization for Standardization, 2006a. *ISO 14040:2006 Environme
 
 International Organization for Standardization, 2006b. *ISO 14044:2006 Environmental management — Life cycle assessment — Requirements and guidelines*. Geneva: International Organization for Standardization. Available at: https://www.iso.org/standard/38498.html.
 
+IPCC, 2006. *2006 IPCC Guidelines for National Greenhouse Gas Inventories*, Vol. 2 Energy, Ch. 2, Table 2.2. Hayama: Institute for Global Environmental Strategies.
+
 Joint Standing Committee on Treaties, 2024. *Report 224: Agreement among Australia, the UK and the US for cooperation related to naval nuclear propulsion*, Chapter 6, 'Employment and education impacts'. Canberra: Parliament of Australia. Available at: https://www.aph.gov.au/Parliamentary_Business/Committees/Joint/Treaties/NuclearPropulsion/Report/Chapter_6_-_Employment_and_education_impacts [Accessed 21 October 2026].
+
+Kazatomprom, 2025. *Integrated Annual Report 2024*. [pdf] Astana: NAC Kazatomprom JSC. Available at: https://www.kazatomprom.kz/storage/59/kap_iar_2024_eng_0205__clean.pdf [Accessed 20 October 2026].
+
+Kim and Macfarlane, 2026. *Challenges of small modular reactors: a comprehensive exploration*. [pdf] Available at: https://www.nirs.org/wp-content/uploads/2025/09/SMR-Costs_Challenges-of-SMRs-cost-waste_Kim-Macfarlane_2026.pdf.
 
 LACCEI, 2026. Comparative life cycle assessment and structural performance analysis of eco-friendly LC3 cement for CO₂ reduction compared to Portland cement. In: *Proceedings of the 24th LACCEI International Multi-Conference for Engineering, Education and Technology*, Santiago, Chile, 15–17 July 2026. Contribution 2661. Available at: https://laccei.org/LACCEI2026-Chile/full-papers/Contribution_2661_final_a.pdf.
 
@@ -612,6 +656,8 @@ Minister for Defence, 2025. *An AUKUS milestone – launch of the Australian Nav
 
 Mississaugas of Scugog Island First Nation, 2023. Written submissions to the CNSC: CMD 23-H9.18A (Darlington Waste Management Facility, January 2023); CMD 24-H2.26 (November 2023); CMD 24-H3.81 (November 2024). Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD23-H9-18A.pdf/object [Accessed 21 October 2026].
 
+Municipality of Clarington, 2024. Letter / written submission to the CNSC on the DNNP licence to construct. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD24-H2-12.pdf/object [Accessed 21 October 2026].
+
 Neelam, R., 2024. *Lowy Institute Poll 2024*. Sydney: Lowy Institute. Available at: https://poll.lowyinstitute.org/report/2024/ [Accessed 20 October 2026].
 
 Newcastle Herald, 2024a. AGL says Liddell site will not be used for nuclear power. *Newcastle Herald*. [online] Available at: https://www.newcastleherald.com.au/story/8557276/agl-says-liddell-site-will-not-be-used-for-nuclear-power [Accessed 20 October 2026].
@@ -619,6 +665,8 @@ Newcastle Herald, 2024a. AGL says Liddell site will not be used for nuclear powe
 Newcastle Herald, 2024b. Coalition government could seize Liddell for nuclear power plant; Dutton's nuclear energy plan divides opinion in the Hunter. *Newcastle Herald*. [online] Available at: https://newcastleherald.com.au/story/8670020/ and https://newcastleherald.com.au/story/8668177/ [Accessed 21 October 2026].
 
 Newspoll, 2007. National survey on nuclear power, 2–4 March 2007 (n ≈ 1,200). Published in *The Australian*.
+
+Ng, J.H.C., Vyawahare, P., Benavides, P.T., Gan, Y., Sun, P., Boardman, R., Marcinkoski, J. and Elgowainy, A., 2025. Life-cycle greenhouse gas emissions associated with nuclear power generation in the United States. *Journal of Industrial Ecology*, 29(3), pp.719–732. Available at: https://doi.org/10.1111/jiec.70008.
 
 Norton Rose Fulbright, 2025. *Key amendments to the Environment Protection Reform Act 2025 and their implications for the EPBC Act*. [online] Available at: https://www.nortonrosefulbright.com/en-au/knowledge/publications/df336551/key-amendments-to-the-environment-protection-reform-act-2025-and-their-implications-for-the-epbc-act [Accessed 20 October 2026].
 
@@ -656,7 +704,11 @@ Parker, D.J., McNaughton, C.S. and Sparrow, G.A., 2016. Life cycle greenhouse ga
 
 Parliament of Australia, 2026. *Senate composition*. [online] Available at: https://www.aph.gov.au/Senators_and_Members/Senators/Senate_composition [Accessed 20 October 2026].
 
+Parliament of New South Wales, 2025. *Uranium Mining and Nuclear Facilities (Prohibitions) Repeal Bill 2025*: bill details. [online] Available at: https://www.parliament.nsw.gov.au/bills/Pages/bill-details.aspx?pk=18833 [Accessed 20 October 2026].
+
 Parliament of New South Wales, Legislative Assembly, 2026. *Notice Paper*. [pdf] Available at: https://files.parliament.nsw.gov.au/fileapi/ParlFiles/GetArtifact/170%20NOM%20(combined).pdf?serverRelativeUrl=%2Fhp%2Fhousepaper%2F31312%2F170+NOM+%28combined%29.pdf [Accessed 20 October 2026].
+
+Parliamentary Library, 2023. *Australian Naval Nuclear Power Safety Bill 2023* [and related bill], Bills Digest No. 32, 2023–24. [online] Canberra: Parliament of Australia. Available at: https://aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2324a/24bd32 [Accessed 20 October 2026].
 
 Parliamentary Library, 2024. *Current prohibitions on nuclear activities in Australia: a quick guide*. Research Paper Series 2023–24, Quick Guide. [online] Canberra: Parliamentary Library, Parliament of Australia, 30 May. Available at: https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Parliamentary_Library/Research/Quick_Guides/2023-24/NuclearActivitiesProhibitions [Accessed 21 October 2026].
 
@@ -665,6 +717,8 @@ Peterson, P.F., Zhao, H. and Petroski, R., 2005. *Metal and concrete inputs for 
 Pillai, R.G. et al., 2019. Service life and life cycle assessment of reinforced concrete systems with limestone calcined clay cement (LC³). *Cement and Concrete Research*, 118, pp.111–119. Available at: https://doi.org/10.1016/j.cemconres.2018.11.019.
 
 Power Workers' Union, 2021. *Written submission in support of OPG's application to renew the Darlington power reactor operating licence*, CMD 21-H4.38. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD21-H4-38.pdf/object [Accessed 21 October 2026].
+
+Rao, P., Kaffine, D.T. and Hodge, B.-M., 2026. *The consequences of high SMR operating costs in electricity markets*. arXiv preprint 2609.08929. Available at: https://arxiv.org/pdf/2609.08929.
 
 Reserve Bank of Australia, 2025. *Historical Data: Exchange Rates (F11)*. [online] Sydney: Reserve Bank of Australia.
 
@@ -678,9 +732,17 @@ Scrivener, K., Martirena, F., Bishnoi, S. and Maity, S., 2018. Calcined clay lim
 
 Senate Environment and Communications Legislation Committee, 2023. *Environment and Other Legislation Amendment (Removing Nuclear Energy Prohibitions) Bill 2022 [Provisions]*. [online] Canberra: Parliament of Australia. Available at: https://www.aph.gov.au/Parliamentary_Business/Committees/Senate/Environment_and_Communications/Nuclearprohibitions [Accessed 20 October 2026].
 
+Slag Cement Association, n.d. *Industry-average EPD for slag cement* (USA and Canada). [pdf] Available at: https://www.lafarge.ca/sites/canada/files/images/sca_epd_for_slag_cement.pdf.
+
 Slovic, P., 1987. Perception of risk. *Science*, 236(4799), pp.280–285.
 
+Steigerwald, B., Weibezahn, J., Slowik, M. and von Hirschhausen, C., 2023. Uncertainties in estimating production costs of future nuclear technologies: a model-based analysis of small modular reactors. *Energy*, 281, 128204.
+
+Sun, Y. and Kurosaki, K., 2025. *Technical overview of recent developments in small modular reactors in the United States*. arXiv:2504.02599 [physics.soc-ph]. Available at: https://arxiv.org/abs/2504.02599.
+
 Treasury Board of Canada Secretariat, 2022. *Standard on Embodied Carbon in Construction* (amended 20 March 2025). [online] Ottawa: Treasury Board of Canada Secretariat. Available at: https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32814 [Accessed 20 October 2026].
+
+Treasury Board of Canada Secretariat, 2025. *Progress on greening procurement: Other procurement*. [online] Available at: https://www.canada.ca/en/treasury-board-secretariat/services/innovation/greening-government/government-canada-progress-greening-procurement/other-procurement.html [Accessed 20 October 2026].
 
 United Nations Economic Commission for Europe, 2021. *Carbon Neutrality in the UNECE Region: Integrated Life-cycle Assessment of Electricity Sources*. ECE/ENERGY/141. Geneva: United Nations. Available at: https://unece.org/sites/default/files/2021-10/LCA-2.pdf [Accessed 20 October 2026].
 
@@ -693,6 +755,8 @@ US Department of Justice and Federal Trade Commission, 2010. *Horizontal Merger 
 US Department of Justice and Federal Trade Commission, 2023. *Merger Guidelines*. [pdf] Washington, DC: US Department of Justice and Federal Trade Commission, 18 December. Available at: https://www.justice.gov/d9/2023-12/2023%20Merger%20Guidelines.pdf [Accessed 20 October 2026].
 
 US EPA, 2024. *Power Profiler: terms, calculations and data sources*. [pdf] Available at: https://www.epa.gov/system/files/documents/2024-04/power-profiler-terms-calculations-and-data-sources.pdf.
+
+US Nuclear Regulatory Commission, n.d. *Global Laser Enrichment, LLC (Paducah Laser Enrichment Facility)*. [facility page] Rockville, MD: US Nuclear Regulatory Commission. Available at: https://www.nrc.gov/facilities-safety/facility-finder/fc/global-laser-enrichment-nc-lc [Accessed 20 October 2026].
 
 US Nuclear Regulatory Commission and Canadian Nuclear Safety Commission, 2025. *CNSC–NRC Joint Report on GEH BWRX-300 Steel-Plate Composite Containment Vessel and Reactor Building Structural Design Topical Report*. ADAMS ML25325A075. [pdf] Available at: https://www.nrc.gov/docs/ML2532/ML25325A075.pdf [Accessed 20 October 2026].
 
@@ -1003,7 +1067,7 @@ This appendix gives the full working behind §8.1 (law and licensing), §8.3 (fu
 |---|---|---|---|
 | B1 Legal and political pathway | `python3 -I 03_LCA_Calculations/scripts/law_timelines.py` | `03_LCA_Calculations/parameters_run2.yaml` | `03_LCA_Calculations/results/law_timelines.csv` |
 | B2 Supply concentration (HHI) | `python3 -I 03_LCA_Calculations/scripts/hhi.py` | `03_LCA_Calculations/parameters_run3.yaml` | `03_LCA_Calculations/results/hhi.md`, `hhi_summary.csv` |
-| B3 Routes to a licensable SMR in Australia | none: hand calculation (qualitative scoring; totals checked in fact-check batch 1a) | Law brief §5 | This appendix |
+| B3 Routes to a licensable SMR in Australia | none: hand calculation (qualitative scoring) | Table B13 | This appendix |
 | B4 Displacement | `python3 -I 03_LCA_Calculations/scripts/displacement.py` | `03_LCA_Calculations/parameters_run1.yaml` | `03_LCA_Calculations/results/displacement.md` |
 | B5 Value of schedule | `python3 -I 03_LCA_Calculations/scripts/schedule_value.py` | `parameters_run1.yaml` (`c1_deck_*` keys; cost inputs read from `parameters_run5.yaml`) | `results/schedule_value.md` |
 | B6 Same money | `python3 -I 03_LCA_Calculations/scripts/same_money.py` | `parameters_run1.yaml` | `results/same_money.md` (cross-check: `results/lcoe.md`) |
@@ -1019,7 +1083,7 @@ This appendix gives the full working behind §8.1 (law and licensing), §8.3 (fu
 #### B1.1 The three legal barriers and what removes each
 
 *Table B1. The legal barriers to an SMR at Liddell, what removes each, and who holds the veto.*
-*Source: legislation as named; ARPANSA (n.d.); Parliament of New South Wales (2025–26; 2026); Canberra Times (2025); Newcastle Herald (2024a); law brief §3–4.*
+*Source: legislation as named; ARPANSA (n.d.); Parliament of New South Wales (2025; 2026); Canberra Times (2025); Newcastle Herald (2024a).*
 
 | # | Barrier | Instrument and effect (as extracted) | What removes it | Who decides (veto holder) | Status, October 2026 |
 |---|---|---|---|---|---|
@@ -1028,7 +1092,7 @@ This appendix gives the full working behind §8.1 (law and licensing), §8.3 (fu
 | 3 | State ban | *Uranium Mining and Nuclear Facilities (Prohibitions) Act 1986* (NSW) s 8: offence to build or operate a nuclear reactor, except for the s 8(3) exceptions (the Commonwealth's AAEC successors, such as ANSTO); s 9: other Acts do not authorise a state authority to build or approve one | NSW repeal, or a Commonwealth override under Constitution s 109, which Partlett warns may face a High Court challenge (Canberra Times, 2025) | NSW Parliament (Legislative Assembly), or the Commonwealth | Repeal bill passed the Legislative Council; stalled in the Assembly (B1.3) |
 | (4) | Site (not a law) | AGL owns Liddell and has ruled out nuclear there (Newcastle Herald, 2024a) | AGL's consent, or compulsory acquisition by the Commonwealth | AGL, or the Commonwealth | AGL opposed |
 
-Order of removal: federal repeal (1 and 2) → choice of regulator → state repeal or override (3) → site (4) → environmental assessment → licensing (law brief §4). Each step has a different veto holder, so all must agree.
+Order of removal: federal repeal (1 and 2) → choice of regulator → state repeal or override (3) → site (4) → environmental assessment → licensing. Each step has a different veto holder, so all must agree.
 
 #### B1.2 Senate arithmetic for federal repeal
 
@@ -1052,7 +1116,7 @@ Steps (`law_timelines.py`):
 | 1. Majority needed, all 76 voting | ⌊76 / 2⌋ + 1 (a tied vote fails, Constitution s 23) | **39** |
 | 2. Largest pro-repeal bloc (upper bound) | Coalition 27 + One Nation 4 + Babet 1 | **32** |
 | 3. Shortfall | 39 − 32 | **7** |
-| 4. Bloc plus every other crossbencher | 32 + 4 | **36** (3 short); at most 37 (2 short) if a count of six other crossbenchers is used |
+| 4. Bloc plus every other crossbencher | 32 + 4 | **36** (3 short); **37** (2 short) on the alternative count in step 7 |
 | 5. Can repeal pass without Labor or the Greens? | 36 or 37 ≥ 39? | **No** on either count |
 | 6. Would the Greens alone be enough (arithmetic only)? | 32 + 10 = 42 ≥ 39? | Yes, but the Greens oppose (policy, not arithmetic) |
 | 7. Opposed bloc | Labor 30 + Greens 10 = 40 ≥ 39 (39 on the alternative count) | A blocking majority on its own |
@@ -1062,12 +1126,12 @@ Result 4 makes the conclusion independent of the One Nation and Babet assumption
 #### B1.3 NSW repeal bill status
 
 *Table B3. Progress of the NSW repeal bill (private member's bill).*
-*Source: Parliament of New South Wales (2025–26; 2026); `parameters_run2.yaml`.*
+*Source: Parliament of New South Wales (2025; 2026); `parameters_run2.yaml`.*
 
 | Event | Date | Note |
 |---|---|---|
 | Introduced in the Legislative Council | 19 November 2025 | — |
-| Passed the Legislative Council | 6 May 2026 | About 5.5 months after introduction (law brief §4). All Liberal and National MLCs voted for it |
+| Passed the Legislative Council | 6 May 2026 | About 5.5 months after introduction. All Liberal and National MLCs voted for it |
 | Legislative Assembly | Awaiting the second reading speech (notice paper reported 27 May 2026) | The Minns Labor Government opposes repeal and holds an Assembly majority (Canberra Times, n.d., as reported) |
 | Lapses | 28 November 2026 | Unless the Assembly acts first |
 
@@ -1261,7 +1325,7 @@ Both bounds are below 1,500, so firms are not concentrated even though countries
 
 #### B2.5 Limitations
 
-*Note moved from §8.3 (Table T3).* "High" is above 1,800 on the 2023 guidelines and above 2,500 on the 2010 guidelines; "Moderate" is 1,500–2,500 (2010). Without Russia, all three stages are high on both scales. Sensitivity: enrichment 2,724–3,065 (2030 plans to 2022); mining by country 2,246–2,370 (2022–2024); conversion 2,015 with the higher ConverDyn capacity; all country-level and capacity-based cases stay above 1,800. Mining by company is about 850–1,400 (midpoint 1,118; top three firms only), mostly below the threshold. Russia's enrichment share is 42.8% on WNA capacity and 41.0% on World Nuclear University's. Australia's resource share is 28% in the 2024 Red Book edition we use; two tabulations of the 2026 edition give 29% and 27%.
+*Note moved from §8.3 (Table T9).* "High" is above 1,800 on the 2023 guidelines and above 2,500 on the 2010 guidelines; "Moderate" is 1,500–2,500 (2010). Without Russia, all three stages are high on both scales. Sensitivity: enrichment 2,724–3,065 (2030 plans to 2022); mining by country 2,246–2,370 (2022–2024); conversion 2,015 with the higher ConverDyn capacity; all country-level and capacity-based cases stay above 1,800. Mining by company is about 850–1,400 (midpoint 1,118; top three firms only), mostly below the threshold. Russia's enrichment share is 42.8% on WNA capacity and 41.0% on World Nuclear University's. Australia's resource share is 28% in the 2024 Red Book edition we use; two tabulations of the 2026 edition give 29% and 27%.
 
 Limits:
 - Capacity is not supply. Nameplate SWU includes capacity Rosatom uses for underfeeding and tails re-enrichment, and CNNC's figures are WNA estimates.
@@ -1325,7 +1389,7 @@ Route A's description rests on ABC News (2024), as reported.
 
 Reading: route B ranks last under all three weightings tested, and C is never behind A. Valuing regulator readiness more only closes the gap, to a tie with A. The choice between A and C is a choice between speed (an existing regulator) and durability (both levels of government committed). That is a political judgement, not a technical one. Whichever route is assumed, an Australian SMR scores lowest on time to first power in the §9 MCDA.
 
-#### B3.1 Implementation levers for C1 (Table T16 in §8.6): scores and weight test
+#### B3.1 Implementation levers for C1 (Table T12 in §8.6): scores and weight test
 
 Each lever is scored 1 (poor) to 3 (good) on enforceability, speed and low schedule risk. The scores are our judgement (route brief §5), not sourced; the totals are hand calculations.
 
@@ -1715,7 +1779,7 @@ Our Darlington LCOE (`results/lcoe.md`; case B, 60 years, vendor operating costs
 
 ### B7. Multi-criteria analysis (MCDA): status quo, SMR, SMR + C1 and firmed renewables
 
-**Result.** Firmed renewables for the same money score highest under all four weight sets (80.1, 85.9, 63.7 and 89.3 of 100). The status quo is second, and SMR and SMR + C1 tie for third (29.7, 24.0, 43.6 and 20.4). C1 moves the SMR's score by under 0.005 point. **The ranking is a structured comparison, not a measurement:** the social, legal and renewables-supply scores and the weights are our judgement. The main-text summary is §9 (Tables T4 and T5). Source: `scripts/mcda.py` (C1 case `new_2200`), `results/mcda.md` and `results/mcda_scores.csv`, which holds every raw score, normalised score, weight set and perturbation (593 rows).
+**Result.** Firmed renewables for the same money score highest under all four weight sets (80.1, 85.9, 63.7 and 89.3 of 100). The status quo is second, and SMR and SMR + C1 tie for third (29.7, 24.0, 43.6 and 20.4). C1 moves the SMR's score by under 0.005 point. **The ranking is a structured comparison, not a measurement:** the social, legal and renewables-supply scores and the weights are our judgement. The main-text summary is §9 (Tables T13 and T14). Source: `scripts/mcda.py` (C1 case `new_2200`), `results/mcda.md` and `results/mcda_scores.csv`, which holds every raw score, normalised score, weight set and perturbation (593 rows).
 
 #### B7.1 Options, criteria and inputs
 
@@ -1920,7 +1984,7 @@ Four routes are scored 1–3 (3 best) on legitimacy (chance of durable consent),
 
 Reading: R1 beats R3 only on speed (2 against 1) and public cost (2 against 1), and R2 only on speed (2 against 1). Even so, R2 and R3 lead R1 by 3 to 6 points under every weighting. R3 wins outright only when fairness is doubled.
 
-#### B8.4 Who finances the Darlington New Nuclear Project (Table T14)
+#### B8.4 Who finances the Darlington New Nuclear Project (Table T11)
 
 *Table B40. Shares of the C$20.9 bn budget.*
 *Source: `results/social_licence.md` §4, from Government of Ontario (2025), Canada Growth Fund and Building Ontario Fund (2025), Canada Infrastructure Bank (2022), Williams Treaties First Nations et al. (2026).*
@@ -1942,9 +2006,9 @@ The 78% is a subtraction (20.9 − 2.00 − 1.00 − 0.97 − 0.70 = 16.23), not
 
 Coordinator: merge into Appendix B under the headings named below. The text is moved verbatim from §8.4 (final cut, 25/10/2026). The body points to "Appendix B8.3" and "Appendix B8". Nothing from §8.5 or §8.6 needed moving (T11 is merged into T16 in the body; the deleted §8.6 fuel-supply paragraph is already covered in §8.3).
 
-### B8 (head of subsection): sources for Table T12
+### B8 (head of subsection): sources for Table T10
 
-Sources for Table T12 (Social licence at Darlington and at Liddell): Neelam (2024); Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub (2025); Newspoll (2007); Ritchie (2020); Markandya and Wilkinson (2007); Australian Energy Market Operator (2025); Canadian Nuclear Safety Commission (2025); Williams Treaties First Nations et al. (2026); Mississaugas of Scugog Island First Nation (2023); Curve Lake First Nation (2024); Municipality of Clarington (2024); Australian Electoral Commission (2019); *Barngarla* [2023] FCA 809; Nuclear Waste Management Organization (2024a; 2024b; 2024c; n.d.); Department of Industry, Science, Energy and Resources (2020); Power Workers' Union (2021); Conference Board of Canada (2021); Joint Standing Committee on Treaties (2024); Slovic (1987). Deaths avoided are calculated in `social_licence.py` (B8.1). Two T12 items shortened in the body: the "Public view" row (host municipality "very supportive"; national 61% support against 59% keeping the ban; older polls found local support 16–20 points lower), and the unions' position in Australia (the Australian Council of Trade Unions and the Electrical Trades Union oppose).
+Sources for Table T10 (Social licence at Darlington and at Liddell): Neelam (2024); Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub (2025); Newspoll (2007); Ritchie (2020); Markandya and Wilkinson (2007); Australian Energy Market Operator (2025); Canadian Nuclear Safety Commission (2025); Williams Treaties First Nations et al. (2026); Mississaugas of Scugog Island First Nation (2023); Curve Lake First Nation (2024); Municipality of Clarington (2024); Australian Electoral Commission (2019); *Barngarla* [2023] FCA 809; Nuclear Waste Management Organization (2024a; 2024b; 2024c; n.d.); Department of Industry, Science, Energy and Resources (2020); Power Workers' Union (2021); Conference Board of Canada (2021); Joint Standing Committee on Treaties (2024); Slovic (1987). Deaths avoided are calculated in `social_licence.py` (B8.1). Two T12 items shortened in the body: the "Public view" row (host municipality "very supportive"; national 61% support against 59% keeping the ban; older polls found local support 16–20 points lower), and the unions' position in Australia (the Australian Council of Trade Unions and the Electrical Trades Union oppose).
 
 ### B8.3 Social-licence routes for an SMR at Liddell (Table B41)
 
@@ -2078,7 +2142,7 @@ The whole-plant concrete median (24,066 m³) sits above the central value (20,70
 
 Grouped (expected basis): fuel front end 64.2%, back end and decommissioning 19.2%, O&M 9.1%, construction 7.5% (0.321 / 4.279).
 
-*Table C4. Scenario savings and life-cycle shares on the Monte Carlo basis (the basis of Table T8 in §6.3).*
+*Table C4. Scenario savings and life-cycle shares on the Monte Carlo basis (the basis of Table T4 in §6.3).*
 *Source: `results/lca_uncertainty.md`. Each draw's saving is divided by the same draw's S0 life-cycle total. S3 rows are steel sensitivities, not part of C1; S3 world-average is negative (adds emissions).*
 
 | Scenario | Saving, t per unit: median (5th–95th) | Share of life cycle, %: median (5th–95th) | Mode-case share, % |
@@ -2108,11 +2172,6 @@ Grouped (expected basis): fuel front end 64.2%, back end and decommissioning 19.
 2. **Ranges partly judgement.** Ranges marked A or P in Table C1 are our assumptions; ×0.5 to ×2 transfer ranges on the EDF stages are not data.
 3. **Triangular shape.** A convention, not a fitted distribution.
 4. **Unverified inputs.** Every V in Table C1 is a search lead. The intervals will move when the primaries are opened.
-5. **Model structure not varied.** The boundary (process-based stages plus three stages transferred as per-kWh values) and the cut-offs (§6.1) are not sampled; they bias the result low (§6.5, Table T9).
+5. **Model structure not varied.** The boundary (process-based stages plus three stages transferred as per-kWh values) and the cut-offs (§6.1) are not sampled; they bias the result low (§6.5, Table T5).
 
 ---
-
-
-## appendix-E-search-log.md
-
-**[TODO: not yet in the repo]**

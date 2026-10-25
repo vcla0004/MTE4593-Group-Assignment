@@ -1,8 +1,8 @@
 """Match the reference list against the in-text citations of the cleaned report body.
 
 Reads 01_Report/assembly/draft-assembled.md (run assemble_draft.py first) and
-01_Report/sections/12-references.md. Writes references-cited.md (the list with
-uncited entries dropped) and prints uncited entries and in-text citations that
+01_Report/sections/12-references.md. Report only (the final build prints the full list):
+prints uncited entries and in-text citations that
 have no entry. Matching is heuristic (first author word + year), so read the
 printed lists before submitting.
 """
@@ -44,11 +44,10 @@ def main() -> None:
         keys.add((kw, yr))
         keys.add((kw, yr[:4]))
         yr_body = yr if yr == "n.d." else yr[:4]  # tolerate a missing a/b suffix in the text
-        if re.search(re.escape(kw) + r"[^()\n]{0,120}?" + re.escape(yr_body), body):
+        if re.search(re.escape(kw) + r"[^\n]{0,120}?" + re.escape(yr_body), body):
             kept.append(para)
         else:
             dropped.append(para[:90])
-    OUT.write_text("## References\n\n" + "\n\n".join(kept) + "\n", encoding="utf-8")
     missing = set()
     for m in CITE_RE.finditer(body):
         kw, yr = key_word(m.group(1)), m.group(2)
