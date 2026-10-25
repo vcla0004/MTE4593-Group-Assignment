@@ -1045,3 +1045,12 @@ Concrete Reinforcing Steel Institute, 2022. *Environmental Product Declaration: 
 ### G. Red Book edition: proposal for team decision B9
 - **Proposal:** cite **Red Book 2024 (NEA and IAEA, 2025): 28% at < USD 130/kgU**, because only that figure is tied to a named cost category. Add one clause: "the 2026 edition, as tabulated by the World Nuclear Association, gives 27–29% depending on the table (NEA and IAEA, 2026)". Every reading rounds to "about 28%", so the claim ("the largest share of any country") does not depend on the choice.
 - **Switch rule:** if Victor opens *Uranium 2026* and confirms the < USD 130/kgU table, cite 2026 alone (latest edition) and update `parameters_run3.yaml` (`australia.share_identified_recoverable_resources_usd130_rb2026`), slide 13 and §8.3 together.
+
+---
+
+## From the team master deck (25/10/2026, coordinator)
+
+Copied from slide 15 of `04_Presentation/SMR-Presentation-Group9 (team master).pptx`, the sources the team used for the C1 main case (slides 5–8). TO VERIFY: the coordinator has not opened the primaries.
+
+- **ostroleka2023_pis**: BWRX-300 Ostrołęka sp. z o.o. (2023) *Small Modular Nuclear Power Plant: Project Information Sheet*. Table 14, p. 83 (50,000 m³ concrete and 14,000 t steel per BWRX-300 unit). [TO VERIFY]
+- **pillai2019_lc3**: Pillai, R.G. et al. (2019) 'Service life and life cycle assessment of reinforced concrete systems with limestone calcined clay cement (LC³)', *Cement and Concrete Research*, 118, pp. 111–119. doi:10.1016/j.cemconres.2018.11.019. Table 2: M50 mixes, OPC 380 vs LC³ 270 kg CO₂e/m³; 28-day strength 60.0 vs 56.7 MPa. [TO VERIFY]
