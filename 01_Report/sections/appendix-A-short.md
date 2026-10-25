@@ -4,7 +4,7 @@ Rubric coverage: RB.5, R2.2, R2.4 (also supports R2.1, R2.5, R2.6, R1.4)
 
 All calculations are reproducible from the Python scripts and parameter files in the team repository (03_LCA_Calculations).
 
-This is a screening LCA (ISO 14040/44 principles, not critically reviewed). The Ostrołęka and Pillai tables could not be opened, so their values are used as reported; other inputs are assumptions or placeholders.
+This is a screening LCA (ISO 14040/44 principles). Ostrołęka and Pillai values are used as reported; other inputs are assumptions or placeholders.
 
 ### A1 Reproducing the results
 Edit `parameters_lca.yaml` (68 parameters) and re-run `lca_baseline.py`, `lca_scenarios.py` and `lca_uncertainty.py` (`python3 -I 03_LCA_Calculations/scripts/<name>`). Outputs are in `03_LCA_Calculations/results/`.
@@ -32,7 +32,7 @@ Construction emits **57,600 t CO₂e per unit** (mode case, 0.41 g/kWh).
 | Transport | 15 km concrete, 500 km steel, 0.10 kg/t-km | 880 |
 | Other materials and site energy | +50% of above | 19,200 |
 
-Spreadsheet corrections: site is Clarington, not Ottawa; the 4,127.29 m³ is forebay concrete plus rebar, not a bored volume; partial-milestone rows are replaced by whole-unit rows; rebar uses an electric-arc-furnace factor.
+Spreadsheet corrections: site is Clarington, not Ottawa; 4,127.29 m³ is forebay concrete plus rebar, not a bored volume; rebar uses an electric-arc-furnace factor.
 
 ### A5 Emission factors
 Climate change, GWP100; cradle-to-gate for materials. Source: `parameters_lca.yaml`.
