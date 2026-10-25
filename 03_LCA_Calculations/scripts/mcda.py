@@ -279,7 +279,7 @@ def main():
         ("SQ cost = renewables LCOE", dict(sq_cost_as_vre=True)),
         ("SQ supply = renewables HHI", dict(sq_supply_as_vre=True)),
         ("SQ social 11 / 14", None),
-        ("C1 not schedule-neutral (+14.6 days)", dict(c1_delay_days=float(R9["c1_delay_days_high"]["value"]))),
+        (f"C1 not schedule-neutral (+{float(R9['c1_delay_days_high']['value']):.1f} days)", dict(c1_delay_days=float(R9["c1_delay_days_high"]["value"]))),
         ("C1 premium +20%, qualification C$3 m", dict(c1_premium=float(R9["c1_premium_base_frac"]["high"]), c1_qual=float(R9["c1_qualification_base_cad"]["high"]))),
         ("Global scales (fixed bounds)", "global"),
     ]
@@ -413,7 +413,8 @@ def main():
         w(f"| {name} | " + " | ".join(f"{top[k]}: {order[k]}" for k in WSETS) + " |")
 
     w("\n## 7. SMR vs SMR + C1, under each C1 case\n")
-    w("Environmental criterion (life cycle) and the knock-on to the other two criteria C1 touches. 'Delay' = C1 not schedule-neutral (+14.6 days, results/schedule_value.md, old-case break-even used as an illustrative delay).\n")
+    DL = float(R9["c1_delay_days_high"]["value"])
+    w(f"Environmental criterion (life cycle) and the knock-on to the other two criteria C1 touches. 'Delay' = C1 not schedule-neutral (+{DL:.1f} days, results/schedule_value.md: the deck-case 2,200 t net break-even on the average factor, used as an illustrative delay; 14.6 for the old 1,734 t case).\n")
     w("| C1 case | Saving (t/unit) | Life cycle SMR -> SMR + C1 (g/kWh) | Difference | Avoided to 2050, SMR -> SMR + C1 (Mt) | Cost +A$/MWh | Score gap (points of 100): " + ", ".join(WSETS) + " | Score gap if qualification costs nothing | With delay: avoided change (kt) |")
     w("|---|---|---|---|---|---|---|---|---|")
     for cname, Mx, Xx, Ts, Md, Xd, Tq in c1_out:
@@ -421,10 +422,11 @@ def main():
         gq = ", ".join(f"{Tq[k]['SMR_C1'] - Tq[k]['SMR']:+.5f}" for k in WSETS)
         w(f"| {cname} ({c1_case(cname)['status']}) | {Xx['saving_t']:,} | {Mx['SMR']['lifecycle']:.3f} -> {Mx['SMR_C1']['lifecycle']:.4f} | "
           f"{Xx['d_lca']:.4f} g/kWh ({Xx['d_lca']/Mx['SMR']['lifecycle']:.2%}) | {Xx['av_smr']:.3f} -> {Xx['av_c1']:.3f} | {Xx['d_cost']:.3f} | {gaps} | {gq} | {(Xd['av_c1'] - Xd['av_smr']) * 1000:+.1f} (saving {Xx['saving_t']/1000:.1f} kt; lost {Xd['lost'] * 1000:.1f} kt) |")
-    w("\nThe two C1 cases named in the brief: **old_1734** and **new_2200**. Both change the SMR's life-cycle intensity by well under 1% (0.29% and 0.37% of 4.2 g/kWh), "
+    pct = {c[0]: c[2]['d_lca'] / c[1]['SMR']['lifecycle'] for c in c1_out}
+    w(f"\nThe C1 cases: **old_1734** (alternative) and the deck cases **new_1100 / new_2200 / new_3300** (eligibility 20/40/60%; new_2200 is the base). They change the SMR's life-cycle intensity by well under 1% ({pct['old_1734']:.2%}, and {pct['new_1100']:.2%} / {pct['new_2200']:.2%} / {pct['new_3300']:.2%} of 4.2 g/kWh), "
       "which moves the weighted score by thousandths of a point and never changes the SMR's place against the other options. "
       "The gap is slightly negative in the base case because the assumed C$1 m qualification cost (+A$0.04/MWh) outweighs, on these scales, a 0.016 g/kWh gain on a criterion whose range is 636 g/kWh; with no qualification cost it turns positive but stays below 0.001 point. "
-      f"If C1 slips the unit by 14.6 days, the CO2e not avoided during the delay ({c1_out[0][5]['lost'] * 1000:.1f} kt) is {c1_out[0][5]['lost'] * 1e6 / R9['c1_cases']['cases']['new_2200']['saving_t_per_unit']:.0f}x the new_2200 saving, so SMR + C1 then avoids less than the plain SMR: the schedule-neutral condition decides the sign. "
+      f"If C1 slips the unit by {DL:.1f} days, the CO2e not avoided during the delay ({c1_out[0][5]['lost'] * 1000:.1f} kt) is {c1_out[0][5]['lost'] * 1e6 / R9['c1_cases']['cases']['new_2200']['saving_t_per_unit']:.0f}x the new_2200 saving, so SMR + C1 then avoids less than the plain SMR: the schedule-neutral condition decides the sign. "
       "Denominator caveat: the 4.2 g/kWh base comes from the old 20,700 m3 model; the team member's re-based LCA (Ostrołęka 50,000 m3) will change the life-cycle total, so the percentage for new_2200 must be re-read from that result.\n")
 
     w("## 8. Appendix B3: consent routes scored (scripted; route A corrected)\n")

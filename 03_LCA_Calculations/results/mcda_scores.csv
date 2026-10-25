@@ -479,22 +479,22 @@ scenario,SQ social 14,new_2200,W3_host_community,none,SQ,640.0,0.0,0,2050,0,14,1
 scenario,SQ social 14,new_2200,W3_host_community,none,SMR,4.2,5.3131,306.0,2040,3009.0,11,8,0.99998,0.09209,0.00012,0.45455,0.52984,0.0,0.0,20.39,3
 scenario,SQ social 14,new_2200,W3_host_community,none,SMR_C1,4.1845,5.313,306.0381,2040.0,3009.0,11,8,1.0,0.09209,0.0,0.45455,0.52984,0.0,0.0,20.388,4
 scenario,SQ social 14,new_2200,W3_host_community,none,VRE,30.0,57.6935,107.0,2028,6400.0,14,12,0.9594,1.0,0.65037,1.0,0.0,1.0,1.0,89.35,1
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W0_equal,none,SQ,640.0,0.0,0,2050,0,13,12,0.0,0.0,1.0,0.0,1.0,0.66667,1.0,52.381,2
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W0_equal,none,SMR,4.2,5.3131,306.0,2040,3009.0,11,8,0.99998,0.09209,0.00194,0.45455,0.52984,0.0,0.0,29.691,3
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W0_equal,none,SMR_C1,4.1845,5.2681,306.5959,2040.04,3009.0,11,8,1.0,0.09131,0.0,0.45273,0.52984,0.0,0.0,29.627,4
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W0_equal,none,VRE,30.0,57.6935,107.0,2028,6400.0,14,12,0.9594,1.0,0.65101,1.0,0.0,1.0,1.0,80.149,1
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W1_climate_cost,none,SQ,640.0,0.0,0,2050,0,13,12,0.0,0.0,1.0,0.0,1.0,0.66667,1.0,41.667,2
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W1_climate_cost,none,SMR,4.2,5.3131,306.0,2040,3009.0,11,8,0.99998,0.09209,0.00194,0.45455,0.52984,0.0,0.0,24.091,3
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W1_climate_cost,none,SMR_C1,4.1845,5.2681,306.5959,2040.04,3009.0,11,8,1.0,0.09131,0.0,0.45273,0.52984,0.0,0.0,23.987,4
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W1_climate_cost,none,VRE,30.0,57.6935,107.0,2028,6400.0,14,12,0.9594,1.0,0.65101,1.0,0.0,1.0,1.0,85.869,1
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W2_firm_sovereign,none,SQ,640.0,0.0,0,2050,0,13,12,0.0,0.0,1.0,0.0,1.0,0.66667,1.0,60.0,2
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W2_firm_sovereign,none,SMR,4.2,5.3131,306.0,2040,3009.0,11,8,0.99998,0.09209,0.00194,0.45455,0.52984,0.0,0.0,43.657,3
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W2_firm_sovereign,none,SMR_C1,4.1845,5.2681,306.5959,2040.04,3009.0,11,8,1.0,0.09131,0.0,0.45273,0.52984,0.0,0.0,43.616,4
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W2_firm_sovereign,none,VRE,30.0,57.6935,107.0,2028,6400.0,14,12,0.9594,1.0,0.65101,1.0,0.0,1.0,1.0,63.75,1
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W3_host_community,none,SQ,640.0,0.0,0,2050,0,13,12,0.0,0.0,1.0,0.0,1.0,0.66667,1.0,55.0,2
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W3_host_community,none,SMR,4.2,5.3131,306.0,2040,3009.0,11,8,0.99998,0.09209,0.00194,0.45455,0.52984,0.0,0.0,20.417,3
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W3_host_community,none,SMR_C1,4.1845,5.2681,306.5959,2040.04,3009.0,11,8,1.0,0.09131,0.0,0.45273,0.52984,0.0,0.0,20.353,4
-scenario,C1 not schedule-neutral (+14.6 days),new_2200,W3_host_community,none,VRE,30.0,57.6935,107.0,2028,6400.0,14,12,0.9594,1.0,0.65101,1.0,0.0,1.0,1.0,89.359,1
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W0_equal,none,SQ,640.0,0.0,0,2050,0,13,12,0.0,0.0,1.0,0.0,1.0,0.66667,1.0,52.381,2
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W0_equal,none,SMR,4.2,5.3131,306.0,2040,3009.0,11,8,0.99998,0.09209,0.00243,0.45455,0.52984,0.0,0.0,29.698,3
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W0_equal,none,SMR_C1,4.1845,5.2561,306.7449,2040.0507,3009.0,11,8,1.0,0.0911,0.0,0.45224,0.52984,0.0,0.0,29.617,4
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W0_equal,none,VRE,30.0,57.6935,107.0,2028,6400.0,14,12,0.9594,1.0,0.65118,1.0,0.0,1.0,1.0,80.151,1
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W1_climate_cost,none,SQ,640.0,0.0,0,2050,0,13,12,0.0,0.0,1.0,0.0,1.0,0.66667,1.0,41.667,2
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W1_climate_cost,none,SMR,4.2,5.3131,306.0,2040,3009.0,11,8,0.99998,0.09209,0.00243,0.45455,0.52984,0.0,0.0,24.103,3
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W1_climate_cost,none,SMR_C1,4.1845,5.2561,306.7449,2040.0507,3009.0,11,8,1.0,0.0911,0.0,0.45224,0.52984,0.0,0.0,23.972,4
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W1_climate_cost,none,VRE,30.0,57.6935,107.0,2028,6400.0,14,12,0.9594,1.0,0.65118,1.0,0.0,1.0,1.0,85.873,1
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W2_firm_sovereign,none,SQ,640.0,0.0,0,2050,0,13,12,0.0,0.0,1.0,0.0,1.0,0.66667,1.0,60.0,2
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W2_firm_sovereign,none,SMR,4.2,5.3131,306.0,2040,3009.0,11,8,0.99998,0.09209,0.00243,0.45455,0.52984,0.0,0.0,43.664,3
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W2_firm_sovereign,none,SMR_C1,4.1845,5.2561,306.7449,2040.0507,3009.0,11,8,1.0,0.0911,0.0,0.45224,0.52984,0.0,0.0,43.612,4
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W2_firm_sovereign,none,VRE,30.0,57.6935,107.0,2028,6400.0,14,12,0.9594,1.0,0.65118,1.0,0.0,1.0,1.0,63.753,1
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W3_host_community,none,SQ,640.0,0.0,0,2050,0,13,12,0.0,0.0,1.0,0.0,1.0,0.66667,1.0,55.0,2
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W3_host_community,none,SMR,4.2,5.3131,306.0,2040,3009.0,11,8,0.99998,0.09209,0.00243,0.45455,0.52984,0.0,0.0,20.424,3
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W3_host_community,none,SMR_C1,4.1845,5.2561,306.7449,2040.0507,3009.0,11,8,1.0,0.0911,0.0,0.45224,0.52984,0.0,0.0,20.344,4
+scenario,C1 not schedule-neutral (+18.5 days),new_2200,W3_host_community,none,VRE,30.0,57.6935,107.0,2028,6400.0,14,12,0.9594,1.0,0.65118,1.0,0.0,1.0,1.0,89.362,1
 scenario,"C1 premium +20%, qualification C$3 m",new_2200,W0_equal,none,SQ,640.0,0.0,0,2050,0,13,12,0.0,0.0,1.0,0.0,1.0,0.66667,1.0,52.381,2
 scenario,"C1 premium +20%, qualification C$3 m",new_2200,W0_equal,none,SMR,4.2,5.3131,306.0,2040,3009.0,11,8,0.99998,0.09209,0.00049,0.45455,0.52984,0.0,0.0,29.671,3
 scenario,"C1 premium +20%, qualification C$3 m",new_2200,W0_equal,none,SMR_C1,4.1845,5.311,306.1493,2040.0,3009.0,11,8,1.0,0.09206,0.0,0.45455,0.52984,0.0,0.0,29.664,4

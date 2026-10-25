@@ -91,22 +91,22 @@ Threshold: weight on one criterion (the other six sharing the rest equally) at w
 | SQ cost = renewables LCOE | VRE: VRE > SQ > SMR* | VRE: VRE > SQ > SMR* | VRE: VRE > SQ > SMR* | VRE: VRE > SQ > SMR* |
 | SQ supply = renewables HHI | VRE: VRE > SQ > SMR* | VRE: VRE > SQ > SMR* | VRE: VRE > SMR* > SQ | VRE: VRE > SQ > SMR* |
 | SQ social 11 / 14 | VRE / VRE: VRE > SQ > SMR* / VRE > SQ > SMR* | VRE / VRE: VRE > SQ > SMR* / VRE > SQ > SMR* | VRE / SQ: VRE > SQ > SMR* / SQ > VRE > SMR* | VRE / VRE: VRE > SQ > SMR* / VRE > SQ > SMR* |
-| C1 not schedule-neutral (+14.6 days) | VRE: VRE > SQ > SMR* | VRE: VRE > SQ > SMR* | VRE: VRE > SQ > SMR* | VRE: VRE > SQ > SMR* |
+| C1 not schedule-neutral (+18.5 days) | VRE: VRE > SQ > SMR* | VRE: VRE > SQ > SMR* | VRE: VRE > SQ > SMR* | VRE: VRE > SQ > SMR* |
 | C1 premium +20%, qualification C$3 m | VRE: VRE > SQ > SMR* | VRE: VRE > SQ > SMR* | VRE: VRE > SQ > SMR* | VRE: VRE > SQ > SMR* |
 | Global scales (fixed bounds) | VRE: VRE > SMR* > SQ | VRE: VRE > SMR* > SQ | VRE: VRE > SMR* > SQ | VRE: VRE > SMR* > SQ |
 
 ## 7. SMR vs SMR + C1, under each C1 case
 
-Environmental criterion (life cycle) and the knock-on to the other two criteria C1 touches. 'Delay' = C1 not schedule-neutral (+14.6 days, results/schedule_value.md, old-case break-even used as an illustrative delay).
+Environmental criterion (life cycle) and the knock-on to the other two criteria C1 touches. 'Delay' = C1 not schedule-neutral (+18.5 days, results/schedule_value.md: the deck-case 2,200 t net break-even on the average factor, used as an illustrative delay; 14.6 for the old 1,734 t case).
 
 | C1 case | Saving (t/unit) | Life cycle SMR -> SMR + C1 (g/kWh) | Difference | Avoided to 2050, SMR -> SMR + C1 (Mt) | Cost +A$/MWh | Score gap (points of 100): W0_equal, W1_climate_cost, W2_firm_sovereign, W3_host_community | Score gap if qualification costs nothing | With delay: avoided change (kt) |
 |---|---|---|---|---|---|---|---|---|
-| old_1734 (from results) | 1,734 | 4.200 -> 4.1878 | 0.0122 g/kWh (0.29%) | 3.845 -> 3.846 | 0.038 | -0.0016, -0.0030, -0.0014, -0.0017 | +0.00038, +0.00038, +0.00052, +0.00027 | -25.2 (saving 1.7 kt; lost 25.5 kt) |
-| new_1100 (placeholder) | 1,100 | 4.200 -> 4.1922 | 0.0078 g/kWh (0.18%) | 3.845 -> 3.846 | 0.038 | -0.0017, -0.0032, -0.0016, -0.0018 | +0.00024, +0.00024, +0.00033, +0.00017 | -25.3 (saving 1.1 kt; lost 25.5 kt) |
-| new_2200 (placeholder) | 2,200 | 4.200 -> 4.1845 | 0.0155 g/kWh (0.37%) | 3.845 -> 3.846 | 0.038 | -0.0015, -0.0029, -0.0013, -0.0016 | +0.00049, +0.00049, +0.00066, +0.00034 | -25.1 (saving 2.2 kt; lost 25.5 kt) |
-| new_3300 (placeholder) | 3,300 | 4.200 -> 4.1767 | 0.0233 g/kWh (0.55%) | 3.845 -> 3.846 | 0.038 | -0.0012, -0.0027, -0.0009, -0.0015 | +0.00073, +0.00073, +0.00099, +0.00051 | -24.9 (saving 3.3 kt; lost 25.5 kt) |
+| old_1734 (from results) | 1,734 | 4.200 -> 4.1878 | 0.0122 g/kWh (0.29%) | 3.845 -> 3.846 | 0.038 | -0.0016, -0.0030, -0.0014, -0.0017 | +0.00038, +0.00038, +0.00052, +0.00027 | -32.0 (saving 1.7 kt; lost 32.3 kt) |
+| new_1100 (placeholder) | 1,100 | 4.200 -> 4.1922 | 0.0078 g/kWh (0.18%) | 3.845 -> 3.846 | 0.038 | -0.0017, -0.0032, -0.0016, -0.0018 | +0.00024, +0.00024, +0.00033, +0.00017 | -32.1 (saving 1.1 kt; lost 32.3 kt) |
+| new_2200 (placeholder) | 2,200 | 4.200 -> 4.1845 | 0.0155 g/kWh (0.37%) | 3.845 -> 3.846 | 0.038 | -0.0015, -0.0029, -0.0013, -0.0016 | +0.00049, +0.00049, +0.00066, +0.00034 | -31.9 (saving 2.2 kt; lost 32.3 kt) |
+| new_3300 (placeholder) | 3,300 | 4.200 -> 4.1767 | 0.0233 g/kWh (0.55%) | 3.845 -> 3.846 | 0.038 | -0.0012, -0.0027, -0.0009, -0.0015 | +0.00073, +0.00073, +0.00099, +0.00051 | -31.7 (saving 3.3 kt; lost 32.3 kt) |
 
-The two C1 cases named in the brief: **old_1734** and **new_2200**. Both change the SMR's life-cycle intensity by well under 1% (0.29% and 0.37% of 4.2 g/kWh), which moves the weighted score by thousandths of a point and never changes the SMR's place against the other options. The gap is slightly negative in the base case because the assumed C$1 m qualification cost (+A$0.04/MWh) outweighs, on these scales, a 0.016 g/kWh gain on a criterion whose range is 636 g/kWh; with no qualification cost it turns positive but stays below 0.001 point. If C1 slips the unit by 14.6 days, the CO2e not avoided during the delay (25.5 kt) is 12x the new_2200 saving, so SMR + C1 then avoids less than the plain SMR: the schedule-neutral condition decides the sign. Denominator caveat: the 4.2 g/kWh base comes from the old 20,700 m3 model; the team member's re-based LCA (Ostrołęka 50,000 m3) will change the life-cycle total, so the percentage for new_2200 must be re-read from that result.
+The C1 cases: **old_1734** (alternative) and the deck cases **new_1100 / new_2200 / new_3300** (eligibility 20/40/60%; new_2200 is the base). They change the SMR's life-cycle intensity by well under 1% (0.29%, and 0.18% / 0.37% / 0.55% of 4.2 g/kWh), which moves the weighted score by thousandths of a point and never changes the SMR's place against the other options. The gap is slightly negative in the base case because the assumed C$1 m qualification cost (+A$0.04/MWh) outweighs, on these scales, a 0.016 g/kWh gain on a criterion whose range is 636 g/kWh; with no qualification cost it turns positive but stays below 0.001 point. If C1 slips the unit by 18.5 days, the CO2e not avoided during the delay (32.3 kt) is 15x the new_2200 saving, so SMR + C1 then avoids less than the plain SMR: the schedule-neutral condition decides the sign. Denominator caveat: the 4.2 g/kWh base comes from the old 20,700 m3 model; the team member's re-based LCA (Ostrołęka 50,000 m3) will change the life-cycle total, so the percentage for new_2200 must be re-read from that result.
 
 ## 8. Appendix B3: consent routes scored (scripted; route A corrected)
 
