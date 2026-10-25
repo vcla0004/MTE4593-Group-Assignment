@@ -23,27 +23,55 @@ OUT_REVIEW = ROOT / "01_Report" / "MTE4593 Group 9 SMR Report - TEAM REVIEW.docx
 REF_DOCX = ROOT / "01_Report" / "assembly" / "reference.docx"  # make_reference_doc.py
 
 # Body order; None means the section is not in the repo yet (placeholder).
-ORDER = [
+ORDER = [  # body in the team template's structure (01_Report/MTE4593 Report.docx, extended as in Leroy's draft)
     ("0-abstract.md", None),
     ("1-introduction.md", None),
     ("2-methods-data.md", None),
+    ("4.1-technology-projects.md", None),
+    ("4.2-bwrx300-darlington.md", None),
     ("3-barriers.md", None),
-    ("4.1-technology-projects.md", "4.1 Technology, projects and patents (Leroy)"),
-    ("4.2-bwrx300-darlington.md", "4.2 BWRX-300 at Darlington (Leroy)"),
     ("4.3-initiative.md", None),
-    ("5-materials-life-cycle.md", "5 Materials from extraction to end-of-life (Leroy)"),
+    ("5-materials-life-cycle.md", None),
     ("6-lca-eco-audit.md", None),
     ("7-carbon-avoided.md", None),
-    ("8.1-law-regulation-licensing.md", None),
+    ("8.5-stakeholders-money.md", None),
+    ("8.4-social-licence.md", None),
     ("8.2-economics-finance.md", None),
     ("8.3-supply-concentration.md", None),
-    ("8.4-social-licence.md", None),
-    ("8.5-stakeholders-money.md", None),
+    ("8.1-law-regulation-licensing.md", None),
     ("8.6-implementation.md", None),
     ("9-tbl-mcda.md", None),
-    ("10-future-materials.md", "10 Future material properties and processes (Leroy)"),
+    ("10-future-materials.md", None),
     ("11-conclusions.md", None),
 ]
+# Section numbers in the source files -> numbers in the template structure
+NUM_MAP = {"1": "1", "2": "2", "4": "3.1", "4.1": "3.1.1", "4.2": "3.1.2", "3": "3.1.3",
+           "4.3": "3.1.4", "5": "3.1.5", "6": "3.2", "7": "3.3", "8": "3.4–3.6",
+           "8.5": "3.4.1", "8.4": "3.4.2", "8.2": "3.5.1", "8.3": "3.5.2", "8.1": "3.6.1",
+           "8.6": "3.6.2", "9": "3.7", "10": "3.8", "11": "4"}
+HEADING_TEXT = {"2": "Data Sources/Methodology", "4.1": "Current Projects and Patents",
+                "4.2": "Technical Descriptions: the BWRX-300 at Darlington", "6": "Lifecycle Analysis",
+                "7": "National Strategies and Industrial Policies: Carbon Avoided in Ontario and Australia",
+                "11": "Conclusion"}
+
+
+def map_num(num: str) -> str:
+    num = num.rstrip(".")
+    if num in NUM_MAP:
+        return NUM_MAP[num]
+    head, _, rest = num.partition(".")
+    return NUM_MAP[head] + "." + rest if head in NUM_MAP and rest else num
+
+
+def restructure(body: str) -> str:
+    """Renumber headings to the template structure; heading level follows the new number's depth."""
+    def sub(m):
+        old, text = m.group(2), m.group(3)
+        new = map_num(old)
+        text = HEADING_TEXT.get(old, text)
+        return "#" * (new.count(".") + 1) + f" {new} {text}"
+    body = re.sub(r"^(#{1,6}) (\d+(?:\.\d+)*) (.*)$", sub, body, flags=re.M)
+    return re.sub(r"^#{1,6} Abstract\s*$", "# Abstract", body, flags=re.M)
 APPENDICES = [
     "appendix-A-lca-inventory.md",
     "appendix-B-policy-and-supply-working.md",
@@ -59,17 +87,30 @@ FINAL = "--final" in sys.argv or REVIEW
 PAGE_BREAK = '```{=openxml}\n<w:p><w:r><w:br w:type="page"/></w:r></w:p>\n```\n'
 
 
-TITLE = """---
-title: "Small modular reactors: where they cut the most carbon, what holds them back, and a low-clinker concrete initiative for Darlington"
-subtitle: "MTE4593 Materials and Sustainability, Assignment 2 (Group 9)"
-author:
-  - "Victor Clarke [TODO: student ID]"
-  - "Leroy Louis Jean (33880212)"
-  - "Sam [TODO: surname] [TODO: student ID]"
-date: "October 2026"
----
+def _p(text: str, style: str = "", size: int = 0, before: int = 0, italic: bool = False) -> str:
+    ppr = f'<w:pStyle w:val="{style}"/>' if style else ""
+    rpr = (f'<w:sz w:val="{size}"/><w:szCs w:val="{size}"/>' if size else "") + ("<w:i/>" if italic else "")
+    return (f'<w:p><w:pPr>{ppr}<w:jc w:val="center"/><w:spacing w:before="{before}" w:after="120"/></w:pPr>'
+            f'<w:r><w:rPr>{rpr}</w:rPr><w:t xml:space="preserve">{text}</w:t></w:r></w:p>')
 
-"""
+
+AUTHORS = "Authors: Leroy Louis Jean (33880212), Sam [surname] ([student ID]), Victor Clarke ([student ID])"
+TITLE = ("```{=openxml}\n"
+         + _p("Small Modular Reactors", "Title", before=3600)
+         + _p("MTE4593 Assignment 2", "Subtitle")
+         + _p("Where small modular reactors cut the most carbon, what holds them back, and a "
+              "low-clinker concrete initiative for Darlington", size=22, before=240, italic=True)
+         + _p("{AUTHORS}", size=20, before=600)
+         + _p("Date of Submission: 25 October 2026", size=20)
+         + "\n```\n\n")
+TOC = ("```{=openxml}\n"
+       '<w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Table of Contents</w:t></w:r></w:p>'
+       '<w:p><w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/></w:r>'
+       '<w:r><w:instrText xml:space="preserve">TOC \\o "1-3" \\h \\z \\u</w:instrText></w:r>'
+       '<w:r><w:fldChar w:fldCharType="separate"/></w:r>'
+       '<w:r><w:t>Right-click here and choose Update Field to build the table of contents.</w:t></w:r>'
+       '<w:r><w:fldChar w:fldCharType="end"/></w:r></w:p>'
+       "\n```\n")
 # Team-review build: highlighted notes placed after the first heading of each file.
 def note(text: str) -> str:
     return f"[{text}]{{custom-style=\"TeamNote\"}}\n"
@@ -104,13 +145,15 @@ CHECKLIST = """## Team review checklist (this page is removed in the submission 
 
 """
 
-DECLARATION = """## Declaration of generative AI use
+DECLARATION = """# Declaration of generative AI use
 
 [TODO: team to write the AI-use declaration required by the unit (CLAUDE.md: the team decides how AI use is declared).]
 """
 DROP_HEADINGS = ("IDs covered", "Remaining TODOs")
-PARENT = {"4.1-technology-projects.md": "## 4 The technology and the initiative\n\n",
-          "8.1-law-regulation-licensing.md": "## 8 Non-technical factors affecting translation to practice\n\n"}
+PARENT = {"4.1-technology-projects.md": "# 3 Discussion\n\n## 3.1 Overview of SMR\n\n",
+          "8.5-stakeholders-money.md": "## 3.4 Stakeholder Analysis\n\n",
+          "8.2-economics-finance.md": "## 3.5 Market Analysis and Economic Feasibility\n\n",
+          "8.1-law-regulation-licensing.md": "## 3.6 Government Regulations Review\n\n"}
 
 
 def clean(text: str) -> str:
@@ -154,11 +197,34 @@ LABEL_RENAME = {"C1": "The initiative (C1)", "LCA": "Life-cycle assessment"}
 
 
 def no_section_signs(text: str) -> str:
-    """Replace "§" cross-references with words ("Section 6", "Sections 8.1–8.5")."""
+    """Replace "§" cross-references with words in the template numbering ("Section 3.3").
+
+    A "§" that points into a results file or an external document (`results/x.md` §3,
+    Guidelines (2010), §5.3) keeps its own number and becomes lower-case "section".
+    """
     num = r"\d+(?:\.\d+)*[a-z]?"
-    text = re.sub(r"§§\s*", "Sections ", text)
-    text = re.sub(rf"§\s*({num})\s*([–-])\s*({num})", r"Sections \1\2\3", text)
-    text = re.sub(rf"§\s*({num})", r"Section \1", text)
+
+    def internal(m) -> bool:
+        before = text[max(0, m.start() - 20):m.start()]
+        return not any(k in before for k in (".md", "`", "Guidelines", "brief"))
+
+    def rng(m):
+        if not internal(m):
+            return f"section {m.group(1)}{m.group(2)}{m.group(3)}"
+        if m.group(1).startswith("8") and m.group(3).startswith("8"):
+            return "Sections 3.4–3.6"
+        start, end = map_num(m.group(1)).split("–")[0], map_num(m.group(3)).split("–")[-1]
+        return f"Sections {start}{m.group(2)}{end}"
+
+    def one(m):
+        if not internal(m):
+            return f"section {m.group(1)}"
+        new = map_num(m.group(1))
+        return f"Sections {new}" if "–" in new else f"Section {new}"
+    text = re.sub(r"§§\s*", "§", text)
+    text = re.sub(r"(§\s*\d[\d.]*[a-z]?\s*[–-])\s*§\s*", r"\1", text)  # "§6–§8" -> "§6–8"
+    text = re.sub(rf"§\s*({num})\s*([–-])\s*({num})", rng, text)
+    text = re.sub(rf"§\s*({num})", one, text)
     return text.replace("§", "Section ")
 
 
@@ -245,21 +311,19 @@ def main() -> None:
         if REVIEW and name in NOTES:
             body = re.sub(r"^(#{1,6} .*\n)", lambda m: m.group(1) + "\n" + note(NOTES[name]) + "\n",
                           body, count=1, flags=re.M)
-        if name[:2] in ("4.", "8."):
-            body = re.sub(r"^(#{2,5}) ", r"#\1 ", body, flags=re.M)
-        body = report_style(body)
-        if not body.lstrip().startswith(PARENT.get(name, "##").strip()):
-            body = PARENT.get(name, "") + body
+        body = restructure(report_style(body))
+        body = PARENT.get(name, "") + body
         parts.append(body)
         rows.append((name, *words(body)))
     parts, first = renumber_tables(parts)
-    parts[0] = PAGE_BREAK + parts[0]  # abstract starts after the title page and contents
+    parts[0] = PAGE_BREAK + parts[0] + "\n\n" + PAGE_BREAK + TOC + PAGE_BREAK  # abstract page, contents page
     parts.append(PAGE_BREAK)
     if (SEC / REFS).exists():  # full list; check_refs.py only reports mismatches
-        parts.append(clean((SEC / REFS).read_text(encoding="utf-8")))
+        parts.append(re.sub(r"^## References", "# 5 References",
+                            clean((SEC / REFS).read_text(encoding="utf-8")), flags=re.M))
     else:
-        parts.append("## References\n\n**[TODO: reference list]**\n")
-    parts.append("## Declaration of generative AI use\n\n" + note("TEAM: agree the AI-use declaration wording and add it here.")
+        parts.append("# 5 References\n\n**[TODO: reference list]**\n")
+    parts.append("# Declaration of generative AI use\n\n" + note("TEAM: agree the AI-use declaration wording and add it here.")
                  if REVIEW else DECLARATION)
     parts.append(PAGE_BREAK + "# Appendices\n")
     for name in APPENDICES:
@@ -269,16 +333,16 @@ def main() -> None:
             if REVIEW and name in NOTES:
                 app = re.sub(r"^(#{1,6} .*\n)", lambda m: m.group(1) + "\n" + note(NOTES[name]) + "\n",
                              app, count=1, flags=re.M)
+            # appendix subsections sit below the contents' three levels (only "Appendix X" is listed)
+            app = re.sub(r"^(#{3,5}) ", r"#\1 ", app, flags=re.M)
             parts.append(renum_app(app, first))
         elif "moved" not in name and "appendix-E" not in name:
             parts.append(f"## {name}\n\n**[TODO: not yet in the repo]**\n")
     if REVIEW:
-        hl = '[{}]{{custom-style=\\"TeamNote\\"}}'
-        head = (TITLE.replace("[TODO: student ID]", hl.format("ADD STUDENT ID"))
-                .replace("[TODO: surname]", hl.format("ADD SURNAME")))
-        head += PAGE_BREAK + CHECKLIST
+        head = TITLE.replace("{AUTHORS}", AUTHORS.replace("[surname]", "ADD SURNAME")
+                             .replace("[student ID]", "ADD STUDENT ID")) + PAGE_BREAK + CHECKLIST
     elif FINAL:
-        head = TITLE
+        head = TITLE.replace("{AUTHORS}", AUTHORS)
     else:
         head = ('---\ntitle: "Small modular reactors: DRAFT (assembled from sections)"\n---\n\n'
             "**Draft for the team, not the submission.** Every [TO VERIFY] and [TODO] "
@@ -286,7 +350,7 @@ def main() -> None:
     OUT_MD.write_text(no_section_signs(head + "\n\n".join(parts)), encoding="utf-8")
     out_docx = OUT_REVIEW if REVIEW else OUT_FINAL if FINAL else OUT_DOCX
     subprocess.run(["pandoc", "-f", "markdown-tex_math_dollars", str(OUT_MD), "-o", str(out_docx),
-                    f"--reference-doc={REF_DOCX}", "--toc", "--columns=10000"], check=True)
+                    f"--reference-doc={REF_DOCX}", "--columns=10000"], check=True)
     tp = tt = 0
     print(f"{'section':42} {'prose':>6} {'table':>6}")
     for name, p, t in rows:

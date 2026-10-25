@@ -18,7 +18,7 @@ TEMPLATE = HERE.parent / "MTE4593 Report.docx"
 OUT = HERE / "reference.docx"
 
 
-BLUE = "006DAE"  # Monash blue
+BLUE = "595959"  # table rules: neutral dark grey, to match the template
 TABLE_STYLE = (
     '<w:style w:type="table" w:default="1" w:styleId="Table"><w:name w:val="Table"/>'
     '<w:basedOn w:val="TableNormal"/><w:qFormat/>'
@@ -30,7 +30,7 @@ TABLE_STYLE = (
     '<w:tblCellMar><w:top w:w="30" w:type="dxa"/><w:left w:w="80" w:type="dxa"/>'
     '<w:bottom w:w="30" w:type="dxa"/><w:right w:w="80" w:type="dxa"/></w:tblCellMar></w:tblPr>'
     '<w:tblStylePr w:type="firstRow"><w:rPr><w:b/></w:rPr>'
-    '<w:tcPr><w:shd w:val="clear" w:color="auto" w:fill="DCE9F5"/></w:tcPr></w:tblStylePr>'
+    '<w:tcPr><w:shd w:val="clear" w:color="auto" w:fill="EDEDED"/></w:tcPr></w:tblStylePr>'
     '</w:style>')
 
 
@@ -54,11 +54,12 @@ def add_props(xml: str, sid: str, ppr: str = "", rpr: str = "") -> str:
 
 
 def polish(xml: str) -> str:
-    """House style for the submission: Monash-blue headings, ruled tables, quiet captions."""
+    """House style for the submission: the template's headings, ruled tables, quiet captions."""
     xml = set_style(xml, "Table", TABLE_STYLE)
-    for sid in ("Heading1", "Heading2", "Title"):
-        xml = add_props(xml, sid, rpr=f'<w:color w:val="{BLUE}"/>')
-    xml = add_props(xml, "Heading3", rpr=f'<w:color w:val="{BLUE}"/>')
+    # headings keep the team template's own (black) styling; declare outline levels so a
+    # table of contents can be built outside Word too (update_toc.py)
+    for lvl, sid in enumerate(("Heading1", "Heading2", "Heading3", "Heading4")):
+        xml = add_props(xml, sid, ppr=f'<w:outlineLvl w:val="{lvl}"/>')
     for sid in ("TableCaption", "ImageCaption"):
         xml = add_props(xml, sid, rpr='<w:color w:val="555555"/><w:sz w:val="19"/><w:szCs w:val="19"/>')
     xml = add_props(xml, "ImageCaption", ppr='<w:jc w:val="center"/>')
