@@ -1,5 +1,9 @@
 # Rubric coverage: R2.1, R2.3, R2.6, R4.2, R4.4, RB.1, RB.5
-"""Initiative C1 scenarios: S0 baseline GU, S1 slag, S2 LC3, S2b LC3 + slag elsewhere, S3 steel sensitivity
+"""Re-based 25/10/2026: MAIN case = Ostrołęka PIS inventory, C1 = LC3 (Pillai 2019, 380 -> 270 kg/m3) on
+20/40/60% of the plant concrete (40% central). The bottom-up 21/10 scenarios are kept as the cross-check rows
+(basis "bottomup"), together with the per-structure table and the S0 counterfactual.
+
+Initiative C1 scenarios: S0 baseline GU, S1 slag, S2 LC3, S2b LC3 + slag elsewhere, S3 steel sensitivity
 (S3lfl like-for-like in the target structures; S3lo whole-plant upper bound; S3hi world-average), and the
 S0 counterfactual (what if OPG's baseline mixes already contain slag).
 
@@ -23,20 +27,32 @@ RAW = load_raw()
 P = central(RAW)
 N = int(P["units_initiative"])
 B = model(P, "S0", RAW)
+BX = model(P, "S0", RAW, basis="bottomup")
 
 rows = []
-for sc, label in [("S1", "S1 slag blend in C1 target structures"),
-                  ("S2", "S2 LC3 in C1 target structures (the initiative)"),
-                  ("S2b", "S2b LC3 in targets + slag blend in all other concrete")]:
-    x = lc3_saving(P, RAW, sc)
-    rows.append({"scenario": sc, "description": label,
+CASES = []
+for share in (float(RAW["c1_eligible_share"]["low"]), P["c1_eligible_share"], float(RAW["c1_eligible_share"]["high"])):
+    q = dict(P)
+    q["c1_eligible_share"] = share
+    CASES.append((q, "ostroleka", f"C1_{share * 100:.0f}", "S2",
+                  f"C1 LC3 on {share:.0%} of plant concrete ({share * P['ostroleka_concrete_m3']:,.0f} m3)"
+                  + (" (central)" if share == P["c1_eligible_share"] else "")))
+CASES += [(P, "ostroleka", "S1_40", "S1", "S1 slag blend (fallback) on the same 40% eligible concrete"),
+          (P, "ostroleka", "S2b_40", "S2b", "S2b LC3 on 40% eligible + slag blend in all other concrete (upper bound)"),
+          (P, "bottomup", "X_S1", "S1", "Cross-check (bottom-up 20,700 m3): S1 slag in DPSC infill + forebay"),
+          (P, "bottomup", "X_S2", "S2", "Cross-check (bottom-up 20,700 m3): S2 LC3 in DPSC infill + forebay (old C1)"),
+          (P, "bottomup", "X_S2b", "S2b", "Cross-check (bottom-up 20,700 m3): S2b LC3 in targets + slag elsewhere")]
+for q, basis, sc_id, sc, label in CASES:
+    x = lc3_saving(q, RAW, sc, basis)
+    Bb = model(q, "S0", RAW, basis)
+    rows.append({"scenario": sc_id, "basis": basis, "description": label,
                  "saving_t_per_unit": round(x["t_per_unit"]), "saving_t_units_2_4": round(N * x["t_per_unit"]),
                  "clinker_avoided_t_per_unit": round(x["clinker_t_per_unit"]),
                  "clinker_avoided_t_units_2_4": round(N * x["clinker_t_per_unit"]),
                  "pct_of_target_concrete": round(x["pct_target_concrete"], 1),
                  "pct_of_unit_life_cycle": round(x["pct_life_cycle"], 3),
                  "g_per_kwh_saved": round(x["g_per_kwh"], 4),
-                 "life_cycle_g_per_kwh_after": round(x["scen"]["total_g"] - 0 * x["g_per_kwh"], 4)})
+                 "life_cycle_g_per_kwh_after": round(Bb["total_g"] - x["g_per_kwh"], 4)})
 
 # S3 steel recycled-content sensitivity (vs S0 central steel factors)
 # S3lfl: like-for-like with C1 (same structures); S3lo: whole-plant upper bound; S3hi: world-average steel
@@ -46,15 +62,11 @@ S3_ROWS = [("S3lfl", "S3 like-for-like: low-end steel factors on the C1 target-s
            ("S3lo", "S3 upper bound: all steel at best-practice EAF sections factors", steel_whole_saving(P, RAW, "S3lo")),
            ("S3hi", "S3 high: all steel at world-average (BOF-heavy) factors", steel_whole_saving(P, RAW, "S3hi"))]
 for sc, label, d in S3_ROWS:
-    rows.append({"scenario": sc, "description": label, "saving_t_per_unit": round(d), "saving_t_units_2_4": round(N * d),
+    rows.append({"scenario": sc, "basis": "ostroleka", "description": label, "saving_t_per_unit": round(d), "saving_t_units_2_4": round(N * d),
                  "clinker_avoided_t_per_unit": 0, "clinker_avoided_t_units_2_4": 0, "pct_of_target_concrete": "",
                  "pct_of_unit_life_cycle": round(100 * d / B["total_t_life"], 3), "g_per_kwh_saved": round(1000 * d / B["mwh_life"], 4),
                  "life_cycle_g_per_kwh_after": round(B["total_g"] - 1000 * d / B["mwh_life"], 4)})
 
-# Note: life-cycle g/kWh after a concrete scenario = S0 total minus the saving (uplift not applied to savings)
-for r in rows:
-    if r["scenario"] in ("S1", "S2", "S2b"):
-        r["life_cycle_g_per_kwh_after"] = round(B["total_g"] - r["g_per_kwh_saved"], 4)
 
 with open(RESULTS / "lca_scenarios.csv", "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
@@ -63,7 +75,7 @@ with open(RESULTS / "lca_scenarios.csv", "w", newline="") as f:
 
 # Per structure (one unit)
 srows = []
-v = B["vol"]
+v = BX["vol"]
 for name, vol, binder in [("DPSC reactor-building infill", v["dpsc"], P["binder_scc_kg_per_m3"]),
                           ("Forebay shaft", v["forebay"], P["binder_conv_kg_per_m3"])]:
     base = concrete_block(P, vol, binder, "GU")
@@ -80,10 +92,12 @@ with open(RESULTS / "lca_scenarios_structures.csv", "w", newline="") as f:
     w.writerows(srows)
 
 L = ["Rubric coverage: R2.1, R2.3, R2.6, R4.2, R4.4, RB.1, RB.5\n",
-     "# C1 scenarios, generated by `scripts/lca_scenarios.py`\n",
-     f"Baseline S0: {B['total_g']:.3f} g CO2e/kWh; {fmt(B['total_t_life'])} t CO2e per unit over {P['design_life_yr']:.0f} years; "
-     f"C1 target concrete {fmt(v['target'])} m3 per unit emitting {fmt(B['target_concrete_kg'] / 1000)} t CO2e (A1-A3). "
-     f"Units 2-4 = {N} units.\n",
+     "# C1 scenarios, generated by `scripts/lca_scenarios.py` (re-based 25/10/2026)\n",
+     f"Main case S0 (Ostrołęka PIS {fmt(P['ostroleka_concrete_m3'])} m3, {fmt(P['ostroleka_steel_t'])} t steel): {B['total_g']:.3f} g CO2e/kWh (mode case); "
+     f"{fmt(B['total_t_life'])} t CO2e per unit over {P['design_life_yr']:.0f} years. C1 = LC3 on the eligible share of plant concrete at "
+     f"{P['ef_concrete_opc_kg_per_m3']:.0f} x {P['c1_lc3_concrete_cut']:.4f} = {P['ef_concrete_opc_kg_per_m3'] * P['c1_lc3_concrete_cut']:.0f} kg CO2e/m3 saved "
+     f"(Pillai 2019: 380 - 270). Cross-check S0 (bottom-up): {BX['total_g']:.3f} g/kWh, {fmt(BX['total_t_life'])} t. Shares here are of the "
+     f"mode-case life cycle of the row's own basis; Monte Carlo shares are in lca_uncertainty.md. Units 2-4 = {N} units.\n",
      "## Per unit and for Units 2-4\n",
      "| Scenario | Saving t CO2e/unit | Units 2-4 t CO2e | Clinker avoided t/unit | Units 2-4 clinker t | % of target concrete | % of unit life cycle | g/kWh saved |",
      "|---|---|---|---|---|---|---|---|"]
@@ -93,13 +107,13 @@ for r in rows:
 L += ["\nS3 rows: positive = lower than the S0 steel factors; negative = higher. They are a sensitivity on the baseline, not part of C1.",
       f"- **S3 like-for-like** (same structures as C1): {fmt(P['dpsc_basemat_steel_t'])} t DPSC basemat plate x ({P['ef_plate_other']:.2f} - "
       f"{float(RAW['ef_plate_other']['low']):.2f}) + {fmt(P['forebay_rebar_t'])} t forebay rebar x ({P['ef_rebar']:.2f} - {float(RAW['ef_rebar']['low']):.2f}) = "
-      f"{LFL['plate_t']:.0f} + {LFL['rebar_t']:.0f} = **{LFL['t_per_unit']:.0f} t per unit**, against LC3's {lc3_saving(P, RAW, 'S2')['t_per_unit']:,.0f} t. "
-      f"Within the structures C1 targets, LC3 is the larger lever (about {lc3_saving(P, RAW, 'S2')['t_per_unit'] / LFL['t_per_unit']:.1f}x). "
+      f"{LFL['plate_t']:.0f} + {LFL['rebar_t']:.0f} = **{LFL['t_per_unit']:.0f} t per unit**, against C1's {lc3_saving(P, RAW, 'S2')['t_per_unit']:,.0f} t (main) "
+      f"or {lc3_saving(P, RAW, 'S2', 'bottomup')['t_per_unit']:,.0f} t (cross-check, same structures). "
       "The DPSC shaft-wall plate is not known and is excluded, so this is a floor "
       "for the target-structure steel [TODO: NEDO-33926 / OPG plate tonnage].",
       f"- **S3 upper bound**: all {fmt(B['steel_t'])} t of plant steel, including forgings and nuclear-grade plate, moved to the best-practice EAF *sections* factor "
       f"({float(RAW['ef_plate_other']['low']):.2f} t/t, BCCA hot-rolled sections limit) and the low rebar factor. Not shown to be feasible for forgings or nuclear plate.\n",
-      "## Per structure (one unit)\n",
+      "## Cross-check only: per structure (one unit, bottom-up model)\n",
       "| Structure | Scenario | m3 | Binder kg/m3 | S0 t | Scenario t | Saving t | Saving kg/m3 | Clinker avoided t |",
       "|---|---|---|---|---|---|---|---|---|"]
 for r in srows:
@@ -120,7 +134,7 @@ L += ["\n## Working (per tonne of binder)\n",
 crow = []
 for lab, frac in [("low (slag 25% of binder)", float(RAW["slag_replacement_s1"]["low"])),
                   ("central (slag 40% of binder)", P["slag_replacement_s1"])]:
-    c = slag_baseline_counterfactual(P, RAW, frac)
+    c = slag_baseline_counterfactual(P, RAW, frac, "bottomup")
     crow.append({"counterfactual_s0": lab, "slag_fraction": round(c["slag_fraction"], 2),
                  "s0_change_vs_gu_t_per_unit": round(-c["s0slag_vs_gu_t"]),
                  "s0_life_cycle_g_per_kwh": round(c["s0slag_total_g"], 4),
@@ -132,7 +146,7 @@ with open(RESULTS / "lca_s0_counterfactual.csv", "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(crow[0].keys()))
     w.writeheader()
     w.writerows(crow)
-L += ["\n## S0 counterfactual: if OPG's baseline already contains slag\n",
+L += ["\n## S0 counterfactual (cross-check, bottom-up model): if OPG's baseline already contains slag\n",
       "Whether GEH's NEDO-33926 SCC infill specification or OPG's Darlington mixes already permit or use supplementary cementitious "
       "materials (slag, fly ash) has **not** been found [TO VERIFY: NEDO-33926 Rev. 2 (NRC ML24110A134) concrete section; OPG/St Marys "
       "mix submittals]. If they do, S0 is a slag blend in all plant concrete (scenario S0slag), S1 becomes business as usual, and C1's "
@@ -143,11 +157,14 @@ for r in crow:
     L.append(f"| {r['counterfactual_s0']} | {r['slag_fraction']:.2f} | {fmt(r['s0_change_vs_gu_t_per_unit'])} | {r['s0_life_cycle_g_per_kwh']} | "
              f"{fmt(r['lc3_increment_t_per_unit'])} | {fmt(r['lc3_increment_t_units_2_4'])} | {fmt(r['lc3_increment_clinker_t_per_unit'])} | "
              f"{r['lc3_increment_pct_of_life_cycle']} |")
-L += [f"\nReading: on a slag baseline the life cycle barely moves, and C1's carbon increment shrinks from {lc3_saving(P, RAW, 'S2')['t_per_unit']:,.0f} t to the LC3-minus-slag "
+_cm = slag_baseline_counterfactual(P, RAW, None, "ostroleka")
+L += [f"\nMain case equivalent (slag {P['slag_replacement_s1']:.0%} in all plant concrete as S0): LC3's increment on the 40% eligible concrete = "
+      f"{_cm['lc3_increment_t']:,.0f} t/unit ({_cm['lc3_increment_pct_life']:.3f}% of the life cycle), clinker {_cm['lc3_increment_clinker_t']:,.0f} t/unit.",
+      f"\nReading: on a slag baseline the life cycle barely moves, and C1's carbon increment shrinks from {lc3_saving(P, RAW, 'S2', 'bottomup')['t_per_unit']:,.0f} t (cross-check) to the LC3-minus-slag "
       "difference in the target structures (Monte Carlo interval spans zero: `lca_montecarlo_summary.csv`, row lc3_minus_slag_t_per_unit). "
       "The clinker increment stays positive because LC3 carries less clinker per tonne than a 25-40% slag blend."]
 (RESULTS / "lca_scenarios.md").write_text("\n".join(L) + "\n")
 
-s2 = next(r for r in rows if r["scenario"] == "S2")
+s2 = next(r for r in rows if r["scenario"] == "C1_40")
 print(f"S2 LC3: {s2['saving_t_per_unit']:,} t CO2e/unit, {s2['saving_t_units_2_4']:,} t for Units 2-4, "
       f"{s2['pct_of_unit_life_cycle']}% of the unit life cycle; clinker avoided {s2['clinker_avoided_t_per_unit']:,} t/unit")

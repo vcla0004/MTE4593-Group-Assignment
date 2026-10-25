@@ -1,5 +1,7 @@
 # Rubric coverage: R2.1, R2.2, R2.3, R2.4, R2.5, R2.6, R2.7, RB.5, RB.6
-# LCA parameters for section 6 and Appendices A, C, D (lca-analyst, 21/10/2026).
+# LCA parameters for section 6 and Appendices A, C, D (lca-analyst, 21/10/2026; re-based 25/10/2026).
+# 25/10 RE-BASE: the MAIN case now uses the Ostrolenka BWRX-300 PIS quantities (section B0) and Pillai et al. (2019)
+# per-m3 concrete factors; the old bottom-up 20,700 m3 model (section B) is kept as the cross-check (basis 'bottomup').
 # Owner: Victor (took over Sam's red sections; CLAUDE.md). Scripts in scripts/lca_*.py read ONLY this file.
 #
 # Schema: name: {value, low, high, dist, unit, source, status, note}
@@ -58,7 +60,63 @@ parameters:
     status: TO VERIFY
     note: "60 years 'designed for a 60-year operational life' (CNSC presentation CMD 24-H3-1B, search lead). Ontario reportedly says 65 years (NucNet 2025, lead). 40 = licensing-period low bound, 80 = life-extension high bound (assumptions)."
 
-  # ===================== B. Construction quantities (inventory) =====================
+  # ===================== B0. MAIN CASE (re-based 25/10/2026): Ostrolenka PIS quantities, Pillai per-m3 factors =====================
+  ostroleka_concrete_m3:
+    value: 50000
+    low: 40000
+    high: 60000
+    dist: tri
+    unit: m3 concrete per BWRX-300 unit (whole plant)
+    source: ostroleka2023_pis
+    status: TO VERIFY
+    note: "BWRX-300 Ostroleka sp. z o.o. (2023) Project Information Sheet, Table 14, p. 83: 50,000 m3 concrete per unit (team deck value; PIS not opened by an agent: mepr.gov.ua copy unreachable 25/10). Range +/-20% is an assumption: a pre-licensing estimate for a Polish site; Darlington's 35 m shaft, forebay and tunnels differ. 2.4x the old bottom-up 20,700 m3 (ESBWR 69 m3/MWe): 167 m3/MWe, above even the ABWR's 138 (Peterson 2005), consistent with small-unit diseconomies."
+  ostroleka_steel_t:
+    value: 14000
+    low: 11200
+    high: 16800
+    dist: tri
+    unit: t steel per unit (whole plant)
+    source: ostroleka2023_pis
+    status: TO VERIFY
+    note: "Same table: 14,000 t steel per unit. Range +/-20% assumption. Whether the 14,000 t includes the RPV, turbine and other equipment is not known [TO VERIFY]; equipment beyond it sits in construction_other_uplift. Split into rebar (rebar_ratio x concrete) and plate/structural/equipment (the rest)."
+  ef_concrete_opc_kg_per_m3:
+    value: 380
+    low: 330
+    high: 420
+    dist: tri
+    unit: kg CO2e per m3 concrete, OPC binder (cradle to gate, all constituents)
+    source: pillai2019_lc3
+    status: TO VERIFY
+    note: "Central 380 = Pillai et al. (2019) Table 2, M50 OPC mix (team deck; paper not opened by an agent, IITM copy unreachable 25/10). Used for ALL plant concrete in the main case so that the baseline and the C1 saving sit on one basis (the saving is a fraction of this same factor). Low 330 = this model's bottom-up 35-45 MPa GU mix (350 kg x 854 + 30) and the CRMCA Ontario 35 MPa baseline 334 (lead); high 420 = the bottom-up SCC infill mix (450 kg, 414) and the Ontario benchmark 417 (lead)."
+  ef_concrete_lc3_kg_per_m3:
+    value: 270
+    low: 270
+    high: 270
+    dist: fixed
+    unit: kg CO2e per m3 concrete, LC3 binder
+    source: pillai2019_lc3
+    status: TO VERIFY
+    note: "Pillai et al. (2019) Table 2, M50 LC3 mix (28-day 56.7 vs 60.0 MPa for OPC, per sources.md). Documentation and check only: the model applies c1_lc3_concrete_cut to the drawn OPC factor, so 380 - 270 = 110 kg/m3 is reproduced at the central values."
+  c1_lc3_concrete_cut:
+    value: 0.28947
+    low: 0.22
+    high: 0.39
+    dist: tri
+    unit: fractional cut in concrete GWP per m3, LC3 vs OPC
+    source: pillai2019_lc3
+    status: TO VERIFY
+    note: "Central = 1 - 270/380 (Pillai 2019). Range is an assumption: low 0.22 = central less ~10% extra binder for SCC flow (lc3_binder_uplift high); high 0.39 = the 43% binder-level cut lead (lc3_gwp_reduction high) x ~0.9 binder share of concrete GWP."
+  c1_eligible_share:
+    value: 0.40
+    low: 0.20
+    high: 0.60
+    dist: tri
+    unit: fraction of plant concrete eligible for LC3 (non-safety works first; DPSC infill only if qualified)
+    source: assumption
+    status: assumption
+    note: "Team deck scenarios 20/40/60%, 40% central -> 10,000/20,000/30,000 m3 and 1,100/2,200/3,300 t CO2e per unit. No source sets the eligible share; it is the main C1 uncertainty."
+
+  # ===================== B. CROSS-CHECK construction quantities (bottom-up 20,700 m3 model; also the C1-target geometry) =====================
   concrete_intensity_m3_per_mwe:
     value: 69
     low: 34.5

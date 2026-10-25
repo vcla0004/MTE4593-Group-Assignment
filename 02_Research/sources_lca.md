@@ -10,6 +10,14 @@ Priority for a human check (biggest effect on the headline or the C1 result firs
 
 ## A. Plant, design and quantities
 
+### ostroleka2023_pis (MAIN-CASE inventory from 25/10/2026)
+BWRX-300 Ostrołęka sp. z o.o., 2023. *Small Modular Nuclear Power Plant Project Information Sheet* (prepared by ORLEN Synthos Green Energy). [pdf] Warsaw, August 2023. Copy reported at: https://mepr.gov.ua/wp-content/uploads/2023/10/Project-Information-Card.pdf
+- **Team-deck value:** Table 14, p. 83: 50,000 m³ concrete and 14,000 t steel per BWRX-300 unit. **[TO VERIFY]**: a 25/10 web search confirmed the document (investor, date, ToC) but not the table; the mepr.gov.ua copy did not resolve from this session. Check: the table number, page, whether the figures are per unit or per site, and whether the steel includes equipment.
+
+### pillai2019_lc3 (MAIN-CASE concrete factors from 25/10/2026)
+Pillai, R.G. et al., 2019. Service life and life cycle assessment of reinforced concrete systems with limestone calcined clay cement (LC3). *Cement and Concrete Research*, 118, pp. 111–119. https://doi.org/10.1016/j.cemconres.2018.11.019
+- **Team-deck value:** Table 2, M50 mixes: OPC 380 vs LC³ 270 kg CO₂e/m³ (28-day 60.0 vs 56.7 MPa). **[TO VERIFY]**: a 25/10 search confirmed the paper (seven mixes, four M35 and three M50; LC3 footprint "significantly lower" than OPC) but not the per-m³ values; the IITM author copy did not resolve. Check: Table 2 values, GWP basis, Indian (not Ontario) inputs. Full author list to add from the paper (not invented here).
+
 ### gevernova_bwrx300_gd
 GE Vernova Hitachi Nuclear Energy, n.d. *BWRX-300 General Description* (005N9751). [pdf] Wilmington, NC: GE Vernova. Available at: https://www.gevernova.com/content/dam/gevernova-nuclear/global/en_us/documents/carbon-free-power/005N9751-BWRX-300-General-Description.pdf
 - **Lead:** 300 MWe net; steel-plate composite containment about 19 m outside diameter and 38 m high.

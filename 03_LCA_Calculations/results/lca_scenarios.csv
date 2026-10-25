@@ -1,7 +1,12 @@
-scenario,description,saving_t_per_unit,saving_t_units_2_4,clinker_avoided_t_per_unit,clinker_avoided_t_units_2_4,pct_of_target_concrete,pct_of_unit_life_cycle,g_per_kwh_saved,life_cycle_g_per_kwh_after
-S1,S1 slag blend in C1 target structures,1552,4657,2019,6057,30.6,0.405,0.0109,2.6897
-S2,S2 LC3 in C1 target structures (the initiative),1734,5201,2304,6913,34.1,0.452,0.0122,2.6884
-S2b,S2b LC3 in targets + slag blend in all other concrete,2488,7464,3286,9857,49.0,0.649,0.0175,2.6831
-S3lfl,"S3 like-for-like: low-end steel factors on the C1 target-structure steel only (1,953 t: DPSC basemat module plate + forebay rebar)",566,1698,0,0,,0.148,0.004,2.6966
-S3lo,S3 upper bound: all steel at best-practice EAF sections factors,3714,11142,0,0,,0.969,0.0262,2.6744
-S3hi,S3 high: all steel at world-average (BOF-heavy) factors,-8399,-25198,0,0,,-2.192,-0.0592,2.7598
+scenario,basis,description,saving_t_per_unit,saving_t_units_2_4,clinker_avoided_t_per_unit,clinker_avoided_t_units_2_4,pct_of_target_concrete,pct_of_unit_life_cycle,g_per_kwh_saved,life_cycle_g_per_kwh_after
+C1_20,ostroleka,"C1 LC3 on 20% of plant concrete (10,000 m3)",1100,3300,1470,4410,28.9,0.271,0.0078,2.8564
+C1_40,ostroleka,"C1 LC3 on 40% of plant concrete (20,000 m3) (central)",2200,6600,2940,8820,28.9,0.541,0.0155,2.8487
+C1_60,ostroleka,"C1 LC3 on 60% of plant concrete (30,000 m3)",3300,9900,4410,13230,28.9,0.812,0.0233,2.8409
+S1_40,ostroleka,S1 slag blend (fallback) on the same 40% eligible concrete,2288,6865,2576,7728,30.1,0.563,0.0161,2.8481
+S2b_40,ostroleka,S2b LC3 on 40% eligible + slag blend in all other concrete (upper bound),5633,16898,6804,20412,74.1,1.386,0.0397,2.8245
+X_S1,bottomup,"Cross-check (bottom-up 20,700 m3): S1 slag in DPSC infill + forebay",1552,4657,2019,6057,30.6,0.405,0.0109,2.6896
+X_S2,bottomup,"Cross-check (bottom-up 20,700 m3): S2 LC3 in DPSC infill + forebay (old C1)",1734,5201,2304,6913,34.1,0.452,0.0122,2.6883
+X_S2b,bottomup,"Cross-check (bottom-up 20,700 m3): S2b LC3 in targets + slag elsewhere",2488,7464,3286,9857,49.0,0.649,0.0175,2.683
+S3lfl,ostroleka,"S3 like-for-like: low-end steel factors on the C1 target-structure steel only (1,953 t: DPSC basemat module plate + forebay rebar)",566,1698,0,0,,0.139,0.004,2.8602
+S3lo,ostroleka,S3 upper bound: all steel at best-practice EAF sections factors,3915,11745,0,0,,0.963,0.0276,2.8366
+S3hi,ostroleka,S3 high: all steel at world-average (BOF-heavy) factors,-12655,-37965,0,0,,-3.113,-0.0892,2.9534

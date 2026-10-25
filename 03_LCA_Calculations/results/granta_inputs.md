@@ -6,6 +6,9 @@ For whoever runs Granta on a team machine (Victor, Leroy, or Sam if he returns).
 
 Why this run matters: R2.2 asks for "an eco-audit or equivalent analysis of impacts". Our Python model is the equivalent analysis for the whole life cycle; the Granta run is the independent check on the construction materials where C1 acts, and gives Appendix A its screenshot.
 
+## Re-base note (25/10/2026)
+**Granta EduPack has NOT been run** (only Sam can run it; no output exists). The main LCA case is now the Ostrołęka inventory (`lca_rebase_deck.md`). If a run is possible, add one optional whole-plant product after the target-structure product below: concrete **120,000 t** (50,000 m³ × 2.4 t/m³), rebar **7,500 t**, plate/structural/equipment steel **6,500 t** (14,000 t total; `results/lca_inventory.csv`), 60-year life. Values it should come close to (model, A1–A3, mode case): concrete **19,000 t CO₂e** (380 kg CO₂e/m³ = 0.158 kg CO₂e/kg), rebar **7,275 t**, plate **11,245 t**. Granta's generic concrete will probably read lower (less cement than an M50 mix); report both, do not adjust the model.
+
 ## 0. Before you start (5 min)
 1. Record the EduPack version, the database (Level 3 Sustainability, or whichever has Eco Audit), and the date. They go in §6.1 of the report.
 2. Make a folder `03_LCA_Calculations/results/granta/`.

@@ -1,5 +1,7 @@
 # Rubric coverage: R2.1, R2.2, R2.3, R2.4, R2.5, R5.2, RB.5
 """Baseline (S0) life-cycle result for one BWRX-300 at Darlington: inventory, stages, hotspots, fuel demand.
+MAIN case (re-based 25/10/2026): Ostrołęka PIS 50,000 m3 concrete and 14,000 t steel per unit, Pillai (2019) OPC
+380 kg CO2e/m3. The 21/10 bottom-up 20,700 m3 model is reported alongside as the cross-check (basis "bottomup").
 
 Run:  python3 -I 03_LCA_Calculations/scripts/lca_baseline.py
 Reads parameters_lca.yaml. Writes:
@@ -15,13 +17,14 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))   # -I drops the script dir from sys.path
-from lca_model import RESULTS, ROOT, CONCRETE_DENSITY_T_PER_M3, load_raw, central, model, fmt  # noqa: E402
+from lca_model import RESULTS, ROOT, CONCRETE_DENSITY_T_PER_M3, load_raw, central, model, fmt, main_mix_factor  # noqa: E402
 import lca_plot as lp  # noqa: E402
 from matplotlib.patches import FancyBboxPatch  # noqa: E402
 
 RAW = load_raw()
 P = central(RAW)
-R = model(P, "S0", RAW)
+R = model(P, "S0", RAW)                       # main basis (Ostrołęka)
+RX = model(P, "S0", RAW, basis="bottomup")    # cross-check
 RESULTS.mkdir(exist_ok=True)
 
 
@@ -39,15 +42,15 @@ def per_m3(binder):
 
 
 inv = []
-for name, blk, binder, basis in [
-    ("DPSC reactor-building infill (basemat + shaft walls)", R["c_dpsc"], P["binder_scc_kg_per_m3"],
-     "geometric estimate: basemat pi/4 D^2 t_b + wall pi (D - t_w) t_w h"),
-    ("Forebay shaft (condenser cooling water)", R["c_fore"], P["binder_conv_kg_per_m3"], "OPG construction update (floor)"),
-    ("Other plant concrete", R["c_oth"], P["binder_conv_kg_per_m3"], "whole-plant intensity x net MWe, minus the two above"),
+EF_OPC = main_mix_factor(P, "GU")[0]
+for name, blk, basis in [
+    (f"C1-eligible concrete ({P['c1_eligible_share']:.0%} of plant: non-safety works first)", R["c_dpsc"],
+     "c1_eligible_share x Ostrołęka PIS total (team deck scenario)"),
+    ("Other plant concrete (safety-related and not eligible)", R["c_oth"], "Ostrołęka PIS total minus eligible"),
 ]:
-    inv.append({"item": name, "material": "Concrete (GU binder, S0)", "quantity": round(blk["vol"]), "unit": "m3",
+    inv.append({"item": name, "material": "Concrete, OPC (S0)", "quantity": round(blk["vol"]), "unit": "m3",
                 "mass_t": round(blk["vol"] * CONCRETE_DENSITY_T_PER_M3),
-                "binder_kg_per_m3": binder, "ef": round(per_m3(binder), 1), "ef_unit": "kg CO2e/m3",
+                "binder_kg_per_m3": "", "ef": round(EF_OPC, 1), "ef_unit": "kg CO2e/m3 (Pillai 2019 M50 OPC)",
                 "t_co2e": round(blk["kg"] / 1000), "basis": basis})
 inv.append({"item": "Reinforcing steel (whole plant)", "material": "Rebar, EAF North American", "quantity": round(R["rebar_t"]),
             "unit": "t", "mass_t": round(R["rebar_t"]), "binder_kg_per_m3": "", "ef": P["ef_rebar"], "ef_unit": "t CO2e/t",
@@ -55,7 +58,7 @@ inv.append({"item": "Reinforcing steel (whole plant)", "material": "Rebar, EAF N
 inv.append({"item": "Plate, structural and equipment steel (incl. DPSC faceplates)", "material": "Steel plate / sections / equipment",
             "quantity": round(R["other_steel_t"]), "unit": "t", "mass_t": round(R["other_steel_t"]), "binder_kg_per_m3": "",
             "ef": P["ef_plate_other"], "ef_unit": "t CO2e/t", "t_co2e": round(R["plate_kg"] / 1000),
-            "basis": "steel intensity x net MWe, minus rebar"})
+            "basis": "Ostrołęka PIS steel total minus rebar"})
 inv.append({"item": "Transport to site (A4)", "material": "Truck", "quantity": "", "unit": "", "mass_t": "",
             "binder_kg_per_m3": "", "ef": P["ef_truck_kg_per_tkm"], "ef_unit": "kg CO2e/t-km",
             "t_co2e": round(R["transport_kg"] / 1000),
@@ -89,7 +92,7 @@ groups = {
 by_material = {
     "Concrete (all)": R["g"]["Construction: concrete"],
     "Steel (rebar + plate/equipment)": R["g"]["Construction: rebar"] + R["g"]["Construction: plate, structural and equipment steel"],
-    "C1 target concrete (DPSC infill + forebay)": R["target_concrete_kg"] / R["mwh_life"],
+    "C1-eligible concrete (40% of plant)": R["target_concrete_kg"] / R["mwh_life"],
 }
 
 # ---------------- fuel ----------------
@@ -136,11 +139,11 @@ acc = [
      "quantity_source": "[TODO: tunnel length x bored cross-section from OPG/CNSC]", "ef": "", "ef_unit": "", "ef_source": "",
      "t_co2e_A1A3": "", "correction": "Assumptions.docx's 4,127.29 m3 is concrete (4,000) + rebar (127.39), NOT the bored volume (review.md item 2); TBM energy sits in the construction uplift until data exist"},
 ]
-for i, row in enumerate(inv[:5], start=5):
+for i, row in enumerate(inv[:4], start=5):
     acc.append({"row": i, "lca_sheet": "SMR Parts LCA (construction)", "structure": f"Whole unit, scaled: {row['item']}",
                 "material": row["material"], "quantity": row["quantity"], "unit": row["unit"],
                 "mass_kg": row["mass_t"] * 1000 if row["mass_t"] != "" else "",
-                "scope": "SCALED ESTIMATE per unit (parameters_lca.yaml section B)", "quantity_source": row["basis"],
+                "scope": "WHOLE-UNIT ESTIMATE per unit (Ostrołęka PIS quantities; parameters_lca.yaml section B0)", "quantity_source": row["basis"],
                 "ef": row["ef"], "ef_unit": row["ef_unit"], "ef_source": "parameters_lca.yaml", "t_co2e_A1A3": row["t_co2e"],
                 "correction": "New: replaces the forebay-only rows as the whole-plant inventory"})
 with open(ROOT / "Accounting_corrected.csv", "w", newline="") as f:
@@ -157,21 +160,19 @@ L.append("Do not edit by hand: change `parameters_lca.yaml` and re-run. Every in
 L.append("## Lifetime output (functional-unit denominator)\n")
 L.append(f"- {P['net_mwe']:.0f} MWe x 8,760 h x {P['capacity_factor']:.2f} = {fmt(R['mwh_yr'])} MWh/yr; x {P['design_life_yr']:.0f} yr = **{R['mwh_life']:.4g} MWh** per unit")
 L.append(f"- Net efficiency {P['net_mwe']:.0f}/{P['thermal_mwt']:.0f} = {R['eta']:.3f}\n")
+vx = RX["vol"]
 L.append("## Concrete volume per unit\n")
-L.append("| Part | m3 | Working |\n|---|---|---|")
-L.append(f"| DPSC basemat infill | {fmt(v['basemat'])} | pi/4 x {P['rb_shaft_diameter_m']:.0f}^2 x {P['rb_basemat_thickness_m']} m |")
-L.append(f"| DPSC shaft-wall infill | {fmt(v['wall'])} | pi x ({P['rb_shaft_diameter_m']:.0f} - {P['rb_wall_thickness_m']}) x {P['rb_wall_thickness_m']} x {P['rb_shaft_depth_m']:.0f} m |")
-L.append(f"| Forebay shaft | {fmt(v['forebay'])} | OPG update (floor) |")
-L.append(f"| **C1 target structures** | **{fmt(v['target'])}** | sum of the three |")
-L.append(f"| Whole plant (scaled) | {fmt(v['scaled'])} | {P['concrete_intensity_m3_per_mwe']} m3/MWe x {P['net_mwe']:.0f} MWe |")
-L.append(f"| Other plant concrete | {fmt(v['other'])} | whole plant - target |")
-L.append(f"| **Whole plant used** | **{fmt(v['total'])}** | max(scaled, target) |\n")
+L.append("| Part | Main case m3 | Working | Cross-check (bottom-up) m3 | Working |\n|---|---|---|---|---|")
+L.append(f"| Whole plant | **{fmt(v['total'])}** | Ostrołęka PIS Table 14 | {fmt(vx['total'])} | {P['concrete_intensity_m3_per_mwe']} m3/MWe x {P['net_mwe']:.0f} MWe |")
+L.append(f"| C1 target | **{fmt(v['target'])}** | {P['c1_eligible_share']:.0%} eligible | {fmt(vx['target'])} | DPSC basemat {fmt(vx['basemat'])} + walls {fmt(vx['wall'])} + forebay {fmt(vx['forebay'])} |")
+L.append(f"| Other plant concrete | {fmt(v['other'])} | whole - target | {fmt(vx['other'])} | whole - target |")
+L.append(f"| Steel (t) | {fmt(R['steel_t'])} | Ostrołęka PIS Table 14 | {fmt(RX['steel_t'])} | {P['steel_intensity_t_per_mwe']} t/MWe x {P['net_mwe']:.0f} |\n")
 L.append("## Construction inventory per unit (S0)\n")
 L.append("| Item | Quantity | Unit | Factor | t CO2e |\n|---|---|---|---|---|")
 for r in inv:
     L.append(f"| {r['item']} | {fmt(r['quantity']) if r['quantity'] != '' else ''} | {r['unit']} | {r['ef']} {r['ef_unit']} | {fmt(r['t_co2e'])} |")
 L.append(f"| **Construction total** | | | | **{fmt(R['construction_kg'] / 1000)}** |\n")
-L.append(f"Steel total {fmt(R['steel_t'])} t ({P['steel_intensity_t_per_mwe']} t/MWe); concrete {fmt(R['concrete_kg'] / 1000)} t CO2e vs steel {fmt((R['rebar_kg'] + R['plate_kg']) / 1000)} t CO2e.\n")
+L.append(f"Steel total {fmt(R['steel_t'])} t (Ostrołęka PIS); concrete {fmt(R['concrete_kg'] / 1000)} t CO2e vs steel {fmt((R['rebar_kg'] + R['plate_kg']) / 1000)} t CO2e.\n")
 L.append("## Results by stage (hotspot table)\n")
 L.append("| Stage | g CO2e/kWh | t CO2e per unit (life) | Share |\n|---|---|---|---|")
 for s in stages:
@@ -190,6 +191,16 @@ for r in fuel:
 L.append(f"\nWorking: kWh_e per kg enriched U = burnup {P['burnup_gwd_per_t']:.0f} GWd/t x 24,000 kWh_th per kg U per (GWd/t) x {R['eta']:.3f} = "
          f"{P['burnup_gwd_per_t'] * 24000 * R['eta']:,.0f}. Feed = (xp - xt)/(xf - xt) with xp {P['enrichment_pct']}%, xf {P['feed_assay_pct']}%, xt {P['tails_assay_pct']}%. "
          "SWU = V(xp) + (F - 1)V(xt) - F V(xf), V(x) = (2x - 1) ln(x/(1 - x)).")
+L.append("\n## Cross-check: bottom-up 21/10 model (S0, mode case)\n")
+L.append("| Quantity | Main (Ostrołęka) | Cross-check (bottom-up) |\n|---|---|---|")
+for lab, a, b in [("Concrete m3/unit", v["total"], vx["total"]), ("Steel t/unit", R["steel_t"], RX["steel_t"]),
+                  ("Concrete t CO2e", R["concrete_kg"] / 1000, RX["concrete_kg"] / 1000),
+                  ("Steel t CO2e", (R["rebar_kg"] + R["plate_kg"]) / 1000, (RX["rebar_kg"] + RX["plate_kg"]) / 1000),
+                  ("Construction t CO2e", R["construction_kg"] / 1000, RX["construction_kg"] / 1000),
+                  ("Life cycle t CO2e/unit", R["total_t_life"], RX["total_t_life"])]:
+    L.append(f"| {lab} | {fmt(a)} | {fmt(b)} |")
+L.append(f"| Construction g/kWh | {R['construction_g']:.3f} | {RX['construction_g']:.3f} |")
+L.append(f"| Life cycle g/kWh | {R['total_g']:.3f} | {RX['total_g']:.3f} |")
 (RESULTS / "lca_baseline.md").write_text("\n".join(L) + "\n")
 
 # F2 (stage breakdown) is drawn by lca_uncertainty.py on an expected-value basis, with this mode case marked.
@@ -219,23 +230,24 @@ for i, t in enumerate(["Mining and\nmilling\n(Saskatchewan)", "Conversion\n(UF6,
     box(3 + i * 15, fy, 12, 9, t, FUEL)
     if i:
         arrow(3 + i * 15 - 3, fy + 4.5, 3 + i * 15, fy + 4.5)
-box(63, 30, 21, 14, "BWRX-300 operation\nDarlington, Clarington ON\n300 MWe net, 60 yr", CORE, bold=True, fs=8)
+box(63, 30, 21, 14, "BWRX-300 operation\nDarlington, Clarington ON\n300 MWe net, 60 yr", CORE, bold=True, fs=7.4)
 arrow(60, fy + 4.5, 63, 40)
 box(87.5, 31, 11, 12, "1 MWh net\nelectricity\n(functional\nunit)", "#ffffff", ec=lp.INK, bold=True, fs=7.5)
 arrow(84.5, 37, 87.5, 37)
-box(3, 24, 27, 11, "Construction materials\nconcrete (GU binder), rebar,\nDPSC plate, equipment steel", CONS)
-box(33, 24, 22, 11, "C1 target: DPSC infill +\nforebay shaft concrete\n(S0 / S1 slag / S2 LC3)", CORE, ec=lp.ORANGE, bold=True, fs=8)
+box(3, 24, 27, 11, "Construction materials:\n50,000 m³ concrete, 14,000 t steel\n(rebar, DPSC plate, equipment)", CONS, fs=7.6)
+box(33, 24, 22, 11, "C1: eligible concrete\n(20/40/60% of plant)\nOPC → LC³ (slag fallback)", CORE, ec=lp.ORANGE, bold=True, fs=8)
 box(3, 10, 22, 9, "Transport to site;\nother materials,\nsite energy (uplift)", CONS)
 arrow(55, 29.5, 63, 33)
 box(28, 10, 16, 9, "Operation and\nmaintenance", LIT)
 box(47, 10, 16, 9, "Decommissioning", LIT)
 box(66, 10, 22, 9, "Back end: spent fuel\nstorage and deep\ngeological repository", LIT)
 arrow(74, 30, 74, 19)
-ax.text(2.5, 2.2, "Blue: bottom-up per kg U (this study). Green: bottom-up materials (this study). Purple: literature per kWh (EDF 2024 shares).\n"
+ax.text(2.5, 2.2, "Blue: fuel, per kg U (this study). Green: materials (Ostrołęka quantities, this study). Purple: literature per kWh (EDF 2024 shares).\n"
         "Cut off: grid transmission beyond the plant, cladding and fuel hardware manufacture, conversion chemicals, fuel-plant capital goods, recycling credits.",
         fontsize=7.6, color=lp.INK2)
 # no embedded title: the Word caption carries "Figure F1" (review.md section 6 point 9)
 lp.save(fig, RESULTS / "F1_system_boundary.png")
 
-print(f"Baseline S0: {tot:.3f} g CO2e/kWh; {R['total_t_life']:,.0f} t CO2e per unit-life; concrete {v['total']:,.0f} m3/unit "
+print(f"Cross-check bottom-up S0: {RX['total_g']:.3f} g/kWh; construction {RX['construction_g']:.3f}")
+print(f"Baseline S0 (main): {tot:.3f} g CO2e/kWh; {R['total_t_life']:,.0f} t CO2e per unit-life; concrete {v['total']:,.0f} m3/unit "
       f"(target {v['target']:,.0f}); construction {R['construction_g']:.3f} g/kWh; fuel front end {R['fuel_g']:.3f} g/kWh")

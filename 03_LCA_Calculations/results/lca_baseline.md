@@ -11,58 +11,54 @@ Do not edit by hand: change `parameters_lca.yaml` and re-run. Every input is TO 
 
 ## Concrete volume per unit
 
-| Part | m3 | Working |
-|---|---|---|
-| DPSC basemat infill | 3,226 | pi/4 x 37^2 x 3.0 m |
-| DPSC shaft-wall infill | 5,855 | pi x (37 - 1.5) x 1.5 x 35 m |
-| Forebay shaft | 4,000 | OPG update (floor) |
-| **C1 target structures** | **13,081** | sum of the three |
-| Whole plant (scaled) | 20,700 | 69.0 m3/MWe x 300 MWe |
-| Other plant concrete | 7,619 | whole plant - target |
-| **Whole plant used** | **20,700** | max(scaled, target) |
+| Part | Main case m3 | Working | Cross-check (bottom-up) m3 | Working |
+|---|---|---|---|---|
+| Whole plant | **50,000** | Ostrołęka PIS Table 14 | 20,700 | 69.0 m3/MWe x 300 MWe |
+| C1 target | **20,000** | 40% eligible | 13,081 | DPSC basemat 3,226 + walls 5,855 + forebay 4,000 |
+| Other plant concrete | 30,000 | whole - target | 7,619 | whole - target |
+| Steel (t) | 14,000 | Ostrołęka PIS Table 14 | 9,900 | 33.0 t/MWe x 300 |
 
 ## Construction inventory per unit (S0)
 
 | Item | Quantity | Unit | Factor | t CO2e |
 |---|---|---|---|---|
-| DPSC reactor-building infill (basemat + shaft walls) | 9,081 | m3 | 414.3 kg CO2e/m3 | 3,762 |
-| Forebay shaft (condenser cooling water) | 4,000 | m3 | 328.9 kg CO2e/m3 | 1,316 |
-| Other plant concrete | 7,619 | m3 | 328.9 kg CO2e/m3 | 2,506 |
-| Reinforcing steel (whole plant) | 3,105 | t | 0.97 t CO2e/t | 3,012 |
-| Plate, structural and equipment steel (incl. DPSC faceplates) | 6,795 | t | 1.73 t CO2e/t | 11,755 |
-| Transport to site (A4) |  |  | 0.1 kg CO2e/t-km | 570 |
-| Other construction (uplift) |  |  | 0.5 x bulk | 11,460 |
-| **Construction total** | | | | **34,381** |
+| C1-eligible concrete (40% of plant: non-safety works first) | 20,000 | m3 | 380.0 kg CO2e/m3 (Pillai 2019 M50 OPC) | 7,600 |
+| Other plant concrete (safety-related and not eligible) | 30,000 | m3 | 380.0 kg CO2e/m3 (Pillai 2019 M50 OPC) | 11,400 |
+| Reinforcing steel (whole plant) | 7,500 | t | 0.97 t CO2e/t | 7,275 |
+| Plate, structural and equipment steel (incl. DPSC faceplates) | 6,500 | t | 1.73 t CO2e/t | 11,245 |
+| Transport to site (A4) |  |  | 0.1 kg CO2e/t-km | 880 |
+| Other construction (uplift) |  |  | 0.5 x bulk | 19,200 |
+| **Construction total** | | | | **57,600** |
 
-Steel total 9,900 t (33.0 t/MWe); concrete 7,584 t CO2e vs steel 14,767 t CO2e.
+Steel total 14,000 t (Ostrołęka PIS); concrete 19,000 t CO2e vs steel 18,520 t CO2e.
 
 ## Results by stage (hotspot table)
 
 | Stage | g CO2e/kWh | t CO2e per unit (life) | Share |
 |---|---|---|---|
-| Construction: concrete | 0.053 | 7,584 | 2.0% |
-| Construction: rebar | 0.021 | 3,012 | 0.8% |
-| Construction: plate, structural and equipment steel | 0.083 | 11,755 | 3.1% |
-| Construction: transport to site | 0.004 | 570 | 0.1% |
-| Construction: other materials and site energy | 0.081 | 11,460 | 3.0% |
-| Fuel: mining and milling | 1.024 | 145,336 | 37.9% |
-| Fuel: conversion | 0.127 | 17,967 | 4.7% |
-| Fuel: enrichment | 0.272 | 38,530 | 10.1% |
+| Construction: concrete | 0.134 | 19,000 | 4.7% |
+| Construction: rebar | 0.051 | 7,275 | 1.8% |
+| Construction: plate, structural and equipment steel | 0.079 | 11,245 | 2.8% |
+| Construction: transport to site | 0.006 | 880 | 0.2% |
+| Construction: other materials and site energy | 0.135 | 19,200 | 4.7% |
+| Fuel: mining and milling | 1.024 | 145,336 | 35.8% |
+| Fuel: conversion | 0.127 | 17,967 | 4.4% |
+| Fuel: enrichment | 0.272 | 38,530 | 9.5% |
 | Fuel: fabrication | 0.036 | 5,117 | 1.3% |
-| Operation and maintenance | 0.330 | 46,831 | 12.2% |
-| Decommissioning | 0.110 | 15,610 | 4.1% |
-| Back end: spent fuel and disposal | 0.560 | 79,471 | 20.7% |
-| **TOTAL** | **2.701** | **383,243** | 100.0% |
+| Operation and maintenance | 0.330 | 46,831 | 11.5% |
+| Decommissioning | 0.110 | 15,610 | 3.8% |
+| Back end: spent fuel and disposal | 0.560 | 79,471 | 19.6% |
+| **TOTAL** | **2.864** | **406,462** | 100.0% |
 
 | Group | g CO2e/kWh | Share |
 |---|---|---|
-| Construction (all) | 0.242 | 9.0% |
-| Fuel front end (mining to fabrication) | 1.458 | 54.0% |
-| Operation and maintenance | 0.330 | 12.2% |
-| Back end and decommissioning | 0.670 | 24.8% |
-| Concrete (all) | 0.053 | 2.0% |
-| Steel (rebar + plate/equipment) | 0.104 | 3.9% |
-| C1 target concrete (DPSC infill + forebay) | 0.036 | 1.3% |
+| Construction (all) | 0.406 | 14.2% |
+| Fuel front end (mining to fabrication) | 1.458 | 50.9% |
+| Operation and maintenance | 0.330 | 11.5% |
+| Back end and decommissioning | 0.670 | 23.4% |
+| Concrete (all) | 0.134 | 4.7% |
+| Steel (rebar + plate/equipment) | 0.131 | 4.6% |
+| C1-eligible concrete (40% of plant) | 0.054 | 1.9% |
 
 ## Fuel mass balance
 
@@ -78,3 +74,16 @@ Units: per_MWh column: g U per MWh, or SWU per GWh; per-year columns: t U, or tS
 | Separative work (SWU) | 14.558 | 34.4 | 137.7 |
 
 Working: kWh_e per kg enriched U = burnup 45 GWd/t x 24,000 kWh_th per kg U per (GWd/t) x 0.345 = 372,414. Feed = (xp - xt)/(xf - xt) with xp 3.8%, xf 0.711%, xt 0.25%. SWU = V(xp) + (F - 1)V(xt) - F V(xf), V(x) = (2x - 1) ln(x/(1 - x)).
+
+## Cross-check: bottom-up 21/10 model (S0, mode case)
+
+| Quantity | Main (Ostrołęka) | Cross-check (bottom-up) |
+|---|---|---|
+| Concrete m3/unit | 50,000 | 20,700 |
+| Steel t/unit | 14,000 | 9,900 |
+| Concrete t CO2e | 19,000 | 7,584 |
+| Steel t CO2e | 18,520 | 14,767 |
+| Construction t CO2e | 57,600 | 34,381 |
+| Life cycle t CO2e/unit | 406,462 | 383,243 |
+| Construction g/kWh | 0.406 | 0.242 |
+| Life cycle g/kWh | 2.864 | 2.701 |
