@@ -72,12 +72,11 @@ def restructure(body: str) -> str:
         return "#" * (new.count(".") + 1) + f" {new} {text}"
     body = re.sub(r"^(#{1,6}) (\d+(?:\.\d+)*) (.*)$", sub, body, flags=re.M)
     return re.sub(r"^#{1,6} Abstract\s*$", "# Abstract", body, flags=re.M)
-APPENDICES = [
-    "appendix-A-lca-inventory.md",
-    "appendix-B-policy-and-supply-working.md",
-    "appendix-B-moved-from-8.4-8.6.md",  # merged into App B at the end
-    "appendix-C-sensitivity.md",
-    "appendix-E-search-log.md",
+APPENDICES = [  # condensed versions for the submission; full working stays in the full files
+    ("appendix-A-short.md", "appendix-A-lca-inventory.md"),
+    ("appendix-B-short.md", "appendix-B-policy-and-supply-working.md"),
+    ("appendix-C-short.md", "appendix-C-sensitivity.md"),
+    ("appendix-E-short.md", "appendix-E-search-log.md"),
 ]
 REFS = "12-references.md"
 FIG_DIR = ROOT / "03_LCA_Calculations" / "results"
@@ -106,7 +105,7 @@ TITLE = ("```{=openxml}\n"
 TOC = ("```{=openxml}\n"
        '<w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Table of Contents</w:t></w:r></w:p>'
        '<w:p><w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/></w:r>'
-       '<w:r><w:instrText xml:space="preserve">TOC \\o "1-3" \\h \\z \\u</w:instrText></w:r>'
+       '<w:r><w:instrText xml:space="preserve">TOC \\o "1-2" \\h \\z \\u</w:instrText></w:r>'
        '<w:r><w:fldChar w:fldCharType="separate"/></w:r>'
        '<w:r><w:t>Right-click here and choose Update Field to build the table of contents.</w:t></w:r>'
        '<w:r><w:fldChar w:fldCharType="end"/></w:r></w:p>'
@@ -263,6 +262,28 @@ def report_style(body: str) -> str:
     return "\n\n".join(out)
 
 
+def cited_only(parts: list[str]) -> list[str]:
+    """Drop reference-list entries whose first author word and year appear nowhere else."""
+    i = next(k for k, p in enumerate(parts) if p.lstrip().startswith("# 5 References"))
+    text = "\n".join(p for k, p in enumerate(parts) if k != i)
+    kept, dropped = [], 0
+    for para in parts[i].split("\n\n"):
+        m = re.match(r"^(?P<a>[^#*\n].+?),? (?P<y>(?:19|20)\d\d[a-z]?|n\.d\.)[.,]?(?:\s|$)", para.strip())
+        if not m:
+            kept.append(para)
+            continue
+        words_ = [w for w in re.findall(r"[A-Z][\w’'-]+", m.group("a")) if w not in ("The", "A", "An")]
+        key = words_[0] if words_ else m.group("a").split()[0]
+        yr = m.group("y") if m.group("y") == "n.d." else m.group("y")[:4]
+        if re.search(re.escape(key) + r"[^\n]{0,120}?" + re.escape(yr), text):
+            kept.append(para)
+        else:
+            dropped += 1
+    print("references: dropped", dropped, "uncited entries")
+    parts[i] = "\n\n".join(kept)
+    return parts
+
+
 def renumber_tables(bodies: list[str]) -> list[str]:
     """Renumber body tables T1, T2, ... in caption order.
 
@@ -331,7 +352,8 @@ def main() -> None:
     parts.append("# Declaration of generative AI use\n\n" + note("TEAM: agree the AI-use declaration wording and add it here.")
                  if REVIEW else DECLARATION)
     parts.append(PAGE_BREAK + "# Appendices\n")
-    for name in APPENDICES:
+    for short, full in APPENDICES:
+        name = short if (SEC / short).exists() else full
         f = SEC / name
         if f.exists():
             app = clean(f.read_text(encoding="utf-8"))
@@ -341,8 +363,6 @@ def main() -> None:
             # appendix subsections sit below the contents' three levels (only "Appendix X" is listed)
             app = re.sub(r"^(#{3,5}) ", r"#\1 ", app, flags=re.M)
             parts.append(renum_app(app, first))
-        elif "moved" not in name and "appendix-E" not in name:
-            parts.append(f"## {name}\n\n**[TODO: not yet in the repo]**\n")
     if REVIEW:
         head = TITLE.replace("{AUTHORS}", AUTHORS.replace("[surname]", "ADD SURNAME")
                              .replace("[student ID]", "ADD STUDENT ID")) + PAGE_BREAK + CHECKLIST
@@ -352,6 +372,8 @@ def main() -> None:
         head = ('---\ntitle: "Small modular reactors: DRAFT (assembled from sections)"\n---\n\n'
             "**Draft for the team, not the submission.** Every [TO VERIFY] and [TODO] "
             "marker is still open. Leroy's sections are placeholders until they are in the repo.\n\n")
+    if FINAL:
+        parts = cited_only(parts)
     OUT_MD.write_text(no_section_signs(head + "\n\n".join(parts)), encoding="utf-8")
     out_docx = OUT_REVIEW if REVIEW else OUT_FINAL if FINAL else OUT_DOCX
     subprocess.run(["pandoc", "-f", "markdown-tex_math_dollars", str(OUT_MD), "-o", str(out_docx),
