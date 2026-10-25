@@ -284,10 +284,10 @@ Keep for HD (R3.3): polling against deaths per TWh, deaths avoided, Williams Tre
 Cuts:
 1. **T13 and its "Reading" ¶ → App B8.3** (≈ 170). In the body, one sentence: "Scored on legitimacy, legal risk, speed, public cost and fairness, consent-based routes beat top-down siting by 3–6 points under every weighting, and not building scores highest (Appendix B8.3)."
 2. **T12 caption source list** (≈ 140) → ≤ 25 words. Put short citations in the cells that carry numbers; the full list goes to the head of App B8.
-3. **T12** 6 rows → 5 (≈ 220):
+3. **T12** 6 rows → 5 (≈ 270):
    - **Delete the "Public view" row**; the text is the home of 61% vs 59%.
    - Keep: Safety (deaths/TWh and deaths avoided); Traditional Owners and consent; Residual dissent and litigation; Waste route (the **home** of C$26 bn and Ignace); Workforce (the **home** of jobs and AUKUS).
-   - Cells ≤ 20 words.
+   - Cells ≤ 25 words.
 4. **Consent ¶** 240 → 150; **perceived/actual ¶** 170 → 110 (older polls in one clause; delete the AEMO coal-exit clause, which §7.2 holds); **translation ¶** 100 → 70.
 
 ### §8.5 Stakeholders and money flows (575 → 330). Writer B
@@ -321,7 +321,7 @@ Cuts and merge:
 4. **Qualification and sequencing** 210 → 130: this is the **home** of the three steps and the 18–24 months.
 5. **Federal standard ¶** 95 → 60: the **home** of the 130% trap.
 
-### §9 TBL and MCDA (1,235 → 630). Writer A
+### §9 TBL and MCDA (1,235 → 680). Writer A
 Keep for HD:
 - RB.8: T4 with traceability.
 - R3.6: T5, the rank-reversal results, the honest scaling-artefact point, and SMR ≈ SMR + C1.
@@ -354,13 +354,13 @@ Cuts:
 ### Reserve cuts (apply in order only if a gate fails)
 | # | Cut | Saves |
 |---|---|---|
-| R1 | F5 → App C7, next to T9 | 0.3 p |
-| R2 | T14 → App B8.4; replace it with 2 sentences (78% OPG / 22% public and First Nations) | 0.25 p |
-| R3 | T3 → App B2.3; three HHIs inline in §8.3 ¶1 | 0.15 p |
+| R1 | T14 → App B8.4; replace it with 2 sentences (78% OPG / 22% public and First Nations). If time allows, draw it as a stacked-bar figure in the body (free) | 0.25 p |
+| R2 | Leroy's T2 → a timeline figure (free) or App E, with 2 sentences in §4.1 | 0.25 p |
+| R3 | T3 → a bar chart of HHI by stage against the 1,800 line (free) or App B2.3; three HHIs inline in §8.3 ¶1 | 0.15 p |
 | R4 | T4 "Society" row merged into the "Net" row | 0.1 p |
-| R5 | Leroy's T2 → App E with 2 sentences in §4.1 | 0.2 p |
+| R5 | §8.2 cost table → App B6.3, with our LCOE and OPG's C$149 inline | 0.3 p |
 
-Never cut T15, T1, T8, T7, T10, T5 or F2/F3/F8: they carry RB.1, RB.2, R2.2, R2.7, R3.2, R3.6 and R5.2 ("LCA stage breakdown, sensitivity chart, stakeholder map, cost comparison, MCDA table").
+The general reserve lever: **any table that is really a chart can become a figure at zero page cost** (cost comparison, HHI, money flows), provided it is captioned and sourced (R5.2). Never cut T15, T1, T8, T7, T10, T5 or F2/F3/F8: they carry RB.1, RB.2, R2.2, R2.7, R3.2, R3.6 and R5.2 ("LCA stage breakdown, sensitivity chart, stakeholder map, cost comparison, MCDA table").
 
 ## 3. Duplicated content: where each item stays
 
@@ -444,7 +444,7 @@ This covers:
 
 ## 5. Rubric statement (this job)
 - **R5.3 (concise, 15–20 pages):**
-  - Produced: a per-section budget to 18.8 p including tables and figures, with gates, reserve cuts and the cut order.
+  - Produced: a per-section budget to 18.5 p of text and tables (figures excluded, per the brief), with gates, reserve cuts and the cut order.
   - Missing: execution and the rendered page check. It stays **Partial** until the docx body measures ≤ 19.5 p.
 - **R1.5 (no irrelevant material):**
   - Produced: 21 duplicated items each given one home; working text (rubric IDs, TODOs, file paths, Granta "due" notes) listed for deletion.
