@@ -1,8 +1,12 @@
 ---
-title: "Small modular reactors: DRAFT (assembled from sections)"
+title: "Small modular reactors: where they cut the most carbon, what holds them back, and a low-clinker concrete initiative for Darlington"
+subtitle: "MTE4593 Materials and Sustainability, Assignment 2 (Group 9)"
+author:
+  - "Victor Clarke [TODO: student ID]"
+  - "Leroy Jean [TODO: student ID]"
+  - "Sam [TODO: surname] [TODO: student ID]"
+date: "October 2026"
 ---
-
-**Draft for the team, not the submission.** Every [TO VERIFY] and [TODO] marker is still open. Leroy's sections are placeholders until they are in the repo.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -81,10 +85,11 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 
 ### 4.1 Technology, projects and patents
 
-**No light-water SMR is yet reported operating on land, and the BWRX-300 is the Western design closest to doing so.** Table T2 rates each project on technology readiness levels (TRL): level 8 is a system "completed and qualified through test and demonstration", level 9 one operated across its full range of conditions (US Department of Energy, 2015). The ratings are ours.
+**No light-water SMR is yet reported operating on land; the BWRX-300 is the Western design closest to doing so, and China's ACP100 (Linglong One) was still in commissioning, with no criticality reported, in May 2026.** Table T2 rates each project on technology readiness levels (TRL): level 8 is a system "completed and qualified through test and demonstration", level 9 one operated across its full range of conditions (US Department of Energy, 2015). The ratings are ours.
 
 *Table T2. Selected SMR-class projects, October 2026.*
 *Source: Canadian Nuclear Safety Commission (2025); Ontario Power Generation (2025b); American Nuclear Society (2026); GE Vernova (2026); World Nuclear News (2023); US Nuclear Regulatory Commission (2025); NuScale Power Corporation (2023); TRL ratings: this study.*
+*Status entries are as reported by regulators, vendors, utilities and trade press found by web search; we have not opened the primary documents.*
 
 | Project | Design (MWe) | Status | First power | TRL |
 |---|---|---|---|---|
@@ -94,16 +99,16 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 | HTR-PM, Shandong | Pebble-bed, gas-cooled (210) | Commercial operation December 2023 | Grid December 2021 | 8–9 |
 | Carbon Free Power Project, Idaho | NuScale (462) | Cancelled November 2023; design approved May 2025 | None | 6 |
 
-**Cost, not licensing, stopped NuScale.** Its design was approved in May 2025, yet the first plant was cancelled when the estimate reached US$9.24 bn, about US$20,000/kW (NuScale Power Corporation, 2023). Darlington's C$20.9 bn for 1,200 MW is C$17,400/kW (Ontario Power Generation, 2025a; 2025b); both are first-of-a-kind, in different currencies. Licensing is quickening: Darlington's construction licence took 29 months and Clinch River's permit 14, probably helped by the joint CNSC–NRC review of the design's composite building (US Nuclear Regulatory Commission and Canadian Nuclear Safety Commission, 2025).
+**Cost, not licensing, stopped NuScale.** Its design was approved in May 2025, yet the first plant was cancelled when the estimate reached US$9.24 bn as reported, about US$20,000/kW (NuScale Power Corporation, 2023). Darlington's C$20.9 bn for 1,200 MW is C$17,400/kW (Ontario Power Generation, 2025a; 2025b); both are first-of-a-kind, in different currencies. Licensing is quickening: Darlington's construction licence took about 29 months and Clinch River's permit 14, probably helped by the joint CNSC–NRC review of the design's composite building (US Nuclear Regulatory Commission and Canadian Nuclear Safety Commission, 2025).
 
-**Patents.** Appendix E found GE-Hitachi's isolation-condenser and shaft-construction systems in its own patent families, but no patent on the diaphragm-plate composite modules (from search summaries). LC³ appears in no core composition patent, while Sika and Construction Research & Technology patent admixtures that improve its workability, so C1's binder risk lies in qualification rather than freedom to operate (our inference).
+**Patents.** Appendix E, from search summaries only, found isolation-condenser patents assigned to GE-Hitachi and a shaft-construction family that appears to be GE-Hitachi's, but no patent on the diaphragm-plate composite modules. It found no core LC³ composition patent, while Sika and Construction Research & Technology hold applications on LC³ workability and composition. This suggests, but does not establish, that C1's binder risk lies in qualification rather than patents; no freedom-to-operate search was done.
 
 **Australia's earliest date is about 2040.** The Coalition's 2024 plan claimed SMR power by 2035 (ABC News, 2024), whereas CSIRO's GenCost 2023-24 is reported to say 2040 at the earliest (Graham, Hayward and Foster, 2024). Darlington supports CSIRO: with a licensed site and an experienced regulator, it still needs about eight years from licence application (October 2022) to power (October 2030) (Canadian Nuclear Safety Commission, 2026a; Ontario Power Generation, 2025b). Australia must first repeal two federal bans (§8.1), assumed by 2029, and build a licensing regime, assumed to take three years: 2029 + 3 + 8 gives about 2040, matching first power at Liddell (§7).
 
 
 ### 4.2 The BWRX-300 at Darlington
 
-**The BWRX-300's composite building is what C1 targets.** The reactor is rated 300 MWe (GE Vernova Hitachi Nuclear Energy, n.d.; 315 MW net in Ontario Power Generation, 2025b), with a 60-year design life (Canadian Nuclear Safety Commission, 2024). The vendor-reported capacity factor is 95% (Fermi Energia, n.d.); we use 0.90 as a first-of-a-kind discount. Fuel is uranium dioxide enriched to 3.8% on average, 4.95% at most (Sun and Kurosaki, 2025). GE Hitachi states that isolation condensers cool the core passively for seven days without power or operator action (GE Hitachi Nuclear Energy, n.d.). It sits in a below-grade shaft of diaphragm-plate steel-composite (DP-SC) modules: two steel faceplates tied by diaphragm plates and filled with self-consolidating concrete (SCC) (GE-Hitachi Nuclear Energy, 2024).
+**The BWRX-300's composite building is what C1 targets.** The reactor is rated 300 MWe (GE Vernova Hitachi Nuclear Energy, n.d.; 315 MW net in Ontario Power Generation, 2025b), with a 60-year design life (Canadian Nuclear Safety Commission, 2024). The vendor-reported capacity factor is 95% (Fermi Energia, n.d.); we use 0.90 as a first-of-a-kind discount. Fuel is uranium dioxide, reported at 3.8% average and 4.95% maximum enrichment in a preprint review (Sun and Kurosaki, 2025). GE Hitachi states that isolation condensers cool the core passively for seven days without power or operator action (GE Hitachi Nuclear Energy, n.d.). The reactor building sits in a below-grade shaft of diaphragm-plate steel-composite (DP-SC) modules: two steel faceplates tied by diaphragm plates and filled with self-consolidating concrete (SCC) (GE-Hitachi Nuclear Energy, 2024).
 
 **The vendor's concrete claim is hard to reconcile with Ostrołęka.** GE Vernova (n.d.) claims about half the concrete per MW of its larger ESBWR. The Ostrołęka project information sheet gives 50,000 m³ per unit, or 167 m³/MWe (BWRX-300 Ostrołęka sp. z o.o., 2023), against the ESBWR's 69 (Peterson, Zhao and Petroski, 2005). Ostrołęka is only a design proxy for Darlington, and the gap probably reflects the boundary (whole site against nuclear island; our inference). Either way, a small reactor does not mean small concrete (§4.3).
 
@@ -479,7 +484,7 @@ Method in §2; working in Appendix B7; social-licence and legal scores from Appe
 
 | Need | Evidence now | To prove |
 |---|---|---|
-| SCC LC³ for DP-SC infill | Calcined clay raises superplasticiser demand (Universität der Bundeswehr München, n.d.); no LC³ heat-of-hydration data found; M50 strength 56.7 against 60.0 MPa (Pillai et al., 2019) | Mock-up panels testing flow through diaphragm holes, temperature rise and shrinkage; qualification under NEDO-33926, which rests on AISC N690 (GE-Hitachi Nuclear Energy, 2024), before the approval expected in 2028 (American Nuclear Society, 2026) |
+| SCC LC³ for DP-SC infill | Calcined clay raises superplasticiser demand (Universität der Bundeswehr München, n.d.); no LC³ heat-of-hydration data found; M50 strength 56.7 against 60.0 MPa (Pillai et al., 2019) | Mock-up panels testing flow through diaphragm holes, temperature rise and shrinkage; qualification under NEDO-33926, which reportedly rests on a modified AISC N690 (GE-Hitachi Nuclear Energy, 2024), before the approval expected in 2028 (American Nuclear Society, 2026) |
 | Low-residual EAF nuclear plate | Scrap-EAF steel emits 0.68 against 2.33 t CO₂/t (World Steel Association, 2026), but copper limits scrap use in vessel steel (Canadian Nuclear Safety Commission, 2023) | Qualify diluted-scrap or direct-reduced-iron plate, first outside the pressure boundary (our inference) |
 | Laser enrichment | Enrichment is the most concentrated fuel-cycle step (§8.3); a US laser plant's licence application was accepted in August 2025 (Silex Systems Limited, 2025) and Cameco takes its output (Silex Systems Limited, 2026) | NRC licence decision; Australian law (EPBC s140A, ARPANS s10) bars it |
 | Waste forms | Three non-BWRX SMR designs may produce 2–30 times more waste by volume per unit of energy (Krall, Macfarlane and Ewing, 2022; contested); ANSTO's Synroc ceramic, hot-pressed at 1,000 °C and 30 MPa, cuts volume against cement but is pre-commissioning (ANSTO, n.d.) | Synroc commissioning; for Australia, an export of know-how rather than a reason to build |
@@ -2206,7 +2211,7 @@ The sources disagree mainly about the fuel front end (ore grade, enrichment tech
 ### E1. Method and access
 The patent search covered three areas that bear on the initiative: (i) the BWRX-300's passive safety and civil design (isolation condenser, vertical shaft); (ii) steel-plate composite (DP-SC) modules; and (iii) limestone calcined clay cement (LC³). All searches were run on 25 October 2026.
 
-Google Patents (patents.google.com) **could not be reached** from the research environment (DNS failure). Justia, Espacenet, Lens, PatentsView, USPTO Patent Public Search and Google Scholar also failed to connect. Google Patents result counts are therefore **not available**. Instead, each string was run through a general web search, which returns about 9–10 links per query. Patent records were identified from those links and their summaries. The "hits" column below counts the patent records found, not database hits. Assignees, dates and claims must be checked on the patent pages before the report relies on them.
+Google Patents (patents.google.com) **could not be reached** from the research environment (DNS failure). Justia, Espacenet, Lens, PatentsView, USPTO Patent Public Search and Google Scholar also failed to connect. Google Patents result counts are therefore **not available**. Instead, each string was run through a general web search, which returns about 9–10 links per query. Patent records were identified from those links and their summaries. The "hits" column below counts the patent records found, not database hits. Assignees, dates and claims are as given in search summaries; the patent pages were not opened, so they are indicative only.
 
 ### E2. Search strings and results
 | # | Area | Search string (web search) | Links | Patent records found |
@@ -2230,30 +2235,30 @@ Google Patents (patents.google.com) **could not be reached** from the research e
 | # | Number | Title | Assignee | Year | Relevance to this report |
 |---|---|---|---|---|---|
 | P1 | US 10,867,712 B2 (family WO 2019/005465 A1, CA 3067552 A1, JP 7234150 B2) | Isolation condenser systems for nuclear reactor commercial electricity generation | GE-Hitachi Nuclear Energy Americas LLC | Filed 2017 | The passive decay-heat system behind the BWRX-300's 7-day no-power claim (§4.2) |
-| P2 | US 12,308,130 B2 | Reactor condition controlled check valve permits coolant to flow from a reservoir to an isolation condenser chamber | [TO VERIFY; inventors Hunt, Dahlgren and Marquino, as on GEH's isolation-condenser family] | [TO VERIFY] | Passive make-up of the condenser pool: how cooling extends beyond 7 days |
-| P3 | US 2020/0208517 A1 (EP 3906566) | Underground vertical shafts and nuclear reactors using the same | [TO VERIFY; inventors include Kirby and McDonald of GEH] | 2020 | The below-grade shaft reactor building and the basemat poured at the bottom of the shaft (§4.2; C1's infill location) |
-| P4 | US 8,906,155 B2 | Clinker substitute based on calcined clay | Outotec [TO VERIFY] | [TO VERIFY] | Calcining low-kaolinite (<40%), iron-bearing clays at 600–1,000 °C widens the clay supply for LC³ (§5) |
-| P5 | KR 10-2843101 B1 | [LC³ using low-temperature calcined clay; title TO VERIFY] | [TO VERIFY] | [TO VERIFY] | LC³ with ≥40% kaolin clay calcined at 700–800 °C: consistent with the LC³ project's calcination window |
-| P6 | US 11,939,273 B2 (US 2023/0312412 A1; WO 2022/043349 A1) | Limestone calcined clay cement (LC3) construction composition | Construction Research & Technology GmbH (Master Builders Solutions, formerly BASF) | Filed 2021 | Admixture-modified LC³ binder: the major admixture suppliers are commercialising LC³ (§10) |
+| P2 | US 12,308,130 B2 | Reactor condition controlled check valve permits coolant to flow from a reservoir to an isolation condenser chamber | Not confirmed (search summary only); inventors named as Hunt, Dahlgren and Marquino | n.d. | Passive make-up of the condenser pool: how cooling extends beyond 7 days |
+| P3 | US 2020/0208517 A1 (EP 3906566) | Underground vertical shafts and nuclear reactors using the same | Not confirmed; inventors include Kirby and McDonald (GE-Hitachi staff) | 2020 | The below-grade shaft reactor building and the basemat poured at the bottom of the shaft (§4.2; C1's infill location) |
+| P4 | US 8,906,155 B2 | Clinker substitute based on calcined clay | Outotec (as listed) | 2014 | Reported to cover calcined clays of lower kaolinite content (below 40%), which would widen the clay supply for LC³ (§5) |
+| P5 | KR 10-2843101 B1 | Limestone calcined clay cement using low-temperature calcined clay (title as listed by ZKG) | Not confirmed | n.d. | Listed by ZKG as LC³ using low-temperature calcined clay; details not seen |
+| P6 | US 11,939,273 B2 (US 2023/0312412 A1; WO 2022/043349 A1) | Limestone calcined clay cement (LC3) construction composition | Construction Research & Technology GmbH | Filed 2021 | Admixture-modified LC³ binder: an admixture supplier is patenting LC³ compositions (§10) |
 | P7 | US 2023/0202926 A1 (EP 3925941 A1) | Method for the increase of workability of a binder composition comprising Portland cement, calcined clay, and limestone | Sika Technology AG | 2023 | Directly addresses the main RB.7 barrier: LC³ workability for self-consolidating DP-SC infill (§10) |
 
 Seven patents are kept. Excluded: US 11,139,087 and US 11,955,248 (isolation condenser and feedwater control; assignee not seen), US 11,842,821 (title and date inconsistent between summaries), and US 2023/0036470 A1 and US 2025/0187980 A1 (not LC³-specific).
 
-**What the patents show (R1.3).** The BWRX-300's distinctive systems (isolation condensers, shaft construction) sit in GEH's own patent families. LC³ itself, developed through EPFL's public research programme, appears in no core composition patent in these results. The patenting is around it: clay processing (Outotec) and **admixtures for workability** (Sika, BASF/CR&T). So for C1 the freedom-to-operate risk is low for the binder, and the commercial interest lies exactly where our RB.7 gap is (SCC flow). That supports C1's route: buy a commercial admixture system and qualify it, rather than develop a new binder (inference).
+**What the patents show (R1.3).** The BWRX-300's distinctive systems (isolation condensers, shaft construction) sit in GEH's own patent families. LC³ itself, developed through EPFL's public research programme, appears in no core composition patent in these results. The patenting is around it: clay processing (Outotec) and **admixtures for workability** (Sika, BASF/CR&T). So for C1 the patent risk for the binder looks low on these searches (no freedom-to-operate search was done), and the commercial interest lies exactly where our RB.7 gap is (SCC flow). That supports C1's route: buy a commercial admixture system and qualify it, rather than develop a new binder (inference).
 
 ### E4. Literature searches (web-search substitute for Google Scholar)
 | # | Topic | String | Kept |
 |---|---|---|---|
 | L1 | Radiation in concrete | Field Remec Le Pape 2015 radiation effects in concrete … Nuclear Engineering and Design | Field, Remec and Le Pape (2015) |
-| L2 | Activated concrete | activated concrete decommissioning Eu-152 Co-60 biological shield … | Greifswald shield study (HZDR); BR3 (EPJ-N 2020) |
+| L2 | Activated concrete | activated concrete decommissioning Eu-152 Co-60 biological shield … | Greifswald shield study (HZDR); a Belgian BR3 decommissioning study |
 | L3 | Clearance and recycling | nuclear decommissioning concrete clearance recycling percentage … | Thierfeldt (2019) |
 | L4 | LC³ chloride and SCC | limestone calcined clay cement self-compacting concrete heat of hydration chloride … | LC³ chloride study (2025); UniBw calcined-clay SCC |
 | L5 | LC³ heat of hydration | LC3 concrete heat of hydration lower than OPC semi-adiabatic … | **None LC³-specific (gap)** |
 | L6 | LC³ SCC rheology | self-compacting concrete limestone calcined clay cement superplasticizer demand rheology … | UniBw; IIT Madras (2020) |
-| L7 | Steel residuals | copper tramp element accumulation steel scrap recycling EAF … | Daehn et al. (2017), via a 2025 review |
+| L7 | Steel residuals | copper tramp element accumulation steel scrap recycling EAF … | a 2025 review of copper in steel scrap |
 | L8 | RPV embrittlement | reactor pressure vessel steel SA-508 copper phosphorus irradiation embrittlement … | CNSC (2023); NRC RG 1.99 Rev. 2 |
 | L9 | Steel route intensity | worldsteel CO2 intensity BF-BOF … EAF … | worldsteel (2025; 2026) |
 | L10 | Waste forms | ANSTO Synroc … hot isostatic pressing | ANSTO Synroc |
 | L11 | Projects | TVA Clinch River …; Linglong One …; HTR-PM …; NuScale US460 SDA … | See `02_Research/briefs/technology-projects-trl.md` |
 
-Full references: `02_Research/sources_run8.md`.
+Literature sources are listed in the reference list.
