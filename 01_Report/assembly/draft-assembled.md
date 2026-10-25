@@ -2,11 +2,32 @@
 title: "Small modular reactors: where they cut the most carbon, what holds them back, and a low-clinker concrete initiative for Darlington"
 subtitle: "MTE4593 Materials and Sustainability, Assignment 2 (Group 9)"
 author:
-  - "Victor Clarke [TODO: student ID]"
+  - "Victor Clarke [ADD STUDENT ID]{custom-style=\"TeamNote\"}"
   - "Leroy Louis Jean (33880212)"
-  - "Sam [TODO: surname] [TODO: student ID]"
+  - "Sam [ADD SURNAME]{custom-style=\"TeamNote\"} [ADD STUDENT ID]{custom-style=\"TeamNote\"}"
 date: "October 2026"
 ---
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+## Team review checklist (this page is removed in the submission version)
+
+[Highlighted notes like this one mark what is still needed. Everything else is complete and fact-checked.]{custom-style="TeamNote"}
+
+**Leroy: Granta EduPack** (the only open technical item)
+
+- Run the Granta EduPack Eco Audit as set out in the note at the top of §6, and send the results (screenshots or export).
+- The results go in §6, Appendix A9 and one sentence in §2. The report currently says Granta was planned but not completed.
+
+**Everyone**
+
+- Title page: Victor's and Sam's student IDs, and Sam's surname (Leroy's is in).
+- Agree the AI-use declaration wording (placeholder before the appendices).
+
+**Victor (before submitting)**
+
+- Update the table of contents in Word (right-click, Update Field).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -43,6 +64,9 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 
 ## 2 Methods and data
 
+[LEROY: once Granta is run, this section's Granta sentence changes to describe it.]{custom-style="TeamNote"}
+
+
 **Four methods carry the numbers: a screening life-cycle assessment (LCA), grid displacement with a schedule break-even, a concentration index for fuel supply, and a multi-criteria analysis. Scripts and parameter files regenerate every figure (Appendix A1).** Values are taken from the documents cited, or, where marked "as reported", from the secondary source named. Where readings differ we give the range, and our own assumptions and inferences are labelled as such.
 
 **LCA.** A screening study following ISO 14040/14044 principles (International Organization for Standardization, 2006a; 2006b), not critically reviewed: functional unit 1 MWh of net electricity at the grid connection, cradle to grave (§6.1). The screening model is scripted in Python; a Granta EduPack Eco Audit cross-check was planned but not completed.
@@ -71,7 +95,7 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 | 2. Time to deploy | **Unit 1 in service 2030**; **2040 at the earliest** in Australia (Ontario Power Generation, 2025a; Graham, Hayward and Foster, 2024) | Late plants displace less CO₂e (§7) | Yes, as a constraint |
 | 3. Law | **No more than 36–37 of the 39 Senate votes** needed to repeal the federal bans (Parliament of Australia, 2026) | NSW's own ban would remain | No |
 | 4. Fuel-supply concentration | **Enrichment HHI 3,009** (sum of squared market shares) against 1,800 (World Nuclear Association, 2025; US Department of Justice and Federal Trade Commission, 2023) | Russia holds 41–43% of enrichment (§8.3) | No |
-| 5. Embodied carbon and qualification | **7.5%** of life-cycle emissions is construction; C1 saves 2,200 t per unit (this study, §6) | Infill concrete needs nuclear qualification before Units 2–4 are fixed (§8.1) | Yes: C1's target |
+| 5. Embodied carbon and qualification | **11.5%** of life-cycle emissions is construction; C1 saves 2,200 t per unit (this study, §6) | Infill concrete needs nuclear qualification before Units 2–4 are fixed (§8.1) | Yes: C1's target |
 | 6. Social licence | **59%** wanted the ban kept in 2024 (Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub, 2025) | Support depends on framing; Australia has no consent route (§8.4) | No |
 | 7. Workforce | **AUKUS** submarine work competes for the same trades (Joint Standing Committee on Treaties, 2024) | A civil plant would draw on scarce trades (§8.4) | No |
 | 8. Waste | **C$26 bn** Canadian repository cost, producer-funded; Australia has no disposal route (Nuclear Waste Management Organization, n.d.) | No spent fuel can be licensed without a route (§8.4) | No |
@@ -158,6 +182,9 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 
 
 ## 6 Life-cycle assessment and eco-audit
+
+[LEROY (Granta EduPack): please run the Granta EduPack Eco Audit on one BWRX-300: concrete 120,000 t (50,000 m³ × 2.4 t/m³) and steel 14,000 t (Ostrołęka PIS, Table 14), with a second run where 40% of the concrete (20,000 m³) is LC³ at 270 instead of 380 kg CO₂e/m³ (Pillai et al., 2019). Send the CO₂ footprint and energy per life stage (screenshot or export). Then confirm or update this section's Granta sentence, Appendix A9 and §2. Everything else in the report is complete.]{custom-style="TeamNote"}
+
 
 One BWRX-300 at Darlington emits an estimated **4.4 g CO₂e per kWh (Monte Carlo median; 90% interval 3.2–6.1; 3.5 if conversion heat takes its central published value)**, below UNECE's 5.1–6.4 g/kWh for nuclear power. The fuel front end contributes 62% and construction 11.5%. The initiative, C1 (§4.3), puts limestone calcined clay cement (LC³) in 20–60% of the concrete. It saves **2,200 t CO₂e per unit (1,100–3,300 t), about 0.36% of the life cycle**: real but small, so worth adopting only if schedule-neutral (§6.3).
 
@@ -309,15 +336,25 @@ Law is where Darlington and Liddell differ most. At Darlington, C1 starts with L
 
 An SMR's cost is mostly capital, so whoever finances it sets its price and decides who can build one. C1 is the opposite: it costs almost nothing, but no one is paid for the carbon it saves.
 
-**Cost.** Darlington's C$20.9 bn budget for four 300 MWe units (Ontario Power Generation, 2025a) gives a levelised cost of electricity (LCOE: the constant price that repays every cost over the plant's life) of C$198/MWh at a 7% real discount rate, and C$112–280 from 3% to 10% (Table T8). Capital is 65–86% of it, so finance terms matter as much as engineering. OPG's C$149/MWh implies 4.9%, a regulated Crown utility's cost of capital. Our A$221 at 7% sits just below GenCost's 2030 SMR range (Graham, Hayward and Foster, 2024), plausibly because four units share infrastructure. The agreement is not independent, because GenCost's current edition bases its SMR capital cost on Darlington (Graham and Hayward, 2026). A NuScale-size overrun would give C$317/MWh.
+**Cost.** Darlington's C$20.9 bn budget for four 300 MWe units (Ontario Power Generation, 2025a) gives a levelised cost of electricity (LCOE: the constant price that repays every cost over the plant's life) of C$198/MWh at a 7% real discount rate, and C$112–280 from 3% to 10% (Table T9). Capital is 65–86% of it, so finance terms matter as much as engineering. OPG's C$149/MWh implies 4.9%, a regulated Crown utility's cost of capital. Our A$221 at 7% sits just below GenCost's 2030 SMR range (Graham, Hayward and Foster, 2024), plausibly because four units share infrastructure. The agreement is not independent, because GenCost's current edition bases its SMR capital cost on Darlington (Graham and Hayward, 2026). A NuScale-size overrun would give C$317/MWh.
 
-**Risk and finance.** NuScale's Idaho project shows what happens when buyers carry overrun risk: its price rose about 35% in real terms even after tax credits, the Utah utilities did not subscribe, and it was cancelled in 2023 (Table T8). Darlington avoids this with a single Crown owner and a regulated rate base; public and First Nations finance covers about 22% of the budget (§8.5). The second equity tranche is released for Units 2–4 "once project milestones are met" (Canada Growth Fund and Building Ontario Fund, 2025), which is C1's main financial lever.
+**Risk and finance.** NuScale's Idaho project shows what happens when buyers carry overrun risk: its price rose about 35% in real terms even after tax credits, the Utah utilities did not subscribe, and it was cancelled in 2023 (Table T9). Darlington avoids this with a single Crown owner and a regulated rate base; public and First Nations finance covers about 22% of the budget (§8.5). The first unit's C$7.7 bn, with common infrastructure, sits inside the C$20.9 bn, not on top of it. The Canada Growth Fund (up to C$2 bn) and Building Ontario Fund (up to C$1 bn) supply equity, and the C$715 m of loan guarantees behind the First Nations' investment is credit support, not extra spending (Government of Canada, 2026). The second equity tranche is released for Units 2–4 "once project milestones are met" (Canada Growth Fund and Building Ontario Fund, 2025), which is C1's main financial lever.
 
-**Barriers to entry.** About C$17,400/kW is at risk for years before any revenue. Equity markets value US developers on hoped-for orders (NuScale at 168 times its revenue; NuScale Power Corporation, 2026), but first plants are financed by states and rate bases: the US Department of Energy's US$800 m went to two designs, one the BWRX-300 (US Department of Energy, 2025), out of about 70 worldwide (International Atomic Energy Agency, 2024). China's State Council approves batches of reactors for state-owned builders, as reported (Caixin Global, 2026). Australia has neither route. Liddell belongs to AGL, a private company, so an SMR there would need Commonwealth ownership or underwriting, with taxpayers carrying the cost risk (our inference).
+**Barriers to entry.** Entry needs large up-front capital, years of development, component qualification and regulatory approval; a small module is not proportionally cheap because site works, security and licensing are largely fixed (International Atomic Energy Agency, 2023). About C$17,400/kW is at risk for years before any revenue. Market capitalisation is a poor proxy for cost or performance: NuScale trades at 168 times its revenue (NuScale Power Corporation, 2026) because investors price hoped-for orders, not verified capital intensity or output. Darlington's disclosed budget is a stronger benchmark, though its operating record is yet to come. First plants are financed by states and rate bases: the US Department of Energy's US$800 m went to two designs, one the BWRX-300 (US Department of Energy, 2025), out of about 70 worldwide (International Atomic Energy Agency, 2024). China's State Council approves batches of reactors for state-owned builders, as reported (Caixin Global, 2026). Australia has neither route. Liddell belongs to AGL, a private company, so an SMR there would need Commonwealth ownership or underwriting, with taxpayers carrying the cost risk (our inference).
 
-**C1.** LC³ saves 6,600 t CO₂e across Units 2–4 (2,200 t a unit; §6.3), worth C$0.63–0.76 m at the federal carbon price of C$95/t in 2026 and C$115/t in 2030 (Environment and Climate Change Canada, 2026; BWRX-300 Ostrołęka sp. z o.o., 2023; Pillai et al., 2019). That justifies an LC³ premium of up to C$10.4–12.7/m³, or 4.6–5.5% of commodity concrete at C$229/m³. The target concrete costs about C$13.7 m, 0.10% of Units 2–4 capital. No one captures the carbon value, because construction materials appear to sit outside Ontario's industrial carbon pricing (our inference). Qualification sets the abatement cost: a C$1 m programme (assumed) adds about C$152/t, above the C$95–115/t price path, and one day of delay costs C$1.8–2.9 m, more than C1's whole carbon value. Responses are compared and sequenced in §8.6 (Table T12).
+**C1.** LC³ saves 6,600 t CO₂e across Units 2–4 (2,200 t a unit; §6.3), worth C$0.63–0.76 m at the federal carbon price of C$95/t in 2026 and C$115/t in 2030 (Environment and Climate Change Canada, 2026; BWRX-300 Ostrołęka sp. z o.o., 2023; Pillai et al., 2019). That justifies an LC³ premium of up to C$10.4–12.7/m³, or 4.6–5.5% of commodity concrete at C$229/m³. The target concrete costs about C$13.7 m, 0.10% of Units 2–4 capital. Table T8 tests the break-even from the cost side, since C1 decides only the premium on a qualified mix, not the C$20.9 bn. A C$10/m³ premium on a unit's 20,000 m³ of eligible concrete (40% of 50,000 m³) costs C$0.2 m, or C$91/t, just inside the carbon price; C$25 gives C$227/t and C$50 gives C$455/t. These are sensitivities, not quotes: no supplier price has been obtained. No one captures the carbon value, because construction materials appear to sit outside Ontario's industrial carbon pricing (our inference). Qualification adds to the abatement cost: a C$1 m programme (assumed) adds about C$152/t, and one day of delay costs C$1.8–2.9 m, more than C1's whole carbon value. Responses are compared and sequenced in §8.6 (Table T13).
 
-*Table T8. Cost evidence for an SMR: our Darlington estimate against published values.*
+*Table T8. Material-only cost of an LC³ premium on 20,000 m³ of eligible concrete per unit, against 2,200 t CO₂e saved.*
+*Source: this study; premiums assumed. Carbon price from Environment and Climate Change Canada (2026).*
+
+| Premium | Extra cost per unit | Per t CO₂e saved | Against C$95–115/t |
+|---|---|---|---|
+| C$0/m³ | C$0 | C$0 | Free |
+| C$10/m³ | C$0.2 m | C$91 | Below the price |
+| C$25/m³ | C$0.5 m | C$227 | Above the price |
+| C$50/m³ | C$1.0 m | C$455 | Above the price |
+
+*Table T9. Cost evidence for an SMR: our Darlington estimate against published values.*
 *Source: this study, Appendix B6.3; Ontario Power Generation (2025a; 2026b); Graham, Hayward and Foster (2024); Rao, Kaffine and Hodge (2026); Steigerwald et al. (2023).*
 
 | Measure | Value | What it shows |
@@ -333,7 +370,7 @@ An SMR's cost is mostly capital, so whoever finances it sets its price and decid
 
 ### 8.3 Supply concentration and geopolitics
 
-Every front-end fuel stage we measured is concentrated. Each Herfindahl–Hirschman index (HHI; §2) exceeds 1,800, "highly concentrated" on the 2023 US merger guidelines (US Department of Justice and Federal Trade Commission, 2023), though on the 2010 scale only enrichment is (Table T9). For Darlington this is a price risk; for an Australian SMR it is a sovereign risk.
+Every front-end fuel stage we measured is concentrated. Each Herfindahl–Hirschman index (HHI; §2) exceeds 1,800, "highly concentrated" on the 2023 US merger guidelines (US Department of Justice and Federal Trade Commission, 2023), though on the 2010 scale only enrichment is (Table T10). For Darlington this is a price risk; for an Australian SMR it is a sovereign risk.
 
 **Sanctions make it worse.** Russia holds 41.0–42.8% of enrichment capacity (calculated from World Nuclear Association, 2025; World Nuclear University, 2025). Removing Russia, as US buyers must once import-ban waivers end in 2028 (United States Congress, 2024), raises every HHI. Without Russia and China, enrichment is a Urenco–Orano duopoly (HHI 5,621). Mining is concentrated by country but not by company (HHI about 850–1,400, top three firms only), so its risk is geopolitical rather than market power (Appendix B2).
 
@@ -341,7 +378,7 @@ Every front-end fuel stage we measured is concentrated. Each Herfindahl–Hirsch
 
 **Translation to practice.** C1 does not reduce fuel risk. Fuel independence also needs conversion, enrichment, fabrication, forged components and skilled labour, not uranium deposits alone. Patents identify proprietary designs but do not establish any royalty per unit of electricity, so patent counts alone give no royalty estimate. The HHI measures nominal capacity, not the contracts open to one buyer. Contracts with allied enrichers, as OPG uses, cut a buyer's exposure but not concentration (§8.6). C1 adds a small supply risk of its own. LC³ needs a suitable calcined-clay source and blending capacity (Scrivener et al., 2018), and a single qualified supplier would be a risk even if its product footprint were favourable. One Western option links back to Darlington: laser enrichment from Australia's Silex Systems, commercialised in the US by Global Laser Enrichment (51% Silex, 49% Cameco, OPG's uranium supplier). The NRC docketed its Paducah application in August 2025, as reported by Silex Systems Limited (2025), and Cameco has agreed to buy all its output (Silex Systems Limited, 2026, as reported by World Nuclear News, 2026). EPBC s 140A would bar such a plant in Australia (§10).
 
-*Table T9. Herfindahl–Hirschman index (HHI) of the uranium front end, by stage, with and without Russia and China.*
+*Table T10. Herfindahl–Hirschman index (HHI) of the uranium front end, by stage, with and without Russia and China.*
 *Source: this study, Appendix B2, from World Nuclear Association (2024; 2025; 2026).*
 
 | Stage (measure, base year) | HHI | Class (2023 / 2010) | Russia's share | HHI without Russia | HHI without Russia and China | Australia's share | Canada's share |
@@ -357,15 +394,15 @@ Every front-end fuel stage we measured is concentrated. Each Herfindahl–Hirsch
 
 ### 8.4 Social licence
 
-The same reactor has a social licence at Darlington and none at Liddell. Safety data do not explain the difference; consent, benefit and trust do (Table T10).
+The same reactor has a social licence at Darlington and none at Liddell. Safety data do not explain the difference; consent, benefit and trust do (Table T11).
 
 **Perceived and actual safety.** In 2024, 61% of Australians supported using nuclear power to generate electricity (Neelam, 2024), yet 59% wanted to keep the legal ban, up from 51% a year earlier (Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub, 2025). One poll asks about a technology and the other about the law, so support depends on framing; older polls found support 16–20 points lower for a plant nearby (Newspoll, 2007). The health benefit, like the carbon benefit (§7), depends on what the reactor displaces.
 
-**Consent: equity in Canada, failed top-down siting in Australia.** At Darlington the CNSC found the duty to consult met (CNSC, 2025). In June 2026 the seven Williams Treaties First Nations agreed to lend C$700 m to the project, converting to equity once all four units are complete, guaranteed half each by federal and Ontario programmes (Williams Treaties First Nations et al., 2026). Two of the seven told the CNSC in 2023–24 that their concerns had not been addressed, so equity is a means of consent, not a substitute for it. Australia's precedent is a waste site chosen top-down and set aside by the Federal Court for apprehended bias (*Barngarla Determination Aboriginal Corporation RNTBC v Minister for Resources* [2023] FCA 809). Canada's waste agency instead used volunteer siting and a priced hosting agreement (Nuclear Waste Management Organization [NWMO], 2024a). Scored on legitimacy, legal risk, speed, public cost and fairness, consent-based routes beat top-down siting by 3–6 points under every weighting, and not building scores highest (Appendix B8.3).
+**Consent: equity in Canada, failed top-down siting in Australia.** At Darlington the CNSC found the duty to consult met (CNSC, 2025). In June 2026 the seven Williams Treaties First Nations announced a C$700 m investment, a loan converting to equity once all four units are complete, backed by federal and Ontario loan guarantees of about C$715 m (Williams Treaties First Nations et al., 2026; Government of Canada, 2026). The first is the investment, the second its credit support. Two of the seven told the CNSC in 2023–24 that their concerns had not been addressed, so ownership by participating Nations is not universal consent, nor a substitute for consulting other Indigenous groups. Australia's precedent is a waste site chosen top-down and set aside by the Federal Court for apprehended bias (*Barngarla Determination Aboriginal Corporation RNTBC v Minister for Resources* [2023] FCA 809). Canada's waste agency instead used volunteer siting and a priced hosting agreement (Nuclear Waste Management Organization [NWMO], 2024a). Scored on legitimacy, legal risk, speed, public cost and fairness, consent-based routes beat top-down siting by 3–6 points under every weighting, and not building scores highest (Appendix B8.3).
 
-**Translation to practice.** C1 changes no land use, emissions or waste, so it raises no new consent issue; its social value is indirect, as a lower-carbon build that OPG can report to its First Nations and public equity partners (our inference). For Liddell, low-regret steps can precede any repeal: a producer-funded waste body, and a two-key test in which both the host community and the Traditional Owners must agree. A priced hosting agreement, First Nations equity with a loan guarantee and a skills plan coordinated with AUKUS would follow (§8.6).
+**Translation to practice.** C1 changes no land use, emissions or waste at the site, so it raises no new consent issue there; its social value is indirect, as a lower-carbon build that OPG can report to its First Nations and public equity partners (our inference). Away from the site, clay sourcing, haulage and water use could create distributional impacts, and powder dust and calcination emissions are occupational matters at suppliers and batching plants. A socially sustainable pilot would disclose source locations and routes early, open supply to Indigenous and local firms where technically suitable, and report environmental data plainly. Waste stewardship is unchanged: the NWMO repository near Ignace entered regulatory assessment in January 2026 and is not operating (Nuclear Waste Management Organization, 2026), and LC³ has no proven recyclability or clearance advantage. For Liddell, low-regret steps can precede any repeal: a producer-funded waste body, and a two-key test in which both the host community and the Traditional Owners must agree. A priced hosting agreement, First Nations equity with a loan guarantee and a skills plan coordinated with AUKUS would follow (§8.6).
 
-*Table T10. Social licence at Darlington and at Liddell.*
+*Table T11. Social licence at Darlington and at Liddell.*
 *Source: as cited in each cell; full source list in Appendix B8.*
 
 | Factor | Darlington, Ontario | Liddell, NSW (hypothetical) | Effect on translation to practice |
@@ -383,42 +420,46 @@ The same reactor has a social licence at Darlington and none at Liddell. Safety 
 
 At Darlington none of the seven high-power actors opposes the project; at Liddell three of the four do (the Commonwealth, NSW and AGL), and the only strong supporter, the federal Coalition, is in opposition. Our power-weighted stance scores (−2 to +2; our judgement, not survey data; Figure F8; Appendix B8.2) are +1.07 and −1.03.
 
-Money follows the same pattern (Table T11). OPG carries about 78% of Darlington on its balance sheet (by subtraction; our calculation), recovered through rates the Ontario Energy Board approves, while federal, provincial and First Nations finance lowers the cost of capital and spreads ownership. That model needs a publicly owned utility with a regulated rate base. Liddell has a private owner, so it would need Commonwealth ownership or underwriting (§8.2), with taxpayers carrying the cost risk under the Coalition's 2024 model, as reported by ABC News (2024).
+Table T12 sets each actor's influence and interest beside its money. OPG carries about 78% of Darlington on its balance sheet (by subtraction; our calculation), recovered through rates the Ontario Energy Board approves, while federal, provincial and First Nations finance lowers the cost of capital and spreads ownership. That model needs a publicly owned utility with a regulated rate base. Liddell has a private owner, so it would need Commonwealth ownership or underwriting (§8.2), with taxpayers carrying the cost risk under the Coalition's 2024 model, as reported by ABC News (2024).
 
-For C1, the decisive actors are OPG as buyer, GE Vernova Hitachi as owner of the infill specification, and the two equity funds at the Units 2–4 tranche (§8.2). None is opposed, but none yet has a reason to act; the tranche condition supplies one (§8.6).
+For C1, the decisive actors are OPG as buyer, GE Vernova Hitachi as owner of the infill specification, and the two equity funds at the Units 2–4 tranche (§8.2). None is opposed, but none yet has a reason to act; the tranche condition supplies one (§8.6). Contractors and suppliers then decide whether LC³ is deliverable.
 
 ![Figure F8. Stakeholder power/interest maps for Darlington Units 2–4 with C1 (left) and a hypothetical Liddell BWRX-300 (right). Colour shows stance; positions are our judgement from §8.1–8.4. Source: this study, Appendix B8.2.](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F8_stakeholder_map.png){width=95%}
 
-*Table T11. Who pays and who earns: the C$20.9 bn Darlington New Nuclear Project.*
-*Source: as cited in each row; shares calculated in Appendix B8.4.*
+*Table T12. Stakeholders at the C$20.9 bn Darlington New Nuclear Project: influence, interest in C1, and money.*
+*Source: influence ratings and interests are our qualitative judgement, not survey data; money as cited in each row; shares calculated in Appendix B8.4.*
 
-| Flow | Who pays | Who earns | Amount (share) |
+| Stakeholder | Influence | Primary interest and suitable response for C1 | Money (share of budget) |
 |---|---|---|---|
-| OPG's share, recovered through Ontario Energy Board-approved rates | OPG, repaid by Ontario ratepayers (Ontario Power Generation, 2025b) | GE Vernova Hitachi, construction partners, suppliers | C$16.2 bn (78%) |
-| Phase 1 loan | Canada Infrastructure Bank (2022) | The project; the bank earns interest | C$0.97 bn (4.6%) |
-| Equity in two tranches | Canada Growth Fund and Building Ontario Fund (2025) | Returns on stakes of up to 15% and 7.5% | C$3.0 bn (14.4%) |
-| Loan converting to equity | Williams Treaties First Nations; guarantors carry default risk (Williams Treaties First Nations et al., 2026) | First Nations equity returns | C$0.70 bn (3.3%) |
+| OPG and its design authority | Very high | Safety, eligible concrete scope, budgets, delivery; oversee qualification and a fallback mix | Pays C$16.2 bn (78%), repaid by Ontario ratepayers through Ontario Energy Board-approved rates (Ontario Power Generation, 2025b) |
+| CNSC | Very high | Independent compliance and safety case; evaluate material changes where applicable | None |
+| Williams Treaties First Nations and other rights holders | High | Long-term participation, cultural and environmental interests; rights-respecting engagement | Loan converting to equity, C$0.70 bn (3.3%); guarantors carry default risk (Williams Treaties First Nations et al., 2026) |
+| Public financiers and investors | High | Investment risk, delivery milestones, lower-carbon economic development | Canada Infrastructure Bank Phase 1 loan, C$0.97 bn (4.6%) (Canada Infrastructure Bank, 2022); equity in two tranches, C$3.0 bn (14.4%), for stakes of up to 15% and 7.5% (Canada Growth Fund and Building Ontario Fund, 2025) |
+| Contractors, ready-mix and clay suppliers | High | Constructability, price, traceability, warranties, continuous quality testing | Earn the construction revenue, with GE Vernova Hitachi |
+| Clarington residents and electricity customers | Medium–high | Air and water impacts, transparent reporting, cost and reliability | Repay OPG's share through rates |
+| Workers, unions and laboratories | Medium–high | Occupational safety, training, testing, reliable construction procedures | About 1,600 construction jobs per SMR (§8.4) |
+| NWMO and waste managers | Medium | Long-term waste stewardship; funded end-of-life obligations | Producer-funded (§8.4) |
 
 ---
 
 
 ### 8.6 Implementation pathway
 
-**C1 can be built with no added delay on the evidence available if OPG applies a carbon specification to eligible non-safety concrete now (the LC³ pilot), qualifies the steel-composite infill on a Unit 1 mock-up, and ties a milestone to the Units 2–4 equity tranche.** The levers in Table T12 are scored on enforceability, speed and low schedule risk (1 to 3 each; our judgement, not sourced scores). L1 and L2 tie at 8. If enforceability counts double, L2 leads with 11; if speed counts double, L1 leads with 11; the recommendation is the same under both. L1 is C1's pilot step, not an add-on: a 10% floor invites LC³, whose full saving is 1,100–3,300 t CO₂e per unit (§4.3; Pillai et al., 2019).
+**C1 can be built with no added delay on the evidence available if OPG applies a carbon specification to eligible non-safety concrete now (the LC³ pilot), qualifies the steel-composite infill on a Unit 1 mock-up, and ties a milestone to the Units 2–4 equity tranche.** The levers in Table T13 are scored on enforceability, speed and low schedule risk (1 to 3 each; our judgement, not sourced scores). L1 and L2 tie at 8. If enforceability counts double, L2 leads with 11; if speed counts double, L1 leads with 11; the recommendation is the same under both. L1 is C1's pilot step, not an add-on: a 10% floor invites LC³, whose full saving is 1,100–3,300 t CO₂e per unit (§4.3; Pillai et al., 2019).
 
-*Table T12. Levers for putting C1 into practice, compared.*
-*Source: our evaluation from Treasury Board of Canada Secretariat (2022); Canada Growth Fund and Building Ontario Fund (2025). Scores are our judgement (Appendix B3.1).*
+*Table T13. Levers for putting C1 into practice, compared.*
+*Source: our evaluation from Treasury Board of Canada Secretariat (2022); Canada Growth Fund and Building Ontario Fund (2025). Scores are our judgement (Appendix B3.1). The qualification gates adapt the team's table of regulatory and engineering conditions for alternative concrete.*
 
-| Lever | Who pays | Binding on OPG? | Time | Schedule risk | Score (enforceability / speed / low risk) |
+| Lever | Who pays | Binding on OPG? When | Schedule risk | Qualification gate it depends on; outcome if not met | Score (enforceability / speed / low risk) |
 |---|---|---|---|---|---|
-| L1. OPG specification: environmental product declarations (EPDs) and concrete at least 10% below the regional baseline, with a cap on emissions; non-safety concrete first | OPG, so ratepayers (premium break-even, §8.2) | Yes (own contracts) | Next procurement round (2027) | Low | 2 / 3 / 3 = **8** |
-| L2. Units 2–4 equity-tranche milestone: EPD disclosure and a reduction target, with a schedule-neutral exemption | The funds; no cash cost | Yes, if the funds agree | With tranche 2 (around 2028) | Low, if the exemption is written in | 3 / 2 / 3 = **8** |
-| L3. Ontario shareholder direction to OPG | Ratepayers, after Ontario Energy Board review | Yes | Months | Depends on wording | 3 / 2 / 2 = 7 |
-| L4. Public funding for qualification on the Unit 1 mock-up (assumed C$1–3 m) | Federal or Ontario research budget | No | 2027 | Removes the main schedule risk | — (enabling step for L1's infill extension) |
+| L1. OPG specification: environmental product declarations (EPDs) and concrete at least 10% below the regional baseline, with a cap on emissions; non-safety concrete first | OPG, so ratepayers (premium break-even, §8.2) | Yes (own contracts); next procurement round (2027) | Low | Classification and provenance: each component's safety function defined, binder traced; if not, exclude it and revert to the approved mix | 2 / 3 / 3 = **8** |
+| L2. Units 2–4 equity-tranche milestone: EPD disclosure and a reduction target, with a schedule-neutral exemption | The funds; no cash cost | Yes, if the funds agree; with tranche 2 (around 2028) | Low, if the exemption is written in | Life-cycle verification: EPDs on a comparable product boundary, with transport modelled; if not, no quantified saving claim | 3 / 2 / 3 = **8** |
+| L3. Ontario shareholder direction to OPG | Ratepayers, after Ontario Energy Board review | Yes; months | Depends on wording | Design-authority acceptance, with CNSC review where relevant; if not, no use in affected safety-class works | 3 / 2 / 2 = 7 |
+| L4. Public funding for qualification on the Unit 1 mock-up (assumed C$1–3 m) | Federal or Ontario research budget | No; 2027 | Removes the main schedule risk | Strength, heat, crack and durability data, lot records and mock-ups; if not met, a further trial, rework or rejection | — (enabling step for L1's infill extension) |
 
-**Qualification and sequencing.** The sequence is L1 now, L4 in 2027, then L2 at the 2028 tranche. A CNSC licence condition is not a lever, because the CNSC does not set climate conditions; it only has to accept that the change is safe (our inference). Step 1, in 2027, develops slag and LC³ self-consolidating mixes (about 6 to 9 months). Step 2 is a full-scale mock-up trial off Unit 1's critical path (about 6 months), funded by L4. Step 3 is the design-change evaluation, submitted with the Units 2–4 licensing package ahead of the approval expected in 2028, as reported (American Nuclear Society, 2026); it takes about 6 to 9 months (assumed). The steps total about 18 to 24 months (assumed), so they fit only if they start in 2027. We have not costed the programme; §9 tests an assumed C$1 m. If the evidence is not ready, Units 2–4 proceed with the current mix, the pilot continues in non-safety concrete, and the infill enters at a later unit. Doing nothing forgoes the saving at near-zero cost and is rejected.
+**Qualification and sequencing.** The sequence is L1 now, L4 in 2027, then L2 at the 2028 tranche. A CNSC licence condition is not a lever, because the CNSC does not set climate conditions; it only has to accept that the change is safe (our inference). Oversight continues after approval, through batch testing, record retention, non-conformance procedures and inspection access, and the approved mix stays available throughout. Step 1, in 2027, develops slag and LC³ self-consolidating mixes (about 6 to 9 months). Step 2 is a full-scale mock-up trial off Unit 1's critical path (about 6 months), funded by L4. Step 3 is the design-change evaluation, submitted with the Units 2–4 licensing package ahead of the approval expected in 2028, as reported (American Nuclear Society, 2026); it takes about 6 to 9 months (assumed). The steps total about 18 to 24 months (assumed), so they fit only if they start in 2027. We have not costed the programme; §9 tests an assumed C$1 m. If the evidence is not ready, Units 2–4 proceed with the current mix, the pilot continues in non-safety concrete, and the infill enters at a later unit. Doing nothing forgoes the saving at near-zero cost and is rejected.
 
-**The federal standard is a template, not an obligation.** The Standard on Embodied Carbon in Construction binds federal departments (Treasury Board of Canada Secretariat, 2022); OPG, an Ontario Crown corporation, is outside its scope (our inference). Its allowance of 130% of baseline for specialised mixes could let self-consolidating infill emit 30% more than the baseline, so any OPG or fund clause must benchmark infill against a cement-rich self-consolidating reference mix.
+**The federal standard is a template, not an obligation.** The Standard on Embodied Carbon in Construction (amended March 2025) requires low-carbon concrete, life-cycle assessment and structural-material reporting in federal procurement (Treasury Board of Canada Secretariat, 2022). It is a model of transparency, but it binds federal departments, and OPG, an Ontario Crown corporation, is outside its scope (our inference); the Darlington choice rests on its own contracts, codes and licence conditions. Its allowance of 130% of baseline for specialised mixes could let self-consolidating infill emit 30% more than the baseline, so any OPG or fund clause must benchmark infill against a cement-rich self-consolidating reference mix.
 
 ---
 
@@ -429,23 +470,23 @@ For C1, the decisive actors are OPG as buyer, GE Vernova Hitachi as owner of the
 
 ### 9.1 Triple bottom line
 
-Table T13 applies the triple bottom line to C1 at Darlington and to the comparison at Liddell, each cell traced to its section.
+Table T14 applies the triple bottom line to C1 at Darlington and to the comparison at Liddell, each cell traced to its section.
 
-*Table T13. Triple-bottom-line summary: C1 at Darlington Units 2–4 and one BWRX-300 at Liddell.*
+*Table T14. Triple-bottom-line summary: C1 at Darlington Units 2–4 and one BWRX-300 at Liddell.*
 *Source: this study, from the sections cited.*
 
-| | Darlington, with C1 | Liddell (one unit) | Traced to |
-|---|---|---|---|
-| **Environment** | About 4 g CO₂e/kWh (§6). C1 saves 2,200 t per unit, about 0.36% of the life cycle; Unit 1 avoids 1.0–6.8 Mt to 2050. | Avoids 0.67–3.9 Mt to 2050, from about 2040. Firmed renewables avoid 10.9× more per dollar. | §6.3, §7 |
-| **Economy** | LCOE C$198/MWh at 7%. C1's carbon value (C$0.63–0.76 m, Units 2–4) is less than one day of delay (C$1.8–2.9 m). | SMR A$230–382/MWh in 2030 against A$89–125 for firmed renewables. A first unit would need Commonwealth ownership or underwriting (our inference, §8.2). | §7.3, §8.2 |
-| **Society** | Stance +1.07; no high-power actor opposed. Williams Treaties First Nations lend C$700 m, converting to equity. C1 adds no consent issue. | Stance −1.03; 59% want the ban kept. No legal route is open. Enrichment and conversion would be imported. | §8.1, §8.3–8.5 |
-| **Net** | Marginal gain; feasible if schedule-neutral (break-even 11.6–18.5 days). | Not feasible before 2040 on current law, cost and consent. | §6–§8 |
+| | Darlington, with C1 | Liddell (one unit) | C1 assessment | Traced to |
+|---|---|---|---|---|
+| **Environment** | About 4 g CO₂e/kWh (§6). C1 saves 2,200 t per unit at 40% eligibility, about 0.36% of the life cycle; supply and end-of-life effects are uncertain. Unit 1 avoids 1.0–6.8 Mt to 2050. | Avoids 0.67–3.9 Mt to 2050, from about 2040. Firmed renewables avoid 10.9× more per dollar. | Conditional benefit | §6.3, §7 |
+| **Economy** | LCOE C$198/MWh at 7%. C1's carbon value (C$0.63–0.76 m, Units 2–4) is modest beside capital and less than one day of delay (C$1.8–2.9 m); qualification, sourcing and schedule risk matter. | SMR A$230–382/MWh in 2030 against A$89–125 for firmed renewables. A first unit would need Commonwealth ownership or underwriting (our inference, §8.2). | Conditional feasibility | §7.3, §8.2 |
+| **Society** | Stance +1.07; no high-power actor opposed. Williams Treaties First Nations lend C$700 m, converting to equity. C1 adds no consent issue at the site; sourcing and workplace dust need open handling. | Stance −1.03; 59% want the ban kept. No legal route is open. Enrichment and conversion would be imported. | Acceptability depends on process | §8.1, §8.3–8.5 |
+| **Net** | Marginal gain; feasible if schedule-neutral (break-even 11.6–18.5 days). | Not feasible before 2040 on current law, cost and consent. | Controlled innovation | §6–§8 |
 
 ### 9.2 Multi-criteria analysis
 
 Method in §2; working in Appendix B7; social-licence and legal scores from Appendix B8.3 and B3. Technology readiness level (TRL) is not scored.
 
-*Table T14. MCDA total scores (0–100) by weight set, and first-place tests.*
+*Table T15. MCDA total scores (0–100) by weight set, and first-place tests.*
 *Source: this study, Appendix B7. SMR + C1 is the 2,200 t case. Social, legal and weight inputs are our judgement.*
 
 | Option | Equal | Climate and cost | Firm and sovereign | Host community |
@@ -466,7 +507,7 @@ Method in §2; working in Appendix B7; social-licence and legal scores from Appe
 
 ### 9.3 Verdict and limits
 
-**Darlington.** Pilot LC³ in eligible non-safety works first; use steel-composite infill only if qualified on Unit 1 mock-ups, otherwise specify the slag blend. Qualification must start in 2027 for the 2028 Units 2–4 decision (§8.6).
+**Darlington.** C1 is justified as a controlled innovation within a credible nuclear construction programme, not as an argument that all SMRs should be built. Pilot LC³ in eligible non-safety works first; use steel-composite infill only if qualified on Unit 1 mock-ups, otherwise specify the slag blend. Independent assurance is a safeguard against trading a carbon saving for structural or occupational risk. Qualification must start in 2027 for the 2028 Units 2–4 decision (§8.6).
 
 **Australia.** An SMR at Liddell would need its cost gap closed, first power well before 2040, and the legal and consent barriers removed first (Appendix B3, route C). We would keep SMRs under review against Darlington's outturn cost.
 
@@ -477,9 +518,9 @@ Method in §2; working in Appendix B7; social-licence and legal scores from Appe
 
 ## 10 Future material properties and processes
 
-**C1 and the levers beyond it each depend on a property or process still to be proven (Table T15).**
+**C1 and the levers beyond it each depend on a property or process still to be proven (Table T16).**
 
-*Table T15. What must be proven.*
+*Table T16. What must be proven.*
 *Source: as cited in the cells.*
 
 | Need | Evidence now | To prove |
@@ -841,7 +882,7 @@ Zunino, F., 2021. *Limestone calcined clay cements* [presentation slides]. Lausa
 
 ## Declaration of generative AI use
 
-[TODO: team to write the AI-use declaration required by the unit (CLAUDE.md: the team decides how AI use is declared).]
+[TEAM: agree the AI-use declaration wording and add it here.]{custom-style="TeamNote"}
 
 
 ```{=openxml}
@@ -851,6 +892,9 @@ Zunino, F., 2021. *Limestone calcined clay cements* [presentation slides]. Lausa
 
 
 ## Appendix A. LCA inventory and calculations
+
+[LEROY: your Granta EduPack results go in A9 (currently 'planned but not completed').]{custom-style="TeamNote"}
+
 
 This appendix gives the full working behind §6. The analysis is a screening LCA following ISO 14040/44 principles, not critically reviewed, in which a Python model multiplies quantities by published emission factors. The Ostrołęka and Pillai tables behind the main case could not be opened, so their values are taken as reported; other inputs are labelled as reported by a secondary source, an assumption or a placeholder. The intervals therefore describe the uncertainty in our inputs as found, not in verified data.
 
@@ -1468,7 +1512,7 @@ The grid trajectory, the start year and the post-coal floor dominate the result.
 |---|---|---|---|
 | Net output | 300 MWe (290–300) | Assumption (an OPG filing gives 315) | Assumed; 315 tested in Table B19 |
 | Capacity factor; design life | 0.90 (0.80–0.95); 60 years (40–80) | Assumption | Assumed |
-| SMR life cycle | 4.2 g/kWh (3.0–5.8) | This study (§6, Appendix C) | Our result |
+| SMR life cycle | 4.2 g/kWh (3.0–5.8) | This study, bottom-up model (§6, Appendix C); the re-based 4.40 g/kWh changes avoided CO₂e by at most 0.3% (Ontario average grid: (73.8 − 4.40)/(73.8 − 4.2)) | Our result |
 | Ontario average, 2024 | 73.8 g/kWh (73–73.8) | The Atmospheric Fund (2025) | As cited |
 | Ontario average, 2022; 2023 | 35; 53 g/kWh | Canada Energy Regulator (n.d.); Government of Ontario (n.d.) | As cited |
 | Ontario average, 2040 | 15 g/kWh | Independent Electricity System Operator (2024) | As cited |
