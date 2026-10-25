@@ -2,11 +2,40 @@
 title: "Small modular reactors: where they cut the most carbon, what holds them back, and a low-clinker concrete initiative for Darlington"
 subtitle: "MTE4593 Materials and Sustainability, Assignment 2 (Group 9)"
 author:
-  - "Victor Clarke [TODO: student ID]"
-  - "Leroy Jean [TODO: student ID]"
-  - "Sam [TODO: surname] [TODO: student ID]"
+  - "Victor Clarke [ADD STUDENT ID]{custom-style=\"TeamNote\"}"
+  - "Leroy Louis Jean (33880212)"
+  - "Sam [ADD SURNAME]{custom-style=\"TeamNote\"} [ADD STUDENT ID]{custom-style=\"TeamNote\"}"
 date: "October 2026"
 ---
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+## Team review checklist (this page is removed in the submission version)
+
+[Highlighted notes like this one mark what each person needs to add or check. Everything else is finished and fact-checked.]{custom-style="TeamNote"}
+
+**Everyone**
+
+- Title page: Victor's and Sam's student IDs; Sam's surname (Leroy's is in).
+- Agree the wording of the AI-use declaration (placeholder before the appendices).
+
+**Leroy** (§4.1, §4.2, §5, §10, Appendix E were drafted for you from your slides and script)
+
+- Check, correct or replace these sections; keep to about 1,250 words in total.
+- Confirm the projects table (T2) status, dates and TRL ratings, and the BWRX-300 data in §4.2.
+- Replace or confirm the patent log in Appendix E (Google Patents could not be opened from our tools).
+
+**Sam** (§6, Appendices A and C were re-based on the deck's numbers for you)
+
+- Run the Granta EduPack Eco Audit (details in the note at the top of §6) and send the results, or confirm it can't be done.
+- Confirm Ostrołęka PIS Table 14, p. 83 (50,000 m³, 14,000 t) and Pillai et al. (2019) Table 2 (380 vs 270 kg CO₂e/m³).
+- Check §6's numbers and figures F1–F5.
+
+**Victor** (before submitting)
+
+- Update the table of contents in Word (right-click, Update Field).
+- Send any edits back so the report can be rebuilt.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -42,6 +71,9 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 
 
 ## 2 Methods and data
+
+[SAM: if you run Granta, this section's Granta sentence changes too.]{custom-style="TeamNote"}
+
 
 **Four methods carry the numbers: a screening life-cycle assessment (LCA), grid displacement with a schedule break-even, a concentration index for fuel supply, and a multi-criteria analysis. Scripts and parameter files regenerate every figure (Appendix A1).** Values are taken from the documents cited, or, where marked "as reported", from the secondary source named. Where readings differ we give the range, and our own assumptions and inferences are labelled as such.
 
@@ -85,6 +117,9 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 
 ### 4.1 Technology, projects and patents
 
+[LEROY: we had no reply, so §4.1, §4.2, §5, §10 and Appendix E were drafted for you from your slides, script and web research. Please check, correct or replace them (about 1,250 words in total). Check especially: Table T2 project status and dates, the TRL ratings, and the patents (Google Patents could not be opened, so numbers and assignees come from search summaries).]{custom-style="TeamNote"}
+
+
 **No light-water SMR is yet reported operating on land; the BWRX-300 is the Western design closest to doing so, and China's ACP100 (Linglong One) was still in commissioning, with no criticality reported, in May 2026.** Table T2 rates each project on technology readiness levels (TRL): level 8 is a system "completed and qualified through test and demonstration", level 9 one operated across its full range of conditions (US Department of Energy, 2015). The ratings are ours.
 
 *Table T2. Selected SMR-class projects, October 2026.*
@@ -107,6 +142,9 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 
 
 ### 4.2 The BWRX-300 at Darlington
+
+[LEROY: please check the BWRX-300 data: 300 vs 315 MWe net, capacity factor, 60-year life, fuel enrichment and cycle, passive cooling.]{custom-style="TeamNote"}
+
 
 **The BWRX-300's composite building is what C1 targets.** The reactor is rated 300 MWe (GE Vernova Hitachi Nuclear Energy, n.d.; 315 MW net in Ontario Power Generation, 2025b), with a 60-year design life (Canadian Nuclear Safety Commission, 2024). The vendor-reported capacity factor is 95% (Fermi Energia, n.d.); we use 0.90 as a first-of-a-kind discount. Fuel is uranium dioxide, reported at 3.8% average and 4.95% maximum enrichment in a preprint review (Sun and Kurosaki, 2025). GE Hitachi states that isolation condensers cool the core passively for seven days without power or operator action (GE Hitachi Nuclear Energy, n.d.). The reactor building sits in a below-grade shaft of diaphragm-plate steel-composite (DP-SC) modules: two steel faceplates tied by diaphragm plates and filled with self-consolidating concrete (SCC) (GE-Hitachi Nuclear Energy, 2024).
 
@@ -140,6 +178,9 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 
 ## 5 Materials from extraction to end-of-life
 
+[LEROY: please check this materials life cycle (extraction to end-of-life) against your notes; add sources you have.]{custom-style="TeamNote"}
+
+
 **For C1, the binder's carbon arises in the kiln, but its risks arise in the pour and at decommissioning.** Stages follow §6's boundary; operation, decommissioning and waste use published per-kWh values (§6.1).
 
 *Table T4. C1 binder options from extraction to end-of-life.*
@@ -158,6 +199,9 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 
 
 ## 6 Life-cycle assessment and eco-audit
+
+[SAM: §6 and Appendices A and C were re-based on the deck's numbers without you (Ostrołęka 50,000 m³ concrete and 14,000 t steel; Pillai 380 vs 270 kg CO₂e/m³; 20/40/60% eligible). Please (1) run the Granta EduPack Eco Audit on one BWRX-300: concrete 120,000 t (50,000 m³ × 2.4 t/m³) and steel 14,000 t (Ostrołęka PIS, Table 14), with a second run where 40% of the concrete (20,000 m³) is LC³ at 270 instead of 380 kg CO₂e/m³ (Pillai et al., 2019). Send the CO₂ footprint and energy per life stage (screenshot or export); the report currently says Granta was not run; (2) confirm the Ostrołęka Table 14 p. 83 and Pillai Table 2 values, and the Ostrołęka URL; (3) check the numbers and figures F1–F5.]{custom-style="TeamNote"}
+
 
 One BWRX-300 at Darlington emits an estimated **4.4 g CO₂e per kWh (Monte Carlo median; 90% interval 3.2–6.1; 3.5 if conversion heat takes its central published value)**, below UNECE's 5.1–6.4 g/kWh for nuclear power. The fuel front end contributes 62% and construction 11.5%. The initiative, C1 (§4.3), puts limestone calcined clay cement (LC³) in 20–60% of the concrete. It saves **2,200 t CO₂e per unit (1,100–3,300 t), about 0.36% of the life cycle**: real but small, so worth adopting only if schedule-neutral (§6.3).
 
@@ -477,6 +521,9 @@ Method in §2; working in Appendix B7; social-licence and legal scores from Appe
 
 ## 10 Future material properties and processes
 
+[LEROY: please check the future-materials needs and add anything from your research.]{custom-style="TeamNote"}
+
+
 **C1 and the levers beyond it each depend on a property or process still to be proven (Table T15).**
 
 *Table T15. What must be proven.*
@@ -548,7 +595,7 @@ Australian Greens, 2025. *2035: Powering Past Coal & Gas*. [pdf] Available at: h
 
 Bowen, C., 2025. *Joint media release: Experts agree: nuclear only getting more expensive, slower for Australia's energy needs*. [online] Canberra: Minister for Climate Change and Energy. Available at: https://minister.dcceew.gov.au/bowen/media-releases/joint-media-release-experts-agree-nuclear-only-getting-more-expensive-slower-australias-energy-needs [Accessed 20 October 2026].
 
-BWRX-300 Ostrołęka sp. z o.o., 2023. *Small Modular Nuclear Power Plant: Project Information Sheet*. Table 14, p. 83.
+BWRX-300 Ostrołęka sp. z o.o., 2023. *Small Modular Nuclear Power Plant: Project Information Sheet*. [pdf] Table 14, p. 83. Available at: https://am.lrv.lt/media/viesa/saugykla/2024/2/oHCKCUp7Lrs.pdf
 
 Caixin Global, 2026. Beijing clears eight new reactors as China accelerates nuclear buildout. *Caixin Global*, 1 August.
 
@@ -831,7 +878,7 @@ Zunino, F., 2021. *Limestone calcined clay cements* [presentation slides]. Lausa
 
 ## Declaration of generative AI use
 
-[TODO: team to write the AI-use declaration required by the unit (CLAUDE.md: the team decides how AI use is declared).]
+[TEAM: agree the AI-use declaration wording and add it here.]{custom-style="TeamNote"}
 
 
 ```{=openxml}
@@ -841,6 +888,9 @@ Zunino, F., 2021. *Limestone calcined clay cements* [presentation slides]. Lausa
 
 
 ## Appendix A. LCA inventory and calculations
+
+[SAM: please review this appendix; your Granta results go in A9.]{custom-style="TeamNote"}
+
 
 This appendix gives the full working behind §6. The analysis is a screening LCA following ISO 14040/44 principles, not critically reviewed, in which a Python model multiplies quantities by published emission factors. The Ostrołęka and Pillai tables behind the main case could not be opened, so their values are taken as reported; other inputs are labelled as reported by a secondary source, an assumption or a placeholder. The intervals therefore describe the uncertainty in our inputs as found, not in verified data.
 
@@ -2024,6 +2074,9 @@ The 78% is a subtraction (20.9 − 2.00 − 1.00 − 0.97 − 0.70 = 16.23), not
 
 ## Appendix C. Sensitivity: tornado and Monte Carlo set-up and results
 
+[SAM: please review this appendix.]{custom-style="TeamNote"}
+
+
 This appendix shows how uncertain the §6 results are and which inputs drive them. **The life-cycle intensity is uncertain mainly through the fuel inputs (conversion heat, mining, back end, burnup, enrichment); C1's saving is uncertain mainly through the eligible share, the LC³ cut and the plant concrete volume.** All ranges come from `parameters_lca.yaml`. The Ostrołęka and Pillai tables could not be opened and other inputs are as reported by secondary sources, assumptions or placeholders, so the intervals describe the uncertainty in our inputs as found, not in verified data.
 
 ### C1. Set-up
@@ -2205,6 +2258,9 @@ The sources disagree mainly about the fuel front end (ore grade, enrichment tech
 
 
 ## Appendix E. Search log
+
+[LEROY: please check or replace this search log with your own Google Patents searches.]{custom-style="TeamNote"}
+
 
 *Drafted for Leroy; Leroy may reclaim.*
 

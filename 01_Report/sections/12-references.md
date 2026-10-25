@@ -38,7 +38,7 @@ Australian Greens, 2025. *2035: Powering Past Coal & Gas*. [pdf] Available at: h
 
 Bowen, C., 2025. *Joint media release: Experts agree: nuclear only getting more expensive, slower for Australia's energy needs*. [online] Canberra: Minister for Climate Change and Energy. Available at: https://minister.dcceew.gov.au/bowen/media-releases/joint-media-release-experts-agree-nuclear-only-getting-more-expensive-slower-australias-energy-needs [Accessed 20 October 2026].
 
-BWRX-300 Ostrołęka sp. z o.o., 2023. *Small Modular Nuclear Power Plant: Project Information Sheet*. Table 14, p. 83.
+BWRX-300 Ostrołęka sp. z o.o., 2023. *Small Modular Nuclear Power Plant: Project Information Sheet*. [pdf] Table 14, p. 83. Available at: https://am.lrv.lt/media/viesa/saugykla/2024/2/oHCKCUp7Lrs.pdf
 
 Caixin Global, 2026. Beijing clears eight new reactors as China accelerates nuclear buildout. *Caixin Global*, 1 August.
 

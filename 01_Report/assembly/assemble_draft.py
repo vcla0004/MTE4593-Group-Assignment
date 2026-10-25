@@ -64,7 +64,7 @@ title: "Small modular reactors: where they cut the most carbon, what holds them 
 subtitle: "MTE4593 Materials and Sustainability, Assignment 2 (Group 9)"
 author:
   - "Victor Clarke [TODO: student ID]"
-  - "Leroy Jean [TODO: student ID]"
+  - "Leroy Louis Jean (33880212)"
   - "Sam [TODO: surname] [TODO: student ID]"
 date: "October 2026"
 ---
@@ -103,7 +103,7 @@ CHECKLIST = """## Team review checklist (this page is removed in the submission 
 
 **Everyone**
 
-- Title page: your student ID; Sam, your surname.
+- Title page: Victor's and Sam's student IDs; Sam's surname (Leroy's is in).
 - Agree the wording of the AI-use declaration (placeholder before the appendices).
 
 **Leroy** (§4.1, §4.2, §5, §10, Appendix E were drafted for you from your slides and script)
