@@ -7,6 +7,7 @@ section, split into prose and table words, for the page-limit check (H6:
 tables count towards the limit).
 
 Run from the repo root:  python3 01_Report/assembly/assemble_draft.py
+Final build:  assemble_draft.py, then check_refs.py, then assemble_draft.py --final
 """
 import re
 import subprocess
@@ -121,7 +122,10 @@ def main() -> None:
             raise SystemExit(f"missing {name}")
         parts.append(body)
         rows.append((name, *words(body)))
-    if (SEC / REFS).exists():
+    cited = Path(__file__).resolve().parent / "references-cited.md"
+    if FINAL and cited.exists():  # written by check_refs.py from a draft build
+        parts.append(cited.read_text(encoding="utf-8"))
+    elif (SEC / REFS).exists():
         parts.append(clean((SEC / REFS).read_text(encoding="utf-8")))
     else:
         parts.append("## References\n\n**[TODO: reference list]**\n")
