@@ -375,6 +375,23 @@ parameters:
     source: lca_results_2110
     status: from results
     note: "lca.md section 0 (Monte Carlo P5-P95)."
+  # Final-day re-run (25/10/2026): team-deck C1 case (initiative_cost.py --c1-case deck, now the default).
+  c1_deck_volume_m3_per_unit:
+    value: 20000
+    low: 10000
+    high: 30000
+    unit: m3 of eligible LC3 concrete per unit (eligible share x 50,000 m3)
+    source: coordinator_rebase_2110  # team deck; Ostroleka PIS 2023 not yet in sources.md
+    status: TO VERIFY
+    note: "Ostroleka BWRX-300 PIS 2023 Table 14 p. 83: 50,000 m3/unit; eligible share 40% central, 20%/60% bounds (team deck). Volume and saving move together (fixed 0.110 t/m3)."
+  c1_deck_saving_t_per_unit:
+    value: 2200
+    low: 1100
+    high: 3300
+    unit: t CO2e saved per unit
+    source: coordinator_rebase_2110  # team deck; Ostroleka PIS 2023 and Pillai et al. 2019 not yet in sources.md (owned by the LCA team member)
+    status: TO VERIFY
+    note: "c1_deck_volume_m3_per_unit x (380-270) kg CO2e/m3 (Pillai et al. 2019, M50 OPC vs LC3). Same as parameters_run1.yaml c1_deck_saving_t_per_unit."
   c1_units:
     value: 3
     unit: units (Units 2-4; Unit 1 structures already placed)

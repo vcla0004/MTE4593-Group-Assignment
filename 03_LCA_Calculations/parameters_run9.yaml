@@ -53,11 +53,11 @@ parameters:
     status: assumption
     note: "Middle of parameters_run5.yaml qualification_cost_cad scenarios (no source found)."
   c1_delay_days_high:
-    value: 14.6
+    value: 18.5
     unit: days of delay to the unit (sensitivity only)
     source: schedule_value_2110
     status: from results
-    note: "results/schedule_value.md section 6: net break-even for the old 1,734 t case on ON-avg-traj. Used only as an illustrative 'C1 not schedule-neutral' delay. Being re-run by the lca-analyst for the 2,200 t case."
+    note: "results/schedule_value.md section 6 (re-run 25/10, deck case): net break-even for the 2,200 t/unit deck case on ON-avg-traj (18.5 days; 9.2-27.7 across eligibility 20-60%). Was 14.6 for the old 1,734 t case (results/schedule_value_old1734.md). Used only as an illustrative 'C1 not schedule-neutral' delay."
 
   # ---------------- Supply security: renewables chain ----------------
   pv_china_share_min:

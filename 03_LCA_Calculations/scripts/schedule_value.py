@@ -18,13 +18,21 @@ Method:
       CO2e lost x the same price; deferred output x OPG LCOE; carrying cost = capital x r / 12
   Also reads parameters_run5.yaml (analyst run 5; read only, never edited) for the Units 2-4 capital,
   OPG's LCOE lead and the discount-rate set, so the dollar figures match results/initiative_cost.md.
+  C1 case (25/10/2026): --c1-case deck (default; team-deck 2,200 t/unit, 1,100-3,300 by eligibility) writes
+  results/schedule_value.md; --c1-case old_1734 (LCA 21/10, MC P5-P95) writes results/schedule_value_old1734.md.
 """
 from pathlib import Path
+import argparse
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 P = yaml.safe_load((ROOT / "parameters_run1.yaml").read_text())["parameters"]
-OUT = ROOT / "results" / "schedule_value.md"
+_ap = argparse.ArgumentParser()
+_ap.add_argument("--c1-case", choices=["deck", "old_1734"], default="deck")
+CASE = _ap.parse_args().c1_case
+OUT = ROOT / "results" / ("schedule_value.md" if CASE == "deck" else "schedule_value_old1734.md")
+K1, K3 = ("c1_deck_saving_t_per_unit", "c1_deck_saving_t_units_2_4") if CASE == "deck" else ("c1_saving_t_per_unit", "c1_saving_t_units_2_4")
+RLAB = "eligibility 20–60%" if CASE == "deck" else "MC P5–P95"
 R5_PATH = ROOT / "parameters_run5.yaml"
 R5 = yaml.safe_load(R5_PATH.read_text())["parameters"] if R5_PATH.exists() else {}
 
@@ -146,14 +154,16 @@ def main():
         w(f"| {label} | {nd:,.0f} | {d:,.1f} |")
     w("")
     # ---------------- Q2: C1 break-even table ----------------
-    S1, S1lo, S1hi = v("c1_saving_t_per_unit"), v("c1_saving_t_per_unit", "low"), v("c1_saving_t_per_unit", "high")
-    S3, S3lo, S3hi = v("c1_saving_t_units_2_4"), v("c1_saving_t_units_2_4", "low"), v("c1_saving_t_units_2_4", "high")
+    S1, S1lo, S1hi = v(K1), v(K1, "low"), v(K1, "high")
+    S3, S3lo, S3hi = v(K3), v(K3, "low"), v(K3, "high")
     w("## 6. Break-even delay for initiative C1 (LC3 in the Units 2–4 target structures)\n")
-    w(f"C1 saves {S1:,.0f} t CO2e per unit (MC P5–P95 {S1lo:,.0f}–{S1hi:,.0f}) and {S3:,.0f} t for Units 2–4 ({S3lo:,.0f}–{S3hi:,.0f}) (`lca_scenarios.csv`, `lca_montecarlo_summary.csv`). "
+    src = ("team deck: Ostrołęka 50,000 m³/unit × eligible share × Pillai et al. (2019) 0.110 t/m³; `parameters_run1.yaml` c1_deck_*" if CASE == "deck"
+           else "`lca_scenarios.csv`, `lca_montecarlo_summary.csv`")
+    w(f"C1 case **{CASE}**. C1 saves {S1:,.0f} t CO2e per unit ({RLAB} {S1lo:,.0f}–{S1hi:,.0f}) and {S3:,.0f} t for Units 2–4 ({S3lo:,.0f}–{S3hi:,.0f}) ({src}). "
       f"Break-even days = saving / CO2e lost per day of delay. Units 2–4 start {s2}. Two ways a delay can fall:\n")
     w("- **(a) Per unit:** one unit's saving against a delay to that unit (the same answer as all three units' saving against a three-unit slip, because both scale by 3).")
     w("- **(b) Programme saving, one unit late:** all of Units 2–4's saving against a delay to just one unit (e.g. the first LC3 pour holds one unit's critical path).")
-    w("- Gross = to-2050 view (the displacement lost now); net = whole-life view (the month returns at end of life on a cleaner grid). Ranges use the C1 saving's P5–P95 only.\n")
+    w(f"- Gross = to-2050 view (the displacement lost now); net = whole-life view (the month returns at end of life on a cleaner grid). Ranges use the C1 saving's {RLAB} only.\n")
     w("| Grid case (factor type) | Gross t/day per unit | Net t/day per unit | (a) gross days | (a) net days | (b) gross days | (b) net days |")
     w("|---|---|---|---|---|---|---|")
     be_rows = {}
@@ -183,7 +193,7 @@ def main():
     p30, p30_old = v("carbon_price_2030_cad"), v("carbon_price_2030_cad", "high")
     w(f"Carbon prices (all **TO VERIFY**): C${p26:.0f}/t in 2026 and C${p30:.0f}/t in 2030 on the federal headline industrial trajectory published 19 May 2026 (lead); "
       f"C${p26_old:.0f} and C${p30_old:.0f} on the superseded 2021 benchmark path that run 5 uses. C1's concrete would be placed about 2029–2033, so the 2030 price is the relevant one; 2026 is today's price.\n")
-    w("| Carbon price (C$/t) | Basis | C1 carbon value, Units 2–4 (C$ m, P5–P95) | Value of the CO2e lost in a one-month Units 2–4 slip, average factor (gross / net, C$ m) | Same, marginal factor (gross / net, C$ m) |")
+    w(f"| Carbon price (C$/t) | Basis | C1 carbon value, Units 2–4 (C$ m, {RLAB}) | Value of the CO2e lost in a one-month Units 2–4 slip, average factor (gross / net, C$ m) | Same, marginal factor (gross / net, C$ m) |")
     w("|---|---|---|---|---|")
     month_t = {k: (3 * g * 365 / 12, 3 * n * 365 / 12) for k, (g, n) in be_rows.items()}
     for pr, basis in [(p26, "2026, new trajectory (lead)"), (p26_old, "2026, superseded path (run 5)"),
@@ -210,19 +220,19 @@ def main():
             w(f"| Carrying cost, upper bound (all Units 2–4 capital spent), r = {r:.0%} | C${cap/1e9:.1f} bn × {r:.0%} / 12 | {cap*r/12/1e6:,.0f} |")
         w("")
         cv_hi = S3hi * p30_old / 1e6
-        w(f"Reading: the largest carbon value we can construct for C1 (P95 saving × C${p30_old:.0f}/t) is **C${cv_hi:,.2f} m**. One month's slip of Units 2–4 costs "
+        w(f"Reading: the largest carbon value we can construct for C1 (high saving × C${p30_old:.0f}/t) is **C${cv_hi:,.2f} m**. One month's slip of Units 2–4 costs "
           f"**C${cap*rates[0]/12/1e6:,.0f}–{cap*rates[-1]/12/1e6:,.0f} m** in carrying cost alone, and defers about **C${deferred/1e6:,.0f} m** of output, i.e. "
           f"**{cap*rates[0]/12/1e6/cv_hi:,.0f}–{max(deferred, cap*rates[-1]/12)/1e6/(S3*p26/1e6):,.0f} times** C1's carbon value (lowest monthly cost over the highest value, to highest cost over the central value at C${p26:.0f}). "
           f"Even counted only in carbon, a month's slip loses {month_t['ON-avg-traj'][1]/S3:,.1f}–{month_t['ON-marginal-declining'][0]/S3:,.1f} times C1's saving. "
-          "This agrees with `initiative_cost.md` §5 (run 5), which found one *day* of delay costs C$1.8–2.9 m against C1's whole carbon value of C$0.49–0.60 m on the current path (C$0.88 m on the superseded C$170).\n")
+          f"This agrees with `initiative_cost.md` §5, which finds one *day* of delay costs C$1.8–2.9 m against C1's whole carbon value of C${S3*p26/1e6:.2f}–{S3*p30/1e6:.2f} m on the current path (C${S3*p30_old/1e6:.2f} m on the superseded C${p30_old:.0f}).\n")
         # Pre-Q8 (21/10/2026): the current-path-only multiple, previously a hand calculation in Appendix B5.4 ("33 / 0.74 = 45x")
         cv_hi_cur = S3hi * p30 / 1e6
         low_cur = cap * rates[0] / 12 / 1e6 / cv_hi_cur
         high_cur = max(deferred, cap * rates[-1] / 12) / 1e6 / (S3 * p26 / 1e6)
-        w(f"**Current path only** (C${p26:.0f}/t in 2026, C${p30:.0f}/t in 2030; superseded path excluded): the largest carbon value is P95 saving × C${p30:.0f} = "
+        w(f"**Current path only** (C${p26:.0f}/t in 2026, C${p30:.0f}/t in 2030; superseded path excluded): the largest carbon value is high saving × C${p30:.0f} = "
           f"{S3hi:,.0f} t × {p30:.0f} = **C${cv_hi_cur:,.3f} m**, so the multiple runs from C${cap*rates[0]/12/1e6:,.1f} m / {cv_hi_cur:,.3f} = **{low_cur:,.1f}×** "
           f"to C${max(deferred, cap*rates[-1]/12)/1e6:,.1f} m / {S3*p26/1e6:,.3f} = **{high_cur:,.1f}×** (rounded: {low_cur:,.0f}–{high_cur:,.0f}×). "
-          "The 30× low end above uses the superseded C$170/t and is therefore the conservative bound.\n")
+          f"The {cap*rates[0]/12/1e6/cv_hi:,.0f}× low end above uses the superseded C${p30_old:.0f}/t and is therefore the conservative bound.\n")
     else:
         w("[TODO: parameters_run5.yaml not found; dollar cost of delay not computed.]\n")
     w("Caveats: (1) average factors understate what a late baseload unit's output would have displaced in Ontario, where gas is on the margin; (2) the net figure assumes the plant's life is fixed in years, not extended; "

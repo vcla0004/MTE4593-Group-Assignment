@@ -156,7 +156,7 @@ One BWRX-300 at Darlington is estimated to emit **about 4.2 g CO₂e per kWh del
 | Enrichment; burnup | 3.8% U-235 (3.4–4.95); 45 GWd/t (35–55) | [TODO: authors] (2025), unrefereed preprint; assumption (both placeholders) |
 | O&M; decommissioning; back end | 0.33; 0.11; 0.56 g/kWh (×0.5 to ×2; decommissioning ×3) | EDF R&D (2024) stage shares as reported by secondary sources; back end by difference |
 
-[Figure F1. LCA system boundary for one BWRX-300 at Darlington: bottom-up fuel front end and construction materials, literature values for operation, decommissioning and the back end, and the C1 target structures. | Source: this study. | File: 03_LCA_Calculations/results/F1_system_boundary.png]
+![Figure 1. LCA system boundary for one BWRX-300 at Darlington: bottom-up fuel front end and construction materials, literature values for operation, decommissioning and the back end, and the C1 target structures. | Source: this study. | File: 03_LCA_Calculations/results/F1_system_boundary.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F1_system_boundary.png){width=95%}
 
 ### 6.2 Baseline inventory and hotspots
 
@@ -173,7 +173,7 @@ Of this, **13,100 m³ is in the C1 target structures**: the forebay shaft (4,000
 
 The fuel front end is 64% of the total and construction about 7.5%. Within construction, steel emits about twice what concrete does (14,800 vs 7,600 t CO₂e per unit with every input at its most likely value, the "mode case"); Geneski, McKellar and Atkinson (n.d.) [TO VERIFY] also found that steel exceeds concrete. The C1 target concrete is 1.3% of the mode-case total, so **C1 acts on roughly one-hundredth of the footprint**, which caps what any concrete change can achieve.
 
-[Figure F2. Life-cycle emissions of one BWRX-300 by stage: expected 4.3 g CO₂e/kWh (Monte Carlo mean), with the mode case (every input at its most likely value; total 2.7) marked. | Source: this study, scripts/lca_uncertainty.py; inputs in parameters_lca.yaml [TO VERIFY]. | File: 03_LCA_Calculations/results/F2_stage_breakdown.png]
+![Figure 2. Life-cycle emissions of one BWRX-300 by stage: expected 4.3 g CO₂e/kWh (Monte Carlo mean), with the mode case (every input at its most likely value; total 2.7) marked. | Source: this study, scripts/lca_uncertainty.py; inputs in parameters_lca.yaml [TO VERIFY]. | File: 03_LCA_Calculations/results/F2_stage_breakdown.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F2_stage_breakdown.png){width=95%}
 
 ### 6.3 The initiative against the baseline
 
@@ -208,11 +208,11 @@ The tornado varies each of 40 inputs alone; the Monte Carlo varies all 40 togeth
 
 **The life-cycle total depends on the fuel inputs, not the concrete (Figure F3).** The largest swings are conversion heat (2.70 → 5.37 g/kWh), the mining factor (2.26 → 3.65) and the back end (2.42 → 3.25), followed by burnup and enrichment level. No concrete input moves the total by more than 0.07 g/kWh; steel intensity moves it by 0.17. **The LC3 saving depends on the geometry and the mix**: the LC3 emission cut (1,406 → 2,015 t), DPSC wall thickness (1,464 → 1,995 t), infill binder content (1,590 → 2,021 t), and any extra binder LC3 needs to flow (10% more cuts the saving to 1,438 t). OPG's drawings and mock-up trials would narrow all four.
 
-[Figure F3. One-at-a-time sensitivity of the life-cycle intensity (left, centred on the mode case, 2.70 g CO₂e/kWh, not the 4.2 median) and of the LC3 saving per unit (right, centred on the mode case, 1,734 t), top ten inputs each. | Source: this study, scripts/lca_uncertainty.py; ranges in parameters_lca.yaml. | File: 03_LCA_Calculations/results/F3_tornado.png]
+![Figure 3. One-at-a-time sensitivity of the life-cycle intensity (left, centred on the mode case, 2.70 g CO₂e/kWh, not the 4.2 median) and of the LC3 saving per unit (right, centred on the mode case, 1,734 t), top ten inputs each. | Source: this study, scripts/lca_uncertainty.py; ranges in parameters_lca.yaml. | File: 03_LCA_Calculations/results/F3_tornado.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F3_tornado.png){width=95%}
 
 **Monte Carlo (Figure F4): why we report 4.2, not 2.7, and why it is a range of medians.** The mode case (2.7 g/kWh) puts every input at its single most likely value. Several inputs, however, can mostly only rise: conversion heat is most likely 26 kWh/kg U but could be 665, which alone adds about 1.0 g/kWh to the average (Appendix C5). We therefore report the median of all draws (4.2 g/kWh) rather than the mode case; the same skew lowers LC3's share from 0.45% to 0.29%, while the saving itself barely moves. **The headline does depend on how conversion heat is distributed** (Table C2). With it fixed at Gibon and Hahn Menacho's (2023) central 26 kWh/kg U [TO VERIFY] the median is 3.3 g/kWh (90% interval 2.6–4.2); with a log-uniform 26–665 it is 3.9 (2.9–5.9). We therefore quote the **range of medians, 3.3–4.2 g/kWh**, and LC3's share of the life cycle ranges over 0.29–0.37%. Every value stays below UNECE's range. A measured conversion value would settle it [TODO: source needed: Cameco Port Hope]. Other limitations (independent draws, judgement ranges) are in Appendix C6.
 
-[Figure F4. Monte Carlo distributions (20,000 draws, seed 20261021) of the life-cycle intensity (median 4.18, 5th–95th percentile 3.05–5.85 g CO₂e/kWh) and of the LC3 saving per unit (median 1,742, 1,387–2,153 t). | Source: this study, scripts/lca_uncertainty.py. | File: 03_LCA_Calculations/results/F4_montecarlo.png]
+![Figure 4. Monte Carlo distributions (20,000 draws, seed 20261021) of the life-cycle intensity (median 4.18, 5th–95th percentile 3.05–5.85 g CO₂e/kWh) and of the LC3 saving per unit (median 1,742, 1,387–2,153 t). | Source: this study, scripts/lca_uncertainty.py. | File: 03_LCA_Calculations/results/F4_montecarlo.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F4_montecarlo.png){width=95%}
 
 ### 6.5 Comparison with published values
 
@@ -233,7 +233,7 @@ The tornado varies each of 40 inputs alone; the Monte Carlo varies all 40 togeth
 
 The sources disagree mainly about the fuel front end (ore grade, enrichment technology and grid), not about construction, and that is where our result departs from them. The known low bias (cut-offs, possibly construction) would raise the total and make C1's share smaller still, so it does not weaken §6.3. If the Granta cross-check is run, its construction values will be compared here with the model's (Appendix A9) [TODO: Granta cross-check, H2 due Thu 12:00; cut if not run].
 
-[Figure F5. Our BWRX-300 result against published nuclear life-cycle values (point = central or median; line = range or interval); coal about 750–1,100 and gas combined cycle 403–513 g CO₂e/kWh for scale. UNECE reports a range only (5.1–6.4), so it is drawn as a range with no midpoint; Warner and Heath are drawn as a median only (12). | Source: this study; EDF R&D (2024); United Nations Economic Commission for Europe (2021); Gibon and Hahn Menacho (2023); Carless, Griffin and Fischbeck (2016); Warner and Heath (2012). Benchmarks [TO VERIFY]. | File: 03_LCA_Calculations/results/F5_benchmarks.png] [TODO: IPCC AR5 WGIII Annex III row is drawn automatically once its values are set to verified in parameters_lca.yaml]
+![Figure 5. Our BWRX-300 result against published nuclear life-cycle values (point = central or median; line = range or interval); coal about 750–1,100 and gas combined cycle 403–513 g CO₂e/kWh for scale. UNECE reports a range only (5.1–6.4), so it is drawn as a range with no midpoint; Warner and Heath are drawn as a median only (12). | Source: this study; EDF R&D (2024); United Nations Economic Commission for Europe (2021); Gibon and Hahn Menacho (2023); Carless, Griffin and Fischbeck (2016); Warner and Heath (2012). Benchmarks [TO VERIFY]. | File: 03_LCA_Calculations/results/F5_benchmarks.png] [TODO: IPCC AR5 WGIII Annex III row is drawn automatically once its values are set to verified in parameters_lca.yaml](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F5_benchmarks.png){width=95%}
 
 ---
 
@@ -291,7 +291,7 @@ The carbon value is also only a shadow price. Construction-material emissions ap
 
 **So an SMR's climate value depends on when it runs and what it displaces, not on today's coal share.** In Ontario the case rests on displacing marginal gas. At Liddell it rests on the NEM decarbonising slowly.
 
-[Figure F6. CO₂e avoided by one BWRX-300 to 2050 and over its 60-year life: Darlington Unit 1 from 2030 (Ontario average trajectory; marginal, declining; marginal flat as upper bound) against Liddell from 2035 and 2040 (Step Change proxy; slow transition; frozen grid as upper bound). Inset: CO₂e lost per month of delay to one of Units 2–4, against C1's per-unit saving (1.73 kt). Data series in Tables B17 and B20. | Source: this study, scripts/displacement.py and scripts/schedule_value.py; grid factors The Atmospheric Fund (2025), Department of Climate Change, Energy, the Environment and Water (2025), Independent Electricity System Operator (2024), Australian Energy Market Operator (2024) [TO VERIFY]. | File: TODO: plot script not yet written; draw from results/displacement.md §3 and schedule_value.md §2]
+**[TODO: Figure 6 image missing]** *Figure 6. CO₂e avoided by one BWRX-300 to 2050 and over its 60-year life: Darlington Unit 1 from 2030 (Ontario average trajectory; marginal, declining; marginal flat as upper bound) against Liddell from 2035 and 2040 (Step Change proxy; slow transition; frozen grid as upper bound). Inset: CO₂e lost per month of delay to one of Units 2–4, against C1's per-unit saving (1.73 kt). Data series in Tables B17 and B20. | Source: this study, scripts/displacement.py and scripts/schedule_value.py; grid factors The Atmospheric Fund (2025), Department of Climate Change, Energy, the Environment and Water (2025), Independent Electricity System Operator (2024), Australian Energy Market Operator (2024) [TO VERIFY]. | File: TODO: plot script not yet written; draw from results/displacement.md §3 and schedule_value.md §2*
 
 ### 7.3 The same money on firmed renewables
 
@@ -307,7 +307,7 @@ The carbon value is also only a shadow price. Construction-material emissions ap
 
 **Why renewables come out ahead.** They are cheaper per MWh and start about a decade earlier. Two limits apply: that much new renewable output would itself shift the grid trajectory, and integration costs rise beyond the renewable shares GenCost models. The Ontario rows use Australian costs and are indicative only (Appendix B6). **On carbon per dollar, an SMR at Liddell loses.** Its case has to rest on firm supply, land use, system security and a hedge against renewables or transmission falling behind, and §9 weighs these.
 
-[Figure F7. Same money, Liddell: firmed renewables (from 2028) against one SMR unit (from 2040, slower transition), as the ratio of energy bought and of CO₂e avoided to 2050 under four cost cases: GenCost 2023-24 2030 midpoints (SMR A$306, renewables A$107: 2.9× / 10.9×); worst case for renewables (A$230 / A$153: 1.5× / 5.7×); the alternative reading (A$514 / A$102: 5.0× / 19.1×); the lowest SMR lead tested (A$198 / A$153: 1.3× / 4.9×). Data in Table B28. | Source: this study, scripts/same_money.py; costs Graham, Hayward and Foster (2024; 2025) and Kim and Macfarlane (2026) [TO VERIFY: GenCost table/year]. | File: TODO: plot script not yet written; draw from results/same_money.md §5]
+**[TODO: Figure 7 image missing]** *Figure 7. Same money, Liddell: firmed renewables (from 2028) against one SMR unit (from 2040, slower transition), as the ratio of energy bought and of CO₂e avoided to 2050 under four cost cases: GenCost 2023-24 2030 midpoints (SMR A$306, renewables A$107: 2.9× / 10.9×); worst case for renewables (A$230 / A$153: 1.5× / 5.7×); the alternative reading (A$514 / A$102: 5.0× / 19.1×); the lowest SMR lead tested (A$198 / A$153: 1.3× / 4.9×). Data in Table B28. | Source: this study, scripts/same_money.py; costs Graham, Hayward and Foster (2024; 2025) and Kim and Macfarlane (2026) [TO VERIFY: GenCost table/year]. | File: TODO: plot script not yet written; draw from results/same_money.md §5*
 
 ### 7.4 What this means for the initiative
 
@@ -455,7 +455,7 @@ Money follows the same pattern (Table T14). OPG carries about 78% of Darlington 
 
 For C1, the decisive actors are OPG as buyer, GE Vernova Hitachi as owner of the infill specification, and the two equity funds at the Units 2–4 tranche (§8.2). None is opposed, but none yet has a reason to act; the tranche condition supplies one (§8.6).
 
-[Figure 8: Stakeholder power/interest maps for Darlington Units 2–4 with C1 (left) and a hypothetical BWRX-300 at Liddell (right). Numbered markers identify actors; colour shows stance from strongly for to strongly against. Positions are our judgement from the evidence in §8.1–8.4. Insert `03_LCA_Calculations/results/F8_stakeholder_map.png` here (re-export first: its footnote must read "our judgement", not "analyst's judgement") | Source: our analysis (`social_licence.py`, Appendix B8.2), from the sources cited in §8.1–8.4]
+![Figure 8. Stakeholder power/interest maps for Darlington Units 2–4 with C1 (left) and a hypothetical BWRX-300 at Liddell (right). Numbered markers identify actors; colour shows stance from strongly for to strongly against. Positions are our judgement from the evidence in §8.1–8.4. Insert `03_LCA_Calculations/results/F8_stakeholder_map.png` here (re-export first: its footnote must read "our judgement", not "analyst's judgement") | Source: our analysis (`social_licence.py`, Appendix B8.2), from the sources cited in §8.1–8.4](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F8_stakeholder_map.png){width=95%}
 
 *Table T14. Who pays and who earns: the C$20.9 bn Darlington New Nuclear Project, and the Liddell alternative.*
 *Source: Government of Ontario (2025); Canada Infrastructure Bank (2022); Canada Growth Fund and Building Ontario Fund (2025); Ontario Power Generation (2025b; 2026a); Williams Treaties First Nations et al. (2026); NWMO (2024c; n.d.); ABC News (2024); shares calculated in `social_licence.py` (Appendix B8.4). Debt and equity are added only to show scale. All [TO VERIFY].*
@@ -576,6 +576,16 @@ The triple bottom line judges an option on its environmental, economic and socia
 **Limitations.** This is a screening LCA, not critically reviewed, on a proxy inventory scaled from the ESBWR. The Granta EduPack Eco Audit has not yet been run, so no number here comes from it. The social, legal and weighting scores in the MCDA are our judgement, and the headline depends on conversion heat. Most inputs await primary sources [TO VERIFY].
 
 ---
+
+
+## References
+
+**[TODO: reference list]**
+
+
+## Declaration of generative AI use
+
+[TODO: team to write the AI-use declaration required by the unit (CLAUDE.md: the team decides how AI use is declared).]
 
 
 # Appendices

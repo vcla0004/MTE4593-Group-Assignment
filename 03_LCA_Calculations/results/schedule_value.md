@@ -63,33 +63,33 @@ Shows the climate cost of each year it takes to change the law, license and buil
 
 ## 6. Break-even delay for initiative C1 (LC3 in the Units 2–4 target structures)
 
-C1 saves 1,734 t CO2e per unit (MC P5–P95 1,387–2,153) and 5,201 t for Units 2–4 (4,161–6,458) (`lca_scenarios.csv`, `lca_montecarlo_summary.csv`). Break-even days = saving / CO2e lost per day of delay. Units 2–4 start 2035. Two ways a delay can fall:
+C1 case **deck**. C1 saves 2,200 t CO2e per unit (eligibility 20–60% 1,100–3,300) and 6,600 t for Units 2–4 (3,300–9,900) (team deck: Ostrołęka 50,000 m³/unit × eligible share × Pillai et al. (2019) 0.110 t/m³; `parameters_run1.yaml` c1_deck_*). Break-even days = saving / CO2e lost per day of delay. Units 2–4 start 2035. Two ways a delay can fall:
 
 - **(a) Per unit:** one unit's saving against a delay to that unit (the same answer as all three units' saving against a three-unit slip, because both scale by 3).
 - **(b) Programme saving, one unit late:** all of Units 2–4's saving against a delay to just one unit (e.g. the first LC3 pour holds one unit's critical path).
-- Gross = to-2050 view (the displacement lost now); net = whole-life view (the month returns at end of life on a cleaner grid). Ranges use the C1 saving's P5–P95 only.
+- Gross = to-2050 view (the displacement lost now); net = whole-life view (the month returns at end of life on a cleaner grid). Ranges use the C1 saving's eligibility 20–60% only.
 
 | Grid case (factor type) | Gross t/day per unit | Net t/day per unit | (a) gross days | (a) net days | (b) gross days | (b) net days |
 |---|---|---|---|---|---|---|
-| ON-avg-traj (average, declining to 2040) | 189 | 119 | 9.2 (7.3–11.4) | 14.6 (11.6–18.1) | 27.5 (22.0–34.2) | 43.7 (34.9–54.2) |
-| ON-avg-flat (average, held at 2024) | 451 | 0 | 3.8 (3.1–4.8) | none (flat grid) | 11.5 (9.2–14.3) | none (flat grid) |
-| ON-marginal-declining (marginal, gas leaves margin by 2050) | 1,296 | 1,226 | 1.3 (1.1–1.7) | 1.4 (1.1–1.8) | 4.0 (3.2–5.0) | 4.2 (3.4–5.3) |
-| ON-marginal-flat (marginal, held at 2024) | 2,195 | 0 | 0.8 (0.6–1.0) | none (flat grid) | 2.4 (1.9–2.9) | none (flat grid) |
+| ON-avg-traj (average, declining to 2040) | 189 | 119 | 11.6 (5.8–17.5) | 18.5 (9.2–27.7) | 34.9 (17.5–52.4) | 55.4 (27.7–83.1) |
+| ON-avg-flat (average, held at 2024) | 451 | 0 | 4.9 (2.4–7.3) | none (flat grid) | 14.6 (7.3–22.0) | none (flat grid) |
+| ON-marginal-declining (marginal, gas leaves margin by 2050) | 1,296 | 1,226 | 1.7 (0.8–2.5) | 1.8 (0.9–2.7) | 5.1 (2.5–7.6) | 5.4 (2.7–8.1) |
+| ON-marginal-flat (marginal, held at 2024) | 2,195 | 0 | 1.0 (0.5–1.5) | none (flat grid) | 3.0 (1.5–4.5) | none (flat grid) |
 
-Reading: on Ontario's **average** factor, C1's per-unit saving is cancelled by **9.2–14.6 days** (rounded 9–15) of delay to that unit (gross–net); on the **marginal** factor (gas on the margin) by about **1.3–1.4 days**. Even the whole Units 2–4 saving (5.2 kt) is cancelled by 28–44 days (average) or 4.0–4.2 days (marginal) of delay to a single unit. C1 is therefore climate-positive only if it is schedule-neutral (plan §2.4).
+Reading: on Ontario's **average** factor, C1's per-unit saving is cancelled by **11.6–18.5 days** (rounded 12–18) of delay to that unit (gross–net); on the **marginal** factor (gas on the margin) by about **1.7–1.8 days**. Even the whole Units 2–4 saving (6.6 kt) is cancelled by 35–55 days (average) or 5.1–5.4 days (marginal) of delay to a single unit. C1 is therefore climate-positive only if it is schedule-neutral (plan §2.4).
 
 ## 7. C1's carbon value against one month's delay to Units 2–4 (C$)
 
 Carbon prices (all **TO VERIFY**): C$95/t in 2026 and C$115/t in 2030 on the federal headline industrial trajectory published 19 May 2026 (lead); C$110 and C$170 on the superseded 2021 benchmark path that run 5 uses. C1's concrete would be placed about 2029–2033, so the 2030 price is the relevant one; 2026 is today's price.
 
-| Carbon price (C$/t) | Basis | C1 carbon value, Units 2–4 (C$ m, P5–P95) | Value of the CO2e lost in a one-month Units 2–4 slip, average factor (gross / net, C$ m) | Same, marginal factor (gross / net, C$ m) |
+| Carbon price (C$/t) | Basis | C1 carbon value, Units 2–4 (C$ m, eligibility 20–60%) | Value of the CO2e lost in a one-month Units 2–4 slip, average factor (gross / net, C$ m) | Same, marginal factor (gross / net, C$ m) |
 |---|---|---|---|---|
-| 95 | 2026, new trajectory (lead) | 0.49 (0.40–0.61) | 1.64 / 1.03 | 11.24 / 10.63 |
-| 110 | 2026, superseded path (run 5) | 0.57 (0.46–0.71) | 1.90 / 1.20 | 13.01 / 12.31 |
-| 115 | 2030, new trajectory (lead) | 0.60 (0.48–0.74) | 1.98 / 1.25 | 13.60 / 12.87 |
-| 170 | 2030, superseded path (run 5) | 0.88 (0.71–1.10) | 2.93 / 1.85 | 20.11 / 19.02 |
+| 95 | 2026, new trajectory (lead) | 0.63 (0.31–0.94) | 1.64 / 1.03 | 11.24 / 10.63 |
+| 110 | 2026, superseded path (run 5) | 0.73 (0.36–1.09) | 1.90 / 1.20 | 13.01 / 12.31 |
+| 115 | 2030, new trajectory (lead) | 0.76 (0.38–1.14) | 1.98 / 1.25 | 13.60 / 12.87 |
+| 170 | 2030, superseded path (run 5) | 1.12 (0.56–1.68) | 2.93 / 1.85 | 20.11 / 19.02 |
 
-CO2e lost in a one-month slip of all three units: 17,251 t gross / 10,865 t net (average), 118,278 / 111,892 t (marginal), against C1's 5,201 t.
+CO2e lost in a one-month slip of all three units: 17,251 t gross / 10,865 t net (average), 118,278 / 111,892 t (marginal), against C1's 6,600 t.
 
 Direct cost of the same one-month slip (inputs from `parameters_run5.yaml`, read only; all TO VERIFY or assumptions):
 
@@ -101,9 +101,9 @@ Direct cost of the same one-month slip (inputs from `parameters_run5.yaml`, read
 | Carrying cost, upper bound (all Units 2–4 capital spent), r = 7% | C$13.2 bn × 7% / 12 | 77 |
 | Carrying cost, upper bound (all Units 2–4 capital spent), r = 10% | C$13.2 bn × 10% / 12 | 110 |
 
-Reading: the largest carbon value we can construct for C1 (P95 saving × C$170/t) is **C$1.10 m**. One month's slip of Units 2–4 costs **C$33–110 m** in carrying cost alone, and defers about **C$88 m** of output, i.e. **30–223 times** C1's carbon value (lowest monthly cost over the highest value, to highest cost over the central value at C$95). Even counted only in carbon, a month's slip loses 2.1–22.7 times C1's saving. This agrees with `initiative_cost.md` §5 (run 5), which found one *day* of delay costs C$1.8–2.9 m against C1's whole carbon value of C$0.49–0.60 m on the current path (C$0.88 m on the superseded C$170).
+Reading: the largest carbon value we can construct for C1 (high saving × C$170/t) is **C$1.68 m**. One month's slip of Units 2–4 costs **C$33–110 m** in carrying cost alone, and defers about **C$88 m** of output, i.e. **20–175 times** C1's carbon value (lowest monthly cost over the highest value, to highest cost over the central value at C$95). Even counted only in carbon, a month's slip loses 1.6–17.9 times C1's saving. This agrees with `initiative_cost.md` §5, which finds one *day* of delay costs C$1.8–2.9 m against C1's whole carbon value of C$0.63–0.76 m on the current path (C$1.12 m on the superseded C$170).
 
-**Current path only** (C$95/t in 2026, C$115/t in 2030; superseded path excluded): the largest carbon value is P95 saving × C$115 = 6,458 t × 115 = **C$0.743 m**, so the multiple runs from C$33.0 m / 0.743 = **44.4×** to C$110.0 m / 0.494 = **222.6×** (rounded: 44–223×). The 30× low end above uses the superseded C$170/t and is therefore the conservative bound.
+**Current path only** (C$95/t in 2026, C$115/t in 2030; superseded path excluded): the largest carbon value is high saving × C$115 = 9,900 t × 115 = **C$1.139 m**, so the multiple runs from C$33.0 m / 1.139 = **29.0×** to C$110.0 m / 0.627 = **175.4×** (rounded: 29–175×). The 20× low end above uses the superseded C$170/t and is therefore the conservative bound.
 
 Caveats: (1) average factors understate what a late baseload unit's output would have displaced in Ontario, where gas is on the margin; (2) the net figure assumes the plant's life is fixed in years, not extended; (3) deferred output is deferred, not lost: its C$ figure is a cash-flow cost to OPG and ratepayers, not a social loss of that size; (4) the carrying-cost row assumes all capital is already spent, so it is an upper bound for an early slip; (5) the carbon value is only realised if someone prices it: construction-material emissions are outside Ontario's EPS (analyst inference in run 5, TO VERIFY); (6) all inputs provisional.
 

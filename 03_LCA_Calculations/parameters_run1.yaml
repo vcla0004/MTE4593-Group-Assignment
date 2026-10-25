@@ -83,6 +83,25 @@ parameters:
     status: from results
     note: "results/lca_scenarios.csv S2 central 5,201; MC P5-P95 4,161-6,458."
 
+  # Final-day re-run (25/10/2026): team-deck C1 case. Selected with --c1-case deck (now the default) in
+  # schedule_value.py; the old 1,734 t case above stays as the alternative (--c1-case old_1734).
+  c1_deck_saving_t_per_unit:
+    value: 2200
+    low: 1100
+    high: 3300
+    unit: t CO2e saved per unit (eligible share x 50,000 m3 x (380-270) kg CO2e/m3)
+    source: coordinator_rebase_2110  # team deck; Ostroleka PIS 2023 and Pillai et al. 2019 not yet in sources.md (owned by the LCA team member)
+    status: TO VERIFY
+    note: "Team master deck case (context card 21/10): Ostroleka BWRX-300 PIS 2023 Table 14 p. 83, 50,000 m3 concrete per unit; Pillai et al. (2019) M50 OPC 380 vs LC3 270 kg CO2e/m3; eligible share 40% central (20/60% bounds). Range = eligibility scenarios, not Monte Carlo. Matches parameters_run9.yaml c1_cases new_1100/new_2200/new_3300."
+  c1_deck_saving_t_units_2_4:
+    value: 6600
+    low: 3300
+    high: 9900
+    unit: t CO2e, Units 2-4 (three units)
+    source: coordinator_rebase_2110  # team deck; Ostroleka PIS 2023 and Pillai et al. 2019 not yet in sources.md (owned by the LCA team member)
+    status: TO VERIFY
+    note: "3 x c1_deck_saving_t_per_unit."
+
   # ---------------- Carbon price for C1's carbon value (Q2) ----------------
   carbon_price_2026_cad:
     value: 95
