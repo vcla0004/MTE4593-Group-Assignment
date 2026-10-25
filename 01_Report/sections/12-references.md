@@ -52,7 +52,9 @@ Canadian Nuclear Safety Commission, 2021. *CNSC renews Ontario Power Generation'
 
 Canadian Nuclear Safety Commission, 2022. *REGDOC-3.5.1, Licensing Process for Class I Nuclear Facilities and Uranium Mines and Mills*, Version 2.1. [online] Available at: https://www.cnsc-ccsn.gc.ca/eng/acts-and-regulations/regulatory-documents/published/html/regdoc3-5-1-v2-1/ [Accessed 20 October 2026].
 
-Canadian Nuclear Safety Commission, 2023. *Regulatory consideration of environmental degradation in licensing light water small reactors in Canada*. [online] Technical paper. Ottawa: Canadian Nuclear Safety Commission. Available at: https://cnsc-ccsn.gc.ca/eng/resources/research/technical-papers-and-articles/2023/regulatory-consideration-of-environmental-degradation-in-licensing-light-water-small-reactor-in-canada [Accessed 25 October 2026].
+Canadian Nuclear Safety Commission, 2023a. *REGDOC-2.5.2, Design of Reactor Facilities: Nuclear Power Plants*, Version 2.1. [online] Ottawa: Canadian Nuclear Safety Commission. Available at: https://www.cnsc-ccsn.gc.ca/eng/acts-and-regulations/regulatory-documents/published/html/regdoc2-5-2-v2-1/ [Accessed 25 October 2026].
+
+Canadian Nuclear Safety Commission, 2023b. *Regulatory consideration of environmental degradation in licensing light water small reactors in Canada*. [online] Technical paper. Ottawa: Canadian Nuclear Safety Commission. Available at: https://cnsc-ccsn.gc.ca/eng/resources/research/technical-papers-and-articles/2023/regulatory-consideration-of-environmental-degradation-in-licensing-light-water-small-reactor-in-canada [Accessed 25 October 2026].
 
 Canadian Nuclear Safety Commission, 2024. *CMD 24-H3-1B* (staff presentation, Darlington New Nuclear Project). [pdf] Ottawa: Canadian Nuclear Safety Commission. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD-24-H3-1B.pdf/object.
 
@@ -81,6 +83,8 @@ Concrete Reinforcing Steel Institute, 2022. *Environmental Product Declaration: 
 Conference Board of Canada, 2021. *A New Power: The Economic Impacts of Small Modular Reactors*. Ottawa: Conference Board of Canada.
 
 CSA Group, 2023. *CSA A3000:23, Cementitious materials compendium* (includes CSA A3001:23, *Cementitious materials for use in concrete*). [online] Toronto: CSA Group. Available at: https://www.csagroup.org/store/product/2430659/ [Accessed 20 October 2026].
+
+CSA Group, 2026. *CSA N287.2, Material requirements for concrete containment structures for nuclear power plants*. [online] Standard catalogue information. Toronto: CSA Group. Available at: https://webstore.ansi.org/standards/csa/csan2872026 [Accessed 25 October 2026].
 
 Curve Lake First Nation, 2024. *Written submission, CMD 24-H3.83, DNNP licence to construct*, 11 November. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD24-H3-83.pdf/object [Accessed 21 October 2026].
 
@@ -118,6 +122,8 @@ Geneski, N., McKellar, J.M. and Atkinson, K.D., n.d. Life cycle environmental im
 
 Gibon, T. and Hahn Menacho, Á., 2023. Parametric life cycle assessment of nuclear power for simplified models. *Environmental Science & Technology*, 57(38), pp.14194–14205. Available at: https://doi.org/10.1021/acs.est.3c03190.
 
+Government of Canada, 2026. *Darlington New Nuclear Project*. [online] Ottawa: Major Projects Office, updated 8 July 2026. Available at: https://www.canada.ca/en/privy-council/major-projects-office/projects/national/darlington.html [Accessed 25 October 2026].
+
 Government of Ontario, 2025. *Ontario Leads the G7 by Building First Small Modular Reactor*. [news release] 8 May. Toronto: Government of Ontario.
 
 Government of Ontario, n.d. *Ontario energy snapshot*. [online] Available at: https://www.ontario.ca/page/ontario-energy-snapshot.
@@ -135,6 +141,8 @@ Helmholtz-Zentrum Dresden-Rossendorf, n.d. [Activation of the biological shield 
 Hooton, R.D., 2023. [Webinar slides on changes to ASTM cement and concrete standards]. ACI Fall 2023 webinar slides. [pdf] Farmington Hills: American Concrete Institute. Available at: https://www.concrete.org/portals/0/files/pdf/webinars/ws_F23_NEU_DouglasHooton.pdf [Accessed 20 October 2026].
 
 Independent Electricity System Operator, 2024. *Ontario's Energy Future: Spring 2024 Update*. [pdf] Toronto: Independent Electricity System Operator. Available at: https://www.ieso.ca/-/media/Files/IESO/Document-Library/Decarbonization-Hub/IESO-Ontarios-Energy-Future-Spring-2024.pdf.
+
+International Atomic Energy Agency, 2023. *What are small modular reactors (SMRs)?* [online] Vienna: International Atomic Energy Agency. Available at: https://www.iaea.org/newscenter/news/what-are-small-modular-reactors-smrs [Accessed 25 October 2026].
 
 International Atomic Energy Agency, 2024. *Small Modular Reactors: Advances in SMR Developments 2024*. Vienna: International Atomic Energy Agency.
 
@@ -187,6 +195,8 @@ Nuclear Waste Management Organization, 2024a. *The Nuclear Waste Management Orga
 Nuclear Waste Management Organization, 2024b. *Implementing Adaptive Phased Management 2024–28: Selecting a site*. Available at: https://implementationplan.nwmo.ca/2024_28/selecting-a-site/ [Accessed 21 October 2026].
 
 Nuclear Waste Management Organization, 2024c. *Mayor and Council of the Township of Ignace sign historic potential hosting agreement with the NWMO*. [news release] March. Available at: https://www.nwmo.ca/news/mayor-and-council-of-the-township-of-ignace-sign-historic--potential-hosting-agreement-with-the-nwmo [Accessed 21 October 2026].
+
+Nuclear Waste Management Organization, 2026. *Regulatory process: deep geological repository for Canada's used nuclear fuel project*. [online] Toronto: Nuclear Waste Management Organization. Available at: https://www.nwmo.ca/en/Regulatory-process [Accessed 25 October 2026].
 
 Nuclear Waste Management Organization, n.d. *Project costs*. [online] Available at: https://www.nwmo.ca/Who-we-are/Funding/Project-Costs [Accessed 21 October 2026].
 

@@ -2,40 +2,11 @@
 title: "Small modular reactors: where they cut the most carbon, what holds them back, and a low-clinker concrete initiative for Darlington"
 subtitle: "MTE4593 Materials and Sustainability, Assignment 2 (Group 9)"
 author:
-  - "Victor Clarke [ADD STUDENT ID]{custom-style=\"TeamNote\"}"
+  - "Victor Clarke [TODO: student ID]"
   - "Leroy Louis Jean (33880212)"
-  - "Sam [ADD SURNAME]{custom-style=\"TeamNote\"} [ADD STUDENT ID]{custom-style=\"TeamNote\"}"
+  - "Sam [TODO: surname] [TODO: student ID]"
 date: "October 2026"
 ---
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-## Team review checklist (this page is removed in the submission version)
-
-[Highlighted notes like this one mark what each person needs to add or check. Everything else is finished and fact-checked.]{custom-style="TeamNote"}
-
-**Everyone**
-
-- Title page: Victor's and Sam's student IDs; Sam's surname (Leroy's is in).
-- Agree the wording of the AI-use declaration (placeholder before the appendices).
-
-**Leroy** (§4.1, §4.2, §5, §10, Appendix E were drafted for you from your slides and script)
-
-- Check, correct or replace these sections; keep to about 1,250 words in total.
-- Confirm the projects table (T2) status, dates and TRL ratings, and the BWRX-300 data in §4.2.
-- Replace or confirm the patent log in Appendix E (Google Patents could not be opened from our tools).
-
-**Sam** (§6, Appendices A and C were re-based on the deck's numbers for you)
-
-- Run the Granta EduPack Eco Audit (details in the note at the top of §6) and send the results, or confirm it can't be done.
-- Confirm Ostrołęka PIS Table 14, p. 83 (50,000 m³, 14,000 t) and Pillai et al. (2019) Table 2 (380 vs 270 kg CO₂e/m³).
-- Check §6's numbers and figures F1–F5.
-
-**Victor** (before submitting)
-
-- Update the table of contents in Word (right-click, Update Field).
-- Send any edits back so the report can be rebuilt.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -71,9 +42,6 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 
 
 ## 2 Methods and data
-
-[SAM: if you run Granta, this section's Granta sentence changes too.]{custom-style="TeamNote"}
-
 
 **Four methods carry the numbers: a screening life-cycle assessment (LCA), grid displacement with a schedule break-even, a concentration index for fuel supply, and a multi-criteria analysis. Scripts and parameter files regenerate every figure (Appendix A1).** Values are taken from the documents cited, or, where marked "as reported", from the secondary source named. Where readings differ we give the range, and our own assumptions and inferences are labelled as such.
 
@@ -117,9 +85,6 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 
 ### 4.1 Technology, projects and patents
 
-[LEROY: we had no reply, so §4.1, §4.2, §5, §10 and Appendix E were drafted for you from your slides, script and web research. Please check, correct or replace them (about 1,250 words in total). Check especially: Table T2 project status and dates, the TRL ratings, and the patents (Google Patents could not be opened, so numbers and assignees come from search summaries).]{custom-style="TeamNote"}
-
-
 **No light-water SMR is yet reported operating on land; the BWRX-300 is the Western design closest to doing so, and China's ACP100 (Linglong One) was still in commissioning, with no criticality reported, in May 2026.** Table T2 rates each project on technology readiness levels (TRL): level 8 is a system "completed and qualified through test and demonstration", level 9 one operated across its full range of conditions (US Department of Energy, 2015). The ratings are ours.
 
 *Table T2. Selected SMR-class projects, October 2026.*
@@ -142,9 +107,6 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 
 
 ### 4.2 The BWRX-300 at Darlington
-
-[LEROY: please check the BWRX-300 data: 300 vs 315 MWe net, capacity factor, 60-year life, fuel enrichment and cycle, passive cooling.]{custom-style="TeamNote"}
-
 
 **The BWRX-300's composite building is what C1 targets.** The reactor is rated 300 MWe (GE Vernova Hitachi Nuclear Energy, n.d.; 315 MW net in Ontario Power Generation, 2025b), with a 60-year design life (Canadian Nuclear Safety Commission, 2024). The vendor-reported capacity factor is 95% (Fermi Energia, n.d.); we use 0.90 as a first-of-a-kind discount. Fuel is uranium dioxide, reported at 3.8% average and 4.95% maximum enrichment in a preprint review (Sun and Kurosaki, 2025). GE Hitachi states that isolation condensers cool the core passively for seven days without power or operator action (GE Hitachi Nuclear Energy, n.d.). The reactor building sits in a below-grade shaft of diaphragm-plate steel-composite (DP-SC) modules: two steel faceplates tied by diaphragm plates and filled with self-consolidating concrete (SCC) (GE-Hitachi Nuclear Energy, 2024).
 
@@ -178,9 +140,6 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 
 ## 5 Materials from extraction to end-of-life
 
-[LEROY: please check this materials life cycle (extraction to end-of-life) against your notes; add sources you have.]{custom-style="TeamNote"}
-
-
 **For C1, the binder's carbon arises in the kiln, but its risks arise in the pour and at decommissioning.** Stages follow §6's boundary; operation, decommissioning and waste use published per-kWh values (§6.1).
 
 *Table T4. C1 binder options from extraction to end-of-life.*
@@ -193,15 +152,12 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 | Service | Aggregate swelling, not the binder, dominates radiation damage (Field, Remec and Le Pape, 2015) | Same aggregates, so similar risk (our inference); no LC³ heat data found (§10) | Established |
 | Decommissioning | Activated near the core (below) | Europium and cobalt in calcined clay unknown | Not assessed |
 
-**Steel.** Each unit uses 14,000 t (BWRX-300 Ostrołęka sp. z o.o., 2023). Blast-furnace steel emits about 2.33 t CO₂/t and scrap-based electric arc furnace (EAF) steel 0.68 (World Steel Association, 2026). Nuclear plate is not a drop-in, because copper from scrap embrittles vessel steel under irradiation and the CNSC finds the ASME copper limit of 0.2% too loose (Canadian Nuclear Safety Commission, 2023; US Nuclear Regulatory Commission, 1988).
+**Steel.** Each unit uses 14,000 t (BWRX-300 Ostrołęka sp. z o.o., 2023). Blast-furnace steel emits about 2.33 t CO₂/t and scrap-based electric arc furnace (EAF) steel 0.68 (World Steel Association, 2026). Nuclear plate is not a drop-in, because copper from scrap embrittles vessel steel under irradiation and the CNSC finds the ASME copper limit of 0.2% too loose (Canadian Nuclear Safety Commission, 2023b; US Nuclear Regulatory Commission, 1988).
 
 **End of life.** Activation depends on trace elements, not carbon: cobalt-60 and europium-152 dominate activated shield concrete, and europium-152 exceeded the German clearance level to about 35 cm in the Greifswald shield (Helmholtz-Zentrum Dresden-Rossendorf, n.d.). Most decommissioning concrete is reportedly cleared, leaving only "a few per cent" as waste (Thierfeldt, 2019). On an assumed 2.4 t/m³ and a 2–5% reading, a unit's 50,000 m³ (120,000 t) would leave 2,400–6,000 t of waste. The europium and cobalt content of calcined clay is unknown, so qualification should measure it (§10).
 
 
 ## 6 Life-cycle assessment and eco-audit
-
-[SAM: §6 and Appendices A and C were re-based on the deck's numbers without you (Ostrołęka 50,000 m³ concrete and 14,000 t steel; Pillai 380 vs 270 kg CO₂e/m³; 20/40/60% eligible). Please (1) run the Granta EduPack Eco Audit on one BWRX-300: concrete 120,000 t (50,000 m³ × 2.4 t/m³) and steel 14,000 t (Ostrołęka PIS, Table 14), with a second run where 40% of the concrete (20,000 m³) is LC³ at 270 instead of 380 kg CO₂e/m³ (Pillai et al., 2019). Send the CO₂ footprint and energy per life stage (screenshot or export); the report currently says Granta was not run; (2) confirm the Ostrołęka Table 14 p. 83 and Pillai Table 2 values, and the Ostrołęka URL; (3) check the numbers and figures F1–F5.]{custom-style="TeamNote"}
-
 
 One BWRX-300 at Darlington emits an estimated **4.4 g CO₂e per kWh (Monte Carlo median; 90% interval 3.2–6.1; 3.5 if conversion heat takes its central published value)**, below UNECE's 5.1–6.4 g/kWh for nuclear power. The fuel front end contributes 62% and construction 11.5%. The initiative, C1 (§4.3), puts limestone calcined clay cement (LC³) in 20–60% of the concrete. It saves **2,200 t CO₂e per unit (1,100–3,300 t), about 0.36% of the life cycle**: real but small, so worth adopting only if schedule-neutral (§6.3).
 
@@ -332,9 +288,9 @@ Law is where Darlington and Liddell differ most. At Darlington, C1 starts with L
 
 **Australia.** Federal repeal fails in the Senate while Labor and the Greens oppose, so the Coalition's pledge to "repeal all legislative prohibitions" (Liberal Party of Australia, 2026) cannot pass unless one of them changes position. Repeal alone would not be enough: ARPANSA licenses only Commonwealth-controlled bodies (ARPANS Act s 13), so a private SMR at Liddell would remain an offence under NSW s 8. Only a Commonwealth-owned operator might fit the s 8(3) exemption that covers ANSTO (our inference).
 
-**Canada.** The licence to construct covers one unit, so Units 2–4 need a further CNSC authorisation, with C1 reviewed inside it (our inference). The cement standard already allows calcined-clay blends with up to 15% limestone (CSA Group, 2023; Hooton, 2023). The infill, though, is governed by GE-Hitachi's topical report NEDO-33926 (self-consolidating concrete, strength per draft AISC N690, not CSA N287), which the CNSC and US NRC jointly reviewed (GE-Hitachi Nuclear Energy, 2024; US Nuclear Regulatory Commission and CNSC, 2025). To our reading the public report does not state a cement-type limit, and we found no nuclear precedent for calcined-clay infill: that is C1's real licensing risk.
+**Canada.** The construction licence (April 2025) covers one unit. The Canadian Nuclear Safety Commission (CNSC) reports that its first construction hold point was removed in March 2026, and OPG applied that month to operate Unit 1 (CNSC, 2026a; 2026b). Units 2–4 are not covered by the first licence, so they need a further authorisation, with C1 reviewed inside it. The review depends on safety class. Concrete in a non-safety auxiliary structure meets ordinary construction requirements, but infill in a safety-significant structure may alter the licensed design basis and needs a fuller demonstration. REGDOC-2.5.2 (version 2.1) sets risk-informed design requirements and classifies structures (CNSC, 2023a), so no containment standard should be applied to every structure. The cement standard already allows calcined-clay blends with up to 15% limestone (CSA Group, 2023; Hooton, 2023). The BWRX-300 containment is steel-plate composite, so the infill is governed by GE-Hitachi's topical report NEDO-33926 (self-consolidating concrete, strength per draft AISC N690), which the CNSC and US NRC jointly reviewed (GE-Hitachi Nuclear Energy, 2024; US Nuclear Regulatory Commission and CNSC, 2025). CSA N287 applies only to concrete containment, where applicable (CSA Group, 2026). To our reading the public report does not state a cement-type limit, and we found no nuclear precedent for calcined-clay infill: that is C1's real licensing risk. A lower carbon figure cannot override the acceptance criteria for strength, crack control or design life.
 
-**Translation to practice.** The non-safety pilot needs no nuclear qualification. Infill qualification must start in 2027, with slag (S1) as the fallback (§8.6).
+**Translation to practice.** The non-safety pilot needs no nuclear qualification. Infill qualification must start in 2027, with slag (S1) as the fallback (§8.6). At Liddell the barrier precedes any materials choice: none of these first-order barriers can be solved by changing Portland cement to LC³.
 
 *Table T7. Legal barriers to an SMR at Liddell and the Darlington equivalent. No row is resolved as at October 2026.*
 *Source: legislation as named; Appendix B1; Canadian Nuclear Safety Commission (2021; 2022; 2025).*
@@ -342,7 +298,7 @@ Law is where Darlington and Liddell differ most. At Darlington, C1 starts with L
 | Barrier | Liddell (NSW) | What removes it; veto holder | Darlington (Ontario) |
 |---|---|---|---|
 | 1. Federal bans | *EPBC Act 1999* (Cth) s 140A bars approval; *ARPANS Act 1998* (Cth) s 10 bars a licence | Amend both. Senate: about 39 votes needed, at most 37 in favour; Labor and the Greens opposed (Appendix B1.2; Parliament of Australia, 2026) | Licence to construct in about 29 months, against 24–32 expected (CNSC, 2022; 2025) |
-| 2. Regulator for a private reactor | None: no body licenses private power reactors, and NSW has no nuclear regulator | Commonwealth-owned plant, new federal regulator or NSW regulator (Appendix B3); the naval regulator began in November 2025 (Minister for Defence, 2025) | CNSC is established; Units 2–4 need a further authorisation (our inference) |
+| 2. Regulator for a private reactor | None: no body licenses private power reactors, and NSW has no nuclear regulator | Commonwealth-owned plant, new federal regulator or NSW regulator (Appendix B3); the naval regulator began in November 2025 (Minister for Defence, 2025) | CNSC is established; Units 2–4 need a further authorisation (CNSC, 2026a) |
 | 3. NSW ban | *Uranium Mining and Nuclear Facilities (Prohibitions) Act 1986* (NSW) s 8 makes building a reactor an offence; s 9 bars state approval | NSW repeal (passed the Council 6 May 2026, stalled in the Assembly, lapses 28 November 2026; Parliament of New South Wales, 2026) or a Commonwealth override under Constitution s 109 | Unit 1 approved 8 May 2025 (Government of Ontario, 2025) |
 | 4. Site | AGL owns Liddell and has ruled out nuclear there (Newcastle Herald, 2024a) | AGL's consent, or Commonwealth acquisition | OPG holds the site licence (CNSC, 2021) |
 
@@ -383,7 +339,7 @@ Every front-end fuel stage we measured is concentrated. Each Herfindahl–Hirsch
 
 **Darlington and Liddell compared.** OPG's announced Unit 1 fuel suppliers (Cameco, Urenco USA, Orano, GNF-A) include no Russian firm (Ontario Power Generation, 2023, as reported by Power Engineering, 2023). Four units need about 196 t of natural uranium and 138 thousand separative work units (SWU) a year, about 3.2% of Urenco USA's output (assumed typical BWR fuel values; Appendix B2.6). Australia holds 28% of identified recoverable uranium resources (OECD Nuclear Energy Agency and International Atomic Energy Agency, 2025; the 2026 edition gives 27–29%) but has no conversion or enrichment (World Nuclear Association, 2026). An Australian SMR would import enrichment and fabrication by law (EPBC s 140A; ARPANS s 10), and conversion because no plant exists (Parliamentary Library, 2024).
 
-**Translation to practice.** C1 does not reduce fuel risk. Contracts with allied enrichers, as OPG uses, cut a buyer's exposure but not concentration (§8.6). One Western option links back to Darlington: laser enrichment from Australia's Silex Systems, commercialised in the US by Global Laser Enrichment (51% Silex, 49% Cameco, OPG's uranium supplier). The NRC docketed its Paducah application in August 2025, as reported by Silex Systems Limited (2025), and Cameco has agreed to buy all its output (Silex Systems Limited, 2026, as reported by World Nuclear News, 2026). EPBC s 140A would bar such a plant in Australia (§10).
+**Translation to practice.** C1 does not reduce fuel risk. Fuel independence also needs conversion, enrichment, fabrication, forged components and skilled labour, not uranium deposits alone. Patents identify proprietary designs but do not establish any royalty per unit of electricity, so patent counts alone give no royalty estimate. The HHI measures nominal capacity, not the contracts open to one buyer. Contracts with allied enrichers, as OPG uses, cut a buyer's exposure but not concentration (§8.6). C1 adds a small supply risk of its own. LC³ needs a suitable calcined-clay source and blending capacity (Scrivener et al., 2018), and a single qualified supplier would be a risk even if its product footprint were favourable. One Western option links back to Darlington: laser enrichment from Australia's Silex Systems, commercialised in the US by Global Laser Enrichment (51% Silex, 49% Cameco, OPG's uranium supplier). The NRC docketed its Paducah application in August 2025, as reported by Silex Systems Limited (2025), and Cameco has agreed to buy all its output (Silex Systems Limited, 2026, as reported by World Nuclear News, 2026). EPBC s 140A would bar such a plant in Australia (§10).
 
 *Table T9. Herfindahl–Hirschman index (HHI) of the uranium front end, by stage, with and without Russia and China.*
 *Source: this study, Appendix B2, from World Nuclear Association (2024; 2025; 2026).*
@@ -521,9 +477,6 @@ Method in §2; working in Appendix B7; social-licence and legal scores from Appe
 
 ## 10 Future material properties and processes
 
-[LEROY: please check the future-materials needs and add anything from your research.]{custom-style="TeamNote"}
-
-
 **C1 and the levers beyond it each depend on a property or process still to be proven (Table T15).**
 
 *Table T15. What must be proven.*
@@ -532,7 +485,7 @@ Method in §2; working in Appendix B7; social-licence and legal scores from Appe
 | Need | Evidence now | To prove |
 |---|---|---|
 | SCC LC³ for DP-SC infill | Calcined clay raises superplasticiser demand (Universität der Bundeswehr München, n.d.); no LC³ heat-of-hydration data found; M50 strength 56.7 against 60.0 MPa (Pillai et al., 2019) | Mock-up panels testing flow through diaphragm holes, temperature rise and shrinkage; qualification under NEDO-33926, which reportedly rests on a modified AISC N690 (GE-Hitachi Nuclear Energy, 2024), before the approval expected in 2028 (American Nuclear Society, 2026) |
-| Low-residual EAF nuclear plate | Scrap-EAF steel emits 0.68 against 2.33 t CO₂/t (World Steel Association, 2026), but copper limits scrap use in vessel steel (Canadian Nuclear Safety Commission, 2023) | Qualify diluted-scrap or direct-reduced-iron plate, first outside the pressure boundary (our inference) |
+| Low-residual EAF nuclear plate | Scrap-EAF steel emits 0.68 against 2.33 t CO₂/t (World Steel Association, 2026), but copper limits scrap use in vessel steel (Canadian Nuclear Safety Commission, 2023b) | Qualify diluted-scrap or direct-reduced-iron plate, first outside the pressure boundary (our inference) |
 | Laser enrichment | Enrichment is the most concentrated fuel-cycle step (§8.3); a US laser plant's licence application was accepted in August 2025 (Silex Systems Limited, 2025) and Cameco takes its output (Silex Systems Limited, 2026) | NRC licence decision; Australian law (EPBC s140A, ARPANS s10) bars it |
 | Waste forms | Three non-BWRX SMR designs may produce 2–30 times more waste by volume per unit of energy (Krall, Macfarlane and Ewing, 2022; contested); ANSTO's Synroc ceramic, hot-pressed at 1,000 °C and 30 MPa, cuts volume against cement but is pre-commissioning (ANSTO, n.d.) | Synroc commissioning; for Australia, an export of know-how rather than a reason to build |
 
@@ -609,7 +562,9 @@ Canadian Nuclear Safety Commission, 2021. *CNSC renews Ontario Power Generation'
 
 Canadian Nuclear Safety Commission, 2022. *REGDOC-3.5.1, Licensing Process for Class I Nuclear Facilities and Uranium Mines and Mills*, Version 2.1. [online] Available at: https://www.cnsc-ccsn.gc.ca/eng/acts-and-regulations/regulatory-documents/published/html/regdoc3-5-1-v2-1/ [Accessed 20 October 2026].
 
-Canadian Nuclear Safety Commission, 2023. *Regulatory consideration of environmental degradation in licensing light water small reactors in Canada*. [online] Technical paper. Ottawa: Canadian Nuclear Safety Commission. Available at: https://cnsc-ccsn.gc.ca/eng/resources/research/technical-papers-and-articles/2023/regulatory-consideration-of-environmental-degradation-in-licensing-light-water-small-reactor-in-canada [Accessed 25 October 2026].
+Canadian Nuclear Safety Commission, 2023a. *REGDOC-2.5.2, Design of Reactor Facilities: Nuclear Power Plants*, Version 2.1. [online] Ottawa: Canadian Nuclear Safety Commission. Available at: https://www.cnsc-ccsn.gc.ca/eng/acts-and-regulations/regulatory-documents/published/html/regdoc2-5-2-v2-1/ [Accessed 25 October 2026].
+
+Canadian Nuclear Safety Commission, 2023b. *Regulatory consideration of environmental degradation in licensing light water small reactors in Canada*. [online] Technical paper. Ottawa: Canadian Nuclear Safety Commission. Available at: https://cnsc-ccsn.gc.ca/eng/resources/research/technical-papers-and-articles/2023/regulatory-consideration-of-environmental-degradation-in-licensing-light-water-small-reactor-in-canada [Accessed 25 October 2026].
 
 Canadian Nuclear Safety Commission, 2024. *CMD 24-H3-1B* (staff presentation, Darlington New Nuclear Project). [pdf] Ottawa: Canadian Nuclear Safety Commission. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD-24-H3-1B.pdf/object.
 
@@ -638,6 +593,8 @@ Concrete Reinforcing Steel Institute, 2022. *Environmental Product Declaration: 
 Conference Board of Canada, 2021. *A New Power: The Economic Impacts of Small Modular Reactors*. Ottawa: Conference Board of Canada.
 
 CSA Group, 2023. *CSA A3000:23, Cementitious materials compendium* (includes CSA A3001:23, *Cementitious materials for use in concrete*). [online] Toronto: CSA Group. Available at: https://www.csagroup.org/store/product/2430659/ [Accessed 20 October 2026].
+
+CSA Group, 2026. *CSA N287.2, Material requirements for concrete containment structures for nuclear power plants*. [online] Standard catalogue information. Toronto: CSA Group. Available at: https://webstore.ansi.org/standards/csa/csan2872026 [Accessed 25 October 2026].
 
 Curve Lake First Nation, 2024. *Written submission, CMD 24-H3.83, DNNP licence to construct*, 11 November. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD24-H3-83.pdf/object [Accessed 21 October 2026].
 
@@ -675,6 +632,8 @@ Geneski, N., McKellar, J.M. and Atkinson, K.D., n.d. Life cycle environmental im
 
 Gibon, T. and Hahn Menacho, Á., 2023. Parametric life cycle assessment of nuclear power for simplified models. *Environmental Science & Technology*, 57(38), pp.14194–14205. Available at: https://doi.org/10.1021/acs.est.3c03190.
 
+Government of Canada, 2026. *Darlington New Nuclear Project*. [online] Ottawa: Major Projects Office, updated 8 July 2026. Available at: https://www.canada.ca/en/privy-council/major-projects-office/projects/national/darlington.html [Accessed 25 October 2026].
+
 Government of Ontario, 2025. *Ontario Leads the G7 by Building First Small Modular Reactor*. [news release] 8 May. Toronto: Government of Ontario.
 
 Government of Ontario, n.d. *Ontario energy snapshot*. [online] Available at: https://www.ontario.ca/page/ontario-energy-snapshot.
@@ -692,6 +651,8 @@ Helmholtz-Zentrum Dresden-Rossendorf, n.d. [Activation of the biological shield 
 Hooton, R.D., 2023. [Webinar slides on changes to ASTM cement and concrete standards]. ACI Fall 2023 webinar slides. [pdf] Farmington Hills: American Concrete Institute. Available at: https://www.concrete.org/portals/0/files/pdf/webinars/ws_F23_NEU_DouglasHooton.pdf [Accessed 20 October 2026].
 
 Independent Electricity System Operator, 2024. *Ontario's Energy Future: Spring 2024 Update*. [pdf] Toronto: Independent Electricity System Operator. Available at: https://www.ieso.ca/-/media/Files/IESO/Document-Library/Decarbonization-Hub/IESO-Ontarios-Energy-Future-Spring-2024.pdf.
+
+International Atomic Energy Agency, 2023. *What are small modular reactors (SMRs)?* [online] Vienna: International Atomic Energy Agency. Available at: https://www.iaea.org/newscenter/news/what-are-small-modular-reactors-smrs [Accessed 25 October 2026].
 
 International Atomic Energy Agency, 2024. *Small Modular Reactors: Advances in SMR Developments 2024*. Vienna: International Atomic Energy Agency.
 
@@ -744,6 +705,8 @@ Nuclear Waste Management Organization, 2024a. *The Nuclear Waste Management Orga
 Nuclear Waste Management Organization, 2024b. *Implementing Adaptive Phased Management 2024–28: Selecting a site*. Available at: https://implementationplan.nwmo.ca/2024_28/selecting-a-site/ [Accessed 21 October 2026].
 
 Nuclear Waste Management Organization, 2024c. *Mayor and Council of the Township of Ignace sign historic potential hosting agreement with the NWMO*. [news release] March. Available at: https://www.nwmo.ca/news/mayor-and-council-of-the-township-of-ignace-sign-historic--potential-hosting-agreement-with-the-nwmo [Accessed 21 October 2026].
+
+Nuclear Waste Management Organization, 2026. *Regulatory process: deep geological repository for Canada's used nuclear fuel project*. [online] Toronto: Nuclear Waste Management Organization. Available at: https://www.nwmo.ca/en/Regulatory-process [Accessed 25 October 2026].
 
 Nuclear Waste Management Organization, n.d. *Project costs*. [online] Available at: https://www.nwmo.ca/Who-we-are/Funding/Project-Costs [Accessed 21 October 2026].
 
@@ -878,7 +841,7 @@ Zunino, F., 2021. *Limestone calcined clay cements* [presentation slides]. Lausa
 
 ## Declaration of generative AI use
 
-[TEAM: agree the AI-use declaration wording and add it here.]{custom-style="TeamNote"}
+[TODO: team to write the AI-use declaration required by the unit (CLAUDE.md: the team decides how AI use is declared).]
 
 
 ```{=openxml}
@@ -888,9 +851,6 @@ Zunino, F., 2021. *Limestone calcined clay cements* [presentation slides]. Lausa
 
 
 ## Appendix A. LCA inventory and calculations
-
-[SAM: please review this appendix; your Granta results go in A9.]{custom-style="TeamNote"}
-
 
 This appendix gives the full working behind §6. The analysis is a screening LCA following ISO 14040/44 principles, not critically reviewed, in which a Python model multiplies quantities by published emission factors. The Ostrołęka and Pillai tables behind the main case could not be opened, so their values are taken as reported; other inputs are labelled as reported by a secondary source, an assumption or a placeholder. The intervals therefore describe the uncertainty in our inputs as found, not in verified data.
 
@@ -2074,9 +2034,6 @@ The 78% is a subtraction (20.9 − 2.00 − 1.00 − 0.97 − 0.70 = 16.23), not
 
 ## Appendix C. Sensitivity: tornado and Monte Carlo set-up and results
 
-[SAM: please review this appendix.]{custom-style="TeamNote"}
-
-
 This appendix shows how uncertain the §6 results are and which inputs drive them. **The life-cycle intensity is uncertain mainly through the fuel inputs (conversion heat, mining, back end, burnup, enrichment); C1's saving is uncertain mainly through the eligible share, the LC³ cut and the plant concrete volume.** All ranges come from `parameters_lca.yaml`. The Ostrołęka and Pillai tables could not be opened and other inputs are as reported by secondary sources, assumptions or placeholders, so the intervals describe the uncertainty in our inputs as found, not in verified data.
 
 ### C1. Set-up
@@ -2259,11 +2216,6 @@ The sources disagree mainly about the fuel front end (ore grade, enrichment tech
 
 ## Appendix E. Search log
 
-[LEROY: please check or replace this search log with your own Google Patents searches.]{custom-style="TeamNote"}
-
-
-*Drafted for Leroy; Leroy may reclaim.*
-
 ### E1. Method and access
 The patent search covered three areas that bear on the initiative: (i) the BWRX-300's passive safety and civil design (isolation condenser, vertical shaft); (ii) steel-plate composite (DP-SC) modules; and (iii) limestone calcined clay cement (LC³). All searches were run on 25 October 2026.
 
@@ -2312,7 +2264,7 @@ Seven patents are kept. Excluded: US 11,139,087 and US 11,955,248 (isolation con
 | L5 | LC³ heat of hydration | LC3 concrete heat of hydration lower than OPC semi-adiabatic … | **None LC³-specific (gap)** |
 | L6 | LC³ SCC rheology | self-compacting concrete limestone calcined clay cement superplasticizer demand rheology … | UniBw; IIT Madras (2020) |
 | L7 | Steel residuals | copper tramp element accumulation steel scrap recycling EAF … | a 2025 review of copper in steel scrap |
-| L8 | RPV embrittlement | reactor pressure vessel steel SA-508 copper phosphorus irradiation embrittlement … | CNSC (2023); NRC RG 1.99 Rev. 2 |
+| L8 | RPV embrittlement | reactor pressure vessel steel SA-508 copper phosphorus irradiation embrittlement … | CNSC (2023b); NRC RG 1.99 Rev. 2 |
 | L9 | Steel route intensity | worldsteel CO2 intensity BF-BOF … EAF … | worldsteel (2025; 2026) |
 | L10 | Waste forms | ANSTO Synroc … hot isostatic pressing | ANSTO Synroc |
 | L11 | Projects | TVA Clinch River …; Linglong One …; HTR-PM …; NuScale US460 SDA … | See `02_Research/briefs/technology-projects-trl.md` |
