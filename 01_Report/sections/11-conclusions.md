@@ -12,7 +12,7 @@ CHANGELOG
 
 **Research questions.**
 1. *Life cycle (§6).* One BWRX-300 emits about 4 g CO₂e/kWh, mostly from the fuel front end; conversion heat is the largest uncertainty.
-2. *C1 (§6–7).* It saves 2,200 t per unit (1,100–3,300; §4.3), about 0.36% of the life cycle; a delay of 11.6–18.5 days cancels it (1.7–1.8 days on the marginal grid factor).
+2. *C1 (§6–7).* It saves 2,200 t per unit (1,100–3,300; §4.3), about 0.36% of the life cycle; a delay of 11.6–18.5 days cancels it (1.7–1.8 days on the marginal grid factor). Granta EduPack confirms the construction footprint within 2.3%, but with the team's LC³ record it shows only about 240 t, so C1's carbon case is marginal and uncertain (Monte Carlo 555–3,396 t); its firmer benefits are a 33% lower embodied energy per kilogram, a qualified precedent for low-clinker nuclear concrete, and keeping it off the critical path. The fuel front end matters far more to the plant's footprint than concrete.
 3. *Displacement (§7).* Darlington Unit 1 avoids 1.0–6.8 Mt CO₂e to 2050 and a Liddell unit 0.67–3.9 Mt; firmed renewables avoid 10.9 times more per dollar.
 4. *Barriers and options (§3, §8–9).* Law (three bans), cost (C$149–198/MWh) and time (2040 at the earliest) decide; firmed renewables rank first under all four weight sets (80 against 30 with equal weights).
 

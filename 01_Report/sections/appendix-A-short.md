@@ -103,3 +103,20 @@ The concrete-only saving is (0.1583 − 0.1533) × 48,000 t = 240 t CO₂e; at P
 [Figure F9. Granta EduPack Eco Audit summary, climate change (kg CO₂e) by life phase: base reactor against LC³ reactor. Source: Granta EduPack 2024 R1, team model.]
 
 [Figure F10. Granta EduPack Eco Audit summary, energy (MJ) by life phase: base reactor against LC³ reactor. Source: Granta EduPack 2024 R1, team model.]
+
+### A9.1 Reconciliation and verification checks
+
+Back-calculated at 2,400 kg/m³ (the density implied by 120,000 t for 50,000 m³), the base record (0.1583 kg/kg) equals Pillai et al.'s (2019) ordinary concrete, 380 kg CO₂e/m³, but the LC³ record (0.1533 kg/kg) equals 368 kg/m³, a 3.2% cut rather than Pillai's 28.9%. The source of 0.1533 is not recorded in the reports. The defensible value, on the same source and density basis as the base record, is 270 / 2,400 = 0.1125 kg CO₂e/kg; the embodied energy of 0.603 MJ/kg is kept as entered. Both mixes are M50 (28-day mean strengths 60.0 and 56.7 MPa), so the per-m³ comparison is at the same strength class; whether OPG's baseline mix already contains slag is not known, which would reduce the saving. Granta has no use phase, so its 30-year product life does not change its construction totals; the per-kWh figures use our 60-year functional unit (Script: `03_LCA_Calculations/scripts/granta_reconcile.py`).
+
+*Table A9.1. Checks set in advance and their outcomes.*
+*Source: this study; Granta EduPack 2024 R1; Pillai et al. (2019); UNECE (2021).*
+
+| Check | Limit | Result | Outcome |
+|---|---|---|---|
+| Granta vs our model, construction total | within 5% | 58,900 vs 57,600 t (2.3%) | Pass |
+| LC³ cut against ordinary concrete | 30–40% | Pillai 28.9%; Granta record 3.2% | Fail (marginal for Pillai) |
+| Ordinary concrete per m³ vs Ontario industry declaration | within 15% | not tested | Not tested |
+| Whole-plant intensity vs UNECE | 5.1–6.4 g/kWh | median 4.40 (90%: 3.24–6.05) | Fail on median; interval overlaps |
+| Mass and energy balances | close | 120,000 t; 72,000 + 48,000 t; steel 6,000 + 8,000 t; material energy within 2% | Pass |
+
+Monte Carlo on the C1 saving (20,000 draws, seed 20261025; eligible share uniform 20–60%; ordinary concrete 342–418 kg/m³; LC³ 230–368 kg/m³ with Sam's record as the upper bound): median 1,713 t per unit, 90% interval 555–3,396 t. Share of variance: LC³ factor 48%, eligible share 38%, ordinary-concrete factor 14%.

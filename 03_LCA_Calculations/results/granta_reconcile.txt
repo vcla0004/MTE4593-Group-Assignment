@@ -1,0 +1,11 @@
+Record back-calculation (kg CO2e/m3 at 2,400 kg/m3):
+  base 380 (Pillai OPC 380); LC3 record 368 (Pillai LC3 270)
+  defensible LC3 record = 0.1125 kg/kg; cut vs OPC: record 3.2%, Pillai 28.9%
+C1 saving, central: record 240 t; Pillai 2200 t
+Monte Carlo C1 saving (t/unit): median 1713, 90% 555-3396
+Contribution to variance (squared correlation, normalised): {'eligible share': '38%', 'OPC factor': '14%', 'LC3 factor': '48%'}
+Check 1 Granta vs Python: 2.3% -> PASS
+Check 2 LC3 cut in 30-40%: Pillai 28.9% -> FAIL (marginal); Granta record 3.2% -> FAIL
+Check 3 OPC per m3 vs Ontario industry EPD: NOT TESTED (EPD value not in hand)
+Check 4 whole plant in UNECE 5.1-6.4: median 4.4 -> FAIL (below); 90% interval 3.24-6.05 overlaps
+Check 5 mass balances (concrete 120,000 t; 72,000 + 48,000 t; steel 6,000 + 8,000 t) -> PASS; material energy sum within 2% -> PASS
