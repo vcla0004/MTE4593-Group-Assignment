@@ -19,6 +19,7 @@ SEC = ROOT / "01_Report" / "sections"
 OUT_MD = ROOT / "01_Report" / "assembly" / "draft-assembled.md"
 OUT_DOCX = ROOT / "01_Report" / "draft-assembled.docx"
 OUT_FINAL = ROOT / "01_Report" / "MTE4593 Group 9 SMR Report.docx"
+OUT_REVIEW = ROOT / "01_Report" / "MTE4593 Group 9 SMR Report - TEAM REVIEW.docx"
 REF_DOCX = ROOT / "01_Report" / "assembly" / "reference.docx"  # make_reference_doc.py
 
 # Body order; None means the section is not in the repo yet (placeholder).
@@ -53,7 +54,8 @@ APPENDICES = [
 REFS = "12-references.md"
 FIG_DIR = ROOT / "03_LCA_Calculations" / "results"
 FIG_RE = re.compile(r"^\[Figure F?(\d+)[.:]\s*(.*)\]\s*$")
-FINAL = "--final" in sys.argv
+REVIEW = "--review" in sys.argv
+FINAL = "--final" in sys.argv or REVIEW
 PAGE_BREAK = '```{=openxml}\n<w:p><w:r><w:br w:type="page"/></w:r></w:p>\n```\n'
 
 
@@ -68,6 +70,61 @@ date: "October 2026"
 ---
 
 """
+# Team-review build: highlighted notes placed after the first heading of each file.
+def note(text: str) -> str:
+    return f"[{text}]{{custom-style=\"TeamNote\"}}\n"
+
+GRANTA = ("run the Granta EduPack Eco Audit on one BWRX-300: concrete 120,000 t (50,000 m³ × 2.4 t/m³) "
+          "and steel 14,000 t (Ostrołęka PIS, Table 14), with a second run where 40% of the concrete "
+          "(20,000 m³) is LC³ at 270 instead of 380 kg CO₂e/m³ (Pillai et al., 2019). Send the CO₂ "
+          "footprint and energy per life stage (screenshot or export)")
+NOTES = {
+    "4.1-technology-projects.md": "LEROY: we had no reply, so §4.1, §4.2, §5, §10 and Appendix E were drafted for you "
+        "from your slides, script and web research. Please check, correct or replace them (about 1,250 words in "
+        "total). Check especially: Table T2 project status and dates, the TRL ratings, and the patents (Google "
+        "Patents could not be opened, so numbers and assignees come from search summaries).",
+    "4.2-bwrx300-darlington.md": "LEROY: please check the BWRX-300 data: 300 vs 315 MWe net, capacity factor, "
+        "60-year life, fuel enrichment and cycle, passive cooling.",
+    "5-materials-life-cycle.md": "LEROY: please check this materials life cycle (extraction to end-of-life) "
+        "against your notes; add sources you have.",
+    "10-future-materials.md": "LEROY: please check the future-materials needs and add anything from your research.",
+    "6-lca-eco-audit.md": "SAM: §6 and Appendices A and C were re-based on the deck's numbers without you "
+        "(Ostrołęka 50,000 m³ concrete and 14,000 t steel; Pillai 380 vs 270 kg CO₂e/m³; 20/40/60% eligible). "
+        "Please (1) " + GRANTA + "; the report currently says Granta was not run; (2) confirm the Ostrołęka "
+        "Table 14 p. 83 and Pillai Table 2 values, and the Ostrołęka URL; (3) check the numbers and figures F1–F5.",
+    "appendix-A-lca-inventory.md": "SAM: please review this appendix; your Granta results go in A9.",
+    "appendix-C-sensitivity.md": "SAM: please review this appendix.",
+    "appendix-E-search-log.md": "LEROY: please check or replace this search log with your own Google Patents searches.",
+    "2-methods-data.md": "SAM: if you run Granta, this section's Granta sentence changes too.",
+}
+CHECKLIST = """## Team review checklist (this page is removed in the submission version)
+
+[Highlighted notes like this one mark what each person needs to add or check. Everything else is finished and fact-checked.]{custom-style="TeamNote"}
+
+**Everyone**
+
+- Title page: your student ID; Sam, your surname.
+- Agree the wording of the AI-use declaration (placeholder before the appendices).
+
+**Leroy** (§4.1, §4.2, §5, §10, Appendix E were drafted for you from your slides and script)
+
+- Check, correct or replace these sections; keep to about 1,250 words in total.
+- Confirm the projects table (T2) status, dates and TRL ratings, and the BWRX-300 data in §4.2.
+- Replace or confirm the patent log in Appendix E (Google Patents could not be opened from our tools).
+
+**Sam** (§6, Appendices A and C were re-based on the deck's numbers for you)
+
+- Run the Granta EduPack Eco Audit (details in the note at the top of §6) and send the results, or confirm it can't be done.
+- Confirm Ostrołęka PIS Table 14, p. 83 (50,000 m³, 14,000 t) and Pillai et al. (2019) Table 2 (380 vs 270 kg CO₂e/m³).
+- Check §6's numbers and figures F1–F5.
+
+**Victor** (before submitting)
+
+- Update the table of contents in Word (right-click, Update Field).
+- Send any edits back so the report can be rebuilt.
+
+"""
+
 DECLARATION = """## Declaration of generative AI use
 
 [TODO: team to write the AI-use declaration required by the unit (CLAUDE.md: the team decides how AI use is declared).]
@@ -163,6 +220,9 @@ def main() -> None:
             body = f"## {placeholder}\n\n**[TODO: section not yet in the repo]**\n"
         else:
             raise SystemExit(f"missing {name}")
+        if REVIEW and name in NOTES:
+            body = re.sub(r"^(#{1,6} .*\n)", lambda m: m.group(1) + "\n" + note(NOTES[name]) + "\n",
+                          body, count=1, flags=re.M)
         if name[:2] in ("4.", "8."):
             body = re.sub(r"^(#{2,5}) ", r"#\1 ", body, flags=re.M)
         if not body.lstrip().startswith(PARENT.get(name, "##").strip()):
@@ -176,22 +236,32 @@ def main() -> None:
         parts.append(clean((SEC / REFS).read_text(encoding="utf-8")))
     else:
         parts.append("## References\n\n**[TODO: reference list]**\n")
-    parts.append(DECLARATION)
+    parts.append("## Declaration of generative AI use\n\n" + note("TEAM: agree the AI-use declaration wording and add it here.")
+                 if REVIEW else DECLARATION)
     parts.append(PAGE_BREAK + "# Appendices\n")
     for name in APPENDICES:
         f = SEC / name
         if f.exists():
-            parts.append(renum_app(clean(f.read_text(encoding="utf-8")), first))
+            app = clean(f.read_text(encoding="utf-8"))
+            if REVIEW and name in NOTES:
+                app = re.sub(r"^(#{1,6} .*\n)", lambda m: m.group(1) + "\n" + note(NOTES[name]) + "\n",
+                             app, count=1, flags=re.M)
+            parts.append(renum_app(app, first))
         elif "moved" not in name and "appendix-E" not in name:
             parts.append(f"## {name}\n\n**[TODO: not yet in the repo]**\n")
-    if FINAL:
+    if REVIEW:
+        hl = '[{}]{{custom-style=\\"TeamNote\\"}}'
+        head = (TITLE.replace("[TODO: student ID]", hl.format("ADD STUDENT ID"))
+                .replace("[TODO: surname]", hl.format("ADD SURNAME")))
+        head += PAGE_BREAK + CHECKLIST
+    elif FINAL:
         head = TITLE
     else:
         head = ('---\ntitle: "Small modular reactors: DRAFT (assembled from sections)"\n---\n\n'
             "**Draft for the team, not the submission.** Every [TO VERIFY] and [TODO] "
             "marker is still open. Leroy's sections are placeholders until they are in the repo.\n\n")
     OUT_MD.write_text(head + "\n\n".join(parts), encoding="utf-8")
-    out_docx = OUT_FINAL if FINAL else OUT_DOCX
+    out_docx = OUT_REVIEW if REVIEW else OUT_FINAL if FINAL else OUT_DOCX
     subprocess.run(["pandoc", "-f", "markdown-tex_math_dollars", str(OUT_MD), "-o", str(out_docx),
                     f"--reference-doc={REF_DOCX}", "--toc", "--columns=10000"], check=True)
     tp = tt = 0

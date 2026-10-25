@@ -33,6 +33,10 @@ def main() -> None:
         add = [re.sub(r"(<w:style [^>]*w:styleId=\"Compact\"[^>]*>.*?)(</w:style>)",
                       r'\1<w:rPr><w:sz w:val="18"/><w:szCs w:val="18"/></w:rPr>\2', a, flags=re.S)
                for a in add]
+        # highlighted character style for the team-review build (--review)
+        add.append('<w:style w:type="character" w:customStyle="1" w:styleId="TeamNote">'
+                   '<w:name w:val="Team Note"/><w:rPr><w:b/><w:color w:val="C00000"/>'
+                   '<w:highlight w:val="yellow"/></w:rPr></w:style>')
         merged = tstyles.replace("</w:styles>", "".join(add) + "</w:styles>")
         with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as zout:
             for item in tz.infolist():
