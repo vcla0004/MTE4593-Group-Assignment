@@ -1,5 +1,6 @@
 Rubric coverage: R2.4, R2.1, R2.6, R1.4, RB.5 (also supports R2.5, R2.7, R3.6, R5.1, R5.3)
 <!-- Changelog 25/10 (writer, Q21): M10 DCCEEW and "2030"; M11b MCDA option defined; M4 Granta token kept. -->
+<!-- 25/10 (writer, final day): [TODO-GRANTA] replaced by "planned but not completed" (Granta not run); nothing else changed. -->
 
 
 <!--
@@ -11,7 +12,7 @@ CHANGELOG
 
 **Four methods carry the numbers: a screening life-cycle assessment (LCA), grid displacement with a schedule break-even, a concentration index for fuel supply, and a multi-criteria analysis. Scripts and parameter files regenerate every figure (Appendix A1).** Values are taken from the documents cited, or, where marked "as reported", from the secondary source named. Where readings differ we give the range, and our own assumptions and inferences are labelled as such.
 
-**LCA.** A screening study following ISO 14040/14044 principles (International Organization for Standardization, 2006a; 2006b), not critically reviewed: functional unit 1 MWh of net electricity at the grid connection, cradle to grave (§6.1). The screening model is scripted in Python and Granta was used for [TODO-GRANTA].
+**LCA.** A screening study following ISO 14040/14044 principles (International Organization for Standardization, 2006a; 2006b), not critically reviewed: functional unit 1 MWh of net electricity at the grid connection, cradle to grave (§6.1). The screening model is scripted in Python; a Granta EduPack Eco Audit cross-check was planned but not completed.
 
 **Displacement and schedule.** One unit (300 MWe net assumed; an OPG filing gives 315, within our sensitivity range) supplies 2.365 TWh a year and avoids that output × (grid factor − SMR factor). The *average* factor is the grid's mean intensity; the *marginal* factor is that of the plant displaced (The Atmospheric Fund, 2025). Ontario's are 73.8 and 343 g/kWh; NSW uses 640 (DCCEEW, 2025). Future grids are our trajectories from published anchor points. Start years are 2030 at Darlington (Ontario Power Generation, 2025a) and 2040 at the earliest in Australia (Graham, Hayward and Foster, 2024). The *schedule break-even* is the delay that cancels a saving S: S ÷ (daily output × grid-factor gap) (Appendix B4–B5).
 
@@ -28,4 +29,4 @@ CHANGELOG
 - **R1.4:** standards and agencies named; search and patent log in Appendix E.
 
 ### Remaining TODOs
-1. The Granta placeholder in the LCA paragraph (coordinator).
+None.
