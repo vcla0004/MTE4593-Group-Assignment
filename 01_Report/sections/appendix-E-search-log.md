@@ -4,7 +4,6 @@ Rubric coverage: R1.4, R1.1, R4.2, RB.3, RB.7
 
 ## Appendix E. Search log
 
-*Drafted for Leroy; Leroy may reclaim.*
 
 ### E1. Method and access
 The patent search covered three areas that bear on the initiative: (i) the BWRX-300's passive safety and civil design (isolation condenser, vertical shaft); (ii) steel-plate composite (DP-SC) modules; and (iii) limestone calcined clay cement (LC³). All searches were run on 25 October 2026.
@@ -54,7 +53,7 @@ Seven patents are kept. Excluded: US 11,139,087 and US 11,955,248 (isolation con
 | L5 | LC³ heat of hydration | LC3 concrete heat of hydration lower than OPC semi-adiabatic … | **None LC³-specific (gap)** |
 | L6 | LC³ SCC rheology | self-compacting concrete limestone calcined clay cement superplasticizer demand rheology … | UniBw; IIT Madras (2020) |
 | L7 | Steel residuals | copper tramp element accumulation steel scrap recycling EAF … | a 2025 review of copper in steel scrap |
-| L8 | RPV embrittlement | reactor pressure vessel steel SA-508 copper phosphorus irradiation embrittlement … | CNSC (2023); NRC RG 1.99 Rev. 2 |
+| L8 | RPV embrittlement | reactor pressure vessel steel SA-508 copper phosphorus irradiation embrittlement … | CNSC (2023b); NRC RG 1.99 Rev. 2 |
 | L9 | Steel route intensity | worldsteel CO2 intensity BF-BOF … EAF … | worldsteel (2025; 2026) |
 | L10 | Waste forms | ANSTO Synroc … hot isostatic pressing | ANSTO Synroc |
 | L11 | Projects | TVA Clinch River …; Linglong One …; HTR-PM …; NuScale US460 SDA … | See `02_Research/briefs/technology-projects-trl.md` |

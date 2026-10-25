@@ -79,49 +79,28 @@ GRANTA = ("run the Granta EduPack Eco Audit on one BWRX-300: concrete 120,000 t 
           "(20,000 m³) is LC³ at 270 instead of 380 kg CO₂e/m³ (Pillai et al., 2019). Send the CO₂ "
           "footprint and energy per life stage (screenshot or export)")
 NOTES = {
-    "4.1-technology-projects.md": "LEROY: we had no reply, so §4.1, §4.2, §5, §10 and Appendix E were drafted for you "
-        "from your slides, script and web research. Please check, correct or replace them (about 1,250 words in "
-        "total). Check especially: Table T2 project status and dates, the TRL ratings, and the patents (Google "
-        "Patents could not be opened, so numbers and assignees come from search summaries).",
-    "4.2-bwrx300-darlington.md": "LEROY: please check the BWRX-300 data: 300 vs 315 MWe net, capacity factor, "
-        "60-year life, fuel enrichment and cycle, passive cooling.",
-    "5-materials-life-cycle.md": "LEROY: please check this materials life cycle (extraction to end-of-life) "
-        "against your notes; add sources you have.",
-    "10-future-materials.md": "LEROY: please check the future-materials needs and add anything from your research.",
-    "6-lca-eco-audit.md": "SAM: §6 and Appendices A and C were re-based on the deck's numbers without you "
-        "(Ostrołęka 50,000 m³ concrete and 14,000 t steel; Pillai 380 vs 270 kg CO₂e/m³; 20/40/60% eligible). "
-        "Please (1) " + GRANTA + "; the report currently says Granta was not run; (2) confirm the Ostrołęka "
-        "Table 14 p. 83 and Pillai Table 2 values, and the Ostrołęka URL; (3) check the numbers and figures F1–F5.",
-    "appendix-A-lca-inventory.md": "SAM: please review this appendix; your Granta results go in A9.",
-    "appendix-C-sensitivity.md": "SAM: please review this appendix.",
-    "appendix-E-search-log.md": "LEROY: please check or replace this search log with your own Google Patents searches.",
-    "2-methods-data.md": "SAM: if you run Granta, this section's Granta sentence changes too.",
+    "6-lca-eco-audit.md": "LEROY (Granta EduPack): please " + GRANTA + ". Then confirm or update this "
+        "section's Granta sentence, Appendix A9 and §2. Everything else in the report is complete.",
+    "appendix-A-lca-inventory.md": "LEROY: your Granta EduPack results go in A9 (currently 'planned but not completed').",
+    "2-methods-data.md": "LEROY: once Granta is run, this section's Granta sentence changes to describe it.",
 }
 CHECKLIST = """## Team review checklist (this page is removed in the submission version)
 
-[Highlighted notes like this one mark what each person needs to add or check. Everything else is finished and fact-checked.]{custom-style="TeamNote"}
+[Highlighted notes like this one mark what is still needed. Everything else is complete and fact-checked.]{custom-style="TeamNote"}
+
+**Leroy: Granta EduPack** (the only open technical item)
+
+- Run the Granta EduPack Eco Audit as set out in the note at the top of §6, and send the results (screenshots or export).
+- The results go in §6, Appendix A9 and one sentence in §2. The report currently says Granta was planned but not completed.
 
 **Everyone**
 
-- Title page: Victor's and Sam's student IDs; Sam's surname (Leroy's is in).
-- Agree the wording of the AI-use declaration (placeholder before the appendices).
+- Title page: Victor's and Sam's student IDs, and Sam's surname (Leroy's is in).
+- Agree the AI-use declaration wording (placeholder before the appendices).
 
-**Leroy** (§4.1, §4.2, §5, §10, Appendix E were drafted for you from your slides and script)
-
-- Check, correct or replace these sections; keep to about 1,250 words in total.
-- Confirm the projects table (T2) status, dates and TRL ratings, and the BWRX-300 data in §4.2.
-- Replace or confirm the patent log in Appendix E (Google Patents could not be opened from our tools).
-
-**Sam** (§6, Appendices A and C were re-based on the deck's numbers for you)
-
-- Run the Granta EduPack Eco Audit (details in the note at the top of §6) and send the results, or confirm it can't be done.
-- Confirm Ostrołęka PIS Table 14, p. 83 (50,000 m³, 14,000 t) and Pillai et al. (2019) Table 2 (380 vs 270 kg CO₂e/m³).
-- Check §6's numbers and figures F1–F5.
-
-**Victor** (before submitting)
+**Victor (before submitting)**
 
 - Update the table of contents in Word (right-click, Update Field).
-- Send any edits back so the report can be rebuilt.
 
 """
 
