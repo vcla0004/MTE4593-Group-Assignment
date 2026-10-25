@@ -1,6 +1,6 @@
 Rubric coverage: R2.4, R2.1, R2.6, R1.4, RB.5 (also supports R2.5, R2.7, R3.6, R5.1, R5.3)
 <!-- Changelog 25/10 (writer, Q21): M10 DCCEEW and "2030"; M11b MCDA option defined; M4 Granta token kept. -->
-<!-- 25/10 (writer, final day): [TODO-GRANTA] replaced by "planned but not completed" (Granta not run); nothing else changed. -->
+<!-- 25/10 (writer, final day): the Granta placeholder replaced by "planned but not completed" (Granta not run); nothing else changed. -->
 
 
 <!--

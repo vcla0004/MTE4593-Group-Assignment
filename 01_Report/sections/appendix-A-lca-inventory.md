@@ -48,7 +48,7 @@ Inputs: P_net 300 MWe (GE Vernova Hitachi Nuclear Energy, n.d.), with 315 MWe ne
 | Construction, mode case | 57,600 t CO₂e (0.41 g/kWh) | 34,381 t (0.24 g/kWh) |
 | Life cycle: mode case; Monte Carlo median (90% interval) | 2.86; 4.40 (3.24–6.05) g/kWh | 2.70; 4.20 (3.05–5.86) g/kWh |
 
-*Table A2b. Key assumptions for one BWRX-300 at Darlington (all 45 ranged inputs in Appendix C, Table C1).*
+*Table A2b. Key assumptions for one BWRX-300 at Darlington (all 45 ranged inputs in Appendix C, Table C2).*
 *Source: `parameters_lca.yaml`; references as listed. Ranges are model input bounds, not result intervals.*
 
 | Parameter | Central (input range) | Basis |
@@ -153,7 +153,7 @@ Corrections made to the team spreadsheet (kept as `Accounting_corrected.csv`; th
 | *Cross-check:* slag in infill and forebay | 1,552 | 4,657 | 2,019 (6,057) | 30.6 | 0.405 | 0.0109 |
 | *Cross-check:* LC³ in infill and forebay | 1,734 | 5,201 | 2,304 (6,913) | 34.1 | 0.452 | 0.0122 |
 
-Monte Carlo basis (median, with 5th–95th percentile; Table C4): LC³ on 40% with eligibility, cut and volumes all varying, 2,217 t per unit (1,375–3,294) and 6,651 t for Units 2–4 (4,124–9,881), 0.35% of the life cycle (0.19–0.61%); at fixed eligibility 0.18% (20%), 0.36% (40%) and 0.54% (60%). Slag 2,140 t (1,310–3,238), 0.34% (0.18–0.60%). LC³ beats slag in 55% of draws.
+Monte Carlo basis (median, with 5th–95th percentile; Table C4b): LC³ on 40% with eligibility, cut and volumes all varying, 2,217 t per unit (1,375–3,294) and 6,651 t for Units 2–4 (4,124–9,881), 0.35% of the life cycle (0.19–0.61%); at fixed eligibility 0.18% (20%), 0.36% (40%) and 0.54% (60%). Slag 2,140 t (1,310–3,238), 0.34% (0.18–0.60%). LC³ beats slag in 55% of draws.
 
 **Resource use per unit of output.** Clinker avoided = 2,940 t / 1.419 × 10⁸ MWh = 0.021 kg/MWh (9.8 t per MWe). Concrete: 50,000 m³ × 2.4 t/m³ / 1.419 × 10⁸ MWh = 0.85 kg/MWh. Steel: 14,000 t / 1.419 × 10⁸ MWh = 0.099 kg/MWh.
 

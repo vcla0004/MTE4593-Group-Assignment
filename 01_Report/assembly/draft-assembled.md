@@ -1,12 +1,8 @@
 ---
-title: "Small modular reactors: where they cut the most carbon, what holds them back, and a low-clinker concrete initiative for Darlington"
-subtitle: "MTE4593 Materials and Sustainability, Assignment 2 (Group 9)"
-author:
-  - "Victor Clarke [TODO: student ID]"
-  - "Leroy Jean [TODO: student ID]"
-  - "Sam [TODO: surname] [TODO: student ID]"
-date: "October 2026"
+title: "Small modular reactors: DRAFT (assembled from sections)"
 ---
+
+**Draft for the team, not the submission.** Every [TO VERIFY] and [TODO] marker is still open. Leroy's sections are placeholders until they are in the repo.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -15,7 +11,7 @@ date: "October 2026"
 
 Small modular reactors (SMRs) are proposed to replace closing coal plants. This report asks whether an SMR is feasible across the triple bottom line, and whether a materials choice can cut its footprint without delaying it. We study the GE Vernova Hitachi BWRX-300 (300 MWe) at Darlington, Ontario, and compare Liddell, New South Wales, a closed coal site.
 
-Our initiative, C1, is low-clinker concrete for the steel-composite infill and forebay shaft of Darlington Units 2–4: pilot limestone calcined clay cement (LC³) in eligible non-safety works first, extend it to the infill only if qualified, and adopt it only if schedule-neutral. A screening life-cycle assessment (ISO 14040/44 principles) gives about 4 g CO₂e/kWh for one unit, mostly from the fuel front end. C1 saves about 2,200 t per unit (1,100–3,300), about 0.37% of the life cycle, and a delay of about 12–18 days cancels it.
+Our initiative, C1, is low-clinker concrete for the steel-composite infill and forebay shaft of Darlington Units 2–4: pilot limestone calcined clay cement (LC³) in eligible non-safety works first, extend it to the infill only if qualified, and adopt it only if schedule-neutral. A screening life-cycle assessment (ISO 14040/44 principles) gives about 4 g CO₂e/kWh for one unit, mostly from the fuel front end. C1 saves about 2,200 t per unit (1,100–3,300), about 0.36% of the life cycle, and a delay of about 12–18 days cancels it.
 
 Law, cost and timing decide the Australian case. An SMR at Liddell could not start before about 2040, and firmed renewables avoid 10.9 times more CO₂e per dollar. In a multi-criteria analysis, renewables rank first under all four weight sets.
 
@@ -45,7 +41,7 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 
 **Four methods carry the numbers: a screening life-cycle assessment (LCA), grid displacement with a schedule break-even, a concentration index for fuel supply, and a multi-criteria analysis. Scripts and parameter files regenerate every figure (Appendix A1).** Values are taken from the documents cited, or, where marked "as reported", from the secondary source named. Where readings differ we give the range, and our own assumptions and inferences are labelled as such.
 
-**LCA.** A screening study following ISO 14040/14044 principles (International Organization for Standardization, 2006a; 2006b), not critically reviewed: functional unit 1 MWh of net electricity at the grid connection, cradle to grave (§6.1). The screening model is scripted in Python and Granta was used for [TODO-GRANTA].
+**LCA.** A screening study following ISO 14040/14044 principles (International Organization for Standardization, 2006a; 2006b), not critically reviewed: functional unit 1 MWh of net electricity at the grid connection, cradle to grave (§6.1). The screening model is scripted in Python; a Granta EduPack Eco Audit cross-check was planned but not completed.
 
 **Displacement and schedule.** One unit (300 MWe net assumed; an OPG filing gives 315, within our sensitivity range) supplies 2.365 TWh a year and avoids that output × (grid factor − SMR factor). The *average* factor is the grid's mean intensity; the *marginal* factor is that of the plant displaced (The Atmospheric Fund, 2025). Ontario's are 73.8 and 343 g/kWh; NSW uses 640 (DCCEEW, 2025). Future grids are our trajectories from published anchor points. Start years are 2030 at Darlington (Ontario Power Generation, 2025a) and 2040 at the earliest in Australia (Graham, Hayward and Foster, 2024). The *schedule break-even* is the delay that cancels a saving S: S ÷ (daily output × grid-factor gap) (Appendix B4–B5).
 
@@ -83,14 +79,33 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 
 ## 4 The technology and the initiative
 
-### 4.1 Technology, projects and patents (Leroy)
+### 4.1 Technology, projects and patents
 
-**[TODO: section not yet in the repo]**
+**No light-water SMR is yet reported operating on land, and the BWRX-300 is the Western design closest to doing so.** Table T2 rates each project on technology readiness levels (TRL): level 8 is a system "completed and qualified through test and demonstration", level 9 one operated across its full range of conditions (US Department of Energy, 2015). The ratings are ours.
+
+*Table T2. Selected SMR-class projects, October 2026.*
+*Source: Canadian Nuclear Safety Commission (2025); Ontario Power Generation (2025b); American Nuclear Society (2026); GE Vernova (2026); World Nuclear News (2023); US Nuclear Regulatory Commission (2025); NuScale Power Corporation (2023); TRL ratings: this study.*
+
+| Project | Design (MWe) | Status | First power | TRL |
+|---|---|---|---|---|
+| Darlington Unit 1, Ontario | BWRX-300 (300; 315 net in OPG's filing) | Licence to construct April 2025 | October 2030 | 6–7 |
+| Darlington Units 2–4 | BWRX-300 (3 × 300) | In the C$20.9 bn budget but unlicensed; approval to proceed expected 2028 | After Unit 1 | 6–7 |
+| Clinch River, Tennessee | BWRX-300 (300) | NRC construction permit, 29 September 2026 | Not announced | 6–7 |
+| HTR-PM, Shandong | Pebble-bed, gas-cooled (210) | Commercial operation December 2023 | Grid December 2021 | 8–9 |
+| Carbon Free Power Project, Idaho | NuScale (462) | Cancelled November 2023; design approved May 2025 | None | 6 |
+
+**Cost, not licensing, stopped NuScale.** Its design was approved in May 2025, yet the first plant was cancelled when the estimate reached US$9.24 bn, about US$20,000/kW (NuScale Power Corporation, 2023). Darlington's C$20.9 bn for 1,200 MW is C$17,400/kW (Ontario Power Generation, 2025a; 2025b); both are first-of-a-kind, in different currencies. Licensing is quickening: Darlington's construction licence took 29 months and Clinch River's permit 14, probably helped by the joint CNSC–NRC review of the design's composite building (US Nuclear Regulatory Commission and Canadian Nuclear Safety Commission, 2025).
+
+**Patents.** Appendix E found GE-Hitachi's isolation-condenser and shaft-construction systems in its own patent families, but no patent on the diaphragm-plate composite modules (from search summaries). LC³ appears in no core composition patent, while Sika and Construction Research & Technology patent admixtures that improve its workability, so C1's binder risk lies in qualification rather than freedom to operate (our inference).
+
+**Australia's earliest date is about 2040.** The Coalition's 2024 plan claimed SMR power by 2035 (ABC News, 2024), whereas CSIRO's GenCost 2023-24 is reported to say 2040 at the earliest (Graham, Hayward and Foster, 2024). Darlington supports CSIRO: with a licensed site and an experienced regulator, it still needs about eight years from licence application (October 2022) to power (October 2030) (Canadian Nuclear Safety Commission, 2026a; Ontario Power Generation, 2025b). Australia must first repeal two federal bans (§8.1), assumed by 2029, and build a licensing regime, assumed to take three years: 2029 + 3 + 8 gives about 2040, matching first power at Liddell (§7).
 
 
-### 4.2 BWRX-300 at Darlington (Leroy)
+### 4.2 The BWRX-300 at Darlington
 
-**[TODO: section not yet in the repo]**
+**The BWRX-300's composite building is what C1 targets.** The reactor is rated 300 MWe (GE Vernova Hitachi Nuclear Energy, n.d.; 315 MW net in Ontario Power Generation, 2025b), with a 60-year design life (Canadian Nuclear Safety Commission, 2024). The vendor-reported capacity factor is 95% (Fermi Energia, n.d.); we use 0.90 as a first-of-a-kind discount. Fuel is uranium dioxide enriched to 3.8% on average, 4.95% at most (Sun and Kurosaki, 2025). GE Hitachi states that isolation condensers cool the core passively for seven days without power or operator action (GE Hitachi Nuclear Energy, n.d.). It sits in a below-grade shaft of diaphragm-plate steel-composite (DP-SC) modules: two steel faceplates tied by diaphragm plates and filled with self-consolidating concrete (SCC) (GE-Hitachi Nuclear Energy, 2024).
+
+**The vendor's concrete claim is hard to reconcile with Ostrołęka.** GE Vernova (n.d.) claims about half the concrete per MW of its larger ESBWR. The Ostrołęka project information sheet gives 50,000 m³ per unit, or 167 m³/MWe (BWRX-300 Ostrołęka sp. z o.o., 2023), against the ESBWR's 69 (Peterson, Zhao and Petroski, 2005). Ostrołęka is only a design proxy for Darlington, and the gap probably reflects the boundary (whole site against nuclear island; our inference). Either way, a small reactor does not mean small concrete (§4.3).
 
 
 ### 4.3 The initiative: low-clinker concrete for the Darlington Units 2–4 infill
@@ -99,7 +114,7 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 
 **The proposal.** Ontario Power Generation (OPG) should pilot limestone calcined clay cement (LC³; Scrivener et al., 2018) in eligible non-safety works first, and use it in steel-composite infill only if it is qualified on Unit 1 mock-ups; Units 2–4 need future licensing (§8.1, §8.6). The Ostrołęka BWRX-300 design uses 50,000 m³ of concrete per unit (BWRX-300 Ostrołęka sp. z o.o., 2023). If 20%, 40% or 60% is eligible, replacing ordinary cement with LC³ (380 to 270 kg CO₂e/m³; Pillai et al., 2019) saves 1,100, 2,200 or 3,300 t CO₂e per unit (40% central), and 6,600 t across Units 2–4. A qualified slag blend is the fallback.
 
-*Table T2. Initiative C1: location, scale, application, technology, saving and condition.*
+*Table T3. Initiative C1: location, scale, application, technology, saving and condition.*
 *Source: this study, §6.3; sources as cited in the cells.*
 
 | Element | Specification |
@@ -108,7 +123,7 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 | Scale | 50,000 m³ concrete per unit; 20,000 m³ (40%) eligible (BWRX-300 Ostrołęka sp. z o.o., 2023) |
 | Application | Non-safety works first; DPSC basemat, shaft-wall and forebay-shaft infill if qualified |
 | Technology | LC³ (270 against 380 kg CO₂e/m³; Pillai et al., 2019); slag cement as fallback |
-| Saving | 2,200 t per unit (1,100–3,300); 6,600 t for Units 2–4; about 0.37% of a unit's life cycle |
+| Saving | 2,200 t per unit (1,100–3,300); 6,600 t for Units 2–4; about 0.36% of a unit's life cycle |
 | Condition | Schedule-neutral. Infill qualified under the topical report NEDO-33926, which rests on AISC N690 and ASME rather than mainly CSA N287 (GE-Hitachi Nuclear Energy, 2024; US Nuclear Regulatory Commission and CNSC, 2025); otherwise slag or the current mix |
 
 **Why it is not the obvious choice.** First, the infill problem is specific to modular construction: a mix that flows, stays cool in thick sections and still shields has to be developed (§10). Second, C1's value is set by schedule, not by the concrete: under three weeks of delay to a unit cancels its saving (§7.1), so C1 is a qualification programme timed to Unit 1 mock-ups rather than a binder swap. Third, its lever is financial: the Units 2–4 equity tranche can carry the condition (§8.6).
@@ -118,126 +133,100 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 ---
 
 
-## 5 Materials from extraction to end-of-life (Leroy)
+## 5 Materials from extraction to end-of-life
 
-**[TODO: section not yet in the repo]**
+**For C1, the binder's carbon arises in the kiln, but its risks arise in the pour and at decommissioning.** Stages follow §6's boundary; operation, decommissioning and waste use published per-kWh values (§6.1).
+
+*Table T4. C1 binder options from extraction to end-of-life.*
+*Source: as cited in the cells.*
+
+| Stage | Portland clinker | LC³ | Slag |
+|---|---|---|---|
+| Extraction and processing | Limestone and shale burnt in a kiln; M50 concrete 380 kg CO₂e/m³ (Pillai et al., 2019) | Clay calcined near 800 °C, with half the clinker (Zunino, 2021); 270 kg CO₂e/m³ | Iron blast-furnace by-product, ground; 146.6 kg CO₂e/t (Slag Cement Association, n.d.) |
+| Construction | Reference mix | Higher superplasticiser demand, lower flow in trials (Universität der Bundeswehr München, n.d.) | Lower heat in thick sections; used in nuclear mixes (Systematic evaluation of concrete placement reliability, 2026) |
+| Service | Aggregate swelling, not the binder, dominates radiation damage (Field, Remec and Le Pape, 2015) | Same aggregates, so similar risk (our inference); no LC³ heat data found (§10) | Established |
+| Decommissioning | Activated near the core (below) | Europium and cobalt in calcined clay unknown | Not assessed |
+
+**Steel.** Each unit uses 14,000 t (BWRX-300 Ostrołęka sp. z o.o., 2023). Blast-furnace steel emits about 2.33 t CO₂/t and scrap-based electric arc furnace (EAF) steel 0.68 (World Steel Association, 2026). Nuclear plate is not a drop-in, because copper from scrap embrittles vessel steel under irradiation and the CNSC finds the ASME copper limit of 0.2% too loose (Canadian Nuclear Safety Commission, 2023; US Nuclear Regulatory Commission, 1988).
+
+**End of life.** Activation depends on trace elements, not carbon: cobalt-60 and europium-152 dominate activated shield concrete, and europium-152 exceeded the German clearance level to about 35 cm in the Greifswald shield (Helmholtz-Zentrum Dresden-Rossendorf, n.d.). Most decommissioning concrete is reportedly cleared, leaving only "a few per cent" as waste (Thierfeldt, 2019). On an assumed 2.4 t/m³ and a 2–5% reading, a unit's 50,000 m³ (120,000 t) would leave 2,400–6,000 t of waste. The europium and cobalt content of calcined clay is unknown, so qualification should measure it (§10).
 
 
 ## 6 Life-cycle assessment and eco-audit
 
-One BWRX-300 at Darlington is estimated to emit **about 4.2 g CO₂e per kWh delivered (Monte Carlo median; 90% interval 3.0–5.8; the median is 3.3 if conversion heat takes its central published value)**: below UNECE's 5.1–6.4 g/kWh for nuclear power on either reading and at the low end of the wider literature range. Nearly two-thirds comes from the fuel front end; construction is about 7.5%. The initiative, C1 (§4.3), specifies low-clinker concrete for targeted structures of Units 2–4, with LC3 as the target binder and slag as the fallback. LC3 would save **about 1,740 t CO₂e per unit (1,390–2,150 t) and 5,200 t across Units 2–4**, about 0.3% of each unit's life-cycle emissions. The saving is real but small, and **a delay of 9–15 days to one unit (Ontario's average grid factor; 1.3–1.4 days on the marginal factor) would cancel it**, so C1 is worth adopting only if it is schedule-neutral. No input has yet been checked in its primary source [TO VERIFY], so every number is provisional.
+One BWRX-300 at Darlington emits an estimated **4.4 g CO₂e per kWh (Monte Carlo median; 90% interval 3.2–6.1; 3.5 if conversion heat takes its central published value)**, below UNECE's 5.1–6.4 g/kWh for nuclear power. The fuel front end contributes 62% and construction 11.5%. The initiative, C1 (§4.3), puts limestone calcined clay cement (LC³) in 20–60% of the concrete. It saves **2,200 t CO₂e per unit (1,100–3,300 t), about 0.36% of the life cycle**: real but small, so worth adopting only if schedule-neutral (§6.3).
 
 ### 6.1 Goal, scope and method
 
-**Goal.** Quantify the life-cycle greenhouse-gas emissions of electricity from one BWRX-300 at the Darlington New Nuclear Project (Clarington, Ontario), find the hotspots, and size what C1 would save. This is a screening LCA following the goal-and-scope principles of ISO 14040/14044 [TODO: source needed: ISO 14040:2006 and ISO 14044:2006 entries in sources.md]. It has not been critically reviewed, so it cannot support a public comparative claim.
+**Goal.** Quantify the life-cycle greenhouse-gas emissions of one BWRX-300 at Darlington (Clarington, Ontario), find the hotspots, and size C1's saving. This is a screening LCA following ISO 14040/14044 principles (International Organization for Standardization, 2006a; 2006b), not critically reviewed.
 
-- **Functional unit:** 1 MWh of net electricity at the plant's grid connection. Results are in g CO₂e/kWh, which equals kg CO₂e/MWh. Grid transmission lies beyond the connection, so it is outside the boundary.
-- **Reference flow:** one unit over its design life, 300 MWe × 8,760 h × 0.90 × 60 years = **1.419 × 10⁸ MWh**, the same denominator as §7 (inputs and their status in Table T3; Appendix A2).
-- **Baseline (S0):** the concrete OPG would pour anyway, without C1, modelled as general-use (GU) Portland cement with no supplementary cementitious materials. We have seen neither OPG's mix nor whether the governing specification (GE-Hitachi Nuclear Energy, 2024) limits cement type [TO VERIFY]. If OPG's mix already contains slag, S0 must include it: the §6.3 savings are then overstated, and LC3's gain over business as usual falls to about 100–180 t per unit (finding 3).
-- **System boundary (Figure F1):** cradle to grave. Construction materials and the fuel front end (mining and milling, conversion, enrichment, fabrication) are modelled bottom-up from process data; operation and maintenance (O&M), decommissioning and the back end are per-kWh values transferred from EDF's French-fleet LCA (EDF R&D, 2024) [TO VERIFY]. It is a **process-based LCA with three stages taken from secondary per-kWh data**.
-- **Cut-offs:** fuel cladding and hardware, conversion chemicals, upstream supply of the gas burnt for conversion heat, fuel-plant capital goods and recycling credits; each biases the result low (§6.5). End of life follows the cut-off (recycled-content) approach: steel carries the burden of its scrap input, with no credit for future recycling.
-- **Impact category:** climate change, GWP100 (IPCC AR5 where stated). Construction-material factors are cradle-to-gate, EN 15804 modules A1–A3 [TODO: source needed: EN 15804 entry in sources.md]. The US grid factors are CO₂ only (US EPA, 2024) [TO VERIFY] and the basis of several others is [TO VERIFY]; for mostly fossil CO₂ this matters far less than the input ranges.
+- **Functional unit:** 1 MWh of net electricity at the grid connection (g CO₂e/kWh equals kg CO₂e/MWh); transmission is outside. One unit delivers 300 MWe × 8,760 h × 0.90 × 60 years = **1.419 × 10⁸ MWh** (Appendix A2).
+- **Boundary (Figure F1):** cradle to grave. Construction materials and the fuel front end (mining and milling, conversion, enrichment, fabrication) are modelled from published factors; operation and maintenance (O&M), decommissioning and the back end are per-kWh values from EDF's French-fleet study (EDF R&D, 2024).
+- **Baseline (S0):** the concrete OPG would pour anyway, at 380 kg CO₂e/m³ (Pillai et al., 2019, as reported; Indian M50 mixes). We have not seen OPG's mix or any cement-type limit in the specification (GE-Hitachi Nuclear Energy, 2024).
+- **Cut-offs:** fuel cladding and hardware, conversion chemicals, upstream gas, fuel-plant capital goods and recycling credits; each biases the result low (§6.5). Impact category: climate change, GWP100.
 
-**Method.** In place of an eco-audit we use an **equivalent analysis**: a reproducible Python model multiplies material and fuel quantities by published emission factors (working in Appendices A and C). **No number here comes from Granta EduPack**; a cross-check of the C1 target structures is set up for the team's machines (Appendix A9) [TODO: Granta cross-check, H2 due Thu 12:00; cut if not run]. With no BWRX-300 bill of materials available, plant quantities are **scaled from per-MWe data for related reactors, not measured** (§6.2).
+**Method and inventory.** A reproducible Python model multiplies quantities by published emission factors (Appendices A and C). Plant quantities come from the Ostrołęka project information sheet (BWRX-300 Ostrołęka sp. z o.o., 2023, as reported in the project information sheet): **50,000 m³ of concrete and 14,000 t of steel per unit**. This is a design proxy, not confirmed Darlington quantities, and we could not open either the Ostrołęka or the Pillai table. A bottom-up scaling from other reactors (20,700 m³; Peterson, Zhao and Petroski, 2005) is a cross-check (Appendix A3). Key inputs: Table A2b; all 45 ranged inputs: Table C1. **A Granta EduPack Eco Audit was planned but not completed; no number here comes from Granta.**
 
-*Table T3. Key assumptions for one BWRX-300 at Darlington (all 40 ranged inputs in Appendix C2).*
-*Source: `03_LCA_Calculations/parameters_lca.yaml`; references as listed. All values [TO VERIFY] unless marked as an assumption or placeholder. Ranges are model input bounds, not result intervals.*
+![Figure F1. LCA system boundary for one BWRX-300 at Darlington: fuel front end, construction materials and C1-eligible concrete modelled here; operation, decommissioning and back end from the literature. | Source: this study.](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F1_system_boundary.png){width=95%}
 
-| Parameter | Central (input range) | Basis |
-|---|---|---|
-| Net output; capacity factor; design life | 300 MWe (300–315); 0.90 (0.80–0.95); 60 years (40–80) | GE Vernova Hitachi Nuclear Energy (n.d.), with 315 MW net from an OPG filing [TO VERIFY]; placeholder; Canadian Nuclear Safety Commission (2024) |
-| Baseline binder (S0) | General-use cement, no supplementary cementitious materials | Assumption: what OPG would pour anyway; OPG's mix and any cement-type limit in GE-Hitachi Nuclear Energy (2024) [TO VERIFY] |
-| Whole-plant concrete; steel | 69 m³/MWe (34.5–138); 33 t/MWe (16.5–46) | ESBWR and ABWR (Peterson, Zhao and Petroski, 2005); vendor claim as low bound (GE Vernova, n.d.) |
-| DPSC infill thickness: basemat; shaft wall | 3.0 m (2–4); 1.5 m (1–2) | Assumption (no source found) |
-| Binder: DPSC self-consolidating infill; other concrete | 450 kg/m³ (400–550); 350 kg/m³ (300–420) | EFNARC (2005), read via a 2024 secondary, with central and high assumed; assumption |
-| General-use cement | 854 kg CO₂e/t (796–898, regional spread West–East) | Cement Association of Canada (2022), AR5 factors; which region covers Ontario [TO VERIFY] |
-| LC3 binder cut vs general-use cement | 37% (30–43%) | Median of five published estimates (Appendix A5) |
-| Slag cement | 146.6 kg CO₂e/t (93.4–146.6) | Slag Cement Association (n.d.) |
-| Rebar (electric-arc furnace); plate and equipment steel | 0.97 t/t (0.89–1.99); 1.73 t/t (1.22–2.50) | Concrete Reinforcing Steel Institute (2017) [superseded by a 2022 EPD, TO VERIFY]; American Institute of Steel Construction (2022) (Buy Clean California limits used as proxies; 1.22 is the hot-rolled-sections limit) |
-| Other construction materials and site energy | +50% of bulk materials (25–150%) | Assumption |
-| Mining and milling | 42 kg CO₂e/kg U₃O₈ (24–81) | Parker, McNaughton and Sparrow (2016) |
-| Conversion heat; centrifuge enrichment | 26 kWh/kg U (26–665); 50 kWh/SWU (40–100) | Gibon and Hahn Menacho (2023) |
-| Enrichment; burnup | 3.8% U-235 (3.4–4.95); 45 GWd/t (35–55) | [TODO: authors] (2025), unrefereed preprint; assumption (both placeholders) |
-| O&M; decommissioning; back end | 0.33; 0.11; 0.56 g/kWh (×0.5 to ×2; decommissioning ×3) | EDF R&D (2024) stage shares as reported by secondary sources; back end by difference |
+### 6.2 Baseline and hotspots
 
-![Figure F1. LCA system boundary for one BWRX-300 at Darlington: bottom-up fuel front end and construction materials, literature values for operation, decommissioning and the back end, and the C1 target structures. | Source: this study. | File: 03_LCA_Calculations/results/F1_system_boundary.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F1_system_boundary.png){width=95%}
+**One unit emits 4.40 g/kWh (median; 90% interval 3.24–6.05).** With every input at its most likely value (the "mode case") it is 2.86; §6.4 explains the gap. On the expected basis (Figure F2):
 
-### 6.2 Baseline inventory and hotspots
+1. **Mining and milling: 1.26 g/kWh (28%),** low because Saskatchewan ores are high-grade (Parker, McNaughton and Sparrow, 2016).
+2. **Conversion: 1.10 g/kWh (25%),** an *uncertainty* hotspot: published heat demand spans 26–665 kWh per kg of uranium (Gibon and Hahn Menacho, 2023); at the most likely value conversion is only 0.13 g/kWh.
+3. **Back end: 0.65 g/kWh (15%),** transferred from France, which reprocesses; Canada plans direct disposal (Nuclear Waste Management Organization, 2024a), so this may be high.
 
-**Quantities.** Whole-plant concrete and steel are per-MWe intensities × 300 MWe. The central case uses the ESBWR, from which the BWRX-300 is derived: 69 m³ of concrete and 33 t of steel per MWe (Peterson, Zhao and Petroski, 2005) [TO VERIFY]. The sources pull in opposite directions: the vendor claims about 50% less concrete per unit of energy (GE Vernova, n.d.) [TO VERIFY], while small plants usually lose economies of scale. We take the vendor claim as the low input bound and the ABWR (138 m³/MWe) as the high, and assume the two effects cancel. That gives **20,700 m³ of concrete and 9,900 t of steel per unit** (concrete 90% interval about 15,050–36,521 m³; Appendix C4).
+The back end and decommissioning add 18%, O&M 9% and **construction 11.5%** (0.52 g/kWh; 7.2–17.8% across draws). The C1-eligible concrete is only 1.9% of the mode-case total, so **C1 acts on about one-fiftieth of the footprint**.
 
-Of this, **13,100 m³ is in the C1 target structures**: the forebay shaft (4,000 m³ placed so far, a floor; Ontario Power Generation, 2025) [TO VERIFY] and the diaphragm-plate steel-composite (DPSC) infill of the reactor-building basemat and shaft walls (9,081 m³, from a 37 m module diameter, a 35 m shaft depth and assumed thicknesses). **Those two dimensions set 69% of the target concrete, and we read them in a news report of the Unit 1 basemat-module lift (okdiario, 2026) [TODO: sources.md entry] that cites an OPG story we have not found [TO VERIFY].** The 63% share of plant concrete this implies combines a geometric and a scaled estimate, so it is unconfirmed [TODO: Leroy: OPG EIS or Clinch River quantities]; a larger plant total would lower the share, not the saving.
+The vendor claims about 50% less concrete per unit of energy than the ESBWR (GE Vernova, n.d.), while small plants usually lose economies of scale; Ostrołęka's 167 m³ per MWe, 2.4 times the ESBWR's 69 (Peterson, Zhao and Petroski, 2005), sides with scale. The cross-check gives 4.20 g/kWh, so the re-base adds about 0.2 g/kWh, all in construction. Per MWh the plant uses 0.85 kg of concrete, 0.099 kg of steel, 20.7 g of natural uranium and 0.0146 separative work units (Appendix A8).
 
-**Resource use.** Per unit, the plant uses 0.35 kg of concrete and 0.070 kg of steel per MWh, and the fuel 20.7 g of natural uranium and 0.0146 separative work units (SWU) per MWh at 34.5% net efficiency ([TODO: authors], 2025; Appendix A8) [TO VERIFY]. Four units need about 196 t of natural uranium and 138 tSWU a year, the demand §8.3 should use to size supply risk [TODO: §8.3].
-
-**Hotspots (Figure F2),** on the expected (Monte Carlo mean) basis:
-1. **Mining and milling: 1.26 g/kWh (29%),** already low because Saskatchewan ores are high-grade (Parker, McNaughton and Sparrow, 2016) [TO VERIFY]; that Darlington's uranium is Canadian is [TO VERIFY].
-2. **Conversion: 1.09 g/kWh (26%),** an *uncertainty* hotspot: published heat demand spans 26–665 kWh per kg of uranium (Gibon and Hahn Menacho, 2023) [TO VERIFY], and at the most likely value conversion is only 0.13 g/kWh.
-3. **Back end: 0.65 g/kWh (15%),** transferred from France, which reprocesses; Canada plans direct disposal [TODO: source needed: NWMO], so this may be high.
-
-The fuel front end is 64% of the total and construction about 7.5%. Within construction, steel emits about twice what concrete does (14,800 vs 7,600 t CO₂e per unit with every input at its most likely value, the "mode case"); Geneski, McKellar and Atkinson (n.d.) [TO VERIFY] also found that steel exceeds concrete. The C1 target concrete is 1.3% of the mode-case total, so **C1 acts on roughly one-hundredth of the footprint**, which caps what any concrete change can achieve.
-
-![Figure F2. Life-cycle emissions of one BWRX-300 by stage: expected 4.3 g CO₂e/kWh (Monte Carlo mean), with the mode case (every input at its most likely value; total 2.7) marked. | Source: this study, scripts/lca_uncertainty.py; inputs in parameters_lca.yaml [TO VERIFY]. | File: 03_LCA_Calculations/results/F2_stage_breakdown.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F2_stage_breakdown.png){width=95%}
+![Figure F2. Life-cycle emissions of one BWRX-300 by stage: expected value 4.49 g CO₂e/kWh (Monte Carlo mean), with the mode case (every input at its most likely value, total 2.86) marked. | Source: this study, Appendix C3.](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F2_stage_breakdown.png){width=95%}
 
 ### 6.3 The initiative against the baseline
 
-**C1 is low-clinker concrete for the DPSC infill and forebay shafts of Units 2–4: LC3 (limestone calcined clay cement) as the target binder, a qualified slag blend as the fallback, specified only if schedule-neutral.** LC3 saves **about 1,740 t CO₂e per unit (Monte Carlo median; 90% interval 1,390–2,150 t) and about 5,200 t across Units 2–4 (4,160–6,460 t), avoiding about 6,900 t of clinker** (Table T4). Most of it (1,291 t) is in the DPSC infill, because the design calls for self-consolidating concrete (GE-Hitachi Nuclear Energy, 2024) [TO VERIFY], a cement-rich mix (450 kg binder/m³ assumed). Only Units 2–4 are counted, because Unit 1's basemat is placed and its forebay partly placed; whether Unit 1's shaft-wall infill could still use LC3 is [TO VERIFY].
+**C1 is low-clinker concrete: LC³ on eligible non-safety works first and on the steel-composite infill only if qualified, a slag blend as the fallback, specified only if schedule-neutral (§4.3).** Pillai et al. (2019, as reported) give 380 kg CO₂e/m³ for ordinary concrete and 270 for LC³, a cut of 110 kg/m³ (28.9%). The eligible share is our scenario, not data, and drives the result. At 20, 40 and 60% of 50,000 m³, C1 saves **1,100, 2,200 and 3,300 t per unit, or 0.18, 0.36 and 0.54% of its life cycle** (Table T5). Letting eligibility, the cut and the volumes vary together gives 2,217 t (1,375–3,294) per unit. Only Units 2–4 count, because Unit 1's basemat is placed.
 
-*Table T4. Savings against the baseline (S0: what OPG would pour anyway, modelled as general-use cement), per unit and for Units 2–4. Monte Carlo columns give the median (5th–95th percentile); each draw's saving is divided by the same draw's life-cycle total.*
-*Source: this study, `results/lca_scenarios.md` and `lca_uncertainty.md` (Appendices A6, A7 and C4). Inputs [TO VERIFY].*
+*Table T5. C1 saving against the baseline, per unit and for Units 2–4; share of life cycle is the Monte Carlo median (5th–95th percentile). Source: this study, Appendices A6–A7 and C4.*
 
-| Scenario | Saving per unit, t CO₂e: Monte Carlo (mode case) | Units 2–4, t CO₂e (mode case) | Clinker avoided, t per unit / Units 2–4 | Share of one unit's life cycle: Monte Carlo (mode case) |
+| Scenario | Per unit, t CO₂e | Units 2–4, t | Clinker avoided per unit, t | Share of life cycle |
 |---|---|---|---|---|
-| S1 Slag cement, 40% of binder, in target structures (C1 fallback) | 1,642 (1,205–2,113) (1,552) | 4,657 | 2,019 / 6,057 | 0.28% (0.17–0.44%) (0.41%) |
-| **S2 LC3-50 in target structures (C1 target binder)** | **1,742 (1,387–2,153) (1,734)** | **5,201** | **2,304 / 6,913** | **0.29% (0.18–0.46%) (0.45%)** |
-| S2b LC3 in targets plus slag in all other concrete | 2,746 (1,809–4,107) (2,488) | 7,464 | 3,286 / 9,857 | 0.46% (0.26–0.80%) (0.65%) |
-| S3 like-for-like: low-end steel factors, target-structure steel only | 941 (404–1,581) (566) | 1,698 | — | 0.16% (0.06–0.30%) (0.15%) |
-| S3 upper bound: all plant steel at best-practice electric-arc-furnace sections factors | 4,731 (1,713–9,084) (3,714) | 11,142 | — | 0.79% (0.28–1.68%) (0.97%) |
-| S3 sensitivity: all plant steel at world-average factors | −6,695 (−10,805 to −3,178) (−8,399; adds emissions) | −25,198 | — | −1.11% (−2.11 to −0.49%) (−2.19%) |
+| LC³ on 20% of plant concrete | 1,100 | 3,300 | 1,470 | 0.18% (0.11–0.28) |
+| **LC³ on 40% (central)** | **2,200** | **6,600** | **2,940** | **0.36% (0.23–0.56)** |
+| LC³ on 60% | 3,300 | 9,900 | 4,410 | 0.54% (0.34–0.84) |
+| Slag blend on the same 40% (fallback) | 2,288 | 6,865 | 2,576 | 0.34% (0.18–0.60) |
 
-*Note: the mode-case share divides each saving by the mode-case life-cycle total (383,243 t CO₂e per unit). The Monte Carlo share is lower because the total grows with the skewed inputs while the saving barely moves (§6.4). S3 rows are sensitivities on the baseline steel, not part of C1.*
+Four findings follow, each with a consequence for the initiative.
+1. **The saving is small at plant scale.** It is about 0.016 g/kWh, so C1 does not change the plant's climate case. It still exceeds the swing from the LC³ cut (1,672–2,964 t), the largest input other than eligibility. Its economic value is in §8.2.
+2. **Slag is about as good as LC³, so the carbon case is for low-clinker concrete, not LC³ in particular.** LC³ beats slag in only 55% of draws (median difference +54 t; 90% interval −588 to +766). If OPG's baseline already contains slag, LC³'s gain is about −90 t, within noise. The specification should accept whichever binder qualifies first (§8.1).3. **Lower-carbon steel is the larger lever but is not part of C1.** Steel in the structures C1 targets saves only 566 t per unit (Appendix A7). All 14,000 t at best-practice electric-arc-furnace factors would save up to 3,915 t (1.8 times LC³), but this is an upper bound, not shown feasible for forgings and nuclear-grade plate. It is the next lever (§10).
+4. **Schedule dominates.** A delay of **11.6–18.5 days** to one unit on Ontario's average grid factor, or **1.7–1.8 days** on the marginal factor, cancels its saving (§7.1; Appendix B5). C1 is therefore specified only if schedule-neutral (§8.6).
 
-Five findings follow, each with a consequence for the initiative.
-1. **C1 targets the right structures.** Concrete is about 66% of their known embodied emissions (5,078 t, against 2,619 t for the forebay rebar and DPSC basemat steel), and the saving exceeds the largest geometric uncertainty in it (530 t, wall thickness).
-2. **The saving is small at plant scale, and so is its economic value.** It is about 0.3% of a unit's life cycle (0.45% in the mode case), or about 0.01 g/kWh, so C1 does not change the plant's climate case. At the federal industrial carbon price (C$95/t in 2026, C$115/t in 2030; Environment and Climate Change Canada, 2026) [TO VERIFY] it is worth about C$0.16–0.20 m per unit and C$0.49–0.60 m for Units 2–4. That is 0.004% of the C$13.2 bn for those units (four-unit budget C$20.9 bn; Ontario Power Generation, 2025) [TO VERIFY]. One day of delay to Units 2–4 costs C$1.8–2.9 m, three to six times C1's entire carbon value (Appendix B5.4). LC3 could carry a premium of up to about C$12.6–15.2/m³ (5.5–6.6% of the central concrete price) before it costs more per tonne than the carbon price; the abatement cost follows in §8.2.
-3. **Slag nearly matches LC3, so the carbon case is for low-clinker infill, not for LC3 in particular.** LC3 saves only 97–180 t more per unit (Monte Carlo median and mode case; 90% interval −343 to +574 t), and more in only 64% of draws. If OPG's baseline already contains slag (§6.1), LC3's gain over business as usual is within this noise. Slag blends have precedent in nuclear concrete ([TODO: authors], 2026) [TO VERIFY], which makes a qualified slag blend the fallback if LC3 cannot be qualified in time (§8.1). Preferring LC3 rests on Ontario's slag supply shrinking, which is unsourced [TODO: source needed: Ontario blast-furnace-to-electric-arc conversions]; until it is sourced, the specification should accept whichever binder qualifies first.
-4. **Within the structures C1 targets, concrete is the bigger lever; across the whole plant, steel is.** The low-end steel factors (Table T3) applied only to the steel in the target structures (953 t of DPSC basemat plate and 1,000 t of forebay rebar) save 566 t per unit (Monte Carlo median 941 t; 404–1,581), against LC3's 1,734 t (median 1,742): LC3 is about three times larger at the mode case and 1.9 times at the median. The shaft-wall plate is unknown and excluded, so this is a floor for the target-structure steel. Moving all 9,900 t of plant steel to those factors saves 3,714 t (median 4,731), about twice LC3, but that is an upper bound: it applies a hot-rolled-sections factor to forgings and nuclear-grade plate, for which it is not shown to be feasible. World-average steel would instead add 8,399 t. Lower-carbon steel is therefore the next lever (§10), not part of C1.
-5. **Schedule dominates.** On the schedule-value results in §7 (Table T6; working in Appendix B5.3), a delay of **9.2 days (to-2050 view) to 14.6 days (whole-life view)** to one of Units 2–4 on Ontario's average grid factor, or **1.3–1.4 days** on the marginal factor (gas), would cancel that unit's LC3 saving (7.3–18.1 and 1.1–1.8 days across its 90% interval). C1 is therefore specified only if schedule-neutral, for example by qualifying the mix on mock-ups during Unit 1 construction (§8.6).
-
-For the triple-bottom-line evaluation (§9), C1 is environmentally positive but marginal, its economic value is C$0.49–0.60 m for Units 2–4, and its feasibility hinges on qualification and schedule rather than on carbon.
+For the triple-bottom-line evaluation (§9), C1 is environmentally positive but marginal; feasibility hinges on qualification and schedule.
 
 ### 6.4 Uncertainty: tornado and Monte Carlo
 
-The tornado varies each of 40 inputs alone; the Monte Carlo varies all 40 together, 20,000 times (Appendix C).
+The tornado varies 45 inputs one at a time; the Monte Carlo varies them together, 20,000 times (Appendix C).
 
-**The life-cycle total depends on the fuel inputs, not the concrete (Figure F3).** The largest swings are conversion heat (2.70 → 5.37 g/kWh), the mining factor (2.26 → 3.65) and the back end (2.42 → 3.25), followed by burnup and enrichment level. No concrete input moves the total by more than 0.07 g/kWh; steel intensity moves it by 0.17. **The LC3 saving depends on the geometry and the mix**: the LC3 emission cut (1,406 → 2,015 t), DPSC wall thickness (1,464 → 1,995 t), infill binder content (1,590 → 2,021 t), and any extra binder LC3 needs to flow (10% more cuts the saving to 1,438 t). OPG's drawings and mock-up trials would narrow all four.
+**The total depends on the fuel inputs, not the concrete (Figure F3).** The largest swings are conversion heat (2.86 → 5.53 g/kWh), the mining factor (2.43 → 3.82) and the back end (2.58 → 3.41). No concrete input moves the total by more than 0.06 g/kWh. **The saving depends on four inputs:** eligible share (1,100 → 3,300 t), LC³ cut (1,672 → 2,964 t), plant concrete volume (1,760 → 2,640 t) and the OPC factor (1,911 → 2,432 t).
 
-![Figure F3. One-at-a-time sensitivity of the life-cycle intensity (left, centred on the mode case, 2.70 g CO₂e/kWh, not the 4.2 median) and of the LC3 saving per unit (right, centred on the mode case, 1,734 t), top ten inputs each. | Source: this study, scripts/lca_uncertainty.py; ranges in parameters_lca.yaml. | File: 03_LCA_Calculations/results/F3_tornado.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F3_tornado.png){width=95%}
+![Figure F3. One-at-a-time sensitivity of life-cycle intensity (left, centred on the 2.86 g CO₂e/kWh mode case) and of C1's saving per unit (right, centred on 2,200 t), top ten inputs each. | Source: this study, Appendix C2.](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F3_tornado.png){width=95%}
 
-**Monte Carlo (Figure F4): why we report 4.2, not 2.7, and why it is a range of medians.** The mode case (2.7 g/kWh) puts every input at its single most likely value. Several inputs, however, can mostly only rise: conversion heat is most likely 26 kWh/kg U but could be 665, which alone adds about 1.0 g/kWh to the average (Appendix C5). We therefore report the median of all draws (4.2 g/kWh) rather than the mode case; the same skew lowers LC3's share from 0.45% to 0.29%, while the saving itself barely moves. **The headline does depend on how conversion heat is distributed** (Table C2). With it fixed at Gibon and Hahn Menacho's (2023) central 26 kWh/kg U [TO VERIFY] the median is 3.3 g/kWh (90% interval 2.6–4.2); with a log-uniform 26–665 it is 3.9 (2.9–5.9). We therefore quote the **range of medians, 3.3–4.2 g/kWh**, and LC3's share of the life cycle ranges over 0.29–0.37%. Every value stays below UNECE's range. A measured conversion value would settle it [TODO: source needed: Cameco Port Hope]. Other limitations (independent draws, judgement ranges) are in Appendix C6.
+**Monte Carlo (Figure F4): why we report 4.4, not 2.9.** Several inputs can mostly only rise: conversion heat is most likely 26 kWh/kg U but could be 665, which alone adds about 1.0 g/kWh to the mean (Appendix C5). We therefore quote the median. **The headline depends on how conversion heat is distributed:** fixed at Gibon and Hahn Menacho's (2023) central 26 kWh/kg U, the median is 3.51 g/kWh (2.80–4.39); log-uniform over 26–665, 4.11 (3.06–6.12). We quote the **range of medians, 3.51–4.40**. A measured conversion value would settle it. Draws are independent and many ranges are judgement (Appendix C6).
 
-![Figure F4. Monte Carlo distributions (20,000 draws, seed 20261021) of the life-cycle intensity (median 4.18, 5th–95th percentile 3.05–5.85 g CO₂e/kWh) and of the LC3 saving per unit (median 1,742, 1,387–2,153 t). | Source: this study, scripts/lca_uncertainty.py. | File: 03_LCA_Calculations/results/F4_montecarlo.png](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F4_montecarlo.png){width=95%}
+![Figure F4. Monte Carlo distributions (20,000 draws) of life-cycle intensity (median 4.40, 5th–95th percentile 3.24–6.05 g CO₂e/kWh) and of C1's saving per unit at central eligibility. | Source: this study, Appendix C4.](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F4_montecarlo.png){width=95%}
 
 ### 6.5 Comparison with published values
 
-**Our median (3.3–4.2 across conversion-heat assumptions, §6.4) is below UNECE's 5.1–6.4 g/kWh (United Nations Economic Commission for Europe, 2021; our 90% interval overlaps it) and at the low end of the wider literature range, for reasons we can identify (Figure F5, Table T5).** It overlaps EDF's French fleet (3.7 g/kWh; EDF R&D, 2024) and is below the global average of 6.1 (Gibon and Hahn Menacho, 2023), an SMR estimate of 9.1 (Carless, Griffin and Fischbeck, 2016) and the harmonised light-water-reactor median of 12 (Warner and Heath, 2012) [TODO: add the IPCC AR5 WGIII Annex III minimum, median and maximum (Schlömer et al., 2014) once a value is confirmed]. All benchmark values are [TO VERIFY]. Our median is about 100–120 times lower than gas combined cycle (403–513 g/kWh) and 180–260 times lower than coal (751–1,095) (United Nations Economic Commission for Europe, 2021).
+**Our median (3.5–4.4 across conversion-heat assumptions) is below UNECE's 5.1–6.4 g/kWh (United Nations Economic Commission for Europe, 2021), though our 90% interval overlaps it, and sits at the low end of the wider literature for reasons we can identify (Figure F5).** It overlaps EDF's French fleet (3.7; EDF R&D, 2024) and is below the global average of 6.1 (Gibon and Hahn Menacho, 2023), an SMR estimate of 9.1 (Carless, Griffin and Fischbeck, 2016), the harmonised light-water-reactor median of 12 (Warner and Heath, 2012) and the IPCC AR5 median of 12, as commonly quoted from a 3.7–110 range (Schlömer et al., 2014). Gas combined cycle (403–513 g/kWh) and coal (751–1,095) are 90–120 and 170–250 times higher (United Nations Economic Commission for Europe, 2021).
 
-*Table T5. Why our result differs from the benchmarks: direction and size of each reason.*
-*Source: this study (Appendices A and C), with the references as listed. All [TO VERIFY].*
+**Three reasons explain most of the gap** (sizes in Appendix C7):
+1. **Ore grade:** our mining is 1.0–1.3 g/kWh, against about 2.8 at global-average grades (Gibon and Hahn Menacho, 2023).
+2. **Enrichment:** centrifuges at 50 kWh per separative work unit, against about 2,500 for the diffusion plants in older study sets.
+3. **Cut-offs and long life:** excluded inputs and a 60-year life bias the result low; at 40 years the mode case rises from 2.86 to 3.07 g/kWh.
 
-| Reason | Effect on our value | Size |
-|---|---|---|
-| High-grade Canadian ore | Lower | Our mining is 1.0–1.3 g/kWh; at global-average grades Gibon and Hahn Menacho (2023) attribute 46% of 6.1, about 2.8 g/kWh, to it. This explains most of the gap to UNECE and Gibon |
-| Centrifuge enrichment only | Lower than older studies | 50 kWh/SWU against about 2,500 for the diffusion plants in older study sets (Gibon and Hahn Menacho, 2023; Warner and Heath, 2012) |
-| Energy-only fuel inventory (cut-offs) | Lower | Not quantified (chemicals, cladding, upstream gas, fuel-plant capital goods excluded) |
-| Construction possibly underestimated | Lower | Ours 0.24–0.32 g/kWh against about 0.59 for large reactors (16% of 3.7; EDF R&D, 2024). At 0.6–1.0, the total would rise 0.3–0.8 g/kWh and LC3's share would fall further |
-| Long life and high capacity factor | Lower | At 40 years instead of 60, the mode case rises from 2.70 to 2.82 g/kWh |
-| O&M and back end transferred from France (reprocessing) | Possibly higher | Canada plans direct disposal; back-end range 0.28–1.11 g/kWh tested |
-| SMR rather than large reactor | Small | Carless, Griffin and Fischbeck (2016) give 9.1 for an SMR against 8.4 for the AP1000, mainly through the fuel cycle; our construction share is too small for scale effects to move the total much |
+Construction is now 0.41 g/kWh at the mode case (median 0.50), close to EDF's roughly 0.59 for large reactors (16% of 3.7). The known low bias would raise the total and shrink C1's share, so it does not weaken §6.3.
 
-The sources disagree mainly about the fuel front end (ore grade, enrichment technology and grid), not about construction, and that is where our result departs from them. The known low bias (cut-offs, possibly construction) would raise the total and make C1's share smaller still, so it does not weaken §6.3. If the Granta cross-check is run, its construction values will be compared here with the model's (Appendix A9) [TODO: Granta cross-check, H2 due Thu 12:00; cut if not run].
-
-![Figure F5. Our BWRX-300 result against published nuclear life-cycle values (point = central or median; line = range or interval); coal about 750–1,100 and gas combined cycle 403–513 g CO₂e/kWh for scale. UNECE reports a range only (5.1–6.4), so it is drawn as a range with no midpoint; Warner and Heath are drawn as a median only (12). | Source: this study; EDF R&D (2024); United Nations Economic Commission for Europe (2021); Gibon and Hahn Menacho (2023); Carless, Griffin and Fischbeck (2016); Warner and Heath (2012). Benchmarks [TO VERIFY]. | File: 03_LCA_Calculations/results/F5_benchmarks.png] [TODO: IPCC AR5 WGIII Annex III row is drawn automatically once its values are set to verified in parameters_lca.yaml](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F5_benchmarks.png){width=95%}
+![Figure F5. Our result against published nuclear life-cycle values (dot = central or median; line = range or interval). UNECE is a range only. Coal (about 750–1,100) and gas (403–513) are off the scale. | Source: this study; EDF R&D (2024); United Nations Economic Commission for Europe (2021); Gibon and Hahn Menacho (2023); Carless, Griffin and Fischbeck (2016); Warner and Heath (2012).](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F5_benchmarks.png){width=95%}
 
 ---
 
@@ -431,7 +420,7 @@ For C1, the decisive actors are OPG as buyer, GE Vernova Hitachi as owner of the
 
 ## 9 Triple-bottom-line evaluation and multi-criteria analysis
 
-**Adopt C1 only as a schedule-neutral specification; for Australia, the same money on firmed renewables ranks first, ahead of the status quo and of an SMR at Liddell.** C1 changes the life cycle by about 0.37%, and no predefined weight set, input test or ±50% weight test puts an SMR first.
+**Adopt C1 only as a schedule-neutral specification; for Australia, the same money on firmed renewables ranks first, ahead of the status quo and of an SMR at Liddell.** C1 changes the life cycle by about 0.36%, and no predefined weight set, input test or ±50% weight test puts an SMR first.
 
 ### 9.1 Triple bottom line
 
@@ -442,7 +431,7 @@ Table T13 applies the triple bottom line to C1 at Darlington and to the comparis
 
 | | Darlington, with C1 | Liddell (one unit) | Traced to |
 |---|---|---|---|
-| **Environment** | About 4 g CO₂e/kWh (§6). C1 saves 2,200 t per unit, about 0.37% of the life cycle; Unit 1 avoids 1.0–6.8 Mt to 2050. | Avoids 0.67–3.9 Mt to 2050, from about 2040. Firmed renewables avoid 10.9× more per dollar. | §6.3, §7 |
+| **Environment** | About 4 g CO₂e/kWh (§6). C1 saves 2,200 t per unit, about 0.36% of the life cycle; Unit 1 avoids 1.0–6.8 Mt to 2050. | Avoids 0.67–3.9 Mt to 2050, from about 2040. Firmed renewables avoid 10.9× more per dollar. | §6.3, §7 |
 | **Economy** | LCOE C$198/MWh at 7%. C1's carbon value (C$0.63–0.76 m, Units 2–4) is less than one day of delay (C$1.8–2.9 m). | SMR A$230–382/MWh in 2030 against A$89–125 for firmed renewables. A first unit would need Commonwealth ownership or underwriting (our inference, §8.2). | §7.3, §8.2 |
 | **Society** | Stance +1.07; no high-power actor opposed. Williams Treaties First Nations lend C$700 m, converting to equity. C1 adds no consent issue. | Stance −1.03; 59% want the ban kept. No legal route is open. Enrichment and conversion would be imported. | §8.1, §8.3–8.5 |
 | **Net** | Marginal gain; feasible if schedule-neutral (break-even 11.6–18.5 days). | Not feasible before 2040 on current law, cost and consent. | §6–§8 |
@@ -481,9 +470,19 @@ Method in §2; working in Appendix B7; social-licence and legal scores from Appe
 ---
 
 
-## 10 Future material properties and processes (Leroy)
+## 10 Future material properties and processes
 
-**[TODO: section not yet in the repo]**
+**C1 and the levers beyond it each depend on a property or process still to be proven (Table T15).**
+
+*Table T15. What must be proven.*
+*Source: as cited in the cells.*
+
+| Need | Evidence now | To prove |
+|---|---|---|
+| SCC LC³ for DP-SC infill | Calcined clay raises superplasticiser demand (Universität der Bundeswehr München, n.d.); no LC³ heat-of-hydration data found; M50 strength 56.7 against 60.0 MPa (Pillai et al., 2019) | Mock-up panels testing flow through diaphragm holes, temperature rise and shrinkage; qualification under NEDO-33926, which rests on AISC N690 (GE-Hitachi Nuclear Energy, 2024), before the approval expected in 2028 (American Nuclear Society, 2026) |
+| Low-residual EAF nuclear plate | Scrap-EAF steel emits 0.68 against 2.33 t CO₂/t (World Steel Association, 2026), but copper limits scrap use in vessel steel (Canadian Nuclear Safety Commission, 2023) | Qualify diluted-scrap or direct-reduced-iron plate, first outside the pressure boundary (our inference) |
+| Laser enrichment | Enrichment is the most concentrated fuel-cycle step (§8.3); a US laser plant's licence application was accepted in August 2025 (Silex Systems Limited, 2025) and Cameco takes its output (Silex Systems Limited, 2026) | NRC licence decision; Australian law (EPBC s140A, ARPANS s10) bars it |
+| Waste forms | Three non-BWRX SMR designs may produce 2–30 times more waste by volume per unit of energy (Krall, Macfarlane and Ewing, 2022; contested); ANSTO's Synroc ceramic, hot-pressed at 1,000 °C and 30 MPa, cuts volume against cement but is pre-commissioning (ANSTO, n.d.) | Synroc commissioning; for Australia, an export of know-how rather than a reason to build |
 
 
 ## 11 Conclusions and recommendations
@@ -492,7 +491,7 @@ Method in §2; working in Appendix B7; social-licence and legal scores from Appe
 
 **Research questions.**
 1. *Life cycle (§6).* One BWRX-300 emits about 4 g CO₂e/kWh, mostly from the fuel front end; conversion heat is the largest uncertainty.
-2. *C1 (§6–7).* It saves 2,200 t per unit (1,100–3,300; §4.3), about 0.37% of the life cycle; a delay of 11.6–18.5 days cancels it (1.7–1.8 days on the marginal grid factor).
+2. *C1 (§6–7).* It saves 2,200 t per unit (1,100–3,300; §4.3), about 0.36% of the life cycle; a delay of 11.6–18.5 days cancels it (1.7–1.8 days on the marginal grid factor).
 3. *Displacement (§7).* Darlington Unit 1 avoids 1.0–6.8 Mt CO₂e to 2050 and a Liddell unit 0.67–3.9 Mt; firmed renewables avoid 10.9 times more per dollar.
 4. *Barriers and options (§3, §8–9).* Law (three bans), cost (C$149–198/MWh) and time (2040 at the earliest) decide; firmed renewables rank first under all four weight sets (80 against 30 with equal weights).
 
@@ -500,7 +499,7 @@ Method in §2; working in Appendix B7; social-licence and legal scores from Appe
 1. **Schedule:** a month's slip to Units 2–4 costs 29–175 times C1's carbon value (§7).
 2. **Fuel front end:** a measured conversion-heat value would narrow the headline most (§6).
 3. **Whole-plant steel:** up to 3,714 t per unit, if feasible for nuclear-grade plate (§10).
-4. **Concrete (C1):** real and low-risk if schedule-neutral, but it moves the life cycle by about 0.37%.
+4. **Concrete (C1):** real and low-risk if schedule-neutral, but it moves the life cycle by about 0.36%.
 
 **Limitations.** A screening LCA, not critically reviewed; MCDA scores and weights are our judgement; inputs are as described in §2; legislation is as compiled, without the 2025 EPBC reforms.
 
@@ -521,6 +520,8 @@ ABC News, 2026. Coalition vows to "take a chainsaw" to climate laws and offshore
 American Institute of Steel Construction, 2022. *Buy Clean California quick guide*. [pdf] Available at: https://www.aisc.org/contentassets/937a380ddd404a2da0c48669d438bf3b/quickguide_buycleancali2022.pdf.
 
 American Nuclear Society, 2026. North American construction is back—smaller and faster—at OPG's Darlington. *Nuclear Newswire*, 5 June. [online] Available at: https://www.ans.org/news/2026-06-05/article-8047/north-american-construction-is-back-smaller-and-faster-at-opgs-darlington/ [Accessed 20 October 2026].
+
+ANSTO, n.d. *ANSTO Synroc*. [online] Lucas Heights: Australian Nuclear Science and Technology Organisation. Available at: https://ansto.gov.au/products-services/ansto-synroc [Accessed 25 October 2026].
 
 ARPANSA, n.d. *Who we regulate*. [online] Australian Radiation Protection and Nuclear Safety Agency. Available at: https://www.arpansa.gov.au/regulation-and-licensing/regulation/about-regulatory-services/who-we-regulate [Accessed 20 October 2026].
 
@@ -555,6 +556,8 @@ Canada Infrastructure Bank, 2022. *CIB commits $970 million towards Canada's fir
 Canadian Nuclear Safety Commission, 2021. *CNSC renews Ontario Power Generation's site preparation licence for its Darlington New Nuclear Project*. [online] News release, 12 October. Available at: https://www.canada.ca/en/nuclear-safety-commission/news/2021/10/cnsc-renews-ontario-power-generations-site-preparation-licence-for-its-darlington-new-nuclear-project.html [Accessed 20 October 2026].
 
 Canadian Nuclear Safety Commission, 2022. *REGDOC-3.5.1, Licensing Process for Class I Nuclear Facilities and Uranium Mines and Mills*, Version 2.1. [online] Available at: https://www.cnsc-ccsn.gc.ca/eng/acts-and-regulations/regulatory-documents/published/html/regdoc3-5-1-v2-1/ [Accessed 20 October 2026].
+
+Canadian Nuclear Safety Commission, 2023. *Regulatory consideration of environmental degradation in licensing light water small reactors in Canada*. [online] Technical paper. Ottawa: Canadian Nuclear Safety Commission. Available at: https://cnsc-ccsn.gc.ca/eng/resources/research/technical-papers-and-articles/2023/regulatory-consideration-of-environmental-degradation-in-licensing-light-water-small-reactor-in-canada [Accessed 25 October 2026].
 
 Canadian Nuclear Safety Commission, 2024. *CMD 24-H3-1B* (staff presentation, Darlington New Nuclear Project). [pdf] Ottawa: Canadian Nuclear Safety Commission. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD-24-H3-1B.pdf/object.
 
@@ -602,9 +605,17 @@ ENR, 2018. Clay and limestone cement could cut carbon emissions. *Engineering Ne
 
 Environment and Climate Change Canada, 2026. *Industrial carbon pricing in Canada*. Ottawa: Government of Canada. Available at: https://www.canada.ca/en/environment-climate-change/services/climate-change/pricing-pollution-how-it-will-work/putting-price-on-carbon-pollution/industry.html [Accessed 21 October 2026].
 
+Fermi Energia, n.d. *New SMR project*. [online] Tallinn: Fermi Energia. Available at: https://fermi.ee/new-smr-project/ [Accessed 25 October 2026].
+
+Field, K.G., Remec, I. and Le Pape, Y., 2015. Radiation effects in concrete for nuclear power plants – Part I: Quantification of radiation exposure and radiation effects. *Nuclear Engineering and Design*, 282, pp.126–143. Available at: https://www.ornl.gov/publication/radiation-effects-concrete-nuclear-power-plants-part-i-quantification-radiation [Accessed 25 October 2026].
+
+GE Hitachi Nuclear Energy, n.d. *GE Hitachi BWRX-300 fact sheet*. [pdf] Wilmington, NC: GE Hitachi Nuclear Energy. Available at: https://gevernova.com/content/dam/gepower-nuclear/global/en_US/documents/product-fact-sheets/BWRX-300_Fact_Sheet-2020.pdf [Accessed 25 October 2026].
+
 GE-Hitachi Nuclear Energy, 2024. *BWRX-300 Steel-Plate Composite Containment Vessel (SCCV) and Reactor Building Structural Design*, NEDO-33926, Revision 2 (non-proprietary), 16 August. [pdf] US NRC ADAMS ML24110A134. Available at: https://www.nrc.gov/docs/ML2411/ML24110A134.pdf [Accessed 20 October 2026].
 
 GE Vernova, n.d. *BWRX-300 Small Modular Reactor*. [online] Available at: https://www.gevernova.com/nuclear/carbon-free-power/bwrx-300-small-modular-reactor.
+
+GE Vernova, 2026. *NRC issues first U.S. construction permit for BWRX-300 small modular reactor at TVA Clinch River*. [online] Press release. Available at: https://www.gevernova.com/news/press-releases/nrc-issues-first-us-construction-permit-bwrx-300-small-modular-reactor-tva-clinch-river [Accessed 25 October 2026].
 
 GE Vernova Hitachi Nuclear Energy, n.d. *BWRX-300 General Description* (005N9751). [pdf] Wilmington, NC: GE Vernova. Available at: https://www.gevernova.com/content/dam/gevernova-nuclear/global/en_us/documents/carbon-free-power/005N9751-BWRX-300-General-Description.pdf.
 
@@ -623,6 +634,8 @@ Graham, P., Hayward, J. and Foster, J., 2024. *GenCost 2023-24: Final report*. [
 Graham, P., Hayward, J. and Foster, J., 2025. *GenCost 2024-25: Final report*. [pdf] Australia: CSIRO. Executive summary available at: https://www.csiro.au/-/media/Energy/GenCost/GenCost2024-25Final_ES.pdf.
 
 Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub, 2025. *What Australians really think of nuclear power*. [news release] 2 May. Available at: https://news.griffith.edu.au/2025/05/02/what-australians-really-think-of-nuclear-power/ [Accessed 21 October 2026].
+
+Helmholtz-Zentrum Dresden-Rossendorf, n.d. [Activation of the biological shield of Greifswald NPP Unit 2]. Publication Publ-39008. Dresden: Helmholtz-Zentrum Dresden-Rossendorf. Available at: https://hzdr.de/publications/Publ-39008 [Accessed 25 October 2026].
 
 Hooton, R.D., 2023. [Webinar slides on changes to ASTM cement and concrete standards]. ACI Fall 2023 webinar slides. [pdf] Farmington Hills: American Concrete Institute. Available at: https://www.concrete.org/portals/0/files/pdf/webinars/ws_F23_NEU_DouglasHooton.pdf [Accessed 20 October 2026].
 
@@ -643,6 +656,8 @@ Joint Standing Committee on Treaties, 2024. *Report 224: Agreement among Austral
 Kazatomprom, 2025. *Integrated Annual Report 2024*. [pdf] Astana: NAC Kazatomprom JSC. Available at: https://www.kazatomprom.kz/storage/59/kap_iar_2024_eng_0205__clean.pdf [Accessed 20 October 2026].
 
 Kim and Macfarlane, 2026. *Challenges of small modular reactors: a comprehensive exploration*. [pdf] Available at: https://www.nirs.org/wp-content/uploads/2025/09/SMR-Costs_Challenges-of-SMRs-cost-waste_Kim-Macfarlane_2026.pdf.
+
+Krall, L.M., Macfarlane, A.M. and Ewing, R.C., 2022. Nuclear waste from small modular reactors. *Proceedings of the National Academy of Sciences of the United States of America*, 119(23), e2111833119. Available at: https://doi.org/10.1073/pnas.2111833119 [Accessed 25 October 2026].
 
 LACCEI, 2026. Comparative life cycle assessment and structural performance analysis of eco-friendly LC3 cement for CO₂ reduction compared to Portland cement. In: *Proceedings of the 24th LACCEI International Multi-Conference for Engineering, Education and Technology*, Santiago, Chile, 15–17 July 2026. Contribution 2661. Available at: https://laccei.org/LACCEI2026-Chile/full-papers/Contribution_2661_final_a.pdf.
 
@@ -702,6 +717,8 @@ Ontario Power Generation, 2026a. *OPG reports 2026 first quarter financial resul
 
 Ontario Power Generation, 2026b. Interrogatory response giving the Darlington New Nuclear Project levelised cost, EB-2025-0297. Filed with the Ontario Energy Board.
 
+Ontario Power Generation, 2026c. *Laying the foundation for the G7's first small modular reactor*. [online] 30 April. Available at: https://www.opg.com/news-and-media/story/laying-the-foundation-for-the-g7s-first-small-modular-reactor [Accessed 25 October 2026].
+
 Parker, D.J., McNaughton, C.S. and Sparrow, G.A., 2016. Life cycle greenhouse gas emissions from uranium mining and milling in Canada. *Environmental Science & Technology*, 50(17), pp.9746–9753. Available at: https://pubs.acs.org/doi/10.1021/acs.est.5b06072.
 
 Parliament of Australia, 2026. *Senate composition*. [online] Available at: https://www.aph.gov.au/Senators_and_Members/Senators/Senate_composition [Accessed 20 October 2026].
@@ -746,11 +763,19 @@ Steigerwald, B., Weibezahn, J., Slowik, M. and von Hirschhausen, C., 2023. Uncer
 
 Sun, Y. and Kurosaki, K., 2025. *Technical overview of recent developments in small modular reactors in the United States*. arXiv:2504.02599 [physics.soc-ph]. Available at: https://arxiv.org/abs/2504.02599.
 
+Systematic evaluation of concrete placement reliability in heavily reinforced nuclear structures, 2026. *International Journal of Concrete Structures and Materials*. Available at: https://link.springer.com/article/10.1186/s40069-026-00964-8 [Accessed 25 October 2026].
+
+Thierfeldt, S., 2019. [Clearance and recycling of materials from decommissioning]. Presentation slides, SOGIN workshop, Rome. [pdf] Available at: https://www.sogin.it/SiteAssets/uploads/2019/media/09_THIERFELDT_Clearance_Recycling_Materials_Decommissioning.pdf [Accessed 25 October 2026].
+
 Treasury Board of Canada Secretariat, 2022. *Standard on Embodied Carbon in Construction* (amended 20 March 2025). [online] Ottawa: Treasury Board of Canada Secretariat. Available at: https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32814 [Accessed 20 October 2026].
 
 United Nations Economic Commission for Europe, 2021. *Carbon Neutrality in the UNECE Region: Integrated Life-cycle Assessment of Electricity Sources*. ECE/ENERGY/141. Geneva: United Nations. Available at: https://unece.org/sites/default/files/2021-10/LCA-2.pdf [Accessed 20 October 2026].
 
 United States Congress, 2024. *Prohibiting Russian Uranium Imports Act*, Public Law 118-62, 13 May 2024. [pdf] Washington, DC: US Government Publishing Office. Available at: https://www.govinfo.gov/content/pkg/PLAW-118publ62/pdf/PLAW-118publ62.pdf [Accessed 20 October 2026].
+
+Universität der Bundeswehr München, n.d. [Self-consolidating mortar with calcined clay]. [pdf] Munich: Universität der Bundeswehr München. Available at: https://athene-forschung.rz.unibw-muenchen.de/doc/141635/141635.pdf [Accessed 25 October 2026].
+
+US Department of Energy, 2015. *Technology Readiness Assessment Guide*, DOE G 413.3-4A (Admin. Chg 1). [online] Washington, DC: US Department of Energy. Available at: https://www.directives.doe.gov/directives/0413.3-EGuide-04a [Accessed 25 October 2026].
 
 US Department of Energy, 2025. *Energy Department Selects TVA and Holtec to Advance Deployment of U.S. Small Modular Reactors*. Washington, DC: US Department of Energy. Available at: https://www.energy.gov/articles/energy-department-selects-tva-and-holtec-advance-deployment-us-small-modular-reactors.
 
@@ -759,6 +784,10 @@ US Department of Justice and Federal Trade Commission, 2010. *Horizontal Merger 
 US Department of Justice and Federal Trade Commission, 2023. *Merger Guidelines*. [pdf] Washington, DC: US Department of Justice and Federal Trade Commission, 18 December. Available at: https://www.justice.gov/d9/2023-12/2023%20Merger%20Guidelines.pdf [Accessed 20 October 2026].
 
 US EPA, 2024. *Power Profiler: terms, calculations and data sources*. [pdf] Available at: https://www.epa.gov/system/files/documents/2024-04/power-profiler-terms-calculations-and-data-sources.pdf.
+
+US Nuclear Regulatory Commission, 1988. *Regulatory Guide 1.99, Revision 2: Radiation embrittlement of reactor vessel materials*. [pdf] Washington, DC: US Nuclear Regulatory Commission. Available at: https://www.nrc.gov/docs/ML1214/ML12145A013.pdf [Accessed 25 October 2026].
+
+US Nuclear Regulatory Commission, 2025. *NuScale US460*. [online] Rockville, MD: US Nuclear Regulatory Commission. Available at: https://www.nrc.gov/reactors/new-reactors/advanced/who-were-working-with/applicant-projects/nuscale-us460.html [Accessed 25 October 2026].
 
 US Nuclear Regulatory Commission and Canadian Nuclear Safety Commission, 2025. *CNSC–NRC Joint Report on GEH BWRX-300 Steel-Plate Composite Containment Vessel and Reactor Building Structural Design Topical Report*. ADAMS ML25325A075. [pdf] Available at: https://www.nrc.gov/docs/ML2532/ML25325A075.pdf [Accessed 20 October 2026].
 
@@ -772,9 +801,15 @@ World Nuclear Association, 2025. *Uranium Enrichment*. [online] London: World Nu
 
 World Nuclear Association, 2026. *World Uranium Mining Production*. [online] London: World Nuclear Association. Available at: https://world-nuclear.org/information-library/nuclear-fuel-cycle/mining-of-uranium/world-uranium-mining-production [Accessed 20 October 2026].
 
+World Nuclear News, 2023. China's demonstration HTR-PM enters commercial operation. *World Nuclear News*, 6 December. [online] Available at: https://world-nuclear-news.org/articles/chinese-htr-pm-demo-begins-commercial-operation [Accessed 25 October 2026].
+
 World Nuclear News, 2026. Cameco in offtake agreement for US laser enrichment plant. *World Nuclear News*. [online] Available at: https://www.world-nuclear-news.org/articles/cameco-in-offtake-agreement-for-us-laser-enrichment-plant.
 
 World Nuclear University, 2025. [Enrichment: WNU Summer Institute presentation slides], 17 June. Available at: https://world-nuclear-university.org/SummerInsituteFiles/2025-06-17_WNU_Enrichment_Platov_final_62a48c29.pdf.
+
+World Steel Association, 2026. *CO₂ emissions and energy intensity, 2022–2024* (Sustainability indicators). [online] Brussels: World Steel Association. Available at: https://worldsteel.org/steel-topics/sustainability/sustainability-indicators-2024-report [Accessed 25 October 2026].
+
+Zunino, F., 2021. *Limestone calcined clay cements* [presentation slides]. Lausanne: EPFL / LC3 project. [pdf] Available at: https://lc3.ch/wp-content/uploads/2021/12/6-Franco-LimestoneCalcinedClayCements.pdf [Accessed 25 October 2026].
 
 ### Legislation
 
@@ -802,11 +837,11 @@ World Nuclear University, 2025. [Enrichment: WNU Summer Institute presentation s
 
 ## Appendix A. LCA inventory and calculations
 
-This appendix gives the full working behind §6. The analysis is an **equivalent analysis built from published factors**: a screening LCA following ISO 14040/44 principles, not critically reviewed, in which a Python model multiplies quantities by emission factors. **No Granta EduPack run has been done**; the cross-check is only set up (A9) [TODO: Granta cross-check, H2 due Thu 12:00; cut if not run]. **No input has yet been checked against its primary source** (`status: TO VERIFY`, `assumption` or `placeholder` in `parameters_lca.yaml`), so every number here is provisional.
+This appendix gives the full working behind §6. The analysis is a screening LCA following ISO 14040/44 principles, not critically reviewed, in which a Python model multiplies quantities by published emission factors. The Ostrołęka and Pillai tables behind the main case could not be opened, so their values are taken as reported; other inputs are labelled as reported by a secondary source, an assumption or a placeholder. The intervals therefore describe the uncertainty in our inputs as found, not in verified data.
 
 ### A1. Reproducing the results
 
-Every table and figure in §6 and Appendices A and C regenerates in about five seconds from one parameter file. If a value changes, edit `parameters_lca.yaml` and re-run the three scripts.
+Every table and figure in §6 and Appendices A and C regenerates in about five seconds from one parameter file. To change a value, edit `parameters_lca.yaml` and re-run the three scripts.
 
 *Table A1. Scripts, inputs and outputs.*
 *Source: `03_LCA_Calculations/`.*
@@ -814,189 +849,175 @@ Every table and figure in §6 and Appendices A and C regenerates in about five s
 | Step | Command (from the repository root) | Output |
 |---|---|---|
 | Baseline inventory, fuel mass balance, stage totals | `python3 -I 03_LCA_Calculations/scripts/lca_baseline.py` | `results/lca_baseline.md`, `lca_inventory.csv`, `lca_stages.csv`, `lca_fuel.csv`, Figure F1 |
-| Initiative scenarios S1, S2, S2b, S3 | `python3 -I 03_LCA_Calculations/scripts/lca_scenarios.py` | `results/lca_scenarios.md`, `lca_scenarios.csv`, `lca_scenarios_structures.csv` |
+| Initiative scenarios | `python3 -I 03_LCA_Calculations/scripts/lca_scenarios.py` | `results/lca_scenarios.md`, `lca_scenarios.csv` |
 | Tornado and Monte Carlo (Appendix C) | `python3 -I 03_LCA_Calculations/scripts/lca_uncertainty.py` | `results/lca_uncertainty.md`, `lca_tornado.csv`, `lca_montecarlo_summary.csv`, `lca_stages_expected.csv`, Figures F2–F5 |
 
-All three scripts read only `03_LCA_Calculations/parameters_lca.yaml` (59 parameters, each with a value, range, distribution, source key and status).
+All three scripts read only `03_LCA_Calculations/parameters_lca.yaml` (68 parameters, each with a value, range, distribution, source key and status).
 
-### A2. Functional unit and lifetime output
+### A2. Functional unit, lifetime output and key assumptions
 
 **Result.** One unit delivers 1.419 × 10⁸ MWh over its life, the denominator for every per-MWh value in §6 and §7.
 
 - Annual output = P_net × 8,760 h × CF = 300 MWe × 8,760 × 0.90 = 2,365,200 MWh/yr.
-- Lifetime output E = annual output × L = 2,365,200 × 60 = **1.419 × 10⁸ MWh**.
-- Net efficiency η = P_net / P_th = 300 / 870 = **0.345** (870 MWt: [TODO: authors], 2025, an unrefereed preprint) [TO VERIFY].
-- Conversion to the functional unit: 1 t CO₂e spread over E is 7.05 × 10⁻⁶ kg CO₂e/MWh (= g/kWh).
+- Lifetime output E = 2,365,200 × 60 = **1.419 × 10⁸ MWh**.
+- Net efficiency η = P_net / P_th = 300 / 870 = **0.345** (870 MWt from Sun and Kurosaki, 2025, an unrefereed preprint).
+- Conversion to the functional unit: 1 t CO₂e spread over E is 7.05 × 10⁻⁶ g/kWh.
 
-Inputs: P_net 300 MWe (GE Vernova Hitachi Nuclear Energy, n.d.) [placeholder; 315 MW net in an OPG filing, TO VERIFY]; CF 0.90 [placeholder, assumption shared with §7]; L 60 years (Canadian Nuclear Safety Commission, 2024) [TO VERIFY; 65 years reported elsewhere].
+Inputs: P_net 300 MWe (GE Vernova Hitachi Nuclear Energy, n.d.), with 315 MWe net in OPG's filing to the Ontario Energy Board (Ontario Power Generation, 2025b) as the upper bound; CF 0.90, a placeholder shared with §7; L 60 years (Canadian Nuclear Safety Commission, 2024; 65 years is reported elsewhere).
+
+*Table A2a. Plant quantities and results per unit: main case and cross-check.*
+*Source: this study; BWRX-300 Ostrołęka sp. z o.o. (2023), as reported in the project information sheet; Peterson, Zhao and Petroski (2005).*
+
+| Quantity | Main case (Ostrołęka) | Cross-check (bottom-up) |
+|---|---|---|
+| Concrete per unit | 50,000 m³ (input range 40,000–60,000) | 20,700 m³ (69 m³/MWe × 300 MWe) |
+| Concrete per MWe | 167 m³ | 69 m³ |
+| Steel per unit | 14,000 t (11,200–16,800) | 9,900 t (33 t/MWe × 300 MWe) |
+| Rebar; plate, structural and equipment steel | 7,500 t; 6,500 t | 3,105 t; 6,795 t |
+| C1-eligible concrete | 20,000 m³ (40%; 10,000–30,000) | 13,081 m³ (infill and forebay shaft) |
+| Construction, mode case | 57,600 t CO₂e (0.41 g/kWh) | 34,381 t (0.24 g/kWh) |
+| Life cycle: mode case; Monte Carlo median (90% interval) | 2.86; 4.40 (3.24–6.05) g/kWh | 2.70; 4.20 (3.05–5.86) g/kWh |
+
+*Table A2b. Key assumptions for one BWRX-300 at Darlington (all 45 ranged inputs in Appendix C, Table C1).*
+*Source: `parameters_lca.yaml`; references as listed. Ranges are model input bounds, not result intervals.*
+
+| Parameter | Central (input range) | Basis |
+|---|---|---|
+| Net output; capacity factor; design life | 300 MWe (300–315); 0.90 (0.80–0.95); 60 years (40–80) | GE Vernova Hitachi Nuclear Energy (n.d.); Ontario Power Generation (2025b); placeholder; Canadian Nuclear Safety Commission (2024) |
+| Plant concrete; steel | 50,000 m³ (40,000–60,000); 14,000 t (11,200–16,800) | BWRX-300 Ostrołęka sp. z o.o. (2023), as reported; ±20% is our assumption |
+| Baseline concrete factor (S0) | 380 kg CO₂e/m³ (330–420) | Pillai et al. (2019), as reported; range from Canadian Ready-Mixed Concrete Association (2022) Ontario values (334 and 417) |
+| LC³ concrete factor; cut | 270 kg CO₂e/m³; 28.9% (22–39%) | Pillai et al. (2019), as reported; range is our assumption |
+| Eligible share for LC³ | 40% (20–60%) | Assumption: non-safety works first; DPSC infill only if qualified |
+| Rebar; plate and equipment steel | 0.97 (0.89–1.99); 1.73 (1.22–2.50) t CO₂e/t | Concrete Reinforcing Steel Institute (2017; a 2022 declaration supersedes it); American Institute of Steel Construction (2022), Buy Clean California limits as proxies |
+| Other materials and site energy | +50% of bulk materials (25–150%) | Assumption |
+| Mining and milling | 42 kg CO₂e/kg U₃O₈ (24–81) | Parker, McNaughton and Sparrow (2016) |
+| Conversion heat; centrifuge enrichment | 26 kWh/kg U (26–665); 50 kWh/SWU (40–100) | Gibon and Hahn Menacho (2023) |
+| Enrichment; burnup | 3.8% U-235 (3.4–4.95); 45 GWd/t (35–55) | Sun and Kurosaki (2025), unrefereed preprint; assumption (both placeholders) |
+| O&M; decommissioning; back end | 0.33; 0.11; 0.56 g/kWh (×0.5 to ×2; decommissioning ×3) | EDF R&D (2024) stage shares as reported by secondary sources; back end by difference |
+| Cross-check and slag inputs | GU cement 854 kg CO₂e/t (796–898); slag cement 146.6 (93.4–146.6); binder 350 kg/m³ | Cement Association of Canada (2022); Slag Cement Association (n.d.); assumption |
 
 ### A3. Material quantities per unit
 
-**Result.** About 20,700 m³ of concrete and 9,900 t of steel per unit, of which 13,081 m³ of concrete is in the C1 target structures. **These are scaled estimates, not measured quantities**: no BWRX-300 bill of materials could be opened (searched: OPG's EIS review report NK054-REP-07730-00055-R001, TVA's Clinch River environmental report ML25118A209 and SEIS ML26035A285, GEH NEDO-33914; only front matter or summaries were visible) [TODO: Leroy].
+**Result.** The main case is 50,000 m³ of concrete and 14,000 t of steel per unit, with 20,000 m³ (40%) eligible for C1. **These come from a Polish design (Ostrołęka) and are a proxy, not measured Darlington quantities.** We do not know whether they cover the whole site or the nuclear island, or whether the steel includes equipment; if equipment is excluded, the construction uplift (A7) covers it. Darlington's 35 m reactor shaft, forebay and tunnels may differ. No BWRX-300 bill of materials could be opened (searched: OPG's environmental impact statement review report, TVA's Clinch River environmental report, GEH's NEDO-33914; only front matter or summaries were visible).
 
-**Whole plant.** Concrete = I_c × P_net; steel = I_s × P_net.
-- Central: ESBWR intensities, I_c = 69 m³/MWe and I_s = 33 t/MWe (Peterson, Zhao and Petroski, 2005) [TO VERIFY], because the BWRX-300 is derived from the ESBWR.
-- Low: GE Vernova's claim of about 50% less concrete (and, in one release, steel) per MW than the ESBWR, giving 34.5 m³/MWe and 16.5 t/MWe (GE Vernova, n.d.) [TO VERIFY; manufacturer projection].
-- High: ABWR, 138 m³/MWe and 46 t/MWe (Peterson, Zhao and Petroski, 2005) [TO VERIFY], standing in for small-plant scale penalties.
-- **Assumption:** in the central case the claimed halving is offset by SMR diseconomies of scale.
-- **Input bounds, not a result range:** 34.5 × 300 = 10,350 m³ and 138 × 300 = 41,400 m³. The Monte Carlo 90% interval for whole-plant concrete is about **15,050–36,521 m³** (median 24,066 m³; Table C2). Quote the interval, not the bounds, as the concrete range.
+- Rebar = ρ × plant concrete = 0.15 t/m³ × 50,000 = **7,500 t** (assumption; range 0.10–0.25, the high value being the forebay's observed 0.25). Plate, structural and equipment steel = 14,000 − 7,500 = **6,500 t**. Rebar is capped at total steel, so plate never goes negative.
+- C1-eligible concrete = eligible share × plant concrete = 0.40 × 50,000 = **20,000 m³**; 10,000 and 30,000 m³ at 20% and 60%. The eligible share is a scenario, not data.
+- The Monte Carlo 90% interval for plant concrete is 43,224–56,772 m³ (the input is triangular, 40,000–50,000–60,000 m³).
 
-**C1 target structures (geometry).** With D = 37 m (module diameter) and h = 35 m (shaft depth), as read in a news report of the Unit 1 basemat-module lift (okdiario, 2026) [TODO: sources.md entry] [TO VERIFY]. **Both dimensions, and the 953 t module mass below, come from that report, which misdescribes the module as a "reactor" and cites an OPG story we have not found** [TODO: OPG URL or NEDO-33926 dimensions]. They set 69% of the C1 target concrete.
-- V_basemat = π/4 × D² × t_b = 0.7854 × 37² × 3.0 = **3,226 m³** (t_b = 3.0 m, assumption, range 2–4 m).
-- V_wall = π × (D − t_w) × t_w × h = π × 35.5 × 1.5 × 35 = **5,855 m³** (t_w = 1.5 m, assumption, range 1–2 m).
-- Forebay shaft = **4,000 m³** placed to date (Ontario Power Generation, 2025) [TO VERIFY]; a floor, with 6,000 m³ as the high value. Whether the forebay serves one unit or all four is [TODO: Leroy/OPG].
+**Cross-check (bottom-up).** Concrete = I_c × P_net and steel = I_s × P_net, with the ESBWR's I_c = 69 m³/MWe and I_s = 33 t/MWe (Peterson, Zhao and Petroski, 2005), because the BWRX-300 descends from the ESBWR: 20,700 m³ and 9,900 t. The vendor claims about 50% less concrete per MW (GE Vernova, n.d.; 34.5 m³/MWe) and the ABWR has 138 m³/MWe; the central case assumes the claimed halving offsets small-plant scale penalties. The cross-check's C1 concrete, 13,081 m³, is the diaphragm-plate steel-composite (DPSC) infill (9,081 m³, from assumed module geometry and wall thicknesses) plus the forebay shaft (4,000 m³ placed to date; Ontario Power Generation, 2025c). Ostrołęka's 167 m³/MWe is 2.4 times the ESBWR's, which is why the main case has more construction emissions (Table A2a).
 
-**Rebar.** Rebar = ρ × plant concrete = 0.15 t/m³ × 20,700 = 3,105 t (assumption; the forebay's observed 1,000 t / 4,000 m³ = 0.25 t/m³ is the high value, and DPSC modules use steel faceplates instead of most rebar). Plate, structural and equipment steel = 9,900 − 3,105 = 6,795 t, which includes the 953 t Unit 1 DPSC basemat module (okdiario, 2026) [TO VERIFY]. The rebar ratio only splits total steel between two factors, and **rebar is capped at total steel** (rebar = min(ρ × plant concrete, total steel)), so plate steel never goes negative.
+### A4. Construction inventory and corrections to the team spreadsheet
 
-*Table A2. Concrete volume per unit.*
-*Source: `results/lca_baseline.md`.*
+**Result.** Construction emits 57,600 t CO₂e per unit at the mode case (0.41 g/kWh); concrete and steel are about equal.
 
-| Part | m³ | Working |
-|---|---:|---|
-| DPSC basemat infill | 3,226 | π/4 × 37² × 3.0 m |
-| DPSC shaft-wall infill | 5,855 | π × (37 − 1.5) × 1.5 × 35 m |
-| Forebay shaft | 4,000 | OPG update (floor) |
-| **C1 target structures** | **13,081** | Sum of the three (63% of the plant) |
-| Other plant concrete | 7,619 | Whole plant − target |
-| **Whole plant** | **20,700** | max(69 m³/MWe × 300 MWe, target) |
+*Table A4. Construction inventory per unit (S0, mode case; production-stage factors).*
+*Source: `results/lca_baseline.md`; factors as in A5.*
 
-In 3.5% of Monte Carlo draws (706 of 20,000) the scaled plant fell below the target volume, and the plant volume was then set equal to the target (Appendix C1).
+| Item | Quantity | Factor | t CO₂e |
+|---|---|---|---:|
+| C1-eligible concrete (40%) | 20,000 m³ | 380 kg CO₂e/m³ | 7,600 |
+| Other plant concrete | 30,000 m³ | 380 kg CO₂e/m³ | 11,400 |
+| Rebar | 7,500 t | 0.97 t CO₂e/t | 7,275 |
+| Plate, structural and equipment steel | 6,500 t | 1.73 t CO₂e/t | 11,245 |
+| Transport to site | concrete 15 km, steel 500 km | 0.10 kg CO₂e/t-km | 880 |
+| Other materials and site energy | +50% of the above | | 19,200 |
+| **Construction total** | | | **57,600** |
 
-### A4. Corrected inventory and corrections to the team's spreadsheet
-
-**Result.** The spreadsheet's forebay rows describe one milestone of one Unit 1 structure. They are kept, labelled PARTIAL, and whole-unit rows are added.
-
-*Table A3. Corrected construction inventory (cradle to gate, EN 15804 modules A1–A3; central case).*
-*Source: `03_LCA_Calculations/Accounting_corrected.csv`; quantities as in A3; factors as in A5. All [TO VERIFY].*
-
-| Row | Structure and material | Quantity | Scope | Factor | t CO₂e |
-|---|---|---|---|---|---:|
-| 1 | Unit 1 forebay shaft, concrete | 4,000 m³ (9.6 million kg) | PARTIAL (one milestone) | 328.9 kg CO₂e/m³ | 1,316 |
-| 2 | Unit 1 forebay shaft, rebar | 1,000 t | PARTIAL | 0.97 t/t (EAF) | 970 |
-| 3 | Unit 1 DPSC basemat module, steel plate | 953 t | PARTIAL (steel only) | 1.73 t/t | 1,649 |
-| 4 | Tunnel boring (cooling-water tunnels) | [TODO: tunnel length × bored cross-section] | — | — | — |
-| 5 | Whole unit: DPSC reactor-building infill | 9,081 m³ | Scaled estimate | 414.3 kg CO₂e/m³ | 3,762 |
-| 6 | Whole unit: forebay shaft | 4,000 m³ | Scaled estimate | 328.9 kg CO₂e/m³ | 1,316 |
-| 7 | Whole unit: other plant concrete | 7,619 m³ | Scaled estimate | 328.9 kg CO₂e/m³ | 2,506 |
-| 8 | Whole unit: rebar | 3,105 t | Scaled estimate | 0.97 t/t | 3,012 |
-| 9 | Whole unit: plate, structural and equipment steel | 6,795 t | Scaled estimate | 1.73 t/t | 11,755 |
-
-Corrections made (review.md items 1–4):
-1. **Site.** The Darlington New Nuclear Project is in Clarington, Ontario, not Ottawa (to be corrected in `Assumptions.docx` by its owner).
-2. **Tunnel boring.** The 4,127.29 m³ in `Assumptions.docx` is the forebay concrete (4,000 m³) plus its rebar (127.39 m³), not a bored volume. Row 4 is a TODO; tunnel-boring energy sits in the construction uplift (A7) until data exist.
-3. **Sheet.** Concrete and steel rows move from "Nuclear Fuel LCA" to "SMR Parts LCA (construction)".
-4. **Scope.** Rows 1–3 are labelled PARTIAL; rows 5–9 are the whole-unit inventory used in §6.
-
-Also corrected: the "[From X patent]" header is replaced by a source column; rebar uses a recycled-content (electric-arc furnace) factor, not virgin steel; construction electricity is not assumed renewable (the uplift covers site energy on the Ontario grid). Still unresolved: what preprint 202505.1533 in the team notes is [TODO].
+Corrections made to the team spreadsheet (kept as `Accounting_corrected.csv`; the originals are untouched):
+1. **Site.** The Darlington New Nuclear Project is in Clarington, Ontario, not Ottawa.
+2. **Tunnel boring.** The 4,127.29 m³ in the assumptions file is the forebay concrete (4,000 m³) plus its rebar (127.39 m³), not a bored volume. Tunnel-boring energy sits in the construction uplift until data exist.
+3. **Scope.** The forebay and basemat-module rows describe one milestone of one Unit 1 structure and are labelled partial; the whole-unit rows replace them.
+4. **Rebar** uses a recycled-content (electric-arc furnace) factor, not virgin steel, and construction electricity is not assumed renewable.
 
 ### A5. Emission factors
 
-**Result.** Every factor is a published North American or Canadian value where one was found, and an assumption otherwise. Construction-material factors are cradle-to-gate (EN 15804 modules A1–A3) [TODO: source needed: EN 15804 entry in sources.md]. The grid, natural-gas, mining and EDF factors are not module-based. The impact category is climate change, characterised as GWP100 (IPCC AR5 where stated); the US grid factors are CO₂ only.
+**Result.** Every factor is a published North American or Canadian value where one was found, and an assumption otherwise. Construction-material factors are cradle-to-gate (production stage). The impact category is climate change, GWP100; the US grid factors are CO₂ only, used as CO₂e, which understates slightly.
 
-*Table A4. Emission and energy factors used.*
-*Source: `parameters_lca.yaml`; references as listed. All [TO VERIFY] unless marked as an assumption.*
+*Table A5. Emission and energy factors used.*
+*Source: `parameters_lca.yaml`; references as listed.*
 
 | Factor | Central | Range | Unit | Reference |
 |---|---|---|---|---|
-| General-use (GU) cement | 854 | 796–898 (regional spread, West–East, not an uncertainty range) | kg CO₂e/t | Cement Association of Canada (2022), Central region (which region covers Ontario is [TO VERIFY]); to be replaced by the St Marys Bowmanville EPD (NRMCA, 2021) |
-| Slag cement | 146.6 | 93.4–146.6 | kg CO₂e/t | Slag Cement Association (n.d.); low = Lafarge NewCem plant EPD |
-| LC3 binder cut vs GU | 37% | 30–43% | — | Median of five estimates (below) |
-| Non-binder share of concrete (aggregates, water, admixtures, batching) | 30 | 15–60 | kg CO₂e/m³ | Assumption |
-| Binder content: DPSC self-consolidating infill | 450 | 400–550 | kg/m³ | EFNARC (2005) gives 360–500 kg/m³ powder for SCC [TO VERIFY]; 450 and 550 are assumptions for a cement-rich nuclear mix |
-| Binder content: other structural concrete | 350 | 300–420 | kg/m³ | Assumption |
-| Clinker factor: GU; LC3 | 0.92; 0.50 | 0.90–0.95; 0.50–0.55 | t/t binder | Assumption; Scrivener et al. (2018) |
-| Rebar (electric-arc furnace, fabricated) | 0.97 | 0.89–1.99 | t CO₂e/t | Concrete Reinforcing Steel Institute (2017) [superseded by the CRSI 2022 EPD; replace the value, TO VERIFY]; low = American Institute of Steel Construction (2022) limit; high = world average (Circular Ecology, 2019, read via a secondary) |
-| Plate, structural and equipment steel | 1.73 | 1.22–2.50 | t CO₂e/t | American Institute of Steel Construction (2022): a Buy Clean California fabricated-plate GWP limit (a policy ceiling, not an industry average), used as a proxy; high is an assumption for forged and machined equipment |
+| Baseline concrete (OPC, M50) | 380 | 330–420 | kg CO₂e/m³ | Pillai et al. (2019), as reported; range from Canadian Ready-Mixed Concrete Association (2022) |
+| LC³ concrete | 270 | cut 28.9% (22–39%) | kg CO₂e/m³ | Pillai et al. (2019), as reported; range assumed |
+| Rebar (electric-arc furnace, fabricated) | 0.97 | 0.89–1.99 | t CO₂e/t | Concrete Reinforcing Steel Institute (2017); low = American Institute of Steel Construction (2022) limit; high = world average (Circular Ecology, 2019, read via a secondary) |
+| Plate, structural and equipment steel | 1.73 | 1.22–2.50 | t CO₂e/t | American Institute of Steel Construction (2022): a Buy Clean California limit (a policy ceiling, not an industry average), used as a proxy; high assumed for forged equipment |
 | Heavy truck | 0.10 | 0.06–0.15 | kg CO₂e/t-km | Assumption |
 | Mining and milling | 42 | 24–81 | kg CO₂e/kg U₃O₈ | Parker, McNaughton and Sparrow (2016), Saskatchewan, production-weighted |
 | Conversion: electricity; heat | 11.8; 26 | 10.3–16.9; 26–665 | kWh/kg U | Gibon and Hahn Menacho (2023) |
 | Centrifuge enrichment | 50 | 40–100 | kWh/SWU | Gibon and Hahn Menacho (2023) |
 | Fuel fabrication | 36 | 36–50 | kWh/kg U | Gibon and Hahn Menacho (2023) |
 | Grid: conversion (Ontario) | 0.0738 | 0.035–0.343 | kg CO₂e/kWh | The Atmospheric Fund (2025); low = Canada Energy Regulator (n.d.) |
-| Grid: enrichment and fabrication (USA) | 0.373 | 0.05–0.637 (enrichment); 0.20–0.637 (fabrication) | kg CO₂/kWh (CO₂ only, used as CO₂e) | US EPA (2024); lows are assumptions [TODO: eGRID CO₂e values] |
-| Natural-gas heat | 0.202 | — | kg CO₂/kWh | IPCC (2006): 56,100 kg/TJ × 3.6 × 10⁻⁶ TJ/kWh; combustion only, upstream gas supply cut off (§6.1) |
-| O&M; decommissioning; back end | 0.33; 0.11; 0.56 | 0.17–0.67; 0.06–0.33; 0.28–1.11 | g CO₂e/kWh | EDF R&D (2024): 9%, 3% and 15% of 3.7 g/kWh, shares as reported by secondary sources and the back end by difference [TO VERIFY in the paper]; ranges are assumptions for transfer to one BWRX-300 |
+| Grid: enrichment and fabrication (USA) | 0.373 | 0.05–0.637 (enrichment); 0.20–0.637 (fabrication) | kg CO₂/kWh | US EPA (2024); lows assumed |
+| Natural-gas heat | 0.202 | — | kg CO₂/kWh | IPCC (2006): 56,100 kg/TJ × 3.6 × 10⁻⁶ TJ/kWh; combustion only, upstream gas cut off |
+| O&M; decommissioning; back end | 0.33; 0.11; 0.56 | 0.17–0.67; 0.06–0.33; 0.28–1.11 | g CO₂e/kWh | EDF R&D (2024): 9%, 3% and 15% of 3.7 g/kWh, shares as reported by secondary sources, back end by difference; ranges assumed for transfer to one BWRX-300 |
+| *Cross-check and slag only:* GU cement | 854 | 796–898 (regional spread) | kg CO₂e/t | Cement Association of Canada (2022), Central region; St Marys Bowmanville declaration (NRMCA, 2021) to replace it |
+| *Cross-check and slag only:* slag cement | 146.6 | 93.4–146.6 | kg CO₂e/t | Slag Cement Association (n.d.) |
+| *Cross-check only:* binder content (infill; other) | 450; 350 | 400–550; 300–420 | kg/m³ | EFNARC (2005) for the SCC range; central and high assumed |
+| *Cross-check only:* clinker factor GU; LC³ | 0.92; 0.50 | 0.90–0.95; 0.50–0.55 | t/t binder | Assumption; Scrivener et al. (2018) |
 
-**The LC3 cut (37%)** is the median of five published estimates of LC3's binder emissions against Portland cement: 30% (ENR, 2018); 34%, 700 → 465 kg CO₂/t (Development Alternatives, n.d.); 37%, 856 → 543 kg CO₂/t (LC3 Project, 2015); about 40% (Scrivener et al., 2018, as summarised in the EPFL abstract; to confirm in the paper text); 43%, 903.5 → 513.5 kg CO₂e/t (LACCEI, 2026) [TODO: authors]. All five are [TO VERIFY]. ENR is trade press, and no peer-reviewed replacement has been found [TODO: source needed: a peer-reviewed LC3 LCA; L20] (R1.4). If it is dropped, the median of the other four (34, 37, 40, 43%) is 38.5%. Because the saving is proportional to the cut, LC3's saving would rise by about 4%, to roughly 1,800 t per unit, well inside the 90% interval (1,387–2,153 t). This is hand arithmetic; the scripts have not been re-run on it. The estimates come from Indian, Cuban and Latin American settings; an Ontario LC3 calcined with natural gas is untested.
+**The LC³ cut.** The main case takes the concrete-level cut from Pillai et al. (2019): 1 − 270/380 = 28.9%. This is below the binder-level cuts in five published estimates (30% to 43%, median 37%: ENR, 2018; Development Alternatives, n.d.; LC3 Project, 2015; Scrivener et al., 2018; LACCEI, 2026), as it should be, because aggregates, water and batching are unchanged. The range 22–39% is our assumption. The estimates come from Indian, Cuban and Latin American settings; an Ontario LC³ calcined with natural gas is untested.
 
-**Check on the per-m³ model.** At 350 kg/m³ the model gives 328.9 kg CO₂e/m³ for S0 concrete, close to the Ontario industry baseline of 334 kg CO₂e/m³ for 35 MPa concrete and below the 417 kg CO₂e/m³ industry benchmark mix (Canadian Ready-Mixed Concrete Association, 2022) [TO VERIFY].
+**Check on the baseline factor.** 380 kg CO₂e/m³ lies between the cross-check's binder-level mixes (329 and 414) and between the Ontario industry baseline of 334 and the 417 benchmark mix (Canadian Ready-Mixed Concrete Association, 2022).
 
 ### A6. Concrete and the C1 scenarios
 
-**Result.** LC3 (the C1 target binder) cuts emissions from the target concrete by 1,734 t per unit (34%) and avoids 2,304 t of clinker; a slag blend (the C1 fallback) cuts them by 1,552 t (31%).
+**Result.** LC³ on 40% of plant concrete saves 2,200 t CO₂e per unit (28.9% of that concrete's emissions) and avoids about 2,940 t of clinker; a slag blend saves 2,288 t.
 
-**Baseline S0.** S0 is the concrete OPG would pour anyway, without C1. It is modelled as general-use (GU) Portland cement with no supplementary cementitious materials, because neither OPG's mix nor any cement-type limit in the governing specification (GE-Hitachi Nuclear Energy, 2024) has been seen [TO VERIFY]. If OPG's mix already contains slag, S1 is business as usual: every saving in Tables A5 and A6 is then overstated, and LC3's increment is the LC3-minus-slag difference, 181 t per unit in the mode case and 97 t at the Monte Carlo median (90% interval −343 to +574 t; Table C2), which is within the noise.
+**Baseline S0** is the concrete OPG would pour anyway, at 380 kg CO₂e/m³. We have seen neither OPG's mix nor any cement-type limit in the specification (GE-Hitachi Nuclear Energy, 2024). If OPG's mix already contains slag (40% of binder, in all plant concrete), LC³'s increment on the eligible concrete is −88 t per unit (−0.02% of the life cycle), so every saving below is then overstated.
 
-For each structure: **kg CO₂e = V × (b × EF_binder / 1,000 + c)**, where V is volume (m³), b binder content (kg/m³), EF_binder the binder factor (kg CO₂e/t) and c the non-binder share (30 kg/m³).
-- S0 (general-use cement): EF_binder = 854 kg/t; clinker factor 0.92.
-- S1 (slag, s = 40% of binder): EF_binder = (1 − s) × 854 + s × 146.6 = 0.6 × 854 + 0.4 × 146.6 = **571.0 kg/t**; clinker factor (1 − s) × 0.92 = 0.552.
-- S2 (LC3-50): EF_binder = 854 × (1 − r) = 854 × 0.63 = **538.0 kg/t** (r = 37%); clinker factor 0.50; binder content × (1 + u), with u = 0 central (0–10% if LC3 needs extra binder to flow; assumption).
-- Clinker (t) = V × b × clinker factor / 10⁶.
+- **LC³ (C1):** saving = V_eligible × (380 − 270) / 1,000 = 20,000 × 0.110 = **2,200 t**; 10,000 m³ gives 1,100 t and 30,000 m³ gives 3,300 t. Share of the mode-case life cycle: 2,200 / 406,462 = 0.54%; the Monte Carlo median is lower (0.36%) because the total grows with the skewed inputs while the saving barely moves (§6.4).
+- **Slag (S1, fallback):** the model's binder-level cut for 40% slag is 0.4 × (1 − 146.6/854) = 33.1% of binder emissions, which is 30.1% of the concrete's (binder is 91% of a 350 kg/m³ mix's emissions), applied to 380 kg/m³: 20,000 × 0.114 = **2,288 t**.
+- **Clinker (indicative):** clinker avoided = V × b × (0.92 − 0.50) / 1,000 with b = 350 kg/m³: 20,000 × 0.147 = **2,940 t**. Pillai's binder content is not known to us, so this is indicative.
+- **Units 2–4** = 3 × per unit, because Unit 1's basemat is placed. Whether Unit 1's shaft-wall infill could still use LC³ is unknown.
 
-Worked example (DPSC infill, 9,081 m³ at 450 kg/m³):
-- S0: 450 × 854 / 1,000 + 30 = 414.3 kg/m³; 9,081 × 414.3 / 1,000 = **3,762 t**.
-- S2: 450 × 538.0 / 1,000 + 30 = 272.1 kg/m³; 9,081 × 272.1 / 1,000 = **2,471 t**; saving **1,291 t** (142.2 kg/m³).
-- Clinker avoided: 9,081 × 450 × (0.92 − 0.50) / 10⁶ = **1,716 t**.
-
-*Table A5. Savings per structure, one unit.*
+*Table A6. C1 scenario totals, mode case. Shares divide by the mode-case life-cycle total of the row's own basis (main 406,462 t; cross-check 383,243 t).*
 *Source: `results/lca_scenarios.md`.*
 
-| Structure | Scenario | m³ | Binder kg/m³ | S0 t CO₂e | Scenario t CO₂e | Saving t (kg/m³) | Clinker avoided t |
-|---|---|---:|---:|---:|---:|---:|---:|
-| DPSC reactor-building infill | S1 slag (fallback) | 9,081 | 450 | 3,762 | 2,606 | 1,156 (127.3) | 1,504 |
-| DPSC reactor-building infill | S2 LC3 (target) | 9,081 | 450 | 3,762 | 2,471 | 1,291 (142.2) | 1,716 |
-| Forebay shaft | S1 slag (fallback) | 4,000 | 350 | 1,316 | 919 | 396 (99.0) | 515 |
-| Forebay shaft | S2 LC3 (target) | 4,000 | 350 | 1,316 | 873 | 442 (110.6) | 588 |
-
-*Table A6. Scenario totals (central case).*
-*Source: `results/lca_scenarios.md` (working for the like-for-like steel row in A7). Units 2–4 = 3 × per unit (Unit 1's basemat is placed and its forebay partly placed; whether Unit 1's shaft-wall infill could still use LC3 is [TO VERIFY]). Every column is on the mode-case basis.*
-
-| Scenario | Saving t CO₂e/unit | Units 2–4 t CO₂e | Clinker avoided t/unit (Units 2–4) | % of target concrete | % of unit life cycle (mode case) | g/kWh saved |
+| Scenario | Saving t CO₂e/unit | Units 2–4 t | Clinker avoided t/unit (Units 2–4) | % of target concrete | % of unit life cycle | g/kWh saved |
 |---|---:|---:|---:|---:|---:|---:|
-| S1 slag in C1 target structures (C1 fallback) | 1,552 | 4,657 | 2,019 (6,057) | 30.6 | 0.405 | 0.0109 |
-| **S2 LC3 in C1 target structures (C1 target binder)** | **1,734** | **5,201** | **2,304 (6,913)** | **34.1** | **0.452** | **0.0122** |
-| S2b LC3 in targets + slag in all other concrete | 2,488 | 7,464 | 3,286 (9,857) | 49.0 | 0.649 | 0.0175 |
-| S3 like-for-like: low-end steel factors, target-structure steel only (1,953 t) | 566 | 1,698 | 0 | — | 0.148 | 0.0040 |
-| S3 upper bound: all plant steel at best-practice EAF sections factors | 3,714 | 11,142 | 0 | — | 0.969 | 0.0262 |
-| S3 sensitivity: all plant steel at world-average factors | −8,399 | −25,198 | 0 | — | −2.192 | −0.0592 |
+| LC³ on 20% of plant concrete | 1,100 | 3,300 | 1,470 (4,410) | 28.9 | 0.271 | 0.0078 |
+| **LC³ on 40% (central)** | **2,200** | **6,600** | **2,940 (8,820)** | **28.9** | **0.541** | **0.0155** |
+| LC³ on 60% of plant concrete | 3,300 | 9,900 | 4,410 (13,230) | 28.9 | 0.812 | 0.0233 |
+| Slag blend on the same 40% (fallback) | 2,288 | 6,865 | 2,576 (7,728) | 30.1 | 0.563 | 0.0161 |
+| *Cross-check:* slag in infill and forebay | 1,552 | 4,657 | 2,019 (6,057) | 30.6 | 0.405 | 0.0109 |
+| *Cross-check:* LC³ in infill and forebay | 1,734 | 5,201 | 2,304 (6,913) | 34.1 | 0.452 | 0.0122 |
 
-S3 rows are sensitivities on the baseline steel, not part of C1 (positive = lower than S0); A7 explains why only the like-for-like row compares with S2. Every life-cycle share here uses the mode-case total (383,243 t per unit), so the rows are comparable. On the Monte Carlo basis (median, with 5th–95th percentile; Appendix C4, Table C4) the shares are: S1 0.28% (0.17–0.44%); S2 0.29% (0.18–0.46%); S2b 0.46% (0.26–0.80%); S3 like-for-like 0.16% (0.06–0.30%); S3 upper bound 0.79% (0.28–1.68%); S3 world-average −1.11% (−2.11 to −0.49%). Savings exclude the construction uplift (A7).
+Monte Carlo basis (median, with 5th–95th percentile; Table C4): LC³ on 40% with eligibility, cut and volumes all varying, 2,217 t per unit (1,375–3,294) and 6,651 t for Units 2–4 (4,124–9,881), 0.35% of the life cycle (0.19–0.61%); at fixed eligibility 0.18% (20%), 0.36% (40%) and 0.54% (60%). Slag 2,140 t (1,310–3,238), 0.34% (0.18–0.60%). LC³ beats slag in 55% of draws.
 
-**Resource use per unit of output.** Clinker avoided by LC3 = 2,304 t / 1.419 × 10⁸ MWh = 0.016 kg/MWh (7.7 t/MWe). Concrete: 20,700 m³ × 2.4 t/m³ / 1.419 × 10⁸ MWh = 0.35 kg/MWh. Steel: 9,900 t / 1.419 × 10⁸ MWh = 0.070 kg/MWh.
+**Resource use per unit of output.** Clinker avoided = 2,940 t / 1.419 × 10⁸ MWh = 0.021 kg/MWh (9.8 t per MWe). Concrete: 50,000 m³ × 2.4 t/m³ / 1.419 × 10⁸ MWh = 0.85 kg/MWh. Steel: 14,000 t / 1.419 × 10⁸ MWh = 0.099 kg/MWh.
 
 ### A7. Steel, transport and construction total
 
-**Result.** Construction emits 34,381 t CO₂e per unit (0.24 g/kWh, mode case); steel emits about twice what concrete does.
+**Result.** Construction emits 57,600 t CO₂e per unit (0.406 g/kWh, mode case); concrete (19,000 t) and steel (18,520 t) are about equal.
 
-- Steel: kg CO₂e = rebar × EF_rebar + other × EF_other = 3,105 × 0.97 + 6,795 × 1.73 = 3,012 + 11,755 = **14,767 t**.
-- Transport to site (EN 15804 module A4): concrete 20,700 m³ × 2.4 t/m³ × 15 km × 0.10 kg/t-km = 74.5 t; steel 9,900 t × 500 km × 0.10 kg/t-km = 495 t; total **570 t** (distances are assumptions; the cement plant is also in Clarington [TO VERIFY]).
-- Other materials and site energy (copper, cabling, insulation, site diesel, Ontario-grid electricity, processing of equipment beyond steel production, tunnel boring): uplift of 50% (assumption, range 25–150%) on concrete + steel + transport: 0.5 × (7,584 + 14,767 + 570) = **11,460 t**.
-- **Construction total** = 7,584 + 14,767 + 570 + 11,460 = **34,381 t**, or 34,381 / 1.419 × 10⁸ MWh = **0.242 g/kWh**.
+- Concrete: 50,000 m³ × 380 = **19,000 t**. Steel: 7,500 × 0.97 + 6,500 × 1.73 = 7,275 + 11,245 = **18,520 t**.
+- Transport to site (production-stage module A4): concrete 50,000 m³ × 2.4 t/m³ × 15 km × 0.10 kg/t-km = 180 t; steel 14,000 t × 500 km × 0.10 kg/t-km = 700 t; total **880 t** (distances assumed).
+- Other materials and site energy (copper, cabling, insulation, site diesel and electricity, equipment beyond steel production, tunnel boring): 50% (assumption; range 25–150%) of concrete + steel + transport: 0.5 × 38,400 = **19,200 t**.
+- **Construction total** = 19,000 + 18,520 + 880 + 19,200 = **57,600 t**, or 57,600 / 1.419 × 10⁸ MWh = **0.406 g/kWh**.
 
-**Steel scenarios: like-for-like and whole plant.** S3 is a sensitivity, not part of C1, and only a like-for-like version compares with S2.
-- **Like-for-like (target structures only)** (`lca_scenarios.py`, S3 like-for-like): the known steel in the C1 target structures at the low-end factors of Table A4 (plate 1.22, the Buy Clean California hot-rolled-sections limit; rebar 0.89, the mill-gate limit): 953 t × (1.73 − 1.22) + 1,000 t × (0.97 − 0.89) = 486 + 80 = **566 t per unit** (Monte Carlo median 941 t, 404–1,581), against 1,734 t (median 1,742 t) for LC3. Shaft-wall module steel is unknown and excluded (as in A9), so this understates the target-structure steel; until it is known, LC3 is the larger lever within the structures C1 targets (about 3.1 times at the mode case, 1.9 at the median).
-- **Whole-plant upper bound** (`lca_scenarios.md`, S3 low): all 9,900 t of plant steel at the same factors saves 3,714 t, about 2.1 × LC3. It is an upper bound because it applies a hot-rolled-sections factor to turbine and reactor-pressure-vessel forgings and nuclear-grade plate, for which that factor is not shown to be feasible (residual-element limits and qualification are not assessed).
-- **World average** (S3 high): −8,399 t, i.e. world-average steel would add emissions.
+**Steel scenarios.** S3 is a sensitivity on the baseline steel, not part of C1; only the like-for-like row compares with C1's saving.
+- **Like-for-like (target-structure steel only):** the known steel in the structures C1 targets at the low-end factors (plate 1.22, the Buy Clean California hot-rolled-sections limit; rebar 0.89): 953 t of Unit 1 basemat-module plate (as reported in press coverage of the module lift) × (1.73 − 1.22) + 1,000 t of forebay rebar (Ontario Power Generation, 2025c) × (0.97 − 0.89) = 486 + 80 = **566 t per unit**. Shaft-wall module steel is unknown and excluded, so this is a floor.
+- **Whole-plant upper bound:** all 14,000 t at the same low factors: 7,500 × 0.08 + 6,500 × 0.51 = 600 + 3,315 = **3,915 t**. It is an upper bound because it applies a hot-rolled-sections factor to forgings and nuclear-grade plate, for which that factor is not shown to be feasible.
+- **World average:** all steel at the high-range factors (rebar 1.99, plate 2.50): **−12,655 t**; world-average steel would add emissions.
 
-*Table A7. Construction inventory per unit (S0, central case).*
-*Source: `results/lca_baseline.md`.*
+*Table A7b. Further scenarios: slag elsewhere and steel (S2b, S3), mode case and Monte Carlo (median, 5th–95th percentile).*
+*Source: `results/lca_scenarios.md` and `lca_uncertainty.md`. S3 rows are steel sensitivities, not part of C1; negative means more emissions than the baseline.*
 
-| Item | Quantity | Factor | t CO₂e |
-|---|---|---|---:|
-| DPSC reactor-building infill (basemat + shaft walls) | 9,081 m³ | 414.3 kg CO₂e/m³ | 3,762 |
-| Forebay shaft (condenser cooling water) | 4,000 m³ | 328.9 kg CO₂e/m³ | 1,316 |
-| Other plant concrete | 7,619 m³ | 328.9 kg CO₂e/m³ | 2,506 |
-| Reinforcing steel (whole plant) | 3,105 t | 0.97 t CO₂e/t | 3,012 |
-| Plate, structural and equipment steel (incl. DPSC faceplates) | 6,795 t | 1.73 t CO₂e/t | 11,755 |
-| Transport to site | — | 0.10 kg CO₂e/t-km | 570 |
-| Other materials and site energy | — | +50% of the above | 11,460 |
-| **Construction total** | | | **34,381** |
+| Scenario | Saving t CO₂e/unit: mode case; Monte Carlo | Units 2–4 t | Share of life cycle: mode case; Monte Carlo |
+|---|---|---|---|
+| S2b: LC³ on 40% plus slag in all other concrete (upper bound) | 5,633; 5,517 (4,346–6,841) | 16,898 | 1.39%; 0.89% (0.57–1.36) |
+| S3 like-for-like: target-structure steel only | 566; 940 (415–1,580) | 1,698 | 0.14%; 0.15% (0.06–0.28) |
+| S3 upper bound: all steel, best-practice sections factors | 3,915; 6,428 (2,521–11,486) | 11,745 | 0.96%; 1.03% (0.38–2.04) |
+| S3 world-average steel | −12,655; −9,914 (−14,037 to −4,904) | −37,965 | −3.11%; −1.56% (−2.70 to −0.72) |
+
+At the mode case LC³'s 2,200 t is 3.9 times the like-for-like steel saving (2.4 times at the Monte Carlo median) and 0.6 times the whole-plant upper bound (0.3 at the median). Within the structures C1 targets, concrete is the bigger lever; across the plant, steel is.
 
 ### A8. Fuel cycle and life-cycle total
 
-**Result.** The fuel front end emits 1.46 g/kWh in the mode case (54%) and 2.75 g/kWh on the expected basis (64%, Appendix C4). Four units need about 196 t of natural uranium and 138 tSWU a year.
+**Result.** The fuel front end emits 1.46 g/kWh in the mode case (51%) and 2.76 g/kWh on the expected basis (62%, Appendix C3). Four units need about 196 t of natural uranium and 138 tSWU a year.
 
-Mass balance (inputs: burnup B = 45 GWd/t [placeholder, assumption]; product assay x_p = 3.8% U-235 [placeholder; [TODO: authors], 2025]; feed x_f = 0.711%; tails x_t = 0.25% [assumption]):
+Mass balance (inputs: burnup B = 45 GWd/t, a placeholder; product assay x_p = 3.8% U-235, a placeholder from Sun and Kurosaki, 2025; feed x_f = 0.711%; tails x_t = 0.25%, an assumption):
 - Electricity per kg of enriched uranium = B × 24,000 kWh_th per kg per (GWd/t) × η = 45 × 24,000 × 0.345 = 372,414 kWh, so **2.685 g enriched U per MWh**.
 - Feed factor F = (x_p − x_t) / (x_f − x_t) = (3.8 − 0.25) / (0.711 − 0.25) = **7.70**, so **20.68 g natural U per MWh**.
 - Separative work per kg of product = V(x_p) + (F − 1) V(x_t) − F V(x_f), with V(x) = (2x − 1) ln[x / (1 − x)]: 2.986 + 6.70 × 5.959 − 7.70 × 4.869 = **5.42 SWU/kg**, so **0.0146 SWU per MWh**.
@@ -1008,8 +1029,8 @@ Stage emissions, kg CO₂e per MWh (= g/kWh), mode case:
 - Enrichment = 0.002685 × 5.42 × 50 kWh/SWU × 0.373 = **0.272**.
 - Fabrication = 0.002685 × 36 kWh × 0.373 = **0.036**.
 
-*Table A8. Fuel demand.*
-*Source: `results/lca_baseline.md`. Inputs are placeholders until Leroy supplies BWRX-300 fuel data.*
+*Table A8a. Fuel demand.*
+*Source: `results/lca_baseline.md`. Inputs are placeholders until BWRX-300 fuel data are available.*
 
 | Quantity | Per MWh | One unit per year | Four units per year |
 |---|---:|---:|---:|
@@ -1017,54 +1038,31 @@ Stage emissions, kg CO₂e per MWh (= g/kWh), mode case:
 | Natural uranium | 20.68 g | 48.9 t U | 195.6 t U |
 | Separative work | 0.0146 SWU | 34.4 tSWU | 137.7 tSWU |
 
-*Table A9. Life-cycle emissions by stage, mode case (every input at its central value).*
-*Source: `results/lca_baseline.md`. The expected-value breakdown quoted in §6 is in Appendix C4.*
+*Table A8b. Life-cycle emissions by stage, mode case (every input at its central value).*
+*Source: `results/lca_baseline.md`. The expected-value breakdown quoted in §6 is in Appendix C3.*
 
 | Stage | g CO₂e/kWh | t CO₂e per unit (life) | Share |
 |---|---:|---:|---:|
-| Fuel: mining and milling | 1.024 | 145,336 | 37.9% |
-| Back end: spent fuel and disposal | 0.560 | 79,471 | 20.7% |
-| Operation and maintenance | 0.330 | 46,831 | 12.2% |
-| Fuel: enrichment | 0.272 | 38,530 | 10.1% |
-| Fuel: conversion | 0.127 | 17,967 | 4.7% |
-| Decommissioning | 0.110 | 15,610 | 4.1% |
-| Construction: plate, structural and equipment steel | 0.083 | 11,755 | 3.1% |
-| Construction: other materials and site energy | 0.081 | 11,460 | 3.0% |
-| Construction: concrete | 0.053 | 7,584 | 2.0% |
+| Fuel: mining and milling | 1.024 | 145,336 | 35.8% |
+| Back end: spent fuel and disposal | 0.560 | 79,471 | 19.6% |
+| Operation and maintenance | 0.330 | 46,831 | 11.5% |
+| Fuel: enrichment | 0.272 | 38,530 | 9.5% |
+| Construction: other materials and site energy | 0.135 | 19,200 | 4.7% |
+| Construction: concrete | 0.134 | 19,000 | 4.7% |
+| Fuel: conversion | 0.127 | 17,967 | 4.4% |
+| Decommissioning | 0.110 | 15,610 | 3.8% |
+| Construction: plate, structural and equipment steel | 0.079 | 11,245 | 2.8% |
+| Construction: rebar | 0.051 | 7,275 | 1.8% |
 | Fuel: fabrication | 0.036 | 5,117 | 1.3% |
-| Construction: rebar | 0.021 | 3,012 | 0.8% |
-| Construction: transport to site | 0.004 | 570 | 0.1% |
-| **Total** | **2.701** | **383,243** | **100%** |
-| *Of which C1 target concrete (DPSC infill + forebay)* | *0.036* | *5,078* | *1.3%* |
+| Construction: transport to site | 0.006 | 880 | 0.2% |
+| **Total** | **2.864** | **406,462** | **100%** |
+| *Of which C1-eligible concrete (40% of plant)* | *0.054* | *7,600* | *1.9%* |
 
-Grouped (mode case): fuel front end 1.458 g/kWh (54.0%); back end and decommissioning 0.670 (24.8%); O&M 0.330 (12.2%); construction 0.242 (9.0%).
+Grouped (mode case): fuel front end 1.458 g/kWh (50.9%); back end and decommissioning 0.670 (23.4%); O&M 0.330 (11.5%); construction 0.406 (14.2%).
 
-### A9. Granta EduPack Eco Audit cross-check [TODO: Granta cross-check, H2 due Thu 12:00; cut if not run]
+### A9. Granta EduPack Eco Audit
 
-**Status.** A Granta EduPack Eco Audit cross-check of the C1 target structures is set up but **has not been run**. Granta runs only on the team's machines; until the export is saved in `03_LCA_Calculations/results/granta/`, no number in the report comes from Granta. Purpose: an independent check of the construction-material factors where C1 acts, and the screenshot for this appendix (R2.2).
-
-**Set-up** (full instructions in `results/granta_inputs.md`; under one hour):
-- Product: "BWRX-300 Darlington unit, C1 target structures, S0"; life 60 years; static (no use-phase energy).
-- Bill of materials: DPSC infill concrete 21,794 t (9,081 m³ × 2.4 t/m³); forebay concrete 9,600 t; forebay rebar 1,000 t (recycled content from the CRSI EPD [TODO]); DPSC basemat steel 953 t. Shaft-wall module steel is unknown and left out.
-- Transport: concrete 15 km and steel 500 km by heavy truck.
-- End of life: concrete downcycled, steel recycled; the end-of-life potential is reported separately and not netted (cut-off approach, §6.1).
-- Scenarios, if custom materials are allowed: scale the concrete record's CO₂ footprint by 0.693 (S1) and 0.657 (S2) for the infill, and 0.699 (S1) and 0.664 (S2) for the forebay.
-- Record: EduPack version, database, date and operator [TODO].
-
-*Table A10. Granta Eco Audit against the model (EN 15804 A1–A3 materials, central case, S0 as defined in A6). No Granta values exist yet; the table is ready to fill from the export. [TODO: Granta cross-check, H2 due Thu 12:00; cut if not run]*
-*Source: model values from `results/granta_inputs.md` §7; Granta values [TODO: results pending, H2].*
-
-| Row | Model t CO₂e | Model kg CO₂e/kg | Granta t CO₂e | Difference |
-|---|---:|---:|---|---|
-| DPSC infill concrete (S0) | 3,762 | 0.173 | [TODO: results pending] | [TODO] |
-| Forebay concrete (S0) | 1,316 | 0.137 | [TODO: results pending] | [TODO] |
-| Forebay rebar | 970 | 0.97 | [TODO: results pending] | [TODO] |
-| DPSC basemat steel | 1,649 | 1.73 | [TODO: results pending] | [TODO] |
-| **Total, materials** | **7,697** | | [TODO: results pending] | [TODO] |
-| Transport | about 145 | | [TODO: results pending] | [TODO] |
-| S2 LC3 saving, concrete rows | 1,734 | | [TODO: results pending] | [TODO] |
-
-How the comparison will be read: within about ±30% per row, Granta confirms the model. If Granta's concrete is much lower, its generic concrete probably has less cement than a nuclear self-consolidating mix; if its steel is much higher, its default is probably virgin steel. Either way both values are reported and the model is not adjusted to match. If the run is not done by the freeze, this subsection is cut and §6 relies on the equivalent analysis alone.
+A Granta EduPack Eco Audit cross-check was planned but not completed; the screening model in Appendix A is the basis of all results.
 
 ---
 
@@ -2021,149 +2019,241 @@ The 78% is a subtraction (20.9 − 2.00 − 1.00 − 0.97 − 0.70 = 16.23), not
 
 ## Appendix C. Sensitivity: tornado and Monte Carlo set-up and results
 
-This appendix shows how uncertain the §6 results are and which inputs drive them. **The life-cycle intensity is uncertain mainly through the fuel inputs (conversion heat, mining, back end, burnup, enrichment); the LC3 saving is uncertain mainly through the LC3 emission cut, the DPSC geometry and the infill mix.** All ranges come from `parameters_lca.yaml`; every input is [TO VERIFY], an assumption or a placeholder, so the intervals describe the uncertainty in our *inputs as found*, not in verified data.
+This appendix shows how uncertain the §6 results are and which inputs drive them. **The life-cycle intensity is uncertain mainly through the fuel inputs (conversion heat, mining, back end, burnup, enrichment); C1's saving is uncertain mainly through the eligible share, the LC³ cut and the plant concrete volume.** All ranges come from `parameters_lca.yaml`. The Ostrołęka and Pillai tables could not be opened and other inputs are as reported by secondary sources, assumptions or placeholders, so the intervals describe the uncertainty in our inputs as found, not in verified data.
 
 ### C1. Set-up
 
-- **Tornado (one at a time).** Each of the 40 ranged inputs is set to its low and then its high value, with every other input at its central value. Outputs: life-cycle g CO₂e/kWh and the LC3 saving (t CO₂e per unit). Inputs are ranked by the swing in life-cycle intensity.
-- **Monte Carlo.** N = 20,000 draws; seed 20261021; generator `numpy.random.default_rng`. All 40 inputs are drawn **independently**: triangular (low, central, high) for 39 of them, and uniform 300–315 MWe for net output (the two values in the sources). Fixed parameters (thermal power, feed assay, U₃O₈ stoichiometry, the gas heat factor, the forebay rebar, the basemat steel and the module diameter) are not drawn.
+- **Tornado (one at a time).** Each of the 45 ranged inputs is set to its low and then its high value, with every other input at its central value. Outputs: life-cycle g CO₂e/kWh and C1's saving (t CO₂e per unit, at 40% eligibility).
+- **Monte Carlo.** N = 20,000 draws; seed 20261021; generator `numpy.random.default_rng`. All 45 inputs are drawn **independently**: triangular (low, central, high) except net output, uniform 300–315 MWe. Twenty-nine inputs affect the main case; the other 16 are bottom-up only and drive the cross-check on the same draws. Fixed (not drawn): thermal power, feed assay, U₃O₈ stoichiometry, the gas heat factor, forebay rebar, basemat steel and module diameter.
+- **C1 in the draws.** Eligibility is drawn (triangular 0.2/0.4/0.6) in the headline saving; the 20/40/60% scenarios hold it fixed while everything else varies. Each draw's saving is divided by the same draw's life-cycle total.
+- **Cross-check rule.** If a bottom-up draw's whole-plant concrete falls below the cross-check C1 volume, the plant volume is set equal to it: 696 of 20,000 draws (3.5%). The main case never clips.
 - **Outputs.** 5th, 50th and 95th percentiles and the mean. Stage means are additive, so they sum to the expected total.
-- **Rule for small plants.** If a draw's scaled whole-plant concrete is below the C1 target volume, the plant volume is set equal to the target. This happened in 706 of 20,000 draws (3.5%).
-- **Mode case vs expected value.** The "mode case" (2.70 g/kWh) has every input at its central, most likely value. The expected value (Monte Carlo mean, 4.28) and median (4.18) include the skew of the ranges (C5).
-- **Reproduce:** `python3 -I 03_LCA_Calculations/scripts/lca_uncertainty.py` (writes `results/lca_uncertainty.md`, `lca_tornado.csv`, `lca_montecarlo_summary.csv`, `lca_stages_expected.csv` and Figures F2–F5).
+- **Reproduce:** `python3 -I 03_LCA_Calculations/scripts/lca_uncertainty.py`.
 
 ### C2. Ranged inputs and tornado results
 
-**Result.** Five fuel-cycle inputs each move the life-cycle total by more than 0.6 g/kWh. No concrete input moves it by more than 0.07 g/kWh; steel intensity moves it by 0.17.
+**Result.** Five fuel-cycle inputs each move the life-cycle total by more than 0.6 g/kWh. No concrete input moves it by more than 0.06 g/kWh; plant steel moves it by 0.11 and the construction uplift by 0.34.
 
-*Table C1. The 40 ranged inputs, their sources, and the tornado results (ranked by swing in life-cycle intensity).*
-*Source: `parameters_lca.yaml`; `results/lca_uncertainty.md`. Status: V = TO VERIFY (search lead), A = assumption, P = placeholder for Leroy's plant data. Distribution triangular unless stated. "—" = no effect on the LC3 saving (1,734 t). Low / central / high are model input bounds, not result intervals (results are in Table C2).*
+*Table C2. The 29 ranged inputs that affect the main case, their basis and tornado results (ranked by swing in life-cycle intensity; the other 16 are listed below).*
+*Source: `parameters_lca.yaml`; `results/lca_tornado.csv`. P = placeholder, A = assumption; other rows are as reported by the source named. Distribution triangular unless stated. "—" = no effect on C1's saving (2,200 t at 40% eligibility). Low, central and high are model input bounds, not result intervals.*
 
-| # | Input (unit) | Low / central / high | Source | Status | Life-cycle g/kWh at low → high (swing) | LC3 saving t at low → high |
-|---:|---|---|---|---|---|---|
-| 1 | Conversion heat (kWh/kg U) | 26 / 26 / 665 | Gibon and Hahn Menacho (2023) | V | 2.701 → 5.370 (2.669) | — |
-| 2 | Mining and milling (kg CO₂e/kg U₃O₈) | 24 / 42 / 81 | Parker, McNaughton and Sparrow (2016) | V | 2.262 → 3.652 (1.390) | — |
-| 3 | Back end (g/kWh) | 0.28 / 0.56 / 1.11 | EDF R&D (2024); range assumed | V | 2.421 → 3.251 (0.830) | — |
-| 4 | Burnup (GWd/t) | 35 / 45 / 55 | Assumption | P | 3.117 → 2.435 (0.682) | — |
-| 5 | Enrichment (% U-235) | 3.4 / 3.8 / 4.95 | [TODO: authors] (2025); low assumed | P | 2.530 → 3.193 (0.663) | — |
-| 6 | O&M (g/kWh) | 0.17 / 0.33 / 0.67 | EDF R&D (2024); range assumed | V | 2.541 → 3.041 (0.500) | — |
-| 7 | Enrichment-plant grid (kg CO₂e/kWh) | 0.05 / 0.373 / 0.637 | US EPA (2024), CO₂ only; low assumed | V | 2.466 → 2.893 (0.427) | — |
-| 8 | Centrifuge energy (kWh/SWU) | 40 / 50 / 100 | Gibon and Hahn Menacho (2023) | V | 2.646 → 2.972 (0.326) | — |
-| 9 | Decommissioning (g/kWh) | 0.06 / 0.11 / 0.33 | EDF R&D (2024); range assumed | V | 2.651 → 2.921 (0.270) | — |
-| 10 | Other construction uplift (fraction) | 0.25 / 0.5 / 1.5 | Assumption | A | 2.660 → 2.862 (0.202) | — |
-| 11 | Design life (years) | 40 / 60 / 80 | Canadian Nuclear Safety Commission (2024); bounds assumed | V | 2.822 → 2.640 (0.182) | — |
-| 12 | Steel intensity (t/MWe) | 16.5 / 33 / 46 | Peterson, Zhao and Petroski (2005); GE Vernova (n.d.) | V | 2.607 → 2.774 (0.167) | — |
-| 13 | Tails assay (% U-235) | 0.20 / 0.25 / 0.30 | Assumption | A | 2.636 → 2.796 (0.160) | — |
-| 14 | Plate, structural and equipment steel (t CO₂e/t) | 1.22 / 1.73 / 2.50 | American Institute of Steel Construction (2022); high assumed | V | 2.664 → 2.756 (0.092) | — |
-| 15 | Conversion grid, Ontario (kg CO₂e/kWh) | 0.035 / 0.0738 / 0.343 | The Atmospheric Fund (2025); Canada Energy Regulator (n.d.) | V | 2.691 → 2.766 (0.075) | — |
-| 16 | Net output (MWe), uniform | 300 / 300 / 315 | GE Vernova Hitachi Nuclear Energy (n.d.); OPG filing | P | 2.701 → 2.631 (0.070) | — |
-| 17 | Concrete intensity (m³/MWe) | 34.5 / 69 / 138 | Peterson, Zhao and Petroski (2005); GE Vernova (n.d.) | V | 2.683 → 2.748 (0.065) | — |
-| 18 | Capacity factor | 0.80 / 0.90 / 0.95 | Assumption | P | 2.731 → 2.688 (0.043) | — |
-| 19 | Fabrication grid (kg CO₂e/kWh) | 0.20 / 0.373 / 0.637 | US EPA (2024), CO₂ only; low assumed | V | 2.684 → 2.726 (0.042) | — |
-| 20 | Rebar (t CO₂e/t) | 0.89 / 0.97 / 1.99 | Concrete Reinforcing Steel Institute (2017, superseded by 2022 EPD); American Institute of Steel Construction (2022); Circular Ecology (2019) | V | 2.698 → 2.734 (0.036) | — |
-| 21 | Rebar ratio (t/m³) | 0.10 / 0.15 / 0.25 | Assumption (high = forebay) | A | 2.709 → 2.684 (0.025) | — |
-| 22 | Steel transport (km) | 100 / 500 / 1,500 | Assumption | A | 2.696 → 2.711 (0.015) | — |
-| 23 | Fabrication energy (kWh/kg U) | 36 / 36 / 50 | Gibon and Hahn Menacho (2023) | V | 2.701 → 2.715 (0.014) | — |
-| 24 | Binder, other concrete (kg/m³) | 300 / 350 / 420 | Assumption | A | 2.695 → 2.708 (0.013) | 1,670 → 1,822 |
-| 25 | Binder, DPSC infill (kg/m³) | 400 / 450 / 550 | EFNARC (2005); central and high assumed | V | 2.697 → 2.709 (0.012) | 1,590 → 2,021 |
-| 26 | Conversion electricity (kWh/kg U) | 10.3 / 11.8 / 16.9 | Gibon and Hahn Menacho (2023) | V | 2.698 → 2.708 (0.010) | — |
-| 27 | Non-binder concrete share (kg CO₂e/m³) | 15 / 30 / 60 | Assumption | A | 2.697 → 2.707 (0.010) | — |
-| 28 | GU cement (kg CO₂e/t) | 796 / 854 / 898 | Cement Association of Canada (2022); range is the West–East regional spread | V | 2.696 → 2.704 (0.009) | 1,616 → 1,823 |
-| 29 | Truck factor (kg CO₂e/t-km) | 0.06 / 0.10 / 0.15 | Assumption | A | 2.698 → 2.704 (0.005) | — |
-| 30 | DPSC wall thickness (m) | 1.0 / 1.5 / 2.0 | Assumption | A | 2.699 → 2.702 (0.003) | 1,464 → 1,995 |
-| 31 | Concrete transport (km) | 5 / 15 / 50 | Assumption | A | 2.700 → 2.702 (0.002) | — |
-| 32 | DPSC basemat thickness (m) | 2.0 / 3.0 / 4.0 | Assumption | A | 2.700 → 2.702 (0.002) | 1,581 → 1,886 |
-| 33 | Shaft depth (m) | 35 / 35 / 38 | okdiario (2026), a news report citing an OPG story not found; high = containment height, GE Vernova Hitachi Nuclear Energy (n.d.) | V | 2.701 → 2.701 (<0.001) | 1,734 → 1,805 |
-| 34 | Forebay concrete (m³) | 4,000 / 4,000 / 6,000 | Ontario Power Generation (2025); high assumed | V | 2.701 → 2.701 (0) | 1,734 → 1,955 |
-| 35 | Slag cement (kg CO₂e/t) | 93.4 / 146.6 / 146.6 | Slag Cement Association (n.d.) | V | no change (S1 only) | — |
-| 36 | GU clinker factor | 0.90 / 0.92 / 0.95 | Assumption | A | no change (clinker tonnage only) | — |
-| 37 | Slag share of binder, S1 | 0.25 / 0.40 / 0.50 | Assumption | A | no change (S1 only) | — |
-| 38 | LC3 clinker factor | 0.50 / 0.50 / 0.55 | Scrivener et al. (2018) | V | no change (clinker tonnage only) | — |
-| 39 | LC3 binder emission cut | 0.30 / 0.37 / 0.43 | Five estimates (Appendix A5) | V | no change | 1,406 → 2,015 |
-| 40 | Extra binder LC3 needs for flow | 0 / 0 / 0.10 | Assumption | A | no change | 1,734 → 1,438 |
+| # | Input (unit) | Low / central / high | Basis | Life-cycle g/kWh at low → high (swing) | C1 saving t at low → high |
+|---:|---|---|---|---|---|
+| 1 | Conversion heat (kWh/kg U) | 26 / 26 / 665 | Gibon and Hahn Menacho (2023) | 2.864 → 5.533 (2.669) | — |
+| 2 | Mining and milling (kg CO₂e/kg U₃O₈) | 24 / 42 / 81 | Parker, McNaughton and Sparrow (2016) | 2.425 → 3.815 (1.390) | — |
+| 3 | Back end (g/kWh) | 0.28 / 0.56 / 1.11 | EDF R&D (2024); range A | 2.584 → 3.414 (0.830) | — |
+| 4 | Burnup (GWd/t) | 35 / 45 / 55 | P | 3.281 → 2.599 (0.682) | — |
+| 5 | Enrichment (% U-235) | 3.4 / 3.8 / 4.95 | Sun and Kurosaki (2025); low A; P | 2.694 → 3.357 (0.663) | — |
+| 6 | O&M (g/kWh) | 0.17 / 0.33 / 0.67 | EDF R&D (2024); range A | 2.704 → 3.204 (0.500) | — |
+| 7 | Enrichment-plant grid (kg CO₂e/kWh) | 0.05 / 0.373 / 0.637 | US EPA (2024), CO₂ only; low A | 2.629 → 3.056 (0.427) | — |
+| 8 | Other construction uplift (fraction) | 0.25 / 0.5 / 1.5 | A | 2.797 → 3.135 (0.338) | — |
+| 9 | Centrifuge energy (kWh/SWU) | 40 / 50 / 100 | Gibon and Hahn Menacho (2023) | 2.810 → 3.136 (0.326) | — |
+| 10 | Design life (years) | 40 / 60 / 80 | Canadian Nuclear Safety Commission (2024); bounds A | 3.067 → 2.763 (0.304) | — |
+| 11 | Decommissioning (g/kWh) | 0.06 / 0.11 / 0.33 | EDF R&D (2024); range A | 2.814 → 3.084 (0.270) | — |
+| 12 | Tails assay (% U-235) | 0.20 / 0.25 / 0.30 | A | 2.800 → 2.960 (0.160) | — |
+| 13 | Plant steel per unit (t) | 11,200 / 14,000 / 16,800 | BWRX-300 Ostrołęka sp. z o.o. (2023), as reported; ±20% A | 2.812 → 2.917 (0.105) | — |
+| 14 | Net output (MWe), uniform | 300 / 300 / 315 | GE Vernova Hitachi Nuclear Energy (n.d.); Ontario Power Generation (2025b); P | 2.864 → 2.775 (0.089) | — |
+| 15 | Plate and equipment steel (t CO₂e/t) | 1.22 / 1.73 / 2.50 | American Institute of Steel Construction (2022); high A | 2.829 → 2.917 (0.088) | — |
+| 16 | Rebar factor (t CO₂e/t) | 0.89 / 0.97 / 1.99 | Concrete Reinforcing Steel Institute (2017); American Institute of Steel Construction (2022); Circular Ecology (2019) | 2.858 → 2.945 (0.087) | — |
+| 17 | Conversion-plant grid, Ontario (kg CO₂e/kWh) | 0.035 / 0.0738 / 0.343 | The Atmospheric Fund (2025); Canada Energy Regulator (n.d.) | 2.855 → 2.930 (0.075) | — |
+| 18 | Capacity factor | 0.80 / 0.90 / 0.95 | P | 2.915 → 2.843 (0.072) | — |
+| 19 | Rebar ratio (t/m³) | 0.10 / 0.15 / 0.25 | A (high = forebay) | 2.884 → 2.824 (0.060) | — |
+| 20 | Plant concrete per unit (m³) | 40,000 / 50,000 / 60,000 | BWRX-300 Ostrołęka sp. z o.o. (2023), as reported; ±20% A | 2.836 → 2.893 (0.057) | 1,760 → 2,640 |
+| 21 | OPC concrete factor (kg CO₂e/m³) | 330 / 380 / 420 | Pillai et al. (2019), as reported; range from Canadian Ready-Mixed Concrete Association (2022) | 2.838 → 2.885 (0.048) | 1,911 → 2,432 |
+| 22 | Fabrication-plant grid (kg CO₂e/kWh) | 0.20 / 0.373 / 0.637 | US EPA (2024), CO₂ only; low A | 2.848 → 2.890 (0.042) | — |
+| 23 | Steel haul distance (km) | 100 / 500 / 1,500 | A | 2.858 → 2.879 (0.021) | — |
+| 24 | Fabrication energy (kWh/kg U) | 36 / 36 / 50 | Gibon and Hahn Menacho (2023) | 2.864 → 2.878 (0.014) | — |
+| 25 | Conversion electricity (kWh/kg U) | 10.3 / 11.8 / 16.9 | Gibon and Hahn Menacho (2023) | 2.862 → 2.872 (0.010) | — |
+| 26 | Truck factor (kg CO₂e/t-km) | 0.06 / 0.10 / 0.15 | A | 2.861 → 2.869 (0.008) | — |
+| 27 | Concrete haul distance (km) | 5 / 15 / 50 | A | 2.863 → 2.869 (0.006) | — |
+| 28 | LC³ cut in concrete emissions | 0.22 / 0.289 / 0.39 | Pillai et al. (2019), as reported; range A | no change | 1,672 → 2,964 |
+| 29 | Eligible share of plant concrete | 0.2 / 0.4 / 0.6 | A: non-safety works first | no change | 1,100 → 3,300 |
 
-### C3. What the tornado shows
+The other 16 inputs affect only the bottom-up cross-check: concrete intensity (34.5 / 69 / 138 m³/MWe) and steel intensity (16.5 / 33 / 46 t/MWe; Peterson, Zhao and Petroski, 2005; GE Vernova, n.d.); forebay concrete (4,000 / 4,000 / 6,000 m³; Ontario Power Generation, 2025c); shaft depth, basemat and wall thicknesses; binder contents (infill 400 / 450 / 550 kg/m³, EFNARC, 2005; other 300 / 350 / 420); GU cement (796 / 854 / 898 kg CO₂e/t; Cement Association of Canada, 2022); slag cement (93.4 / 146.6 / 146.6; Slag Cement Association, n.d.); non-binder share (15 / 30 / 60 kg CO₂e/m³); GU and LC³ clinker factors; slag share of binder (0.25 / 0.40 / 0.50); the binder-level LC³ cut (0.30 / 0.37 / 0.43; five estimates, Appendix A5); and extra binder LC³ needs to flow (0 / 0 / 0.10). All are assumptions or as-reported values.
 
-**Life-cycle intensity (Figure F3, left).** The ranking is dominated by the fuel chain. Conversion heat alone could double the result, because the published heat demand spans a factor of 25 (26–665 kWh/kg U). The mining factor ranks second because ore grade varies widely between Saskatchewan mines. Higher burnup *lowers* the result (less uranium per MWh), and higher enrichment raises it (more separative work). Of the construction inputs, only the uplift (0.20) and steel intensity (0.17) exceed 0.1 g/kWh.
+### C3. What the tornado shows, and where the emissions arise
 
-**LC3 saving (Figure F3, right).** The saving depends on the LC3 emission cut (swing 609 t), DPSC wall thickness (532 t), infill binder content (430 t), basemat thickness (306 t), extra binder for flow (295 t), forebay volume (221 t) and the cement factor (207 t). The first two are the LC3 literature and OPG's drawings. Of the next three, binder content and extra binder are mix design and basemat thickness is geometry. Even at the lowest single-input value (1,406 t), LC3 saves more than the largest geometric swing, so the saving is robust in sign but uncertain by about ±20–25%.
+**Life-cycle intensity (Figure F3, left).** The ranking is dominated by the fuel chain. Conversion heat alone could double the result, because the published heat demand spans a factor of 25 (26–665 kWh/kg U). The mining factor ranks second because ore grade varies widely between Saskatchewan mines. Higher burnup *lowers* the result (less uranium per MWh) and higher enrichment raises it (more separative work). Of the construction inputs, only the uplift (0.34) and plant steel (0.11) exceed 0.1 g/kWh.
 
-### C4. Monte Carlo results
-
-**Result.** Life-cycle intensity: **median 4.18, 90% interval 3.05–5.85 g CO₂e/kWh**. LC3 saving: **median 1,742 t per unit (1,387–2,153)**, **5,225 t for Units 2–4 (4,161–6,458)**. LC3 saves more than slag in **64%** of draws.
-
-*Table C2. Monte Carlo outputs (20,000 draws, seed 20261021).*
-*Source: `results/lca_uncertainty.md`, `lca_montecarlo_summary.csv`.*
-
-| Output | Mode case | Mean | P5 | P50 | P95 |
-|---|---:|---:|---:|---:|---:|
-| Life-cycle intensity (g CO₂e/kWh) | 2.701 | 4.279 | 3.048 | 4.178 | 5.849 |
-| Fuel front end (g/kWh) | 1.458 | 2.746 | 1.590 | 2.634 | 4.272 |
-| of which mining and milling (g/kWh) | 1.024 | 1.258 | 0.753 | 1.214 | 1.891 |
-| Construction (g/kWh) | 0.242 | 0.321 | 0.198 | 0.309 | 0.484 |
-| Whole-plant concrete (m³ per unit) | 20,700 | 24,809 | 15,050 | 24,066 | 36,521 |
-| C1 target concrete (m³ per unit) | 13,081 | 13,903 | 12,216 | 13,894 | 15,606 |
-| LC3 saving (t CO₂e per unit) | 1,734 | 1,752 | 1,387 | 1,742 | 2,153 |
-| LC3 saving, Units 2–4 (t CO₂e) | 5,201 | 5,256 | 4,161 | 5,225 | 6,458 |
-| LC3 saving as share of the unit's life cycle (%) | 0.452 | 0.304 | 0.185 | 0.295 | 0.455 |
-| Slag (S1) saving (t CO₂e per unit) | 1,552 | 1,649 | 1,205 | 1,642 | 2,113 |
-| LC3 minus slag (t CO₂e per unit) | 181 | 103 | −343 | 97 | 574 |
-| Life-cycle intensity, conversion heat fixed at 26 kWh/kg U (Gibon and Hahn Menacho, 2023; [TO VERIFY]) (g CO₂e/kWh) | 2.701 | 3.342 | 2.623 | 3.310 | 4.175 |
-| Life-cycle intensity, conversion heat log-uniform 26–665 (g CO₂e/kWh) | 2.701 | 4.096 | 2.886 | 3.912 | 5.906 |
-
-The whole-plant concrete median (24,066 m³) sits above the central value (20,700 m³) because its input range is right-skewed (34.5–69–138 m³/MWe). **The 90% interval, about 15,050–36,521 m³, is the concrete range to quote**; the input bounds (10,350–41,400 m³) are not results, and the clip rule (C1) also lifts the low tail. The LC3-minus-slag interval spans zero: the two options cannot be separated on carbon with present data. If OPG's baseline mix already contains slag (§6.1, A6), the same row is LC3's increment over business as usual. The last two rows test whether the headline median depends on the triangular shape chosen for conversion heat (C5): the other 39 inputs use the same 20,000 draws, and only conversion heat changes. **It does: the median ranges from 3.31 to 4.18 g CO₂e/kWh** (LC3's share of the life cycle, 0.37% to 0.295%). The share row in this table is for LC3 only; Table C4 gives every scenario.
+**C1's saving (Figure F3, right).** Four inputs move it: the eligible share (swing 2,200 t), the LC³ cut (1,292 t), plant concrete volume (880 t) and the OPC factor (521 t). No other input moves it. The first is our scenario; the second and fourth come from Pillai et al. (2019), and the third from the Ostrołęka sheet. Even at its lowest single-input value (1,100 t at 20% eligibility), C1 saves more than any other input's swing excluding eligibility.
 
 *Table C3. Expected life-cycle emissions by stage (Monte Carlo mean) against the mode case.*
 *Source: `results/lca_uncertainty.md`; last column is our subtraction (mean − mode).*
 
 | Stage | Mode case g/kWh | Mean g/kWh | P5 | P95 | Share of mean | Mean − mode |
 |---|---:|---:|---:|---:|---:|---:|
-| Fuel: mining and milling | 1.024 | 1.258 | 0.753 | 1.891 | 29.4% | +0.234 |
-| Fuel: conversion | 0.127 | 1.094 | 0.227 | 2.390 | 25.6% | +0.967 |
-| Back end: spent fuel and disposal | 0.560 | 0.654 | 0.389 | 0.963 | 15.3% | +0.094 |
-| Operation and maintenance | 0.330 | 0.391 | 0.235 | 0.579 | 9.1% | +0.061 |
-| Fuel: enrichment | 0.272 | 0.351 | 0.130 | 0.632 | 8.2% | +0.079 |
-| Decommissioning | 0.110 | 0.167 | 0.086 | 0.276 | 3.9% | +0.057 |
-| Construction: other materials and site energy | 0.081 | 0.138 | 0.060 | 0.252 | 3.2% | +0.057 |
-| Construction: plate, structural and equipment steel | 0.083 | 0.073 | 0.021 | 0.133 | 1.7% | −0.010 |
-| Construction: concrete | 0.053 | 0.066 | 0.040 | 0.102 | 1.5% | +0.013 |
-| Fuel: fabrication | 0.036 | 0.044 | 0.027 | 0.063 | 1.0% | +0.007 |
-| Construction: rebar | 0.021 | 0.038 | 0.018 | 0.068 | 0.9% | +0.017 |
-| Construction: transport to site | 0.004 | 0.006 | 0.002 | 0.012 | 0.1% | +0.002 |
-| **Total** | **2.701** | **4.279** | | | **100%** | **+1.578** |
+| Fuel: mining and milling | 1.024 | 1.261 | 0.760 | 1.915 | 28.1% | +0.237 |
+| Fuel: conversion | 0.127 | 1.105 | 0.228 | 2.392 | 24.6% | +0.978 |
+| Back end: spent fuel and disposal | 0.560 | 0.651 | 0.387 | 0.961 | 14.5% | +0.091 |
+| Operation and maintenance | 0.330 | 0.390 | 0.233 | 0.577 | 8.7% | +0.060 |
+| Fuel: enrichment | 0.272 | 0.355 | 0.133 | 0.634 | 7.9% | +0.083 |
+| Construction: other materials and site energy | 0.135 | 0.221 | 0.103 | 0.386 | 4.9% | +0.086 |
+| Decommissioning | 0.110 | 0.167 | 0.087 | 0.277 | 3.7% | +0.057 |
+| Construction: concrete | 0.134 | 0.135 | 0.101 | 0.178 | 3.0% | +0.001 |
+| Construction: rebar | 0.051 | 0.077 | 0.043 | 0.123 | 1.7% | +0.025 |
+| Construction: plate, structural and equipment steel | 0.079 | 0.074 | 0.027 | 0.127 | 1.6% | −0.006 |
+| Fuel: fabrication | 0.036 | 0.043 | 0.027 | 0.064 | 1.0% | +0.007 |
+| Construction: transport to site | 0.006 | 0.009 | 0.004 | 0.017 | 0.2% | +0.003 |
+| **Total** | **2.864** | **4.487** | | | **100%** | **+1.623** |
 
-Grouped (expected basis): fuel front end 64.2%, back end and decommissioning 19.2%, O&M 9.1%, construction 7.5% (0.321 / 4.279).
+Grouped (expected basis): fuel front end 61.6%, back end and decommissioning 18.2%, O&M 8.7%, construction 11.5% (0.515 / 4.487). Mode-case shares are 50.9, 23.4, 11.5 and 14.2%. Construction's share has a Monte Carlo median of 11.5% (P5–P95 7.2–17.8%). All concrete is 3.0–4.7% of the total.
 
-*Table C4. Scenario savings and life-cycle shares on the Monte Carlo basis (the basis of Table T4 in §6.3).*
+### C4. Monte Carlo results
+
+**Result.** Life-cycle intensity: **median 4.40, 90% interval 3.24–6.05 g CO₂e/kWh**. C1's saving at central eligibility: **median 2,217 t per unit (1,375–3,294)** and **6,651 t for Units 2–4 (4,124–9,881)**. LC³ saves more than slag in **55%** of draws.
+
+*Table C4a. Monte Carlo outputs (20,000 draws, seed 20261021).*
+*Source: `results/lca_uncertainty.md`, `lca_montecarlo_summary.csv`.*
+
+| Output | Mode case | Mean | P5 | P50 | P95 |
+|---|---:|---:|---:|---:|---:|
+| Life-cycle intensity (g CO₂e/kWh) | 2.864 | 4.487 | 3.236 | 4.396 | 6.053 |
+| Fuel front end (g/kWh) | 1.458 | 2.764 | 1.586 | 2.661 | 4.280 |
+| of which mining and milling (g/kWh) | 1.024 | 1.261 | 0.760 | 1.217 | 1.915 |
+| Construction (g/kWh) | 0.406 | 0.515 | 0.347 | 0.500 | 0.736 |
+| Construction share of life cycle (%) | 14.17 | 11.83 | 7.19 | 11.45 | 17.78 |
+| Plant concrete (m³ per unit) | 50,000 | 50,008 | 43,224 | 50,009 | 56,772 |
+| C1-eligible concrete (m³ per unit) | 20,000 | 20,007 | 12,886 | 19,879 | 27,540 |
+| C1 saving, LC³ (t CO₂e per unit) | 2,200 | 2,259 | 1,375 | 2,217 | 3,294 |
+| C1 saving, Units 2–4 (t CO₂e) | 6,600 | 6,776 | 4,124 | 6,651 | 9,881 |
+| C1 saving as share of the unit's life cycle (%) | 0.541 | 0.373 | 0.195 | 0.355 | 0.614 |
+| Slag blend saving (t CO₂e per unit) | 2,288 | 2,193 | 1,310 | 2,140 | 3,238 |
+| LC³ minus slag (t CO₂e per unit) | −88 | 66 | −588 | 54 | 766 |
+| Cross-check life-cycle intensity (g/kWh) | 2.701 | 4.293 | 3.050 | 4.199 | 5.863 |
+
+At fixed eligibility the share of the life cycle is 0.18% (P5–P95 0.11–0.28%) at 20%, 0.36% (0.23–0.56%) at 40% and 0.54% (0.34–0.84%) at 60%. The LC³-minus-slag interval spans zero: the two binders cannot be separated on carbon with present data, and if OPG's baseline already contains slag the same row is LC³'s increment over business as usual. Plant concrete is a ±20% triangular input, so its 90% interval (43,224–56,772 m³) is narrower than its bounds.
+
+*Table C4b. Scenario savings and life-cycle shares on the Monte Carlo basis (the basis of Table T5 in §6.3 and Table A7b).*
 *Source: `results/lca_uncertainty.md`. Each draw's saving is divided by the same draw's S0 life-cycle total. S3 rows are steel sensitivities, not part of C1; S3 world-average is negative (adds emissions).*
 
 | Scenario | Saving, t per unit: median (5th–95th) | Share of life cycle, %: median (5th–95th) | Mode-case share, % |
 |---|---|---|---:|
-| S1 slag blend (C1 fallback) | 1,642 (1,205–2,113) | 0.276 (0.169–0.441) | 0.405 |
-| S2 LC3 (C1 target binder) | 1,742 (1,387–2,153) | 0.295 (0.185–0.455) | 0.452 |
-| S2b LC3 + slag elsewhere | 2,746 (1,809–4,107) | 0.463 (0.263–0.804) | 0.649 |
-| S3 like-for-like (target-structure steel) | 941 (404–1,581) | 0.156 (0.064–0.302) | 0.148 |
-| S3 upper bound (all steel, EAF sections factors) | 4,731 (1,713–9,084) | 0.787 (0.278–1.683) | 0.969 |
-| S3 world-average steel | −6,695 (−10,805 to −3,178) | −1.114 (−2.109 to −0.492) | −2.192 |
+| C1: LC³ on 40% (eligibility drawn) | 2,217 (1,375–3,294) | 0.355 (0.195–0.614) | 0.541 |
+| S1 slag blend on the same 40% (fallback) | 2,140 (1,310–3,238) | 0.343 (0.185–0.602) | 0.563 |
+| Cross-check: LC³ in infill and forebay | 1,750 (1,389–2,152) | 0.293 (0.187–0.458) | 0.452 |
+| S2b LC³ on 40% plus slag elsewhere | 5,517 (4,346–6,841) | 0.886 (0.566–1.357) | 1.386 |
+| S3 like-for-like (target-structure steel) | 940 (415–1,580) | 0.149 (0.062–0.283) | 0.139 |
+| S3 upper bound (all steel, sections factors) | 6,428 (2,521–11,486) | 1.025 (0.382–2.041) | 0.963 |
+| S3 world-average steel | −9,914 (−14,037 to −4,904) | −1.559 (−2.700 to −0.717) | −3.114 |
 
-**Why plate steel falls (−0.010).** Plate steel is total steel minus rebar, and rebar scales with plant concrete (capped at total steel; Appendix A3). Concrete intensity is right-skewed (34.5–69–138 m³/MWe), so expected rebar rises above its mode value, while steel intensity is slightly left-skewed (16.5–33–46 t/MWe). Expected plate steel is therefore below its mode value, even though expected total steel emissions (rebar plus plate) rise.
-
-### C5. Why the median (4.2) sits above the mode case (2.7)
+### C5. Why the median (4.40) sits above the mode case (2.86)
 
 **Result.** The gap is real information, not an error: the inputs we know least about have long upper tails, so they can mostly push the result up.
 
-- A triangular distribution's mean is (low + mode + high) / 3. For conversion heat that is (26 + 26 + 665) / 3 = 239 kWh/kg U, nine times the mode of 26.
-- Conversion therefore contributes +0.97 of the +1.58 g/kWh gap (Table C3). Mining (+0.23), the back end (+0.09), enrichment (+0.08), O&M (+0.06), decommissioning (+0.06) and the construction uplift (+0.06) add most of the rest.
-- The LC3 saving is almost symmetric (mode 1,734 t, median 1,742 t), so its share of the total falls from 0.45% (mode case) to 0.29% (median).
-- We therefore quote the median as the result and the mode case only as "every input at its most likely value". A measured conversion value would collapse most of the gap [TODO: source needed: Cameco Port Hope facility emissions divided by UF₆ output].
-- Because one distribution choice carries most of the gap, Table C2's last two rows re-run the Monte Carlo with conversion heat fixed at 26 kWh/kg U and with a log-uniform 26–665 distribution. The median does not stay near 4.2: it is 3.31 and 3.91 respectively, so the headline is partly an artefact of the triangular shape. §6 therefore reports the **range of medians, 3.3–4.2 g CO₂e/kWh**. Conversion heat accounts for about 0.9 g/kWh of the median (4.18 − 3.31 = 0.87) and decides how skewed the result is, which makes a measured value the single most useful datum to find.
+- A triangular distribution's mean is (low + mode + high) / 3. For conversion heat that is (26 + 26 + 665) / 3 ≈ 239 kWh/kg U, nine times the mode of 26.
+- Conversion therefore contributes +0.98 of the +1.62 g/kWh gap (Table C3). Mining (+0.24), the back end (+0.09), enrichment (+0.08), the construction uplift (+0.09), O&M (+0.06) and decommissioning (+0.06) add most of the rest.
+- C1's saving is almost symmetric (mode 2,200 t, median 2,217 t), so its share of the total falls from 0.54% at the mode case to 0.36%.
+- We quote the median as the result and the mode case only as "every input at its most likely value". A measured conversion value would collapse most of the gap.
+- Because one distribution choice carries most of the gap, Table C5 re-runs the Monte Carlo with conversion heat fixed at 26 kWh/kg U and with a log-uniform 26–665 distribution; the other 44 inputs use the same draws. The median does not stay near 4.4: it is 3.51 and 4.11, so §6 reports the **range of medians, 3.51–4.40 g CO₂e/kWh**. Conversion heat accounts for about 0.9 g/kWh of the median (4.40 − 3.51) and decides how skewed the result is.
+
+*Table C5. Conversion-heat distribution test (life-cycle g CO₂e/kWh).*
+*Source: `results/lca_uncertainty.md`. C1's share is the headline saving with eligibility drawn.*
+
+| Conversion-heat distribution | Mean heat (kWh/kg U) | Mean | P5 | P50 | P95 | C1 share, % median (P5–P95) |
+|---|---:|---:|---:|---:|---:|---|
+| Triangular 26 / 26 / 665 (headline) | 241 | 4.487 | 3.236 | 4.396 | 6.053 | 0.355 (0.195–0.614) |
+| Fixed at 26 (Gibon and Hahn Menacho, 2023) | 26 | 3.540 | 2.797 | 3.506 | 4.391 | 0.446 (0.258–0.734) |
+| Log-uniform 26–665 | 197 | 4.294 | 3.063 | 4.113 | 6.116 | 0.373 (0.200–0.650) |
 
 ### C6. Limitations of the uncertainty analysis
 
-1. **Independence.** Inputs are drawn independently. Concrete and steel intensities are probably positively correlated (bigger plants need more of both), which would widen the construction tail slightly; enrichment and burnup are also linked in practice. The effect on the total is small because construction is about 7.5%.
-2. **Ranges partly judgement.** Ranges marked A or P in Table C1 are our assumptions; ×0.5 to ×2 transfer ranges on the EDF stages are not data.
-3. **Triangular shape.** A convention, not a fitted distribution.
-4. **Unverified inputs.** Every V in Table C1 is a search lead. The intervals will move when the primaries are opened.
-5. **Model structure not varied.** The boundary (process-based stages plus three stages transferred as per-kWh values) and the cut-offs (§6.1) are not sampled; they bias the result low (§6.5, Table T5).
+1. **Independence.** Inputs are drawn independently. Concrete and steel quantities are probably positively correlated, and enrichment and burnup are linked in practice; the effect on the total is small because construction is about 11.5%.
+2. **Ranges partly judgement.** The ±20% on the Ostrołęka quantities, the eligible share, the LC³ cut range and the ×0.5 to ×2 transfer ranges on the EDF stages are assumptions, not data.
+3. **Triangular shape.** A convention, not a fitted distribution; Table C5 tests it for conversion heat only.
+4. **Inputs as found.** The Ostrołęka and Pillai tables were not opened. The intervals will move when they are.
+5. **Model structure not varied.** The boundary (process-based stages plus three stages transferred as per-kWh values) and the cut-offs (§6.1) are not sampled; they bias the result low (C7).
+
+### C7. Why our result differs from the benchmarks
+
+**Result.** Our median is below UNECE's range but our 90% interval overlaps it; the main reasons are ore grade, enrichment technology and cut-offs.
+
+*Table C7a. Published life-cycle values against ours (g CO₂e/kWh).*
+*Source: this study; references as listed. Benchmark values are as reported in the sources named and were not independently checked.*
+
+| Source | Value | Ours against it |
+|---|---|---|
+| **This study** | 4.40 median (3.24–6.05); range of medians 3.51–4.40 | |
+| United Nations Economic Commission for Europe (2021), nuclear | 5.1–6.4 | Median below the range; our 90% interval overlaps it |
+| IPCC AR5 Annex III (Schlömer et al., 2014) | 3.7 / 12 / 110 (minimum / median / maximum, as commonly quoted) | Near the minimum, well below the median |
+| Warner and Heath (2012), harmonised light-water reactors | median 12 | About a third of it |
+| EDF R&D (2024), French fleet | 3.7 (2.9–4.6) | Overlaps |
+| Gibon and Hahn Menacho (2023), global 2020 | 6.1 | Below |
+| Carless, Griffin and Fischbeck (2016), Westinghouse SMR | 9.1 (5.9–13.2) | Below |
+| Coal; gas combined cycle (United Nations Economic Commission for Europe, 2021) | 751–1,095; 403–513 | 170–250 and 90–120 times higher than ours |
+
+*Table C7b. Why our result differs from the benchmarks: direction and size of each reason.*
+*Source: this study (Appendices A and C), with the references as listed.*
+
+| Reason | Effect on our value | Size |
+|---|---|---|
+| High-grade Canadian ore | Lower | Our mining is 1.0–1.3 g/kWh; at global-average grades Gibon and Hahn Menacho (2023) attribute 46% of 6.1, about 2.8 g/kWh, to it. This explains most of the gap to UNECE and Gibon |
+| Centrifuge enrichment only | Lower than older studies | 50 kWh/SWU against about 2,500 for the diffusion plants in older study sets (Gibon and Hahn Menacho, 2023; Warner and Heath, 2012) |
+| Energy-only fuel inventory (cut-offs) | Lower | Not quantified (chemicals, cladding, upstream gas, fuel-plant capital goods excluded) |
+| Construction | Now close to large reactors | 0.41 g/kWh at the mode case, 0.50 median (0.35–0.74), against about 0.59 for large reactors (16% of 3.7; EDF R&D, 2024). The SMR scale penalty shows: 167 m³ of concrete per MWe against 69 for the ESBWR and 138 for the ABWR (Peterson, Zhao and Petroski, 2005) |
+| Long life and high capacity factor | Lower | At 40 years instead of 60, the mode case rises from 2.86 to 3.07 g/kWh |
+| O&M and back end transferred from France (reprocessing) | Possibly higher | Canada plans direct disposal; back-end range 0.28–1.11 g/kWh tested |
+| SMR rather than large reactor | Small | Carless, Griffin and Fischbeck (2016) give 9.1 for an SMR against 8.4 for the AP1000, mainly through the fuel cycle; our construction share is too small for scale effects to move the total much |
+
+The sources disagree mainly about the fuel front end (ore grade, enrichment technology and grid), not construction, and that is where our result departs from them. The known low bias would raise the total and make C1's share smaller still, so it does not weaken §6.3.
 
 ---
+
+
+## Appendix E. Search log
+
+*Drafted for Leroy; Leroy may reclaim.*
+
+### E1. Method and access
+The patent search covered three areas that bear on the initiative: (i) the BWRX-300's passive safety and civil design (isolation condenser, vertical shaft); (ii) steel-plate composite (DP-SC) modules; and (iii) limestone calcined clay cement (LC³). All searches were run on 25 October 2026.
+
+Google Patents (patents.google.com) **could not be reached** from the research environment (DNS failure). Justia, Espacenet, Lens, PatentsView, USPTO Patent Public Search and Google Scholar also failed to connect. Google Patents result counts are therefore **not available**. Instead, each string was run through a general web search, which returns about 9–10 links per query. Patent records were identified from those links and their summaries. The "hits" column below counts the patent records found, not database hits. Assignees, dates and claims must be checked on the patent pages before the report relies on them.
+
+### E2. Search strings and results
+| # | Area | Search string (web search) | Links | Patent records found |
+|---|---|---|---|---|
+| 1 | (i) | GE-Hitachi patent isolation condenser small modular boiling water reactor US patent | 10 | 2 (US 10,867,712 B2; US 12,308,130) |
+| 2 | (i) | US10867712B2 isolation condenser systems … assignee GE-Hitachi inventors | 9 | 5 (one family: US, WO, CA, JP, PL) |
+| 3 | (i) | US12308130 simplified nuclear reactor isolation condenser integrally isolatable connections assignee | 9 | 3 (US 12,308,130 B2; US 11,139,087; US 11,955,248) |
+| 4 | (i) | GE-Hitachi Nuclear Energy patent "reactor building" below grade vertical shaft small modular reactor | 10 | 2 (US 2020/0208517 A1; US 11,842,821) |
+| 5 | (i) | US20200208517 "Underground vertical shafts and nuclear reactors using the same" assignee | 9 | 1 family (EP 3906566), plus 2 older underground-reactor patents |
+| 6 | (ii) | patent steel-plate composite modular wall nuclear "steel plate composite" diaphragm plate | 9 | **0** |
+| 7 | (ii) | patent "steel-concrete composite" module nuclear plant construction Westinghouse OR GE-Hitachi | 9 | **0** |
+| 8 | (ii) | patent steel plate concrete composite wall modules "diaphragm plates" flow holes nuclear GE Hitachi Purdue | 9 | **0** |
+| 9 | (iii) | patent limestone calcined clay cement LC3 Scrivener EPFL patent WO | 10 | **0** |
+| 10 | (iii) | patents.google.com "calcined clay" limestone cement composition patent kaolinite clinker replacement | 9 | 5 (US 8,906,155 B2; US 2014/0000491; KR 10-2843101 B1; US 2023/0312412 A1; WO 2022/043349 A1) |
+| 11 | (iii) | US20230312412A1 limestone calcined clay cement construction composition assignee | 9 | 3 (US 11,939,273 B2; US 2023/0202926 A1; US 2023/0036470 A1) |
+| 12 | (iii) | US 2023/0202926 A1 "increase of workability" binder … calcined clay limestone assignee | 9 | 3 (EP 3925941 A1; EP 4168371; US 2025/0187980 A1) |
+
+**Result for (ii).** No DP-SC patent was found under GE-Hitachi or any other applicant. The design is documented in a licensing topical report (GEH, 2024, NEDO-33926), a joint CNSC–NRC review (2025), DOE test reports (Purdue Bowen Laboratory) and an SMiRT-28 paper. Whether GEH protects it by patent or as know-how is unknown. **Gap: search Google Patents for "diaphragm plate" with assignee GE-Hitachi Nuclear Energy Americas when the host is reachable.**
+
+### E3. Patents kept
+| # | Number | Title | Assignee | Year | Relevance to this report |
+|---|---|---|---|---|---|
+| P1 | US 10,867,712 B2 (family WO 2019/005465 A1, CA 3067552 A1, JP 7234150 B2) | Isolation condenser systems for nuclear reactor commercial electricity generation | GE-Hitachi Nuclear Energy Americas LLC | Filed 2017 | The passive decay-heat system behind the BWRX-300's 7-day no-power claim (§4.2) |
+| P2 | US 12,308,130 B2 | Reactor condition controlled check valve permits coolant to flow from a reservoir to an isolation condenser chamber | [TO VERIFY; inventors Hunt, Dahlgren and Marquino, as on GEH's isolation-condenser family] | [TO VERIFY] | Passive make-up of the condenser pool: how cooling extends beyond 7 days |
+| P3 | US 2020/0208517 A1 (EP 3906566) | Underground vertical shafts and nuclear reactors using the same | [TO VERIFY; inventors include Kirby and McDonald of GEH] | 2020 | The below-grade shaft reactor building and the basemat poured at the bottom of the shaft (§4.2; C1's infill location) |
+| P4 | US 8,906,155 B2 | Clinker substitute based on calcined clay | Outotec [TO VERIFY] | [TO VERIFY] | Calcining low-kaolinite (<40%), iron-bearing clays at 600–1,000 °C widens the clay supply for LC³ (§5) |
+| P5 | KR 10-2843101 B1 | [LC³ using low-temperature calcined clay; title TO VERIFY] | [TO VERIFY] | [TO VERIFY] | LC³ with ≥40% kaolin clay calcined at 700–800 °C: consistent with the LC³ project's calcination window |
+| P6 | US 11,939,273 B2 (US 2023/0312412 A1; WO 2022/043349 A1) | Limestone calcined clay cement (LC3) construction composition | Construction Research & Technology GmbH (Master Builders Solutions, formerly BASF) | Filed 2021 | Admixture-modified LC³ binder: the major admixture suppliers are commercialising LC³ (§10) |
+| P7 | US 2023/0202926 A1 (EP 3925941 A1) | Method for the increase of workability of a binder composition comprising Portland cement, calcined clay, and limestone | Sika Technology AG | 2023 | Directly addresses the main RB.7 barrier: LC³ workability for self-consolidating DP-SC infill (§10) |
+
+Seven patents are kept. Excluded: US 11,139,087 and US 11,955,248 (isolation condenser and feedwater control; assignee not seen), US 11,842,821 (title and date inconsistent between summaries), and US 2023/0036470 A1 and US 2025/0187980 A1 (not LC³-specific).
+
+**What the patents show (R1.3).** The BWRX-300's distinctive systems (isolation condensers, shaft construction) sit in GEH's own patent families. LC³ itself, developed through EPFL's public research programme, appears in no core composition patent in these results. The patenting is around it: clay processing (Outotec) and **admixtures for workability** (Sika, BASF/CR&T). So for C1 the freedom-to-operate risk is low for the binder, and the commercial interest lies exactly where our RB.7 gap is (SCC flow). That supports C1's route: buy a commercial admixture system and qualify it, rather than develop a new binder (inference).
+
+### E4. Literature searches (web-search substitute for Google Scholar)
+| # | Topic | String | Kept |
+|---|---|---|---|
+| L1 | Radiation in concrete | Field Remec Le Pape 2015 radiation effects in concrete … Nuclear Engineering and Design | Field, Remec and Le Pape (2015) |
+| L2 | Activated concrete | activated concrete decommissioning Eu-152 Co-60 biological shield … | Greifswald shield study (HZDR); BR3 (EPJ-N 2020) |
+| L3 | Clearance and recycling | nuclear decommissioning concrete clearance recycling percentage … | Thierfeldt (2019) |
+| L4 | LC³ chloride and SCC | limestone calcined clay cement self-compacting concrete heat of hydration chloride … | LC³ chloride study (2025); UniBw calcined-clay SCC |
+| L5 | LC³ heat of hydration | LC3 concrete heat of hydration lower than OPC semi-adiabatic … | **None LC³-specific (gap)** |
+| L6 | LC³ SCC rheology | self-compacting concrete limestone calcined clay cement superplasticizer demand rheology … | UniBw; IIT Madras (2020) |
+| L7 | Steel residuals | copper tramp element accumulation steel scrap recycling EAF … | Daehn et al. (2017), via a 2025 review |
+| L8 | RPV embrittlement | reactor pressure vessel steel SA-508 copper phosphorus irradiation embrittlement … | CNSC (2023); NRC RG 1.99 Rev. 2 |
+| L9 | Steel route intensity | worldsteel CO2 intensity BF-BOF … EAF … | worldsteel (2025; 2026) |
+| L10 | Waste forms | ANSTO Synroc … hot isostatic pressing | ANSTO Synroc |
+| L11 | Projects | TVA Clinch River …; Linglong One …; HTR-PM …; NuScale US460 SDA … | See `02_Research/briefs/technology-projects-trl.md` |
+
+Full references: `02_Research/sources_run8.md`.
