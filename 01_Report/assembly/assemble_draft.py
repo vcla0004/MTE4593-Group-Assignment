@@ -319,8 +319,9 @@ def main() -> None:
     parts[0] = PAGE_BREAK + parts[0] + "\n\n" + PAGE_BREAK + TOC + PAGE_BREAK  # abstract page, contents page
     parts.append(PAGE_BREAK)
     if (SEC / REFS).exists():  # full list; check_refs.py only reports mismatches
-        parts.append(re.sub(r"^## References", "# 5 References",
-                            clean((SEC / REFS).read_text(encoding="utf-8")), flags=re.M))
+        refs = re.sub(r"^## References", "# 5 References", clean((SEC / REFS).read_text(encoding="utf-8")),
+                      flags=re.M)
+        parts.append(re.sub(r"^### ", "#### ", refs, flags=re.M))  # "Legislation", "Cases": not in contents
     else:
         parts.append("# 5 References\n\n**[TODO: reference list]**\n")
     parts.append("# Declaration of generative AI use\n\n" + note("TEAM: agree the AI-use declaration wording and add it here.")

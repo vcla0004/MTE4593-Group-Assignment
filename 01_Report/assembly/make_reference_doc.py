@@ -34,6 +34,20 @@ TABLE_STYLE = (
     '</w:style>')
 
 
+def _toc_style(level: int, indent: int, bold: bool) -> str:
+    b = "<w:b/><w:bCs/>" if bold else ""
+    return (f'<w:style w:type="paragraph" w:styleId="TOC{level}"><w:name w:val="toc {level}"/>'
+            '<w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:uiPriority w:val="39"/><w:unhideWhenUsed/>'
+            '<w:pPr><w:tabs><w:tab w:val="right" w:leader="dot" w:pos="9026"/></w:tabs>'
+            f'<w:spacing w:before="60" w:after="60" w:line="240" w:lineRule="auto"/><w:ind w:left="{indent}"/></w:pPr>'
+            '<w:rPr><w:rFonts w:ascii="Arial" w:hAnsi="Arial" w:cs="Arial"/>'
+            f'{b}<w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:style>')
+
+
+# Contents entries as in the team template: level 1 bold, levels 2-3 indented, dotted leaders to the margin
+TOC_STYLES = [_toc_style(1, 0, True), _toc_style(2, 720, False), _toc_style(3, 1440, False)]
+
+
 def set_style(xml: str, sid: str, new: str) -> str:
     return re.sub(r'<w:style [^>]*w:styleId="' + sid + r'"[^>]*>.*?</w:style>', lambda m: new, xml,
                   count=1, flags=re.S)
@@ -83,6 +97,7 @@ def main() -> None:
         add = [re.sub(r"(<w:style [^>]*w:styleId=\"Compact\"[^>]*>.*?)(</w:style>)",
                       r'\1<w:rPr><w:sz w:val="18"/><w:szCs w:val="18"/></w:rPr>\2', a, flags=re.S)
                for a in add]
+        add += [t for t in TOC_STYLES if re.search(r'w:styleId="(TOC\d)"', t).group(1) not in have]
         # highlighted character style for the team-review build (--review)
         add.append('<w:style w:type="character" w:customStyle="1" w:styleId="TeamNote">'
                    '<w:name w:val="Team Note"/><w:rPr><w:b/><w:color w:val="C00000"/>'

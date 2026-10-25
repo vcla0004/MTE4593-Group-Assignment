@@ -928,7 +928,7 @@ World Steel Association, 2026. *CO₂ emissions and energy intensity, 2022–202
 
 Zunino, F., 2021. *Limestone calcined clay cements* [presentation slides]. Lausanne: EPFL / LC3 project. [pdf] Available at: https://lc3.ch/wp-content/uploads/2021/12/6-Franco-LimestoneCalcinedClayCements.pdf [Accessed 25 October 2026].
 
-### Legislation
+#### Legislation
 
 *Environment Protection and Biodiversity Conservation Act 1999* (Cth), s 140A. [online] Federal Register of Legislation, C2004A00485. Available at: https://www.legislation.gov.au/C2004A00485/latest/text [Accessed 20 October 2026].
 
@@ -936,7 +936,7 @@ Zunino, F., 2021. *Limestone calcined clay cements* [presentation slides]. Lausa
 
 *Uranium Mining and Nuclear Facilities (Prohibitions) Act 1986* (NSW), No 194, ss 8–9. [online] NSW Legislation. Available at: https://legislation.nsw.gov.au/view/whole/html/inforce/current/act-1986-194 [Accessed 20 October 2026].
 
-### Cases
+#### Cases
 
 *Barngarla Determination Aboriginal Corporation RNTBC v Minister for Resources* [2023] FCA 809 (Federal Court of Australia, Charlesworth J, 18 July 2023). Available at: https://www.judgments.fedcourt.gov.au/judgments/Judgments/fca/single/2023/2023fca0809 [Accessed 21 October 2026].
 
