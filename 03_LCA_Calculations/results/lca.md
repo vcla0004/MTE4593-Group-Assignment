@@ -1,5 +1,7 @@
 Rubric coverage: R2.1, R2.2, R2.3, R2.4, R2.5, R2.6, R2.7, RB.5, RB.6, R4.2, R4.4, R1.3, R5.2
 
+> **Re-based 25/10/2026: the main case is now in `lca_rebase_deck.md`** (Ostrołęka PIS 50,000 m³ and 14,000 t per unit; Pillai 2019 OPC 380 vs LC³ 270 kg CO₂e/m³; C1 on 20/40/60% of the concrete). The 21/10 bottom-up model described below (20,700 m³) is kept as the cross-check; its numbers here are no longer the headline. The scripts and the CSV/MD results files now carry the main case.
+
 # Life-cycle assessment of one BWRX-300 at Darlington, and the C1 LC3 initiative
 
 lca-analyst, 21/10/2026 (revised 21/10 evening for plan §7 job Q1: like-for-like steel row, Monte Carlo shares for every scenario, conversion-heat distribution test, F3/F5 redrawn, S0 counterfactual, corrections L31/L60/L61/L64/L66 and L57), for §6, §4.3 (technical numbers), Appendices A, C and D, figures F1–F5 and table T6. Victor owns this work since he took over Sam's red sections (CLAUDE.md). Sam's `Assumptions.docx` and `Accounting.xlsx` are untouched; the corrected sheet is `03_LCA_Calculations/Accounting_corrected.csv`.
