@@ -32,3 +32,4 @@ The drafts were not edited.
 - `01_Report/factcheck/I-pass3-batch1a.md`: I. Pass 3, batch 1a (21/10): Appendix B (B1–B4, B6), §8.1 v3, §8.3 v3, §8.4, §8.5, §3
 - `01_Report/factcheck/I-pass3-batch3a.md`: I. Pass 3, batch 3a (21/10): §1, §2, §9, Appendix B7 (B29–B34); mcda.py reproduces; 4 must-fix, 12 should-fix
 - `01_Report/factcheck/I-pass3-batch1b.md`: I. Pass 3, batch 1b (21/10): §8.6 (first check), 026b4b5 changes to §8.3-8.5 and App B (B2.6, B6, B8); 2 must-fix, 9 should-fix
+- `01_Report/factcheck/final-part1.md`: Final Q20 part 1 (25/10): §0–3, 4.3, 8.4–8.6, 9, 11, moved App B8; C1 numbers all match; 10 must-fix
