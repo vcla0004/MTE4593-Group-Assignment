@@ -45,6 +45,7 @@ ORDER = [
 APPENDICES = [
     "appendix-A-lca-inventory.md",
     "appendix-B-policy-and-supply-working.md",
+    "appendix-B-moved-from-8.4-8.6.md",  # merged into App B at the end
     "appendix-C-sensitivity.md",
     "appendix-E-search-log.md",
 ]
@@ -130,7 +131,7 @@ def main() -> None:
         f = SEC / name
         if f.exists():
             parts.append(clean(f.read_text(encoding="utf-8")))
-        else:
+        elif "moved" not in name:
             parts.append(f"## {name}\n\n**[TODO: not yet in the repo]**\n")
     if FINAL:
         head = TITLE
