@@ -13,7 +13,7 @@ CHANGELOG
 
 **Four methods carry the numbers: a screening life-cycle assessment (LCA), grid displacement with a schedule break-even, a concentration index for fuel supply, and a multi-criteria analysis. Scripts and parameter files regenerate every figure (Appendix A1).** Values come from the documents cited; our assumptions and inferences are labelled.
 
-**LCA.** A screening study following ISO 14040/14044 principles (International Organization for Standardization, 2006a; 2006b), not critically reviewed: functional unit 1 MWh of net electricity at the grid connection, cradle to grave (§6.1). A Granta EduPack cross-check was planned but not completed.
+**LCA.** A screening study following ISO 14040/14044 principles (International Organization for Standardization, 2006a; 2006b), not critically reviewed: functional unit 1 MWh of net electricity at the grid connection, cradle to grave (§6.1). The construction materials were cross-checked with a Granta EduPack 2024 Eco Audit of one unit (Appendix A9).
 
 **Displacement and schedule.** One unit (300 MWe net assumed) supplies 2.365 TWh a year and avoids that output × (grid factor − SMR factor). The *average* factor is the grid's mean intensity; the *marginal* factor is that of the plant displaced (The Atmospheric Fund, 2025). Ontario's are 73.8 and 343 g/kWh; NSW uses 640 (Department of Climate Change, Energy, the Environment and Water [DCCEEW], 2025). Start years are 2030 at Darlington (Ontario Power Generation, 2025a) and 2040 at the earliest in Australia (Graham, Hayward and Foster, 2024). The *schedule break-even* is the delay that cancels a saving S: S ÷ (daily output × grid-factor gap) (Appendix B4–B5).
 

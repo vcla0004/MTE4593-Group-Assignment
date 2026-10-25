@@ -131,20 +131,14 @@ GRANTA = ("run the Granta EduPack Eco Audit on one BWRX-300: concrete 120,000 t 
           "and steel 14,000 t (Ostrołęka PIS, Table 14), with a second run where 40% of the concrete "
           "(20,000 m³) is LC³ at 270 instead of 380 kg CO₂e/m³ (Pillai et al., 2019). Send the CO₂ "
           "footprint and energy per life stage (screenshot or export)")
-NOTES = {
-    "6-lca-eco-audit.md": "LEROY (Granta EduPack): please " + GRANTA + ". Then confirm or update this "
-        "section's Granta sentence, Appendix A9 and §2. Everything else in the report is complete.",
-    "appendix-A-lca-inventory.md": "LEROY: your Granta EduPack results go in A9 (currently 'planned but not completed').",
-    "2-methods-data.md": "LEROY: once Granta is run, this section's Granta sentence changes to describe it.",
-}
+NOTES = {}  # Granta results are in (25/10); no open technical items
 CHECKLIST = """## Team review checklist (this page is removed in the submission version)
 
 [Highlighted notes like this one mark what is still needed. Everything else is complete and fact-checked.]{custom-style="TeamNote"}
 
-**Leroy: Granta EduPack** (the only open technical item)
+**Sam / Leroy: Granta LC³ record**
 
-- Run the Granta EduPack Eco Audit as set out in the note at the top of §6, and send the results (screenshots or export).
-- The results go in §6, Appendix A9 and one sentence in §2. The report currently says Granta was planned but not completed.
+- The Granta LC³ material record uses 0.1533 kg CO₂e/kg, only 3% below the base concrete (0.1583). Pillai et al. (2019) gives 270 kg/m³ = 0.1125 kg/kg. Confirm whether 0.1533 is intended; Appendix A9 explains both.
 
 **Everyone**
 

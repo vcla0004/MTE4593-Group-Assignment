@@ -84,4 +84,22 @@ Inputs: burnup 45 GWd/t and 3.8% U-235 (placeholders); tails 0.25%; feed 0.711%.
 Total 406,462 t CO₂e per unit. Fuel front end 1.458 g/kWh (50.9%).
 
 ### A9 Granta EduPack Eco Audit
-A Granta EduPack Eco Audit cross-check was planned but not completed; the screening model above is the basis of all results.
+Granta EduPack 2024 R1 Eco Audit, one BWRX-300, product life 30 years, country of use North America (team model; full reports in the repository, `03_LCA_Calculations/granta/`). Components: base concrete 120,000 t (user-defined record, 0.1583 kg CO₂e/kg, 0.90 MJ/kg); structural steel 6,000 t and modular steel 8,000 t (low-carbon steel, virgin, roll formed); transport by truck, 30 km for concrete and 200 km for steel; steel recycled at end of life, concrete not. In the LC³ case 48,000 t (40%) of the concrete uses the team's LC³ record (0.1533 kg CO₂e/kg, 0.603 MJ/kg).
+
+*Table A9. Granta Eco Audit results for one unit (first life).*
+*Source: Granta EduPack 2024 R1 Eco Audit reports, Base Reactor and LC3 Reactor (25 October 2026).*
+
+| Phase | Base: CO₂e (t) | LC³: CO₂e (t) | Base: energy (TJ) | LC³: energy (TJ) |
+|---|---:|---:|---:|---:|
+| Material | 51,600 | 51,400 | 554 | 540 |
+| Manufacture | 3,030 | 3,030 | 40.4 | 40.4 |
+| Transport | 3,490 | 3,490 | 56.1 | 56.1 |
+| Disposal | 686 | 686 | 9.8 | 9.8 |
+| Total, first life | 58,900 | 58,600 | 660 | 646 |
+| End-of-life potential (steel recycling) | −23,400 | −23,400 | −328 | −328 |
+
+The concrete-only saving is (0.1583 − 0.1533) × 48,000 t = 240 t CO₂e; at Pillai et al.'s (2019) 0.1125 kg/kg it would be (0.1583 − 0.1125) × 48,000 t = 2,198 t, the 2,200 t used in the report. Spread over the 60-year functional unit, Granta's 58,900 t is 0.42 g CO₂e/kWh, against 0.50 g/kWh for construction in our model.
+
+[Figure F9. Granta EduPack Eco Audit summary, climate change (kg CO₂e) by life phase: base reactor against LC³ reactor. Source: Granta EduPack 2024 R1, team model.]
+
+[Figure F10. Granta EduPack Eco Audit summary, energy (MJ) by life phase: base reactor against LC³ reactor. Source: Granta EduPack 2024 R1, team model.]

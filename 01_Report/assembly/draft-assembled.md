@@ -9,10 +9,9 @@
 
 [Highlighted notes like this one mark what is still needed. Everything else is complete and fact-checked.]{custom-style="TeamNote"}
 
-**Leroy: Granta EduPack** (the only open technical item)
+**Sam / Leroy: Granta LC³ record**
 
-- Run the Granta EduPack Eco Audit as set out in the note at the top of Section 3.2, and send the results (screenshots or export).
-- The results go in Section 3.2, Appendix A9 and one sentence in Section 2. The report currently says Granta was planned but not completed.
+- The Granta LC³ material record uses 0.1533 kg CO₂e/kg, only 3% below the base concrete (0.1583). Pillai et al. (2019) gives 270 kg/m³ = 0.1125 kg/kg. Confirm whether 0.1533 is intended; Appendix A9 explains both.
 
 **Everyone**
 
@@ -67,12 +66,9 @@ We answer four research questions.
 
 # 2 Data Sources/Methodology
 
-[LEROY: once Granta is run, this section's Granta sentence changes to describe it.]{custom-style="TeamNote"}
-
-
 Four methods carry the numbers: a screening life-cycle assessment (LCA), grid displacement with a schedule break-even, a concentration index for fuel supply, and a multi-criteria analysis. Scripts and parameter files regenerate every figure (Appendix A1). Values come from the documents cited; our assumptions and inferences are labelled.
 
-A screening study following ISO 14040/14044 principles (International Organization for Standardization, 2006a; 2006b), not critically reviewed: functional unit 1 MWh of net electricity at the grid connection, cradle to grave (Section 3.2.1). A Granta EduPack cross-check was planned but not completed.
+A screening study following ISO 14040/14044 principles (International Organization for Standardization, 2006a; 2006b), not critically reviewed: functional unit 1 MWh of net electricity at the grid connection, cradle to grave (Section 3.2.1). The construction materials were cross-checked with a Granta EduPack 2024 Eco Audit of one unit (Appendix A9).
 
 One unit (300 MWe net assumed) supplies 2.365 TWh a year and avoids that output × (grid factor − SMR factor). The *average* factor is the grid's mean intensity; the *marginal* factor is that of the plant displaced (The Atmospheric Fund, 2025). Ontario's are 73.8 and 343 g/kWh; NSW uses 640 (Department of Climate Change, Energy, the Environment and Water [DCCEEW], 2025). Start years are 2030 at Darlington (Ontario Power Generation, 2025a) and 2040 at the earliest in Australia (Graham, Hayward and Foster, 2024). The *schedule break-even* is the delay that cancels a saving S: S ÷ (daily output × grid-factor gap) (Appendix B4–B5).
 
@@ -180,9 +176,6 @@ Activation depends on trace elements: cobalt-60 and europium-152 dominate activa
 
 ## 3.2 Lifecycle Analysis
 
-[LEROY (Granta EduPack): please run the Granta EduPack Eco Audit on one BWRX-300: concrete 120,000 t (50,000 m³ × 2.4 t/m³) and steel 14,000 t (Ostrołęka PIS, Table 14), with a second run where 40% of the concrete (20,000 m³) is LC³ at 270 instead of 380 kg CO₂e/m³ (Pillai et al., 2019). Send the CO₂ footprint and energy per life stage (screenshot or export). Then confirm or update this section's Granta sentence, Appendix A9 and Section 2. Everything else in the report is complete.]{custom-style="TeamNote"}
-
-
 One BWRX-300 at Darlington emits an estimated 4.4 g CO₂e per kWh (Monte Carlo median; 90% interval 3.2–6.1; 3.5 if conversion heat takes its central published value), below UNECE's 5.1–6.4 g/kWh for nuclear power. The fuel front end contributes 62% and construction 11.5%. The initiative, C1 (Section 3.1.4), puts limestone calcined clay cement (LC³) in 20–60% of the concrete. It saves 2,200 t CO₂e per unit (1,100–3,300 t), about 0.36% of the life cycle: real but small, so worth adopting only if schedule-neutral (Section 3.2.3).
 
 ### 3.2.1 Goal, Scope and Method
@@ -191,7 +184,7 @@ This is a screening LCA of one BWRX-300 at Darlington following ISO 14040/14044 
 
 Functional unit: 1 MWh of net electricity at the grid connection. One unit delivers 300 MWe × 8,760 h × 0.90 × 60 years = 1.419 × 10⁸ MWh (Appendix A2). Boundary (Figure F1): cradle to grave. Construction materials and the fuel front end are modelled from published factors; operation and maintenance (O&M), decommissioning and the back end are per-kWh values from EDF's French-fleet study (EDF R&D, 2024). Baseline (S0): the concrete OPG would pour anyway, at 380 kg CO₂e/m³ (Pillai et al., 2019, as reported). We have not seen OPG's mix or any cement-type limit (GE-Hitachi Nuclear Energy, 2024). Cut-offs: fuel cladding, conversion chemicals, upstream gas, fuel-plant capital goods and recycling credits; each biases the result low (Section 3.2.5). Impact category: GWP100.
 
-A reproducible Python model multiplies quantities by published emission factors (Appendices A and C). Plant quantities come from the Ostrołęka project information sheet (BWRX-300 Ostrołęka sp. z o.o., 2023, as reported): 50,000 m³ of concrete and 14,000 t of steel per unit, a design proxy, not confirmed Darlington quantities. A bottom-up scaling (20,700 m³; Peterson, Zhao and Petroski, 2005) is a cross-check (Appendix A3). A Granta EduPack Eco Audit was planned but not completed; no number here comes from Granta.
+A reproducible Python model multiplies quantities by published emission factors (Appendices A and C). Plant quantities come from the Ostrołęka project information sheet (BWRX-300 Ostrołęka sp. z o.o., 2023, as reported): 50,000 m³ of concrete and 14,000 t of steel per unit, a design proxy, not confirmed Darlington quantities. A bottom-up scaling (20,700 m³; Peterson, Zhao and Petroski, 2005) is a cross-check (Appendix A3). Granta EduPack cross-check. A Granta EduPack 2024 Eco Audit of one unit's construction materials (120,000 t of concrete and 14,000 t of steel, with transport and steel recycling at end of life) gives 58,900 t CO₂e and 660 TJ for the first life, within about 2% of our scripted construction total of 57,600 t (Appendix A9, Figure F9). With the team's LC³ material record (0.153 kg CO₂e/kg, against 0.158 for the base concrete), Granta's saving is only about 240 t (−0.5%), because that record does not carry Pillai et al.'s (2019) 29% reduction; at Pillai's 270 kg CO₂e/m³ (0.1125 kg/kg) the same model gives 2,200 t, matching our result. Granta also shows LC³'s embodied energy 33% lower per kilogram (0.60 against 0.90 MJ/kg), about 14 TJ less per unit.
 
 ![Figure F1. LCA system boundary for one BWRX-300 at Darlington: fuel front end, construction materials and C1-eligible concrete modelled here; operation, decommissioning and back end from the literature. | Source: this study.](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F1_system_boundary.png){width=95%}
 
@@ -848,7 +841,25 @@ Inputs: burnup 45 GWd/t and 3.8% U-235 (placeholders); tails 0.25%; feed 0.711%.
 Total 406,462 t CO₂e per unit. Fuel front end 1.458 g/kWh (50.9%).
 
 #### A9 Granta EduPack Eco Audit
-A Granta EduPack Eco Audit cross-check was planned but not completed; the screening model above is the basis of all results.
+Granta EduPack 2024 R1 Eco Audit, one BWRX-300, product life 30 years, country of use North America (team model; full reports in the repository, `03_LCA_Calculations/granta/`). Components: base concrete 120,000 t (user-defined record, 0.1583 kg CO₂e/kg, 0.90 MJ/kg); structural steel 6,000 t and modular steel 8,000 t (low-carbon steel, virgin, roll formed); transport by truck, 30 km for concrete and 200 km for steel; steel recycled at end of life, concrete not. In the LC³ case 48,000 t (40%) of the concrete uses the team's LC³ record (0.1533 kg CO₂e/kg, 0.603 MJ/kg).
+
+*Table A9. Granta Eco Audit results for one unit (first life).*
+*Source: Granta EduPack 2024 R1 Eco Audit reports, Base Reactor and LC3 Reactor (25 October 2026).*
+
+| Phase | Base: CO₂e (t) | LC³: CO₂e (t) | Base: energy (TJ) | LC³: energy (TJ) |
+|---|---:|---:|---:|---:|
+| Material | 51,600 | 51,400 | 554 | 540 |
+| Manufacture | 3,030 | 3,030 | 40.4 | 40.4 |
+| Transport | 3,490 | 3,490 | 56.1 | 56.1 |
+| Disposal | 686 | 686 | 9.8 | 9.8 |
+| Total, first life | 58,900 | 58,600 | 660 | 646 |
+| End-of-life potential (steel recycling) | −23,400 | −23,400 | −328 | −328 |
+
+The concrete-only saving is (0.1583 − 0.1533) × 48,000 t = 240 t CO₂e; at Pillai et al.'s (2019) 0.1125 kg/kg it would be (0.1583 − 0.1125) × 48,000 t = 2,198 t, the 2,200 t used in the report. Spread over the 60-year functional unit, Granta's 58,900 t is 0.42 g CO₂e/kWh, against 0.50 g/kWh for construction in our model.
+
+![Figure F9. Granta EduPack Eco Audit summary, climate change (kg CO₂e) by life phase: base reactor against LC³ reactor. Source: Granta EduPack 2024 R1, team model.](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F9_granta_co2.png){width=95%}
+
+![Figure F10. Granta EduPack Eco Audit summary, energy (MJ) by life phase: base reactor against LC³ reactor. Source: Granta EduPack 2024 R1, team model.](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F10_granta_energy.png){width=95%}
 
 
 ## Appendix B. Policy, economics and supply calculations
