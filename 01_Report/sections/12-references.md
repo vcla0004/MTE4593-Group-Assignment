@@ -1,5 +1,6 @@
 Rubric coverage: R5.4 (consistent Harvard referencing), R1.4 (breadth of primary, peer-reviewed, industry and patent sources, visible in one list)
 <!-- Changelog 25/10 (writer, Q21 M1): added OECD NEA/IAEA 2026, Power Engineering 2023, Silex 2025 and 2026, WNN 2026, WNU 2025 and the Barngarla case; deleted 5 uncited entries (Ng et al. kept: still cited in §6); Hooton, Parliament of NSW 2026 entries fixed. -->
+<!-- 25/10 (writer, Leroy fallback): added 17 entries for 4.1, 4.2, 5, 10 (ANSTO, CNSC 2023, Fermi Energia, Field et al., GE Hitachi fact sheet, GE Vernova 2026, HZDR, Krall et al., OPG 2026c, Systematic evaluation 2026, Thierfeldt, Universität der Bundeswehr München, US DOE 2015, US NRC 1988 and 2025, WNN 2023, World Steel Association 2026, Zunino). None of these pages was opened; the team should check each before submission. -->
 <!-- Earlier: Kimba (AEC 2019), Conference Board 2021, OPG 2026b, Ostrołęka, Slovic, Steigerwald still lack verified URL/DOI/title details. -->
 
 
@@ -14,6 +15,8 @@ ABC News, 2026. Coalition vows to "take a chainsaw" to climate laws and offshore
 American Institute of Steel Construction, 2022. *Buy Clean California quick guide*. [pdf] Available at: https://www.aisc.org/contentassets/937a380ddd404a2da0c48669d438bf3b/quickguide_buycleancali2022.pdf.
 
 American Nuclear Society, 2026. North American construction is back—smaller and faster—at OPG's Darlington. *Nuclear Newswire*, 5 June. [online] Available at: https://www.ans.org/news/2026-06-05/article-8047/north-american-construction-is-back-smaller-and-faster-at-opgs-darlington/ [Accessed 20 October 2026].
+
+ANSTO, n.d. *ANSTO Synroc*. [online] Lucas Heights: Australian Nuclear Science and Technology Organisation. Available at: https://ansto.gov.au/products-services/ansto-synroc [Accessed 25 October 2026].
 
 ARPANSA, n.d. *Who we regulate*. [online] Australian Radiation Protection and Nuclear Safety Agency. Available at: https://www.arpansa.gov.au/regulation-and-licensing/regulation/about-regulatory-services/who-we-regulate [Accessed 20 October 2026].
 
@@ -48,6 +51,8 @@ Canada Infrastructure Bank, 2022. *CIB commits $970 million towards Canada's fir
 Canadian Nuclear Safety Commission, 2021. *CNSC renews Ontario Power Generation's site preparation licence for its Darlington New Nuclear Project*. [online] News release, 12 October. Available at: https://www.canada.ca/en/nuclear-safety-commission/news/2021/10/cnsc-renews-ontario-power-generations-site-preparation-licence-for-its-darlington-new-nuclear-project.html [Accessed 20 October 2026].
 
 Canadian Nuclear Safety Commission, 2022. *REGDOC-3.5.1, Licensing Process for Class I Nuclear Facilities and Uranium Mines and Mills*, Version 2.1. [online] Available at: https://www.cnsc-ccsn.gc.ca/eng/acts-and-regulations/regulatory-documents/published/html/regdoc3-5-1-v2-1/ [Accessed 20 October 2026].
+
+Canadian Nuclear Safety Commission, 2023. *Regulatory consideration of environmental degradation in licensing light water small reactors in Canada*. [online] Technical paper. Ottawa: Canadian Nuclear Safety Commission. Available at: https://cnsc-ccsn.gc.ca/eng/resources/research/technical-papers-and-articles/2023/regulatory-consideration-of-environmental-degradation-in-licensing-light-water-small-reactor-in-canada [Accessed 25 October 2026].
 
 Canadian Nuclear Safety Commission, 2024. *CMD 24-H3-1B* (staff presentation, Darlington New Nuclear Project). [pdf] Ottawa: Canadian Nuclear Safety Commission. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD-24-H3-1B.pdf/object.
 
@@ -95,9 +100,17 @@ ENR, 2018. Clay and limestone cement could cut carbon emissions. *Engineering Ne
 
 Environment and Climate Change Canada, 2026. *Industrial carbon pricing in Canada*. Ottawa: Government of Canada. Available at: https://www.canada.ca/en/environment-climate-change/services/climate-change/pricing-pollution-how-it-will-work/putting-price-on-carbon-pollution/industry.html [Accessed 21 October 2026].
 
+Fermi Energia, n.d. *New SMR project*. [online] Tallinn: Fermi Energia. Available at: https://fermi.ee/new-smr-project/ [Accessed 25 October 2026].
+
+Field, K.G., Remec, I. and Le Pape, Y., 2015. Radiation effects in concrete for nuclear power plants – Part I: Quantification of radiation exposure and radiation effects. *Nuclear Engineering and Design*, 282, pp.126–143. Available at: https://www.ornl.gov/publication/radiation-effects-concrete-nuclear-power-plants-part-i-quantification-radiation [Accessed 25 October 2026].
+
+GE Hitachi Nuclear Energy, n.d. *GE Hitachi BWRX-300 fact sheet*. [pdf] Wilmington, NC: GE Hitachi Nuclear Energy. Available at: https://gevernova.com/content/dam/gepower-nuclear/global/en_US/documents/product-fact-sheets/BWRX-300_Fact_Sheet-2020.pdf [Accessed 25 October 2026].
+
 GE-Hitachi Nuclear Energy, 2024. *BWRX-300 Steel-Plate Composite Containment Vessel (SCCV) and Reactor Building Structural Design*, NEDO-33926, Revision 2 (non-proprietary), 16 August. [pdf] US NRC ADAMS ML24110A134. Available at: https://www.nrc.gov/docs/ML2411/ML24110A134.pdf [Accessed 20 October 2026].
 
 GE Vernova, n.d. *BWRX-300 Small Modular Reactor*. [online] Available at: https://www.gevernova.com/nuclear/carbon-free-power/bwrx-300-small-modular-reactor.
+
+GE Vernova, 2026. *NRC issues first U.S. construction permit for BWRX-300 small modular reactor at TVA Clinch River*. [online] Press release. Available at: https://www.gevernova.com/news/press-releases/nrc-issues-first-us-construction-permit-bwrx-300-small-modular-reactor-tva-clinch-river [Accessed 25 October 2026].
 
 GE Vernova Hitachi Nuclear Energy, n.d. *BWRX-300 General Description* (005N9751). [pdf] Wilmington, NC: GE Vernova. Available at: https://www.gevernova.com/content/dam/gevernova-nuclear/global/en_us/documents/carbon-free-power/005N9751-BWRX-300-General-Description.pdf.
 
@@ -116,6 +129,8 @@ Graham, P., Hayward, J. and Foster, J., 2024. *GenCost 2023-24: Final report*. [
 Graham, P., Hayward, J. and Foster, J., 2025. *GenCost 2024-25: Final report*. [pdf] Australia: CSIRO. Executive summary available at: https://www.csiro.au/-/media/Energy/GenCost/GenCost2024-25Final_ES.pdf.
 
 Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub, 2025. *What Australians really think of nuclear power*. [news release] 2 May. Available at: https://news.griffith.edu.au/2025/05/02/what-australians-really-think-of-nuclear-power/ [Accessed 21 October 2026].
+
+Helmholtz-Zentrum Dresden-Rossendorf, n.d. [Activation of the biological shield of Greifswald NPP Unit 2]. Publication Publ-39008. Dresden: Helmholtz-Zentrum Dresden-Rossendorf. Available at: https://hzdr.de/publications/Publ-39008 [Accessed 25 October 2026].
 
 Hooton, R.D., 2023. [Webinar slides on changes to ASTM cement and concrete standards]. ACI Fall 2023 webinar slides. [pdf] Farmington Hills: American Concrete Institute. Available at: https://www.concrete.org/portals/0/files/pdf/webinars/ws_F23_NEU_DouglasHooton.pdf [Accessed 20 October 2026].
 
@@ -136,6 +151,8 @@ Joint Standing Committee on Treaties, 2024. *Report 224: Agreement among Austral
 Kazatomprom, 2025. *Integrated Annual Report 2024*. [pdf] Astana: NAC Kazatomprom JSC. Available at: https://www.kazatomprom.kz/storage/59/kap_iar_2024_eng_0205__clean.pdf [Accessed 20 October 2026].
 
 Kim and Macfarlane, 2026. *Challenges of small modular reactors: a comprehensive exploration*. [pdf] Available at: https://www.nirs.org/wp-content/uploads/2025/09/SMR-Costs_Challenges-of-SMRs-cost-waste_Kim-Macfarlane_2026.pdf.
+
+Krall, L.M., Macfarlane, A.M. and Ewing, R.C., 2022. Nuclear waste from small modular reactors. *Proceedings of the National Academy of Sciences of the United States of America*, 119(23), e2111833119. Available at: https://doi.org/10.1073/pnas.2111833119 [Accessed 25 October 2026].
 
 LACCEI, 2026. Comparative life cycle assessment and structural performance analysis of eco-friendly LC3 cement for CO₂ reduction compared to Portland cement. In: *Proceedings of the 24th LACCEI International Multi-Conference for Engineering, Education and Technology*, Santiago, Chile, 15–17 July 2026. Contribution 2661. Available at: https://laccei.org/LACCEI2026-Chile/full-papers/Contribution_2661_final_a.pdf.
 
@@ -195,6 +212,8 @@ Ontario Power Generation, 2026a. *OPG reports 2026 first quarter financial resul
 
 Ontario Power Generation, 2026b. Interrogatory response giving the Darlington New Nuclear Project levelised cost, EB-2025-0297. Filed with the Ontario Energy Board.
 
+Ontario Power Generation, 2026c. *Laying the foundation for the G7's first small modular reactor*. [online] 30 April. Available at: https://www.opg.com/news-and-media/story/laying-the-foundation-for-the-g7s-first-small-modular-reactor [Accessed 25 October 2026].
+
 Parker, D.J., McNaughton, C.S. and Sparrow, G.A., 2016. Life cycle greenhouse gas emissions from uranium mining and milling in Canada. *Environmental Science & Technology*, 50(17), pp.9746–9753. Available at: https://pubs.acs.org/doi/10.1021/acs.est.5b06072.
 
 Parliament of Australia, 2026. *Senate composition*. [online] Available at: https://www.aph.gov.au/Senators_and_Members/Senators/Senate_composition [Accessed 20 October 2026].
@@ -239,11 +258,19 @@ Steigerwald, B., Weibezahn, J., Slowik, M. and von Hirschhausen, C., 2023. Uncer
 
 Sun, Y. and Kurosaki, K., 2025. *Technical overview of recent developments in small modular reactors in the United States*. arXiv:2504.02599 [physics.soc-ph]. Available at: https://arxiv.org/abs/2504.02599.
 
+Systematic evaluation of concrete placement reliability in heavily reinforced nuclear structures, 2026. *International Journal of Concrete Structures and Materials*. Available at: https://link.springer.com/article/10.1186/s40069-026-00964-8 [Accessed 25 October 2026].
+
+Thierfeldt, S., 2019. [Clearance and recycling of materials from decommissioning]. Presentation slides, SOGIN workshop, Rome. [pdf] Available at: https://www.sogin.it/SiteAssets/uploads/2019/media/09_THIERFELDT_Clearance_Recycling_Materials_Decommissioning.pdf [Accessed 25 October 2026].
+
 Treasury Board of Canada Secretariat, 2022. *Standard on Embodied Carbon in Construction* (amended 20 March 2025). [online] Ottawa: Treasury Board of Canada Secretariat. Available at: https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32814 [Accessed 20 October 2026].
 
 United Nations Economic Commission for Europe, 2021. *Carbon Neutrality in the UNECE Region: Integrated Life-cycle Assessment of Electricity Sources*. ECE/ENERGY/141. Geneva: United Nations. Available at: https://unece.org/sites/default/files/2021-10/LCA-2.pdf [Accessed 20 October 2026].
 
 United States Congress, 2024. *Prohibiting Russian Uranium Imports Act*, Public Law 118-62, 13 May 2024. [pdf] Washington, DC: US Government Publishing Office. Available at: https://www.govinfo.gov/content/pkg/PLAW-118publ62/pdf/PLAW-118publ62.pdf [Accessed 20 October 2026].
+
+Universität der Bundeswehr München, n.d. [Self-consolidating mortar with calcined clay]. [pdf] Munich: Universität der Bundeswehr München. Available at: https://athene-forschung.rz.unibw-muenchen.de/doc/141635/141635.pdf [Accessed 25 October 2026].
+
+US Department of Energy, 2015. *Technology Readiness Assessment Guide*, DOE G 413.3-4A (Admin. Chg 1). [online] Washington, DC: US Department of Energy. Available at: https://www.directives.doe.gov/directives/0413.3-EGuide-04a [Accessed 25 October 2026].
 
 US Department of Energy, 2025. *Energy Department Selects TVA and Holtec to Advance Deployment of U.S. Small Modular Reactors*. Washington, DC: US Department of Energy. Available at: https://www.energy.gov/articles/energy-department-selects-tva-and-holtec-advance-deployment-us-small-modular-reactors.
 
@@ -252,6 +279,10 @@ US Department of Justice and Federal Trade Commission, 2010. *Horizontal Merger 
 US Department of Justice and Federal Trade Commission, 2023. *Merger Guidelines*. [pdf] Washington, DC: US Department of Justice and Federal Trade Commission, 18 December. Available at: https://www.justice.gov/d9/2023-12/2023%20Merger%20Guidelines.pdf [Accessed 20 October 2026].
 
 US EPA, 2024. *Power Profiler: terms, calculations and data sources*. [pdf] Available at: https://www.epa.gov/system/files/documents/2024-04/power-profiler-terms-calculations-and-data-sources.pdf.
+
+US Nuclear Regulatory Commission, 1988. *Regulatory Guide 1.99, Revision 2: Radiation embrittlement of reactor vessel materials*. [pdf] Washington, DC: US Nuclear Regulatory Commission. Available at: https://www.nrc.gov/docs/ML1214/ML12145A013.pdf [Accessed 25 October 2026].
+
+US Nuclear Regulatory Commission, 2025. *NuScale US460*. [online] Rockville, MD: US Nuclear Regulatory Commission. Available at: https://www.nrc.gov/reactors/new-reactors/advanced/who-were-working-with/applicant-projects/nuscale-us460.html [Accessed 25 October 2026].
 
 US Nuclear Regulatory Commission and Canadian Nuclear Safety Commission, 2025. *CNSC–NRC Joint Report on GEH BWRX-300 Steel-Plate Composite Containment Vessel and Reactor Building Structural Design Topical Report*. ADAMS ML25325A075. [pdf] Available at: https://www.nrc.gov/docs/ML2532/ML25325A075.pdf [Accessed 20 October 2026].
 
@@ -265,9 +296,15 @@ World Nuclear Association, 2025. *Uranium Enrichment*. [online] London: World Nu
 
 World Nuclear Association, 2026. *World Uranium Mining Production*. [online] London: World Nuclear Association. Available at: https://world-nuclear.org/information-library/nuclear-fuel-cycle/mining-of-uranium/world-uranium-mining-production [Accessed 20 October 2026].
 
+World Nuclear News, 2023. China's demonstration HTR-PM enters commercial operation. *World Nuclear News*, 6 December. [online] Available at: https://world-nuclear-news.org/articles/chinese-htr-pm-demo-begins-commercial-operation [Accessed 25 October 2026].
+
 World Nuclear News, 2026. Cameco in offtake agreement for US laser enrichment plant. *World Nuclear News*. [online] Available at: https://www.world-nuclear-news.org/articles/cameco-in-offtake-agreement-for-us-laser-enrichment-plant.
 
 World Nuclear University, 2025. [Enrichment: WNU Summer Institute presentation slides], 17 June. Available at: https://world-nuclear-university.org/SummerInsituteFiles/2025-06-17_WNU_Enrichment_Platov_final_62a48c29.pdf.
+
+World Steel Association, 2026. *CO₂ emissions and energy intensity, 2022–2024* (Sustainability indicators). [online] Brussels: World Steel Association. Available at: https://worldsteel.org/steel-topics/sustainability/sustainability-indicators-2024-report [Accessed 25 October 2026].
+
+Zunino, F., 2021. *Limestone calcined clay cements* [presentation slides]. Lausanne: EPFL / LC3 project. [pdf] Available at: https://lc3.ch/wp-content/uploads/2021/12/6-Franco-LimestoneCalcinedClayCements.pdf [Accessed 25 October 2026].
 
 ### Legislation
 
