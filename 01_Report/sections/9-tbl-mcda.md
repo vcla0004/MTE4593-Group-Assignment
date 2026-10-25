@@ -1,4 +1,6 @@
 Rubric coverage: R3.6, RB.8, R2.6, R4.4, R2.4 (also supports R2.7, R3.5, R3.8, R4.3, R5.1, R5.2, R5.3)
+<!-- Changelog 25/10 (writer, final-part1): rank-reversal random-weight share 0.2% changed to 0.1% (mcda.md line 72). -->
+
 
 <!--
 CHANGELOG

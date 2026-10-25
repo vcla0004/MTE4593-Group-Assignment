@@ -1,4 +1,6 @@
 Rubric coverage: R2.4, R2.1, R2.6, R1.4, RB.5 (also supports R2.5, R2.7, R3.6, R5.1, R5.3)
+<!-- Changelog 25/10 (writer, final-part1): OPG 2025 changed to 2025a (item 7). -->
+
 
 <!--
 CHANGELOG

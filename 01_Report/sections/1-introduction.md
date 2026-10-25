@@ -1,4 +1,6 @@
 Rubric coverage: RB.1, R1.1, R1.2, R5.1 (also supports R5.3)
+<!-- Changelog 25/10 (writer, final-part1): "OECD" claim replaced with the April 2025 CNSC licence wording (item 5); OPG 2025 changed to 2025a (item 7). -->
+
 
 <!--
 CHANGELOG

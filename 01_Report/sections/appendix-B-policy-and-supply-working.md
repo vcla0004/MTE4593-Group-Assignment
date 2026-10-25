@@ -1,4 +1,6 @@
 Rubric coverage: RB.5, R2.4, R3.8, R2.1, R2.3, R2.7, R4.3, R3.1, R3.6, RB.6 (also supports R3.2, R3.4, R1.3, R5.2)
+<!-- Changelog 25/10 (writer, final-part1): suffixes only (Newcastle Herald 2024a x2; OPG 2025a x2). Stale C1 values (1,734 / 5.2 kt / 12x) and duplicate B8.3 NOT touched. -->
+
 
 <!--
 CHANGELOG
@@ -402,7 +404,7 @@ The grid trajectory, the start year and the post-coal floor dominate the result.
 | NEM floor after coal | 30 g/kWh (0–80) | Assumption | Assumed |
 | Bayswater, sent out | 990 g/kWh | Australian Energy Market Operator (2025) | As cited (older value) |
 | Coal, life cycle | 1,000 g/kWh (751–1,095) | United Nations Economic Commission for Europe (2021) | As cited |
-| Start years | Darlington Unit 1 2030; Units 2–4 2035 (2034–2036); Liddell 2035 (Coalition claim), 2040 (CSIRO earliest), 2045 (late case) | Government of Ontario (2025); Ontario Power Generation (2025); ABC News (2024), as reported; Graham, Hayward and Foster (2024); assumption | As cited; assumed |
+| Start years | Darlington Unit 1 2030; Units 2–4 2035 (2034–2036); Liddell 2035 (Coalition claim), 2040 (CSIRO earliest), 2045 (late case) | Government of Ontario (2025); Ontario Power Generation (2025a); ABC News (2024), as reported; Graham, Hayward and Foster (2024); assumption | As cited; assumed |
 
 #### B4.2 Results
 

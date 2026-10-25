@@ -1,4 +1,6 @@
 Rubric coverage: R1.2, RB.2, R1.1, R1.3, R3.5, R5.1, R5.2 (also supports RB.3, R3.8, R5.3)
+<!-- Changelog 25/10 (writer, final-part1): T15 rows 1, 2, 3 per items 6, 7, 8 (OPG 2026b as reported; 2025a; "No more than 36-37 of the 39 Senate votes"). -->
+
 
 <!--
 CHANGELOG
