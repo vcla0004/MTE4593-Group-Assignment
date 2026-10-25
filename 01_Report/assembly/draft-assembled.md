@@ -64,8 +64,6 @@ We answer four research questions.
 3. Does a unit's climate value differ between Ontario and Liddell? (Section 3.3)
 4. Which barriers decide, and does an SMR beat firmed renewables? (Section 3.1.3, Sections 3.4–3.7)
 
----
-
 
 # 2 Data Sources/Methodology
 
@@ -83,8 +81,6 @@ The Herfindahl–Hirschman index (HHI) sums squared percentage market shares (0 
 A weighted sum (Dodgson et al., 2009) scores four options (status quo, one SMR at Liddell, the same SMR built with C1's concrete, firmed renewables) on seven criteria, each min-max normalised. Four weight sets are our judgement; robustness is tested in Appendix B7.
 
 Search strategy and patent search: Appendix E.
-
----
 
 
 # 3 Discussion
@@ -139,8 +135,6 @@ Eight barriers decide whether a small modular reactor (SMR) is built and cuts em
 | 7. Workforce | **AUKUS** submarine work competes for the same trades (Joint Standing Committee on Treaties, 2024) | Scarce trades (Section 3.4.2) | No |
 | 8. Waste | **C$26 bn** Canadian repository, producer-funded; no Australian route (Nuclear Waste Management Organization, n.d.) | Needs a disposal route (Section 3.4.2) | No |
 
----
-
 
 ### 3.1.4 The initiative: low-clinker concrete for the Darlington Units 2–4 infill
 
@@ -163,8 +157,6 @@ Ontario Power Generation (OPG) should pilot limestone calcined clay cement (LC³
 Why it is not the obvious choice. C1's value is set by schedule, not by the concrete: under three weeks of delay to a unit cancels its saving (Section 3.3.1), so C1 is a qualification programme timed to Unit 1 mock-ups. Its lever is financial: the Units 2–4 equity tranche can carry the condition (Section 3.6.2).
 
 What C1 does not address. Cost, law, fuel supply, social licence and workforce (Table T2); lower-carbon steel is the next lever (Section 3.2.3, Section 3.8).
-
----
 
 
 ### 3.1.5 Materials from extraction to end-of-life
@@ -252,8 +244,6 @@ The known low bias would raise the total and shrink C1's share, so it does not w
 
 ![Figure F5. Our result against published nuclear life-cycle values (dot = central or median; line = range or interval). Coal and gas are off the scale. | Source: this study; EDF R&D (2024); United Nations Economic Commission for Europe (2021); Gibon and Hahn Menacho (2023); Carless, Griffin and Fischbeck (2016); Warner and Heath (2012).](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F5_benchmarks.png){width=95%}
 
----
-
 
 ## 3.3 National Strategies and Industrial Policies: Carbon Avoided in Ontario and Australia
 
@@ -293,8 +283,6 @@ Renewables win because they are cheaper per MWh and start about a decade earlier
 
 ![Figure F7. Same money at Liddell: firmed renewables ÷ one SMR unit, as energy bought and CO₂e avoided to 2050, under four cost cases; the dashed line is parity. | Source: this study, Appendix B6 (Table B28)](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F7_same_money.png){width=95%}
 
----
-
 
 ## 3.4 Stakeholder Analysis
 
@@ -320,8 +308,6 @@ For C1, the decisive actors are OPG as buyer, GE Vernova Hitachi as owner of the
 | Contractors and suppliers | High | Constructability, price, traceability | Earn the construction revenue, with GE Vernova Hitachi |
 | Clarington residents and customers | Medium–high | Air and water impacts, cost | Repay OPG's share through rates |
 
----
-
 
 ### 3.4.2 Social licence
 
@@ -342,8 +328,6 @@ C1 changes no land use, emissions or waste at the site, so it raises no new cons
 | Traditional Owners and consent | Duty to consult met; C$700 m loan converting to equity | Wonnarua people: no public position located; no process. Kimba ballot 61.6% yes, Barngarla excluded | Canada has a funded way to say yes; Australia has none |
 | Waste route | Volunteer siting from 2010: 22 communities to 1; Ignace vote 77%; C$170 m over 81 years to the host; C$26 bn paid by producers (NWMO, 2024c; n.d.) | No disposal route, even for research-reactor waste | Waste is a hard gate for Liddell |
 | Workforce | About 1,600 construction and 200 operating jobs per SMR (Conference Board of Canada, 2021) | No civil nuclear workforce; AUKUS needs about 20,000 jobs over 30 years (Joint Standing Committee on Treaties, 2024) | A civil SMR would compete with AUKUS for trades |
-
----
 
 
 ## 3.5 Market Analysis and Economic Feasibility
@@ -379,8 +363,6 @@ LC³ saves 6,600 t CO₂e across Units 2–4 (2,200 t a unit; Section 3.2.3), wo
 | Capital cost: vendor BWRX-300 vs Darlington | US$2,250/kW vs about US$12,600/kW | Vendor figures are a fifth of budget |
 | NuScale Carbon Free Power Project, Idaho | Price US$58 to 89/MWh; cost US$5.3 bn to 9.24 bn; cancelled November 2023 (NuScale Power Corporation and Utah Associated Municipal Power Systems, 2023; Schlissel, 2023) | Buyers leave when they carry overruns |
 
----
-
 
 ### 3.5.2 Supply concentration and geopolitics
 
@@ -400,8 +382,6 @@ C1 does not reduce fuel risk, and fuel independence needs conversion, enrichment
 | Mining (output by country, 2024) | 2,341 | High / Moderate | 4.5% | 2,546 | 2,686 | 7.6% | 23.8% |
 | Conversion (capacity by company) | 2,111 | High / Moderate | 20.2% | 2,674 | 3,615 | 0% | 20.2% |
 | Enrichment (capacity by company, 2025) | **3,009** | **High / High** | **42.8%** | 3,599 | **5,621** | 0% | 0% |
-
----
 
 
 ## 3.6 Government Regulations Review
@@ -426,8 +406,6 @@ The non-safety pilot needs no nuclear qualification; infill qualification must s
 | 3. NSW ban | *Uranium Mining and Nuclear Facilities (Prohibitions) Act 1986* (NSW) s 8 makes building a reactor an offence; s 9 bars approval | NSW repeal (passed the Council 6 May 2026, lapses 28 November 2026; Parliament of New South Wales, 2026) or Constitution s 109 override | Unit 1 approved 8 May 2025 (Government of Ontario, 2025) |
 | 4. Site | AGL owns Liddell and has ruled out nuclear (Newcastle Herald, 2024a) | AGL's consent, or Commonwealth acquisition | OPG holds the site licence (CNSC, 2021) |
 
----
-
 
 ### 3.6.2 Implementation pathway
 
@@ -446,8 +424,6 @@ C1 can be built with no added delay on the evidence available if OPG applies a c
 The sequence is L1 now, L4 in 2027, then L2 at the 2028 tranche. A CNSC licence condition is not a lever, because the CNSC does not set climate conditions; it only has to accept that the change is safe (our inference). Step 1, in 2027, develops slag and LC³ self-consolidating mixes (about 6 to 9 months). Step 2 is a full-scale mock-up trial off Unit 1's critical path (about 6 months), funded by L4. Step 3 is the design-change evaluation, submitted with the Units 2–4 licensing package ahead of the approval expected in 2028, as reported (American Nuclear Society, 2026); it takes about 6 to 9 months (assumed). The steps total about 18 to 24 months (assumed), so they fit only if they start in 2027. We have not costed the programme; Section 3.7 tests an assumed C$1 m. If the evidence is not ready, Units 2–4 proceed with the current mix and the infill enters at a later unit. Doing nothing forgoes the saving at near-zero cost and is rejected.
 
 The federal standard is a template, not an obligation. The Standard on Embodied Carbon in Construction (amended March 2025) requires low-carbon concrete and life-cycle assessment in federal procurement (Treasury Board of Canada Secretariat, 2022), but it binds federal departments, and OPG, an Ontario Crown corporation, is outside its scope (our inference). Its allowance of 130% of baseline for specialised mixes could let self-consolidating infill emit 30% more than the baseline, so any OPG or fund clause must benchmark infill against a cement-rich self-consolidating reference mix.
-
----
 
 
 ## 3.7 Triple-bottom-line evaluation and multi-criteria analysis
@@ -495,8 +471,6 @@ An SMR at Liddell would need its cost gap closed, first power well before 2040, 
 
 The social, legal and supply scores and all four weight sets are our judgement; only "renewables first" is robust to the scaling. Costs are GenCost's (Graham, Hayward and Foster, 2024); the renewables supply score uses solar PV alone (International Energy Agency, 2022).
 
----
-
 
 ## 3.8 Future material properties and processes
 
@@ -527,8 +501,6 @@ Our answers to the four research questions are as follows.
 Schedule: a month's slip to Units 2–4 costs 29–175 times C1's carbon value (Section 3.3). Fuel front end: a measured conversion-heat value would narrow the headline most (Section 3.2). Whole-plant steel: up to 3,714 t per unit, if feasible (Section 3.8). Concrete (C1): low-risk, but moves the life cycle by about 0.36%.
 
 A screening LCA, not critically reviewed; MCDA weights are our judgement; legislation excludes the 2025 EPBC reforms.
-
----
 
 
 ```{=openxml}

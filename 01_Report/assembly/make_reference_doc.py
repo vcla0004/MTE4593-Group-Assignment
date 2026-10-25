@@ -24,9 +24,10 @@ TABLE_STYLE = (
     '<w:basedOn w:val="TableNormal"/><w:qFormat/>'
     '<w:pPr><w:spacing w:before="20" w:after="20"/></w:pPr>'
     '<w:tblPr><w:tblInd w:w="0" w:type="dxa"/>'
-    '<w:tblBorders><w:top w:val="single" w:sz="8" w:space="0" w:color="' + BLUE + '"/>'
-    '<w:bottom w:val="single" w:sz="8" w:space="0" w:color="' + BLUE + '"/>'
-    '<w:insideH w:val="single" w:sz="4" w:space="0" w:color="D0D7DE"/></w:tblBorders>'
+    '<w:tblBorders>'
+    + ''.join(f'<w:{side} w:val="single" w:sz="8" w:space="0" w:color="000000"/>'  # 1 pt = 8 eighths
+              for side in ("top", "left", "bottom", "right", "insideH", "insideV"))
+    + '</w:tblBorders>'
     '<w:tblCellMar><w:top w:w="30" w:type="dxa"/><w:left w:w="80" w:type="dxa"/>'
     '<w:bottom w:w="30" w:type="dxa"/><w:right w:w="80" w:type="dxa"/></w:tblCellMar></w:tblPr>'
     '<w:tblStylePr w:type="firstRow"><w:rPr><w:b/></w:rPr>'

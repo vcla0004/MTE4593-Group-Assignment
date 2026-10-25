@@ -336,6 +336,7 @@ def main() -> None:
         if REVIEW and name in NOTES:
             body = re.sub(r"^(#{1,6} .*\n)", lambda m: m.group(1) + "\n" + note(NOTES[name]) + "\n",
                           body, count=1, flags=re.M)
+        body = re.sub(r"^\s*(?:---|\*\*\*|___)\s*$", "", body, flags=re.M)  # no horizontal rules in the body
         body = restructure(report_style(body))
         body = PARENT.get(name, "") + body
         parts.append(body)
