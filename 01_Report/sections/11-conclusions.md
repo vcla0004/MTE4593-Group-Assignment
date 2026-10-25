@@ -3,11 +3,12 @@ Rubric coverage: R5.1, R5.2, R3.6, RB.8, R4.4, R2.6
 <!--
 CHANGELOG
 - 25/10/2026 (writer, Q21): M6 RQ4 answers both halves; RQ2/RQ1 offsets; M5d lever 1 now 29–175×; M5g "Darlington Unit 1". M4 Granta clause left for the coordinator.
+- Cut to 210 words for the page limit, 25/10
 -->
 
 ## 11 Conclusions and recommendations
 
-**Pilot LC³ in eligible non-safety works first; use it in the steel-composite infill only if qualified on Unit 1 mock-ups (slag blend as fallback); and adopt it only if it adds no delay to Darlington Units 2–4. For Australia, law, cost and timing bar an SMR at Liddell before about 2040, and the same money on firmed renewables ranks first.**
+**Pilot LC³ in eligible non-safety works first; use it in the infill only if qualified on Unit 1 mock-ups and adding no delay to Darlington Units 2–4. For Australia, law, cost and timing bar an SMR at Liddell before about 2040; firmed renewables rank first.**
 
 **Research questions.**
 1. *Life cycle (§6).* One BWRX-300 emits about 4 g CO₂e/kWh, mostly from the fuel front end; conversion heat is the largest uncertainty.
@@ -15,13 +16,9 @@ CHANGELOG
 3. *Displacement (§7).* Darlington Unit 1 avoids 1.0–6.8 Mt CO₂e to 2050 and a Liddell unit 0.67–3.9 Mt; firmed renewables avoid 10.9 times more per dollar.
 4. *Barriers and options (§3, §8–9).* Law (three bans), cost (C$149–198/MWh) and time (2040 at the earliest) decide; firmed renewables rank first under all four weight sets (80 against 30 with equal weights).
 
-**Ranked materials levers.**
-1. **Schedule:** a month's slip to Units 2–4 costs 29–175 times C1's carbon value (§7).
-2. **Fuel front end:** a measured conversion-heat value would narrow the headline most (§6).
-3. **Whole-plant steel:** up to 3,714 t per unit, if feasible for nuclear-grade plate (§10).
-4. **Concrete (C1):** real and low-risk if schedule-neutral, but it moves the life cycle by about 0.36%.
+**Ranked materials levers.** Schedule: a month's slip to Units 2–4 costs 29–175 times C1's carbon value (§7). Fuel front end: a measured conversion-heat value would narrow the headline most (§6). Whole-plant steel: up to 3,714 t per unit, if feasible (§10). Concrete (C1): low-risk, but moves the life cycle by about 0.36%.
 
-**Limitations.** A screening LCA, not critically reviewed; MCDA scores and weights are our judgement; inputs are as described in §2; legislation is as compiled, without the 2025 EPBC reforms.
+**Limitations.** A screening LCA, not critically reviewed; MCDA weights are our judgement; legislation excludes the 2025 EPBC reforms.
 
 ---
 
