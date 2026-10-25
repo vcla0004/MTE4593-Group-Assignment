@@ -15,7 +15,7 @@ This appendix gives the full working behind §8.1 (law and licensing), §8.3 (fu
 |---|---|---|---|
 | B1 Legal and political pathway | `python3 -I 03_LCA_Calculations/scripts/law_timelines.py` | `03_LCA_Calculations/parameters_run2.yaml` | `03_LCA_Calculations/results/law_timelines.csv` |
 | B2 Supply concentration (HHI) | `python3 -I 03_LCA_Calculations/scripts/hhi.py` | `03_LCA_Calculations/parameters_run3.yaml` | `03_LCA_Calculations/results/hhi.md`, `hhi_summary.csv` |
-| B3 Routes to a licensable SMR in Australia | none: hand calculation (qualitative scoring; totals checked in fact-check batch 1a) | Law brief §5 | This appendix |
+| B3 Routes to a licensable SMR in Australia | none: hand calculation (qualitative scoring) | Table B13 | This appendix |
 | B4 Displacement | `python3 -I 03_LCA_Calculations/scripts/displacement.py` | `03_LCA_Calculations/parameters_run1.yaml` | `03_LCA_Calculations/results/displacement.md` |
 | B5 Value of schedule | `python3 -I 03_LCA_Calculations/scripts/schedule_value.py` | `parameters_run1.yaml` (`c1_deck_*` keys; cost inputs read from `parameters_run5.yaml`) | `results/schedule_value.md` |
 | B6 Same money | `python3 -I 03_LCA_Calculations/scripts/same_money.py` | `parameters_run1.yaml` | `results/same_money.md` (cross-check: `results/lcoe.md`) |
@@ -31,7 +31,7 @@ This appendix gives the full working behind §8.1 (law and licensing), §8.3 (fu
 #### B1.1 The three legal barriers and what removes each
 
 *Table B1. The legal barriers to an SMR at Liddell, what removes each, and who holds the veto.*
-*Source: legislation as named; ARPANSA (n.d.); Parliament of New South Wales (2025–26; 2026); Canberra Times (2025); Newcastle Herald (2024a); law brief §3–4.*
+*Source: legislation as named; ARPANSA (n.d.); Parliament of New South Wales (2025; 2026); Canberra Times (2025); Newcastle Herald (2024a).*
 
 | # | Barrier | Instrument and effect (as extracted) | What removes it | Who decides (veto holder) | Status, October 2026 |
 |---|---|---|---|---|---|
@@ -40,7 +40,7 @@ This appendix gives the full working behind §8.1 (law and licensing), §8.3 (fu
 | 3 | State ban | *Uranium Mining and Nuclear Facilities (Prohibitions) Act 1986* (NSW) s 8: offence to build or operate a nuclear reactor, except for the s 8(3) exceptions (the Commonwealth's AAEC successors, such as ANSTO); s 9: other Acts do not authorise a state authority to build or approve one | NSW repeal, or a Commonwealth override under Constitution s 109, which Partlett warns may face a High Court challenge (Canberra Times, 2025) | NSW Parliament (Legislative Assembly), or the Commonwealth | Repeal bill passed the Legislative Council; stalled in the Assembly (B1.3) |
 | (4) | Site (not a law) | AGL owns Liddell and has ruled out nuclear there (Newcastle Herald, 2024a) | AGL's consent, or compulsory acquisition by the Commonwealth | AGL, or the Commonwealth | AGL opposed |
 
-Order of removal: federal repeal (1 and 2) → choice of regulator → state repeal or override (3) → site (4) → environmental assessment → licensing (law brief §4). Each step has a different veto holder, so all must agree.
+Order of removal: federal repeal (1 and 2) → choice of regulator → state repeal or override (3) → site (4) → environmental assessment → licensing. Each step has a different veto holder, so all must agree.
 
 #### B1.2 Senate arithmetic for federal repeal
 
@@ -64,7 +64,7 @@ Steps (`law_timelines.py`):
 | 1. Majority needed, all 76 voting | ⌊76 / 2⌋ + 1 (a tied vote fails, Constitution s 23) | **39** |
 | 2. Largest pro-repeal bloc (upper bound) | Coalition 27 + One Nation 4 + Babet 1 | **32** |
 | 3. Shortfall | 39 − 32 | **7** |
-| 4. Bloc plus every other crossbencher | 32 + 4 | **36** (3 short); at most 37 (2 short) if a count of six other crossbenchers is used |
+| 4. Bloc plus every other crossbencher | 32 + 4 | **36** (3 short); **37** (2 short) on the alternative count in step 7 |
 | 5. Can repeal pass without Labor or the Greens? | 36 or 37 ≥ 39? | **No** on either count |
 | 6. Would the Greens alone be enough (arithmetic only)? | 32 + 10 = 42 ≥ 39? | Yes, but the Greens oppose (policy, not arithmetic) |
 | 7. Opposed bloc | Labor 30 + Greens 10 = 40 ≥ 39 (39 on the alternative count) | A blocking majority on its own |
@@ -74,12 +74,12 @@ Result 4 makes the conclusion independent of the One Nation and Babet assumption
 #### B1.3 NSW repeal bill status
 
 *Table B3. Progress of the NSW repeal bill (private member's bill).*
-*Source: Parliament of New South Wales (2025–26; 2026); `parameters_run2.yaml`.*
+*Source: Parliament of New South Wales (2025; 2026); `parameters_run2.yaml`.*
 
 | Event | Date | Note |
 |---|---|---|
 | Introduced in the Legislative Council | 19 November 2025 | — |
-| Passed the Legislative Council | 6 May 2026 | About 5.5 months after introduction (law brief §4). All Liberal and National MLCs voted for it |
+| Passed the Legislative Council | 6 May 2026 | About 5.5 months after introduction. All Liberal and National MLCs voted for it |
 | Legislative Assembly | Awaiting the second reading speech (notice paper reported 27 May 2026) | The Minns Labor Government opposes repeal and holds an Assembly majority (Canberra Times, n.d., as reported) |
 | Lapses | 28 November 2026 | Unless the Assembly acts first |
 
@@ -220,7 +220,7 @@ Russia's enrichment share is 43.3% in 2022 and 38.3% in the 2030 plans (World Nu
 | Conversion (capacity by company) | 2,111 | 4.7 | Highly | Moderately | 2,674 (highly under both) | 3,615 | 20.2% |
 | Enrichment (capacity by company, 2025) | **3,009** | 3.3 | Highly | Highly | 3,599 | **5,621** | **42.8%** |
 
-Shares for the two producer countries in the comparison: Canada mined 23.8% of world uranium in 2024 and holds 20.2% of world conversion capacity (36.2% of the capacity open to a Western buyer), with no enrichment. Australia mined 7.6% (4,598 tU) and has no conversion or enrichment capacity. Australia holds 28% of identified recoverable resources at < USD 130/kgU in the 2024 Red Book edition we use (OECD NEA and IAEA, 2025); two tabulations of the 2026 edition give 29% and 27%.
+Shares for the two producer countries in the comparison: Canada mined 23.8% of world uranium in 2024 and holds 20.2% of world conversion capacity (36.2% of the capacity open to a Western buyer), with no enrichment. Australia mined 7.6% (4,598 tU) and has no conversion or enrichment capacity. Australia holds 28% of identified recoverable resources at < USD 130/kgU in the 2024 Red Book edition we use (OECD Nuclear Energy Agency and International Atomic Energy Agency, 2025); two tabulations of the 2026 edition give 29% and 27%.
 
 #### B2.4 Sensitivity
 
@@ -273,11 +273,11 @@ Both bounds are below 1,500, so firms are not concentrated even though countries
 
 #### B2.5 Limitations
 
-*Note moved from §8.3 (Table T3).* "High" is above 1,800 on the 2023 guidelines and above 2,500 on the 2010 guidelines; "Moderate" is 1,500–2,500 (2010). Without Russia, all three stages are high on both scales. Sensitivity: enrichment 2,724–3,065 (2030 plans to 2022); mining by country 2,246–2,370 (2022–2024); conversion 2,015 with the higher ConverDyn capacity; all country-level and capacity-based cases stay above 1,800. Mining by company is about 850–1,400 (midpoint 1,118; top three firms only), mostly below the threshold. Russia's enrichment share is 42.8% on WNA capacity and 41.0% on World Nuclear University's. Australia's resource share is 28% in the 2024 Red Book edition we use; two tabulations of the 2026 edition give 29% and 27%.
+"High" is above 1,800 on the 2023 guidelines and above 2,500 on the 2010 guidelines; "Moderate" is 1,500–2,500 (2010). Without Russia, all three stages are high on both scales. Sensitivity: enrichment 2,724–3,065 (2030 plans to 2022); mining by country 2,246–2,370 (2022–2024); conversion 2,015 with the higher ConverDyn capacity; all country-level and capacity-based cases stay above 1,800. Mining by company is about 850–1,400 (midpoint 1,118; top three firms only), mostly below the threshold. Russia's enrichment share is 42.8% on WNA capacity and 41.0% on World Nuclear University's. Australia's resource share is 28% in the 2024 Red Book edition we use; two tabulations of the 2026 edition give 29% and 27%.
 
 Limits:
 - Capacity is not supply. Nameplate SWU includes capacity Rosatom uses for underfeeding and tails re-enrichment, and CNNC's figures are WNA estimates.
-- Secondary supply (inventories, down-blending, re-enriched tails) is excluded. Mine output in 2024 (60,213 tU) met about 93% of reactor requirements (64,500 tU at 1 January 2025; OECD NEA and IAEA, 2026).
+- Secondary supply (inventories, down-blending, re-enriched tails) is excluded. Mine output in 2024 (60,213 tU) met about 93% of reactor requirements (64,500 tU at 1 January 2025; OECD Nuclear Energy Agency and International Atomic Energy Agency, 2026).
 - Company-level enrichment shares hide plant location: Urenco operates in the UK, Germany, the Netherlands and the USA; Orano only in France.
 - Mining by country ignores ownership and the transport routes for Kazakh exports, which were not assessed, so Russia's 4.5% of mining may understate its reach. The company-level bound only partly addresses ownership.
 - Fuel fabrication, where BWR fuel is thought to have few suppliers, was not assessed (§11).
@@ -293,7 +293,7 @@ Working (one unit; `hhi.md` §6):
 3. Natural uranium feed factor 7.701 (tails 0.25%): 6.35 × 7.701 = 48.9 t U. Separative work: 5.422 SWU per kg, so 34.4 tSWU.
 4. Four units: 25.4 t enriched, **195.6 t U** and **137.7 tSWU** a year.
 
-*Table B35. Four-unit demand set against supplier capacity.*
+*Table B12a. Four-unit demand set against supplier capacity.*
 *Source: `results/hhi.md` §6.2, using World Nuclear Association (2025) capacities; demand inputs are assumed.*
 
 | Capacity | tSWU a year | Four-unit demand as a share |
@@ -313,7 +313,7 @@ Sensitivity: across burnup (35–55 GWd/t), enrichment (3.4–4.95%), tails (0.2
 **Result.** The ranking depends on the weights: route C (cooperative state repeal) ranks first on equal weights and when durability is valued more; route A (Commonwealth-owned plant) ties with C when regulator readiness is valued more. Route A has the same three veto points as B and C once the NSW ban is counted, so all three score 1 on that objective. Under the 2026 Senate (B1.2), none of the three routes is open. **These scores are our own qualitative judgement from the evidence in B1, not sourced scores, and the totals and the weight test (Table B14) are hand calculations.** They feed the "feasibility" criterion of the §9 MCDA.
 
 *Table B13. Three routes scored against four non-technical objectives (1 = poor, 3 = good).*
-*Source: our qualitative judgement (law brief §5), from the evidence cited in the table.*
+*Source: our qualitative judgement, from the evidence cited in the table.*
 
 | Objective | A. Commonwealth-owned plant under ARPANSA (the Coalition's 2024 model) | B. Federal licensing law for private operators, overriding the states | C. Cooperative: state repeal plus a state or joint regulator |
 |---|---|---|---|
@@ -327,7 +327,7 @@ Sensitivity: across burnup (35–55 GWd/t), enrichment (3.4–4.95%), tails (0.2
 Route A's description rests on ABC News (2024), as reported.
 
 *Table B14. Weight test: totals when one objective counts double (maximum 15).*
-*Source: calculated from Table B13 (law brief §5).*
+*Source: calculated from Table B13.*
 
 | Weighting | A | B | C | Ranking |
 |---|---:|---:|---:|---|
@@ -337,12 +337,12 @@ Route A's description rests on ABC News (2024), as reported.
 
 Reading: route B ranks last under all three weightings tested, and C is never behind A. Valuing regulator readiness more only closes the gap, to a tie with A. The choice between A and C is a choice between speed (an existing regulator) and durability (both levels of government committed). That is a political judgement, not a technical one. Whichever route is assumed, an Australian SMR scores lowest on time to first power in the §9 MCDA.
 
-#### B3.1 Implementation levers for C1 (Table T16 in §8.6): scores and weight test
+#### B3.1 Implementation levers for C1 (the §8.6 lever table): scores and weight test
 
-Each lever is scored 1 (poor) to 3 (good) on enforceability, speed and low schedule risk. The scores are our judgement (route brief §5), not sourced; the totals are hand calculations.
+Each lever is scored 1 (poor) to 3 (good) on enforceability, speed and low schedule risk. The scores are our judgement, not sourced; the totals are hand calculations.
 
-*Table B14a. T16 lever scores and weight test.*
-*Source: our judgement and hand calculation (route brief §5).*
+*Table B14a. Lever scores and weight test for the §8.6 lever table.*
+*Source: our judgement and hand calculation.*
 
 | Lever | Enforceability | Speed | Low risk | Equal (of 9) | Enforceability × 2 | Speed × 2 |
 |---|---:|---:|---:|---:|---:|---:|
@@ -391,7 +391,7 @@ The grid trajectory, the start year and the post-coal floor dominate the result.
 
 | Input | Central (range) | Source | Status |
 |---|---|---|---|
-| Net output | 300 MWe (290–300) | Assumption (the deck's value; an OPG filing gives 315) | Assumed; 315 tested in Table B19 |
+| Net output | 300 MWe (290–300) | Assumption (an OPG filing gives 315) | Assumed; 315 tested in Table B19 |
 | Capacity factor; design life | 0.90 (0.80–0.95); 60 years (40–80) | Assumption | Assumed |
 | SMR life cycle | 4.2 g/kWh (3.0–5.8) | This study (§6, Appendix C) | Our result |
 | Ontario average, 2024 | 73.8 g/kWh (73–73.8) | The Atmospheric Fund (2025) | As cited |
@@ -414,7 +414,7 @@ The grid trajectory, the start year and the post-coal floor dominate the result.
 | Displaced electricity | EF (g/kWh) | Avoided (t a year) | Ratio to Ontario average 2024 |
 |---|---:|---:|---:|
 | Ontario average 2022 (CER) | 35 | 72,848 | 0.4× |
-| Ontario average 2023 (energy snapshot; the deck's value) | 53 | 115,422 | 0.7× |
+| Ontario average 2023 (energy snapshot) | 53 | 115,422 | 0.7× |
 | Ontario average 2024 (TAF) | 74 | 164,618 | 1.0× |
 | Ontario marginal (TAF 2024) | 343 | 801,330 | 4.9× |
 | Ontario gas-fired generation (TAF 2021) | 472 | 1,106,441 | 6.7× |
@@ -727,7 +727,7 @@ Our Darlington LCOE (`results/lcoe.md`; case B, 60 years, vendor operating costs
 
 ### B7. Multi-criteria analysis (MCDA): status quo, SMR, SMR + C1 and firmed renewables
 
-**Result.** Firmed renewables for the same money score highest under all four weight sets (80.1, 85.9, 63.7 and 89.3 of 100). The status quo is second, and SMR and SMR + C1 tie for third (29.7, 24.0, 43.6 and 20.4). C1 moves the SMR's score by under 0.005 point. **The ranking is a structured comparison, not a measurement:** the social, legal and renewables-supply scores and the weights are our judgement. The main-text summary is §9 (Tables T4 and T5). Source: `scripts/mcda.py` (C1 case `new_2200`), `results/mcda.md` and `results/mcda_scores.csv`, which holds every raw score, normalised score, weight set and perturbation (593 rows).
+**Result.** Firmed renewables for the same money score highest under all four weight sets (80.1, 85.9, 63.7 and 89.3 of 100). The status quo is second, and SMR and SMR + C1 tie for third (29.7, 24.0, 43.6 and 20.4). C1 moves the SMR's score by under 0.005 point. **The ranking is a structured comparison, not a measurement:** the social, legal and renewables-supply scores and the weights are our judgement. The main-text summary is §9 (the §9 tables). Source: `scripts/mcda.py` (C1 case `new_2200`), `results/mcda.md` and `results/mcda_scores.csv`, which holds every raw score, normalised score, weight set and perturbation (593 rows).
 
 #### B7.1 Options, criteria and inputs
 
@@ -744,7 +744,7 @@ The four options are the status quo (Liddell closed, NSW grid unchanged), one BW
 | First full year of new supply | 2050 | 2040 | 2040 | 2028 | SMR: CSIRO's 2040 for nuclear (Graham, Hayward and Foster, 2024). Renewables: 2028 (assumption). Status quo: no new supply by 2050 (convention) |
 | Supply concentration (HHI) | 0 | 3,009 | 3,009 | 6,400 | SMR: enrichment, B2. Renewables: lower bound from China's share, above 80% of every PV stage (International Energy Agency, 2022). Status quo: convention |
 | Social licence (Table B39 total, 5–15) | 13 | 11 | 11 | 14 | §8.4 and Table B39 (our judgement) |
-| Legal feasibility (Table B13 total, 4–12) | 12 | 8 | 8 | 12 | B3, best SMR route under equal weights (route C, 8); route A rescored to 6 after fact-check M2, which leaves this input unchanged (our judgement) |
+| Legal feasibility (Table B13 total, 4–12) | 12 | 8 | 8 | 12 | B3, best SMR route under equal weights (route C, 8); route A scores 6, which leaves this input unchanged (our judgement) |
 
 **Conventions for the status quo (a do-nothing reference).** It takes the NSW grid factor as its "life cycle" (a boundary mismatch: scope 2 only, but it is last on this criterion whatever the boundary), avoids nothing, adds no cost or supply chain, has first supply in 2050, and scores 13 on social licence (nothing to consent to, but no benefit reaches the Upper Hunter) and 12 on legal feasibility. B7.4 tests the cost, supply and social conventions.
 
@@ -873,7 +873,7 @@ In every case the CO₂e avoided to 2050 rises only from 3.845 to 3.846 Mt, and 
 
 The unit's own output carries 0.07 statistical deaths a year at the nuclear rate (one per 14 years), a rate that includes Chernobyl and Fukushima. The fossil rates are for European plants with pollution controls, so they are conservative. Against wind or solar the difference lies within the uncertainty of the rates.
 
-#### B8.2 Stakeholder power, interest and stance (Figure 8)
+#### B8.2 Stakeholder power, interest and stance (Figure F8)
 
 Each actor is scored for power (1–5), interest (1–5) and stance (−2 strongly against to +2 strongly for) from the evidence in §8.1–8.4 (evidence keys in `parameters_run6.yaml`). "High power" is a score of 4 or more. Quadrant: power ≥ 4 and interest ≥ 4, manage closely; power ≥ 4 only, keep satisfied; interest ≥ 4 only, keep informed; neither, monitor. **Power-weighted stance** = Σ(power × stance) / Σ(power).
 
@@ -916,12 +916,12 @@ Working: Σ(power × stance) = 10 + 10 + 0 + 4 + 8 + 4 + 0 + 6 + 6 − 4 + 2 + 0
 
 Working: Σ(power × stance) = −10 − 10 − 8 + 0 − 6 + 0 − 6 − 3 + 4 + 0 + 2 = −37; Σ(power) = 36; −37 / 36 = **−1.03**. Four actors have high power and three are opposed. Scoring the Wonnarua people at −2 or +2 would move the Liddell result by −0.17 or +0.17 (3 × 2 / 36), which does not change its sign.
 
-#### B8.3 Social-licence routes for an SMR at Liddell (Table T13)
+#### B8.3 Social-licence routes for an SMR at Liddell
 
 Four routes are scored 1–3 (3 best) on legitimacy (chance of durable consent), legal risk (low risk scores high), speed, public cost (low cost scores high) and fairness. Each weighted column doubles one criterion.
 
 *Table B39. Route scores by criterion and totals.*
-*Source: our judgement (`parameters_run6.yaml`); totals by `social_licence.py`.*
+*Source: our judgement (`parameters_run6.yaml`); totals by `social_licence.py`; route models from Newcastle Herald (2024b), NWMO (2024a; 2024c) and Williams Treaties First Nations et al. (2026).*
 
 | Route | Legitimacy | Legal | Speed | Public cost | Fairness | Equal | Legitimacy ×2 | Speed ×2 | Fairness ×2 | Public cost ×2 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -930,9 +930,9 @@ Four routes are scored 1–3 (3 best) on legitimacy (chance of durable consent),
 | R3. R2 plus First Nations equity and loan guarantee | 3 | 3 | 1 | 1 | 3 | 11 | 14 | 12 | 14 | 12 |
 | R4. No SMR: firmed renewables | 3 | 3 | 3 | 3 | 2 | 14 | 17 | 17 | 16 | 17 |
 
-Reading: R1 beats R3 only on speed (2 against 1) and public cost (2 against 1), and R2 only on speed (2 against 1). Even so, R2 and R3 lead R1 by 3 to 6 points under every weighting. R3 wins outright only when fairness is doubled.
+Reading: R1 beats R3 only on speed (2 against 1) and public cost (2 against 1), and R2 only on speed (2 against 1). Even so, R2 and R3 lead R1 by 3 to 6 points under every weighting. R3 wins outright only when fairness is doubled. R4 (no SMR) scores highest under every weighting, so on social licence alone the Australian SMR case is weaker than the alternative (§9).
 
-#### B8.4 Who finances the Darlington New Nuclear Project (Table T14)
+#### B8.4 Who finances the Darlington New Nuclear Project
 
 *Table B40. Shares of the C$20.9 bn budget.*
 *Source: `results/social_licence.md` §4, from Government of Ontario (2025), Canada Growth Fund and Building Ontario Fund (2025), Canada Infrastructure Bank (2022), Williams Treaties First Nations et al. (2026).*
