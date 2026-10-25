@@ -6,9 +6,9 @@ Coordinator: merge into Appendix B under the headings named below. The text is m
 
 Sources for Table T12 (Social licence at Darlington and at Liddell): Neelam (2024); Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub (2025); Newspoll (2007); Essential Research (2019); Ritchie (2020); Markandya and Wilkinson (2007); Australian Energy Market Operator (2024); Canadian Nuclear Safety Commission (2025); Williams Treaties First Nations et al. (2026); Mississaugas of Scugog Island First Nation (2023); Curve Lake First Nation (2024); Municipality of Clarington (2024); Australian Electoral Commission (2019); *Barngarla* [2023] FCA 809; Nuclear Waste Management Organization (2024a; 2024b; 2024c; n.d.); Department of Industry, Science, Energy and Resources (2020); Power Workers' Union (2021); Conference Board of Canada (2021); Joint Standing Committee on Treaties (2024); Australian Council of Trade Unions (2024); Slovic (1987). Deaths avoided are calculated in `social_licence.py` (B8.1). Two T12 items shortened in the body: the "Public view" row (host municipality "very supportive"; national 61% support against 59% keeping the ban; older polls found local support 16–20 points lower), and the unions' position in Australia (the Australian Council of Trade Unions and the Electrical Trades Union oppose).
 
-### B8.3 Social-licence routes for an SMR at Liddell (Table T13)
+### B8.3 Social-licence routes for an SMR at Liddell (Table B41)
 
-*Table T13. Social-licence routes for an SMR at Liddell: total score (criteria scored 1–3 on legitimacy, legal risk, speed, public cost and fairness; one criterion doubled in each weighted column).*
+*Table B41. Social-licence routes for an SMR at Liddell: total score (criteria scored 1–3 on legitimacy, legal risk, speed, public cost and fairness; one criterion doubled in each weighted column).*
 *Source: our judgement from the evidence in T12, calculated in `social_licence.py` (Appendix B8.3); route models from Newcastle Herald (2024b), NWMO (2024a; 2024c) and Williams Treaties First Nations et al. (2026). Scores are our judgement and depend on the evidence cited.*
 
 | Route | Equal weights | Legitimacy ×2 | Speed ×2 | Fairness ×2 | Public cost ×2 |

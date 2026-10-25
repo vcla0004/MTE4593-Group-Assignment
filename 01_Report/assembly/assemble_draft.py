@@ -110,6 +110,34 @@ def words(text: str) -> tuple[int, int]:
     return prose, table
 
 
+def renumber_tables(bodies: list[str]) -> list[str]:
+    """Renumber body tables T1, T2, ... in caption order.
+
+    Labels captioned in a file map to their new numbers within that file (so two
+    sections that both used "T10" get different numbers); a label only referred to
+    in a file uses the first file that captions it. Appendix tables (B12, A3, ...)
+    are untouched.
+    """
+    cap_re = re.compile(r"Table T(\d+[a-z]?)[.:]")
+    n, local, first = 0, [], {}
+    for body in bodies:
+        mapping = {}
+        for old in cap_re.findall(body):
+            if old not in mapping:
+                n += 1
+                mapping[old] = n
+                first.setdefault(old, n)
+        local.append(mapping)
+    out = []
+    for body, mapping in zip(bodies, local):
+        def sub(m):
+            old = m.group(1)
+            new = mapping.get(old, first.get(old))
+            return f"T{new}" if new else m.group(0)
+        out.append(re.sub(r"\bT(\d+[a-z]?)\b", sub, body))
+    return out
+
+
 def main() -> None:
     parts, rows = [], []
     for name, placeholder in ORDER:
@@ -123,6 +151,7 @@ def main() -> None:
         parts.append(body)
         rows.append((name, *words(body)))
     cited = Path(__file__).resolve().parent / "references-cited.md"
+    parts = renumber_tables(parts)
     if FINAL and cited.exists():  # written by check_refs.py from a draft build
         parts.append(cited.read_text(encoding="utf-8"))
     elif (SEC / REFS).exists():
