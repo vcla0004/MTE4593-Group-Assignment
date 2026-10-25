@@ -165,7 +165,7 @@ One BWRX-300 at Darlington emits an estimated **4.4 g CO₂e per kWh (Monte Carl
 - **Baseline (S0):** the concrete OPG would pour anyway, at 380 kg CO₂e/m³ (Pillai et al., 2019, as reported; Indian M50 mixes). We have not seen OPG's mix or any cement-type limit in the specification (GE-Hitachi Nuclear Energy, 2024).
 - **Cut-offs:** fuel cladding and hardware, conversion chemicals, upstream gas, fuel-plant capital goods and recycling credits; each biases the result low (§6.5). Impact category: climate change, GWP100.
 
-**Method and inventory.** A reproducible Python model multiplies quantities by published emission factors (Appendices A and C). Plant quantities come from the Ostrołęka project information sheet (BWRX-300 Ostrołęka sp. z o.o., 2023, as reported in the project information sheet): **50,000 m³ of concrete and 14,000 t of steel per unit**. This is a design proxy, not confirmed Darlington quantities, and we could not open either the Ostrołęka or the Pillai table. A bottom-up scaling from other reactors (20,700 m³; Peterson, Zhao and Petroski, 2005) is a cross-check (Appendix A3). Key inputs: Table A2b; all 45 ranged inputs: Table C1. **A Granta EduPack Eco Audit was planned but not completed; no number here comes from Granta.**
+**Method and inventory.** A reproducible Python model multiplies quantities by published emission factors (Appendices A and C). Plant quantities come from the Ostrołęka project information sheet (BWRX-300 Ostrołęka sp. z o.o., 2023, as reported in the project information sheet): **50,000 m³ of concrete and 14,000 t of steel per unit**. This is a design proxy, not confirmed Darlington quantities, and we could not open either the Ostrołęka or the Pillai table. A bottom-up scaling from other reactors (20,700 m³; Peterson, Zhao and Petroski, 2005) is a cross-check (Appendix A3). Key inputs: Table A2b; all 45 ranged inputs: Appendix C2. **A Granta EduPack Eco Audit was planned but not completed; no number here comes from Granta.**
 
 ![Figure F1. LCA system boundary for one BWRX-300 at Darlington: fuel front end, construction materials and C1-eligible concrete modelled here; operation, decommissioning and back end from the literature. | Source: this study.](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F1_system_boundary.png){width=95%}
 
@@ -878,7 +878,7 @@ Inputs: P_net 300 MWe (GE Vernova Hitachi Nuclear Energy, n.d.), with 315 MWe ne
 | Construction, mode case | 57,600 t CO₂e (0.41 g/kWh) | 34,381 t (0.24 g/kWh) |
 | Life cycle: mode case; Monte Carlo median (90% interval) | 2.86; 4.40 (3.24–6.05) g/kWh | 2.70; 4.20 (3.05–5.86) g/kWh |
 
-*Table A2b. Key assumptions for one BWRX-300 at Darlington (all 45 ranged inputs in Appendix C, Table C1).*
+*Table A2b. Key assumptions for one BWRX-300 at Darlington (all 45 ranged inputs in Appendix C, Table C2).*
 *Source: `parameters_lca.yaml`; references as listed. Ranges are model input bounds, not result intervals.*
 
 | Parameter | Central (input range) | Basis |
@@ -983,7 +983,7 @@ Corrections made to the team spreadsheet (kept as `Accounting_corrected.csv`; th
 | *Cross-check:* slag in infill and forebay | 1,552 | 4,657 | 2,019 (6,057) | 30.6 | 0.405 | 0.0109 |
 | *Cross-check:* LC³ in infill and forebay | 1,734 | 5,201 | 2,304 (6,913) | 34.1 | 0.452 | 0.0122 |
 
-Monte Carlo basis (median, with 5th–95th percentile; Table C4): LC³ on 40% with eligibility, cut and volumes all varying, 2,217 t per unit (1,375–3,294) and 6,651 t for Units 2–4 (4,124–9,881), 0.35% of the life cycle (0.19–0.61%); at fixed eligibility 0.18% (20%), 0.36% (40%) and 0.54% (60%). Slag 2,140 t (1,310–3,238), 0.34% (0.18–0.60%). LC³ beats slag in 55% of draws.
+Monte Carlo basis (median, with 5th–95th percentile; Table C4b): LC³ on 40% with eligibility, cut and volumes all varying, 2,217 t per unit (1,375–3,294) and 6,651 t for Units 2–4 (4,124–9,881), 0.35% of the life cycle (0.19–0.61%); at fixed eligibility 0.18% (20%), 0.36% (40%) and 0.54% (60%). Slag 2,140 t (1,310–3,238), 0.34% (0.18–0.60%). LC³ beats slag in 55% of draws.
 
 **Resource use per unit of output.** Clinker avoided = 2,940 t / 1.419 × 10⁸ MWh = 0.021 kg/MWh (9.8 t per MWe). Concrete: 50,000 m³ × 2.4 t/m³ / 1.419 × 10⁸ MWh = 0.85 kg/MWh. Steel: 14,000 t / 1.419 × 10⁸ MWh = 0.099 kg/MWh.
 
