@@ -387,7 +387,7 @@ The grid trajectory, the start year and the post-coal floor dominate the result.
 |---|---|---|---|
 | Net output | 300 MWe (290–300) | Assumption (an OPG filing gives 315) | Assumed; 315 tested in Table B19 |
 | Capacity factor; design life | 0.90 (0.80–0.95); 60 years (40–80) | Assumption | Assumed |
-| SMR life cycle | 4.2 g/kWh (3.0–5.8) | This study (§6, Appendix C) | Our result |
+| SMR life cycle | 4.2 g/kWh (3.0–5.8) | This study, bottom-up model (§6, Appendix C); the re-based 4.40 g/kWh changes avoided CO₂e by at most 0.3% (Ontario average grid: (73.8 − 4.40)/(73.8 − 4.2)) | Our result |
 | Ontario average, 2024 | 73.8 g/kWh (73–73.8) | The Atmospheric Fund (2025) | As cited |
 | Ontario average, 2022; 2023 | 35; 53 g/kWh | Canada Energy Regulator (n.d.); Government of Ontario (n.d.) | As cited |
 | Ontario average, 2040 | 15 g/kWh | Independent Electricity System Operator (2024) | As cited |

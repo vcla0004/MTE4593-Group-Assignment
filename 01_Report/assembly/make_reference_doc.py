@@ -18,6 +18,55 @@ TEMPLATE = HERE.parent / "MTE4593 Report.docx"
 OUT = HERE / "reference.docx"
 
 
+BLUE = "006DAE"  # Monash blue
+TABLE_STYLE = (
+    '<w:style w:type="table" w:default="1" w:styleId="Table"><w:name w:val="Table"/>'
+    '<w:basedOn w:val="TableNormal"/><w:qFormat/>'
+    '<w:pPr><w:spacing w:before="20" w:after="20"/></w:pPr>'
+    '<w:tblPr><w:tblInd w:w="0" w:type="dxa"/>'
+    '<w:tblBorders><w:top w:val="single" w:sz="8" w:space="0" w:color="' + BLUE + '"/>'
+    '<w:bottom w:val="single" w:sz="8" w:space="0" w:color="' + BLUE + '"/>'
+    '<w:insideH w:val="single" w:sz="4" w:space="0" w:color="D0D7DE"/></w:tblBorders>'
+    '<w:tblCellMar><w:top w:w="30" w:type="dxa"/><w:left w:w="80" w:type="dxa"/>'
+    '<w:bottom w:w="30" w:type="dxa"/><w:right w:w="80" w:type="dxa"/></w:tblCellMar></w:tblPr>'
+    '<w:tblStylePr w:type="firstRow"><w:rPr><w:b/></w:rPr>'
+    '<w:tcPr><w:shd w:val="clear" w:color="auto" w:fill="DCE9F5"/></w:tcPr></w:tblStylePr>'
+    '</w:style>')
+
+
+def set_style(xml: str, sid: str, new: str) -> str:
+    return re.sub(r'<w:style [^>]*w:styleId="' + sid + r'"[^>]*>.*?</w:style>', lambda m: new, xml,
+                  count=1, flags=re.S)
+
+
+def add_props(xml: str, sid: str, ppr: str = "", rpr: str = "") -> str:
+    """Append paragraph and run properties to an existing style."""
+    def sub(m):
+        st = m.group(0)
+        if ppr:
+            st = (st.replace("</w:pPr>", ppr + "</w:pPr>", 1) if "<w:pPr>" in st
+                  else st.replace("</w:style>", "<w:pPr>" + ppr + "</w:pPr></w:style>"))
+        if rpr:
+            st = (st.replace("</w:rPr>", rpr + "</w:rPr>", 1) if "<w:rPr>" in st
+                  else st.replace("</w:style>", "<w:rPr>" + rpr + "</w:rPr></w:style>"))
+        return st
+    return re.sub(r'<w:style [^>]*w:styleId="' + sid + r'"[^>]*>.*?</w:style>', sub, xml, count=1, flags=re.S)
+
+
+def polish(xml: str) -> str:
+    """House style for the submission: Monash-blue headings, ruled tables, quiet captions."""
+    xml = set_style(xml, "Table", TABLE_STYLE)
+    for sid in ("Heading1", "Heading2", "Title"):
+        xml = add_props(xml, sid, rpr=f'<w:color w:val="{BLUE}"/>')
+    xml = add_props(xml, "Heading3", rpr=f'<w:color w:val="{BLUE}"/>')
+    for sid in ("TableCaption", "ImageCaption"):
+        xml = add_props(xml, sid, rpr='<w:color w:val="555555"/><w:sz w:val="19"/><w:szCs w:val="19"/>')
+    xml = add_props(xml, "ImageCaption", ppr='<w:jc w:val="center"/>')
+    for sid in ("CaptionedFigure", "Figure"):
+        xml = add_props(xml, sid, ppr='<w:jc w:val="center"/>')
+    return xml
+
+
 def main() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         default = Path(tmp) / "default.docx"
@@ -38,6 +87,7 @@ def main() -> None:
                    '<w:name w:val="Team Note"/><w:rPr><w:b/><w:color w:val="C00000"/>'
                    '<w:highlight w:val="yellow"/></w:rPr></w:style>')
         merged = tstyles.replace("</w:styles>", "".join(add) + "</w:styles>")
+        merged = polish(merged)
         with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as zout:
             for item in tz.infolist():
                 data = merged.encode("utf-8") if item.filename == "word/styles.xml" else tz.read(item)
