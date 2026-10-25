@@ -49,10 +49,23 @@ NUM_MAP = {"1": "1", "2": "2", "4": "3.1", "4.1": "3.1.1", "4.2": "3.1.2", "3": 
            "4.3": "3.1.4", "5": "3.1.5", "6": "3.2", "7": "3.3", "8": "3.4–3.6",
            "8.5": "3.4.1", "8.4": "3.4.2", "8.2": "3.5.1", "8.3": "3.5.2", "8.1": "3.6.1",
            "8.6": "3.6.2", "9": "3.7", "10": "3.8", "11": "4"}
-HEADING_TEXT = {"2": "Data Sources/Methodology", "4.1": "Current Projects and Patents",
-                "4.2": "Technical Descriptions: the BWRX-300 at Darlington", "6": "Lifecycle Analysis",
-                "7": "National Strategies and Industrial Policies: Carbon Avoided in Ontario and Australia",
-                "11": "Conclusion"}
+HEADING_TEXT = {  # short Title Case headings, as in the template, so the contents fits on one page
+    "1": "Introduction", "2": "Data Sources/Methodology",
+    "4.1": "Current Projects and Patents", "4.2": "Technical Descriptions",
+    "3": "Barriers to Emissions Reduction", "4.3": "The Proposed Initiative",
+    "5": "Materials from Extraction to End-of-Life",
+    "6": "Lifecycle Analysis", "6.1": "Goal, Scope and Method", "6.2": "Baseline and Hotspots",
+    "6.3": "The Initiative against the Baseline", "6.4": "Uncertainty Analysis",
+    "6.5": "Comparison with Published Values",
+    "7": "National Strategies and Industrial Policies", "7.1": "The Value of Schedule",
+    "7.2": "Carbon Displaced: Darlington vs Liddell", "7.3": "Firmed Renewables for the Same Money",
+    "8.5": "Stakeholders and Money Flows", "8.4": "Social Licence",
+    "8.2": "Economics, Finance and Market Barriers", "8.3": "Supply Concentration and Geopolitics",
+    "8.1": "Law, Regulation and Licensing", "8.6": "Implementation Pathway",
+    "9": "Triple Bottom Line and Multi-Criteria Analysis", "9.1": "Triple Bottom Line",
+    "9.2": "Multi-Criteria Analysis", "9.3": "Verdict and Limits",
+    "10": "Future Material Properties and Processes", "11": "Conclusion",
+}
 
 
 def map_num(num: str) -> str:
@@ -105,7 +118,7 @@ TITLE = ("```{=openxml}\n"
 TOC = ("```{=openxml}\n"
        '<w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Table of Contents</w:t></w:r></w:p>'
        '<w:p><w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/></w:r>'
-       '<w:r><w:instrText xml:space="preserve">TOC \\o "1-2" \\h \\z \\u</w:instrText></w:r>'
+       '<w:r><w:instrText xml:space="preserve">TOC \\o "1-3" \\h \\z \\u</w:instrText></w:r>'
        '<w:r><w:fldChar w:fldCharType="separate"/></w:r>'
        '<w:r><w:t>Right-click here and choose Update Field to build the table of contents.</w:t></w:r>'
        '<w:r><w:fldChar w:fldCharType="end"/></w:r></w:p>'
@@ -347,7 +360,7 @@ def main() -> None:
     if (SEC / REFS).exists():  # full list; check_refs.py only reports mismatches
         refs = re.sub(r"^## References", "# 5 References", clean((SEC / REFS).read_text(encoding="utf-8")),
                       flags=re.M)
-        parts.append(re.sub(r"^### ", "#### ", refs, flags=re.M))  # "Legislation", "Cases": not in contents
+        parts.append(re.sub(r"^#{3,6} (.+)$", r"**\1**", refs, flags=re.M))  # "Legislation", "Cases": not headings
     else:
         parts.append("# 5 References\n\n**[TODO: reference list]**\n")
     parts.append("# Declaration of generative AI use\n\n" + note("TEAM: agree the AI-use declaration wording and add it here.")

@@ -40,7 +40,7 @@ We recommend piloting LC³ in eligible non-safety works first, and extending it 
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
 ```{=openxml}
-<w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Table of Contents</w:t></w:r></w:p><w:p><w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/></w:r><w:r><w:instrText xml:space="preserve">TOC \o "1-2" \h \z \u</w:instrText></w:r><w:r><w:fldChar w:fldCharType="separate"/></w:r><w:r><w:t>Right-click here and choose Update Field to build the table of contents.</w:t></w:r><w:r><w:fldChar w:fldCharType="end"/></w:r></w:p>
+<w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Table of Contents</w:t></w:r></w:p><w:p><w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/></w:r><w:r><w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText></w:r><w:r><w:fldChar w:fldCharType="separate"/></w:r><w:r><w:t>Right-click here and choose Update Field to build the table of contents.</w:t></w:r><w:r><w:fldChar w:fldCharType="end"/></w:r></w:p>
 ```
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -110,14 +110,14 @@ Appendix E, from search summaries only, found GE-Hitachi isolation-condenser pat
 Australia's earliest date is about 2040. The Coalition's 2024 plan claimed SMR power by 2035 (ABC News, 2024); CSIRO's GenCost 2023-24 is reported to say 2040 at the earliest (Graham, Hayward and Foster, 2024). Darlington supports CSIRO: even with a licensed site, it needs about eight years from licence application (October 2022) to power (October 2030) (Canadian Nuclear Safety Commission, 2026a; Ontario Power Generation, 2025b). Australia must first repeal two federal bans (Section 3.6.1), assumed by 2029, and build a licensing regime, assumed to take three years: 2029 + 3 + 8 gives about 2040 (Section 3.3).
 
 
-### 3.1.2 Technical Descriptions: the BWRX-300 at Darlington
+### 3.1.2 Technical Descriptions
 
 The BWRX-300's composite building is what C1 targets. The reactor is rated 300 MWe (GE Vernova Hitachi Nuclear Energy, n.d.; 315 MW net in Ontario Power Generation, 2025b), with a 60-year design life (Canadian Nuclear Safety Commission, 2024). The vendor-reported capacity factor is 95% (Fermi Energia, n.d.); we use 0.90. Passive isolation condensers cool the core for seven days (GE Hitachi Nuclear Energy, n.d.). The reactor building sits in a below-grade shaft of diaphragm-plate steel-composite (DP-SC) modules filled with self-consolidating concrete (SCC) (GE-Hitachi Nuclear Energy, 2024).
 
 The vendor's concrete claim is hard to reconcile with Ostrołęka. GE Vernova (n.d.) claims about half the concrete per MW of its larger ESBWR, yet Ostrołęka's information sheet gives 50,000 m³ per unit, or 167 m³/MWe (BWRX-300 Ostrołęka sp. z o.o., 2023), against the ESBWR's 69 (Peterson, Zhao and Petroski, 2005). The gap probably reflects the boundary (our inference); a small reactor does not mean small concrete (Section 3.1.4).
 
 
-### 3.1.3 Barriers to cutting emissions with small modular reactors
+### 3.1.3 Barriers to Emissions Reduction
 
 Eight barriers decide whether a small modular reactor (SMR) is built and cuts emissions; C1 (Section 3.1.4) reaches one directly and is constrained by a second. At Darlington, Ontario, cost and schedule bind. At Liddell, the closed New South Wales coal plant we use as the Australian comparison, law comes first (Sections 3.4–3.6).
 
@@ -136,7 +136,7 @@ Eight barriers decide whether a small modular reactor (SMR) is built and cuts em
 | 8. Waste | **C$26 bn** Canadian repository, producer-funded; no Australian route (Nuclear Waste Management Organization, n.d.) | Needs a disposal route (Section 3.4.2) | No |
 
 
-### 3.1.4 The initiative: low-clinker concrete for the Darlington Units 2–4 infill
+### 3.1.4 The Proposed Initiative
 
 C1 targets a materials problem that modular construction creates, and it is worth doing only if it is schedule-neutral. The BWRX-300's reactor building is made of diaphragm-plate steel-composite (DPSC) modules filled on site with concrete. The infill must flow between closely spaced plates, so we assume a cement-rich self-consolidating mix (our inference; GE-Hitachi Nuclear Energy, 2024). A delay of 11.6–18.5 days to one unit on Ontario's average grid, or 1.7–1.8 days on its marginal grid, cancels that unit's saving (Section 3.3.1).
 
@@ -159,7 +159,7 @@ Why it is not the obvious choice. C1's value is set by schedule, not by the conc
 What C1 does not address. Cost, law, fuel supply, social licence and workforce (Table T2); lower-carbon steel is the next lever (Section 3.2.3, Section 3.8).
 
 
-### 3.1.5 Materials from extraction to end-of-life
+### 3.1.5 Materials from Extraction to End-of-Life
 
 For C1, the binder's carbon arises in the kiln, but its risks arise in the pour and at decommissioning. Stages follow Section 3.2.1's boundary.
 
@@ -185,7 +185,7 @@ Activation depends on trace elements: cobalt-60 and europium-152 dominate activa
 
 One BWRX-300 at Darlington emits an estimated 4.4 g CO₂e per kWh (Monte Carlo median; 90% interval 3.2–6.1; 3.5 if conversion heat takes its central published value), below UNECE's 5.1–6.4 g/kWh for nuclear power. The fuel front end contributes 62% and construction 11.5%. The initiative, C1 (Section 3.1.4), puts limestone calcined clay cement (LC³) in 20–60% of the concrete. It saves 2,200 t CO₂e per unit (1,100–3,300 t), about 0.36% of the life cycle: real but small, so worth adopting only if schedule-neutral (Section 3.2.3).
 
-### 3.2.1 Goal, scope and method
+### 3.2.1 Goal, Scope and Method
 
 This is a screening LCA of one BWRX-300 at Darlington following ISO 14040/14044 principles (International Organization for Standardization, 2006a; 2006b), not critically reviewed.
 
@@ -195,7 +195,7 @@ A reproducible Python model multiplies quantities by published emission factors 
 
 ![Figure F1. LCA system boundary for one BWRX-300 at Darlington: fuel front end, construction materials and C1-eligible concrete modelled here; operation, decommissioning and back end from the literature. | Source: this study.](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F1_system_boundary.png){width=95%}
 
-### 3.2.2 Baseline and hotspots
+### 3.2.2 Baseline and Hotspots
 
 One unit emits 4.40 g/kWh (median; 90% interval 3.24–6.05). With every input at its most likely value (the "mode case") it is 2.86; Section 3.2.4 explains the gap. On the expected basis (Figure F2):
 
@@ -205,7 +205,7 @@ The back end and decommissioning add 18%, O&M 9% and construction 11.5% (0.52 g/
 
 ![Figure F2. Life-cycle emissions of one BWRX-300 by stage: expected value 4.49 g CO₂e/kWh (Monte Carlo mean), with the mode case (every input at its most likely value, total 2.86) marked. | Source: this study, Appendix C3.](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F2_stage_breakdown.png){width=95%}
 
-### 3.2.3 The initiative against the baseline
+### 3.2.3 The Initiative against the Baseline
 
 C1 is low-clinker concrete: LC³ on eligible non-safety works first and on the steel-composite infill only if qualified, a slag blend as the fallback, specified only if schedule-neutral (Section 3.1.4). Pillai et al. (2019, as reported) give 380 kg CO₂e/m³ for ordinary concrete and 270 for LC³, a cut of 110 kg/m³ (28.9%). The eligible share is our scenario, not data. At 20, 40 and 60% of 50,000 m³, C1 saves 1,100, 2,200 and 3,300 t per unit, or 0.18, 0.36 and 0.54% of its life cycle (Table T5). Varying eligibility, the cut and volumes together gives 2,217 t (1,375–3,294). Only Units 2–4 count, because Unit 1's basemat is placed.
 
@@ -222,7 +222,7 @@ Four findings follow.
 
 The saving is small at plant scale: about 0.016 g/kWh, so C1 does not change the plant's climate case (economic value: Section 3.5.1). Slag is about as good as LC³, so the case is for low-clinker concrete in general. LC³ beats slag in only 55% of draws (median difference +54 t; 90% interval −588 to +766). The specification should accept whichever binder qualifies first (Section 3.6.1). Lower-carbon steel is the larger lever but is not part of C1: all 14,000 t at best-practice electric-arc-furnace factors would save up to 3,915 t (1.8 times LC³), an upper bound not shown feasible for nuclear-grade plate (Appendix A7; Section 3.8). Schedule dominates. A delay of 11.6–18.5 days to one unit on Ontario's average grid factor, or 1.7–1.8 days on the marginal factor, cancels its saving (Section 3.3.1; Appendix B5). C1 is specified only if schedule-neutral (Section 3.6.2).
 
-### 3.2.4 Uncertainty: tornado and Monte Carlo
+### 3.2.4 Uncertainty Analysis
 
 The tornado varies 45 inputs one at a time; the Monte Carlo varies them together, 20,000 times (Appendix C).
 
@@ -234,7 +234,7 @@ Monte Carlo (Figure F4): why we report 4.4, not 2.9. Several inputs can mostly o
 
 ![Figure F4. Monte Carlo distributions (20,000 draws) of life-cycle intensity (median 4.40, 5th–95th percentile 3.24–6.05 g CO₂e/kWh) and of C1's saving per unit at central eligibility. | Source: this study, Appendix C4.](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F4_montecarlo.png){width=95%}
 
-### 3.2.5 Comparison with published values
+### 3.2.5 Comparison with Published Values
 
 Our median (3.5–4.4 across conversion-heat assumptions) is below UNECE's 5.1–6.4 g/kWh (United Nations Economic Commission for Europe, 2021), though our 90% interval overlaps it, and sits at the low end of the wider literature for reasons we can identify (Figure F5). It overlaps EDF's French fleet (3.7; EDF R&D, 2024) and is below the global average of 6.1 (Gibon and Hahn Menacho, 2023), an SMR estimate of 9.1 (Carless, Griffin and Fischbeck, 2016) and the harmonised and IPCC AR5 medians of 12 (Warner and Heath, 2012; Schlömer et al., 2014). Gas combined cycle (403–513 g/kWh) and coal (751–1,095) are 90–120 and 170–250 times higher (United Nations Economic Commission for Europe, 2021).
 
@@ -245,11 +245,11 @@ The known low bias would raise the total and shrink C1's share, so it does not w
 ![Figure F5. Our result against published nuclear life-cycle values (dot = central or median; line = range or interval). Coal and gas are off the scale. | Source: this study; EDF R&D (2024); United Nations Economic Commission for Europe (2021); Gibon and Hahn Menacho (2023); Carless, Griffin and Fischbeck (2016); Warner and Heath (2012).](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F5_benchmarks.png){width=95%}
 
 
-## 3.3 National Strategies and Industrial Policies: Carbon Avoided in Ontario and Australia
+## 3.3 National Strategies and Industrial Policies
 
 For C1, schedule matters far more than concrete. A one-month slip of Units 2–4 costs C$33–110 m in carrying cost alone, 29–175 times the carbon value of C1's whole saving, and defers about C$88 m of output. C1's 2,200 t per unit (1,100–3,300; Section 3.2.3) is cancelled by 11.6–18.5 days of delay on Ontario's average grid factor, or 1.7–1.8 days on its marginal factor. Timing also decides where an SMR helps the climate, and firmed renewables beat both sites on the same money (Appendix B4–B6).
 
-### 3.3.1 The value of schedule
+### 3.3.1 The Value of Schedule
 
 A late unit gives up each day's displacement (Table T6). To 2050 ("gross") the loss is permanent; over the whole life ("net") it returns at end of life, on a cleaner grid.
 
@@ -263,7 +263,7 @@ A late unit gives up each day's displacement (Table T6). To 2050 ("gross") the l
 
 In money the gap is wider. At Canada's industrial carbon price of C$95/t in 2026 and C$115/t in 2030 (Environment and Climate Change Canada, 2026), the 6,600 t saved across Units 2–4 is worth C$0.63–0.76 m. A one-month slip of the three units costs C$33–110 m in carrying cost (3–10% a year on C$13.2 bn, an upper bound) and defers about C$88 m of output at OPG's C$149/MWh (Ontario Power Generation, 2026b). Schedule neutrality is therefore the binding condition on C1, and the mix must be qualified on Unit 1 mock-ups before the 2028 Units 2–4 decision (Section 3.6.2).
 
-### 3.3.2 What one BWRX-300 displaces: Darlington vs Liddell
+### 3.3.2 Carbon Displaced: Darlington vs Liddell
 
 At today's grid factors, a unit at Liddell would avoid about nine times more CO₂e than one at Darlington. Timing closes most of that gap. One unit avoids 1.50 Mt a year on the NSW average of 640 g/kWh (DCCEEW, 2025). On Ontario's 2024 average of 73.8 g/kWh it avoids 0.165 Mt (9.1× less), and on its marginal factor of 343 g/kWh 0.80 Mt (1.9× less) (The Atmospheric Fund, 2025).
 
@@ -273,7 +273,7 @@ To 2050 (Figure F6), Darlington Unit 1 avoids 1.0–6.8 Mt and Liddell 0.67–3.
 
 ![Figure F6. CO₂e avoided to 2050 by one BWRX-300: Darlington Unit 1 (from 2030) against Liddell (from 2035 or 2040), by grid case; hatched bars are upper bounds. | Source: this study, Appendix B4 (Table B17)](/home/user/MTE4593-Group-Assignment/03_LCA_Calculations/results/F6_displacement.png){width=95%}
 
-### 3.3.3 The same money on firmed renewables
+### 3.3.3 Firmed Renewables for the Same Money
 
 At GenCost's 2030 costs, the money for one SMR unit would buy about 2.9 times as much energy from firmed renewables, which would avoid about 11 times more CO₂e to 2050 at Liddell.
 
@@ -286,7 +286,7 @@ Renewables win because they are cheaper per MWh and start about a decade earlier
 
 ## 3.4 Stakeholder Analysis
 
-### 3.4.1 Stakeholders and money flows
+### 3.4.1 Stakeholders and Money Flows
 
 At Darlington none of the seven high-power actors opposes the project; at Liddell three of the four do (the Commonwealth, NSW and AGL), and the only strong supporter, the federal Coalition, is in opposition. Our power-weighted stance scores (−2 to +2; our judgement, not survey data; Figure F8; Appendix B8.2) are +1.07 and −1.03.
 
@@ -309,7 +309,7 @@ For C1, the decisive actors are OPG as buyer, GE Vernova Hitachi as owner of the
 | Clarington residents and customers | Medium–high | Air and water impacts, cost | Repay OPG's share through rates |
 
 
-### 3.4.2 Social licence
+### 3.4.2 Social Licence
 
 The same reactor has a social licence at Darlington and none at Liddell. Safety data do not explain the difference; consent, benefit and trust do (Table T8).
 
@@ -332,7 +332,7 @@ C1 changes no land use, emissions or waste at the site, so it raises no new cons
 
 ## 3.5 Market Analysis and Economic Feasibility
 
-### 3.5.1 Economics, finance and market barriers
+### 3.5.1 Economics, Finance and Market Barriers
 
 An SMR's cost is mostly capital, so whoever finances it sets its price and decides who can build one. C1 is the opposite: it costs almost nothing, but no one is paid for the carbon it saves.
 
@@ -364,7 +364,7 @@ LC³ saves 6,600 t CO₂e across Units 2–4 (2,200 t a unit; Section 3.2.3), wo
 | NuScale Carbon Free Power Project, Idaho | Price US$58 to 89/MWh; cost US$5.3 bn to 9.24 bn; cancelled November 2023 (NuScale Power Corporation and Utah Associated Municipal Power Systems, 2023; Schlissel, 2023) | Buyers leave when they carry overruns |
 
 
-### 3.5.2 Supply concentration and geopolitics
+### 3.5.2 Supply Concentration and Geopolitics
 
 Every front-end fuel stage we measured is concentrated: each Herfindahl–Hirschman index (HHI; Section 2) exceeds 1,800, "highly concentrated" on the 2023 US merger guidelines (US Department of Justice and Federal Trade Commission, 2023), though on the 2010 scale only enrichment is (Table T11). For Darlington this is a price risk; for an Australian SMR it is a sovereign risk.
 
@@ -386,7 +386,7 @@ C1 does not reduce fuel risk, and fuel independence needs conversion, enrichment
 
 ## 3.6 Government Regulations Review
 
-### 3.6.1 Law, regulation and licensing
+### 3.6.1 Law, Regulation and Licensing
 
 Law is where Darlington and Liddell differ most. At Darlington, C1 starts with LC³ in non-safety concrete and extends to the steel-composite infill only if qualified before the Units 2–4 go-ahead expected in 2028 (American Nuclear Society, 2026, as reported). At Liddell, three laws and the site owner block an SMR (Table T12).
 
@@ -407,7 +407,7 @@ The non-safety pilot needs no nuclear qualification; infill qualification must s
 | 4. Site | AGL owns Liddell and has ruled out nuclear (Newcastle Herald, 2024a) | AGL's consent, or Commonwealth acquisition | OPG holds the site licence (CNSC, 2021) |
 
 
-### 3.6.2 Implementation pathway
+### 3.6.2 Implementation Pathway
 
 C1 can be built with no added delay on the evidence available if OPG applies a carbon specification to eligible non-safety concrete now (the LC³ pilot), qualifies the steel-composite infill on a Unit 1 mock-up, and ties a milestone to the Units 2–4 equity tranche. The levers in Table T13 are scored on enforceability, speed and low schedule risk (1 to 3 each; our judgement, not sourced scores). L1 and L2 tie at 8. If enforceability counts double, L2 leads with 11; if speed counts double, L1 leads with 11; the recommendation is the same under both. L1 is C1's pilot step: a 10% floor invites LC³, whose full saving is 1,100–3,300 t CO₂e per unit (Section 3.1.4; Pillai et al., 2019).
 
@@ -426,11 +426,11 @@ The sequence is L1 now, L4 in 2027, then L2 at the 2028 tranche. A CNSC licence 
 The federal standard is a template, not an obligation. The Standard on Embodied Carbon in Construction (amended March 2025) requires low-carbon concrete and life-cycle assessment in federal procurement (Treasury Board of Canada Secretariat, 2022), but it binds federal departments, and OPG, an Ontario Crown corporation, is outside its scope (our inference). Its allowance of 130% of baseline for specialised mixes could let self-consolidating infill emit 30% more than the baseline, so any OPG or fund clause must benchmark infill against a cement-rich self-consolidating reference mix.
 
 
-## 3.7 Triple-bottom-line evaluation and multi-criteria analysis
+## 3.7 Triple Bottom Line and Multi-Criteria Analysis
 
 Adopt C1 only as a schedule-neutral specification; for Australia, the same money on firmed renewables ranks first, ahead of the status quo and of an SMR at Liddell. C1 changes the life cycle by about 0.36%, and no predefined weight set, input test or ±50% weight test puts an SMR first.
 
-### 3.7.1 Triple bottom line
+### 3.7.1 Triple Bottom Line
 
 *Table T14. Triple-bottom-line summary: C1 at Darlington Units 2–4 and one BWRX-300 at Liddell.*
 *Source: this study, from the sections cited.*
@@ -442,7 +442,7 @@ Adopt C1 only as a schedule-neutral specification; for Australia, the same money
 | **Society** | Stance +1.07; no high-power actor opposed. Williams Treaties First Nations lend C$700 m. C1 adds no consent issue. | Stance −1.03; 59% want the ban kept. No legal route is open. | Acceptability depends on process | Section 3.6.1, Sections 3.4–3.6 |
 | **Net** | Marginal gain; feasible if schedule-neutral (break-even 11.6–18.5 days). | Not feasible before 2040 on current law, cost and consent. | Controlled innovation | Sections 3.2–3.6 |
 
-### 3.7.2 Multi-criteria analysis
+### 3.7.2 Multi-Criteria Analysis
 
 Method in Section 2; working in Appendix B7 (scores: B8.3, B3).
 
@@ -463,7 +463,7 @@ Of 56 weight changes of ±50%, two change first place, both under the firm-and-s
 
 SMR + C1 and SMR are indistinguishable. At 2,200 t per unit (BWRX-300 Ostrołęka sp. z o.o., 2023; Pillai et al., 2019), C1 moves the weighted score by under 0.005 point. At Liddell, an 18.5-day slip would forgo CO₂e equal to 15 times the saving (Appendix B7.5). The status quo's second place over the SMR is a scaling artefact: it scores full marks on cost, supply and legal feasibility because it changes nothing.
 
-### 3.7.3 Verdict and limits
+### 3.7.3 Verdict and Limits
 
 C1 is justified as a controlled innovation within a credible nuclear construction programme, not as an argument that all SMRs should be built. Pilot LC³ in eligible non-safety works first; use steel-composite infill only if qualified on Unit 1 mock-ups, otherwise the slag blend. Qualification must start in 2027 for the 2028 Units 2–4 decision (Section 3.6.2).
 
@@ -472,7 +472,7 @@ An SMR at Liddell would need its cost gap closed, first power well before 2040, 
 The social, legal and supply scores and all four weight sets are our judgement; only "renewables first" is robust to the scaling. Costs are GenCost's (Graham, Hayward and Foster, 2024); the renewables supply score uses solar PV alone (International Energy Agency, 2022).
 
 
-## 3.8 Future material properties and processes
+## 3.8 Future Material Properties and Processes
 
 C1 and the levers beyond it each depend on a property or process still to be proven (Table T16).
 
@@ -740,7 +740,7 @@ World Steel Association, 2026. *CO₂ emissions and energy intensity, 2022–202
 
 Zunino, F., 2021. *Limestone calcined clay cements* [presentation slides]. Lausanne: EPFL / LC3 project. [pdf] Available at: https://lc3.ch/wp-content/uploads/2021/12/6-Franco-LimestoneCalcinedClayCements.pdf [Accessed 25 October 2026].
 
-#### Legislation
+**Legislation**
 
 *Environment Protection and Biodiversity Conservation Act 1999* (Cth), s 140A. [online] Federal Register of Legislation, C2004A00485. Available at: https://www.legislation.gov.au/C2004A00485/latest/text [Accessed 20 October 2026].
 
@@ -748,7 +748,7 @@ Zunino, F., 2021. *Limestone calcined clay cements* [presentation slides]. Lausa
 
 *Uranium Mining and Nuclear Facilities (Prohibitions) Act 1986* (NSW), No 194, ss 8–9. [online] NSW Legislation. Available at: https://legislation.nsw.gov.au/view/whole/html/inforce/current/act-1986-194 [Accessed 20 October 2026].
 
-#### Cases
+**Cases**
 
 *Barngarla Determination Aboriginal Corporation RNTBC v Minister for Resources* [2023] FCA 809 (Federal Court of Australia, Charlesworth J, 18 July 2023). Available at: https://www.judgments.fedcourt.gov.au/judgments/Judgments/fca/single/2023/2023fca0809 [Accessed 21 October 2026].
 

@@ -40,7 +40,7 @@ def _toc_style(level: int, indent: int, bold: bool) -> str:
     return (f'<w:style w:type="paragraph" w:styleId="TOC{level}"><w:name w:val="toc {level}"/>'
             '<w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:uiPriority w:val="39"/><w:unhideWhenUsed/>'
             '<w:pPr><w:tabs><w:tab w:val="right" w:leader="dot" w:pos="9026"/></w:tabs>'
-            f'<w:spacing w:before="60" w:after="60" w:line="240" w:lineRule="auto"/><w:ind w:left="{indent}"/></w:pPr>'
+            f'<w:spacing w:before="0" w:after="20" w:line="240" w:lineRule="auto"/><w:ind w:left="{indent}"/></w:pPr>'
             '<w:rPr><w:rFonts w:ascii="Arial" w:hAnsi="Arial" w:cs="Arial"/>'
             f'{b}<w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:style>')
 
