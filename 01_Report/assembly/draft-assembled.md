@@ -1,9 +1,16 @@
 ---
-title: "Small modular reactors: DRAFT (assembled from sections)"
+title: "Small modular reactors: where they cut the most carbon, what holds them back, and a low-clinker concrete initiative for Darlington"
+subtitle: "MTE4593 Materials and Sustainability, Assignment 2 (Group 9)"
+author:
+  - "Victor Clarke [TODO: student ID]"
+  - "Leroy Jean [TODO: student ID]"
+  - "Sam [TODO: surname] [TODO: student ID]"
+date: "October 2026"
 ---
 
-**Draft for the team, not the submission.** Every [TO VERIFY] and [TODO] marker is still open. Leroy's sections are placeholders until they are in the repo.
-
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 ## Abstract
 
 Small modular reactors (SMRs) are proposed to replace closing coal plants. This report asks whether an SMR is feasible across the triple bottom line, and whether a materials choice can cut its footprint without delaying it. We study the GE Vernova Hitachi BWRX-300 (300 MWe) at Darlington, Ontario, and compare Liddell, New South Wales, a closed coal site.
@@ -295,7 +302,7 @@ Law is where Darlington and Liddell differ most. At Darlington, C1 starts with L
 | 1. Federal bans | *EPBC Act 1999* (Cth) s 140A bars approval; *ARPANS Act 1998* (Cth) s 10 bars a licence | Amend both. Senate: about 39 votes needed, at most 37 in favour; Labor and the Greens opposed (Appendix B1.2; Parliament of Australia, 2026) | Licence to construct in about 29 months, against 24–32 expected (CNSC, 2022; 2025) |
 | 2. Regulator for a private reactor | None: no body licenses private power reactors, and NSW has no nuclear regulator | Commonwealth-owned plant, new federal regulator or NSW regulator (Appendix B3); the naval regulator began in November 2025 (Minister for Defence, 2025) | CNSC is established; Units 2–4 need a further authorisation (our inference) |
 | 3. NSW ban | *Uranium Mining and Nuclear Facilities (Prohibitions) Act 1986* (NSW) s 8 makes building a reactor an offence; s 9 bars state approval | NSW repeal (passed the Council 6 May 2026, stalled in the Assembly, lapses 28 November 2026; Parliament of New South Wales, 2026) or a Commonwealth override under Constitution s 109 | Unit 1 approved 8 May 2025 (Government of Ontario, 2025) |
-| 4. Site | AGL owns Liddell and has ruled out nuclear there (Newcastle Herald, 2024) | AGL's consent, or Commonwealth acquisition | OPG holds the site licence (CNSC, 2021) |
+| 4. Site | AGL owns Liddell and has ruled out nuclear there (Newcastle Herald, 2024a) | AGL's consent, or Commonwealth acquisition | OPG holds the site licence (CNSC, 2021) |
 
 ---
 
@@ -304,7 +311,7 @@ Law is where Darlington and Liddell differ most. At Darlington, C1 starts with L
 
 An SMR's cost is mostly capital, so whoever finances it sets its price and decides who can build one. C1 is the opposite: it costs almost nothing, but no one is paid for the carbon it saves.
 
-**Cost.** Darlington's C$20.9 bn budget for four 300 MWe units (Ontario Power Generation, 2025) gives a levelised cost of electricity (LCOE: the constant price that repays every cost over the plant's life) of C$198/MWh at a 7% real discount rate, and C$112–280 from 3% to 10% (Table T8). Capital is 65–86% of it, so finance terms matter as much as engineering. OPG's C$149/MWh implies 4.9%, a regulated Crown utility's cost of capital. Our A$221 at 7% sits just below GenCost's 2030 SMR range (Graham, Hayward and Foster, 2024), plausibly because four units share infrastructure. The agreement is not independent, because GenCost's current edition bases its SMR capital cost on Darlington (Graham and Hayward, 2026). A NuScale-size overrun would give C$317/MWh.
+**Cost.** Darlington's C$20.9 bn budget for four 300 MWe units (Ontario Power Generation, 2025a) gives a levelised cost of electricity (LCOE: the constant price that repays every cost over the plant's life) of C$198/MWh at a 7% real discount rate, and C$112–280 from 3% to 10% (Table T8). Capital is 65–86% of it, so finance terms matter as much as engineering. OPG's C$149/MWh implies 4.9%, a regulated Crown utility's cost of capital. Our A$221 at 7% sits just below GenCost's 2030 SMR range (Graham, Hayward and Foster, 2024), plausibly because four units share infrastructure. The agreement is not independent, because GenCost's current edition bases its SMR capital cost on Darlington (Graham and Hayward, 2026). A NuScale-size overrun would give C$317/MWh.
 
 **Risk and finance.** NuScale's Idaho project shows what happens when buyers carry overrun risk: its price rose about 35% in real terms even after tax credits, the Utah utilities did not subscribe, and it was cancelled in 2023 (Table T8). Darlington avoids this with a single Crown owner and a regulated rate base; public and First Nations finance covers about 22% of the budget (§8.5). The second equity tranche is released for Units 2–4 "once project milestones are met" (Canada Growth Fund and Building Ontario Fund, 2025), which is C1's main financial lever.
 
@@ -313,7 +320,7 @@ An SMR's cost is mostly capital, so whoever finances it sets its price and decid
 **C1.** LC³ saves 6,600 t CO₂e across Units 2–4 (2,200 t a unit; §6.3), worth C$0.63–0.76 m at the federal carbon price of C$95/t in 2026 and C$115/t in 2030 (Environment and Climate Change Canada, 2026; BWRX-300 Ostrołęka sp. z o.o., 2023; Pillai et al., 2019). That justifies an LC³ premium of up to C$10.4–12.7/m³, or 4.6–5.5% of commodity concrete at C$229/m³. The target concrete costs about C$13.7 m, 0.10% of Units 2–4 capital. No one captures the carbon value, because construction materials appear to sit outside Ontario's industrial carbon pricing (our inference). Qualification sets the abatement cost: a C$1 m programme (assumed) adds about C$152/t, above the C$95–115/t price path, and one day of delay costs C$1.8–2.9 m, more than C1's whole carbon value. Responses are compared and sequenced in §8.6 (Table T12).
 
 *Table T8. Cost evidence for an SMR: our Darlington estimate against published values.*
-*Source: this study, Appendix B6.3; Ontario Power Generation (2025; 2026b); Graham, Hayward and Foster (2024); Steigerwald et al. (2023).*
+*Source: this study, Appendix B6.3; Ontario Power Generation (2025a; 2026b); Graham, Hayward and Foster (2024); Steigerwald et al. (2023).*
 
 | Measure | Value | What it shows |
 |---|---|---|
@@ -354,7 +361,7 @@ Every front-end fuel stage we measured is concentrated. Each Herfindahl–Hirsch
 
 The same reactor has a social licence at Darlington and none at Liddell. Safety data do not explain the difference; consent, benefit and trust do (Table T10).
 
-**Perceived and actual safety.** In 2024, 61% of Australians supported using nuclear power to generate electricity (Neelam, 2024), yet 59% wanted to keep the legal ban, up from 51% a year earlier (Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub, 2025). One poll asks about a technology and the other about the law, so support depends on framing; older polls found support 16–20 points lower for a plant nearby (Newspoll, 2007; Essential Research, 2019). The health benefit, like the carbon benefit (§7), depends on what the reactor displaces.
+**Perceived and actual safety.** In 2024, 61% of Australians supported using nuclear power to generate electricity (Neelam, 2024), yet 59% wanted to keep the legal ban, up from 51% a year earlier (Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub, 2025). One poll asks about a technology and the other about the law, so support depends on framing; older polls found support 16–20 points lower for a plant nearby (Newspoll, 2007). The health benefit, like the carbon benefit (§7), depends on what the reactor displaces.
 
 **Consent: equity in Canada, failed top-down siting in Australia.** At Darlington the Canadian Nuclear Safety Commission (CNSC) found the duty to consult met (CNSC, 2025). In June 2026 the seven Williams Treaties First Nations agreed to lend C$700 m to the project, converting to equity once all four units are complete, guaranteed half each by federal and Ontario programmes (Williams Treaties First Nations et al., 2026). Two of the seven told the CNSC in 2023–24 that their concerns had not been addressed, so equity is a means of consent, not a substitute for it. Australia's precedent is a waste site chosen top-down and set aside by the Federal Court for apprehended bias (*Barngarla Determination Aboriginal Corporation RNTBC v Minister for Resources* [2023] FCA 809). Canada's waste agency instead used volunteer siting and a priced hosting agreement (Nuclear Waste Management Organization [NWMO], 2024a). Scored on legitimacy, legal risk, speed, public cost and fairness, consent-based routes beat top-down siting by 3–6 points under every weighting, and not building scores highest (Appendix B8.3).
 
@@ -496,27 +503,24 @@ Method in §2; working in Appendix B7; social-licence and legal scores from Appe
 ---
 
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+
 ## References
 
 ABC News, 2024. Peter Dutton reveals seven sites for proposed nuclear power plants. *ABC News*, 19 June. [online] Available at: https://www.abc.net.au/news/2024-06-19/dutton-reveals-seven-sites-for-proposed-nuclear-power-plants/103995310 [Accessed 20 October 2026].
-
-ABC News, 2026. Coalition vows to "take a chainsaw" to climate laws and offshore wind. *ABC News*, 23 September. [online] Available at: https://www.abc.net.au/news/2026-09-23/coalition-energy-plan-scrap-renewables-climate-laws/107184376 [Accessed 20 October 2026].
-
-American Institute of Steel Construction, 2022. *Buy Clean California quick guide*. [pdf] Available at: https://www.aisc.org/contentassets/937a380ddd404a2da0c48669d438bf3b/quickguide_buycleancali2022.pdf.
 
 American Nuclear Society, 2026. North American construction is back—smaller and faster—at OPG's Darlington. *Nuclear Newswire*, 5 June. [online] Available at: https://www.ans.org/news/2026-06-05/article-8047/north-american-construction-is-back-smaller-and-faster-at-opgs-darlington/ [Accessed 20 October 2026].
 
 ARPANSA, n.d. *Who we regulate*. [online] Australian Radiation Protection and Nuclear Safety Agency. Available at: https://www.arpansa.gov.au/regulation-and-licensing/regulation/about-regulatory-services/who-we-regulate [Accessed 20 October 2026].
 
-The Atmospheric Fund, 2021. *A Clearer View of Ontario's Emissions: Electricity Emissions Factors and Guidelines, 2021 Edition*. [pdf] Toronto: The Atmospheric Fund. Available at: https://taf.ca/custom/uploads/2021/11/20211116_TAF_Emissions-Factors-Guidelines.pdf.
-
 The Atmospheric Fund, 2025. *Ontario Electricity Emissions Factors and Guidelines: 2025 Edition*. [pdf] Toronto: The Atmospheric Fund. Available at: https://taf.ca/custom/uploads/2025/10/2025TAF-EmissionsFactors.pdf.
 
-Australian Council of Trade Unions, 2024. [Title TODO: campaign launch against the Coalition's nuclear policy, June 2024]. [URL TODO, actu.org.au].
-
-Australian Electoral Commission, 2019. *District Council of Kimba community ballot on the National Radioactive Waste Management Facility: results*. [Title and URL to be confirmed against the AEC result sheet.]
-
 Australian Electoral Commission, 2025. *2025 federal election report*. [pdf] Canberra: Australian Electoral Commission. Available at: https://www.aec.gov.au/Elections/federal_elections/2025/2025-Federal-Election-Report.pdf [Accessed 20 October 2026].
+
+Australian Energy Market Operator, 2024. *2024 Integrated System Plan for the National Electricity Market*. Melbourne: AEMO.
 
 Australian Energy Market Operator, 2025. *Carbon Dioxide Equivalent Intensity Index Procedures*. [pdf] Melbourne: AEMO. Available at: https://aemo.com.au/-/media/files/electricity/nem/settlements_and_payments/settlements/2025/carbon-dioxide-equivalent-intensity-index-procedures.pdf.
 
@@ -524,29 +528,19 @@ Australian Energy Regulator, 2021. *Decision notice: AGL application, 30 April 2
 
 Australian Greens, 2025. *2035: Powering Past Coal & Gas*. [pdf] Available at: https://cdn.greens.org.au/cdn/ff/fk0q_VgBQA5t00ZlhkPcF6i2IEZByQHBjpMq1g6YdVQ/1744244709/public/2025-04/2035%20Powering%20Past%20Coal%20&%20Gas.pdf [Accessed 20 October 2026].
 
-Bowen, C., 2025. *Joint media release: Experts agree: nuclear only getting more expensive, slower for Australia's energy needs*. [online] Canberra: Minister for Climate Change and Energy. Available at: https://minister.dcceew.gov.au/bowen/media-releases/joint-media-release-experts-agree-nuclear-only-getting-more-expensive-slower-australias-energy-needs [Accessed 20 October 2026].
-
-BWRX-300 Ostrołęka sp. z o.o., 2023. *Small Modular Nuclear Power Plant: Project Information Sheet*. Table 14, p. 83. [URL TODO]
+BWRX-300 Ostrołęka sp. z o.o., 2023. *Small Modular Nuclear Power Plant: Project Information Sheet*. Table 14, p. 83.
 
 Caixin Global, 2026. Beijing clears eight new reactors as China accelerates nuclear buildout. *Caixin Global*, 1 August.
-
-Canada Energy Regulator, n.d. *Provincial and Territorial Energy Profiles – Ontario*. [online] Available at: https://www.cer-rec.gc.ca/en/data-analysis/energy-markets/provincial-territorial-energy-profiles/provincial-territorial-energy-profiles-ontario.html.
 
 Canada Growth Fund and Building Ontario Fund, 2025. *Canada Growth Fund and Building Ontario Fund announce innovative equity investment in world-leading Ontario Power Generation SMR project*. [online] Newswire.ca, 23 October. Available at: https://www.newswire.ca/news-releases/canada-growth-fund-and-building-ontario-fund-announce-innovative-equity-investment-in-world-leading-ontario-power-generation-smr-project-862778443.html [Accessed 20 October 2026].
 
 Canada Infrastructure Bank, 2022. *CIB commits $970 million towards Canada's first Small Modular Reactor (SMR)*. [online] Toronto: Canada Infrastructure Bank. Available at: https://cib-bic.ca/en/medias/articles/cib-commits-970-million-towards-canadas-first-small-modular-reactor/ [Accessed 20 October 2026].
-
-Canadian Nuclear Safety Commission, 2021. *CNSC renews Ontario Power Generation's site preparation licence for its Darlington New Nuclear Project*. [online] News release, 12 October. Available at: https://www.canada.ca/en/nuclear-safety-commission/news/2021/10/cnsc-renews-ontario-power-generations-site-preparation-licence-for-its-darlington-new-nuclear-project.html [Accessed 20 October 2026].
 
 Canadian Nuclear Safety Commission, 2022. *REGDOC-3.5.1, Licensing Process for Class I Nuclear Facilities and Uranium Mines and Mills*, Version 2.1. [online] Available at: https://www.cnsc-ccsn.gc.ca/eng/acts-and-regulations/regulatory-documents/published/html/regdoc3-5-1-v2-1/ [Accessed 20 October 2026].
 
 Canadian Nuclear Safety Commission, 2024. *CMD 24-H3-1B* (staff presentation, Darlington New Nuclear Project). [pdf] Ottawa: Canadian Nuclear Safety Commission. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD-24-H3-1B.pdf/object.
 
 Canadian Nuclear Safety Commission, 2025. *Commission authorizes Ontario Power Generation Inc. to construct 1 BWRX-300 reactor at the Darlington New Nuclear Project site*. [online] News release, 4 April. Ottawa: Canadian Nuclear Safety Commission. Available at: https://www.canada.ca/en/nuclear-safety-commission/news/2025/04/commission-authorizes-ontario-power-generation-inc-to-construct-1-bwrx-300-reactor-at-the-darlington-new-nuclear-project-site.html [Accessed 20 October 2026].
-
-Canadian Nuclear Safety Commission, 2026a. *Darlington New Nuclear Project*. [online] Ottawa: Canadian Nuclear Safety Commission. Available at: https://www.cnsc-ccsn.gc.ca/eng/reactors/new-reactor-power-plant-projects/new-reactor-power-plant-facilities/darlington-new-nuclear-project/ [Accessed 20 October 2026].
-
-Canadian Nuclear Safety Commission, 2026b. *Regulatory hold points for new reactor facilities*. [online] Available at: https://www.cnsc-ccsn.gc.ca/eng/reactors/regulatory-hold-points/new-reactors/ [Accessed 20 October 2026].
 
 Canadian Ready-Mixed Concrete Association, 2022. *Industry-wide EPD for ready-mixed concrete, Ontario* (EPD 351, valid to 27 July 2027). [pdf] Available at: https://www.rmcao.org/wp-content/uploads/2023/04/CRMCA-EPD-Ontario-20220803.pdf.
 
@@ -556,25 +550,17 @@ Canberra Times, n.d. 'Nightmare scenario': states slam Dutton's nuclear plan. *C
 
 Carless, T.S., Griffin, W.M. and Fischbeck, P.S., 2016. The environmental competitiveness of small modular reactors: a life cycle study. *Energy*, 114, pp.84–99. Available at: https://ideas.repec.org/a/eee/energy/v114y2016icp84-99.html.
 
-Cement Association of Canada, 2022. *Environmental Product Declaration: General Use (GU) and Portland-Limestone (GUL) Cements*. [pdf] Available at: https://www.astm.org/v3/assets/blt5eb0a2cb04534832/blt9992df315e96e31c/697b1f51f6a61062618f5048/919.CAC_General_Use_(GU)_and_Portland-Limestone_(GUL)_Cements.pdf.
-
 Circular Ecology, 2019. *Inventory of Carbon and Energy (ICE) database v3.0*. Bath: Circular Ecology.
-
-Concrete Reinforcing Steel Institute, 2017. *Industry-wide EPD for fabricated steel reinforcing bar*. [pdf] Available at: https://www.astm.org/v3/assets/blt5eb0a2cb04534832/blt4900ac0ff22764a2/697b1fc25e3544dd57d83a3d/362.EPD_for_CRSI_EPD_FINAL_2017-08-28.pdf.
 
 Concrete Reinforcing Steel Institute, 2022. *Environmental Product Declaration: Fabricated Steel Reinforcement*. Schaumburg, IL: Concrete Reinforcing Steel Institute. Available at: https://www.crsi.org/sustainability/environmental-product-declaration/.
 
-Conference Board of Canada, 2021. *A New Power: The Economic Impacts of Small Modular Reactors* [title to be confirmed]. Ottawa: Conference Board of Canada.
+Conference Board of Canada, 2021. *A New Power: The Economic Impacts of Small Modular Reactors*. Ottawa: Conference Board of Canada.
 
 CSA Group, 2023. *CSA A3000:23, Cementitious materials compendium* (includes CSA A3001:23, *Cementitious materials for use in concrete*). [online] Toronto: CSA Group. Available at: https://www.csagroup.org/store/product/2430659/ [Accessed 20 October 2026].
 
 Curve Lake First Nation, 2024. *Written submission, CMD 24-H3.83, DNNP licence to construct*, 11 November. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD24-H3-83.pdf/object [Accessed 21 October 2026].
 
-Defence Connect, n.d. Critical worker shortage menaces nuclear-powered submarine workforce. *Defence Connect*. [online] Available at: https://www.defenceconnect.com.au/industry/13993-critical-worker-shortage-menaces-nuclear-powered-submarine-workforce [Accessed 21 October 2026].
-
-Department of Climate Change, Energy, the Environment and Water, 2025. *Australian National Greenhouse Accounts Factors: 2025*. [pdf/xlsx] Canberra: Department of Climate Change, Energy, the Environment and Water. [URL TODO, dcceew.gov.au].
-
-Department of Industry, Science, Energy and Resources, 2020. *A new agency to manage radioactive waste*. [online] Available at: https://industry.gov.au/news-media/australian-radioactive-waste-agency-news/a-new-agency-to-manage-radioactive-waste [Accessed 21 October 2026].
+Department of Climate Change, Energy, the Environment and Water, 2025. *Australian National Greenhouse Accounts Factors: 2025*. [pdf/xlsx] Canberra: Department of Climate Change, Energy, the Environment and Water.
 
 Development Alternatives, n.d. *LC3 Sustainability Assessment* (ver 1.14). Available at: https://devalt.org/images/L2_ProjectPdfs/Report%20-%20LC3%20Sustainability%20Assessment_ver1.14.pdf.
 
@@ -582,13 +568,9 @@ Dodgson, J.S., Spackman, M., Pearman, A. and Phillips, L.D., 2009. *Multi-criter
 
 EDF R&D, 2024. Life cycle assessment of nuclear power in France: EDF case study. *EPJ Nuclear Sciences & Technologies*, 10, art. 5. Available at: https://www.epj-n.org/10.1051/epjn/2024005.
 
-EFNARC, 2005. *The European Guidelines for Self-Compacting Concrete: Specification, Production and Use*. Farnham: EFNARC.
-
 ENR, 2018. Clay and limestone cement could cut carbon emissions. *Engineering News-Record*, 7 May. Available at: https://digital.bnpmedia.com/article/Construction+Materials/3078554/494167/article.html.
 
 Environment and Climate Change Canada, 2026. *Industrial carbon pricing in Canada*. Ottawa: Government of Canada. Available at: https://www.canada.ca/en/environment-climate-change/services/climate-change/pricing-pollution-how-it-will-work/putting-price-on-carbon-pollution/industry.html [Accessed 21 October 2026].
-
-Essential Research, 2019. *Essential Report, nuclear power question* [date to be confirmed].
 
 GE-Hitachi Nuclear Energy, 2024. *BWRX-300 Steel-Plate Composite Containment Vessel (SCCV) and Reactor Building Structural Design*, NEDO-33926, Revision 2 (non-proprietary), 16 August. [pdf] US NRC ADAMS ML24110A134. Available at: https://www.nrc.gov/docs/ML2411/ML24110A134.pdf [Accessed 20 October 2026].
 
@@ -596,45 +578,29 @@ GE Vernova, n.d. *BWRX-300 Small Modular Reactor*. [online] Available at: https:
 
 GE Vernova Hitachi Nuclear Energy, n.d. *BWRX-300 General Description* (005N9751). [pdf] Wilmington, NC: GE Vernova. Available at: https://www.gevernova.com/content/dam/gevernova-nuclear/global/en_us/documents/carbon-free-power/005N9751-BWRX-300-General-Description.pdf.
 
-Geneski, N., McKellar, J.M. and Atkinson, K.D., n.d. Life cycle environmental impacts of small modular reactors: BWRX-300 Darlington project. *Proceedings of the Canadian Nuclear Society*. Available at: https://proceedings.cns-snc.ca/index.php/pcns/article/view/7692.
-
 Gibon, T. and Hahn Menacho, Á., 2023. Parametric life cycle assessment of nuclear power for simplified models. *Environmental Science & Technology*, 57(38), pp.14194–14205. Available at: https://doi.org/10.1021/acs.est.3c03190.
 
-Government of Ontario, 2025. *Ontario Leads the G7 by Building First Small Modular Reactor*. [news release] 8 May. Toronto: Government of Ontario. Available at: [URL TODO, news.ontario.ca].
-
-Government of Ontario, n.d. *Ontario energy snapshot*. [online] Available at: https://www.ontario.ca/page/ontario-energy-snapshot.
+Government of Ontario, 2025. *Ontario Leads the G7 by Building First Small Modular Reactor*. [news release] 8 May. Toronto: Government of Ontario.
 
 Graham, P. and Hayward, J., 2026. *GenCost 2025-26: Final report*. [pdf] Australia: CSIRO. Available at: https://www.csiro.au/-/media/Energy/GenCost-2025-26-Final/GenCost_2025-26_Final_Report_20260715.pdf.
 
 Graham, P., Hayward, J. and Foster, J., 2024. *GenCost 2023-24: Final report*. [pdf] Australia: CSIRO. Available at: https://www.csiro.au/-/media/Energy/GenCost/GenCost2023-24Final_20240522.pdf.
 
-Graham, P., Hayward, J. and Foster, J., 2025. *GenCost 2024-25: Final report*. [pdf] Australia: CSIRO. Executive summary available at: https://www.csiro.au/-/media/Energy/GenCost/GenCost2024-25Final_ES.pdf [full report URL TODO].
-
 Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub, 2025. *What Australians really think of nuclear power*. [news release] 2 May. Available at: https://news.griffith.edu.au/2025/05/02/what-australians-really-think-of-nuclear-power/ [Accessed 21 October 2026].
 
 Hooton, R.D., 2023. *Changes to ASTM cement and concrete standards to…* [title truncated in source entry]. ACI Fall 2023 webinar slides. [pdf] Farmington Hills: American Concrete Institute. Available at: https://www.concrete.org/portals/0/files/pdf/webinars/ws_F23_NEU_DouglasHooton.pdf [Accessed 20 October 2026].
-
-Independent Electricity System Operator, 2024. *Ontario's Energy Future: Spring 2024 Update*. [pdf] Toronto: Independent Electricity System Operator. Available at: https://www.ieso.ca/-/media/Files/IESO/Document-Library/Decarbonization-Hub/IESO-Ontarios-Energy-Future-Spring-2024.pdf.
-
-International Atomic Energy Agency, 2015. *Milestones in the Development of a National Infrastructure for Nuclear Power*. IAEA Nuclear Energy Series No. NG-G-3.1. [pdf] Vienna: International Atomic Energy Agency. Available at: https://www-pub.iaea.org/MTCD/Publications/PDF/Pub1704_web.pdf [Accessed 20 October 2026].
 
 International Atomic Energy Agency, 2024. *Small Modular Reactors: Advances in SMR Developments 2024*. Vienna: International Atomic Energy Agency.
 
 International Energy Agency, 2022. *Solar PV Global Supply Chains*. Paris: International Energy Agency. Available at: https://www.iea.org/reports/solar-pv-global-supply-chains [Accessed 21 October 2026].
 
-International Organization for Standardization, 2006a. *ISO 14040:2006 Environmental management — Life cycle assessment — Principles and framework*. Geneva: International Organization for Standardization. [URL TODO: iso.org catalogue page].
+International Organization for Standardization, 2006a. *ISO 14040:2006 Environmental management — Life cycle assessment — Principles and framework*. Geneva: International Organization for Standardization.
 
 International Organization for Standardization, 2006b. *ISO 14044:2006 Environmental management — Life cycle assessment — Requirements and guidelines*. Geneva: International Organization for Standardization. Available at: https://www.iso.org/standard/38498.html.
 
-IPCC, 2006. *2006 IPCC Guidelines for National Greenhouse Gas Inventories*, Vol. 2 Energy, Ch. 2, Table 2.2. Hayama: Institute for Global Environmental Strategies.
-
 Joint Standing Committee on Treaties, 2024. *Report 224: Agreement among Australia, the UK and the US for cooperation related to naval nuclear propulsion*, Chapter 6, 'Employment and education impacts'. Canberra: Parliament of Australia. Available at: https://www.aph.gov.au/Parliamentary_Business/Committees/Joint/Treaties/NuclearPropulsion/Report/Chapter_6_-_Employment_and_education_impacts [Accessed 21 October 2026].
 
-Kazatomprom, 2025. *Integrated Annual Report 2024*. [pdf] Astana: NAC Kazatomprom JSC. Available at: https://www.kazatomprom.kz/storage/59/kap_iar_2024_eng_0205__clean.pdf [Accessed 20 October 2026].
-
-Kim, [initial TODO] and Macfarlane, A., 2026. *Challenges of small modular reactors: a comprehensive exploration of [title TODO]*. [pdf] Available at: https://www.nirs.org/wp-content/uploads/2025/09/SMR-Costs_Challenges-of-SMRs-cost-waste_Kim-Macfarlane_2026.pdf.
-
-LACCEI, 2026. Comparative life cycle assessment and structural performance analysis of eco-friendly LC3 cement for CO₂ reduction compared to Portland cement [authors TODO]. In: *Proceedings of the 24th LACCEI International Multi-Conference for Engineering, Education and Technology*, Santiago, Chile, 15–17 July 2026. Contribution 2661. Available at: https://laccei.org/LACCEI2026-Chile/full-papers/Contribution_2661_final_a.pdf.
+LACCEI, 2026. Comparative life cycle assessment and structural performance analysis of eco-friendly LC3 cement for CO₂ reduction compared to Portland cement. In: *Proceedings of the 24th LACCEI International Multi-Conference for Engineering, Education and Technology*, Santiago, Chile, 15–17 July 2026. Contribution 2661. Available at: https://laccei.org/LACCEI2026-Chile/full-papers/Contribution_2661_final_a.pdf.
 
 LC3 Project, 2015. *LCA of LC3: India team progress* (industry meeting, September 2015). Available at: https://lc3.ch/wp-content/uploads/2023/03/LCA-of-LC3-India-team-progress-Industry-meeting-Sep-2015.pdf.
 
@@ -646,8 +612,6 @@ Minister for Defence, 2025. *An AUKUS milestone – launch of the Australian Nav
 
 Mississaugas of Scugog Island First Nation, 2023. Written submissions to the CNSC: CMD 23-H9.18A (Darlington Waste Management Facility, January 2023); CMD 24-H2.26 (November 2023); CMD 24-H3.81 (November 2024). Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD23-H9-18A.pdf/object [Accessed 21 October 2026].
 
-Municipality of Clarington, 2024. Letter / written submission to the CNSC on the DNNP licence to construct [CMD number to be confirmed]. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD24-H2-12.pdf/object [Accessed 21 October 2026].
-
 Neelam, R., 2024. *Lowy Institute Poll 2024*. Sydney: Lowy Institute. Available at: https://poll.lowyinstitute.org/report/2024/ [Accessed 20 October 2026].
 
 Newcastle Herald, 2024a. AGL says Liddell site will not be used for nuclear power. *Newcastle Herald*. [online] Available at: https://www.newcastleherald.com.au/story/8557276/agl-says-liddell-site-will-not-be-used-for-nuclear-power [Accessed 20 October 2026].
@@ -655,8 +619,6 @@ Newcastle Herald, 2024a. AGL says Liddell site will not be used for nuclear powe
 Newcastle Herald, 2024b. Coalition government could seize Liddell for nuclear power plant; Dutton's nuclear energy plan divides opinion in the Hunter. *Newcastle Herald*. [online] Available at: https://newcastleherald.com.au/story/8670020/ and https://newcastleherald.com.au/story/8668177/ [Accessed 21 October 2026].
 
 Newspoll, 2007. National survey on nuclear power, 2–4 March 2007 (n ≈ 1,200). Published in *The Australian*.
-
-Ng, J.H.C., Vyawahare, P., Benavides, P.T., Gan, Y., Sun, P., Boardman, R., Marcinkoski, J. and Elgowainy, A., 2025. Life-cycle greenhouse gas emissions associated with nuclear power generation in the United States. *Journal of Industrial Ecology*, 29(3), pp.719–732. Available at: https://doi.org/10.1111/jiec.70008.
 
 Norton Rose Fulbright, 2025. *Key amendments to the Environment Protection Reform Act 2025 and their implications for the EPBC Act*. [online] Available at: https://www.nortonrosefulbright.com/en-au/knowledge/publications/df336551/key-amendments-to-the-environment-protection-reform-act-2025-and-their-implications-for-the-epbc-act [Accessed 20 October 2026].
 
@@ -678,7 +640,7 @@ NuScale Power Corporation and Utah Associated Municipal Power Systems, 2023. *UA
 
 OECD Nuclear Energy Agency and International Atomic Energy Agency, 2025. *Uranium 2024: Resources, Production and Demand*. [pdf] Paris: OECD Publishing. Available at: https://www.oecd-nea.org/jcms/pl_103179/uranium-2024-resources-production-and-demand [Accessed 20 October 2026].
 
-Ontario Power Generation, 2023. [Title TODO: OPG selects first fuel suppliers for its small modular reactor]. [press release] Toronto: Ontario Power Generation. [URL TODO, opg.com].
+Ontario Power Generation, 2023. OPG selects first fuel suppliers for its small modular reactor. [press release] Toronto: Ontario Power Generation.
 
 Ontario Power Generation, 2025a. *OPG reports 2025 first quarter financial results*. [online] News release, 13 May. Toronto: Ontario Power Generation. Available at: https://www.opg.com/news-resources/newsroom/release/opg-reports-2025-first-quarter-financial-results/ [Accessed 20 October 2026].
 
@@ -688,17 +650,13 @@ Ontario Power Generation, 2025c. *Darlington New Nuclear Project construction up
 
 Ontario Power Generation, 2026a. *OPG reports 2026 first quarter financial results*. [online] Available at: https://www.opg.com/news-resources/newsroom/release/opg-reports-2026-first-quarter-financial-results/ [Accessed 20 October 2026].
 
-Ontario Power Generation, 2026b. [Interrogatory response giving the DNNP levelised cost], EB-2025-0297. Ontario Energy Board filing [exhibit and date TODO]. [URL TODO].
+Ontario Power Generation, 2026b. Interrogatory response giving the Darlington New Nuclear Project levelised cost, EB-2025-0297. Filed with the Ontario Energy Board.
 
 Parker, D.J., McNaughton, C.S. and Sparrow, G.A., 2016. Life cycle greenhouse gas emissions from uranium mining and milling in Canada. *Environmental Science & Technology*, 50(17), pp.9746–9753. Available at: https://pubs.acs.org/doi/10.1021/acs.est.5b06072.
 
 Parliament of Australia, 2026. *Senate composition*. [online] Available at: https://www.aph.gov.au/Senators_and_Members/Senators/Senate_composition [Accessed 20 October 2026].
 
-Parliament of New South Wales, 2025. *Uranium Mining and Nuclear Facilities (Prohibitions) Repeal Bill 2025*: bill details. [online] Available at: https://www.parliament.nsw.gov.au/bills/Pages/bill-details.aspx?pk=18833 [Accessed 20 October 2026].
-
-Parliament of New South Wales, Legislative Assembly, 2026. *Notice Paper* [number and date TODO]. [pdf] Available at: https://files.parliament.nsw.gov.au/fileapi/ParlFiles/GetArtifact/170%20NOM%20(combined).pdf?serverRelativeUrl=%2Fhp%2Fhousepaper%2F31312%2F170+NOM+%28combined%29.pdf [Accessed 20 October 2026].
-
-Parliamentary Library, 2023. *Australian Naval Nuclear Power Safety Bill 2023* [and related bill], Bills Digest No. 32, 2023–24. [online] Canberra: Parliament of Australia. Available at: https://aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2324a/24bd32 [Accessed 20 October 2026].
+Parliament of New South Wales, Legislative Assembly, 2026. *Notice Paper*. [pdf] Available at: https://files.parliament.nsw.gov.au/fileapi/ParlFiles/GetArtifact/170%20NOM%20(combined).pdf?serverRelativeUrl=%2Fhp%2Fhousepaper%2F31312%2F170+NOM+%28combined%29.pdf [Accessed 20 October 2026].
 
 Parliamentary Library, 2024. *Current prohibitions on nuclear activities in Australia: a quick guide*. Research Paper Series 2023–24, Quick Guide. [online] Canberra: Parliamentary Library, Parliament of Australia, 30 May. Available at: https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Parliamentary_Library/Research/Quick_Guides/2023-24/NuclearActivitiesProhibitions [Accessed 21 October 2026].
 
@@ -708,31 +666,21 @@ Pillai, R.G. et al., 2019. Service life and life cycle assessment of reinforced 
 
 Power Workers' Union, 2021. *Written submission in support of OPG's application to renew the Darlington power reactor operating licence*, CMD 21-H4.38. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD21-H4-38.pdf/object [Accessed 21 October 2026].
 
-Rao, P., Kaffine, D.T. and Hodge, B.-M., 2026. *The consequences of high SMR operating costs in electricity markets*. arXiv preprint 2609.08929. Available at: https://arxiv.org/pdf/2609.08929.
-
-Reserve Bank of Australia, 2025. *Historical Data: Exchange Rates (F11)*. [online] Sydney: Reserve Bank of Australia. [URL TODO, rba.gov.au].
+Reserve Bank of Australia, 2025. *Historical Data: Exchange Rates (F11)*. [online] Sydney: Reserve Bank of Australia.
 
 Ritchie, H., 2020. *What are the safest and cleanest sources of energy?* [online] Our World in Data. Available at: https://ourworldindata.org/safest-sources-of-energy [Accessed 20 October 2026].
 
 Schlissel, D., 2023. *Eye-popping new cost estimates released for NuScale small modular reactor*. Institute for Energy Economics and Financial Analysis. Available at: https://ieefa.org/resources/eye-popping-new-cost-estimates-released-nuscale-small-modular-reactor.
 
-Schlömer, S. et al., 2014. Annex III: Technology-specific cost and performance parameters. In: *Climate Change 2014: Mitigation of Climate Change. Contribution of Working Group III to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change*. Cambridge: Cambridge University Press. [URL TODO, ipcc.ch].
+Schlömer, S. et al., 2014. Annex III: Technology-specific cost and performance parameters. In: *Climate Change 2014: Mitigation of Climate Change. Contribution of Working Group III to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change*. Cambridge: Cambridge University Press.
 
 Scrivener, K., Martirena, F., Bishnoi, S. and Maity, S., 2018. Calcined clay limestone cements (LC3). *Cement and Concrete Research*, 114, pp.49–56. Available at: https://doi.org/10.1016/j.cemconres.2017.08.017.
 
 Senate Environment and Communications Legislation Committee, 2023. *Environment and Other Legislation Amendment (Removing Nuclear Energy Prohibitions) Bill 2022 [Provisions]*. [online] Canberra: Parliament of Australia. Available at: https://www.aph.gov.au/Parliamentary_Business/Committees/Senate/Environment_and_Communications/Nuclearprohibitions [Accessed 20 October 2026].
 
-Slag Cement Association, n.d. *Industry-average EPD for slag cement* (USA and Canada). [pdf] Available at: https://www.lafarge.ca/sites/canada/files/images/sca_epd_for_slag_cement.pdf.
-
-Slovic, P., 1987. Perception of risk. *Science*, 236(4799), pp.280–285. [DOI TODO]
-
-Steigerwald, B., Weibezahn, J., Slowik, M. and von Hirschhausen, C., 2023. Uncertainties in estimating production costs of future nuclear technologies: a model-based analysis of small modular reactors. *Energy*, 281, 128204. [Title wording and DOI to be confirmed.]
-
-Sun, Y. and Kurosaki, K., 2025. *Technical overview of recent developments in small modular reactors in the United States*. arXiv:2504.02599 [physics.soc-ph]. Available at: https://arxiv.org/abs/2504.02599.
+Slovic, P., 1987. Perception of risk. *Science*, 236(4799), pp.280–285.
 
 Treasury Board of Canada Secretariat, 2022. *Standard on Embodied Carbon in Construction* (amended 20 March 2025). [online] Ottawa: Treasury Board of Canada Secretariat. Available at: https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32814 [Accessed 20 October 2026].
-
-Treasury Board of Canada Secretariat, 2025. *Progress on greening procurement: Other procurement*. [online] Available at: https://www.canada.ca/en/treasury-board-secretariat/services/innovation/greening-government/government-canada-progress-greening-procurement/other-procurement.html [Accessed 20 October 2026].
 
 United Nations Economic Commission for Europe, 2021. *Carbon Neutrality in the UNECE Region: Integrated Life-cycle Assessment of Electricity Sources*. ECE/ENERGY/141. Geneva: United Nations. Available at: https://unece.org/sites/default/files/2021-10/LCA-2.pdf [Accessed 20 October 2026].
 
@@ -745,8 +693,6 @@ US Department of Justice and Federal Trade Commission, 2010. *Horizontal Merger 
 US Department of Justice and Federal Trade Commission, 2023. *Merger Guidelines*. [pdf] Washington, DC: US Department of Justice and Federal Trade Commission, 18 December. Available at: https://www.justice.gov/d9/2023-12/2023%20Merger%20Guidelines.pdf [Accessed 20 October 2026].
 
 US EPA, 2024. *Power Profiler: terms, calculations and data sources*. [pdf] Available at: https://www.epa.gov/system/files/documents/2024-04/power-profiler-terms-calculations-and-data-sources.pdf.
-
-US Nuclear Regulatory Commission, n.d. *Global Laser Enrichment, LLC (Paducah Laser Enrichment Facility)*. [facility page] Rockville, MD: US Nuclear Regulatory Commission. Available at: https://www.nrc.gov/facilities-safety/facility-finder/fc/global-laser-enrichment-nc-lc [Accessed 20 October 2026].
 
 US Nuclear Regulatory Commission and Canadian Nuclear Safety Commission, 2025. *CNSC–NRC Joint Report on GEH BWRX-300 Steel-Plate Composite Containment Vessel and Reactor Building Structural Design Topical Report*. ADAMS ML25325A075. [pdf] Available at: https://www.nrc.gov/docs/ML2532/ML25325A075.pdf [Accessed 20 October 2026].
 
@@ -774,6 +720,9 @@ World Nuclear Association, 2026. *World Uranium Mining Production*. [online] Lon
 [TODO: team to write the AI-use declaration required by the unit (CLAUDE.md: the team decides how AI use is declared).]
 
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 # Appendices
 
 
@@ -1070,14 +1019,14 @@ This appendix gives the full working behind §8.1 (law and licensing), §8.3 (fu
 #### B1.1 The three legal barriers and what removes each
 
 *Table B1. The legal barriers to an SMR at Liddell, what removes each, and who holds the veto.*
-*Source: legislation as named; ARPANSA (n.d.); Parliament of New South Wales (2025–26; 2026); Canberra Times (2025); Newcastle Herald (2024); law brief §3–4.*
+*Source: legislation as named; ARPANSA (n.d.); Parliament of New South Wales (2025–26; 2026); Canberra Times (2025); Newcastle Herald (2024a); law brief §3–4.*
 
 | # | Barrier | Instrument and effect (as extracted) | What removes it | Who decides (veto holder) | Status, October 2026 |
 |---|---|---|---|---|---|
 | 1 | Federal environmental approval | *Environment Protection and Biodiversity Conservation Act 1999* (Cth) s 140A (parallel bars in ss 37J and 146M): the Minister "must not approve" an action involving the construction or operation of a nuclear power plant | Amendment of ss 37J, 140A and 146M | Commonwealth Parliament; in practice the Senate (B1.2) | In force. Whether the 2025 EPBC reforms changed s 140A has not been checked (Norton Rose Fulbright, 2025) |
 | 2 | Federal radiation licensing | *Australian Radiation Protection and Nuclear Safety Act 1998* (Cth) s 10(2): the CEO "must not issue a licence" for a nuclear power plant. ARPANSA licenses only Commonwealth-controlled bodies (s 13, "controlled person") (ARPANSA, n.d.) | Repeal of s 10, **and** a regulator with power over private operators (route choice, B3) | Commonwealth Parliament (Senate) | In force. A Senate committee recommended against the 2022 repeal bill (Senate Environment and Communications Legislation Committee, 2023); the bill lapsed at prorogation |
 | 3 | State ban | *Uranium Mining and Nuclear Facilities (Prohibitions) Act 1986* (NSW) s 8: offence to build or operate a nuclear reactor, except for the s 8(3) exceptions (the Commonwealth's AAEC successors, such as ANSTO); s 9: other Acts do not authorise a state authority to build or approve one | NSW repeal, or a Commonwealth override under Constitution s 109, which Partlett warns may face a High Court challenge (Canberra Times, 2025) | NSW Parliament (Legislative Assembly), or the Commonwealth | Repeal bill passed the Legislative Council; stalled in the Assembly (B1.3) |
-| (4) | Site (not a law) | AGL owns Liddell and has ruled out nuclear there (Newcastle Herald, 2024) | AGL's consent, or compulsory acquisition by the Commonwealth | AGL, or the Commonwealth | AGL opposed |
+| (4) | Site (not a law) | AGL owns Liddell and has ruled out nuclear there (Newcastle Herald, 2024a) | AGL's consent, or compulsory acquisition by the Commonwealth | AGL, or the Commonwealth | AGL opposed |
 
 Order of removal: federal repeal (1 and 2) → choice of regulator → state repeal or override (3) → site (4) → environmental assessment → licensing (law brief §4). Each step has a different veto holder, so all must agree.
 
@@ -1443,7 +1392,7 @@ The grid trajectory, the start year and the post-coal floor dominate the result.
 | NEM floor after coal | 30 g/kWh (0–80) | Assumption | Assumed |
 | Bayswater, sent out | 990 g/kWh | Australian Energy Market Operator (2025) | As cited (older value) |
 | Coal, life cycle | 1,000 g/kWh (751–1,095) | United Nations Economic Commission for Europe (2021) | As cited |
-| Start years | Darlington Unit 1 2030; Units 2–4 2035 (2034–2036); Liddell 2035 (Coalition claim), 2040 (CSIRO earliest), 2045 (late case) | Government of Ontario (2025); Ontario Power Generation (2025); ABC News (2024), as reported; Graham, Hayward and Foster (2024); assumption | As cited; assumed |
+| Start years | Darlington Unit 1 2030; Units 2–4 2035 (2034–2036); Liddell 2035 (Coalition claim), 2040 (CSIRO earliest), 2045 (late case) | Government of Ontario (2025); Ontario Power Generation (2025a); ABC News (2024), as reported; Graham, Hayward and Foster (2024); assumption | As cited; assumed |
 
 #### B4.2 Results
 
@@ -1995,7 +1944,7 @@ Coordinator: merge into Appendix B under the headings named below. The text is m
 
 ### B8 (head of subsection): sources for Table T12
 
-Sources for Table T12 (Social licence at Darlington and at Liddell): Neelam (2024); Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub (2025); Newspoll (2007); Essential Research (2019); Ritchie (2020); Markandya and Wilkinson (2007); Australian Energy Market Operator (2024); Canadian Nuclear Safety Commission (2025); Williams Treaties First Nations et al. (2026); Mississaugas of Scugog Island First Nation (2023); Curve Lake First Nation (2024); Municipality of Clarington (2024); Australian Electoral Commission (2019); *Barngarla* [2023] FCA 809; Nuclear Waste Management Organization (2024a; 2024b; 2024c; n.d.); Department of Industry, Science, Energy and Resources (2020); Power Workers' Union (2021); Conference Board of Canada (2021); Joint Standing Committee on Treaties (2024); Australian Council of Trade Unions (2024); Slovic (1987). Deaths avoided are calculated in `social_licence.py` (B8.1). Two T12 items shortened in the body: the "Public view" row (host municipality "very supportive"; national 61% support against 59% keeping the ban; older polls found local support 16–20 points lower), and the unions' position in Australia (the Australian Council of Trade Unions and the Electrical Trades Union oppose).
+Sources for Table T12 (Social licence at Darlington and at Liddell): Neelam (2024); Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub (2025); Newspoll (2007); Ritchie (2020); Markandya and Wilkinson (2007); Australian Energy Market Operator (2025); Canadian Nuclear Safety Commission (2025); Williams Treaties First Nations et al. (2026); Mississaugas of Scugog Island First Nation (2023); Curve Lake First Nation (2024); Municipality of Clarington (2024); Australian Electoral Commission (2019); *Barngarla* [2023] FCA 809; Nuclear Waste Management Organization (2024a; 2024b; 2024c; n.d.); Department of Industry, Science, Energy and Resources (2020); Power Workers' Union (2021); Conference Board of Canada (2021); Joint Standing Committee on Treaties (2024); Slovic (1987). Deaths avoided are calculated in `social_licence.py` (B8.1). Two T12 items shortened in the body: the "Public view" row (host municipality "very supportive"; national 61% support against 59% keeping the ban; older polls found local support 16–20 points lower), and the unions' position in Australia (the Australian Council of Trade Unions and the Electrical Trades Union oppose).
 
 ### B8.3 Social-licence routes for an SMR at Liddell (Table B41)
 

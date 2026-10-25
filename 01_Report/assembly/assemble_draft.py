@@ -19,7 +19,7 @@ SEC = ROOT / "01_Report" / "sections"
 OUT_MD = ROOT / "01_Report" / "assembly" / "draft-assembled.md"
 OUT_DOCX = ROOT / "01_Report" / "draft-assembled.docx"
 OUT_FINAL = ROOT / "01_Report" / "MTE4593 Group 9 SMR Report.docx"
-REF_DOCX = ROOT / "01_Report" / "MTE4593 Report.docx"
+REF_DOCX = ROOT / "01_Report" / "assembly" / "reference.docx"  # make_reference_doc.py
 
 # Body order; None means the section is not in the repo yet (placeholder).
 ORDER = [
@@ -54,6 +54,8 @@ REFS = "12-references.md"
 FIG_DIR = ROOT / "03_LCA_Calculations" / "results"
 FIG_RE = re.compile(r"^\[Figure F?(\d+)[.:]\s*(.*)\]\s*$")
 FINAL = "--final" in sys.argv
+PAGE_BREAK = '```{=openxml}\n<w:p><w:r><w:br w:type="page"/></w:r></w:p>\n```\n'
+
 
 TITLE = """---
 title: "Small modular reactors: where they cut the most carbon, what holds them back, and a low-clinker concrete initiative for Darlington"
@@ -152,6 +154,8 @@ def main() -> None:
         rows.append((name, *words(body)))
     cited = Path(__file__).resolve().parent / "references-cited.md"
     parts = renumber_tables(parts)
+    parts[0] = PAGE_BREAK + parts[0]  # abstract starts after the title page and contents
+    parts.append(PAGE_BREAK)
     if FINAL and cited.exists():  # written by check_refs.py from a draft build
         parts.append(cited.read_text(encoding="utf-8"))
     elif (SEC / REFS).exists():
@@ -159,7 +163,7 @@ def main() -> None:
     else:
         parts.append("## References\n\n**[TODO: reference list]**\n")
     parts.append(DECLARATION)
-    parts.append("# Appendices\n")
+    parts.append(PAGE_BREAK + "# Appendices\n")
     for name in APPENDICES:
         f = SEC / name
         if f.exists():
@@ -175,7 +179,7 @@ def main() -> None:
     OUT_MD.write_text(head + "\n\n".join(parts), encoding="utf-8")
     out_docx = OUT_FINAL if FINAL else OUT_DOCX
     subprocess.run(["pandoc", "-f", "markdown-tex_math_dollars", str(OUT_MD), "-o", str(out_docx),
-                    f"--reference-doc={REF_DOCX}", "--toc"], check=True)
+                    f"--reference-doc={REF_DOCX}", "--toc", "--columns=10000"], check=True)
     tp = tt = 0
     print(f"{'section':42} {'prose':>6} {'table':>6}")
     for name, p, t in rows:
