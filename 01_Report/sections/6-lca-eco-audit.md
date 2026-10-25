@@ -31,7 +31,7 @@ This is a screening LCA of one BWRX-300 at Darlington following ISO 14040/14044 
 2. **Conversion: 1.10 g/kWh (25%),** an *uncertainty* hotspot: published heat demand spans 26–665 kWh per kg of uranium (Gibon and Hahn Menacho, 2023); at the most likely value it is only 0.13 g/kWh.
 3. **Back end: 0.65 g/kWh (15%),** transferred from France, which reprocesses; Canada plans direct disposal (Nuclear Waste Management Organization, 2024a), so this may be high.
 
-Decommissioning adds to the back end for 18%, O&M 9% and **construction 11.5%** (0.52 g/kWh). The C1-eligible concrete is only 1.9% of the mode-case total, so **C1 acts on about one-fiftieth of the footprint**. Ostrołęka's 167 m³ per MWe is 2.4 times the ESBWR's 69 (Peterson, Zhao and Petroski, 2005), so scale effects outweigh the vendor's claim of 50% less concrete per unit of energy (GE Vernova, n.d.). The cross-check gives 4.20 g/kWh (Appendix A8).
+The back end and decommissioning add 18%, O&M 9% and **construction 11.5%** (0.52 g/kWh). The C1-eligible concrete is only 1.9% of the mode-case total, so **C1 acts on about one-fiftieth of the footprint**. Ostrołęka's 167 m³ per MWe is 2.4 times the ESBWR's 69 (Peterson, Zhao and Petroski, 2005), so scale effects outweigh the vendor's claim of 50% less concrete per unit of energy (GE Vernova, n.d.). The cross-check gives 4.20 g/kWh (Appendix A8).
 
 [Figure F2. Life-cycle emissions of one BWRX-300 by stage: expected value 4.49 g CO₂e/kWh (Monte Carlo mean), with the mode case (every input at its most likely value, total 2.86) marked. | Source: this study, Appendix C3.]
 
@@ -48,37 +48,35 @@ Decommissioning adds to the back end for 18%, O&M 9% and **construction 11.5%** 
 | LC³ on 60% | 3,300 | 9,900 | 4,410 | 0.54% (0.34–0.84) |
 | Slag blend on the same 40% (fallback) | 2,288 | 6,865 | 2,576 | 0.34% (0.18–0.60) |
 
-Four findings follow, each with a consequence for the initiative.
+Four findings follow.
 
-1. **The saving is small at plant scale.** It is about 0.016 g/kWh, so C1 does not change the plant's climate case. Its economic value is in §8.2.
-2. **Slag is about as good as LC³, so the carbon case is for low-clinker concrete, not LC³ in particular.** LC³ beats slag in only 55% of draws (median difference +54 t; 90% interval −588 to +766). If OPG's baseline already contains slag, LC³'s gain is about −90 t, within noise. The specification should accept whichever binder qualifies first (§8.1).
-3. **Lower-carbon steel is the larger lever but is not part of C1.** All 14,000 t at best-practice electric-arc-furnace factors would save up to 3,915 t (1.8 times LC³), an upper bound not shown feasible for forgings and nuclear-grade plate (Appendix A7). It is the next lever (§10).
-4. **Schedule dominates.** A delay of **11.6–18.5 days** to one unit on Ontario's average grid factor, or **1.7–1.8 days** on the marginal factor, cancels its saving (§7.1; Appendix B5). C1 is therefore specified only if schedule-neutral (§8.6).
-
-For the triple-bottom-line evaluation (§9), C1 is environmentally positive but marginal; feasibility hinges on qualification and schedule.
+1. **The saving is small at plant scale:** about 0.016 g/kWh, so C1 does not change the plant's climate case (economic value: §8.2).
+2. **Slag is about as good as LC³,** so the case is for low-clinker concrete in general. LC³ beats slag in only 55% of draws (median difference +54 t; 90% interval −588 to +766). The specification should accept whichever binder qualifies first (§8.1).
+3. **Lower-carbon steel is the larger lever but is not part of C1:** all 14,000 t at best-practice electric-arc-furnace factors would save up to 3,915 t (1.8 times LC³), an upper bound not shown feasible for nuclear-grade plate (Appendix A7; §10).
+4. **Schedule dominates.** A delay of **11.6–18.5 days** to one unit on Ontario's average grid factor, or **1.7–1.8 days** on the marginal factor, cancels its saving (§7.1; Appendix B5). C1 is specified only if schedule-neutral (§8.6).
 
 ### 6.4 Uncertainty: tornado and Monte Carlo
 
 The tornado varies 45 inputs one at a time; the Monte Carlo varies them together, 20,000 times (Appendix C).
 
-**The total depends on the fuel inputs, not the concrete (Figure F3).** The largest swings are conversion heat (2.86 → 5.53 g/kWh), the mining factor (2.43 → 3.82) and the back end (2.58 → 3.41). No concrete input moves the total by more than 0.06 g/kWh. **The saving depends on four inputs:** eligible share (1,100 → 3,300 t), LC³ cut (1,672 → 2,964 t), plant concrete volume (1,760 → 2,640 t) and the OPC factor (1,911 → 2,432 t).
+**The total depends on the fuel inputs, not the concrete (Figure F3).** The largest swings are conversion heat (2.86 → 5.53 g/kWh), the mining factor (2.43 → 3.82) and the back end (2.58 → 3.41); no concrete input moves it by more than 0.06. **The saving depends on four inputs:** eligible share (1,100 → 3,300 t), LC³ cut (1,672 → 2,964 t), concrete volume (1,760 → 2,640 t) and the OPC factor (1,911 → 2,432 t).
 
 [Figure F3. One-at-a-time sensitivity of life-cycle intensity (left, centred on the 2.86 g CO₂e/kWh mode case) and of C1's saving per unit (right, centred on 2,200 t), top ten inputs each. | Source: this study, Appendix C2.]
 
-**Monte Carlo (Figure F4): why we report 4.4, not 2.9.** Several inputs can mostly only rise: conversion heat is most likely 26 kWh/kg U but could be 665, which alone adds about 1.0 g/kWh to the mean (Appendix C5). We therefore quote the median. **The headline depends on how conversion heat is distributed:** fixed at Gibon and Hahn Menacho's (2023) central 26 kWh/kg U, the median is 3.51 g/kWh (2.80–4.39); log-uniform over 26–665, 4.11 (3.06–6.12). We quote the **range of medians, 3.51–4.40**. Draws are independent and many ranges are judgement (Appendix C6).
+**Monte Carlo (Figure F4): why we report 4.4, not 2.9.** Several inputs can mostly only rise: conversion heat is most likely 26 kWh/kg U but could be 665, which alone adds about 1.0 g/kWh to the mean (Appendix C5). We therefore quote the median, and its dependence on conversion heat: fixed at Gibon and Hahn Menacho's (2023) central 26 kWh/kg U, the median is 3.51 g/kWh (2.80–4.39); log-uniform over 26–665, 4.11 (3.06–6.12). We quote the **range of medians, 3.51–4.40**. Many ranges are judgement (Appendix C6).
 
 [Figure F4. Monte Carlo distributions (20,000 draws) of life-cycle intensity (median 4.40, 5th–95th percentile 3.24–6.05 g CO₂e/kWh) and of C1's saving per unit at central eligibility. | Source: this study, Appendix C4.]
 
 ### 6.5 Comparison with published values
 
-**Our median (3.5–4.4 across conversion-heat assumptions) is below UNECE's 5.1–6.4 g/kWh (United Nations Economic Commission for Europe, 2021), though our 90% interval overlaps it, and sits at the low end of the wider literature for reasons we can identify (Figure F5).** It overlaps EDF's French fleet (3.7; EDF R&D, 2024) and is below the global average of 6.1 (Gibon and Hahn Menacho, 2023), an SMR estimate of 9.1 (Carless, Griffin and Fischbeck, 2016), the harmonised light-water-reactor median of 12 (Warner and Heath, 2012) and the IPCC AR5 median of 12 (Schlömer et al., 2014). Gas combined cycle (403–513 g/kWh) and coal (751–1,095) are 90–120 and 170–250 times higher (United Nations Economic Commission for Europe, 2021).
+**Our median (3.5–4.4 across conversion-heat assumptions) is below UNECE's 5.1–6.4 g/kWh (United Nations Economic Commission for Europe, 2021), though our 90% interval overlaps it, and sits at the low end of the wider literature for reasons we can identify (Figure F5).** It overlaps EDF's French fleet (3.7; EDF R&D, 2024) and is below the global average of 6.1 (Gibon and Hahn Menacho, 2023), an SMR estimate of 9.1 (Carless, Griffin and Fischbeck, 2016) and the harmonised and IPCC AR5 medians of 12 (Warner and Heath, 2012; Schlömer et al., 2014). Gas combined cycle (403–513 g/kWh) and coal (751–1,095) are 90–120 and 170–250 times higher (United Nations Economic Commission for Europe, 2021).
 
-**Three reasons explain most of the gap** (sizes in Appendix C7):
+**Three reasons explain most of the gap** (Appendix C7):
 1. **Ore grade:** our mining is 1.0–1.3 g/kWh, against about 2.8 at global-average grades (Gibon and Hahn Menacho, 2023).
-2. **Enrichment:** centrifuges at 50 kWh per separative work unit, against about 2,500 for the diffusion plants in older study sets.
-3. **Cut-offs and long life:** excluded inputs and a 60-year life bias the result low; at 40 years the mode case rises from 2.86 to 3.07 g/kWh.
+2. **Enrichment:** centrifuges at 50 kWh per separative work unit, against about 2,500 for older diffusion plants.
+3. **Cut-offs and long life:** a 60-year life biases the result low; at 40 years the mode case rises from 2.86 to 3.07 g/kWh.
 
-Construction is 0.41 g/kWh at the mode case (median 0.50), close to EDF's roughly 0.59 for large reactors (16% of 3.7). The known low bias would raise the total and shrink C1's share, so it does not weaken §6.3.
+The known low bias would raise the total and shrink C1's share, so it does not weaken §6.3.
 
 [Figure F5. Our result against published nuclear life-cycle values (dot = central or median; line = range or interval). Coal and gas are off the scale. | Source: this study; EDF R&D (2024); United Nations Economic Commission for Europe (2021); Gibon and Hahn Menacho (2023); Carless, Griffin and Fischbeck (2016); Warner and Heath (2012).]
 
