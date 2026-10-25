@@ -18,3 +18,4 @@ The examiner replaces this file at each review. Unresolved items below must carr
 - `01_Report/review/6-lca.md`: Review of §6 and Appendices A, C (21/10)
 - `01_Report/review/Q13-wave2-part1.md`: Q13 part 1, §3, §8.1, §8.3–8.6, App B (B1–B4, B6): grades, must-fixes, page estimate and cut list (21/10)
 - `01_Report/review/final-cut-budget.md`: Final-day cut budget to 19.5 p (text and tables count, figures free): per-section targets, cuts, duplication homes, marker hedges (25/10)
+- `01_Report/review/Q21-final-part1.md`: Q21 final review part 1 (all except §6, Apps A/C and Leroy's sections): grades, must-fixes M1–M14 with exact text, consistency X1–X20, checklists for §6 and Leroy; now ≈ 17.5/25, projected ≈ 20 (25/10)
