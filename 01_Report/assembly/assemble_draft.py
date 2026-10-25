@@ -7,7 +7,7 @@ section, split into prose and table words, for the page-limit check (H6:
 tables count towards the limit).
 
 Run from the repo root:  python3 01_Report/assembly/assemble_draft.py
-Final build:  assemble_draft.py, then check_refs.py, then assemble_draft.py --final
+Final build:  make_reference_doc.py; assemble_draft.py --final (and --review); update_toc.py <docx>; strip_bookmarks.py <docx>
 """
 import re
 import subprocess
@@ -253,8 +253,12 @@ def report_style(body: str) -> str:
         m = re.match(r"\*\*([^*]+?)\*\*\s*(.*)", para, re.S)
         if m and not was_list and len(m.group(1).split()) <= 4 and m.group(1).rstrip().endswith((".", ":")):
             label = m.group(1).rstrip().rstrip(".:")
-            out.append(f"#### {LABEL_RENAME.get(label, label)}")
+            # run-in labels are dropped: the numbered headings carry the structure
             para = m.group(2)
+            if label == "Research questions" and re.match(r"\s*1\.", para):
+                lead = ("We answer four research questions." if "?" in para
+                        else "Our answers to the four research questions are as follows.")
+                para = lead + "\n\n" + para
         out.append(para.replace("**", ""))
     return "\n\n".join(out)
 
