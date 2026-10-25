@@ -1,5 +1,5 @@
 Rubric coverage: R2.1, R2.3, R2.6, R2.7, R4.3, R3.1, R3.6, RB.5, RB.6 (also supports R3.5, R3.7, RB.8, R5.1, R5.2, R5.3)
-<!-- Changelog 25/10 (writer, final-part1): OPG 2025 changed to 2025a (Unit 1 in 2030). -->
+<!-- Changelog 25/10 (writer, Q21): M5c lead ratio basis; M10 DCCEEW; M12 4.9x condition; M13 duplicate Liddell closure cut. -->
 
 
 <!--
@@ -9,7 +9,7 @@ CHANGELOG
 
 ## 7 Carbon avoided: Ontario vs Liddell, the value of schedule, and the same money on firmed renewables
 
-**For C1, schedule matters far more than concrete.** A one-month slip of Units 2–4 costs C$33–110 m in carrying cost and defers about C$88 m of output: 29–175 times the carbon value of C1's whole saving. C1's 2,200 t per unit (1,100–3,300; §6.3) is cancelled by 11.6–18.5 days of delay on Ontario's average grid factor, or 1.7–1.8 days on its marginal factor. Timing also decides where an SMR helps the climate: a Darlington unit avoids about as much CO₂e to 2050 as one at Liddell, and firmed renewables beat both on the same money (Appendix B4–B6).
+**For C1, schedule matters far more than concrete.** A one-month slip of Units 2–4 costs C$33–110 m in carrying cost alone, 29–175 times the carbon value of C1's whole saving, and defers about C$88 m of output. C1's 2,200 t per unit (1,100–3,300; §6.3) is cancelled by 11.6–18.5 days of delay on Ontario's average grid factor, or 1.7–1.8 days on its marginal factor. Timing also decides where an SMR helps the climate: a Darlington unit avoids about as much CO₂e to 2050 as one at Liddell, and firmed renewables beat both on the same money (Appendix B4–B6).
 
 ### 7.1 The value of schedule
 
@@ -27,13 +27,13 @@ A unit that starts late gives up each day's displacement (Table T10). Counted to
 
 ### 7.2 What one BWRX-300 displaces: Darlington vs Liddell
 
-**At today's grid factors, a unit at Liddell would avoid about nine times more CO₂e than one at Darlington. Timing closes most of that gap.** One unit avoids 1.50 Mt a year on the NSW average of 640 g/kWh (Department of Climate Change, Energy, the Environment and Water, 2025). On Ontario's 2024 average of 73.8 g/kWh it avoids 0.165 Mt (9.1× less), and on Ontario's marginal factor of 343 g/kWh it avoids 0.80 Mt (1.9× less) (The Atmospheric Fund, 2025).
+**At today's grid factors, a unit at Liddell would avoid about nine times more CO₂e than one at Darlington. Timing closes most of that gap.** One unit avoids 1.50 Mt a year on the NSW average of 640 g/kWh (DCCEEW, 2025). On Ontario's 2024 average of 73.8 g/kWh it avoids 0.165 Mt (9.1× less), and on Ontario's marginal factor of 343 g/kWh it avoids 0.80 Mt (1.9× less) (The Atmospheric Fund, 2025).
 
 The two plants would not run in the same years. Darlington Unit 1 is planned to enter service in 2030 (Ontario Power Generation, 2025a). Australia's earliest date for nuclear is 2040 (Graham, Hayward and Foster, 2024), against the Coalition's 2035 as reported (ABC News, 2024). If coal leaves the NEM by 2038, as in AEMO's Step Change scenario (Australian Energy Market Operator, 2024), a 2040 unit displaces only a residual mix of 30 g/kWh (assumed).
 
 To 2050 (Figure F6), Darlington Unit 1 avoids **1.0–6.8 Mt** and Liddell **0.67–3.9 Mt**. Liddell wins clearly only if the NEM stays at 640 g/kWh (16.5 Mt).
 
-The grid trajectory, start year and post-coal floor move these results tenfold; capacity factor, net output and our life-cycle interval move them by a few per cent (Appendix B4). Liddell was approved to close by April 2023 (Australian Energy Regulator, 2021) and has since closed, so an SMR there would displace the NEM mix, not Liddell's coal.
+The grid trajectory, start year and post-coal floor move these results tenfold; capacity factor, net output and our life-cycle interval move them by a few per cent (Appendix B4). An SMR at Liddell would displace the NEM mix, not Liddell's coal (§1).
 
 **An SMR's climate value depends on when it runs and what it displaces, not on today's coal share.** In Ontario the case rests on displacing marginal gas. At Liddell it rests on the NEM decarbonising slowly.
 
@@ -43,7 +43,7 @@ The grid trajectory, start year and post-coal floor move these results tenfold; 
 
 **At GenCost's 2030 costs, the money for one SMR unit would buy about 2.9 times as much energy from firmed renewables, which would avoid about 11 times more CO₂e to 2050 at Liddell.**
 
-GenCost 2023-24 gives A$230–382/MWh for an SMR in 2030, against A$89–125 for solar and wind with integration costs (Graham, Hayward and Foster, 2024, as reported). At the midpoints the same spend buys 2.9× the energy (Figure F7). With renewables from 2028 (assumed) and the SMR from 2040 on the slower trajectory, renewables avoid **10.9×** more CO₂e to 2050. They still avoid 5.7× more in the worst case we tested for them, and 4.9× if the SMR costs only A$198 (Appendix B6, Table B28). If A$387–641 is the 2030 range instead, the ratios become 5.0× and 19.1×.
+GenCost 2023-24 gives A$230–382/MWh for an SMR in 2030, against A$89–125 for solar and wind with integration costs (Graham, Hayward and Foster, 2024, as reported). At the midpoints the same spend buys 2.9× the energy (Figure F7). With renewables from 2028 (assumed) and the SMR from 2040 on the slower trajectory, renewables avoid **10.9×** more CO₂e to 2050. They still avoid 5.7× more in the worst case we tested for them (SMR A$230, renewables A$153), and 4.9× with the SMR at A$198 (Appendix B6, Table B28). If A$387–641 is the 2030 range instead, the ratios become 5.0× and 19.1×.
 Renewables come out ahead because they are cheaper per MWh and start about a decade earlier. Two limits apply: that much new output would itself shift the grid trajectory, and integration costs rise beyond the shares GenCost models. **On carbon per dollar, an SMR at Liddell loses.** Its case rests on firm supply, land use, system security and a hedge against renewables or transmission falling behind, which §9 weighs.
 
 [Figure F7. Same money at Liddell: firmed renewables ÷ one SMR unit, as energy bought and CO₂e avoided to 2050, under four cost cases; the dashed line is parity. | Source: this study, Appendix B6 (Table B28)]

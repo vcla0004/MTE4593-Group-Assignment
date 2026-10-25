@@ -1,5 +1,6 @@
 Rubric coverage: R5.4 (consistent Harvard referencing), R1.4 (breadth of primary, peer-reviewed, industry and patent sources, visible in one list)
-<!-- Changelog 25/10 (writer, final-part1): all [TODO] placeholders stripped from entries (sources*.md had no further detail); ACTU 2024 and Essential Research 2019 entries deleted; Kimba (AEC 2019), Conference Board 2021, OPG 2026b, Ostrołęka, Slovic, Steigerwald still lack verified URL/DOI/title details. -->
+<!-- Changelog 25/10 (writer, Q21 M1): added OECD NEA/IAEA 2026, Power Engineering 2023, Silex 2025 and 2026, WNN 2026, WNU 2025 and the Barngarla case; deleted 5 uncited entries (Ng et al. kept: still cited in §6); Hooton, Parliament of NSW 2026 entries fixed. -->
+<!-- Earlier: Kimba (AEC 2019), Conference Board 2021, OPG 2026b, Ostrołęka, Slovic, Steigerwald still lack verified URL/DOI/title details. -->
 
 
 <!-- Changelog (25/10/2026, writer): first build of the reference list. Citations extracted by regex from sections 1, 2, 3, 4.3, 6, 7, 8.1-8.6, 9, 11, Appendices A, B, C (0-abstract and 11-conclusions carry no author-year citations; 4.1, 4.2, 5, 10 and Appendices D/E were not in the folder, so Leroy's citations are NOT covered). Entries come from sources.md, sources_run1/2/3/4/5/6/9.md and sources_lca.md only; nothing invented. Suffixes follow the in-text TODO mappings (OPG, NWMO, Newcastle Herald, CNSC). Items cited only in changelogs and TODO notes are left out. "Accessed" dates are copied from the source entries, and most of those pages were NOT opened (search leads): the team must re-check each before submission. Bracketed [TODO] items below are gaps in the source entries, not guesses. -->
@@ -78,8 +79,6 @@ CSA Group, 2023. *CSA A3000:23, Cementitious materials compendium* (includes CSA
 
 Curve Lake First Nation, 2024. *Written submission, CMD 24-H3.83, DNNP licence to construct*, 11 November. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD24-H3-83.pdf/object [Accessed 21 October 2026].
 
-Defence Connect, n.d. Critical worker shortage menaces nuclear-powered submarine workforce. *Defence Connect*. [online] Available at: https://www.defenceconnect.com.au/industry/13993-critical-worker-shortage-menaces-nuclear-powered-submarine-workforce [Accessed 21 October 2026].
-
 Department of Climate Change, Energy, the Environment and Water, 2025. *Australian National Greenhouse Accounts Factors: 2025*. [pdf/xlsx] Canberra: Department of Climate Change, Energy, the Environment and Water.
 
 Department of Industry, Science, Energy and Resources, 2020. *A new agency to manage radioactive waste*. [online] Available at: https://industry.gov.au/news-media/australian-radioactive-waste-agency-news/a-new-agency-to-manage-radioactive-waste [Accessed 21 October 2026].
@@ -118,11 +117,9 @@ Graham, P., Hayward, J. and Foster, J., 2025. *GenCost 2024-25: Final report*. [
 
 Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub, 2025. *What Australians really think of nuclear power*. [news release] 2 May. Available at: https://news.griffith.edu.au/2025/05/02/what-australians-really-think-of-nuclear-power/ [Accessed 21 October 2026].
 
-Hooton, R.D., 2023. *Changes to ASTM cement and concrete standards to…* [title truncated in source entry]. ACI Fall 2023 webinar slides. [pdf] Farmington Hills: American Concrete Institute. Available at: https://www.concrete.org/portals/0/files/pdf/webinars/ws_F23_NEU_DouglasHooton.pdf [Accessed 20 October 2026].
+Hooton, R.D., 2023. [Webinar slides on changes to ASTM cement and concrete standards]. ACI Fall 2023 webinar slides. [pdf] Farmington Hills: American Concrete Institute. Available at: https://www.concrete.org/portals/0/files/pdf/webinars/ws_F23_NEU_DouglasHooton.pdf [Accessed 20 October 2026].
 
 Independent Electricity System Operator, 2024. *Ontario's Energy Future: Spring 2024 Update*. [pdf] Toronto: Independent Electricity System Operator. Available at: https://www.ieso.ca/-/media/Files/IESO/Document-Library/Decarbonization-Hub/IESO-Ontarios-Energy-Future-Spring-2024.pdf.
-
-International Atomic Energy Agency, 2015. *Milestones in the Development of a National Infrastructure for Nuclear Power*. IAEA Nuclear Energy Series No. NG-G-3.1. [pdf] Vienna: International Atomic Energy Agency. Available at: https://www-pub.iaea.org/MTCD/Publications/PDF/Pub1704_web.pdf [Accessed 20 October 2026].
 
 International Atomic Energy Agency, 2024. *Small Modular Reactors: Advances in SMR Developments 2024*. Vienna: International Atomic Energy Agency.
 
@@ -184,6 +181,8 @@ NuScale Power Corporation and Utah Associated Municipal Power Systems, 2023. *UA
 
 OECD Nuclear Energy Agency and International Atomic Energy Agency, 2025. *Uranium 2024: Resources, Production and Demand*. [pdf] Paris: OECD Publishing. Available at: https://www.oecd-nea.org/jcms/pl_103179/uranium-2024-resources-production-and-demand [Accessed 20 October 2026].
 
+OECD Nuclear Energy Agency and International Atomic Energy Agency, 2026. *Uranium 2026: Resources, Production and Demand*. [pdf] Paris: OECD Publishing. Available at: https://www.oecd-nea.org/jcms/pl_121658/uranium-2026-resources-production-and-demand [Accessed 20 October 2026].
+
 Ontario Power Generation, 2023. OPG selects first fuel suppliers for its small modular reactor. [press release] Toronto: Ontario Power Generation.
 
 Ontario Power Generation, 2025a. *OPG reports 2025 first quarter financial results*. [online] News release, 13 May. Toronto: Ontario Power Generation. Available at: https://www.opg.com/news-resources/newsroom/release/opg-reports-2025-first-quarter-financial-results/ [Accessed 20 October 2026].
@@ -202,15 +201,15 @@ Parliament of Australia, 2026. *Senate composition*. [online] Available at: http
 
 Parliament of New South Wales, 2025. *Uranium Mining and Nuclear Facilities (Prohibitions) Repeal Bill 2025*: bill details. [online] Available at: https://www.parliament.nsw.gov.au/bills/Pages/bill-details.aspx?pk=18833 [Accessed 20 October 2026].
 
-Parliament of New South Wales, Legislative Assembly, 2026. *Notice Paper*. [pdf] Available at: https://files.parliament.nsw.gov.au/fileapi/ParlFiles/GetArtifact/170%20NOM%20(combined).pdf?serverRelativeUrl=%2Fhp%2Fhousepaper%2F31312%2F170+NOM+%28combined%29.pdf [Accessed 20 October 2026].
-
-Parliamentary Library, 2023. *Australian Naval Nuclear Power Safety Bill 2023* [and related bill], Bills Digest No. 32, 2023–24. [online] Canberra: Parliament of Australia. Available at: https://aph.gov.au/Parliamentary_Business/Bills_Legislation/bd/bd2324a/24bd32 [Accessed 20 October 2026].
+Parliament of New South Wales, 2026. *Legislative Assembly Notice Paper*. [pdf] Available at: https://files.parliament.nsw.gov.au/fileapi/ParlFiles/GetArtifact/170%20NOM%20(combined).pdf?serverRelativeUrl=%2Fhp%2Fhousepaper%2F31312%2F170+NOM+%28combined%29.pdf [Accessed 20 October 2026].
 
 Parliamentary Library, 2024. *Current prohibitions on nuclear activities in Australia: a quick guide*. Research Paper Series 2023–24, Quick Guide. [online] Canberra: Parliamentary Library, Parliament of Australia, 30 May. Available at: https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Parliamentary_Library/Research/Quick_Guides/2023-24/NuclearActivitiesProhibitions [Accessed 21 October 2026].
 
 Peterson, P.F., Zhao, H. and Petroski, R., 2005. *Metal and concrete inputs for several nuclear power plants* (UCBTH-05-001). [pdf] Berkeley: University of California, Berkeley. Available at: https://fhr.nuc.berkeley.edu/wp-content/uploads/2014/10/05-001-A_Material_input.pdf.
 
 Pillai, R.G. et al., 2019. Service life and life cycle assessment of reinforced concrete systems with limestone calcined clay cement (LC³). *Cement and Concrete Research*, 118, pp.111–119. Available at: https://doi.org/10.1016/j.cemconres.2018.11.019.
+
+Power Engineering, 2023. OPG selects first fuel suppliers for its small modular reactors. *Power Engineering*. [online] Available at: https://www.power-eng.com/nuclear/smrs/opg-selects-first-fuel-suppliers-for-its-small-modular-reactors/.
 
 Power Workers' Union, 2021. *Written submission in support of OPG's application to renew the Darlington power reactor operating licence*, CMD 21-H4.38. Available at: https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD21-H4-38.pdf/object [Accessed 21 October 2026].
 
@@ -228,6 +227,10 @@ Scrivener, K., Martirena, F., Bishnoi, S. and Maity, S., 2018. Calcined clay lim
 
 Senate Environment and Communications Legislation Committee, 2023. *Environment and Other Legislation Amendment (Removing Nuclear Energy Prohibitions) Bill 2022 [Provisions]*. [online] Canberra: Parliament of Australia. Available at: https://www.aph.gov.au/Parliamentary_Business/Committees/Senate/Environment_and_Communications/Nuclearprohibitions [Accessed 20 October 2026].
 
+Silex Systems Limited, 2025. [ASX announcement on the NRC's acceptance of GLE's Paducah licence application], 6 August. Sydney: ASX. Available at: https://announcements.asx.com.au/asxpdf/20250806/pdf/06mkwks19y2zck.pdf.
+
+Silex Systems Limited, 2026. [ASX announcement on Cameco's offtake agreement for the Paducah Laser Enrichment Facility], 16 September. Sydney: ASX.
+
 Slag Cement Association, n.d. *Industry-average EPD for slag cement* (USA and Canada). [pdf] Available at: https://www.lafarge.ca/sites/canada/files/images/sca_epd_for_slag_cement.pdf.
 
 Slovic, P., 1987. Perception of risk. *Science*, 236(4799), pp.280–285.
@@ -237,8 +240,6 @@ Steigerwald, B., Weibezahn, J., Slowik, M. and von Hirschhausen, C., 2023. Uncer
 Sun, Y. and Kurosaki, K., 2025. *Technical overview of recent developments in small modular reactors in the United States*. arXiv:2504.02599 [physics.soc-ph]. Available at: https://arxiv.org/abs/2504.02599.
 
 Treasury Board of Canada Secretariat, 2022. *Standard on Embodied Carbon in Construction* (amended 20 March 2025). [online] Ottawa: Treasury Board of Canada Secretariat. Available at: https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32814 [Accessed 20 October 2026].
-
-Treasury Board of Canada Secretariat, 2025. *Progress on greening procurement: Other procurement*. [online] Available at: https://www.canada.ca/en/treasury-board-secretariat/services/innovation/greening-government/government-canada-progress-greening-procurement/other-procurement.html [Accessed 20 October 2026].
 
 United Nations Economic Commission for Europe, 2021. *Carbon Neutrality in the UNECE Region: Integrated Life-cycle Assessment of Electricity Sources*. ECE/ENERGY/141. Geneva: United Nations. Available at: https://unece.org/sites/default/files/2021-10/LCA-2.pdf [Accessed 20 October 2026].
 
@@ -252,8 +253,6 @@ US Department of Justice and Federal Trade Commission, 2023. *Merger Guidelines*
 
 US EPA, 2024. *Power Profiler: terms, calculations and data sources*. [pdf] Available at: https://www.epa.gov/system/files/documents/2024-04/power-profiler-terms-calculations-and-data-sources.pdf.
 
-US Nuclear Regulatory Commission, n.d. *Global Laser Enrichment, LLC (Paducah Laser Enrichment Facility)*. [facility page] Rockville, MD: US Nuclear Regulatory Commission. Available at: https://www.nrc.gov/facilities-safety/facility-finder/fc/global-laser-enrichment-nc-lc [Accessed 20 October 2026].
-
 US Nuclear Regulatory Commission and Canadian Nuclear Safety Commission, 2025. *CNSC–NRC Joint Report on GEH BWRX-300 Steel-Plate Composite Containment Vessel and Reactor Building Structural Design Topical Report*. ADAMS ML25325A075. [pdf] Available at: https://www.nrc.gov/docs/ML2532/ML25325A075.pdf [Accessed 20 October 2026].
 
 Warner, E.S. and Heath, G.A., 2012. Life cycle greenhouse gas emissions of nuclear electricity generation: systematic review and harmonization. *Journal of Industrial Ecology*, 16(S1), pp.S73–S92. Available at: https://doi.org/10.1111/j.1530-9290.2012.00472.x.
@@ -266,6 +265,10 @@ World Nuclear Association, 2025. *Uranium Enrichment*. [online] London: World Nu
 
 World Nuclear Association, 2026. *World Uranium Mining Production*. [online] London: World Nuclear Association. Available at: https://world-nuclear.org/information-library/nuclear-fuel-cycle/mining-of-uranium/world-uranium-mining-production [Accessed 20 October 2026].
 
+World Nuclear News, 2026. Cameco in offtake agreement for US laser enrichment plant. *World Nuclear News*. [online] Available at: https://www.world-nuclear-news.org/articles/cameco-in-offtake-agreement-for-us-laser-enrichment-plant.
+
+World Nuclear University, 2025. [Enrichment: WNU Summer Institute presentation slides], 17 June. Available at: https://world-nuclear-university.org/SummerInsituteFiles/2025-06-17_WNU_Enrichment_Platov_final_62a48c29.pdf.
+
 ### Legislation
 
 *Environment Protection and Biodiversity Conservation Act 1999* (Cth), s 140A. [online] Federal Register of Legislation, C2004A00485. Available at: https://www.legislation.gov.au/C2004A00485/latest/text [Accessed 20 October 2026].
@@ -273,6 +276,10 @@ World Nuclear Association, 2026. *World Uranium Mining Production*. [online] Lon
 *Australian Radiation Protection and Nuclear Safety Act 1998* (Cth), s 10. [online] Federal Register of Legislation, C2004A00383. Available at: https://www.legislation.gov.au/C2004A00383/latest/text [Accessed 20 October 2026].
 
 *Uranium Mining and Nuclear Facilities (Prohibitions) Act 1986* (NSW), No 194, ss 8–9. [online] NSW Legislation. Available at: https://legislation.nsw.gov.au/view/whole/html/inforce/current/act-1986-194 [Accessed 20 October 2026].
+
+### Cases
+
+*Barngarla Determination Aboriginal Corporation RNTBC v Minister for Resources* [2023] FCA 809 (Federal Court of Australia, Charlesworth J, 18 July 2023). Available at: https://www.judgments.fedcourt.gov.au/judgments/Judgments/fca/single/2023/2023fca0809 [Accessed 21 October 2026].
 
 <!--
 (a) CITATIONS WITH NO ENTRY ANYWHERE (sources*.md under 02_Research/; there is no sources file under 03_LCA_Calculations/)

@@ -1,11 +1,5 @@
 Rubric coverage: RB.5, R2.4, R3.8, R2.1, R2.3, R2.7, R4.3, R3.1, R3.6, RB.6 (also supports R3.2, R3.4, R1.3, R5.2)
-<!-- Changelog 25/10 (writer, final-part1): suffixes only (Newcastle Herald 2024a x2; OPG 2025a x2). Stale C1 values (1,734 / 5.2 kt / 12x) and duplicate B8.3 NOT touched. -->
-
-
-<!--
-CHANGELOG
-- 25/10/2026 final cut (writer): C1 numbers re-based to the deck case (B5, B7.5; 1,734 t kept as a cross-check row); working moved in from §7 and §8.2–8.3 (B2.5 T3 note, B4.2 CER ratio, B6.3 capital cost alone and the cut cost-table rows); Senate counts hedged (39 needed, at most 37); every marker hedged or cut.
--->
+<!-- Changelog 25/10 (writer, Q21 M2/M1/M14): debris stripped (internal brief refs, duplicate B8.3, moved-file merged with B8 source list and B8.3 reading); Table B35 to B12a; B1.2 step 4 clarified; GenCost 2025 and OECD/IAEA forms fixed; T-number refs to body tables replaced by section refs. -->
 
 ## Appendix B. Working for the policy and supply-chain analysis
 
@@ -709,7 +703,7 @@ The negative Ontario-average row arises because, once Ontario's average falls be
 **Capital cost alone (moved from §7.3).** Darlington's C$20.9 bn (Ontario Power Generation, 2025a) is about A$23.4 bn (Reserve Bank of Australia, 2025). At 7% over 30 years that capital alone costs A$199/MWh. That is already enough to buy 1.9–2.7× the energy from renewables at about A$107/MWh (Graham, Hayward and Foster, 2024; Table B25).
 
 Our Darlington LCOE (`results/lcoe.md`; case B, 60 years, vendor operating costs, CF 0.90) is C$112/151/198/280 per MWh at 3/5/7/10% real (A$125/169/221/313).
-- **Against GenCost:** A$221 at 7% sits just below GenCost 2023-24's 2030 SMR range (A$230–382). Two reasons it should sit low: Darlington is a four-unit site with shared infrastructure, whereas GenCost prices a generic single Australian SMR; and GenCost 2025-26 reports revising Darlington's capital downwards for interest during construction (Graham and Hayward, 2026, as reported). At 10% (A$313) our figure falls in the upper half of GenCost's range. GenCost 2024-25 gives an SMR value of up to A$487 (`results/lcoe.md` §5), so A$221 is below the GenCost ranges we found. GenCost 2025-26 still ranks SMRs as the highest-cost option (Graham and Hayward, 2026), and its SMR range was not retrieved.
+- **Against GenCost:** A$221 at 7% sits just below GenCost 2023-24's 2030 SMR range (A$230–382). Two reasons it should sit low: Darlington is a four-unit site with shared infrastructure, whereas GenCost prices a generic single Australian SMR; and GenCost 2025-26 reports revising Darlington's capital downwards for interest during construction (Graham and Hayward, 2026, as reported). At 10% (A$313) our figure falls in the upper half of GenCost's range. GenCost 2024-25 gives an SMR value of up to A$487 (Graham, Hayward and Foster, 2025; `results/lcoe.md` §5), so A$221 is below the GenCost ranges we found. GenCost 2025-26 still ranks SMRs as the highest-cost option (Graham and Hayward, 2026), and its SMR range was not retrieved.
 - **Against OPG:** OPG's reported four-unit average of C$149/MWh (Ontario Power Generation, 2026b) is reproduced at a real discount rate of 4.9%. That rate is consistent with a ratepayer-backed Crown utility, not with merchant finance.
 - **Cost ratio:** on our 7% value against GenCost 2024-25's firmed-renewables lead, the SMR/renewables cost ratio is 221 / 101 = 2.2× (`results/lcoe.md` §5). On GenCost 2023-24's 2030 values it is about 2.9× (1.8–4.3×), or 5.0× on the alternative reading.
 - **Overrun:** a NuScale-sized capital overrun (×1.75) at 7% gives C$317/MWh (§8.2), the largest single input, ahead of the discount rate.
@@ -853,6 +847,8 @@ In every case the CO₂e avoided to 2050 rises only from 3.845 to 3.846 Mt, and 
 
 **Result.** Safety data favour nuclear (0.03 deaths per TWh against 24.62 for coal), but the health benefit of one unit is large only against coal (58 deaths avoided a year, an upper bound) and small against gas (6.6). Weighted by power, the average stance is +1.07 at Darlington and −1.03 at Liddell. Consent-based siting routes beat top-down siting by 3–6 points under all five weightings, and not building an SMR at Liddell scores highest. **The stance scores and route scores are our judgement, not measurements.** Script: `python3 -I 03_LCA_Calculations/scripts/social_licence.py` (`parameters_run6.yaml`; output `results/social_licence.md`).
 
+Sources for the §8.4 social-licence table (Darlington and Liddell): Neelam (2024); Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub (2025); Newspoll (2007); Ritchie (2020); Markandya and Wilkinson (2007); Canadian Nuclear Safety Commission (2025); Williams Treaties First Nations et al. (2026); Mississaugas of Scugog Island First Nation (2023); Curve Lake First Nation (2024); Municipality of Clarington (2024); Australian Electoral Commission (2019); *Barngarla* [2023] FCA 809; Nuclear Waste Management Organization (2024a; 2024b; 2024c; n.d.); Department of Industry, Science, Energy and Resources (2020); Power Workers' Union (2021); Conference Board of Canada (2021); Joint Standing Committee on Treaties (2024); Slovic (1987).
+
 #### B8.1 Perceived and actual safety, and deaths avoided
 
 1. Death rates per TWh (Ritchie, 2020; Markandya and Wilkinson, 2007): coal 24.62, brown coal 32.72, gas 2.82, wind 0.04, nuclear 0.03, solar 0.02. Coal is 24.62 / 0.03 = about 820 times nuclear (gas about 94 times).
@@ -947,7 +943,7 @@ Reading: R1 beats R3 only on speed (2 against 1) and public cost (2 against 1), 
 
 The 78% is a subtraction (20.9 − 2.00 − 1.00 − 0.97 − 0.70 = 16.23), not a reported figure. Debt (CIB, WTFN) and equity (CGF, BOF) are added only to show scale; the CGF and BOF stakes of up to 15% and 7.5% are shares of the project partnership's equity, not of the budget. Budget per MW: C$20.9 bn / 1,200 MWe = C$17.4 m.
 
-**Limits.** All scores are judgements from secondary summaries. Local min–max scaling and the MCDA use of these scores are in B7. Job and waste figures in T12 (CBoC, NWMO) are taken from the briefs and are not recomputed here, except the Ignace hosting payment (C$170 m over 81 years, about C$2.1 m a year; the C$170 m in total is 0.65% of the C$26 bn lifecycle cost, nominal against 2020 dollars).
+**Limits.** All scores are judgements from secondary summaries. Local min–max scaling and the MCDA use of these scores are in B7. Job and waste figures in the §8.4 social-licence table (Conference Board of Canada, 2021; NWMO, n.d.) are taken from those sources and are not recomputed here, except the Ignace hosting payment (C$170 m over 81 years, about C$2.1 m a year; the C$170 m in total is 0.65% of the C$26 bn lifecycle cost, nominal against 2020 dollars).
 
 ---
 

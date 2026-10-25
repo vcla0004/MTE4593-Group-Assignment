@@ -1,5 +1,5 @@
 Rubric coverage: RB.1, R1.1, R1.2, R5.1 (also supports R5.3)
-<!-- Changelog 25/10 (writer, final-part1): "OECD" claim replaced with the April 2025 CNSC licence wording (item 5); OPG 2025 changed to 2025a (item 7). -->
+<!-- Changelog 25/10 (writer, Q21): M10 DCCEEW defined; M14 CNSC defined at first use. -->
 
 
 <!--
@@ -11,7 +11,7 @@ CHANGELOG
 
 **When a coal plant closes, small modular reactors (SMRs) are one proposed replacement. We ask whether an SMR is feasible across the triple bottom line (environmental, economic, social), and whether a materials choice can make it cleaner without making it later.**
 
-**Context.** Liddell in New South Wales (NSW) was approved to close by April 2023 (Australian Energy Regulator, 2021) and has since closed. NSW's grid still emits about 640 g CO₂e/kWh (Department of Climate Change, Energy, the Environment and Water, 2025); Ontario's, with no coal power, emits about 74 (The Atmospheric Fund, 2025). An SMR is a reactor of up to about 300 MWe built largely from factory-made modules (International Atomic Energy Agency, 2024). The BWRX-300 received a Canadian Nuclear Safety Commission licence to construct at Darlington in April 2025 (Canadian Nuclear Safety Commission, 2025).
+**Context.** Liddell in New South Wales (NSW) was approved to close by April 2023 (Australian Energy Regulator, 2021) and has since closed. NSW's grid still emits about 640 g CO₂e/kWh (Department of Climate Change, Energy, the Environment and Water [DCCEEW], 2025); Ontario's, with no coal power, emits about 74 (The Atmospheric Fund, 2025). An SMR is a reactor of up to about 300 MWe built largely from factory-made modules (International Atomic Energy Agency, 2024). The BWRX-300 received a Canadian Nuclear Safety Commission (CNSC) licence to construct at Darlington in April 2025 (CNSC, 2025).
 
 **The two sites.** *Darlington, Ontario* is the initiative site: Ontario Power Generation (OPG) plans four units for C$20.9 billion, Unit 1 in service in 2030 (Ontario Power Generation, 2025a); Units 2–4 need further licensing (§8.1). *Liddell* is the Australian comparison, a closed coal site with a grid connection.
 

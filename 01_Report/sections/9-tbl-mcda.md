@@ -1,5 +1,5 @@
 Rubric coverage: R3.6, RB.8, R2.6, R4.4, R2.4 (also supports R2.7, R3.5, R3.8, R4.3, R5.1, R5.2, R5.3)
-<!-- Changelog 25/10 (writer, final-part1): rank-reversal random-weight share 0.2% changed to 0.1% (mcda.md line 72). -->
+<!-- Changelog 25/10 (writer, Q21): M5e Liddell scope of 15x; M11a T13 Economy/Liddell cell hedged. -->
 
 
 <!--
@@ -21,7 +21,7 @@ Table T4 applies the triple bottom line to C1 at Darlington and to the compariso
 | | Darlington, with C1 | Liddell (one unit) | Traced to |
 |---|---|---|---|
 | **Environment** | About 4 g CO₂e/kWh (§6). C1 saves 2,200 t per unit, about 0.37% of the life cycle; Unit 1 avoids 1.0–6.8 Mt to 2050. | Avoids 0.67–3.9 Mt to 2050, from about 2040. Firmed renewables avoid 10.9× more per dollar. | §6.3, §7 |
-| **Economy** | LCOE C$198/MWh at 7%. C1's carbon value (C$0.63–0.76 m, Units 2–4) is less than one day of delay (C$1.8–2.9 m). | SMR A$230–382/MWh in 2030 against A$89–125 for firmed renewables. No private owner could finance a first unit. | §7.3, §8.2 |
+| **Economy** | LCOE C$198/MWh at 7%. C1's carbon value (C$0.63–0.76 m, Units 2–4) is less than one day of delay (C$1.8–2.9 m). | SMR A$230–382/MWh in 2030 against A$89–125 for firmed renewables. A first unit would need Commonwealth ownership or underwriting (our inference, §8.2). | §7.3, §8.2 |
 | **Society** | Stance +1.07; no high-power actor opposed. Williams Treaties First Nations lend C$700 m, converting to equity. C1 adds no consent issue. | Stance −1.03; 59% want the ban kept. No legal route is open. Enrichment and conversion would be imported. | §8.1, §8.3–8.5 |
 | **Net** | Marginal gain; feasible if schedule-neutral (break-even 11.6–18.5 days). | Not feasible before 2040 on current law, cost and consent. | §6–§8 |
 
@@ -44,7 +44,7 @@ Method in §2; working in Appendix B7; social-licence and legal scores from Appe
 
 **Rank reversal.** Of 56 weight changes of ±50%, two change first place, both under the firm-and-sovereign weights and both to the status quo, not the SMR. An SMR ranks first only if life-cycle CO₂e carries at least 94% of the weight, or in 0.1% of 20,000 random weight sets. Of 68 input tests, renewables stay first in 66; the other two go to the status quo.
 
-**SMR + C1 and SMR are indistinguishable.** At 2,200 t per unit (50,000 m³ of concrete, 40% eligible; BWRX-300 Ostrołęka sp. z o.o., 2023; Pillai et al., 2019), C1 moves the weighted score by under 0.005 point, and the ranking is unchanged. An 18.5-day slip would leave 15 times the saving unavoided (Appendix B7.5), so schedule neutrality decides whether C1 helps.
+**SMR + C1 and SMR are indistinguishable.** At 2,200 t per unit (50,000 m³ of concrete, 40% eligible; BWRX-300 Ostrołęka sp. z o.o., 2023; Pillai et al., 2019), C1 moves the weighted score by under 0.005 point, and the ranking is unchanged. At Liddell, an 18.5-day slip would forgo CO₂e equal to 15 times the saving (Appendix B7.5), so schedule neutrality decides whether C1 helps.
 
 **The status quo's second place over the SMR is a scaling artefact.** It scores full marks on cost, supply and legal feasibility because it changes nothing; on fixed global scales the SMR moves above it. Renewables stay first on both.
 

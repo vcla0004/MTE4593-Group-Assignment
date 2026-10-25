@@ -1,5 +1,5 @@
 Rubric coverage: R1.2, RB.2, R1.1, R1.3, R3.5, R5.1, R5.2 (also supports RB.3, R3.8, R5.3)
-<!-- Changelog 25/10 (writer, final-part1): T15 rows 1, 2, 3 per items 6, 7, 8 (OPG 2026b as reported; 2025a; "No more than 36-37 of the 39 Senate votes"). -->
+<!-- Changelog 25/10 (writer, Q21): M5f / X5 Russia enrichment share 41–43% in T1 row 4. -->
 
 
 <!--
@@ -19,7 +19,7 @@ CHANGELOG
 | 1. Cost and finance | **C$149–198/MWh** (OPG's figure as reported, Ontario Power Generation, 2026b; this study); NuScale cancelled 2023 (§8.2) | Capital is 65–86% of cost, so financing sets the price | No |
 | 2. Time to deploy | **Unit 1 in service 2030**; **2040 at the earliest** in Australia (Ontario Power Generation, 2025a; Graham, Hayward and Foster, 2024) | Late plants displace less CO₂e (§7) | Yes, as a constraint |
 | 3. Law | **No more than 36–37 of the 39 Senate votes** needed to repeal the federal bans (Parliament of Australia, 2026) | NSW's own ban would remain | No |
-| 4. Fuel-supply concentration | **Enrichment HHI 3,009** (sum of squared market shares) against 1,800 (World Nuclear Association, 2025; US Department of Justice and Federal Trade Commission, 2023) | Russia holds 42.8% of enrichment (§8.3) | No |
+| 4. Fuel-supply concentration | **Enrichment HHI 3,009** (sum of squared market shares) against 1,800 (World Nuclear Association, 2025; US Department of Justice and Federal Trade Commission, 2023) | Russia holds 41–43% of enrichment (§8.3) | No |
 | 5. Embodied carbon and qualification | **7.5%** of life-cycle emissions is construction; C1 saves 2,200 t per unit (this study, §6) | Infill concrete needs nuclear qualification before Units 2–4 are fixed (§8.1) | Yes: C1's target |
 | 6. Social licence | **59%** wanted the ban kept in 2024 (Griffith University Climate Action Beacon and Monash Climate Change Communication Research Hub, 2025) | Support depends on framing; Australia has no consent route (§8.4) | No |
 | 7. Workforce | **AUKUS** submarine work competes for the same trades (Joint Standing Committee on Treaties, 2024) | A civil plant would draw on scarce trades (§8.4) | No |
