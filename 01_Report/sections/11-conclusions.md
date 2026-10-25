@@ -11,7 +11,7 @@ CHANGELOG
 
 **Research questions.**
 1. *Life cycle (§6).* One BWRX-300 emits about 4 g CO₂e/kWh, mostly from the fuel front end; conversion heat is the largest uncertainty.
-2. *C1 (§6–7).* It saves 2,200 t per unit (1,100–3,300; §4.3), about 0.37% of the life cycle; a delay of 11.6–18.5 days cancels it (1.7–1.8 days on the marginal grid factor).
+2. *C1 (§6–7).* It saves 2,200 t per unit (1,100–3,300; §4.3), about 0.36% of the life cycle; a delay of 11.6–18.5 days cancels it (1.7–1.8 days on the marginal grid factor).
 3. *Displacement (§7).* Darlington Unit 1 avoids 1.0–6.8 Mt CO₂e to 2050 and a Liddell unit 0.67–3.9 Mt; firmed renewables avoid 10.9 times more per dollar.
 4. *Barriers and options (§3, §8–9).* Law (three bans), cost (C$149–198/MWh) and time (2040 at the earliest) decide; firmed renewables rank first under all four weight sets (80 against 30 with equal weights).
 
@@ -19,7 +19,7 @@ CHANGELOG
 1. **Schedule:** a month's slip to Units 2–4 costs 29–175 times C1's carbon value (§7).
 2. **Fuel front end:** a measured conversion-heat value would narrow the headline most (§6).
 3. **Whole-plant steel:** up to 3,714 t per unit, if feasible for nuclear-grade plate (§10).
-4. **Concrete (C1):** real and low-risk if schedule-neutral, but it moves the life cycle by about 0.37%.
+4. **Concrete (C1):** real and low-risk if schedule-neutral, but it moves the life cycle by about 0.36%.
 
 **Limitations.** A screening LCA, not critically reviewed; MCDA scores and weights are our judgement; inputs are as described in §2; legislation is as compiled, without the 2025 EPBC reforms.
 
