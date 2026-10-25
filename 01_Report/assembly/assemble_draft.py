@@ -106,7 +106,7 @@ def _p(text: str, style: str = "", size: int = 0, before: int = 0, italic: bool 
             f'<w:r><w:rPr>{rpr}</w:rPr><w:t xml:space="preserve">{text}</w:t></w:r></w:p>')
 
 
-AUTHORS = "Authors: Leroy Louis Jean (33880212), Sam [surname] ([student ID]), Victor Clarke ([student ID])"
+AUTHORS = "Authors: Leroy Louis Jean (33880212), Sam, Victor Clarke"
 TITLE = ("```{=openxml}\n"
          + _p("Small Modular Reactors", "Title", before=3600)
          + _p("MTE4593 Assignment 2", "Subtitle")
@@ -153,7 +153,7 @@ CHECKLIST = """## Team review checklist (this page is removed in the submission 
 
 DECLARATION = """# Declaration of generative AI use
 
-[TODO: team to write the AI-use declaration required by the unit (CLAUDE.md: the team decides how AI use is declared).]
+This report was prepared with the assistance of Claude (Anthropic), a generative AI tool. The team used it to help plan the report, search for and summarise sources, run and check calculations in Python, draft and edit text, and format the document. The Granta EduPack Eco Audit was run by the team. The team directed this work, reviewed the output, and takes responsibility for the content and its sources.
 """
 DROP_HEADINGS = ("IDs covered", "Remaining TODOs")
 PARENT = {"4.1-technology-projects.md": "# 3 Discussion\n\n## 3.1 Overview of SMR\n\n",
