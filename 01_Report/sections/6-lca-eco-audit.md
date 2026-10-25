@@ -49,7 +49,7 @@ The vendor claims about 50% less concrete per unit of energy than the ESBWR (GE 
 | LC³ on 60% | 3,300 | 9,900 | 4,410 | 0.54% (0.34–0.84) |
 | Slag blend on the same 40% (fallback) | 2,288 | 6,865 | 2,576 | 0.34% (0.18–0.60) |
 
-Four findings follow, each with a consequence for the initiative.
+Three findings follow, each with a consequence for the initiative.
 1. **The saving is small at plant scale.** It is about 0.016 g/kWh, so C1 does not change the plant's climate case. It still exceeds the swing from the LC³ cut (1,672–2,964 t), the largest input other than eligibility. Its economic value is in §8.2.
 2. **Slag is about as good as LC³, so the carbon case is for low-clinker concrete, not LC³ in particular.** LC³ beats slag in only 55% of draws (median difference +54 t; 90% interval −588 to +766). If OPG's baseline already contains slag, LC³'s gain is about −90 t, within noise. The specification should accept whichever binder qualifies first (§8.1).3. **Lower-carbon steel is the larger lever but is not part of C1.** Steel in the structures C1 targets saves only 566 t per unit (Appendix A7). All 14,000 t at best-practice electric-arc-furnace factors would save up to 3,915 t (1.8 times LC³), but this is an upper bound, not shown feasible for forgings and nuclear-grade plate. It is the next lever (§10).
 4. **Schedule dominates.** A delay of **11.6–18.5 days** to one unit on Ontario's average grid factor, or **1.7–1.8 days** on the marginal factor, cancels its saving (§7.1; Appendix B5). C1 is therefore specified only if schedule-neutral (§8.6).

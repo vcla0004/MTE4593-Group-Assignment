@@ -150,6 +150,49 @@ def words(text: str) -> tuple[int, int]:
     return prose, table
 
 
+LABEL_RENAME = {"C1": "The initiative (C1)", "LCA": "Life-cycle assessment"}
+
+
+def no_section_signs(text: str) -> str:
+    """Replace "§" cross-references with words ("Section 6", "Sections 8.1–8.5")."""
+    num = r"\d+(?:\.\d+)*[a-z]?"
+    text = re.sub(r"§§\s*", "Sections ", text)
+    text = re.sub(rf"§\s*({num})\s*([–-])\s*({num})", r"Sections \1\2\3", text)
+    text = re.sub(rf"§\s*({num})", r"Section \1", text)
+    return text.replace("§", "Section ")
+
+
+def report_style(body: str) -> str:
+    """Make draft notes read as report prose.
+
+    - a short bold label opening a paragraph ("**Canada.** ...") becomes a level-4 heading;
+    - a longer bold opening sentence, and any other bold inside prose, becomes plain text;
+    - bulleted or numbered lists become one running paragraph.
+    Tables and headings are left alone.
+    """
+    out = []
+    for para in body.split("\n\n"):
+        lines = para.strip("\n").split("\n")
+        first = lines[0] if lines else ""
+        if not first or first.startswith(("#", "|", "!", "```", "*Table", "*Source", "[")) or "custom-style" in para:
+            out.append(para)
+            continue
+        is_item = [bool(re.match(r"\s*(?:[-*]|\d+\.)\s", ln)) for ln in lines]
+        was_list = len(lines) > 1 and all(is_item[1:])  # an optional lead-in line, then items
+        if was_list and not first.lstrip().startswith(("#### ",)) and "Research questions" not in para:
+            items = [re.sub(r"^\s*(?:[-*]|\d+\.)\s+", "", ln) for ln in lines if ln.strip()]
+            para = " ".join(i if i.rstrip().endswith((".", ":", ";", "?")) else i.rstrip() + "." for i in items)
+        else:
+            was_list = was_list and False
+        m = re.match(r"\*\*([^*]+?)\*\*\s*(.*)", para, re.S)
+        if m and not was_list and len(m.group(1).split()) <= 4 and m.group(1).rstrip().endswith((".", ":")):
+            label = m.group(1).rstrip().rstrip(".:")
+            out.append(f"#### {LABEL_RENAME.get(label, label)}")
+            para = m.group(2)
+        out.append(para.replace("**", ""))
+    return "\n\n".join(out)
+
+
 def renumber_tables(bodies: list[str]) -> list[str]:
     """Renumber body tables T1, T2, ... in caption order.
 
@@ -204,6 +247,7 @@ def main() -> None:
                           body, count=1, flags=re.M)
         if name[:2] in ("4.", "8."):
             body = re.sub(r"^(#{2,5}) ", r"#\1 ", body, flags=re.M)
+        body = report_style(body)
         if not body.lstrip().startswith(PARENT.get(name, "##").strip()):
             body = PARENT.get(name, "") + body
         parts.append(body)
@@ -239,7 +283,7 @@ def main() -> None:
         head = ('---\ntitle: "Small modular reactors: DRAFT (assembled from sections)"\n---\n\n'
             "**Draft for the team, not the submission.** Every [TO VERIFY] and [TODO] "
             "marker is still open. Leroy's sections are placeholders until they are in the repo.\n\n")
-    OUT_MD.write_text(head + "\n\n".join(parts), encoding="utf-8")
+    OUT_MD.write_text(no_section_signs(head + "\n\n".join(parts)), encoding="utf-8")
     out_docx = OUT_REVIEW if REVIEW else OUT_FINAL if FINAL else OUT_DOCX
     subprocess.run(["pandoc", "-f", "markdown-tex_math_dollars", str(OUT_MD), "-o", str(out_docx),
                     f"--reference-doc={REF_DOCX}", "--toc", "--columns=10000"], check=True)
