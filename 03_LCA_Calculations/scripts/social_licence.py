@@ -196,7 +196,7 @@ handles = [Line2D([0], [0], marker="o", ls="", ms=8, color=col[k], label=l) for 
 fig.subplots_adjust(bottom=0.33, wspace=0.08)
 fig.legend(handles=handles, loc="lower center", ncol=5, bbox_to_anchor=(0.5, 0.07))
 lca_plot.save(fig, RES / "F8_stakeholder_map.png",
-              "Scores are the analyst's judgement from the evidence keys in parameters_run6.yaml (sources not yet verified).")
+              "Scores are our judgement from the sourced evidence in Appendix B8.")
 
 # ---------------------------------------------------------------- 7. consent routes
 cr = P["consent_routes"]
