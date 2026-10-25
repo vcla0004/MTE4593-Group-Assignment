@@ -453,5 +453,5 @@ This covers:
   - Produced: one home per item. §2 becomes the methods home and §11 the answers home, so each section leads with its point.
   - Missing: the post-cut flow read (Q21).
 - **All other IDs:** each section lists the evidence its HD descriptor needs, and that evidence is kept or moved to an appendix, never deleted.
-  - Risk to **RB.3, RB.4, RB.7 and R1.4 (patents):** they depend entirely on Leroy delivering §4.1, §5, §10 and App E inside 1,200 words.
+  - Risk to **RB.3, RB.4, RB.7 and R1.4 (patents):** they depend entirely on Leroy delivering §4.1, §5, §10 and App E inside 1,250 words.
   - Risk to **R2.3 and R4.3:** the C1 break-even days and carbon value must be re-run for the re-based saving before any section quotes them.
